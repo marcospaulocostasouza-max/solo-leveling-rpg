@@ -13,5 +13,5 @@ export default function TokenLogin({ params }: { params: Promise<{ token: string
       } catch (error) { setMessage(error instanceof Error ? error.message : "Link invalido."); }
     });
   }, [params]);
-  return <main className="login-page"><section className="login-card"><h1>Portal do Caçador</h1><p>{message}</p></section></main>;
+  return <main className="system-loading auth-loading"><div className="loading-rune"/><small>PORTAL DO CAÇADOR</small><h1>{message}</h1></main>;
 }

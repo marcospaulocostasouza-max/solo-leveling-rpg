@@ -1,2 +1,3 @@
-import PortalApp from '@/components/PortalApp';
-export default function Home(){return <PortalApp/>}
+import HunterPortal from '@/components/HunterPortal';
+export const dynamic='force-dynamic';
+export default function Home(){return <HunterPortal section="inicio"/>}

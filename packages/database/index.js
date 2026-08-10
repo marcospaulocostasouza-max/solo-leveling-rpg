@@ -3,7 +3,6 @@
 /** Server-side shared-data access. PostgreSQL is selected by DATABASE_PROVIDER. Never import this in browser code. */
 const fs = require("fs");
 const path = require("path");
-const sqlite3 = require("sqlite3").verbose();
 const { listShopItems, findShopItem } = require("../datasets/catalog");
 const { provider } = require("./config");
 const postgresCompat = require("./postgres-compat");
@@ -13,10 +12,18 @@ const MIGRATIONS_PATH = path.join(__dirname, "migrations");
 let database;
 let migrationPromise;
 
+// Keep SQLite out of the Next/Vercel dependency graph. It is loaded only by a
+// local rollback process after DATABASE_PROVIDER=sqlite has been selected.
+function sqliteDriver() {
+  const moduleName = ["sqlite", "3"].join("");
+  return require(moduleName).verbose();
+}
+
 function getDatabase() {
   if (provider === "postgres") throw new Error("Acesso SQLite bloqueado: use os metodos async de packages/database.");
   if (!database) {
-    database = new sqlite3.Database(DATABASE_PATH);
+    const driver = sqliteDriver();
+    database = new driver.Database(DATABASE_PATH);
     database.configure("busyTimeout", 5000);
     database.run("PRAGMA foreign_keys = ON");
   }

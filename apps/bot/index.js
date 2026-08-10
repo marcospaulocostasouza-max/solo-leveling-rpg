@@ -11,4 +11,5 @@ console.log(" Iniciando sistema... ");
 console.log("==================================");
 
 // Redirecionar para a nova estrutura
+require("dotenv").config({ path: require("path").resolve(__dirname, "../../.env") });
 require("./src/index.js");

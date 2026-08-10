@@ -1,0 +1,648 @@
+RELATÓRIO DE IMPORTAÇÃO DE MEMÓRIA
+==================================
+Arquivo importado: C:\Users\Marcos\Desktop\Solo Leveling\NPC_LORA\memory\E-CENAS.md
+Modo: simulação (nenhum dataset foi alterado)
+Formato detectado: blocos cercados por ```
+Quantidade de blocos: 3556
+Quantidade de blocos copiados: 0
+Quantidade de duplicatas ignoradas: 3282
+Quantidade de blocos sem associação segura: 487
+Quantidade de blocos arquivados em CENAS_GERAIS.md: 0
+Quantidade de blocos já arquivados ignorados: 487
+Total atual de blocos em CENAS_GERAIS.md: 612
+
+NPCs encontrados: 70
+- Agnea Bristarni
+- Alaune Yeong
+- Alexia Song
+- Alfyn Greengrass
+- Arcanette
+- Bargello Yeon
+- Carinda Moon
+- Castti Florenz
+- Celsus Park
+- Claude
+- Cyrus Albright
+- Darius Kwon
+- Delitia Song
+- Elrica Edoras
+- Eltrix Noh
+- Entidade 'Mãe'
+- Esperre Jin
+- Gaston Rho
+- Gideon Ma
+- Goodwin Cha
+- H'aanit
+- Harvey Jeong
+- Heidne Ahn
+- Helgenish
+- Hikari Ku
+- Isla Gwon
+- Kaldena Ryu
+- Kazan
+- Laurana Bae
+- Lucia Yeom
+- Ludo Wei
+- Lyblac
+- Macy Eun
+- Mattias Cardoso
+- Miguel Bang
+- Mugen Ku
+- Ochette
+- Olberic Eisenberg
+- Ophilia Clement
+- Ori Choi
+- Osvald V. Vanstein
+- Partitio Yellowil
+- Petrichor
+- Phenn Doyoung
+- Pius Kang
+- Primrose Azelhart
+- Reime Oh
+- Richard Han
+- Rondo Baek
+- Rufus Deng
+- Saoirse Ryu
+- Sazantos Do
+- Simeon Ha
+- Solon Wi
+- Stia Han
+- Tanzy Woo
+- Tatloch
+- Temenos Mistral
+- Therion
+- Throné Anguis
+- Tressa Colzione
+- Trish Yamaguchi
+- Trousseau
+- Vanessa Hysel
+- Viator Yoon
+- Vide, o Corruptor
+- Warden Davids
+- Werner Choi
+- Xerc Baek
+- Yvon Baik
+
+NPCs identificados: 70
+- Agnea Bristarni
+- Alaune Yeong
+- Alexia Song
+- Alfyn Greengrass
+- Arcanette
+- Bargello Yeon
+- Carinda Moon
+- Castti Florenz
+- Celsus Park
+- Claude
+- Cyrus Albright
+- Darius Kwon
+- Delitia Song
+- Elrica Edoras
+- Eltrix Noh
+- Entidade 'Mãe'
+- Esperre Jin
+- Gaston Rho
+- Gideon Ma
+- Goodwin Cha
+- H'aanit
+- Harvey Jeong
+- Heidne Ahn
+- Helgenish
+- Hikari Ku
+- Isla Gwon
+- Kaldena Ryu
+- Kazan
+- Laurana Bae
+- Lucia Yeom
+- Ludo Wei
+- Lyblac
+- Macy Eun
+- Mattias Cardoso
+- Miguel Bang
+- Mugen Ku
+- Ochette
+- Olberic Eisenberg
+- Ophilia Clement
+- Ori Choi
+- Osvald V. Vanstein
+- Partitio Yellowil
+- Petrichor
+- Phenn Doyoung
+- Pius Kang
+- Primrose Azelhart
+- Reime Oh
+- Richard Han
+- Rondo Baek
+- Rufus Deng
+- Saoirse Ryu
+- Sazantos Do
+- Simeon Ha
+- Solon Wi
+- Stia Han
+- Tanzy Woo
+- Tatloch
+- Temenos Mistral
+- Therion
+- Throné Anguis
+- Tressa Colzione
+- Trish Yamaguchi
+- Trousseau
+- Vanessa Hysel
+- Viator Yoon
+- Vide, o Corruptor
+- Warden Davids
+- Werner Choi
+- Xerc Baek
+- Yvon Baik
+
+NPCs não encontrados: 487
+- Bloco sem NPC identificado (linhas 10086-10086)
+- Bloco sem NPC identificado (linhas 10195-10195)
+- Bloco sem NPC identificado (linhas 10225-10226)
+- Bloco sem NPC identificado (linhas 10301-10302)
+- Bloco sem NPC identificado (linhas 10401-10402)
+- Bloco sem NPC identificado (linhas 10406-10406)
+- Bloco sem NPC identificado (linhas 10570-10570)
+- Bloco sem NPC identificado (linhas 10611-10612)
+- Bloco sem NPC identificado (linhas 10712-10712)
+- Bloco sem NPC identificado (linhas 10738-10738)
+- Bloco sem NPC identificado (linhas 10984-10984)
+- Bloco sem NPC identificado (linhas 11027-11027)
+- Bloco sem NPC identificado (linhas 11133-11134)
+- Bloco sem NPC identificado (linhas 11154-11154)
+- Bloco sem NPC identificado (linhas 11336-11336)
+- Bloco sem NPC identificado (linhas 11546-11547)
+- Bloco sem NPC identificado (linhas 11647-11647)
+- Bloco sem NPC identificado (linhas 11812-11812)
+- Bloco sem NPC identificado (linhas 11855-11855)
+- Bloco sem NPC identificado (linhas 11977-11977)
+- Bloco sem NPC identificado (linhas 12067-12068)
+- Bloco sem NPC identificado (linhas 1218-1219)
+- Bloco sem NPC identificado (linhas 12475-12475)
+- Bloco sem NPC identificado (linhas 12479-12480)
+- Bloco sem NPC identificado (linhas 12580-12580)
+- Bloco sem NPC identificado (linhas 12687-12687)
+- Bloco sem NPC identificado (linhas 12793-12794)
+- Bloco sem NPC identificado (linhas 12999-13000)
+- Bloco sem NPC identificado (linhas 13100-13100)
+- Bloco sem NPC identificado (linhas 13134-13134)
+- Bloco sem NPC identificado (linhas 1319-1319)
+- Bloco sem NPC identificado (linhas 13209-13209)
+- Bloco sem NPC identificado (linhas 1361-1361)
+- Bloco sem NPC identificado (linhas 13621-13621)
+- Bloco sem NPC identificado (linhas 13721-13721)
+- Bloco sem NPC identificado (linhas 13787-13787)
+- Bloco sem NPC identificado (linhas 13934-13935)
+- Bloco sem NPC identificado (linhas 13955-13955)
+- Bloco sem NPC identificado (linhas 14137-14137)
+- Bloco sem NPC identificado (linhas 14347-14348)
+- Bloco sem NPC identificado (linhas 14448-14448)
+- Bloco sem NPC identificado (linhas 14611-14611)
+- Bloco sem NPC identificado (linhas 14655-14655)
+- Bloco sem NPC identificado (linhas 14777-14777)
+- Bloco sem NPC identificado (linhas 14867-14868)
+- Bloco sem NPC identificado (linhas 15073-15073)
+- Bloco sem NPC identificado (linhas 15109-15109)
+- Bloco sem NPC identificado (linhas 1526-1526)
+- Bloco sem NPC identificado (linhas 15279-15279)
+- Bloco sem NPC identificado (linhas 15283-15284)
+- Bloco sem NPC identificado (linhas 15384-15384)
+- Bloco sem NPC identificado (linhas 15604-15604)
+- Bloco sem NPC identificado (linhas 15800-15801)
+- Bloco sem NPC identificado (linhas 15901-15901)
+- Bloco sem NPC identificado (linhas 15935-15935)
+- Bloco sem NPC identificado (linhas 16262-16262)
+- Bloco sem NPC identificado (linhas 16314-16314)
+- Bloco sem NPC identificado (linhas 16752-16752)
+- Bloco sem NPC identificado (linhas 16828-16828)
+- Bloco sem NPC identificado (linhas 17039-17040)
+- Bloco sem NPC identificado (linhas 17084-17084)
+- Bloco sem NPC identificado (linhas 17247-17247)
+- Bloco sem NPC identificado (linhas 17251-17251)
+- Bloco sem NPC identificado (linhas 1732-1732)
+- Bloco sem NPC identificado (linhas 17457-17457)
+- Bloco sem NPC identificado (linhas 17572-17572)
+- Bloco sem NPC identificado (linhas 17746-17748)
+- Bloco sem NPC identificado (linhas 17752-17753)
+- Bloco sem NPC identificado (linhas 17759-17761)
+- Bloco sem NPC identificado (linhas 17765-17767)
+- Bloco sem NPC identificado (linhas 17773-17775)
+- Bloco sem NPC identificado (linhas 17779-17781)
+- Bloco sem NPC identificado (linhas 17806-17806)
+- Bloco sem NPC identificado (linhas 17831-17833)
+- Bloco sem NPC identificado (linhas 17837-17839)
+- Bloco sem NPC identificado (linhas 17845-17847)
+- Bloco sem NPC identificado (linhas 17851-17851)
+- Bloco sem NPC identificado (linhas 17855-17855)
+- Bloco sem NPC identificado (linhas 17861-17863)
+- Bloco sem NPC identificado (linhas 17867-17869)
+- Bloco sem NPC identificado (linhas 17881-17883)
+- Bloco sem NPC identificado (linhas 17889-17891)
+- Bloco sem NPC identificado (linhas 17895-17897)
+- Bloco sem NPC identificado (linhas 17903-17905)
+- Bloco sem NPC identificado (linhas 17909-17911)
+- Bloco sem NPC identificado (linhas 17917-17919)
+- Bloco sem NPC identificado (linhas 17923-17923)
+- Bloco sem NPC identificado (linhas 17927-17928)
+- Bloco sem NPC identificado (linhas 17934-17936)
+- Bloco sem NPC identificado (linhas 17940-17941)
+- Bloco sem NPC identificado (linhas 17947-17949)
+- Bloco sem NPC identificado (linhas 17953-17955)
+- Bloco sem NPC identificado (linhas 17961-17963)
+- Bloco sem NPC identificado (linhas 17967-17969)
+- Bloco sem NPC identificado (linhas 17975-17977)
+- Bloco sem NPC identificado (linhas 17981-17982)
+- Bloco sem NPC identificado (linhas 17994-17996)
+- Bloco sem NPC identificado (linhas 18002-18004)
+- Bloco sem NPC identificado (linhas 18016-18018)
+- Bloco sem NPC identificado (linhas 18022-18024)
+- Bloco sem NPC identificado (linhas 18030-18032)
+- Bloco sem NPC identificado (linhas 18036-18037)
+- Bloco sem NPC identificado (linhas 18043-18045)
+- Bloco sem NPC identificado (linhas 18049-18051)
+- Bloco sem NPC identificado (linhas 18057-18059)
+- Bloco sem NPC identificado (linhas 18063-18064)
+- Bloco sem NPC identificado (linhas 18154-18155)
+- Bloco sem NPC identificado (linhas 18209-18211)
+- Bloco sem NPC identificado (linhas 18215-18217)
+- Bloco sem NPC identificado (linhas 18223-18225)
+- Bloco sem NPC identificado (linhas 18229-18231)
+- Bloco sem NPC identificado (linhas 18265-18265)
+- Bloco sem NPC identificado (linhas 18274-18275)
+- Bloco sem NPC identificado (linhas 18281-18283)
+- Bloco sem NPC identificado (linhas 18287-18289)
+- Bloco sem NPC identificado (linhas 18295-18297)
+- Bloco sem NPC identificado (linhas 18301-18303)
+- Bloco sem NPC identificado (linhas 18315-18316)
+- Bloco sem NPC identificado (linhas 18322-18324)
+- Bloco sem NPC identificado (linhas 18328-18330)
+- Bloco sem NPC identificado (linhas 18336-18338)
+- Bloco sem NPC identificado (linhas 18342-18344)
+- Bloco sem NPC identificado (linhas 18350-18352)
+- Bloco sem NPC identificado (linhas 18356-18358)
+- Bloco sem NPC identificado (linhas 18364-18366)
+- Bloco sem NPC identificado (linhas 18370-18372)
+- Bloco sem NPC identificado (linhas 18378-18380)
+- Bloco sem NPC identificado (linhas 18384-18386)
+- Bloco sem NPC identificado (linhas 18392-18394)
+- Bloco sem NPC identificado (linhas 18398-18400)
+- Bloco sem NPC identificado (linhas 18406-18408)
+- Bloco sem NPC identificado (linhas 18412-18414)
+- Bloco sem NPC identificado (linhas 18426-18428)
+- Bloco sem NPC identificado (linhas 18434-18436)
+- Bloco sem NPC identificado (linhas 18448-18450)
+- Bloco sem NPC identificado (linhas 18454-18456)
+- Bloco sem NPC identificado (linhas 18462-18464)
+- Bloco sem NPC identificado (linhas 18468-18470)
+- Bloco sem NPC identificado (linhas 18476-18478)
+- Bloco sem NPC identificado (linhas 18482-18484)
+- Bloco sem NPC identificado (linhas 18488-18488)
+- Bloco sem NPC identificado (linhas 18492-18494)
+- Bloco sem NPC identificado (linhas 18498-18500)
+- Bloco sem NPC identificado (linhas 18506-18508)
+- Bloco sem NPC identificado (linhas 18512-18514)
+- Bloco sem NPC identificado (linhas 1854-1854)
+- Bloco sem NPC identificado (linhas 18609-18609)
+- Bloco sem NPC identificado (linhas 18645-18647)
+- Bloco sem NPC identificado (linhas 18651-18653)
+- Bloco sem NPC identificado (linhas 18659-18661)
+- Bloco sem NPC identificado (linhas 18665-18667)
+- Bloco sem NPC identificado (linhas 18673-18675)
+- Bloco sem NPC identificado (linhas 18679-18681)
+- Bloco sem NPC identificado (linhas 18687-18689)
+- Bloco sem NPC identificado (linhas 18693-18695)
+- Bloco sem NPC identificado (linhas 18701-18703)
+- Bloco sem NPC identificado (linhas 18707-18709)
+- Bloco sem NPC identificado (linhas 18715-18717)
+- Bloco sem NPC identificado (linhas 18721-18721)
+- Bloco sem NPC identificado (linhas 18725-18726)
+- Bloco sem NPC identificado (linhas 18732-18734)
+- Bloco sem NPC identificado (linhas 18738-18740)
+- Bloco sem NPC identificado (linhas 18760-18762)
+- Bloco sem NPC identificado (linhas 18766-18768)
+- Bloco sem NPC identificado (linhas 18774-18776)
+- Bloco sem NPC identificado (linhas 18780-18782)
+- Bloco sem NPC identificado (linhas 18794-18796)
+- Bloco sem NPC identificado (linhas 18802-18804)
+- Bloco sem NPC identificado (linhas 18816-18818)
+- Bloco sem NPC identificado (linhas 18822-18824)
+- Bloco sem NPC identificado (linhas 18830-18832)
+- Bloco sem NPC identificado (linhas 18836-18836)
+- Bloco sem NPC identificado (linhas 18840-18841)
+- Bloco sem NPC identificado (linhas 18847-18849)
+- Bloco sem NPC identificado (linhas 18853-18855)
+- Bloco sem NPC identificado (linhas 18861-18863)
+- Bloco sem NPC identificado (linhas 18867-18869)
+- Bloco sem NPC identificado (linhas 18875-18877)
+- Bloco sem NPC identificado (linhas 18881-18883)
+- Bloco sem NPC identificado (linhas 18909-18911)
+- Bloco sem NPC identificado (linhas 18931-18933)
+- Bloco sem NPC identificado (linhas 18937-18939)
+- Bloco sem NPC identificado (linhas 18951-18951)
+- Bloco sem NPC identificado (linhas 19152-19153)
+- Bloco sem NPC identificado (linhas 19184-19184)
+- Bloco sem NPC identificado (linhas 19270-19272)
+- Bloco sem NPC identificado (linhas 19276-19277)
+- Bloco sem NPC identificado (linhas 19297-19299)
+- Bloco sem NPC identificado (linhas 19303-19304)
+- Bloco sem NPC identificado (linhas 19323-19325)
+- Bloco sem NPC identificado (linhas 19329-19330)
+- Bloco sem NPC identificado (linhas 19363-19365)
+- Bloco sem NPC identificado (linhas 19369-19371)
+- Bloco sem NPC identificado (linhas 19377-19379)
+- Bloco sem NPC identificado (linhas 19383-19385)
+- Bloco sem NPC identificado (linhas 19391-19393)
+- Bloco sem NPC identificado (linhas 19397-19398)
+- Bloco sem NPC identificado (linhas 19404-19406)
+- Bloco sem NPC identificado (linhas 19410-19411)
+- Bloco sem NPC identificado (linhas 19417-19417)
+- Bloco sem NPC identificado (linhas 19421-19422)
+- Bloco sem NPC identificado (linhas 19426-19427)
+- Bloco sem NPC identificado (linhas 19433-19435)
+- Bloco sem NPC identificado (linhas 19439-19441)
+- Bloco sem NPC identificado (linhas 1944-1945)
+- Bloco sem NPC identificado (linhas 19453-19455)
+- Bloco sem NPC identificado (linhas 19480-19482)
+- Bloco sem NPC identificado (linhas 19507-19509)
+- Bloco sem NPC identificado (linhas 19528-19530)
+- Bloco sem NPC identificado (linhas 19534-19535)
+- Bloco sem NPC identificado (linhas 19541-19543)
+- Bloco sem NPC identificado (linhas 19547-19548)
+- Bloco sem NPC identificado (linhas 19649-19649)
+- Bloco sem NPC identificado (linhas 19692-19694)
+- Bloco sem NPC identificado (linhas 19698-19700)
+- Bloco sem NPC identificado (linhas 19706-19710)
+- Bloco sem NPC identificado (linhas 19729-19731)
+- Bloco sem NPC identificado (linhas 19911-19913)
+- Bloco sem NPC identificado (linhas 19917-19919)
+- Bloco sem NPC identificado (linhas 19925-19927)
+- Bloco sem NPC identificado (linhas 19931-19933)
+- Bloco sem NPC identificado (linhas 19939-19941)
+- Bloco sem NPC identificado (linhas 19945-19947)
+- Bloco sem NPC identificado (linhas 19953-19955)
+- Bloco sem NPC identificado (linhas 19959-19961)
+- Bloco sem NPC identificado (linhas 19967-19969)
+- Bloco sem NPC identificado (linhas 19973-19975)
+- Bloco sem NPC identificado (linhas 19981-19983)
+- Bloco sem NPC identificado (linhas 19987-19989)
+- Bloco sem NPC identificado (linhas 20009-20011)
+- Bloco sem NPC identificado (linhas 20023-20025)
+- Bloco sem NPC identificado (linhas 20029-20031)
+- Bloco sem NPC identificado (linhas 20037-20039)
+- Bloco sem NPC identificado (linhas 20043-20045)
+- Bloco sem NPC identificado (linhas 20051-20053)
+- Bloco sem NPC identificado (linhas 20057-20059)
+- Bloco sem NPC identificado (linhas 20065-20067)
+- Bloco sem NPC identificado (linhas 20071-20073)
+- Bloco sem NPC identificado (linhas 20085-20087)
+- Bloco sem NPC identificado (linhas 20116-20118)
+- Bloco sem NPC identificado (linhas 20124-20127)
+- Bloco sem NPC identificado (linhas 20133-20135)
+- Bloco sem NPC identificado (linhas 20407-20407)
+- Bloco sem NPC identificado (linhas 20432-20432)
+- Bloco sem NPC identificado (linhas 20454-20455)
+- Bloco sem NPC identificado (linhas 20629-20629)
+- Bloco sem NPC identificado (linhas 20921-20922)
+- Bloco sem NPC identificado (linhas 20958-20958)
+- Bloco sem NPC identificado (linhas 21124-21124)
+- Bloco sem NPC identificado (linhas 21229-21229)
+- Bloco sem NPC identificado (linhas 21287-21287)
+- Bloco sem NPC identificado (linhas 21442-21443)
+- Bloco sem NPC identificado (linhas 21643-21643)
+- Bloco sem NPC identificado (linhas 21781-21781)
+- Bloco sem NPC identificado (linhas 2183-2183)
+- Bloco sem NPC identificado (linhas 21855-21856)
+- Bloco sem NPC identificado (linhas 22111-22111)
+- Bloco sem NPC identificado (linhas 22162-22162)
+- Bloco sem NPC identificado (linhas 22372-22373)
+- Bloco sem NPC identificado (linhas 22441-22441)
+- Bloco sem NPC identificado (linhas 2251-2251)
+- Bloco sem NPC identificado (linhas 22606-22606)
+- Bloco sem NPC identificado (linhas 22786-22787)
+- Bloco sem NPC identificado (linhas 22887-22887)
+- Bloco sem NPC identificado (linhas 22994-22994)
+- Bloco sem NPC identificado (linhas 23100-23101)
+- Bloco sem NPC identificado (linhas 23266-23266)
+- Bloco sem NPC identificado (linhas 23308-23309)
+- Bloco sem NPC identificado (linhas 23409-23409)
+- Bloco sem NPC identificado (linhas 23435-23435)
+- Bloco sem NPC identificado (linhas 2349-2349)
+- Bloco sem NPC identificado (linhas 2360-2360)
+- Bloco sem NPC identificado (linhas 23762-23762)
+- Bloco sem NPC identificado (linhas 23822-23822)
+- Bloco sem NPC identificado (linhas 23928-23928)
+- Bloco sem NPC identificado (linhas 24034-24035)
+- Bloco sem NPC identificado (linhas 24256-24256)
+- Bloco sem NPC identificado (linhas 24340-24340)
+- Bloco sem NPC identificado (linhas 24447-24447)
+- Bloco sem NPC identificado (linhas 24553-24554)
+- Bloco sem NPC identificado (linhas 24590-24590)
+- Bloco sem NPC identificado (linhas 2466-2467)
+- Bloco sem NPC identificado (linhas 24756-24756)
+- Bloco sem NPC identificado (linhas 24918-24918)
+- Bloco sem NPC identificado (linhas 24968-24969)
+- Bloco sem NPC identificado (linhas 25069-25069)
+- Bloco sem NPC identificado (linhas 2519-2519)
+- Bloco sem NPC identificado (linhas 25274-25274)
+- Bloco sem NPC identificado (linhas 25412-25412)
+- Bloco sem NPC identificado (linhas 25486-25487)
+- Bloco sem NPC identificado (linhas 25904-25904)
+- Bloco sem NPC identificado (linhas 25996-25996)
+- Bloco sem NPC identificado (linhas 26070-26070)
+- Bloco sem NPC identificado (linhas 26234-26234)
+- Bloco sem NPC identificado (linhas 26414-26415)
+- Bloco sem NPC identificado (linhas 26515-26515)
+- Bloco sem NPC identificado (linhas 26622-26622)
+- Bloco sem NPC identificado (linhas 26728-26729)
+- Bloco sem NPC identificado (linhas 26895-26895)
+- Bloco sem NPC identificado (linhas 26931-26931)
+- Bloco sem NPC identificado (linhas 2878-2879)
+- Bloco sem NPC identificado (linhas 295-297)
+- Bloco sem NPC identificado (linhas 2979-2979)
+- Bloco sem NPC identificado (linhas 3013-3013)
+- Bloco sem NPC identificado (linhas 3088-3088)
+- Bloco sem NPC identificado (linhas 3342-3342)
+- Bloco sem NPC identificado (linhas 336-338)
+- Bloco sem NPC identificado (linhas 3394-3394)
+- Bloco sem NPC identificado (linhas 3604-3605)
+- Bloco sem NPC identificado (linhas 3673-3673)
+- Bloco sem NPC identificado (linhas 3838-3838)
+- Bloco sem NPC identificado (linhas 392-393)
+- Bloco sem NPC identificado (linhas 4018-4019)
+- Bloco sem NPC identificado (linhas 4119-4119)
+- Bloco sem NPC identificado (linhas 4169-4169)
+- Bloco sem NPC identificado (linhas 4331-4331)
+- Bloco sem NPC identificado (linhas 4335-4335)
+- Bloco sem NPC identificado (linhas 4499-4499)
+- Bloco sem NPC identificado (linhas 4541-4541)
+- Bloco sem NPC identificado (linhas 4647-4648)
+- Bloco sem NPC identificado (linhas 4668-4668)
+- Bloco sem NPC identificado (linhas 4850-4850)
+- Bloco sem NPC identificado (linhas 4996-4996)
+- Bloco sem NPC identificado (linhas 5062-5063)
+- Bloco sem NPC identificado (linhas 5163-5163)
+- Bloco sem NPC identificado (linhas 5328-5328)
+- Bloco sem NPC identificado (linhas 5372-5372)
+- Bloco sem NPC identificado (linhas 5494-5494)
+- Bloco sem NPC identificado (linhas 5578-5578)
+- Bloco sem NPC identificado (linhas 5685-5685)
+- Bloco sem NPC identificado (linhas 5791-5792)
+- Bloco sem NPC identificado (linhas 5828-5828)
+- Bloco sem NPC identificado (linhas 596-596)
+- Bloco sem NPC identificado (linhas 5994-5994)
+- Bloco sem NPC identificado (linhas 6156-6156)
+- Bloco sem NPC identificado (linhas 6206-6207)
+- Bloco sem NPC identificado (linhas 6307-6307)
+- Bloco sem NPC identificado (linhas 6414-6414)
+- Bloco sem NPC identificado (linhas 6516-6516)
+- Bloco sem NPC identificado (linhas 6654-6654)
+- Bloco sem NPC identificado (linhas 6722-6722)
+- Bloco sem NPC identificado (linhas 6820-6820)
+- Bloco sem NPC identificado (linhas 6831-6831)
+- Bloco sem NPC identificado (linhas 6937-6938)
+- Bloco sem NPC identificado (linhas 6990-6990)
+- Bloco sem NPC identificado (linhas 702-702)
+- Bloco sem NPC identificado (linhas 7243-7243)
+- Bloco sem NPC identificado (linhas 7317-7317)
+- Bloco sem NPC identificado (linhas 7352-7352)
+- Bloco sem NPC identificado (linhas 7458-7459)
+- Bloco sem NPC identificado (linhas 7487-7487)
+- Bloco sem NPC identificado (linhas 7657-7657)
+- Bloco sem NPC identificado (linhas 7661-7661)
+- Bloco sem NPC identificado (linhas 8025-8027)
+- Bloco sem NPC identificado (linhas 8031-8032)
+- Bloco sem NPC identificado (linhas 8038-8040)
+- Bloco sem NPC identificado (linhas 8044-8046)
+- Bloco sem NPC identificado (linhas 8052-8054)
+- Bloco sem NPC identificado (linhas 8058-8060)
+- Bloco sem NPC identificado (linhas 808-809)
+- Bloco sem NPC identificado (linhas 8113-8114)
+- Bloco sem NPC identificado (linhas 8120-8122)
+- Bloco sem NPC identificado (linhas 8126-8127)
+- Bloco sem NPC identificado (linhas 8133-8135)
+- Bloco sem NPC identificado (linhas 8139-8141)
+- Bloco sem NPC identificado (linhas 8153-8154)
+- Bloco sem NPC identificado (linhas 8160-8162)
+- Bloco sem NPC identificado (linhas 8166-8168)
+- Bloco sem NPC identificado (linhas 8174-8176)
+- Bloco sem NPC identificado (linhas 8180-8182)
+- Bloco sem NPC identificado (linhas 8188-8190)
+- Bloco sem NPC identificado (linhas 8194-8196)
+- Bloco sem NPC identificado (linhas 8202-8204)
+- Bloco sem NPC identificado (linhas 8208-8210)
+- Bloco sem NPC identificado (linhas 8216-8218)
+- Bloco sem NPC identificado (linhas 8222-8224)
+- Bloco sem NPC identificado (linhas 8228-8228)
+- Bloco sem NPC identificado (linhas 8232-8234)
+- Bloco sem NPC identificado (linhas 8238-8240)
+- Bloco sem NPC identificado (linhas 8246-8248)
+- Bloco sem NPC identificado (linhas 8252-8254)
+- Bloco sem NPC identificado (linhas 8266-8268)
+- Bloco sem NPC identificado (linhas 8274-8276)
+- Bloco sem NPC identificado (linhas 8288-8290)
+- Bloco sem NPC identificado (linhas 8294-8296)
+- Bloco sem NPC identificado (linhas 8302-8304)
+- Bloco sem NPC identificado (linhas 8308-8310)
+- Bloco sem NPC identificado (linhas 8316-8318)
+- Bloco sem NPC identificado (linhas 8322-8324)
+- Bloco sem NPC identificado (linhas 8328-8328)
+- Bloco sem NPC identificado (linhas 8332-8334)
+- Bloco sem NPC identificado (linhas 8338-8340)
+- Bloco sem NPC identificado (linhas 8346-8348)
+- Bloco sem NPC identificado (linhas 8352-8354)
+- Bloco sem NPC identificado (linhas 8358-8358)
+- Bloco sem NPC identificado (linhas 8364-8366)
+- Bloco sem NPC identificado (linhas 8370-8372)
+- Bloco sem NPC identificado (linhas 8378-8380)
+- Bloco sem NPC identificado (linhas 8384-8386)
+- Bloco sem NPC identificado (linhas 8392-8394)
+- Bloco sem NPC identificado (linhas 8398-8400)
+- Bloco sem NPC identificado (linhas 8406-8408)
+- Bloco sem NPC identificado (linhas 8412-8414)
+- Bloco sem NPC identificado (linhas 8434-8436)
+- Bloco sem NPC identificado (linhas 8440-8442)
+- Bloco sem NPC identificado (linhas 8448-8448)
+- Bloco sem NPC identificado (linhas 8452-8453)
+- Bloco sem NPC identificado (linhas 8457-8459)
+- Bloco sem NPC identificado (linhas 8471-8473)
+- Bloco sem NPC identificado (linhas 8485-8486)
+- Bloco sem NPC identificado (linhas 8492-8494)
+- Bloco sem NPC identificado (linhas 8498-8500)
+- Bloco sem NPC identificado (linhas 8506-8508)
+- Bloco sem NPC identificado (linhas 8512-8514)
+- Bloco sem NPC identificado (linhas 8520-8522)
+- Bloco sem NPC identificado (linhas 8526-8528)
+- Bloco sem NPC identificado (linhas 8534-8536)
+- Bloco sem NPC identificado (linhas 8540-8542)
+- Bloco sem NPC identificado (linhas 8548-8552)
+- Bloco sem NPC identificado (linhas 8628-8630)
+- Bloco sem NPC identificado (linhas 8634-8636)
+- Bloco sem NPC identificado (linhas 8642-8644)
+- Bloco sem NPC identificado (linhas 8648-8650)
+- Bloco sem NPC identificado (linhas 8656-8658)
+- Bloco sem NPC identificado (linhas 8662-8664)
+- Bloco sem NPC identificado (linhas 8670-8672)
+- Bloco sem NPC identificado (linhas 8676-8678)
+- Bloco sem NPC identificado (linhas 8684-8686)
+- Bloco sem NPC identificado (linhas 8690-8692)
+- Bloco sem NPC identificado (linhas 8698-8700)
+- Bloco sem NPC identificado (linhas 8704-8706)
+- Bloco sem NPC identificado (linhas 8712-8714)
+- Bloco sem NPC identificado (linhas 8718-8720)
+- Bloco sem NPC identificado (linhas 8726-8728)
+- Bloco sem NPC identificado (linhas 8732-8734)
+- Bloco sem NPC identificado (linhas 8740-8742)
+- Bloco sem NPC identificado (linhas 8754-8756)
+- Bloco sem NPC identificado (linhas 8760-8762)
+- Bloco sem NPC identificado (linhas 8784-8784)
+- Bloco sem NPC identificado (linhas 8899-8899)
+- Bloco sem NPC identificado (linhas 8983-8985)
+- Bloco sem NPC identificado (linhas 9005-9007)
+- Bloco sem NPC identificado (linhas 9019-9021)
+- Bloco sem NPC identificado (linhas 9025-9027)
+- Bloco sem NPC identificado (linhas 9033-9035)
+- Bloco sem NPC identificado (linhas 9039-9040)
+- Bloco sem NPC identificado (linhas 9046-9048)
+- Bloco sem NPC identificado (linhas 9052-9054)
+- Bloco sem NPC identificado (linhas 9058-9058)
+- Bloco sem NPC identificado (linhas 9064-9066)
+- Bloco sem NPC identificado (linhas 9070-9072)
+- Bloco sem NPC identificado (linhas 9078-9080)
+- Bloco sem NPC identificado (linhas 9084-9086)
+- Bloco sem NPC identificado (linhas 9092-9094)
+- Bloco sem NPC identificado (linhas 9098-9099)
+- Bloco sem NPC identificado (linhas 9105-9107)
+- Bloco sem NPC identificado (linhas 9111-9112)
+- Bloco sem NPC identificado (linhas 9124-9125)
+- Bloco sem NPC identificado (linhas 9135-9136)
+- Bloco sem NPC identificado (linhas 9140-9142)
+- Bloco sem NPC identificado (linhas 9202-9204)
+- Bloco sem NPC identificado (linhas 9208-9209)
+- Bloco sem NPC identificado (linhas 9215-9217)
+- Bloco sem NPC identificado (linhas 9221-9222)
+- Bloco sem NPC identificado (linhas 9228-9230)
+- Bloco sem NPC identificado (linhas 9234-9236)
+- Bloco sem NPC identificado (linhas 9242-9244)
+- Bloco sem NPC identificado (linhas 9257-9259)
+- Bloco sem NPC identificado (linhas 9263-9264)
+- Bloco sem NPC identificado (linhas 9270-9272)
+- Bloco sem NPC identificado (linhas 9276-9278)
+- Bloco sem NPC identificado (linhas 9284-9286)
+- Bloco sem NPC identificado (linhas 9290-9292)
+- Bloco sem NPC identificado (linhas 9298-9300)
+- Bloco sem NPC identificado (linhas 9304-9306)
+- Bloco sem NPC identificado (linhas 9312-9314)
+- Bloco sem NPC identificado (linhas 9318-9319)
+- Bloco sem NPC identificado (linhas 9325-9327)
+- Bloco sem NPC identificado (linhas 9331-9332)
+- Bloco sem NPC identificado (linhas 9569-9569)
+- Bloco sem NPC identificado (linhas 9779-9780)
+- Bloco sem NPC identificado (linhas 9880-9880)
+- Bloco sem NPC identificado (linhas 9884-9886)
+- Bloco sem NPC identificado (linhas 9892-9894)
+- Bloco sem NPC identificado (linhas 9900-9902)
+- Bloco sem NPC identificado (linhas 9906-9906)
+- Bloco sem NPC identificado (linhas 9986-9987)
+
+Erros encontrados: 0
+- Nenhum

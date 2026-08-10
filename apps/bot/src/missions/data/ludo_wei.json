@@ -1,0 +1,178 @@
+{
+  "npcId": "ludo_wei",
+  "npcNome": "Ludo Wei",
+  "npcTitulo": "O Mediador Sem Bandeira",
+  "totalMissoes": 10,
+  "missoes": [
+    {
+      "id": "ludo_wei_01",
+      "npcId": "ludo_wei",
+      "numero": 1,
+      "nome": "Capítulo 1: O Despertar de Ludo Wei",
+      "descricao": "Acompanhe os primeiros passos de Ludo Wei como Caçador(a). Vindo de fora da região, Ludo se estabeleceu como residente após a reconstrução da comunidade, tornando-se o elo comercial entre ela e cidades vizinhas. Seu Despertar aconteceu ao defender uma caravan...",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Complete a introdução: converse com Ludo Wei e participe de sua primeira incursão",
+      "recompensas": {
+        "xp": 17100,
+        "won": 114000,
+        "item": "Colete Multibolsos"
+      }
+    },
+    {
+      "id": "ludo_wei_02",
+      "npcId": "ludo_wei",
+      "numero": 2,
+      "nome": "Capítulo 2: A Trilha de O Mediador Sem Bandeira",
+      "descricao": "Ludo Wei pede ajuda para investigar pistas ligadas ao seu passado, aprofundando o mistério por trás de seu título de 'O Mediador Sem Bandeira'.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Ajude Ludo Wei a reunir 3 pistas em diferentes localizações",
+      "recompensas": {
+        "xp": 19800,
+        "won": 132000,
+        "item": "Registro de Rotas Comerciais"
+      }
+    },
+    {
+      "id": "ludo_wei_03",
+      "npcId": "ludo_wei",
+      "numero": 3,
+      "nome": "Capítulo 3: O Confronto de Ludo Wei",
+      "descricao": "O passado de Ludo Wei finalmente alcança o presente. Enfrente ao lado dele(a) a ameaça central de sua história.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Vença o confronto decisivo ao lado de Ludo Wei",
+      "recompensas": {
+        "xp": 22500,
+        "won": 150000,
+        "item": "Réplica Reforçada de: Par de Adagas de Comércio"
+      }
+    },
+    {
+      "id": "ludo_wei_04",
+      "npcId": "ludo_wei",
+      "numero": 4,
+      "nome": "Capítulo 4: O Mediador Sem Bandeira",
+      "descricao": "Com a ameaça derrotada, Ludo Wei consolida seu lugar no mundo dos caçadores, consagrando-se como O Mediador Sem Bandeira.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Complete a missão final e testemunhe o desfecho da história de Ludo Wei",
+      "recompensas": {
+        "xp": 25200,
+        "won": 168000,
+        "item": "Réplica Reforçada de: Par de Adagas de Comércio"
+      }
+    },
+    {
+      "id": "ludo_wei_05",
+      "npcId": "ludo_wei",
+      "numero": 5,
+      "nome": "Reforço de Ludo Wei",
+      "descricao": "Ludo Wei pede que você adquira, em qualquer Loja de Itens da Associação, um equipamento de Rank A compatível com Adagas para reforçar seu arsenal de combate.",
+      "categoria": "secundaria",
+      "tipo": "loja",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Comprar 1 equipamento de Rank A (peça de armadura ou arma)",
+      "recompensas": {
+        "xp": 5400,
+        "won": 36000,
+        "item": "Réplica Reforçada de: Par de Adagas de Comércio"
+      }
+    },
+    {
+      "id": "ludo_wei_06",
+      "npcId": "ludo_wei",
+      "numero": 6,
+      "nome": "Provisões de Ludo Wei",
+      "descricao": "Antes da próxima incursão, Ludo Wei pede que você compre poções de recuperação e um acessório de afinidade elemental Vento na loja mais próxima.",
+      "categoria": "secundaria",
+      "tipo": "loja",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Comprar 3 poções + 1 acessório elemental",
+      "recompensas": {
+        "xp": 4950,
+        "won": 33000,
+        "item": "Registro de Rotas Comerciais"
+      }
+    },
+    {
+      "id": "ludo_wei_07",
+      "npcId": "ludo_wei",
+      "numero": 7,
+      "nome": "Receita de Ludo Wei",
+      "descricao": "Usando materiais coletados em dungeons de afinidade Vento, produza o item indicado por Ludo Wei em uma bancada de criação da guilda.",
+      "categoria": "secundaria",
+      "tipo": "producao",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Produzir 1 item de afinidade Vento (Rank A)",
+      "recompensas": {
+        "xp": 5850,
+        "won": 39000,
+        "item": "Fragmento de Mana (Vento)"
+      }
+    },
+    {
+      "id": "ludo_wei_08",
+      "npcId": "ludo_wei",
+      "numero": 8,
+      "nome": "Suprimento Especial de Ludo Wei",
+      "descricao": "Ludo Wei ensina uma técnica pessoal de preparo; produza 3 unidades de um item de suporte (poção, munição ou material) ligado ao estilo de combate de Adagas.",
+      "categoria": "secundaria",
+      "tipo": "producao",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Produzir 3 itens de suporte",
+      "recompensas": {
+        "xp": 6300,
+        "won": 42000,
+        "item": "Fragmento de Mana (Vento)"
+      }
+    },
+    {
+      "id": "ludo_wei_09",
+      "npcId": "ludo_wei",
+      "numero": 9,
+      "nome": "Treino de Combate com Ludo Wei",
+      "descricao": "Ludo Wei solicita ajuda para conter uma infestação: derrote espíritos do vento em dungeons de Rank A ou inferior.",
+      "categoria": "cacada",
+      "tipo": "caca",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Derrotar 35 Espíritos do Vento",
+      "recompensas": {
+        "xp": 7200,
+        "won": 48000,
+        "item": "Colete Multibolsos"
+      }
+    },
+    {
+      "id": "ludo_wei_10",
+      "npcId": "ludo_wei",
+      "numero": 10,
+      "nome": "Caçada Recomendada por Ludo Wei",
+      "descricao": "Uma variante mais forte de espíritos do vento tem aparecido nas rondas de Ludo Wei; elimine essas ameaças antes que evoluam.",
+      "categoria": "cacada",
+      "tipo": "caca",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Derrotar 8 Espíritos do Vento (variante fortalecida)",
+      "recompensas": {
+        "xp": 9000,
+        "won": 60000,
+        "item": "Réplica Reforçada de: Par de Adagas de Comércio"
+      }
+    }
+  ]
+}

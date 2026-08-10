@@ -1,0 +1,42 @@
+{
+  "id": "isla_gwon",
+  "papel": "Heroína",
+  "base_em": "Isla (Champions of the Continent)",
+  "nome": "Isla Gwon",
+  "idade": "Aparenta 20 anos",
+  "nacionalidade": "Sul-coreana, estudiosa da remota Ilha dos Sábios",
+  "aparencia": "Traços felinos sutis (orelhas e cauda), cabelos brancos curtos, veste vestes acadêmicas leves adaptadas à vida na ilha isolada.",
+  "altura_peso": "1,58m / 46kg",
+  "personalidade": "Curiosa, um pouco isolada socialmente, mas extremamente perceptiva sobre padrões que outros não notam.",
+  "historia": "Criada isolada em uma ilha remota povoada por estudiosos com traços felinos, Isla dedicou a vida a decifrar fragmentos de cartas antigas sobre a origem dos portais.",
+  "classe": "Mago Elemental",
+  "classe_avancada": "Alquimista",
+  "rank": "S",
+  "nivel": 93,
+  "estilo_luta": "Proficiência em Cajados e Orbes",
+  "atributos": {
+    "forca": 20,
+    "resistencia": 36,
+    "velocidade": 50,
+    "sentidos": 82,
+    "inteligencia": 98,
+    "poder_magico": 90
+  },
+  "elemento": "Vento",
+  "habilidade_unica": "Fragmentos Reunidos — combina conhecimento acumulado para revelar instantaneamente todas as fraquezas elementais e físicas do inimigo ao grupo inteiro.",
+  "titulo": "A Sábia dos Fragmentos Perdidos",
+  "equipamentos": {
+    "arma": "Orbe de Cristal da Ilha",
+    "itens": "Pilha de Fragmentos de Carta, Vestes Acadêmicas Leves, Mapa Incompleto do Continente"
+  },
+  "tecnicas": [
+    "Vento do Conhecimento",
+    "Revelação Total",
+    "Tempestade dos Sábios"
+  ],
+  "formaFalar": "Fala com inteligência e curiosidade, frequentemente fazendo referências a conhecimentos arcanos.",
+  "localizacao": "Coreia do Sul",
+  "profissao": "Caçador(a) Mago Elemental",
+  "objetivos": "Proteger os inocentes, evoluir como caçador e desvendar os mistérios dos portais.",
+  "valores": "A vida é preciosa. A coragem é essencial. A lealdade é inegociável."
+}

@@ -1,0 +1,42 @@
+{
+  "id": "harvey_jeong",
+  "papel": "Vilão",
+  "base_em": "Harvey (Ordem da Meia-Noite — ligado a Osvald)",
+  "nome": "Harvey Jeong",
+  "idade": "51",
+  "nacionalidade": "Sul-coreano, ex-pesquisador-chefe e colega de longa data de um cientista renomado",
+  "aparencia": "Aparência acadêmica refinada, cabelos grisalhos bem cuidados, veste casaco de laboratório imaculado mesmo em campo.",
+  "altura_peso": "1,80m / 74kg",
+  "personalidade": "Obcecado por poder arcano absoluto ao ponto de justificar qualquer crime como 'necessário para o avanço do conhecimento'.",
+  "historia": "Ex-parceiro de pesquisa, Harvey assassinou a esposa e a filha do colega, incriminando-o pelo crime para se apropriar de uma pesquisa proibida.",
+  "classe": "Mago de Maldição",
+  "classe_avancada": "Taumaturgo",
+  "rank": "S",
+  "nivel": 98,
+  "estilo_luta": "Proficiência em Cajados e Orbes",
+  "atributos": {
+    "forca": 30,
+    "resistencia": 50,
+    "velocidade": 42,
+    "sentidos": 62,
+    "inteligencia": 97,
+    "poder_magico": 96
+  },
+  "elemento": "Escuridão",
+  "habilidade_unica": "Magia Verdadeira Roubada — consome parte de seu próprio HP para desferir um feitiço de dano massivo em área, ignorando qualquer forma de resistência mágica do inimigo.",
+  "titulo": "O Pesquisador que Traiu o Melhor Amigo",
+  "equipamentos": {
+    "arma": "Cajado de Pesquisa Proibida",
+    "itens": "Casaco de Laboratório Imaculado, Anotações da Magia Primordial Roubada, Frasco de Controle Mental"
+  },
+  "tecnicas": [
+    "Explosão da Magia Roubada",
+    "Julgamento do Traidor",
+    "Colapso Arcano Absoluto"
+  ],
+  "formaFalar": "Fala com tom frio e calculista, frequentemente manipulando as palavras para obter vantagem. Suas frases são precisas e raramente revelam emoções verdadeiras.",
+  "localizacao": "Localização desconhecida — opera nas sombras",
+  "profissao": "Antagonista",
+  "objetivos": "Expandir seu poder e influência, eliminando qualquer ameaça aos seus planos.",
+  "valores": "O poder é o único caminho. A fraqueza é imperdoável. Os fins justificam os meios."
+}

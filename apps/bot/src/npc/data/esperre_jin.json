@@ -1,0 +1,42 @@
+{
+  "id": "esperre_jin",
+  "papel": "Heroína",
+  "base_em": "Esperre (Octopath Traveler 0)",
+  "nome": "Esperre Jin",
+  "idade": "28",
+  "nacionalidade": "Sul-coreana, curandeira de campo nas Areias de Sufrataljah",
+  "aparencia": "Pele bronzeada por anos sob o sol do deserto, cabelos escuros cobertos por um lenço protetor, veste roupas leves adaptadas ao calor extremo.",
+  "altura_peso": "1,67m / 56kg",
+  "personalidade": "Resiliente e pragmática, acostumada a sobreviver e ajudar em condições extremas. Fala pouco sobre si mesma.",
+  "historia": "Curandeira que se estabeleceu nas regiões desérticas próximas a Sufrataljah, tratando caravanas e caçadores vítimas de monstros venenosos.",
+  "classe": "Curador",
+  "classe_avancada": "Apotecário",
+  "rank": "C",
+  "nivel": 57,
+  "estilo_luta": "Proficiência em Machados",
+  "atributos": {
+    "forca": 50,
+    "resistencia": 58,
+    "velocidade": 40,
+    "sentidos": 52,
+    "inteligencia": 55,
+    "poder_magico": 55
+  },
+  "elemento": "Terra",
+  "habilidade_unica": "Antídoto do Deserto — remove todos os efeitos de veneno e desidratação do grupo, além de conceder resistência temporária a novos venenos por 3 turnos.",
+  "titulo": "A Curandeira das Dunas",
+  "equipamentos": {
+    "arma": "Machado Curto de Colheita",
+    "itens": "Lenço Protetor do Deserto, Frascos de Antídoto, Cantil de Água Reforçado"
+  },
+  "tecnicas": [
+    "Golpe da Sobrevivência",
+    "Purificação das Dunas",
+    "Cura sob o Sol"
+  ],
+  "formaFalar": "Fala com calma e compaixão, usando palavras gentis e encorajadoras. Sempre disposto a ajudar e confortar os feridos.",
+  "localizacao": "Coreia do Sul",
+  "profissao": "Caçador(a) Curador",
+  "objetivos": "Proteger os inocentes, evoluir como caçador e desvendar os mistérios dos portais.",
+  "valores": "A vida é preciosa. A coragem é essencial. A lealdade é inegociável."
+}

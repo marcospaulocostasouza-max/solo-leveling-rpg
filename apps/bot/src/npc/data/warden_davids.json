@@ -1,0 +1,42 @@
+{
+  "id": "warden_davids",
+  "papel": "Vilão",
+  "base_em": "Warden Davids (Octopath Traveler)",
+  "nome": "Warden Davids",
+  "idade": "55",
+  "nacionalidade": "Sul-coreano, ex-diretor de um centro de detenção para caçadores criminosos",
+  "aparencia": "Corpo rígido e uniforme impecavelmente passado, cabelos grisalhos cortados à máquina, sempre carregando um molho de chaves.",
+  "altura_peso": "1,86m / 90kg",
+  "personalidade": "Autoritário ao extremo, convencido de que crueldade é sinônimo de disciplina eficaz.",
+  "historia": "Diretor de um centro de detenção, Warden Davids lucrava secretamente vendendo trabalho forçado de detentos a guildas mineradoras em troca de subornos.",
+  "classe": "Lutador",
+  "classe_avancada": "Herói da Espada",
+  "rank": "B",
+  "nivel": 73,
+  "estilo_luta": "Proficiência em Bastões e Correntes",
+  "atributos": {
+    "forca": 66,
+    "resistencia": 68,
+    "velocidade": 40,
+    "sentidos": 50,
+    "inteligencia": 48,
+    "poder_magico": 18
+  },
+  "elemento": "Metal",
+  "habilidade_unica": "Disciplina Forçada — imobiliza um alvo com correntes por um turno, impedindo qualquer ação enquanto sofre dano contínuo leve.",
+  "titulo": "O Carcereiro que Vendia Detentos",
+  "equipamentos": {
+    "arma": "Correntes e Bastão de Disciplina",
+    "itens": "Uniforme Impecável, Molho de Chaves do Centro de Detenção, Registros Falsificados"
+  },
+  "tecnicas": [
+    "Golpe das Correntes",
+    "Punição Exemplar",
+    "Investida Autoritária"
+  ],
+  "formaFalar": "Fala com tom frio e calculista, frequentemente manipulando as palavras para obter vantagem. Suas frases são precisas e raramente revelam emoções verdadeiras.",
+  "localizacao": "Localização desconhecida — opera nas sombras",
+  "profissao": "Antagonista",
+  "objetivos": "Expandir seu poder e influência, eliminando qualquer ameaça aos seus planos.",
+  "valores": "O poder é o único caminho. A fraqueza é imperdoável. Os fins justificam os meios."
+}

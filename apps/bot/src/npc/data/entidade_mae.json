@@ -1,0 +1,42 @@
+{
+  "id": "entidade_mae",
+  "papel": "Vilão",
+  "base_em": "Mother (Octopath Traveler)",
+  "nome": "Entidade 'Mãe'",
+  "idade": "Incontável — origem anterior à Associação",
+  "nacionalidade": "Não-humano; entidade parasitária ligada a uma anomalia de mana ancestral",
+  "aparencia": "Uma massa orgânica pulsante coberta por dezenas de rostos humanos parcialmente formados na superfície, todos sussurrando ao mesmo tempo.",
+  "altura_peso": "Variável / massa crescente conforme absorve vítimas",
+  "personalidade": "Fala com uma voz sedutora e maternal que promete acolhimento e cura eterna, mas que na verdade busca apenas absorver e assimilar quem se aproxima.",
+  "historia": "Nascida de uma anomalia de mana que corrompeu um antigo santuário de cura, a entidade atrai vítimas enfraquecidas com promessas sussurradas de acolhimento.",
+  "classe": "Curador",
+  "classe_avancada": "Apotecário",
+  "rank": "S",
+  "nivel": 91,
+  "estilo_luta": "Proficiência em Manipulação Orgânica",
+  "atributos": {
+    "forca": 55,
+    "resistencia": 85,
+    "velocidade": 20,
+    "sentidos": 60,
+    "inteligencia": 50,
+    "poder_magico": 88
+  },
+  "elemento": "Escuridão",
+  "habilidade_unica": "Abraço Materno — tenta absorver um aliado com menos de 40% de HP; se bem-sucedido, cura a si mesma em grande quantidade e remove o aliado do combate.",
+  "titulo": "A Mãe que Devora o Desespero",
+  "equipamentos": {
+    "arma": "Nenhuma (manipulação do próprio corpo orgânico)",
+    "itens": "Rostos Sussurrantes Absorvidos, Núcleo do Santuário Corrompido"
+  },
+  "tecnicas": [
+    "Sussurro do Acolhimento",
+    "Expansão Parasitária",
+    "Colapso da Massa Materna"
+  ],
+  "formaFalar": "Fala com tom frio e calculista, frequentemente manipulando as palavras para obter vantagem. Suas frases são precisas e raramente revelam emoções verdadeiras.",
+  "localizacao": "Localização desconhecida — opera nas sombras",
+  "profissao": "Antagonista",
+  "objetivos": "Expandir seu poder e influência, eliminando qualquer ameaça aos seus planos.",
+  "valores": "O poder é o único caminho. A fraqueza é imperdoável. Os fins justificam os meios."
+}

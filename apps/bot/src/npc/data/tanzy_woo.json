@@ -1,0 +1,42 @@
+{
+  "id": "tanzy_woo",
+  "papel": "Vilã",
+  "base_em": "Tanzy (Ordem da Meia-Noite — ligada a Agnea)",
+  "nome": "Tanzy Woo",
+  "idade": "31",
+  "nacionalidade": "Sul-coreana, ex-empresária do meio artístico",
+  "aparencia": "Elegante e magnética, cabelos loiros longos impecavelmente cacheados, veste roupas caras de produtora de eventos.",
+  "altura_peso": "1,70m / 56kg",
+  "personalidade": "Charmosa e calculista, trata talentos artísticos como ativos a serem explorados e descartados.",
+  "historia": "Empresária que constrói e destrói carreiras de jovens artistas conforme sua utilidade para uma agenda maior.",
+  "classe": "Assassino",
+  "classe_avancada": "Lâmina Sombria",
+  "rank": "B",
+  "nivel": 77,
+  "estilo_luta": "Proficiência em Adagas",
+  "atributos": {
+    "forca": 35,
+    "resistencia": 38,
+    "velocidade": 62,
+    "sentidos": 68,
+    "inteligencia": 72,
+    "poder_magico": 45
+  },
+  "elemento": "Cristal",
+  "habilidade_unica": "Contrato Vantajoso — oferece um 'acordo' ao inimigo que, se recusado, aplica um debuff severo de sorte e evasão pelo resto da batalha.",
+  "titulo": "A Empresária que Descarta Estrelas",
+  "equipamentos": {
+    "arma": "Par de Adagas Ornamentadas",
+    "itens": "Contratos em Branco, Roupas de Produtora Elegante, Lista de Talentos Descartados"
+  },
+  "tecnicas": [
+    "Corte do Contrato",
+    "Manipulação do Palco",
+    "Golpe da Estrela Apagada"
+  ],
+  "formaFalar": "Fala com tom frio e calculista, frequentemente manipulando as palavras para obter vantagem. Suas frases são precisas e raramente revelam emoções verdadeiras.",
+  "localizacao": "Localização desconhecida — opera nas sombras",
+  "profissao": "Antagonista",
+  "objetivos": "Expandir seu poder e influência, eliminando qualquer ameaça aos seus planos.",
+  "valores": "O poder é o único caminho. A fraqueza é imperdoável. Os fins justificam os meios."
+}

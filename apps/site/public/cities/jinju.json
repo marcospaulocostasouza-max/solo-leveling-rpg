@@ -1,0 +1,19 @@
+{
+  "id": "jinju",
+  "name": "Jinju",
+  "image": "/images/cities/jinju.webp",
+  "description": "Cidade histórica",
+  "population": "340 mil",
+  "dangerLevel": "C",
+  "guilds": [],
+  "npcs": [],
+  "players": [],
+  "portals": [],
+  "dungeons": [],
+  "bosses": [],
+  "shops": [],
+  "quests": [],
+  "events": [],
+  "resources": [],
+  "notes": ""
+}

@@ -1,0 +1,42 @@
+{
+  "id": "rondo_baek",
+  "papel": "Herói",
+  "base_em": "Rondo (Champions of the Continent)",
+  "nome": "Rondo Baek",
+  "idade": "27",
+  "nacionalidade": "Sul-coreano, cavaleiro de uma ordem congelada no tempo",
+  "aparencia": "Armadura ornamentada de estilo antiquado, cabelos prateados curtos, sempre carrega um estandarte desbotado junto à espada.",
+  "altura_peso": "1,83m / 80kg",
+  "personalidade": "Formal ao ponto de soar deslocado no mundo moderno, extremamente leal a códigos de honra que a maioria já abandonou.",
+  "historia": "Criado dentro de uma ordem de cavaleiros isolada que se recusou a se modernizar, Rondo passou a vida treinando sob código de honra ancestral. Ao descobrir que sua ordem foi esquecida, decidiu sair para o mundo.",
+  "classe": "Lutador",
+  "classe_avancada": "Paladino",
+  "rank": "B",
+  "nivel": 69,
+  "estilo_luta": "Proficiência em Espadas",
+  "atributos": {
+    "forca": 74,
+    "resistencia": 70,
+    "velocidade": 52,
+    "sentidos": 55,
+    "inteligencia": 42,
+    "poder_magico": 22
+  },
+  "elemento": "Gelo",
+  "habilidade_unica": "Juramento Inabalável — enquanto ativo, Rondo não pode ser derrubado abaixo de 1 HP por um único golpe, não importa o dano recebido, uma vez por batalha.",
+  "titulo": "O Último Cavaleiro da Ordem Esquecida",
+  "equipamentos": {
+    "arma": "Espada Ornamentada Antiga",
+    "itens": "Estandarte Desbotado, Armadura da Ordem Congelada, Código de Honra Manuscrito"
+  },
+  "tecnicas": [
+    "Corte do Juramento",
+    "Postura da Ordem",
+    "Investida do Cavaleiro Esquecido"
+  ],
+  "formaFalar": "Fala com determinação e honra, valorizando a força e a coragem. Suas palavras são firmes e inspiradoras.",
+  "localizacao": "Coreia do Sul",
+  "profissao": "Caçador(a) Lutador",
+  "objetivos": "Proteger os inocentes, evoluir como caçador e desvendar os mistérios dos portais.",
+  "valores": "A vida é preciosa. A coragem é essencial. A lealdade é inegociável."
+}

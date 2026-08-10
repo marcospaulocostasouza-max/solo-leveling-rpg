@@ -1,0 +1,24 @@
+# Modelfile criado para teste SEM THINKING do Qwen3
+# Usa o blob base do qwen3:4b-thinking-2507-q4_K_M
+FROM C:\Users\Marcos\.ollama\models\blobs\sha256-3e4cb14174460404e7a233e531675303b2fbf7749c02f91864fe311ab6344e4f
+
+# TEMPLATE SIMPLES - SEM forçar abertura de " thinking"
+# O template original do Qwen3 Thinking insere " thinking" antes da resposta,
+# o que induz o modelo a gerar raciocinio mesmo com think=false.
+TEMPLATE """{{- if .System }}<|im_start|>system
+{{ .System }}<|im_end|>
+{{ end }}
+{{- range .Messages }}<|im_start|>{{ .Role }}
+{{ .Content }}<|im_end|>
+{{ end }}
+<|im_start|>assistant
+"""
+
+PARAMETER temperature 0.6
+PARAMETER top_p 0.85
+PARAMETER top_k 30
+PARAMETER repeat_penalty 1.15
+PARAMETER num_ctx 16384
+PARAMETER num_thread 8
+PARAMETER stop <|im_start|>
+PARAMETER stop <|im_end|>

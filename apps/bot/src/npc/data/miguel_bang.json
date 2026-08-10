@@ -1,0 +1,42 @@
+{
+  "id": "miguel_bang",
+  "papel": "Vilão",
+  "base_em": "Miguel (Octopath Traveler)",
+  "nome": "Miguel Bang",
+  "idade": "37",
+  "nacionalidade": "Sul-coreano, assassino em série disfarçado de figura pública respeitável",
+  "aparencia": "Aparência gentil e comum, cabelos castanhos bem penteados, veste roupas discretas que não chamam atenção.",
+  "altura_peso": "1,80m / 72kg",
+  "personalidade": "Psicoticamente calmo e metódico, trata assassinatos como um passatempo meticulosamente planejado.",
+  "historia": "Por trás de uma reputação impecável como voluntário, Miguel secretamente sequestra e assassina vítimas escolhidas com cuidado obsessivo.",
+  "classe": "Assassino",
+  "classe_avancada": "Lâmina Sombria",
+  "rank": "A",
+  "nivel": 84,
+  "estilo_luta": "Proficiência em Adagas",
+  "atributos": {
+    "forca": 50,
+    "resistencia": 44,
+    "velocidade": 75,
+    "sentidos": 80,
+    "inteligencia": 65,
+    "poder_magico": 26
+  },
+  "elemento": "Sombra",
+  "habilidade_unica": "Caça Meticulosa — marca um alvo no início da batalha; todo dano causado a esse alvo específico é aumentado significativamente pelo resto do combate.",
+  "titulo": "O Voluntário que Escondia um Predador",
+  "equipamentos": {
+    "arma": "Adaga Discreta de Aço Fosco",
+    "itens": "Roupas Discretas Sem Marcas, Lista de Vítimas Cuidadosamente Escolhidas, Crachá de Voluntário"
+  },
+  "tecnicas": [
+    "Corte Silencioso",
+    "Marca do Predador",
+    "Golpe do Sorriso Vazio"
+  ],
+  "formaFalar": "Fala com tom frio e calculista, frequentemente manipulando as palavras para obter vantagem. Suas frases são precisas e raramente revelam emoções verdadeiras.",
+  "localizacao": "Localização desconhecida — opera nas sombras",
+  "profissao": "Antagonista",
+  "objetivos": "Expandir seu poder e influência, eliminando qualquer ameaça aos seus planos.",
+  "valores": "O poder é o único caminho. A fraqueza é imperdoável. Os fins justificam os meios."
+}

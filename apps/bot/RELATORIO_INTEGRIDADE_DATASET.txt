@@ -1,0 +1,159 @@
+RELATORIO FINAL DE INTEGRIDADE DO DATASET
+==========================================
+Total de NPCs: 72
+Total de arquivos analisados: 1374
+Total de exemplos brutos nos datasets: 11577
+Total de exemplos unicos esperados: 11532
+Total de exemplos encontrados no JSONL: 11532
+Total de caracteres no JSONL: 10108540
+Registros de memoria conferidos em CENAS_GERAIS.md: 612
+
+Estatisticas por NPC (72)
+- agnea_bristarni | Nome: Agnea Bristarni | dialogos: 1 | cenas: 1 | esperado: 18 | JSONL: 18 | diferenca: 0 | palavras: 1983 | caracteres: 13469 | media: 748.28 | menor: 172 | maior: 3108
+- alaune_yeong | Nome: Alaune Yeong | dialogos: 32 | cenas: 87 | esperado: 140 | JSONL: 140 | diferenca: 0 | palavras: 24292 | caracteres: 147209 | media: 1051.49 | menor: 197 | maior: 11986
+- alexia_song | Nome: Alexia Song | dialogos: 62 | cenas: 177 | esperado: 260 | JSONL: 260 | diferenca: 0 | palavras: 31719 | caracteres: 194157 | media: 746.76 | menor: 172 | maior: 11959
+- alfyn_greengrass | Nome: Alfyn Greengrass | dialogos: 31 | cenas: 89 | esperado: 136 | JSONL: 136 | diferenca: 0 | palavras: 10756 | caracteres: 64759 | media: 476.17 | menor: 45 | maior: 3363
+- arcanette | Nome: Arcanette | dialogos: 32 | cenas: 58 | esperado: 106 | JSONL: 106 | diferenca: 0 | palavras: 11956 | caracteres: 73835 | media: 696.56 | menor: 227 | maior: 10273
+- bargello_yeon | Nome: Bargello Yeon | dialogos: 32 | cenas: 87 | esperado: 140 | JSONL: 140 | diferenca: 0 | palavras: 23383 | caracteres: 142531 | media: 1018.08 | menor: 197 | maior: 11987
+- carinda_moon | Nome: Carinda Moon | dialogos: 32 | cenas: 84 | esperado: 137 | JSONL: 137 | diferenca: 0 | palavras: 22268 | caracteres: 138946 | media: 1014.20 | menor: 172 | maior: 11983
+- castti_florenz | Nome: Castti Florenz | dialogos: 332 | cenas: 629 | esperado: 1040 | JSONL: 1040 | diferenca: 0 | palavras: 170655 | caracteres: 1041331 | media: 1001.28 | menor: 29 | maior: 11999
+- celsus_park | Nome: Celsus Park | dialogos: 32 | cenas: 93 | esperado: 146 | JSONL: 146 | diferenca: 0 | palavras: 22905 | caracteres: 140935 | media: 965.31 | menor: 172 | maior: 11986
+- claude | Nome: Claude | dialogos: 47 | cenas: 58 | esperado: 121 | JSONL: 121 | diferenca: 0 | palavras: 10824 | caracteres: 67883 | media: 561.02 | menor: 157 | maior: 9731
+- cyrus_albright | Nome: Cyrus Albright | dialogos: 1 | cenas: 1 | esperado: 18 | JSONL: 18 | diferenca: 0 | palavras: 2216 | caracteres: 15488 | media: 860.44 | menor: 172 | maior: 5470
+- darius_kwon | Nome: Darius Kwon | dialogos: 32 | cenas: 86 | esperado: 139 | JSONL: 139 | diferenca: 0 | palavras: 24635 | caracteres: 145612 | media: 1047.57 | menor: 205 | maior: 11905
+- delitia_song | Nome: Delitia Song | dialogos: 62 | cenas: 176 | esperado: 259 | JSONL: 259 | diferenca: 0 | palavras: 31512 | caracteres: 191236 | media: 738.36 | menor: 188 | maior: 11966
+- elrica_edoras | Nome: Elrica Edoras | dialogos: 3 | cenas: 1 | esperado: 20 | JSONL: 20 | diferenca: 0 | palavras: 2167 | caracteres: 14483 | media: 724.15 | menor: 172 | maior: 3424
+- eltrix_noh | Nome: Eltrix Noh | dialogos: 32 | cenas: 85 | esperado: 144 | JSONL: 144 | diferenca: 0 | palavras: 32884 | caracteres: 201117 | media: 1396.65 | menor: 190 | maior: 11997
+- entidade_mae | Nome: Entidade 'Mãe' | dialogos: 1 | cenas: 1 | esperado: 18 | JSONL: 18 | diferenca: 0 | palavras: 4107 | caracteres: 27528 | media: 1529.33 | menor: 300 | maior: 10499
+- esperre_jin | Nome: Esperre Jin | dialogos: 32 | cenas: 89 | esperado: 142 | JSONL: 142 | diferenca: 0 | palavras: 24421 | caracteres: 147864 | media: 1041.30 | menor: 197 | maior: 11973
+- galdera | Nome: Galdera | dialogos: 3 | cenas: 3 | esperado: 22 | JSONL: 22 | diferenca: 0 | palavras: 2438 | caracteres: 16872 | media: 766.91 | menor: 120 | maior: 8095
+- gaston_rho | Nome: Gaston Rho | dialogos: 32 | cenas: 62 | esperado: 111 | JSONL: 111 | diferenca: 0 | palavras: 16454 | caracteres: 101155 | media: 911.31 | menor: 197 | maior: 11847
+- gideon_ma | Nome: Gideon Ma | dialogos: 32 | cenas: 86 | esperado: 139 | JSONL: 139 | diferenca: 0 | palavras: 23257 | caracteres: 143448 | media: 1032.00 | menor: 197 | maior: 11952
+- goodwin_cha | Nome: Goodwin Cha | dialogos: 32 | cenas: 90 | esperado: 143 | JSONL: 143 | diferenca: 0 | palavras: 26010 | caracteres: 152799 | media: 1068.52 | menor: 192 | maior: 11982
+- haanit | Nome: H'aanit | dialogos: 47 | cenas: 78 | esperado: 141 | JSONL: 141 | diferenca: 0 | palavras: 11020 | caracteres: 65643 | media: 465.55 | menor: 16 | maior: 3234
+- harvey_jeong | Nome: Harvey Jeong | dialogos: 32 | cenas: 59 | esperado: 107 | JSONL: 107 | diferenca: 0 | palavras: 11750 | caracteres: 72903 | media: 681.34 | menor: 218 | maior: 10503
+- heidne_ahn | Nome: Heidne Ahn | dialogos: 32 | cenas: 88 | esperado: 141 | JSONL: 141 | diferenca: 0 | palavras: 22157 | caracteres: 134990 | media: 957.38 | menor: 186 | maior: 11983
+- helgenish | Nome: Helgenish | dialogos: 32 | cenas: 58 | esperado: 106 | JSONL: 106 | diferenca: 0 | palavras: 12505 | caracteres: 77004 | media: 726.45 | menor: 197 | maior: 10441
+- hikari_ku | Nome: Hikari Ku | dialogos: 1 | cenas: 1 | esperado: 18 | JSONL: 18 | diferenca: 0 | palavras: 2119 | caracteres: 14217 | media: 789.83 | menor: 172 | maior: 3621
+- isla_gwon | Nome: Isla Gwon | dialogos: 32 | cenas: 85 | esperado: 138 | JSONL: 138 | diferenca: 0 | palavras: 23443 | caracteres: 143583 | media: 1040.46 | menor: 197 | maior: 11970
+- kaldena_ryu | Nome: Kaldena Ryu | dialogos: 62 | cenas: 122 | esperado: 200 | JSONL: 200 | diferenca: 0 | palavras: 17292 | caracteres: 104026 | media: 520.13 | menor: 45 | maior: 10097
+- kazan | Nome: Kazan | dialogos: 32 | cenas: 58 | esperado: 106 | JSONL: 106 | diferenca: 0 | palavras: 10665 | caracteres: 65558 | media: 618.47 | menor: 209 | maior: 9743
+- laurana_bae | Nome: Laurana Bae | dialogos: 62 | cenas: 183 | esperado: 272 | JSONL: 272 | diferenca: 0 | palavras: 42503 | caracteres: 254160 | media: 934.41 | menor: 172 | maior: 12000
+- lucia_yeom | Nome: Lucia Yeom | dialogos: 32 | cenas: 88 | esperado: 141 | JSONL: 141 | diferenca: 0 | palavras: 25712 | caracteres: 159998 | media: 1134.74 | menor: 197 | maior: 11956
+- ludo_wei | Nome: Ludo Wei | dialogos: 32 | cenas: 91 | esperado: 144 | JSONL: 144 | diferenca: 0 | palavras: 22678 | caracteres: 140905 | media: 978.51 | menor: 172 | maior: 11980
+- lyblac | Nome: Lyblac | dialogos: 31 | cenas: 78 | esperado: 125 | JSONL: 125 | diferenca: 0 | palavras: 10807 | caracteres: 65457 | media: 523.66 | menor: 181 | maior: 3737
+- macy_eun | Nome: Macy Eun | dialogos: 32 | cenas: 93 | esperado: 146 | JSONL: 146 | diferenca: 0 | palavras: 23510 | caracteres: 143433 | media: 982.42 | menor: 172 | maior: 11983
+- mattias_cardoso | Nome: Mattias Cardoso | dialogos: 32 | cenas: 93 | esperado: 146 | JSONL: 146 | diferenca: 0 | palavras: 23682 | caracteres: 146415 | media: 1002.84 | menor: 195 | maior: 11917
+- miguel_bang | Nome: Miguel Bang | dialogos: 32 | cenas: 89 | esperado: 142 | JSONL: 142 | diferenca: 0 | palavras: 24327 | caracteres: 148241 | media: 1043.95 | menor: 194 | maior: 11912
+- mugen_ku | Nome: Mugen Ku | dialogos: 62 | cenas: 145 | esperado: 230 | JSONL: 230 | diferenca: 0 | palavras: 33398 | caracteres: 200037 | media: 869.73 | menor: 183 | maior: 12000
+- ochette | Nome: Ochette | dialogos: 31 | cenas: 46 | esperado: 98 | JSONL: 98 | diferenca: 0 | palavras: 16680 | caracteres: 101111 | media: 1031.74 | menor: 172 | maior: 11983
+- olberic_eisenberg | Nome: Olberic Eisenberg | dialogos: 31 | cenas: 93 | esperado: 140 | JSONL: 140 | diferenca: 0 | palavras: 11760 | caracteres: 71510 | media: 510.79 | menor: 172 | maior: 5668
+- ophilia_clement | Nome: Ophilia Clement | dialogos: 2 | cenas: 3 | esperado: 21 | JSONL: 21 | diferenca: 0 | palavras: 9848 | caracteres: 62758 | media: 2988.48 | menor: 172 | maior: 11990
+- ori_choi | Nome: Ori Choi | dialogos: 62 | cenas: 165 | esperado: 247 | JSONL: 247 | diferenca: 0 | palavras: 33491 | caracteres: 202515 | media: 819.90 | menor: 193 | maior: 11921
+- osvald_v_vanstein | Nome: Osvald V. Vanstein | dialogos: 31 | cenas: 93 | esperado: 140 | JSONL: 140 | diferenca: 0 | palavras: 11777 | caracteres: 73659 | media: 526.14 | menor: 172 | maior: 8400
+- partitio_yellowil | Nome: Partitio Yellowil | dialogos: 62 | cenas: 135 | esperado: 225 | JSONL: 225 | diferenca: 0 | palavras: 36449 | caracteres: 226220 | media: 1005.42 | menor: 172 | maior: 11977
+- petrichor | Nome: Petrichor | dialogos: 32 | cenas: 86 | esperado: 139 | JSONL: 139 | diferenca: 0 | palavras: 26985 | caracteres: 160815 | media: 1156.94 | menor: 189 | maior: 11998
+- phenn_doyoung | Nome: Phenn Doyoung | dialogos: 32 | cenas: 89 | esperado: 142 | JSONL: 142 | diferenca: 0 | palavras: 23590 | caracteres: 142192 | media: 1001.35 | menor: 172 | maior: 11984
+- pius_kang | Nome: Pius Kang | dialogos: 32 | cenas: 93 | esperado: 146 | JSONL: 146 | diferenca: 0 | palavras: 24269 | caracteres: 146786 | media: 1005.38 | menor: 172 | maior: 11968
+- primrose_azelhart | Nome: Primrose Azelhart | dialogos: 151 | cenas: 419 | esperado: 586 | JSONL: 586 | diferenca: 0 | palavras: 46408 | caracteres: 279588 | media: 477.11 | menor: 29 | maior: 11979
+- redeye | Nome: Redeye | dialogos: 32 | cenas: 86 | esperado: 139 | JSONL: 139 | diferenca: 0 | palavras: 22510 | caracteres: 132798 | media: 955.38 | menor: 167 | maior: 11936
+- reime_oh | Nome: Reime Oh | dialogos: 32 | cenas: 92 | esperado: 145 | JSONL: 145 | diferenca: 0 | palavras: 24393 | caracteres: 147567 | media: 1017.70 | menor: 179 | maior: 11996
+- richard_han | Nome: Richard Han | dialogos: 62 | cenas: 175 | esperado: 258 | JSONL: 258 | diferenca: 0 | palavras: 33340 | caracteres: 201207 | media: 779.87 | menor: 199 | maior: 11974
+- rondo_baek | Nome: Rondo Baek | dialogos: 62 | cenas: 171 | esperado: 254 | JSONL: 254 | diferenca: 0 | palavras: 33528 | caracteres: 202147 | media: 795.85 | menor: 197 | maior: 11897
+- rufus_deng | Nome: Rufus Deng | dialogos: 32 | cenas: 86 | esperado: 139 | JSONL: 139 | diferenca: 0 | palavras: 23947 | caracteres: 141486 | media: 1017.88 | menor: 190 | maior: 11947
+- saoirse_ryu | Nome: Saoirse Ryu | dialogos: 62 | cenas: 122 | esperado: 205 | JSONL: 205 | diferenca: 0 | palavras: 27044 | caracteres: 162281 | media: 791.61 | menor: 197 | maior: 11977
+- sazantos_do | Nome: Sazantos Do | dialogos: 32 | cenas: 83 | esperado: 136 | JSONL: 136 | diferenca: 0 | palavras: 22471 | caracteres: 136041 | media: 1000.30 | menor: 190 | maior: 11969
+- simeon_ha | Nome: Simeon Ha | dialogos: 32 | cenas: 88 | esperado: 141 | JSONL: 141 | diferenca: 0 | palavras: 24803 | caracteres: 151384 | media: 1073.65 | menor: 197 | maior: 11982
+- solon_wi | Nome: Solon Wi | dialogos: 32 | cenas: 62 | esperado: 115 | JSONL: 115 | diferenca: 0 | palavras: 19579 | caracteres: 120219 | media: 1045.38 | menor: 197 | maior: 11980
+- stia_han | Nome: Stia Han | dialogos: 62 | cenas: 175 | esperado: 258 | JSONL: 258 | diferenca: 0 | palavras: 33063 | caracteres: 199989 | media: 775.15 | menor: 172 | maior: 12000
+- tanzy_woo | Nome: Tanzy Woo | dialogos: 32 | cenas: 63 | esperado: 112 | JSONL: 112 | diferenca: 0 | palavras: 13510 | caracteres: 84427 | media: 753.81 | menor: 197 | maior: 10735
+- tatloch | Nome: Tatloch | dialogos: 32 | cenas: 62 | esperado: 114 | JSONL: 114 | diferenca: 0 | palavras: 18628 | caracteres: 113042 | media: 991.60 | menor: 197 | maior: 12000
+- temenos_mistral | Nome: Temenos Mistral | dialogos: 32 | cenas: 94 | esperado: 147 | JSONL: 147 | diferenca: 0 | palavras: 23617 | caracteres: 147268 | media: 1001.82 | menor: 172 | maior: 11899
+- therion | Nome: Therion | dialogos: 31 | cenas: 93 | esperado: 140 | JSONL: 140 | diferenca: 0 | palavras: 11946 | caracteres: 72346 | media: 516.76 | menor: 169 | maior: 8290
+- throne_anguis | Nome: Throné Anguis | dialogos: 32 | cenas: 92 | esperado: 145 | JSONL: 145 | diferenca: 0 | palavras: 22959 | caracteres: 138924 | media: 958.10 | menor: 160 | maior: 11952
+- tressa_colzione | Nome: Tressa Colzione | dialogos: 31 | cenas: 97 | esperado: 144 | JSONL: 144 | diferenca: 0 | palavras: 16251 | caracteres: 97492 | media: 677.03 | menor: 172 | maior: 11951
+- trish_yamaguchi | Nome: Trish Yamaguchi | dialogos: 2 | cenas: 12 | esperado: 30 | JSONL: 30 | diferenca: 0 | palavras: 17522 | caracteres: 106885 | media: 3562.83 | menor: 283 | maior: 11996
+- trousseau | Nome: Trousseau | dialogos: 32 | cenas: 91 | esperado: 144 | JSONL: 144 | diferenca: 0 | palavras: 23157 | caracteres: 141731 | media: 984.24 | menor: 175 | maior: 11977
+- vanessa_hysel | Nome: Vanessa Hysel | dialogos: 32 | cenas: 59 | esperado: 107 | JSONL: 107 | diferenca: 0 | palavras: 10709 | caracteres: 67045 | media: 626.59 | menor: 182 | maior: 9599
+- viator_yoon | Nome: Viator Yoon | dialogos: 32 | cenas: 92 | esperado: 145 | JSONL: 145 | diferenca: 0 | palavras: 23791 | caracteres: 144356 | media: 995.56 | menor: 172 | maior: 11988
+- vide_o_corruptor | Nome: Vide, o Corruptor | dialogos: 31 | cenas: 92 | esperado: 139 | JSONL: 139 | diferenca: 0 | palavras: 10726 | caracteres: 64380 | media: 463.17 | menor: 180 | maior: 5416
+- warden_davids | Nome: Warden Davids | dialogos: 32 | cenas: 89 | esperado: 142 | JSONL: 142 | diferenca: 0 | palavras: 26010 | caracteres: 158500 | media: 1116.20 | menor: 197 | maior: 11972
+- werner_choi | Nome: Werner Choi | dialogos: 62 | cenas: 165 | esperado: 248 | JSONL: 248 | diferenca: 0 | palavras: 33956 | caracteres: 205164 | media: 827.27 | menor: 193 | maior: 11975
+- xerc_baek | Nome: Xerc Baek | dialogos: 62 | cenas: 171 | esperado: 254 | JSONL: 254 | diferenca: 0 | palavras: 32747 | caracteres: 199729 | media: 786.33 | menor: 197 | maior: 11964
+- yvon_baik | Nome: Yvon Baik | dialogos: 32 | cenas: 92 | esperado: 145 | JSONL: 145 | diferenca: 0 | palavras: 30091 | caracteres: 185751 | media: 1281.04 | menor: 204 | maior: 11951
+
+Exemplos ausentes (0)
+- Nenhum
+
+Exemplos extras ou NPC incorreto (0)
+- Nenhum
+
+Exemplos duplicados no JSONL (0)
+- Nenhum
+
+Duplicatas identicas de origem consolidadas (45)
+- castti_florenz/05_interpretation.md
+- castti_florenz/05_interpretation.md
+- castti_florenz/05_interpretation.md
+- castti_florenz/05_interpretation.md
+- castti_florenz/05_interpretation.md
+- castti_florenz/05_interpretation.md
+- castti_florenz/05_interpretation.md
+- castti_florenz/05_interpretation.md
+- castti_florenz/05_interpretation.md
+- castti_florenz/05_interpretation.md
+- castti_florenz/05_interpretation.md
+- eltrix_noh/05_interpretation.md
+- haanit/18_scene_examples.md
+- haanit/18_scene_examples.md
+- haanit/18_scene_examples.md
+- haanit/18_scene_examples.md
+- haanit/18_scene_examples.md
+- haanit/18_scene_examples.md
+- haanit/18_scene_examples.md
+- haanit/18_scene_examples.md
+- haanit/18_scene_examples.md
+- haanit/18_scene_examples.md
+- haanit/18_scene_examples.md
+- haanit/18_scene_examples.md
+- haanit/18_scene_examples.md
+- haanit/18_scene_examples.md
+- heidne_ahn/18_scene_examples.md
+- heidne_ahn/18_scene_examples.md
+- heidne_ahn/18_scene_examples.md
+- heidne_ahn/18_scene_examples.md
+- heidne_ahn/18_scene_examples.md
+- heidne_ahn/18_scene_examples.md
+- heidne_ahn/18_scene_examples.md
+- heidne_ahn/18_scene_examples.md
+- heidne_ahn/18_scene_examples.md
+- heidne_ahn/18_scene_examples.md
+- heidne_ahn/18_scene_examples.md
+- heidne_ahn/18_scene_examples.md
+- heidne_ahn/18_scene_examples.md
+- heidne_ahn/18_scene_examples.md
+- heidne_ahn/18_scene_examples.md
+- heidne_ahn/18_scene_examples.md
+- heidne_ahn/18_scene_examples.md
+- heidne_ahn/18_scene_examples.md
+- heidne_ahn/18_scene_examples.md
+
+Conteudo corrompido (0)
+- Nenhum
+
+Arquivos inexistentes (0)
+- Nenhum
+
+Arquivos vazios (0)
+- Nenhum
+
+Auditoria da memoria e Format_rules (0)
+- Nenhum
+
+NPCs completos: 72
+NPCs incompletos: 0
+Conteudo perdido: 0
+
+TODOS OS EXEMPLOS FORAM PRESERVADOS?
+SIM
+Fidelidade de 100% confirmada para todos os blocos unicos de origem. Duplicatas identicas foram consolidadas sem perda de conteudo.

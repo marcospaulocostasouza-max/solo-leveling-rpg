@@ -1,0 +1,178 @@
+{
+  "npcId": "sazantos_do",
+  "npcNome": "Sazantos Do",
+  "npcTitulo": "O Guardião Silencioso das Trilhas",
+  "totalMissoes": 10,
+  "missoes": [
+    {
+      "id": "sazantos_do_01",
+      "npcId": "sazantos_do",
+      "numero": 1,
+      "nome": "Capítulo 1: O Despertar de Sazantos Do",
+      "descricao": "Acompanhe os primeiros passos de Sazantos Do como Caçador(a). Guardião voluntário que protege sozinho as trilhas de acesso a Wishvale. Seu Despertar aconteceu durante um incêndio florestal quando conteve as chamas usando seu próprio corpo....",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Complete a introdução: converse com Sazantos Do e participe de sua primeira incursão",
+      "recompensas": {
+        "xp": 25650,
+        "won": 171000,
+        "item": "Armadura Resistente ao Fogo"
+      }
+    },
+    {
+      "id": "sazantos_do_02",
+      "npcId": "sazantos_do",
+      "numero": 2,
+      "nome": "Capítulo 2: A Trilha de O Guardião Silencioso das Trilhas",
+      "descricao": "Sazantos Do pede ajuda para investigar pistas ligadas ao seu passado, aprofundando o mistério por trás de seu título de 'O Guardião Silencioso das Trilhas'.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Ajude Sazantos Do a reunir 3 pistas em diferentes localizações",
+      "recompensas": {
+        "xp": 29700,
+        "won": 198000,
+        "item": "Marcas de Queimadura Antigas"
+      }
+    },
+    {
+      "id": "sazantos_do_03",
+      "npcId": "sazantos_do",
+      "numero": 3,
+      "nome": "Capítulo 3: O Confronto de Sazantos Do",
+      "descricao": "O passado de Sazantos Do finalmente alcança o presente. Enfrente ao lado dele(a) a ameaça central de sua história.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Vença o confronto decisivo ao lado de Sazantos Do",
+      "recompensas": {
+        "xp": 33750,
+        "won": 225000,
+        "item": "Réplica Reforçada de: Lança Envolta em Correntes Aquecidas"
+      }
+    },
+    {
+      "id": "sazantos_do_04",
+      "npcId": "sazantos_do",
+      "numero": 4,
+      "nome": "Capítulo 4: O Guardião Silencioso das Trilhas",
+      "descricao": "Com a ameaça derrotada, Sazantos Do consolida seu lugar no mundo dos caçadores, consagrando-se como O Guardião Silencioso das Trilhas.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Complete a missão final e testemunhe o desfecho da história de Sazantos Do",
+      "recompensas": {
+        "xp": 37800,
+        "won": 252000,
+        "item": "Réplica Reforçada de: Lança Envolta em Correntes Aquecidas"
+      }
+    },
+    {
+      "id": "sazantos_do_05",
+      "npcId": "sazantos_do",
+      "numero": 5,
+      "nome": "Reforço de Sazantos Do",
+      "descricao": "Sazantos Do pede que você adquira, em qualquer Loja de Itens da Associação, um equipamento de Rank S compatível com Lanças para reforçar seu arsenal de combate.",
+      "categoria": "secundaria",
+      "tipo": "loja",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Comprar 1 equipamento de Rank S (peça de armadura ou arma)",
+      "recompensas": {
+        "xp": 8100,
+        "won": 54000,
+        "item": "Réplica Reforçada de: Lança Envolta em Correntes Aquecidas"
+      }
+    },
+    {
+      "id": "sazantos_do_06",
+      "npcId": "sazantos_do",
+      "numero": 6,
+      "nome": "Provisões de Sazantos Do",
+      "descricao": "Antes da próxima incursão, Sazantos Do pede que você compre poções de recuperação e um acessório de afinidade elemental Fogo na loja mais próxima.",
+      "categoria": "secundaria",
+      "tipo": "loja",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Comprar 3 poções + 1 acessório elemental",
+      "recompensas": {
+        "xp": 7425,
+        "won": 49500,
+        "item": "Marcas de Queimadura Antigas"
+      }
+    },
+    {
+      "id": "sazantos_do_07",
+      "npcId": "sazantos_do",
+      "numero": 7,
+      "nome": "Receita de Sazantos Do",
+      "descricao": "Usando materiais coletados em dungeons de afinidade Fogo, produza o item indicado por Sazantos Do em uma bancada de criação da guilda.",
+      "categoria": "secundaria",
+      "tipo": "producao",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Produzir 1 item de afinidade Fogo (Rank S)",
+      "recompensas": {
+        "xp": 8775,
+        "won": 58500,
+        "item": "Fragmento de Mana (Fogo)"
+      }
+    },
+    {
+      "id": "sazantos_do_08",
+      "npcId": "sazantos_do",
+      "numero": 8,
+      "nome": "Suprimento Especial de Sazantos Do",
+      "descricao": "Sazantos Do ensina uma técnica pessoal de preparo; produza 3 unidades de um item de suporte (poção, munição ou material) ligado ao estilo de combate de Lanças.",
+      "categoria": "secundaria",
+      "tipo": "producao",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Produzir 3 itens de suporte",
+      "recompensas": {
+        "xp": 9450,
+        "won": 63000,
+        "item": "Fragmento de Mana (Fogo)"
+      }
+    },
+    {
+      "id": "sazantos_do_09",
+      "npcId": "sazantos_do",
+      "numero": 9,
+      "nome": "Treino de Combate com Sazantos Do",
+      "descricao": "Sazantos Do solicita ajuda para conter uma infestação: derrote elementais de fogo em dungeons de Rank S ou inferior.",
+      "categoria": "cacada",
+      "tipo": "caca",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Derrotar 40 Elementais de Fogo",
+      "recompensas": {
+        "xp": 10800,
+        "won": 72000,
+        "item": "Armadura Resistente ao Fogo"
+      }
+    },
+    {
+      "id": "sazantos_do_10",
+      "npcId": "sazantos_do",
+      "numero": 10,
+      "nome": "Caçada Recomendada por Sazantos Do",
+      "descricao": "Uma variante mais forte de elementais de fogo tem aparecido nas rondas de Sazantos Do; elimine essas ameaças antes que evoluam.",
+      "categoria": "cacada",
+      "tipo": "caca",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Derrotar 9 Elementais de Fogo (variante fortalecida)",
+      "recompensas": {
+        "xp": 13500,
+        "won": 90000,
+        "item": "Réplica Reforçada de: Lança Envolta em Correntes Aquecidas"
+      }
+    }
+  ]
+}

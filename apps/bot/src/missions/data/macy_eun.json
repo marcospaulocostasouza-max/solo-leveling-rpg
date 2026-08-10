@@ -1,0 +1,178 @@
+{
+  "npcId": "macy_eun",
+  "npcNome": "Macy Eun",
+  "npcTitulo": "A Curandeira das Ruínas",
+  "totalMissoes": 10,
+  "missoes": [
+    {
+      "id": "macy_eun_01",
+      "npcId": "macy_eun",
+      "numero": 1,
+      "nome": "Capítulo 1: O Despertar de Macy Eun",
+      "descricao": "Acompanhe os primeiros passos de Macy Eun como Caçador(a). Filha de uma família de curandeiros que perdeu a clínica quando um portal se abriu no centro de Emberglow, Macy passou a atender feridos em barracas improvisadas. Seu Despertar aconteceu ao tratar uma...",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "C",
+      "nivelMinimo": 20,
+      "objetivo": "Complete a introdução: converse com Macy Eun e participe de sua primeira incursão",
+      "recompensas": {
+        "xp": 10260,
+        "won": 68400,
+        "item": "Bolsa de Ervas Improvisada"
+      }
+    },
+    {
+      "id": "macy_eun_02",
+      "npcId": "macy_eun",
+      "numero": 2,
+      "nome": "Capítulo 2: A Trilha de A Curandeira das Ruínas",
+      "descricao": "Macy Eun pede ajuda para investigar pistas ligadas ao seu passado, aprofundando o mistério por trás de seu título de 'A Curandeira das Ruínas'.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "C",
+      "nivelMinimo": 20,
+      "objetivo": "Ajude Macy Eun a reunir 3 pistas em diferentes localizações",
+      "recompensas": {
+        "xp": 11880,
+        "won": 79200,
+        "item": "Avental de Curandeira"
+      }
+    },
+    {
+      "id": "macy_eun_03",
+      "npcId": "macy_eun",
+      "numero": 3,
+      "nome": "Capítulo 3: O Confronto de Macy Eun",
+      "descricao": "O passado de Macy Eun finalmente alcança o presente. Enfrente ao lado dele(a) a ameaça central de sua história.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "C",
+      "nivelMinimo": 20,
+      "objetivo": "Vença o confronto decisivo ao lado de Macy Eun",
+      "recompensas": {
+        "xp": 13500,
+        "won": 90000,
+        "item": "Réplica Reforçada de: Machado de Colheita Simples"
+      }
+    },
+    {
+      "id": "macy_eun_04",
+      "npcId": "macy_eun",
+      "numero": 4,
+      "nome": "Capítulo 4: A Curandeira das Ruínas",
+      "descricao": "Com a ameaça derrotada, Macy Eun consolida seu lugar no mundo dos caçadores, consagrando-se como A Curandeira das Ruínas.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "C",
+      "nivelMinimo": 20,
+      "objetivo": "Complete a missão final e testemunhe o desfecho da história de Macy Eun",
+      "recompensas": {
+        "xp": 15120,
+        "won": 100800,
+        "item": "Réplica Reforçada de: Machado de Colheita Simples"
+      }
+    },
+    {
+      "id": "macy_eun_05",
+      "npcId": "macy_eun",
+      "numero": 5,
+      "nome": "Reforço de Macy Eun",
+      "descricao": "Macy Eun pede que você adquira, em qualquer Loja de Itens da Associação, um equipamento de Rank C compatível com Machados para reforçar seu arsenal de combate.",
+      "categoria": "secundaria",
+      "tipo": "loja",
+      "rank": "C",
+      "nivelMinimo": 20,
+      "objetivo": "Comprar 1 equipamento de Rank C (peça de armadura ou arma)",
+      "recompensas": {
+        "xp": 3240,
+        "won": 21600,
+        "item": "Réplica Reforçada de: Machado de Colheita Simples"
+      }
+    },
+    {
+      "id": "macy_eun_06",
+      "npcId": "macy_eun",
+      "numero": 6,
+      "nome": "Provisões de Macy Eun",
+      "descricao": "Antes da próxima incursão, Macy Eun pede que você compre poções de recuperação e um acessório de afinidade elemental Planta na loja mais próxima.",
+      "categoria": "secundaria",
+      "tipo": "loja",
+      "rank": "C",
+      "nivelMinimo": 20,
+      "objetivo": "Comprar 3 poções + 1 acessório elemental",
+      "recompensas": {
+        "xp": 2970,
+        "won": 19800,
+        "item": "Avental de Curandeira"
+      }
+    },
+    {
+      "id": "macy_eun_07",
+      "npcId": "macy_eun",
+      "numero": 7,
+      "nome": "Receita de Macy Eun",
+      "descricao": "Usando materiais coletados em dungeons de afinidade Planta, produza o item indicado por Macy Eun em uma bancada de criação da guilda.",
+      "categoria": "secundaria",
+      "tipo": "producao",
+      "rank": "C",
+      "nivelMinimo": 20,
+      "objetivo": "Produzir 1 item de afinidade Planta (Rank C)",
+      "recompensas": {
+        "xp": 3510,
+        "won": 23400,
+        "item": "Fragmento de Mana (Planta)"
+      }
+    },
+    {
+      "id": "macy_eun_08",
+      "npcId": "macy_eun",
+      "numero": 8,
+      "nome": "Suprimento Especial de Macy Eun",
+      "descricao": "Macy Eun ensina uma técnica pessoal de preparo; produza 3 unidades de um item de suporte (poção, munição ou material) ligado ao estilo de combate de Machados.",
+      "categoria": "secundaria",
+      "tipo": "producao",
+      "rank": "C",
+      "nivelMinimo": 20,
+      "objetivo": "Produzir 3 itens de suporte",
+      "recompensas": {
+        "xp": 3780,
+        "won": 25200,
+        "item": "Fragmento de Mana (Planta)"
+      }
+    },
+    {
+      "id": "macy_eun_09",
+      "npcId": "macy_eun",
+      "numero": 9,
+      "nome": "Treino de Combate com Macy Eun",
+      "descricao": "Macy Eun solicita ajuda para conter uma infestação: derrote criaturas vegetais em dungeons de Rank C ou inferior.",
+      "categoria": "cacada",
+      "tipo": "caca",
+      "rank": "C",
+      "nivelMinimo": 20,
+      "objetivo": "Derrotar 25 Criaturas Vegetais",
+      "recompensas": {
+        "xp": 4320,
+        "won": 28800,
+        "item": "Bolsa de Ervas Improvisada"
+      }
+    },
+    {
+      "id": "macy_eun_10",
+      "npcId": "macy_eun",
+      "numero": 10,
+      "nome": "Caçada Recomendada por Macy Eun",
+      "descricao": "Uma variante mais forte de criaturas vegetais tem aparecido nas rondas de Macy Eun; elimine essas ameaças antes que evoluam.",
+      "categoria": "cacada",
+      "tipo": "caca",
+      "rank": "C",
+      "nivelMinimo": 20,
+      "objetivo": "Derrotar 6 Criaturas Vegetais (variante fortalecida)",
+      "recompensas": {
+        "xp": 5400,
+        "won": 36000,
+        "item": "Réplica Reforçada de: Machado de Colheita Simples"
+      }
+    }
+  ]
+}

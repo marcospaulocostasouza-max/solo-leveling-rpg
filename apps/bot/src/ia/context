@@ -1,0 +1,294 @@
+/**
+ * CONTEXT MANAGER V2 - ARQUITETURA DE INTERPRETAÇÃO
+ *
+ * Responsável por reunir as informações necessárias antes
+ * da IA gerar uma resposta, seguindo a nova arquitetura:
+ *
+ * ┌─────────────────────────────────────────────────────────┐
+ * │ NÚCLEO DE INTERPRETAÇÃO (SEMPRE CARREGADO)              │
+ * │                                                         │
+ * │ • Personalidade (obrigatória)                           │
+ * │ • Forma de falar (obrigatória)                          │
+ * │ • Humor atual (obrigatório)                             │
+ * │ • Estado emocional (obrigatório)                        │
+ * │ • Memórias importantes (obrigatório)                    │
+ * │ • Relacionamento com o jogador (obrigatório)            │
+ * └─────────────────────────────────────────────────────────┘
+ *
+ * ┌─────────────────────────────────────────────────────────┐
+ * │ CARGA SOB DEMANDA (APENAS SE NECESSÁRIO)                │
+ * │                                                         │
+ * │ • História → se perguntar sobre passado                 │
+ * │ • Objetivos → se perguntar sobre metas                  │
+ * │ • Missão → se perguntar sobre missões                   │
+ * │ • Atributos → se perguntar sobre poder                  │
+ * │ • Classe → se perguntar sobre combate                   │
+ * │ • Outros dados → apenas quando o diálogo exigir         │
+ * └─────────────────────────────────────────────────────────┘
+ *
+ * PRINCÍPIO CENTRAL:
+ * Uma pessoa não relembra toda sua vida antes de responder
+ * uma pergunta simples. Primeiro ela entende. Depois responde.
+ * Somente se necessário lembra de algo específico.
+ */
+
+const NPCManager = require("../npc/npcManager");
+const ConversationManager = require("../npc/conversationManager");
+const JogadorCore = require("../core/jogadorCore");
+const EmotionManager = require("../npc/emotionManager");
+const MoodManager = require("../npc/moodManager");
+const RelationshipManager = require("../npc/relationshipManager");
+const { buscarMemoriasRelevantes } = require("./memorySearch");
+const { cacheManager } = require("./cacheManager");
+const { PerformanceProfiler } = require("../utils/performanceProfiler");
+const { detectarCargaNecessaria, extrairCamposSobDemanda } = require("./cargaSobDemanda");
+
+/**
+ * Obtém o contexto completo para a IA gerar uma resposta
+ *
+ * @param {string} npcId - ID do NPC
+ * @param {string} jogadorId - ID do jogador (número do WhatsApp)
+ * @param {string} mensagem - Mensagem do jogador
+ * @returns {Promise<Object>} Contexto completo
+ */
+async function obterContexto(npcId, jogadorId, mensagem) {
+    const profiler = new PerformanceProfiler();
+    
+    try {
+        // =====================================
+        // 1. ANALISAR MENSAGEM PARA CARGA SOB DEMANDA
+        // =====================================
+        profiler.inicio('Análise de Carga');
+        const deteccaoCarga = detectarCargaNecessaria(mensagem);
+        profiler.fim('Análise de Carga', {
+            'Dados solicitados': deteccaoCarga._dadosSolicitados.length > 0
+                ? deteccaoCarga._dadosSolicitados.join(', ')
+                : 'nenhum (apenas núcleo)'
+        });
+
+        // =====================================
+        // 2. BUSCAR NPC (com cache)
+        // =====================================
+        profiler.inicio('Busca NPC');
+        const chaveNPC = cacheManager.gerarChave('npc', npcId);
+        let npcCompleto = cacheManager.obter(chaveNPC);
+        
+        if (!npcCompleto) {
+            npcCompleto = NPCManager.carregarNPC(npcId);
+            if (npcCompleto) {
+                cacheManager.salvar(chaveNPC, npcCompleto);
+            }
+        }
+        profiler.fim('Busca NPC', {
+            'NPC': npcCompleto ? npcCompleto.nome : 'não encontrado',
+            'Cache': npcCompleto ? 'hit' : 'miss'
+        });
+
+        // =====================================
+        // 3. MONTAR NPC COM NÚCLEO + CARGA SOB DEMANDA
+        // =====================================
+        profiler.inicio('Montar NPC Otimizado');
+        let npc = null;
+        let camposSobDemanda = {};
+
+        if (npcCompleto) {
+            // Núcleo de interpretação: sempre presente
+            npc = {
+                id: npcCompleto.id,
+                nome: npcCompleto.nome,
+                papel: npcCompleto.papel,
+                idade: npcCompleto.idade,
+                // PERSONALIDADE: SEMPRE carregada (obrigatória)
+                personalidade: npcCompleto.personalidade,
+                // FORMA DE FALAR: SEMPRE carregada (obrigatória)
+                formaFalar: npcCompleto.formaFalar || null,
+                // Regras de interpretação: sempre essenciais para a base
+                regras_interpretacao: npcCompleto.regras_interpretacao || null
+            };
+
+            // CARGA SOB DEMANDA: apenas se o diálogo necessitar
+            camposSobDemanda = extrairCamposSobDemanda(npcCompleto, deteccaoCarga);
+
+            // Mesclar campos sob demanda no NPC (apenas os que foram solicitados)
+            Object.assign(npc, camposSobDemanda);
+        }
+        profiler.fim('Montar NPC Otimizado', {
+            'Campos adicionais': Object.keys(camposSobDemanda).length
+        });
+
+        // =====================================
+        // 4. BUSCAR JOGADOR (com cache)
+        // =====================================
+        profiler.inicio('Busca Jogador');
+        const chaveJogador = cacheManager.gerarChave('jogador', jogadorId);
+        let jogador = cacheManager.obter(chaveJogador);
+        
+        if (!jogador) {
+            jogador = await JogadorCore.buscarPorNumero(jogadorId);
+            if (jogador) {
+                cacheManager.salvar(chaveJogador, jogador);
+            }
+        }
+        profiler.fim('Busca Jogador', {
+            'Jogador': jogador ? jogador.nome : 'não encontrado',
+            'Cache': jogador ? 'hit' : 'miss'
+        });
+
+        // =====================================
+        // 5. BUSCAR HISTÓRICO DA CONVERSA
+        // =====================================
+        profiler.inicio('Busca Histórico');
+        const historico = ConversationManager.obterHistorico(jogadorId, npcId);
+        profiler.fim('Busca Histórico', {
+            'Mensagens': historico ? historico.length : 0
+        });
+
+        // =====================================
+        // 6. BUSCAR MEMÓRIAS RELEVANTES (SEMPRE - prioridade máxima)
+        // =====================================
+        profiler.inicio('Busca Memórias');
+        let memorias = [];
+        try {
+            const memoriasDB = await buscarMemoriasRelevantes(npcId, jogadorId, mensagem, 5);
+            memorias = memoriasDB.map(m => ({
+                memoria: m.memoria,
+                resumo: m.memoria,
+                tipo: m.tipo,
+                importancia: m.importancia,
+                dataCriacao: m.dataCriacao
+            }));
+        } catch (err) {
+            console.error("[CONTEXT_V2] Erro ao buscar memórias:", err.message);
+            memorias = [];
+        }
+        profiler.fim('Busca Memórias', {
+            'Memórias': memorias.length
+        });
+
+        // =====================================
+        // 7. BUSCAR ESTADO EMOCIONAL (com cache - SEMPRE)
+        // =====================================
+        profiler.inicio('Busca Emoção');
+        const chaveEmocao = cacheManager.gerarChave('emotion', npcId, jogadorId);
+        let estadoEmocional = cacheManager.obter(chaveEmocao);
+        
+        if (!estadoEmocional) {
+            const emocaoDB = await EmotionManager.obterEmocao(npcId, jogadorId);
+            if (emocaoDB) {
+                estadoEmocional = {
+                    emocao: emocaoDB.emocao,
+                    intensidade: emocaoDB.intensidade,
+                    motivo: emocaoDB.motivo
+                };
+                cacheManager.salvar(chaveEmocao, estadoEmocional);
+            }
+        }
+        profiler.fim('Busca Emoção', {
+            'Emoção': estadoEmocional ? estadoEmocional.emocao : 'neutro',
+            'Cache': estadoEmocional ? 'hit' : 'miss'
+        });
+
+        // =====================================
+        // 8. BUSCAR MOOD (com cache - SEMPRE)
+        // =====================================
+        profiler.inicio('Busca Mood');
+        const chaveMood = cacheManager.gerarChave('mood', npcId);
+        let mood = cacheManager.obter(chaveMood);
+        
+        if (!mood) {
+            const moodDB = await MoodManager.obterMood(npcId);
+            if (moodDB) {
+                mood = {
+                    mood: moodDB.mood,
+                    intensidade: moodDB.intensidade,
+                    motivo: moodDB.motivo
+                };
+                cacheManager.salvar(chaveMood, mood);
+            }
+        }
+        profiler.fim('Busca Mood', {
+            'Mood': mood ? mood.mood : 'sereno',
+            'Cache': mood ? 'hit' : 'miss'
+        });
+
+        // =====================================
+        // 9. BUSCAR RELACIONAMENTO (com cache - SEMPRE)
+        // =====================================
+        profiler.inicio('Busca Relacionamento');
+        const chaveRel = cacheManager.gerarChave('relationship', npcId, jogadorId);
+        let relacionamento = cacheManager.obter(chaveRel);
+        
+        if (!relacionamento) {
+            relacionamento = await RelationshipManager.obterRelacionamento(npcId, jogadorId);
+            if (relacionamento) {
+                cacheManager.salvar(chaveRel, relacionamento);
+            }
+        }
+        profiler.fim('Busca Relacionamento', {
+            'Confiança': relacionamento ? relacionamento.confianca : 0,
+            'Cache': relacionamento ? 'hit' : 'miss'
+        });
+
+        // =====================================
+        // 10. MONTAR CONTEXTO COMPLETO
+        // =====================================
+        profiler.inicio('Montar Contexto');
+        const contexto = {
+            npc: npc,
+            jogador: jogador,
+            historico: historico,
+            memorias: memorias,
+            estadoEmocional: estadoEmocional || { emocao: 'calmo', intensidade: 50 },
+            mood: mood || { mood: 'sereno', intensidade: 50 },
+            relacionamento: relacionamento,
+            favorabilidade: relacionamento ? {
+                nivel: relacionamento.confianca || 0,
+                titulo: relacionamento.confianca > 20 ? 'Confiança sólida' : 
+                        relacionamento.confianca > 10 ? 'Confiança crescente' :
+                        relacionamento.confianca > 0 ? 'Conhecidos' : 'Desconhecido'
+            } : { nivel: 0, titulo: 'Desconhecido' },
+            missaoAtual: null,
+            mundo: {
+                local: npcCompleto?.localizacao || null,
+                horario: null,
+                clima: null
+            },
+            // Metadados de carga
+            _metaCarga: {
+                camposNucleo: ['personalidade', 'formaFalar', 'regras_interpretacao'],
+                camposSobDemanda: Object.keys(camposSobDemanda),
+                detectadoPorMensagem: deteccaoCarga._dadosSolicitados
+            }
+        };
+        profiler.fim('Montar Contexto', {
+            'Tamanho total': JSON.stringify(contexto).length
+        });
+
+        profiler.exibirRelatorio();
+
+        return contexto;
+    } catch (error) {
+        console.error("[CONTEXT_V2] Erro ao obter contexto:", error.message);
+        return {
+            npc: null,
+            jogador: null,
+            historico: [],
+            memorias: [],
+            estadoEmocional: { emocao: 'calmo', intensidade: 50 },
+            mood: { mood: 'sereno', intensidade: 50 },
+            relacionamento: null,
+            favorabilidade: { nivel: 0, titulo: 'Desconhecido' },
+            missaoAtual: null,
+            mundo: { local: null, horario: null, clima: null },
+            _metaCarga: {
+                camposNucleo: [],
+                camposSobDemanda: [],
+                detectadoPorMensagem: []
+            }
+        };
+    }
+}
+
+module.exports = {
+    obterContexto
+};

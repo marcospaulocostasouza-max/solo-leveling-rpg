@@ -1,0 +1,178 @@
+{
+  "npcId": "stia_han",
+  "npcNome": "Stia Han",
+  "npcTitulo": "A Reconstrutora de Wishvale",
+  "totalMissoes": 10,
+  "missoes": [
+    {
+      "id": "stia_han_01",
+      "npcId": "stia_han",
+      "numero": 1,
+      "nome": "Capítulo 1: O Despertar de Stia Han",
+      "descricao": "Acompanhe os primeiros passos de Stia Han como Caçador(a). Amiga de infância do protagonista, Stia perdeu quase tudo quando sua vila foi arrasada por uma horda de monstros escapada de um portal instável. Em vez de fugir, decidiu ficar e reconstruir, despertan...",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Complete a introdução: converse com Stia Han e participe de sua primeira incursão",
+      "recompensas": {
+        "xp": 17100,
+        "won": 114000,
+        "item": "Cinto de Ferramentas Reforçado"
+      }
+    },
+    {
+      "id": "stia_han_02",
+      "npcId": "stia_han",
+      "numero": 2,
+      "nome": "Capítulo 2: A Trilha de A Reconstrutora de Wishvale",
+      "descricao": "Stia Han pede ajuda para investigar pistas ligadas ao seu passado, aprofundando o mistério por trás de seu título de 'A Reconstrutora de Wishvale'.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Ajude Stia Han a reunir 3 pistas em diferentes localizações",
+      "recompensas": {
+        "xp": 19800,
+        "won": 132000,
+        "item": "Plantas de Reconstrução"
+      }
+    },
+    {
+      "id": "stia_han_03",
+      "npcId": "stia_han",
+      "numero": 3,
+      "nome": "Capítulo 3: O Confronto de Stia Han",
+      "descricao": "O passado de Stia Han finalmente alcança o presente. Enfrente ao lado dele(a) a ameaça central de sua história.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Vença o confronto decisivo ao lado de Stia Han",
+      "recompensas": {
+        "xp": 22500,
+        "won": 150000,
+        "item": "Réplica Reforçada de: Martelo de Guerra Improvisado"
+      }
+    },
+    {
+      "id": "stia_han_04",
+      "npcId": "stia_han",
+      "numero": 4,
+      "nome": "Capítulo 4: A Reconstrutora de Wishvale",
+      "descricao": "Com a ameaça derrotada, Stia Han consolida seu lugar no mundo dos caçadores, consagrando-se como A Reconstrutora de Wishvale.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Complete a missão final e testemunhe o desfecho da história de Stia Han",
+      "recompensas": {
+        "xp": 25200,
+        "won": 168000,
+        "item": "Réplica Reforçada de: Martelo de Guerra Improvisado"
+      }
+    },
+    {
+      "id": "stia_han_05",
+      "npcId": "stia_han",
+      "numero": 5,
+      "nome": "Reforço de Stia Han",
+      "descricao": "Stia Han pede que você adquira, em qualquer Loja de Itens da Associação, um equipamento de Rank A compatível com Martelos e Ferramentas Pesadas para reforçar seu arsenal de combate.",
+      "categoria": "secundaria",
+      "tipo": "loja",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Comprar 1 equipamento de Rank A (peça de armadura ou arma)",
+      "recompensas": {
+        "xp": 5400,
+        "won": 36000,
+        "item": "Réplica Reforçada de: Martelo de Guerra Improvisado"
+      }
+    },
+    {
+      "id": "stia_han_06",
+      "npcId": "stia_han",
+      "numero": 6,
+      "nome": "Provisões de Stia Han",
+      "descricao": "Antes da próxima incursão, Stia Han pede que você compre poções de recuperação e um acessório de afinidade elemental Terra na loja mais próxima.",
+      "categoria": "secundaria",
+      "tipo": "loja",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Comprar 3 poções + 1 acessório elemental",
+      "recompensas": {
+        "xp": 4950,
+        "won": 33000,
+        "item": "Plantas de Reconstrução"
+      }
+    },
+    {
+      "id": "stia_han_07",
+      "npcId": "stia_han",
+      "numero": 7,
+      "nome": "Receita de Stia Han",
+      "descricao": "Usando materiais coletados em dungeons de afinidade Terra, produza o item indicado por Stia Han em uma bancada de criação da guilda.",
+      "categoria": "secundaria",
+      "tipo": "producao",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Produzir 1 item de afinidade Terra (Rank A)",
+      "recompensas": {
+        "xp": 5850,
+        "won": 39000,
+        "item": "Fragmento de Mana (Terra)"
+      }
+    },
+    {
+      "id": "stia_han_08",
+      "npcId": "stia_han",
+      "numero": 8,
+      "nome": "Suprimento Especial de Stia Han",
+      "descricao": "Stia Han ensina uma técnica pessoal de preparo; produza 3 unidades de um item de suporte (poção, munição ou material) ligado ao estilo de combate de Martelos e Ferramentas Pesadas.",
+      "categoria": "secundaria",
+      "tipo": "producao",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Produzir 3 itens de suporte",
+      "recompensas": {
+        "xp": 6300,
+        "won": 42000,
+        "item": "Fragmento de Mana (Terra)"
+      }
+    },
+    {
+      "id": "stia_han_09",
+      "npcId": "stia_han",
+      "numero": 9,
+      "nome": "Treino de Combate com Stia Han",
+      "descricao": "Stia Han solicita ajuda para conter uma infestação: derrote golens de pedra em dungeons de Rank A ou inferior.",
+      "categoria": "cacada",
+      "tipo": "caca",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Derrotar 35 Golens de Pedra",
+      "recompensas": {
+        "xp": 7200,
+        "won": 48000,
+        "item": "Cinto de Ferramentas Reforçado"
+      }
+    },
+    {
+      "id": "stia_han_10",
+      "npcId": "stia_han",
+      "numero": 10,
+      "nome": "Caçada Recomendada por Stia Han",
+      "descricao": "Uma variante mais forte de golens de pedra tem aparecido nas rondas de Stia Han; elimine essas ameaças antes que evoluam.",
+      "categoria": "cacada",
+      "tipo": "caca",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Derrotar 8 Golens de Pedra (variante fortalecida)",
+      "recompensas": {
+        "xp": 9000,
+        "won": 60000,
+        "item": "Réplica Reforçada de: Martelo de Guerra Improvisado"
+      }
+    }
+  ]
+}

@@ -1,0 +1,178 @@
+{
+  "npcId": "rufus_deng",
+  "npcNome": "Rufus Deng",
+  "npcTitulo": "O Braço Direito Físico dos Corvos",
+  "totalMissoes": 10,
+  "missoes": [
+    {
+      "id": "rufus_deng_01",
+      "npcId": "rufus_deng",
+      "numero": 1,
+      "nome": "Capítulo 1: Rumores sobre Rufus Deng",
+      "descricao": "Relatos alarmantes começam a circular entre guildas sobre Rufus Deng. Braço direito físico de uma organização criminosa conhecida como Corvos, Rufus atuou como executor pessoal em incontáveis 'mensagens' violentas....",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Investigue 3 relatos de testemunhas sobre Rufus Deng",
+      "recompensas": {
+        "xp": 13680,
+        "won": 91200,
+        "item": "Trajes Rasgados de Propósito"
+      }
+    },
+    {
+      "id": "rufus_deng_02",
+      "npcId": "rufus_deng",
+      "numero": 2,
+      "nome": "Capítulo 2: Rastreando O Braço Direito Físico dos Corvos",
+      "descricao": "Reúna evidências concretas da atividade de Rufus Deng antes que a Associação classifique o caso como perdido.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Reúna provas em 2 locais diferentes ligados a Rufus Deng",
+      "recompensas": {
+        "xp": 15840,
+        "won": 105600,
+        "item": "Trajes Rasgados de Propósito"
+      }
+    },
+    {
+      "id": "rufus_deng_03",
+      "npcId": "rufus_deng",
+      "numero": 3,
+      "nome": "Capítulo 3: Confronto com Rufus Deng",
+      "descricao": "É hora de enfrentar Rufus Deng diretamente. Prepare-se: como O Braço Direito Físico dos Corvos, este será um combate de Rank B.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Derrote Rufus Deng em combate direto",
+      "recompensas": {
+        "xp": 18000,
+        "won": 120000,
+        "item": "Réplica Reforçada de: Punhos Reforçados com Manoplas de Metal"
+      }
+    },
+    {
+      "id": "rufus_deng_04",
+      "npcId": "rufus_deng",
+      "numero": 4,
+      "nome": "Capítulo 4: A Queda de O Braço Direito Físico dos Corvos",
+      "descricao": "Com Rufus Deng neutralizado(a), reste apenas reportar o caso à Associação e lidar com as consequências reveladas.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Entregue o relatório final sobre Rufus Deng à Associação",
+      "recompensas": {
+        "xp": 20160,
+        "won": 134400,
+        "item": "Réplica Reforçada de: Punhos Reforçados com Manoplas de Metal"
+      }
+    },
+    {
+      "id": "rufus_deng_05",
+      "npcId": "rufus_deng",
+      "numero": 5,
+      "nome": "Reforço de Rufus Deng",
+      "descricao": "Rufus Deng pede que você adquira, em qualquer Loja de Itens da Associação, um equipamento de Rank B compatível com Combate Desarmado para reforçar seu arsenal de combate.",
+      "categoria": "secundaria",
+      "tipo": "loja",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Comprar 1 equipamento de Rank B (peça de armadura ou arma)",
+      "recompensas": {
+        "xp": 4320,
+        "won": 28800,
+        "item": "Réplica Reforçada de: Punhos Reforçados com Manoplas de Metal"
+      }
+    },
+    {
+      "id": "rufus_deng_06",
+      "npcId": "rufus_deng",
+      "numero": 6,
+      "nome": "Provisões de Rufus Deng",
+      "descricao": "Antes da próxima incursão, Rufus Deng pede que você compre poções de recuperação e um acessório de afinidade elemental Terra na loja mais próxima.",
+      "categoria": "secundaria",
+      "tipo": "loja",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Comprar 3 poções + 1 acessório elemental",
+      "recompensas": {
+        "xp": 3960,
+        "won": 26400,
+        "item": "Tatuagem do Corvo"
+      }
+    },
+    {
+      "id": "rufus_deng_07",
+      "npcId": "rufus_deng",
+      "numero": 7,
+      "nome": "Receita de Rufus Deng",
+      "descricao": "Usando materiais coletados em dungeons de afinidade Terra, produza o item indicado por Rufus Deng em uma bancada de criação da guilda.",
+      "categoria": "secundaria",
+      "tipo": "producao",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Produzir 1 item de afinidade Terra (Rank B)",
+      "recompensas": {
+        "xp": 4680,
+        "won": 31200,
+        "item": "Fragmento de Mana (Terra)"
+      }
+    },
+    {
+      "id": "rufus_deng_08",
+      "npcId": "rufus_deng",
+      "numero": 8,
+      "nome": "Suprimento Especial de Rufus Deng",
+      "descricao": "Rufus Deng ensina uma técnica pessoal de preparo; produza 3 unidades de um item de suporte (poção, munição ou material) ligado ao estilo de combate de Combate Desarmado.",
+      "categoria": "secundaria",
+      "tipo": "producao",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Produzir 3 itens de suporte",
+      "recompensas": {
+        "xp": 5040,
+        "won": 33600,
+        "item": "Fragmento de Mana (Terra)"
+      }
+    },
+    {
+      "id": "rufus_deng_09",
+      "npcId": "rufus_deng",
+      "numero": 9,
+      "nome": "Treino de Combate com Rufus Deng",
+      "descricao": "Rufus Deng solicita ajuda para conter uma infestação: derrote golens de pedra em dungeons de Rank B ou inferior.",
+      "categoria": "cacada",
+      "tipo": "caca",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Derrotar 30 Golens de Pedra",
+      "recompensas": {
+        "xp": 5760,
+        "won": 38400,
+        "item": "Trajes Rasgados de Propósito"
+      }
+    },
+    {
+      "id": "rufus_deng_10",
+      "npcId": "rufus_deng",
+      "numero": 10,
+      "nome": "Caçada Recomendada por Rufus Deng",
+      "descricao": "Uma variante mais forte de golens de pedra tem aparecido nas rondas de Rufus Deng; elimine essas ameaças antes que evoluam.",
+      "categoria": "cacada",
+      "tipo": "caca",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Derrotar 7 Golens de Pedra (variante fortalecida)",
+      "recompensas": {
+        "xp": 7200,
+        "won": 48000,
+        "item": "Réplica Reforçada de: Punhos Reforçados com Manoplas de Metal"
+      }
+    }
+  ]
+}

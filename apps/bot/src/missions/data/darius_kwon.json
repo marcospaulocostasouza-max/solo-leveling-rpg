@@ -1,0 +1,178 @@
+{
+  "npcId": "darius_kwon",
+  "npcNome": "Darius Kwon",
+  "npcTitulo": "O Ladrão que Vendeu o Próprio Parceiro",
+  "totalMissoes": 10,
+  "missoes": [
+    {
+      "id": "darius_kwon_01",
+      "npcId": "darius_kwon",
+      "numero": 1,
+      "nome": "Capítulo 1: Rumores sobre Darius Kwon",
+      "descricao": "Relatos alarmantes começam a circular entre guildas sobre Darius Kwon. Antigo parceiro de furtos, Darius traiu a dupla durante um roubo, entregando informações a guardas em troca da própria liberdade....",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Investigue 3 relatos de testemunhas sobre Darius Kwon",
+      "recompensas": {
+        "xp": 17100,
+        "won": 114000,
+        "item": "Roupas de Infiltração Escuras"
+      }
+    },
+    {
+      "id": "darius_kwon_02",
+      "npcId": "darius_kwon",
+      "numero": 2,
+      "nome": "Capítulo 2: Rastreando O Ladrão que Vendeu o Próprio Parceiro",
+      "descricao": "Reúna evidências concretas da atividade de Darius Kwon antes que a Associação classifique o caso como perdido.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Reúna provas em 2 locais diferentes ligados a Darius Kwon",
+      "recompensas": {
+        "xp": 19800,
+        "won": 132000,
+        "item": "Roupas de Infiltração Escuras"
+      }
+    },
+    {
+      "id": "darius_kwon_03",
+      "npcId": "darius_kwon",
+      "numero": 3,
+      "nome": "Capítulo 3: Confronto com Darius Kwon",
+      "descricao": "É hora de enfrentar Darius Kwon diretamente. Prepare-se: como O Ladrão que Vendeu o Próprio Parceiro, este será um combate de Rank A.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Derrote Darius Kwon em combate direto",
+      "recompensas": {
+        "xp": 22500,
+        "won": 150000,
+        "item": "Réplica Reforçada de: Adaga Herdada do Antigo Trabalho"
+      }
+    },
+    {
+      "id": "darius_kwon_04",
+      "npcId": "darius_kwon",
+      "numero": 4,
+      "nome": "Capítulo 4: A Queda de O Ladrão que Vendeu o Próprio Parceiro",
+      "descricao": "Com Darius Kwon neutralizado(a), reste apenas reportar o caso à Associação e lidar com as consequências reveladas.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Entregue o relatório final sobre Darius Kwon à Associação",
+      "recompensas": {
+        "xp": 25200,
+        "won": 168000,
+        "item": "Réplica Reforçada de: Adaga Herdada do Antigo Trabalho"
+      }
+    },
+    {
+      "id": "darius_kwon_05",
+      "npcId": "darius_kwon",
+      "numero": 5,
+      "nome": "Reforço de Darius Kwon",
+      "descricao": "Darius Kwon pede que você adquira, em qualquer Loja de Itens da Associação, um equipamento de Rank A compatível com Adagas para reforçar seu arsenal de combate.",
+      "categoria": "secundaria",
+      "tipo": "loja",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Comprar 1 equipamento de Rank A (peça de armadura ou arma)",
+      "recompensas": {
+        "xp": 5400,
+        "won": 36000,
+        "item": "Réplica Reforçada de: Adaga Herdada do Antigo Trabalho"
+      }
+    },
+    {
+      "id": "darius_kwon_06",
+      "npcId": "darius_kwon",
+      "numero": 6,
+      "nome": "Provisões de Darius Kwon",
+      "descricao": "Antes da próxima incursão, Darius Kwon pede que você compre poções de recuperação e um acessório de afinidade elemental Sombra na loja mais próxima.",
+      "categoria": "secundaria",
+      "tipo": "loja",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Comprar 3 poções + 1 acessório elemental",
+      "recompensas": {
+        "xp": 4950,
+        "won": 33000,
+        "item": "Mapa de Esconderijos Secretos"
+      }
+    },
+    {
+      "id": "darius_kwon_07",
+      "npcId": "darius_kwon",
+      "numero": 7,
+      "nome": "Receita de Darius Kwon",
+      "descricao": "Usando materiais coletados em dungeons de afinidade Sombra, produza o item indicado por Darius Kwon em uma bancada de criação da guilda.",
+      "categoria": "secundaria",
+      "tipo": "producao",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Produzir 1 item de afinidade Sombra (Rank A)",
+      "recompensas": {
+        "xp": 5850,
+        "won": 39000,
+        "item": "Fragmento de Mana (Sombra)"
+      }
+    },
+    {
+      "id": "darius_kwon_08",
+      "npcId": "darius_kwon",
+      "numero": 8,
+      "nome": "Suprimento Especial de Darius Kwon",
+      "descricao": "Darius Kwon ensina uma técnica pessoal de preparo; produza 3 unidades de um item de suporte (poção, munição ou material) ligado ao estilo de combate de Adagas.",
+      "categoria": "secundaria",
+      "tipo": "producao",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Produzir 3 itens de suporte",
+      "recompensas": {
+        "xp": 6300,
+        "won": 42000,
+        "item": "Fragmento de Mana (Sombra)"
+      }
+    },
+    {
+      "id": "darius_kwon_09",
+      "npcId": "darius_kwon",
+      "numero": 9,
+      "nome": "Treino de Combate com Darius Kwon",
+      "descricao": "Darius Kwon solicita ajuda para conter uma infestação: derrote sombras rastejantes em dungeons de Rank A ou inferior.",
+      "categoria": "cacada",
+      "tipo": "caca",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Derrotar 35 Sombras Rastejantes",
+      "recompensas": {
+        "xp": 7200,
+        "won": 48000,
+        "item": "Roupas de Infiltração Escuras"
+      }
+    },
+    {
+      "id": "darius_kwon_10",
+      "npcId": "darius_kwon",
+      "numero": 10,
+      "nome": "Caçada Recomendada por Darius Kwon",
+      "descricao": "Uma variante mais forte de sombras rastejantes tem aparecido nas rondas de Darius Kwon; elimine essas ameaças antes que evoluam.",
+      "categoria": "cacada",
+      "tipo": "caca",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Derrotar 8 Sombras Rastejantes (variante fortalecida)",
+      "recompensas": {
+        "xp": 9000,
+        "won": 60000,
+        "item": "Réplica Reforçada de: Adaga Herdada do Antigo Trabalho"
+      }
+    }
+  ]
+}

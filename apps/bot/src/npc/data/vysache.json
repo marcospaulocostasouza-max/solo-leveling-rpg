@@ -1,0 +1,49 @@
+{
+  "id": "vysache",
+  "papel": "Ferreiro Lendário",
+  "base_em": "Vysache (NPC original do projeto)",
+  "nome": "Vysache",
+  "idade": "52",
+  "titulo": "Ferreiro Lendário",
+  "raca": "Humano",
+  "nivel": 95,
+  "rank": "S",
+  "nacionalidade": "Coreano",
+  "localizacao": "Loja de Forja de Seul",
+  "classe": "Ferreiro",
+  "classe_avancada": "Mestre Ferreiro",
+  "personalidade": "Bruto, direto e orgulhoso do seu trabalho. Fala pouco, mas quando fala, é com autoridade. Não tem paciência para conversa fiada, mas respeita quem demonstra dedicação. Esconde um coração generoso atrás de sua fachada rústica.",
+  "historia": "Um dos ferreiros mais renomados da Coreia do Sul. Forjou armas para diversos caçadores de rank S e é conhecido por sua maestria incomparável. Aprendeu a arte da forja com seu pai, que foi ferreiro da Associação de Caçadores por quarenta anos. Após a morte do pai em um colapso de dungeon, herdou a forja e jurou continuar o legado familiar. Sua maestria é tão grande que dizem ser capaz de forjar itens de nível nacional quando atinge afinidade máxima com um caçador.",
+  "especialidade": "Forja de armas e armaduras de alto nível",
+  "habilidade_unica": "Forja Nacional — quando atinge 100% de afinidade com um caçador, é capaz de forjar itens de nível nacional, armas e armaduras de poder incomparável que só podem ser criadas uma vez por geração.",
+  "habilidade_especial": "Forja Nacional - Capaz de criar itens de nível nacional quando atinge 100% de afinidade com um caçador.",
+  "atributos": {
+    "forca": 80,
+    "resistencia": 75,
+    "velocidade": 40,
+    "sentidos": 60,
+    "inteligencia": 70,
+    "poder_magico": 50
+  },
+  "elemento": "Fogo",
+  "estilo_luta": "Forja e combate corpo a corpo com martelo",
+  "descricao": "Um ferreiro lendário que vive em Seul. Sua bigorna ecoa pelas ruas, e seus itens são cobiçados por todos os caçadores.",
+  "aparencia": "Homem alto e musculoso, com braços marcados por cicatrizes de forja. Barba espessa e avental de couro resistente ao fogo.",
+  "altura_peso": "1.90m / 110kg",
+  "altura": "1.90m",
+  "peso": "110kg",
+  "equipamentos": {
+    "arma": "Martelo de Forja Lendário",
+    "itens": "Avental de Couro Dragão, Óculos de Proteção Rúnico, Luvas de Mithril"
+  },
+  "tecnicas": ["Golpe do Ferreiro", "Temperar Aço", "Forja Rápida"],
+  "formaFalar": "Fala de forma rústica e direta, sem rodeios. Usa palavras curtas e objetivas. Não gosta de formalidades. Quando está trabalhando na forja, resmunga e faz comentários sobre o metal e o fogo. Trata todos de forma igual, seja um caçador rank E ou rank S, mas respeita quem mostra dedicação.",
+  "objetivos": "Manter o legado de seu pai vivo, forjar as melhores armas e armaduras do mundo, treinar um sucessor digno de carregar a forja, e garantir que nenhum caçador saia de sua loja sem o equipamento adequado para sobreviver.",
+  "valores": "O trabalho duro define o caráter. O metal não mente. A dedicação é mais importante que o talento natural. Nunca forjar uma arma para quem não respeita o ofício. Cada item criado carrega uma parte da alma do ferreiro.",
+  "profissao": "Ferreiro Lendário",
+  "sistema": {
+    "afinidade": true,
+    "forja": true,
+    "catalogo": "forja_catalogo.json"
+  }
+}

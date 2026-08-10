@@ -1,0 +1,42 @@
+{
+  "id": "lucia_yeom",
+  "papel": "Vilã",
+  "base_em": "Lucia (Octopath Traveler)",
+  "nome": "Lucia Yeom",
+  "idade": "Aparenta 27 anos (idade real desconhecida)",
+  "nacionalidade": "Sul-coreana, agente infiltrada de origem obscura",
+  "aparencia": "Fria e elegante, cabelos negros lisos impecavelmente arrumados, veste roupas discretas de tons escuros.",
+  "altura_peso": "1,69m / 55kg",
+  "personalidade": "Extremamente paciente, manipuladora nos bastidores e disposta a abandonar qualquer aliado assim que deixa de ser útil.",
+  "historia": "Agente infiltrada que serviu como conselheira sombria por trás da ascensão corrupta de um reitor acadêmico.",
+  "classe": "Assassino",
+  "classe_avancada": "Lâmina Sombria",
+  "rank": "A",
+  "nivel": 86,
+  "estilo_luta": "Proficiência em Adagas",
+  "atributos": {
+    "forca": 48,
+    "resistencia": 42,
+    "velocidade": 75,
+    "sentidos": 85,
+    "inteligencia": 80,
+    "poder_magico": 35
+  },
+  "elemento": "Sombra",
+  "habilidade_unica": "Manipulação Silenciosa — força um inimigo aliado de menor rank a atacar seus próprios companheiros por um turno, sem que ele perceba o controle sofrido.",
+  "titulo": "A Sombra Por Trás do Trono Acadêmico",
+  "equipamentos": {
+    "arma": "Adagas Ocultas Sem Marca",
+    "itens": "Disfarces Diversos, Rede de Contatos Anônimos, Cifra de Comunicação Secreta"
+  },
+  "tecnicas": [
+    "Corte da Manipulação",
+    "Desaparecimento Calculado",
+    "Golpe do Peão Descartado"
+  ],
+  "formaFalar": "Fala com tom frio e calculista, frequentemente manipulando as palavras para obter vantagem. Suas frases são precisas e raramente revelam emoções verdadeiras.",
+  "localizacao": "Localização desconhecida — opera nas sombras",
+  "profissao": "Antagonista",
+  "objetivos": "Expandir seu poder e influência, eliminando qualquer ameaça aos seus planos.",
+  "valores": "O poder é o único caminho. A fraqueza é imperdoável. Os fins justificam os meios."
+}

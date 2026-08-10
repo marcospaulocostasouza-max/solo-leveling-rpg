@@ -1,0 +1,178 @@
+{
+  "npcId": "cyrus_albright",
+  "npcNome": "Cyrus Albright",
+  "npcTitulo": "O Erudito dos Portais",
+  "totalMissoes": 10,
+  "missoes": [
+    {
+      "id": "cyrus_albright_01",
+      "npcId": "cyrus_albright",
+      "numero": 1,
+      "nome": "Capítulo 1: O Despertar de Cyrus Albright",
+      "descricao": "Acompanhe os primeiros passos de Cyrus Albright como Caçador(a). Professor de história arcana antes de seu Despertar, Cyrus era famoso por suas teorias sobre a origem dos portais - teorias que a academia tradicional ridicularizava. Tudo mudou quando, investigando r...",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Complete a introdução: converse com Cyrus Albright e participe de sua primeira incursão",
+      "recompensas": {
+        "xp": 17100,
+        "won": 114000,
+        "item": "Biblioteca Portátil de Grimórios"
+      }
+    },
+    {
+      "id": "cyrus_albright_02",
+      "npcId": "cyrus_albright",
+      "numero": 2,
+      "nome": "Capítulo 2: A Trilha de O Erudito dos Portais",
+      "descricao": "Cyrus Albright pede ajuda para investigar pistas ligadas ao seu passado, aprofundando o mistério por trás de seu título de 'O Erudito dos Portais'.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Ajude Cyrus Albright a reunir 3 pistas em diferentes localizações",
+      "recompensas": {
+        "xp": 19800,
+        "won": 132000,
+        "item": "Óculos Analisadores de Mana"
+      }
+    },
+    {
+      "id": "cyrus_albright_03",
+      "npcId": "cyrus_albright",
+      "numero": 3,
+      "nome": "Capítulo 3: O Confronto de Cyrus Albright",
+      "descricao": "O passado de Cyrus Albright finalmente alcança o presente. Enfrente ao lado dele(a) a ameaça central de sua história.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Vença o confronto decisivo ao lado de Cyrus Albright",
+      "recompensas": {
+        "xp": 22500,
+        "won": 150000,
+        "item": "Réplica Reforçada de: Orbe de Cristal Multielemental"
+      }
+    },
+    {
+      "id": "cyrus_albright_04",
+      "npcId": "cyrus_albright",
+      "numero": 4,
+      "nome": "Capítulo 4: O Erudito dos Portais",
+      "descricao": "Com a ameaça derrotada, Cyrus Albright consolida seu lugar no mundo dos caçadores, consagrando-se como O Erudito dos Portais.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Complete a missão final e testemunhe o desfecho da história de Cyrus Albright",
+      "recompensas": {
+        "xp": 25200,
+        "won": 168000,
+        "item": "Réplica Reforçada de: Orbe de Cristal Multielemental"
+      }
+    },
+    {
+      "id": "cyrus_albright_05",
+      "npcId": "cyrus_albright",
+      "numero": 5,
+      "nome": "Reforço de Cyrus Albright",
+      "descricao": "Cyrus Albright pede que você adquira, em qualquer Loja de Itens da Associação, um equipamento de Rank A compatível com Cajados e Orbes para reforçar seu arsenal de combate.",
+      "categoria": "secundaria",
+      "tipo": "loja",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Comprar 1 equipamento de Rank A (peça de armadura ou arma)",
+      "recompensas": {
+        "xp": 5400,
+        "won": 36000,
+        "item": "Réplica Reforçada de: Orbe de Cristal Multielemental"
+      }
+    },
+    {
+      "id": "cyrus_albright_06",
+      "npcId": "cyrus_albright",
+      "numero": 6,
+      "nome": "Provisões de Cyrus Albright",
+      "descricao": "Antes da próxima incursão, Cyrus Albright pede que você compre poções de recuperação e um acessório de afinidade elemental Raio na loja mais próxima.",
+      "categoria": "secundaria",
+      "tipo": "loja",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Comprar 3 poções + 1 acessório elemental",
+      "recompensas": {
+        "xp": 4950,
+        "won": 33000,
+        "item": "Óculos Analisadores de Mana"
+      }
+    },
+    {
+      "id": "cyrus_albright_07",
+      "npcId": "cyrus_albright",
+      "numero": 7,
+      "nome": "Receita de Cyrus Albright",
+      "descricao": "Usando materiais coletados em dungeons de afinidade Raio, produza o item indicado por Cyrus Albright em uma bancada de criação da guilda.",
+      "categoria": "secundaria",
+      "tipo": "producao",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Produzir 1 item de afinidade Raio (Rank A)",
+      "recompensas": {
+        "xp": 5850,
+        "won": 39000,
+        "item": "Fragmento de Mana (Raio)"
+      }
+    },
+    {
+      "id": "cyrus_albright_08",
+      "npcId": "cyrus_albright",
+      "numero": 8,
+      "nome": "Suprimento Especial de Cyrus Albright",
+      "descricao": "Cyrus Albright ensina uma técnica pessoal de preparo; produza 3 unidades de um item de suporte (poção, munição ou material) ligado ao estilo de combate de Cajados e Orbes.",
+      "categoria": "secundaria",
+      "tipo": "producao",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Produzir 3 itens de suporte",
+      "recompensas": {
+        "xp": 6300,
+        "won": 42000,
+        "item": "Fragmento de Mana (Raio)"
+      }
+    },
+    {
+      "id": "cyrus_albright_09",
+      "npcId": "cyrus_albright",
+      "numero": 9,
+      "nome": "Treino de Combate com Cyrus Albright",
+      "descricao": "Cyrus Albright solicita ajuda para conter uma infestação: derrote elementais de raio em dungeons de Rank A ou inferior.",
+      "categoria": "cacada",
+      "tipo": "caca",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Derrotar 35 Elementais de Raio",
+      "recompensas": {
+        "xp": 7200,
+        "won": 48000,
+        "item": "Biblioteca Portátil de Grimórios"
+      }
+    },
+    {
+      "id": "cyrus_albright_10",
+      "npcId": "cyrus_albright",
+      "numero": 10,
+      "nome": "Caçada Recomendada por Cyrus Albright",
+      "descricao": "Uma variante mais forte de elementais de raio tem aparecido nas rondas de Cyrus Albright; elimine essas ameaças antes que evoluam.",
+      "categoria": "cacada",
+      "tipo": "caca",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Derrotar 8 Elementais de Raio (variante fortalecida)",
+      "recompensas": {
+        "xp": 9000,
+        "won": 60000,
+        "item": "Réplica Reforçada de: Orbe de Cristal Multielemental"
+      }
+    }
+  ]
+}

@@ -1,0 +1,178 @@
+{
+  "npcId": "ori_choi",
+  "npcNome": "Ori Choi",
+  "npcTitulo": "A Jornalista que Nunca Foi Quem Dizia Ser",
+  "totalMissoes": 10,
+  "missoes": [
+    {
+      "id": "ori_choi_01",
+      "npcId": "ori_choi",
+      "numero": 1,
+      "nome": "Capítulo 1: Rumores sobre Ori Choi",
+      "descricao": "Relatos alarmantes começam a circular entre guildas sobre Ori Choi. Disfarçada como jornalista freelancer, Ori coleta informações estratégicas para uma organização oculta interessada em controlar rotas comerciais....",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Investigue 3 relatos de testemunhas sobre Ori Choi",
+      "recompensas": {
+        "xp": 13680,
+        "won": 91200,
+        "item": "Bloco de Notas Codificado"
+      }
+    },
+    {
+      "id": "ori_choi_02",
+      "npcId": "ori_choi",
+      "numero": 2,
+      "nome": "Capítulo 2: Rastreando A Jornalista que Nunca Foi Quem Dizia Ser",
+      "descricao": "Reúna evidências concretas da atividade de Ori Choi antes que a Associação classifique o caso como perdido.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Reúna provas em 2 locais diferentes ligados a Ori Choi",
+      "recompensas": {
+        "xp": 15840,
+        "won": 105600,
+        "item": "Bloco de Notas Codificado"
+      }
+    },
+    {
+      "id": "ori_choi_03",
+      "npcId": "ori_choi",
+      "numero": 3,
+      "nome": "Capítulo 3: Confronto com Ori Choi",
+      "descricao": "É hora de enfrentar Ori Choi diretamente. Prepare-se: como A Jornalista que Nunca Foi Quem Dizia Ser, este será um combate de Rank B.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Derrote Ori Choi em combate direto",
+      "recompensas": {
+        "xp": 18000,
+        "won": 120000,
+        "item": "Réplica Reforçada de: Adagas Disfarçadas de Ferramentas de Reportagem"
+      }
+    },
+    {
+      "id": "ori_choi_04",
+      "npcId": "ori_choi",
+      "numero": 4,
+      "nome": "Capítulo 4: A Queda de A Jornalista que Nunca Foi Quem Dizia Ser",
+      "descricao": "Com Ori Choi neutralizado(a), reste apenas reportar o caso à Associação e lidar com as consequências reveladas.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Entregue o relatório final sobre Ori Choi à Associação",
+      "recompensas": {
+        "xp": 20160,
+        "won": 134400,
+        "item": "Réplica Reforçada de: Adagas Disfarçadas de Ferramentas de Reportagem"
+      }
+    },
+    {
+      "id": "ori_choi_05",
+      "npcId": "ori_choi",
+      "numero": 5,
+      "nome": "Reforço de Ori Choi",
+      "descricao": "Ori Choi pede que você adquira, em qualquer Loja de Itens da Associação, um equipamento de Rank B compatível com Adagas para reforçar seu arsenal de combate.",
+      "categoria": "secundaria",
+      "tipo": "loja",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Comprar 1 equipamento de Rank B (peça de armadura ou arma)",
+      "recompensas": {
+        "xp": 4320,
+        "won": 28800,
+        "item": "Réplica Reforçada de: Adagas Disfarçadas de Ferramentas de Reportagem"
+      }
+    },
+    {
+      "id": "ori_choi_06",
+      "npcId": "ori_choi",
+      "numero": 6,
+      "nome": "Provisões de Ori Choi",
+      "descricao": "Antes da próxima incursão, Ori Choi pede que você compre poções de recuperação e um acessório de afinidade elemental Vento na loja mais próxima.",
+      "categoria": "secundaria",
+      "tipo": "loja",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Comprar 3 poções + 1 acessório elemental",
+      "recompensas": {
+        "xp": 3960,
+        "won": 26400,
+        "item": "Câmera Improvisada"
+      }
+    },
+    {
+      "id": "ori_choi_07",
+      "npcId": "ori_choi",
+      "numero": 7,
+      "nome": "Receita de Ori Choi",
+      "descricao": "Usando materiais coletados em dungeons de afinidade Vento, produza o item indicado por Ori Choi em uma bancada de criação da guilda.",
+      "categoria": "secundaria",
+      "tipo": "producao",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Produzir 1 item de afinidade Vento (Rank B)",
+      "recompensas": {
+        "xp": 4680,
+        "won": 31200,
+        "item": "Fragmento de Mana (Vento)"
+      }
+    },
+    {
+      "id": "ori_choi_08",
+      "npcId": "ori_choi",
+      "numero": 8,
+      "nome": "Suprimento Especial de Ori Choi",
+      "descricao": "Ori Choi ensina uma técnica pessoal de preparo; produza 3 unidades de um item de suporte (poção, munição ou material) ligado ao estilo de combate de Adagas.",
+      "categoria": "secundaria",
+      "tipo": "producao",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Produzir 3 itens de suporte",
+      "recompensas": {
+        "xp": 5040,
+        "won": 33600,
+        "item": "Fragmento de Mana (Vento)"
+      }
+    },
+    {
+      "id": "ori_choi_09",
+      "npcId": "ori_choi",
+      "numero": 9,
+      "nome": "Treino de Combate com Ori Choi",
+      "descricao": "Ori Choi solicita ajuda para conter uma infestação: derrote espíritos do vento em dungeons de Rank B ou inferior.",
+      "categoria": "cacada",
+      "tipo": "caca",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Derrotar 30 Espíritos do Vento",
+      "recompensas": {
+        "xp": 5760,
+        "won": 38400,
+        "item": "Bloco de Notas Codificado"
+      }
+    },
+    {
+      "id": "ori_choi_10",
+      "npcId": "ori_choi",
+      "numero": 10,
+      "nome": "Caçada Recomendada por Ori Choi",
+      "descricao": "Uma variante mais forte de espíritos do vento tem aparecido nas rondas de Ori Choi; elimine essas ameaças antes que evoluam.",
+      "categoria": "cacada",
+      "tipo": "caca",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Derrotar 7 Espíritos do Vento (variante fortalecida)",
+      "recompensas": {
+        "xp": 7200,
+        "won": 48000,
+        "item": "Réplica Reforçada de: Adagas Disfarçadas de Ferramentas de Reportagem"
+      }
+    }
+  ]
+}

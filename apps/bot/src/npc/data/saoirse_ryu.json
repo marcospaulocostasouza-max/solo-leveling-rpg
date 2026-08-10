@@ -1,0 +1,42 @@
+{
+  "id": "saoirse_ryu",
+  "papel": "Heroína",
+  "base_em": "Saoirse (Octopath Traveler 0)",
+  "nome": "Saoirse Ryu",
+  "idade": "22",
+  "nacionalidade": "Sul-coreana, dançarina residente do Anfiteatro de Theatropolis",
+  "aparencia": "Cabelos ruivos longos soltos, figurino de dança vibrante adaptado com fitas reforçadas para combate.",
+  "altura_peso": "1,63m / 52kg",
+  "personalidade": "Carismática, intuitiva quanto às emoções alheias e apaixonada por transformar tragédia em arte que inspira esperança.",
+  "historia": "Dançarina residente do Anfiteatro de Theatropolis, Saoirse ganhou fama transformando histórias de sobreviventes em performances emocionantes. Seu Despertar aconteceu durante uma apresentação interrompida por um ataque de monstro.",
+  "classe": "Assassino",
+  "classe_avancada": "Lâmina Sombria",
+  "rank": "A",
+  "nivel": 84,
+  "estilo_luta": "Proficiência em Adagas",
+  "atributos": {
+    "forca": 38,
+    "resistencia": 35,
+    "velocidade": 68,
+    "sentidos": 65,
+    "inteligencia": 48,
+    "poder_magico": 40
+  },
+  "elemento": "Cristal",
+  "habilidade_unica": "Performance de Esperança — sua dança em combate cura levemente o grupo a cada turno enquanto ativa, além de elevar a taxa crítica de todos os aliados próximos.",
+  "titulo": "A Estrela do Anfiteatro",
+  "equipamentos": {
+    "arma": "Fitas de Combate Reforçadas",
+    "itens": "Figurino Vibrante de Apresentação, Cartaz do Evento Beneficente, Sapatilhas Encantadas"
+  },
+  "tecnicas": [
+    "Giro da Esperança",
+    "Passo Hipnótico",
+    "Fita da Salvação"
+  ],
+  "formaFalar": "Fala de forma direta e observadora, raramente revelando mais do que o necessário. Prefere ações a palavras.",
+  "localizacao": "Coreia do Sul",
+  "profissao": "Caçador(a) Assassino",
+  "objetivos": "Proteger os inocentes, evoluir como caçador e desvendar os mistérios dos portais.",
+  "valores": "A vida é preciosa. A coragem é essencial. A lealdade é inegociável."
+}

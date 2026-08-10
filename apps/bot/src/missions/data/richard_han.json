@@ -1,0 +1,178 @@
+{
+  "npcId": "richard_han",
+  "npcNome": "Richard Han",
+  "npcTitulo": "O Rei Entre a Vida e a Morte",
+  "totalMissoes": 10,
+  "missoes": [
+    {
+      "id": "richard_han_01",
+      "npcId": "richard_han",
+      "numero": 1,
+      "nome": "Capítulo 1: O Despertar de Richard Han",
+      "descricao": "Acompanhe os primeiros passos de Richard Han como Caçador(a). Antigo líder de uma poderosa guilda, Richard foi forçado a tomar decisões impopulares durante uma crise de contenção. Hoje vive isolado nas ruínas do que já foi sua fortaleza....",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Complete a introdução: converse com Richard Han e participe de sua primeira incursão",
+      "recompensas": {
+        "xp": 17100,
+        "won": 114000,
+        "item": "Armadura Real Desgastada"
+      }
+    },
+    {
+      "id": "richard_han_02",
+      "npcId": "richard_han",
+      "numero": 2,
+      "nome": "Capítulo 2: A Trilha de O Rei Entre a Vida e a Morte",
+      "descricao": "Richard Han pede ajuda para investigar pistas ligadas ao seu passado, aprofundando o mistério por trás de seu título de 'O Rei Entre a Vida e a Morte'.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Ajude Richard Han a reunir 3 pistas em diferentes localizações",
+      "recompensas": {
+        "xp": 19800,
+        "won": 132000,
+        "item": "Selo da Guilda Extinta"
+      }
+    },
+    {
+      "id": "richard_han_03",
+      "npcId": "richard_han",
+      "numero": 3,
+      "nome": "Capítulo 3: O Confronto de Richard Han",
+      "descricao": "O passado de Richard Han finalmente alcança o presente. Enfrente ao lado dele(a) a ameaça central de sua história.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Vença o confronto decisivo ao lado de Richard Han",
+      "recompensas": {
+        "xp": 22500,
+        "won": 150000,
+        "item": "Réplica Reforçada de: Espada Cerimonial Ornamentada"
+      }
+    },
+    {
+      "id": "richard_han_04",
+      "npcId": "richard_han",
+      "numero": 4,
+      "nome": "Capítulo 4: O Rei Entre a Vida e a Morte",
+      "descricao": "Com a ameaça derrotada, Richard Han consolida seu lugar no mundo dos caçadores, consagrando-se como O Rei Entre a Vida e a Morte.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Complete a missão final e testemunhe o desfecho da história de Richard Han",
+      "recompensas": {
+        "xp": 25200,
+        "won": 168000,
+        "item": "Réplica Reforçada de: Espada Cerimonial Ornamentada"
+      }
+    },
+    {
+      "id": "richard_han_05",
+      "npcId": "richard_han",
+      "numero": 5,
+      "nome": "Reforço de Richard Han",
+      "descricao": "Richard Han pede que você adquira, em qualquer Loja de Itens da Associação, um equipamento de Rank A compatível com Espadas para reforçar seu arsenal de combate.",
+      "categoria": "secundaria",
+      "tipo": "loja",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Comprar 1 equipamento de Rank A (peça de armadura ou arma)",
+      "recompensas": {
+        "xp": 5400,
+        "won": 36000,
+        "item": "Réplica Reforçada de: Espada Cerimonial Ornamentada"
+      }
+    },
+    {
+      "id": "richard_han_06",
+      "npcId": "richard_han",
+      "numero": 6,
+      "nome": "Provisões de Richard Han",
+      "descricao": "Antes da próxima incursão, Richard Han pede que você compre poções de recuperação e um acessório de afinidade elemental Metal na loja mais próxima.",
+      "categoria": "secundaria",
+      "tipo": "loja",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Comprar 3 poções + 1 acessório elemental",
+      "recompensas": {
+        "xp": 4950,
+        "won": 33000,
+        "item": "Selo da Guilda Extinta"
+      }
+    },
+    {
+      "id": "richard_han_07",
+      "npcId": "richard_han",
+      "numero": 7,
+      "nome": "Receita de Richard Han",
+      "descricao": "Usando materiais coletados em dungeons de afinidade Metal, produza o item indicado por Richard Han em uma bancada de criação da guilda.",
+      "categoria": "secundaria",
+      "tipo": "producao",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Produzir 1 item de afinidade Metal (Rank A)",
+      "recompensas": {
+        "xp": 5850,
+        "won": 39000,
+        "item": "Fragmento de Mana (Metal)"
+      }
+    },
+    {
+      "id": "richard_han_08",
+      "npcId": "richard_han",
+      "numero": 8,
+      "nome": "Suprimento Especial de Richard Han",
+      "descricao": "Richard Han ensina uma técnica pessoal de preparo; produza 3 unidades de um item de suporte (poção, munição ou material) ligado ao estilo de combate de Espadas.",
+      "categoria": "secundaria",
+      "tipo": "producao",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Produzir 3 itens de suporte",
+      "recompensas": {
+        "xp": 6300,
+        "won": 42000,
+        "item": "Fragmento de Mana (Metal)"
+      }
+    },
+    {
+      "id": "richard_han_09",
+      "npcId": "richard_han",
+      "numero": 9,
+      "nome": "Treino de Combate com Richard Han",
+      "descricao": "Richard Han solicita ajuda para conter uma infestação: derrote autômatos de metal em dungeons de Rank A ou inferior.",
+      "categoria": "cacada",
+      "tipo": "caca",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Derrotar 35 Autômatos de Metal",
+      "recompensas": {
+        "xp": 7200,
+        "won": 48000,
+        "item": "Armadura Real Desgastada"
+      }
+    },
+    {
+      "id": "richard_han_10",
+      "npcId": "richard_han",
+      "numero": 10,
+      "nome": "Caçada Recomendada por Richard Han",
+      "descricao": "Uma variante mais forte de autômatos de metal tem aparecido nas rondas de Richard Han; elimine essas ameaças antes que evoluam.",
+      "categoria": "cacada",
+      "tipo": "caca",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Derrotar 8 Autômatos de Metal (variante fortalecida)",
+      "recompensas": {
+        "xp": 9000,
+        "won": 60000,
+        "item": "Réplica Reforçada de: Espada Cerimonial Ornamentada"
+      }
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "id": "heidne_ahn",
+  "papel": "Heroína",
+  "base_em": "Heidne (Octopath Traveler 0)",
+  "nome": "Heidne Ahn",
+  "idade": "26",
+  "nacionalidade": "Sul-coreana, ladra elusiva perseguida em várias regiões",
+  "aparencia": "Esguia e furtiva, cabelos negros curtos escondidos sob uma capa surrada, olhos sempre calculando rotas de fuga.",
+  "altura_peso": "1,65m / 54kg",
+  "personalidade": "Arisca, desconfiada de qualquer autoridade e movida por um código pessoal de sobrevivência acima de tudo.",
+  "historia": "Ladra que sobrevive roubando de guildas corruptas e nobres exploradores, Heidne foi caçada por caçadores contratados diversas vezes. Seus roubos financiam refugiados de vilas destruídas.",
+  "classe": "Assassino",
+  "classe_avancada": "Shinobi",
+  "rank": "B",
+  "nivel": 71,
+  "estilo_luta": "Proficiência em Adagas",
+  "atributos": {
+    "forca": 50,
+    "resistencia": 42,
+    "velocidade": 80,
+    "sentidos": 75,
+    "inteligencia": 48,
+    "poder_magico": 22
+  },
+  "elemento": "Sombra",
+  "habilidade_unica": "Fuga Calculada — ao ser encurralada, tem chance de desaparecer completamente do campo de visão inimigo por um turno, reaparecendo com um ataque surpresa.",
+  "titulo": "A Ladra dos Refugiados",
+  "equipamentos": {
+    "arma": "Adagas Gastas de Fuga",
+    "itens": "Capa Surrada de Infiltração, Mapa de Rotas de Fuga, Bolsa de Itens Roubados"
+  },
+  "tecnicas": [
+    "Corte Furtivo",
+    "Desaparecimento nas Areias",
+    "Golpe do Fantasma"
+  ],
+  "formaFalar": "Fala de forma direta e observadora, raramente revelando mais do que o necessário. Prefere ações a palavras.",
+  "localizacao": "Coreia do Sul",
+  "profissao": "Caçador(a) Assassino",
+  "objetivos": "Proteger os inocentes, evoluir como caçador e desvendar os mistérios dos portais.",
+  "valores": "A vida é preciosa. A coragem é essencial. A lealdade é inegociável."
+}

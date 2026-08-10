@@ -1,0 +1,42 @@
+{
+  "id": "xerc_baek",
+  "papel": "Herói",
+  "base_em": "Xerc (Octopath Traveler 0)",
+  "nome": "Xerc Baek",
+  "idade": "25",
+  "nacionalidade": "Sul-coreano, estudioso justiceiro de Grandport",
+  "aparencia": "Óculos redondos, cabelos negros bagunçados, veste um casaco acadêmico modesto sobre roupas simples. Carrega um cajado de madeira gasto.",
+  "altura_peso": "1,75m / 62kg",
+  "personalidade": "Idealista, incapaz de fechar os olhos diante de injustiça mesmo quando isso o coloca em desvantagem.",
+  "historia": "Estudioso de Grandport especializado em documentar abusos cometidos por nobres contra populações vulneráveis. Despertou ao confrontar um nobre corrupto que explorava trabalhadores.",
+  "classe": "Mago Elemental",
+  "classe_avancada": "Alquimista",
+  "rank": "A",
+  "nivel": 80,
+  "estilo_luta": "Proficiência em Cajados e Orbes",
+  "atributos": {
+    "forca": 26,
+    "resistencia": 40,
+    "velocidade": 44,
+    "sentidos": 58,
+    "inteligencia": 85,
+    "poder_magico": 80
+  },
+  "elemento": "Raio",
+  "habilidade_unica": "Dossiê de Provas — revela publicamente as falhas de defesa do inimigo, reduzindo permanentemente sua resistência física e mágica pelo resto do combate.",
+  "titulo": "O Estudioso dos Nobres Corruptos",
+  "equipamentos": {
+    "arma": "Cajado de Madeira Gasto",
+    "itens": "Casaco Acadêmico Modesto, Dossiê de Corrupção, Óculos Redondos"
+  },
+  "tecnicas": [
+    "Raio da Verdade",
+    "Exposição Pública",
+    "Julgamento do Estudioso"
+  ],
+  "formaFalar": "Fala com inteligência e curiosidade, frequentemente fazendo referências a conhecimentos arcanos.",
+  "localizacao": "Coreia do Sul",
+  "profissao": "Caçador(a) Mago Elemental",
+  "objetivos": "Proteger os inocentes, evoluir como caçador e desvendar os mistérios dos portais.",
+  "valores": "A vida é preciosa. A coragem é essencial. A lealdade é inegociável."
+}

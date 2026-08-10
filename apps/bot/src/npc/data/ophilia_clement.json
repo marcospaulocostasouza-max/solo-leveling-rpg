@@ -1,0 +1,42 @@
+{
+  "id": "ophilia_clement",
+  "papel": "Heroína",
+  "base_em": "Ophilia (Octopath Traveler)",
+  "nome": "Ophilia Clement",
+  "idade": "21",
+  "nacionalidade": "Sul-coreana, criada nos Templos budistas da Coreia",
+  "aparencia": "Cabelos loiros presos por uma faixa cerimonial, veste um manto branco e azul de sacerdotisa sobre o uniforme padrão de caçadora. Carrega sempre um báculo de madeira entalhado com símbolos de luz.",
+  "altura_peso": "1,63m / 52kg",
+  "personalidade": "Gentil, compassiva e extremamente devota, mas capaz de firmeza inabalável quando alguém sob sua proteção é ameaçado. Carrega o peso de nunca conseguir salvar todo mundo, e por isso se dedica ainda mais aos que consegue alcançar.",
+  "historia": "Adotada ainda criança por um sacerdote dos Templos após perder a família em um colapso de dungeon, Ophilia cresceu servindo como curandeira voluntária da comunidade religiosa nas montanhas. Seu despertar como Caçadora aconteceu durante um resgate: um grupo de fiéis ficou soterrado após um tremor ligado à abertura de um portal, e a luz que emanou de suas mãos ao tentar salvá-los foi reconhecida pela Associação como um Despertar de Rank A. Desde então, viaja entre templos e dungeons levando cura e orientação espiritual a caçadores feridos, recusando-se a cobrar por seus serviços. É vista como uma figura quase lendária entre caçadores de baixo rank, que a chamam de 'A Luz de Hallasan' por seu trabalho recorrente na região vulcânica.",
+  "classe": "Curador",
+  "classe_avancada": "Mago de Luz",
+  "rank": "A",
+  "nivel": 88,
+  "estilo_luta": "Proficiência em Cajados e Orbes",
+  "atributos": {
+    "forca": 28,
+    "resistencia": 45,
+    "velocidade": 40,
+    "sentidos": 55,
+    "inteligencia": 78,
+    "poder_magico": 90
+  },
+  "elemento": "Luz",
+  "habilidade_unica": "Bênção das Almas Guardiãs — invoca temporariamente os espíritos de curandeiras que vieram antes dela para curar em área e purificar debuffs de todo o grupo por 3 turnos.",
+  "titulo": "A Sacerdotisa de Hallasan",
+  "equipamentos": {
+    "arma": "Báculo Sagrado de Flandre",
+    "itens": "Manto Cerimonial de Luz, Rosário de Purificação, Kit de Primeiros Socorros Abençoado"
+  },
+  "tecnicas": [
+    "Círculo de Cura Radiante",
+    "Julgamento da Aurora",
+    "Escudo dos Fiéis"
+  ],
+  "formaFalar": "Fala com calma e compaixão, usando palavras gentis e encorajadoras. Sempre disposto a ajudar e confortar os feridos.",
+  "localizacao": "Coreia do Sul",
+  "profissao": "Caçador(a) Curador",
+  "objetivos": "Proteger os inocentes, evoluir como caçador e desvendar os mistérios dos portais.",
+  "valores": "A vida é preciosa. A coragem é essencial. A lealdade é inegociável."
+}

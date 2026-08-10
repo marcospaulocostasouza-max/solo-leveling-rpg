@@ -1,0 +1,722 @@
+RELATÓRIO FINAL — CHECKUP GERAL NPC_LORA
+============================================
+Total de NPCs: 72
+Total de datasets: 72
+Total de JSON: 165
+Total de arquivos analisados (2ª passagem): 1834
+Total de problemas encontrados (1ª passagem): 0
+Total de problemas corrigidos: 187
+Duplicatas removidas: 103
+
+NPCs completos (72)
+- agnea_bristarni
+- alaune_yeong
+- alexia_song
+- alfyn_greengrass
+- arcanette
+- bargello_yeon
+- carinda_moon
+- castti_florenz
+- celsus_park
+- claude
+- cyrus_albright
+- darius_kwon
+- delitia_song
+- elrica_edoras
+- eltrix_noh
+- entidade_mae
+- esperre_jin
+- galdera
+- gaston_rho
+- gideon_ma
+- goodwin_cha
+- haanit
+- harvey_jeong
+- heidne_ahn
+- helgenish
+- hikari_ku
+- isla_gwon
+- kaldena_ryu
+- kazan
+- laurana_bae
+- lucia_yeom
+- ludo_wei
+- lyblac
+- macy_eun
+- mattias_cardoso
+- miguel_bang
+- mugen_ku
+- ochette
+- olberic_eisenberg
+- ophilia_clement
+- ori_choi
+- osvald_v_vanstein
+- partitio_yellowil
+- petrichor
+- phenn_doyoung
+- pius_kang
+- primrose_azelhart
+- redeye
+- reime_oh
+- richard_han
+- rondo_baek
+- rufus_deng
+- saoirse_ryu
+- sazantos_do
+- simeon_ha
+- solon_wi
+- stia_han
+- tanzy_woo
+- tatloch
+- temenos_mistral
+- therion
+- throne_anguis
+- tressa_colzione
+- trish_yamaguchi
+- trousseau
+- vanessa_hysel
+- viator_yoon
+- vide_o_corruptor
+- warden_davids
+- werner_choi
+- xerc_baek
+- yvon_baik
+
+NPCs incompletos (0)
+- Nenhum
+
+Arquivos vazios (0)
+- Nenhum
+
+Arquivos inexistentes (0)
+- Nenhum
+
+Blocos de memória (importados ou preservados) (3)
+- Cenas.md: 0 bloco(s) pendente(s); 125 bloco(s) preservado(s) em CENAS_GERAIS
+- CENAS2.md: 0 bloco(s) pendente(s); 0 bloco(s) preservado(s) em CENAS_GERAIS
+- E-CENAS.md: 0 bloco(s) pendente(s); 487 bloco(s) preservado(s) em CENAS_GERAIS
+
+Inconsistências encontradas (0)
+- Nenhum
+
+Blocos preservados sem associação segura (linhas exatas) (612)
+- Cenas.md: Bloco sem NPC identificado (linhas 12222-12226) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 12227-12230) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 12231-12234) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 12235-12238) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 12239-12242) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 12243-12246) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 12247-12250) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 12251-12254) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 12255-12258) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 12259-12262) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 12263-12266) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 12267-12270) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 12271-12274) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 12275-12278) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 12279-12282) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 12283-12286) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 12287-12290) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 12291-12294) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 12295-12298) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 12299-12302) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 12303-12306) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 12307-12310) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 12311-12314) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 12315-12318) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 12319-12326) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 12327-12330) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 12331-12334) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 12335-12338) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 12339-12342) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 12344-12345) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 12346-12346) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 12347-12347) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 12348-12348) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 12349-12349) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 12350-12350) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 12351-12351) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 12352-12352) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 12353-12353) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 12354-12354) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 12355-12355) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 12356-12356) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 12357-12357) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 12358-12358) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 12359-12359) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 12360-12360) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 12361-12361) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 12362-12362) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 12363-12363) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 12364-12364) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 12365-12365) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 12366-12366) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 12367-12367) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 12368-12368) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 12369-12369) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 12370-12370) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 12371-12371) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 12372-12372) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 12373-12373) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 12374-12377) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 12378-12415) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 12416-12453) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 12454-12473) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 12474-12491) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 12492-12503) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 12504-12529) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 12530-12567) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 12568-12605) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 12606-12643) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 12644-12681) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 12682-12719) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 12720-12723) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 12724-12757) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 12758-12795) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 12796-12833) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 12834-12871) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 12872-12909) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 12910-12947) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 12948-12959) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 12960-12975) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 12976-12985) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 12986-12997) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 12998-13023) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 13024-13061) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 13062-13099) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 13100-13137) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 13138-13175) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 13176-13213) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 13214-13251) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 13252-13289) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 13290-13327) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 13328-13365) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 13366-13403) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 13404-13441) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 13442-13479) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 13480-13519) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 13520-13523) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 13524-13527) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 13528-13531) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 13532-13535) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 13536-13539) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 13540-13543) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 13544-13547) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 13548-13551) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 13552-13555) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 13556-13559) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 13560-13563) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 13564-13567) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 13568-13571) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 13572-13575) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 13576-13581) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 13582-13585) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 13586-13589) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 13590-13593) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 13594-13597) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 13598-13601) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 13602-13605) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 13606-13609) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 13610-13613) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 13614-13617) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 13618-13621) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 13622-13625) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 13626-13629) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 13630-13633) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 13634-13637) — preservado em CENAS_GERAIS.md
+- Cenas.md: Bloco sem NPC identificado (linhas 13638-13639) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 10086-10086) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 10195-10195) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 10225-10226) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 10301-10302) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 10401-10402) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 10406-10406) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 10570-10570) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 10611-10612) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 10712-10712) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 10738-10738) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 10984-10984) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 11027-11027) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 11133-11134) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 11154-11154) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 11336-11336) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 11546-11547) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 11647-11647) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 11812-11812) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 11855-11855) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 11977-11977) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 12067-12068) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 1218-1219) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 12475-12475) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 12479-12480) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 12580-12580) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 12687-12687) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 12793-12794) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 12999-13000) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 13100-13100) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 13134-13134) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 1319-1319) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 13209-13209) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 1361-1361) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 13621-13621) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 13721-13721) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 13787-13787) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 13934-13935) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 13955-13955) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 14137-14137) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 14347-14348) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 14448-14448) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 14611-14611) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 14655-14655) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 14777-14777) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 14867-14868) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 15073-15073) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 15109-15109) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 1526-1526) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 15279-15279) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 15283-15284) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 15384-15384) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 15604-15604) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 15800-15801) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 15901-15901) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 15935-15935) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 16262-16262) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 16314-16314) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 16752-16752) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 16828-16828) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 17039-17040) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 17084-17084) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 17247-17247) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 17251-17251) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 1732-1732) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 17457-17457) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 17572-17572) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 17746-17748) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 17752-17753) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 17759-17761) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 17765-17767) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 17773-17775) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 17779-17781) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 17806-17806) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 17831-17833) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 17837-17839) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 17845-17847) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 17851-17851) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 17855-17855) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 17861-17863) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 17867-17869) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 17881-17883) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 17889-17891) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 17895-17897) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 17903-17905) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 17909-17911) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 17917-17919) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 17923-17923) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 17927-17928) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 17934-17936) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 17940-17941) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 17947-17949) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 17953-17955) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 17961-17963) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 17967-17969) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 17975-17977) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 17981-17982) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 17994-17996) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 18002-18004) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 18016-18018) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 18022-18024) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 18030-18032) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 18036-18037) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 18043-18045) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 18049-18051) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 18057-18059) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 18063-18064) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 18154-18155) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 18209-18211) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 18215-18217) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 18223-18225) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 18229-18231) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 18265-18265) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 18274-18275) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 18281-18283) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 18287-18289) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 18295-18297) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 18301-18303) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 18315-18316) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 18322-18324) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 18328-18330) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 18336-18338) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 18342-18344) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 18350-18352) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 18356-18358) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 18364-18366) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 18370-18372) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 18378-18380) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 18384-18386) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 18392-18394) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 18398-18400) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 18406-18408) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 18412-18414) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 18426-18428) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 18434-18436) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 18448-18450) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 18454-18456) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 18462-18464) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 18468-18470) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 18476-18478) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 18482-18484) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 18488-18488) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 18492-18494) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 18498-18500) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 18506-18508) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 18512-18514) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 1854-1854) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 18609-18609) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 18645-18647) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 18651-18653) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 18659-18661) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 18665-18667) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 18673-18675) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 18679-18681) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 18687-18689) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 18693-18695) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 18701-18703) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 18707-18709) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 18715-18717) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 18721-18721) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 18725-18726) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 18732-18734) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 18738-18740) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 18760-18762) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 18766-18768) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 18774-18776) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 18780-18782) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 18794-18796) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 18802-18804) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 18816-18818) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 18822-18824) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 18830-18832) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 18836-18836) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 18840-18841) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 18847-18849) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 18853-18855) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 18861-18863) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 18867-18869) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 18875-18877) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 18881-18883) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 18909-18911) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 18931-18933) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 18937-18939) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 18951-18951) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 19152-19153) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 19184-19184) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 19270-19272) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 19276-19277) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 19297-19299) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 19303-19304) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 19323-19325) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 19329-19330) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 19363-19365) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 19369-19371) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 19377-19379) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 19383-19385) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 19391-19393) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 19397-19398) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 19404-19406) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 19410-19411) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 19417-19417) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 19421-19422) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 19426-19427) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 19433-19435) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 19439-19441) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 1944-1945) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 19453-19455) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 19480-19482) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 19507-19509) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 19528-19530) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 19534-19535) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 19541-19543) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 19547-19548) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 19649-19649) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 19692-19694) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 19698-19700) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 19706-19710) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 19729-19731) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 19911-19913) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 19917-19919) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 19925-19927) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 19931-19933) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 19939-19941) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 19945-19947) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 19953-19955) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 19959-19961) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 19967-19969) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 19973-19975) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 19981-19983) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 19987-19989) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 20009-20011) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 20023-20025) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 20029-20031) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 20037-20039) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 20043-20045) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 20051-20053) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 20057-20059) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 20065-20067) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 20071-20073) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 20085-20087) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 20116-20118) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 20124-20127) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 20133-20135) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 20407-20407) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 20432-20432) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 20454-20455) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 20629-20629) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 20921-20922) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 20958-20958) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 21124-21124) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 21229-21229) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 21287-21287) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 21442-21443) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 21643-21643) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 21781-21781) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 2183-2183) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 21855-21856) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 22111-22111) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 22162-22162) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 22372-22373) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 22441-22441) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 2251-2251) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 22606-22606) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 22786-22787) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 22887-22887) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 22994-22994) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 23100-23101) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 23266-23266) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 23308-23309) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 23409-23409) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 23435-23435) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 2349-2349) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 2360-2360) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 23762-23762) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 23822-23822) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 23928-23928) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 24034-24035) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 24256-24256) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 24340-24340) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 24447-24447) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 24553-24554) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 24590-24590) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 2466-2467) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 24756-24756) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 24918-24918) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 24968-24969) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 25069-25069) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 2519-2519) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 25274-25274) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 25412-25412) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 25486-25487) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 25904-25904) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 25996-25996) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 26070-26070) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 26234-26234) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 26414-26415) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 26515-26515) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 26622-26622) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 26728-26729) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 26895-26895) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 26931-26931) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 2878-2879) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 295-297) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 2979-2979) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 3013-3013) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 3088-3088) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 3342-3342) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 336-338) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 3394-3394) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 3604-3605) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 3673-3673) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 3838-3838) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 392-393) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 4018-4019) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 4119-4119) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 4169-4169) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 4331-4331) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 4335-4335) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 4499-4499) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 4541-4541) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 4647-4648) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 4668-4668) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 4850-4850) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 4996-4996) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 5062-5063) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 5163-5163) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 5328-5328) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 5372-5372) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 5494-5494) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 5578-5578) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 5685-5685) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 5791-5792) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 5828-5828) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 596-596) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 5994-5994) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 6156-6156) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 6206-6207) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 6307-6307) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 6414-6414) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 6516-6516) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 6654-6654) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 6722-6722) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 6820-6820) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 6831-6831) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 6937-6938) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 6990-6990) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 702-702) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 7243-7243) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 7317-7317) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 7352-7352) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 7458-7459) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 7487-7487) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 7657-7657) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 7661-7661) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 8025-8027) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 8031-8032) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 8038-8040) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 8044-8046) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 8052-8054) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 8058-8060) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 808-809) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 8113-8114) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 8120-8122) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 8126-8127) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 8133-8135) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 8139-8141) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 8153-8154) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 8160-8162) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 8166-8168) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 8174-8176) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 8180-8182) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 8188-8190) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 8194-8196) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 8202-8204) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 8208-8210) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 8216-8218) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 8222-8224) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 8228-8228) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 8232-8234) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 8238-8240) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 8246-8248) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 8252-8254) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 8266-8268) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 8274-8276) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 8288-8290) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 8294-8296) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 8302-8304) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 8308-8310) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 8316-8318) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 8322-8324) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 8328-8328) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 8332-8334) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 8338-8340) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 8346-8348) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 8352-8354) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 8358-8358) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 8364-8366) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 8370-8372) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 8378-8380) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 8384-8386) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 8392-8394) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 8398-8400) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 8406-8408) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 8412-8414) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 8434-8436) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 8440-8442) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 8448-8448) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 8452-8453) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 8457-8459) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 8471-8473) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 8485-8486) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 8492-8494) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 8498-8500) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 8506-8508) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 8512-8514) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 8520-8522) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 8526-8528) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 8534-8536) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 8540-8542) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 8548-8552) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 8628-8630) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 8634-8636) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 8642-8644) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 8648-8650) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 8656-8658) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 8662-8664) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 8670-8672) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 8676-8678) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 8684-8686) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 8690-8692) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 8698-8700) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 8704-8706) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 8712-8714) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 8718-8720) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 8726-8728) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 8732-8734) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 8740-8742) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 8754-8756) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 8760-8762) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 8784-8784) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 8899-8899) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 8983-8985) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 9005-9007) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 9019-9021) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 9025-9027) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 9033-9035) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 9039-9040) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 9046-9048) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 9052-9054) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 9058-9058) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 9064-9066) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 9070-9072) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 9078-9080) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 9084-9086) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 9092-9094) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 9098-9099) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 9105-9107) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 9111-9112) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 9124-9125) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 9135-9136) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 9140-9142) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 9202-9204) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 9208-9209) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 9215-9217) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 9221-9222) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 9228-9230) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 9234-9236) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 9242-9244) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 9257-9259) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 9263-9264) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 9270-9272) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 9276-9278) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 9284-9286) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 9290-9292) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 9298-9300) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 9304-9306) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 9312-9314) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 9318-9319) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 9325-9327) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 9331-9332) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 9569-9569) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 9779-9780) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 9880-9880) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 9884-9886) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 9892-9894) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 9900-9902) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 9906-9906) — preservado em CENAS_GERAIS.md
+- E-CENAS.md: Bloco sem NPC identificado (linhas 9986-9987) — preservado em CENAS_GERAIS.md
+
+Problemas restantes (0)
+- Nenhum
+
+PROJETO PRONTO PARA TREINAMENTO DA LORA?
+SIM
+
+Segunda verificação concluída sem impedimentos estruturais.

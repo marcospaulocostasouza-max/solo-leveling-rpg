@@ -1,0 +1,42 @@
+{
+  "id": "sazantos_do",
+  "papel": "Herói",
+  "base_em": "Sazantos (Champions of the Continent)",
+  "nome": "Sazantos Do",
+  "idade": "40",
+  "nacionalidade": "Sul-coreano, guardião voluntário das trilhas de Wishvale",
+  "aparencia": "Corpo musculoso marcado por queimaduras antigas, cabelos ruivos grisalhos curtos, veste armadura reforçada com placas resistentes ao fogo.",
+  "altura_peso": "1,89m / 96kg",
+  "personalidade": "Silencioso e observador, prefere agir a explicar suas motivações. Trata a proteção de rotas como um dever sagrado.",
+  "historia": "Guardião voluntário que protege sozinho as trilhas de acesso a Wishvale. Seu Despertar aconteceu durante um incêndio florestal quando conteve as chamas usando seu próprio corpo.",
+  "classe": "Lutador",
+  "classe_avancada": "Hrymir",
+  "rank": "S",
+  "nivel": 94,
+  "estilo_luta": "Proficiência em Lanças",
+  "atributos": {
+    "forca": 84,
+    "resistencia": 78,
+    "velocidade": 55,
+    "sentidos": 70,
+    "inteligencia": 40,
+    "poder_magico": 45
+  },
+  "elemento": "Fogo",
+  "habilidade_unica": "Escudo Vivo das Trilhas — aparece instantaneamente para bloquear um ataque fatal direcionado a um aliado, absorvendo o dano por completo uma vez por batalha.",
+  "titulo": "O Guardião Silencioso das Trilhas",
+  "equipamentos": {
+    "arma": "Lança Envolta em Correntes Aquecidas",
+    "itens": "Armadura Resistente ao Fogo, Marcas de Queimadura Antigas, Bússola das Trilhas"
+  },
+  "tecnicas": [
+    "Investida Flamejante",
+    "Escudo das Correntes",
+    "Golpe do Guardião"
+  ],
+  "formaFalar": "Fala com determinação e honra, valorizando a força e a coragem. Suas palavras são firmes e inspiradoras.",
+  "localizacao": "Coreia do Sul",
+  "profissao": "Caçador(a) Lutador",
+  "objetivos": "Proteger os inocentes, evoluir como caçador e desvendar os mistérios dos portais.",
+  "valores": "A vida é preciosa. A coragem é essencial. A lealdade é inegociável."
+}

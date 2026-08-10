@@ -1,0 +1,3488 @@
+[
+  {
+    "id": 1,
+    "nome": "Presença Calculado.",
+    "categoria": "Geral",
+    "descricao": "Após bloquear um golpe com sucesso, aliados próximos recebem +8% de resistência por um turno.",
+    "condicao": "Sobreviva a cinco investidas de um chefe de rank superior."
+  },
+  {
+    "id": 2,
+    "nome": "Fôlego Inabalável.",
+    "categoria": "Geral",
+    "descricao": "Sempre que o jogador utilizar um item de cura, a agilidade do jogador aumenta em 8% por um turno. Além disso,\na agilidade do jogador aumenta em 20% por um turno.",
+    "condicao": "Sobreviva a cinco investidas de um chefe de rank superior."
+  },
+  {
+    "id": 5,
+    "nome": "O Salto do Adormecido.",
+    "categoria": "Geral",
+    "descricao": "Quando o jogador executa um ataque crítico, o jogador ganha 8% de chance adicional de acerto crítico no\npróximo turno.",
+    "condicao": "Sobreviva ao colapso de uma masmorra escapando antes do fechamento do portal."
+  },
+  {
+    "id": 7,
+    "nome": "Instinto de Ímpeto.",
+    "categoria": "Geral",
+    "descricao": "Quando o jogador recebe cura de um aliado, o jogador ganha 30% de chance adicional de acerto crítico no\npróximo turno.",
+    "condicao": "Termine uma dungeon narrada sendo o primeiro a detectar o chefe."
+  },
+  {
+    "id": 8,
+    "nome": "Instinto de Vínculo.",
+    "categoria": "Geral",
+    "descricao": "Sempre que o jogador utilizar um item de cura, o jogador ganha um escudo temporário equivalente a 20% de sua",
+    "condicao": "Sobreviva a cinco investidas de um chefe de rank superior."
+  },
+  {
+    "id": 9,
+    "nome": "Marca da Frio.",
+    "categoria": "Geral",
+    "descricao": "Após recuar estrategicamente de uma luta desfavorável, a resistência física do usuário aumenta em 30% pelos\npróximos dois turnos.",
+    "condicao": "Termine uma dungeon narrada sendo o primeiro a detectar o chefe."
+  },
+  {
+    "id": 10,
+    "nome": "Selo do Ardente.",
+    "categoria": "Geral",
+    "descricao": "Após recuar estrategicamente de uma luta desfavorável, o alcance dos sentidos do usuário aumenta\ntemporariamente em 8%. Além disso, o alcance dos sentidos do usuário aumenta temporariamente em 10%.",
+    "condicao": "Realize dez transações comerciais bem-sucedidas com outros jogadores."
+  },
+  {
+    "id": 11,
+    "nome": "Selo da Espectral.",
+    "categoria": "Geral",
+    "descricao": "Ao ser o responsável por abrir a luta contra um chefe, o alcance dos sentidos do usuário aumenta\ntemporariamente em 20%. Além disso, a resistência física do usuário aumenta em 15% pelos próximos dois\nturnos.",
+    "condicao": "Resista a cinco efeitos de status distintos ao longo de uma campanha."
+  },
+  {
+    "id": 12,
+    "nome": "Instância Perfeito.",
+    "categoria": "Geral",
+    "descricao": "-- 2 of 63 --\n\nApós vencer um combate sem receber nenhum dano, o jogador ignora 15% da resistência do alvo no próximo\nataque. Além disso, a agilidade do jogador aumenta em 8% por um turno.",
+    "condicao": "Finalize cinco combates consecutivos sem ser atingido uma única vez."
+  },
+  {
+    "id": 13,
+    "nome": "Selo da Ardente.",
+    "categoria": "Geral",
+    "descricao": "Após resistir com sucesso a um efeito de status negativo, o jogador ganha 15% de chance adicional de acerto\ncrítico no próximo turno.",
+    "condicao": "Adquira esta passiva ao permanecer como último sobrevivente em três ocasiões distintas."
+  },
+  {
+    "id": 14,
+    "nome": "Assinatura da Errático.",
+    "categoria": "Geral",
+    "descricao": "Sempre que o jogador for o primeiro a agir em um combate, o usuário se torna 25% mais difícil de ser detectado\npor um turno.",
+    "condicao": "Complete uma masmorra sorteada sozinho, sem apoio de aliados."
+  },
+  {
+    "id": 15,
+    "nome": "Vingativo Sopro.",
+    "categoria": "Geral",
+    "descricao": "Sempre que o jogador for o primeiro a agir em um combate, o dano do próximo ataque realizado é aumentado em\n5%.",
+    "condicao": "Realize dez transações comerciais bem-sucedidas com outros jogadores."
+  },
+  {
+    "id": 16,
+    "nome": "Chama Radiante.",
+    "categoria": "Geral",
+    "descricao": "Sempre que um aliado próximo for derrubado em combate, a agilidade do jogador aumenta em 20% por um turno.",
+    "condicao": "Sobreviva a uma emboscada sem perder nenhum aliado."
+  },
+  {
+    "id": 17,
+    "nome": "Selo do Amaldiçoado.",
+    "categoria": "Geral",
+    "descricao": "Ao ser o responsável por abrir a luta contra um chefe, aliados próximos recebem +25% de resistência por um\nturno.",
+    "condicao": "Finalize cinco combates consecutivos sem ser atingido uma única vez."
+  },
+  {
+    "id": 21,
+    "nome": "Vínculo Rebelde.",
+    "categoria": "Geral",
+    "descricao": "Sempre que finalizar um combate como o único ileso do grupo, o próximo ataque recebido tem seu dano reduzido\nem 30%.",
+    "condicao": "Complete dez dungeons utilizando somente uma arma específica."
+  },
+  {
+    "id": 23,
+    "nome": "Instinto de Instinto.",
+    "categoria": "Geral",
+    "descricao": "Quando o jogador recebe cura de um aliado, o alcance dos sentidos do usuário aumenta temporariamente em\n8%.",
+    "condicao": "Vença uma disputa de guilda estando em desvantagem numérica."
+  },
+  {
+    "id": 24,
+    "nome": "Pulso da Puro.",
+    "categoria": "Geral",
+    "descricao": "Sempre que atacar um inimigo já debilitado, o dano do próximo ataque realizado é aumentado em 20%.\n\n-- 3 of 63 --",
+    "condicao": "Sobreviva ao colapso de uma masmorra escapando antes do fechamento do portal."
+  },
+  {
+    "id": 25,
+    "nome": "Sombrio Presença.",
+    "categoria": "Geral",
+    "descricao": "Após vencer um combate sem receber nenhum dano, o jogador ganha 30% de chance adicional de acerto crítico\nno próximo turno.",
+    "condicao": "Vença dez combates um contra um."
+  },
+  {
+    "id": 26,
+    "nome": "O Segunda Chance do Errático.",
+    "categoria": "Geral",
+    "descricao": "Após vencer um combate sem receber nenhum dano, o tempo de recarga da última habilidade usada é reduzido\nem 20%.",
+    "condicao": "Derrote um chefe de masmorra causando o maior dano do grupo."
+  },
+  {
+    "id": 28,
+    "nome": "Elo Rebelde.",
+    "categoria": "Geral",
+    "descricao": "Ao permanecer em combate por mais de cinco turnos seguidos, o alcance dos sentidos do usuário aumenta\ntemporariamente em 8%.",
+    "condicao": "Alcance o rank C sem nunca recuar de um combate iniciado."
+  },
+  {
+    "id": 29,
+    "nome": "A Cicatriz da Vingativo.",
+    "categoria": "Geral",
+    "descricao": "Após bloquear um golpe com sucesso, o jogador ignora 25% da resistência do alvo no próximo ataque.",
+    "condicao": "Termine três dungeons sem que nenhum membro do grupo seja derrubado."
+  },
+  {
+    "id": 31,
+    "nome": "Rebelde Elo.",
+    "categoria": "Geral",
+    "descricao": "Ao completar três esquivas consecutivas, o jogador ganha 10% de chance adicional de acerto crítico no próximo\nturno. Além disso, o jogador ganha 5% de chance adicional de acerto crítico no próximo turno.",
+    "condicao": "Complete uma masmorra sorteada sozinho, sem apoio de aliados."
+  },
+  {
+    "id": 32,
+    "nome": "Passo Persistente.",
+    "categoria": "Geral",
+    "descricao": "Ao ser alvo de uma habilidade de controle ou imobilização, o dano do próximo ataque realizado é aumentado em\n15%.",
+    "condicao": "Realize dez transações comerciais bem-sucedidas com outros jogadores."
+  },
+  {
+    "id": 33,
+    "nome": "Radiante Assinatura.",
+    "categoria": "Geral",
+    "descricao": "Ao desviar completamente de um ataque inimigo, o usuário se torna 20% mais difícil de ser detectado por um\nturno.",
+    "condicao": "Realize dez transações comerciais bem-sucedidas com outros jogadores."
+  },
+  {
+    "id": 35,
+    "nome": "Contido Sopro.",
+    "categoria": "Geral",
+    "descricao": "Sempre que um aliado próximo for derrubado em combate, o próximo ataque recebido tem seu dano reduzido em\n8%.",
+    "condicao": "Sobreviva a uma emboscada sem perder nenhum aliado."
+  },
+  {
+    "id": 36,
+    "nome": "Instinto de Runa.",
+    "categoria": "Geral",
+    "descricao": "Quando o jogador se torna o último sobrevivente de seu grupo, o jogador ignora 8% da resistência do alvo no\npróximo ataque.",
+    "condicao": "Sobreviva a cinco investidas de um chefe de rank superior.\n\n-- 4 of 63 --"
+  },
+  {
+    "id": 38,
+    "nome": "Instinto de Brasa.",
+    "categoria": "Geral",
+    "descricao": "Sempre que enfrentar um inimigo de rank superior ao seu, o dano do próximo ataque realizado é aumentado em\n15%.",
+    "condicao": "Complete uma GVG protegendo o cristal da guilda sem que ele seja destruído."
+  },
+  {
+    "id": 39,
+    "nome": "Instinto de Escudo.",
+    "categoria": "Geral",
+    "descricao": "Ao ser o responsável por abrir a luta contra um chefe, o usuário se torna 15% mais difícil de ser detectado por um\nturno.",
+    "condicao": "Alcance o rank C sem nunca recuar de um combate iniciado."
+  },
+  {
+    "id": 40,
+    "nome": "Assinatura Desesperado.",
+    "categoria": "Geral",
+    "descricao": "Após resistir com sucesso a um efeito de status negativo, o próximo ataque recebido tem seu dano reduzido em\n20%. Além disso, a agilidade do jogador aumenta em 8% por um turno.",
+    "condicao": "Termine três dungeons sem que nenhum membro do grupo seja derrubado."
+  },
+  {
+    "id": 41,
+    "nome": "Brutal Vínculo.",
+    "categoria": "Geral",
+    "descricao": "Após recuar estrategicamente de uma luta desfavorável, o alcance dos sentidos do usuário aumenta\ntemporariamente em 20%. Além disso, o próximo ataque recebido tem seu dano reduzido em 8%.",
+    "condicao": "Proteja um aliado recebendo dano fatal em seu lugar por três vezes."
+  },
+  {
+    "id": 42,
+    "nome": "Selo da Fatal.",
+    "categoria": "Geral",
+    "descricao": "Ao permanecer imóvel por dois turnos consecutivos, o alcance dos sentidos do usuário aumenta temporariamente\nem 12%. Além disso, o jogador ganha 15% de chance adicional de acerto crítico no próximo turno.",
+    "condicao": "Finalize cinco combates consecutivos sem ser atingido uma única vez."
+  },
+  {
+    "id": 48,
+    "nome": "Última Linha Perfeito.",
+    "categoria": "Geral",
+    "descricao": "Sempre que matar um monstro com um único golpe, o jogador ganha 25% de chance adicional de acerto crítico\nno próximo turno.",
+    "condicao": "Vença uma disputa de guilda estando em desvantagem numérica.\n\n-- 5 of 63 --"
+  },
+  {
+    "id": 49,
+    "nome": "Instinto de Fôlego.",
+    "categoria": "Geral",
+    "descricao": "Após recuar estrategicamente de uma luta desfavorável, o dano do próximo ataque realizado é aumentado em\n8%.",
+    "condicao": "Vença uma disputa de guilda estando em desvantagem numérica."
+  },
+  {
+    "id": 51,
+    "nome": "A Instinto da Corrompido.",
+    "categoria": "Geral",
+    "descricao": "Ao desviar completamente de um ataque inimigo, o usuário recebe +5% em todos os atributos base até o fim do\ncombate.",
+    "condicao": "Complete uma GVG protegendo o cristal da guilda sem que ele seja destruído."
+  },
+  {
+    "id": 52,
+    "nome": "Amaldiçoado Segunda Chance.",
+    "categoria": "Geral",
+    "descricao": "Após acertar três ataques seguidos no mesmo alvo, o próximo ataque recebido tem seu dano reduzido em 8%.",
+    "condicao": "Adquira esta passiva ao permanecer como último sobrevivente em três ocasiões distintas."
+  },
+  {
+    "id": 53,
+    "nome": "Instinto de Presença.",
+    "categoria": "Geral",
+    "descricao": "Quando o jogador recebe cura de um aliado, o tempo de recarga da última habilidade usada é reduzido em 12%.",
+    "condicao": "Sobreviva a uma emboscada sem perder nenhum aliado."
+  },
+  {
+    "id": 54,
+    "nome": "O Presença do Desesperado.",
+    "categoria": "Geral",
+    "descricao": "Ao desviar completamente de um ataque inimigo, aliados próximos recebem +10% de resistência por um turno.\nAlém disso, a agilidade do jogador aumenta em 10% por um turno.",
+    "condicao": "Resista a cinco efeitos de status distintos ao longo de uma campanha."
+  },
+  {
+    "id": 56,
+    "nome": "A Pulso da Vingativo.",
+    "categoria": "Geral",
+    "descricao": "Ao marcar ou identificar um alvo pela primeira vez, o usuário recebe +15% em todos os atributos base até o fim\ndo combate.",
+    "condicao": "Sobreviva a uma emboscada sem perder nenhum aliado."
+  },
+  {
+    "id": 59,
+    "nome": "O Instinto do Trovejante.",
+    "categoria": "Geral",
+    "descricao": "Quando o jogador recebe cura de um aliado, o alcance dos sentidos do usuário aumenta temporariamente em\n12%. Além disso, aliados próximos recebem +20% de resistência por um turno.",
+    "condicao": "Complete uma masmorra sorteada sozinho, sem apoio de aliados."
+  },
+  {
+    "id": 60,
+    "nome": "Sopro Preciso.",
+    "categoria": "Geral",
+    "descricao": "Ao permanecer em combate por mais de cinco turnos seguidos, aliados próximos recebem +25% de resistência\npor um turno.",
+    "condicao": "Alcance o rank B mantendo o maior número de vitórias solo da temporada."
+  },
+  {
+    "id": 61,
+    "nome": "Olhar Adormecido.",
+    "categoria": "Geral",
+    "descricao": "-- 6 of 63 --\n\nSempre que o jogador for atingido por um ataque físico, o usuário recebe +10% em todos os atributos base até o\nfim do combate.",
+    "condicao": "Finalize uma GVG sendo o responsável por derrubar o boss inimigo primeiro."
+  },
+  {
+    "id": 62,
+    "nome": "Retaliação Espectral.",
+    "categoria": "Geral",
+    "descricao": "Ao causar dano em um inimigo pelas costas, o jogador ganha 12% de chance adicional de acerto crítico no\npróximo turno.",
+    "condicao": "Vença dez combates um contra um."
+  },
+  {
+    "id": 63,
+    "nome": "Selo do Abençoado.",
+    "categoria": "Geral",
+    "descricao": "Ao ser alvo de uma habilidade de controle ou imobilização, o jogador ignora 8% da resistência do alvo no próximo\nataque.",
+    "condicao": "Proteja um aliado recebendo dano fatal em seu lugar por três vezes."
+  },
+  {
+    "id": 64,
+    "nome": "Selo da Inabalável.",
+    "categoria": "Geral",
+    "descricao": "Quando o jogador se torna o último sobrevivente de seu grupo, aliados próximos recebem +25% de resistência\npor um turno. Além disso, o jogador ignora 10% da resistência do alvo no próximo ataque.",
+    "condicao": "Sobreviva a cinco investidas de um chefe de rank superior."
+  },
+  {
+    "id": 65,
+    "nome": "Instinto de Guarda.",
+    "categoria": "Geral",
+    "descricao": "Sempre que um aliado próximo for derrubado em combate, a resistência física do usuário aumenta em 15% pelos\npróximos dois turnos.",
+    "condicao": "Complete dez dungeons utilizando somente uma arma específica."
+  },
+  {
+    "id": 66,
+    "nome": "Rugido Desperto.",
+    "categoria": "Geral",
+    "descricao": "Quando o jogador se torna o último sobrevivente de seu grupo, o usuário recebe +30% em todos os atributos\nbase até o fim do combate. Além disso, o tempo de recarga da última habilidade usada é reduzido em 5%.",
+    "condicao": "Alcance o rank C sem nunca recuar de um combate iniciado."
+  },
+  {
+    "id": 67,
+    "nome": "Instinto de Chama.",
+    "categoria": "Geral",
+    "descricao": "Quando o jogador recebe cura de um aliado, o próximo ataque recebido tem seu dano reduzido em 30%.",
+    "condicao": "Finalize uma GVG sendo o responsável por derrubar o boss inimigo primeiro."
+  },
+  {
+    "id": 68,
+    "nome": "Gélida Persistente.",
+    "categoria": "Geral",
+    "descricao": "Após acertar três ataques seguidos no mesmo alvo, o próximo ataque recebido tem seu dano reduzido em 5%.\nAlém disso, aliados próximos recebem +5% de resistência por um turno.",
+    "condicao": "Alcance o rank B mantendo o maior número de vitórias solo da temporada."
+  },
+  {
+    "id": 70,
+    "nome": "Instinto de Rugido.",
+    "categoria": "Geral",
+    "descricao": "Ao permanecer em combate por mais de cinco turnos seguidos, o alcance dos sentidos do usuário aumenta\ntemporariamente em 15%.",
+    "condicao": "Derrote um chefe de masmorra causando o maior dano do grupo."
+  },
+  {
+    "id": 72,
+    "nome": "Selo da Brutal.",
+    "categoria": "Geral",
+    "descricao": "Ao entrar em uma masmorra pela primeira vez, a agilidade do jogador aumenta em 20% por um turno. Além\ndisso, o usuário recebe +10% em todos os atributos base até o fim do combate.",
+    "condicao": "Sobreviva a uma emboscada sem perder nenhum aliado."
+  },
+  {
+    "id": 73,
+    "nome": "Trovejante Vínculo.",
+    "categoria": "Geral",
+    "descricao": "-- 7 of 63 --\n\nApós recuar estrategicamente de uma luta desfavorável, o usuário recebe +15% em todos os atributos base até o\nfim do combate. Além disso, a agilidade do jogador aumenta em 5% por um turno.",
+    "condicao": "Finalize cinco combates consecutivos sem ser atingido uma única vez."
+  },
+  {
+    "id": 74,
+    "nome": "Selo da Frio.",
+    "categoria": "Geral",
+    "descricao": "aliados próximos recebem +5% de resistência por um turno.",
+    "condicao": "Complete dez dungeons utilizando somente uma arma específica."
+  },
+  {
+    "id": 75,
+    "nome": "Escudo da Calculado.",
+    "categoria": "Geral",
+    "descricao": "Sempre que o jogador utilizar um item de cura, o jogador ganha 20% de chance adicional de acerto crítico no\npróximo turno. Além disso, o jogador ignora 10% da resistência do alvo no próximo ataque.",
+    "condicao": "Adquira esta passiva ao permanecer como último sobrevivente em três ocasiões distintas."
+  },
+  {
+    "id": 76,
+    "nome": "Passo Trovejante.",
+    "categoria": "Geral",
+    "descricao": "Ao desviar completamente de um ataque inimigo, o usuário se torna 25% mais difícil de ser detectado por um\nturno.",
+    "condicao": "Complete uma masmorra sorteada sozinho, sem apoio de aliados."
+  },
+  {
+    "id": 77,
+    "nome": "Instância Preciso.",
+    "categoria": "Geral",
+    "descricao": "Após acertar três ataques seguidos no mesmo alvo, o usuário se torna 10% mais difícil de ser detectado por um\nturno. Além disso, a resistência física do usuário aumenta em 15% pelos próximos dois turnos.",
+    "condicao": "Complete dez dungeons utilizando somente uma arma específica."
+  },
+  {
+    "id": 78,
+    "nome": "Selo da Radiante.",
+    "categoria": "Geral",
+    "descricao": "Ao causar dano em um inimigo pelas costas, o dano do próximo ataque realizado é aumentado em 15%.",
+    "condicao": "Finalize cinco combates consecutivos sem ser atingido uma única vez."
+  },
+  {
+    "id": 79,
+    "nome": "Pulso Selvagem.",
+    "categoria": "Geral",
+    "descricao": "Após vencer um combate sem receber nenhum dano, o jogador ganha 30% de chance adicional de acerto crítico\nno próximo turno.",
+    "condicao": "Termine uma dungeon narrada sendo o primeiro a detectar o chefe."
+  },
+  {
+    "id": 80,
+    "nome": "Espectral Cicatriz.",
+    "categoria": "Geral",
+    "descricao": "Ao completar três esquivas consecutivas, o dano do próximo ataque realizado é aumentado em 12%. Além disso,\no jogador ganha 10% de chance adicional de acerto crítico no próximo turno.",
+    "condicao": "Termine três dungeons sem que nenhum membro do grupo seja derrubado."
+  },
+  {
+    "id": 83,
+    "nome": "Desperto Postura.",
+    "categoria": "Geral",
+    "descricao": "Sempre que o jogador for o primeiro a agir em um combate, o jogador ganha 12% de chance adicional de acerto\ncrítico no próximo turno. Além disso, a agilidade do jogador aumenta em 8% por um turno.",
+    "condicao": "Finalize cinco combates consecutivos sem ser atingido uma única vez."
+  },
+  {
+    "id": 84,
+    "nome": "Cicatriz da Espectral.",
+    "categoria": "Geral",
+    "descricao": "Sempre que finalizar um combate como o único ileso do grupo, aliados próximos recebem +5% de resistência por\num turno. Além disso, o tempo de recarga da última habilidade usada é reduzido em 15%.",
+    "condicao": "Vença vinte combates utilizando apenas contra-ataques."
+  },
+  {
+    "id": 85,
+    "nome": "Reflexo Coroado.",
+    "categoria": "Geral",
+    "descricao": "-- 8 of 63 --\n\nApós resistir com sucesso a um efeito de status negativo, o usuário se torna 30% mais difícil de ser detectado por\num turno.",
+    "condicao": "Proteja um aliado recebendo dano fatal em seu lugar por três vezes."
+  },
+  {
+    "id": 86,
+    "nome": "Fantasma Sopro.",
+    "categoria": "Geral",
+    "descricao": "Sempre que enfrentar um inimigo de rank superior ao seu, o alcance dos sentidos do usuário aumenta\ntemporariamente em 8%.",
+    "condicao": "Termine uma dungeon narrada sendo o primeiro a detectar o chefe."
+  },
+  {
+    "id": 88,
+    "nome": "Rugido da Brutal.",
+    "categoria": "Geral",
+    "descricao": "Sempre que enfrentar um inimigo de rank superior ao seu, o alcance dos sentidos do usuário aumenta\ntemporariamente em 25%.",
+    "condicao": "Finalize uma GVG sendo o responsável por derrubar o boss inimigo primeiro."
+  },
+  {
+    "id": 89,
+    "nome": "Instinto de Gélida.",
+    "categoria": "Geral",
+    "descricao": "Após interromper a habilidade de um inimigo, o dano do próximo ataque realizado é aumentado em 25%. Além\ndisso, o usuário recebe +20% em todos os atributos base até o fim do combate.",
+    "condicao": "Vença dez combates um contra um."
+  },
+  {
+    "id": 90,
+    "nome": "Última Linha da Brutal.",
+    "categoria": "Geral",
+    "descricao": "Sempre que matar um monstro com um único golpe, o alcance dos sentidos do usuário aumenta temporariamente\nem 12%.",
+    "condicao": "Proteja um aliado recebendo dano fatal em seu lugar por três vezes."
+  },
+  {
+    "id": 91,
+    "nome": "Selo da Sombrio.",
+    "categoria": "Geral",
+    "descricao": "Após recuar estrategicamente de uma luta desfavorável, o alcance dos sentidos do usuário aumenta\ntemporariamente em 15%. Além disso, o próximo ataque recebido tem seu dano reduzido em 8%.",
+    "condicao": "Adquira esta passiva ao permanecer como último sobrevivente em três ocasiões distintas."
+  },
+  {
+    "id": 92,
+    "nome": "Selo do Radiante.",
+    "categoria": "Geral",
+    "descricao": "Após acertar três ataques seguidos no mesmo alvo, a resistência física do usuário aumenta em 12% pelos\npróximos dois turnos.",
+    "condicao": "Sobreviva a uma emboscada sem perder nenhum aliado."
+  },
+  {
+    "id": 93,
+    "nome": "Selo da Devastador.",
+    "categoria": "Geral",
+    "descricao": "Após vencer um combate sem receber nenhum dano, o usuário recebe +15% em todos os atributos base até o\nfim do combate.",
+    "condicao": "Alcance o rank B mantendo o maior número de vitórias solo da temporada."
+  },
+  {
+    "id": 94,
+    "nome": "Inabalável Instância.",
+    "categoria": "Geral",
+    "descricao": "Quando o jogador recebe cura de um aliado, o jogador ignora 12% da resistência do alvo no próximo ataque.",
+    "condicao": "Complete dez dungeons utilizando somente uma arma específica."
+  },
+  {
+    "id": 95,
+    "nome": "Coroado Golpe.",
+    "categoria": "Geral",
+    "descricao": "Quando o jogador se torna o último sobrevivente de seu grupo, a agilidade do jogador aumenta em 5% por um\nturno.",
+    "condicao": "Complete uma masmorra sorteada sozinho, sem apoio de aliados."
+  },
+  {
+    "id": 99,
+    "nome": "O Elo do Gélido.",
+    "categoria": "Geral",
+    "descricao": "Ao permanecer em combate por mais de cinco turnos seguidos, o jogador ignora 25% da resistência do alvo no\npróximo ataque. Além disso, o dano do próximo ataque realizado é aumentado em 15%.",
+    "condicao": "Derrote um chefe de masmorra causando o maior dano do grupo."
+  },
+  {
+    "id": 100,
+    "nome": "Salto da Espectral.",
+    "categoria": "Geral",
+    "descricao": "Ao entrar em uma masmorra pela primeira vez, o tempo de recarga da última habilidade usada é reduzido em\n30%. Além disso, o dano do próximo ataque realizado é aumentado em 15%.",
+    "condicao": "Finalize cinco combates consecutivos sem ser atingido uma única vez.\n\n-- 10 of 63 --\n\nGVG (Guilda Vs Guilda)"
+  },
+  {
+    "id": 101,
+    "nome": "Selo do Gélido.",
+    "categoria": "Geral",
+    "descricao": "Após bloquear um golpe com sucesso, o jogador ignora 5% da resistência do alvo no próximo ataque. Além disso,\no usuário se torna 5% mais difícil de ser detectado por um turno.",
+    "condicao": "Sobreviva ao colapso de uma masmorra escapando antes do fechamento do portal."
+  },
+  {
+    "id": 102,
+    "nome": "A Sombra da Puro.",
+    "categoria": "Geral",
+    "descricao": "Sempre que perder um aliado em combate, o usuário recebe +15% em todos os atributos base até o fim do\ncombate.",
+    "condicao": "Sobreviva a uma emboscada sem perder nenhum aliado."
+  },
+  {
+    "id": 103,
+    "nome": "Instinto de Reflexo.",
+    "categoria": "Geral",
+    "descricao": "Após acertar três ataques seguidos no mesmo alvo, o jogador ignora 8% da resistência do alvo no próximo",
+    "condicao": "Vença vinte combates utilizando apenas contra-ataques."
+  },
+  {
+    "id": 104,
+    "nome": "Fôrma da Distorcido.",
+    "categoria": "Geral",
+    "descricao": "Após acertar três ataques seguidos no mesmo alvo, a agilidade do jogador aumenta em 30% por um turno. Além",
+    "condicao": "Vença dez combates um contra um."
+  },
+  {
+    "id": 105,
+    "nome": "Instinto de Sopro.",
+    "categoria": "Geral",
+    "descricao": "próximos dois turnos.",
+    "condicao": "Sobreviva ao colapso de uma masmorra escapando antes do fechamento do portal."
+  },
+  {
+    "id": 106,
+    "nome": "Assinatura Sombrio.",
+    "categoria": "Geral",
+    "descricao": "Ao causar dano em um inimigo pelas costas, o usuário recebe +30% em todos os atributos base até o fim do\ncombate.",
+    "condicao": "Sobreviva a uma emboscada sem perder nenhum aliado."
+  },
+  {
+    "id": 109,
+    "nome": "Instinto de Sombra.",
+    "categoria": "Geral",
+    "descricao": "Ao ser alvo de uma habilidade de controle ou imobilização, a resistência física do usuário aumenta em 15% pelos\npróximos dois turnos.",
+    "condicao": "Alcance o rank C sem nunca recuar de um combate iniciado."
+  },
+  {
+    "id": 111,
+    "nome": "Selo do Ancestral.",
+    "categoria": "Geral",
+    "descricao": "Ao ser alvo de uma habilidade de controle ou imobilização, o dano do próximo ataque realizado é aumentado em\n12%.",
+    "condicao": "Finalize uma GVG sendo o responsável por derrubar o boss inimigo primeiro."
+  },
+  {
+    "id": 112,
+    "nome": "Fôlego Distorcido.",
+    "categoria": "Geral",
+    "descricao": "-- 11 of 63 --\n\nSempre que o jogador for atingido por um ataque físico, o próximo ataque recebido tem seu dano reduzido em\n12%.",
+    "condicao": "Derrote um chefe de masmorra causando o maior dano do grupo."
+  },
+  {
+    "id": 113,
+    "nome": "Olhar Preciso.",
+    "categoria": "Geral",
+    "descricao": "Ao desviar completamente de um ataque inimigo, o dano do próximo ataque realizado é aumentado em 12%.",
+    "condicao": "Derrote um chefe de masmorra causando o maior dano do grupo."
+  },
+  {
+    "id": 114,
+    "nome": "Instinto de Herança.",
+    "categoria": "Geral",
+    "descricao": "Ao ser alvo de uma habilidade de controle ou imobilização, o jogador ignora 5% da resistência do alvo no próximo\nataque. Além disso, o tempo de recarga da última habilidade usada é reduzido em 20%.",
+    "condicao": "Sobreviva ao colapso de uma masmorra escapando antes do fechamento do portal."
+  },
+  {
+    "id": 118,
+    "nome": "Solitário Ímpeto.",
+    "categoria": "Geral",
+    "descricao": "Após resistir com sucesso a um efeito de status negativo, o tempo de recarga da última habilidade usada é\nreduzido em 15%.",
+    "condicao": "Complete dez dungeons utilizando somente uma arma específica."
+  },
+  {
+    "id": 119,
+    "nome": "Assinatura Brutal.",
+    "categoria": "Geral",
+    "descricao": "Quando o jogador recebe cura de um aliado, o tempo de recarga da última habilidade usada é reduzido em 20%.",
+    "condicao": "Vença dez combates um contra um."
+  },
+  {
+    "id": 120,
+    "nome": "Selo da Persistente.",
+    "categoria": "Geral",
+    "descricao": "Após vencer um combate sem receber nenhum dano, o usuário recebe +25% em todos os atributos base até o\nfim do combate.",
+    "condicao": "Adquira esta passiva ao permanecer como último sobrevivente em três ocasiões distintas."
+  },
+  {
+    "id": 121,
+    "nome": "Distorcido Pulso.",
+    "categoria": "Geral",
+    "descricao": "Sempre que o jogador for atingido por um ataque físico, o usuário recebe +10% em todos os atributos base até o\nfim do combate.",
+    "condicao": "Finalize cinco combates consecutivos sem ser atingido uma única vez."
+  },
+  {
+    "id": 124,
+    "nome": "Fôrma Instintivo.",
+    "categoria": "Geral",
+    "descricao": "Ao ser o responsável por abrir a luta contra um chefe, o tempo de recarga da última habilidade usada é reduzido\nem 10%.\n\n-- 12 of 63 --",
+    "condicao": "Proteja um aliado recebendo dano fatal em seu lugar por três vezes."
+  },
+  {
+    "id": 126,
+    "nome": "Perfeito Sopro.",
+    "categoria": "Geral",
+    "descricao": "Ao proteger um aliado recebendo dano em seu lugar, aliados próximos recebem +12% de resistência por um\nturno. Além disso, aliados próximos recebem +20% de resistência por um turno.",
+    "condicao": "Sobreviva a cinco investidas de um chefe de rank superior."
+  },
+  {
+    "id": 127,
+    "nome": "Selo da Ancestral.",
+    "categoria": "Geral",
+    "descricao": "Sempre que perder um aliado em combate, o próximo ataque recebido tem seu dano reduzido em 15%.",
+    "condicao": "Complete dez dungeons utilizando somente uma arma específica."
+  },
+  {
+    "id": 128,
+    "nome": "Instinto Vingativo.",
+    "categoria": "Geral",
+    "descricao": "Sempre que perder um aliado em combate, o próximo ataque recebido tem seu dano reduzido em 30%. Além\ndisso, o jogador ignora 20% da resistência do alvo no próximo ataque.",
+    "condicao": "Termine uma dungeon narrada sendo o primeiro a detectar o chefe."
+  },
+  {
+    "id": 130,
+    "nome": "O Ímpeto do Desesperado.",
+    "categoria": "Geral",
+    "descricao": "Sempre que atacar um inimigo já debilitado, o tempo de recarga da última habilidade usada é reduzido em 8%.\nAlém disso, o usuário se torna 20% mais difícil de ser detectado por um turno.",
+    "condicao": "Finalize cinco combates consecutivos sem ser atingido uma única vez."
+  },
+  {
+    "id": 132,
+    "nome": "Guarda da Fantasma.",
+    "categoria": "Geral",
+    "descricao": "Sempre que perder um aliado em combate, o jogador ignora 15% da resistência do alvo no próximo ataque. Além",
+    "condicao": "Termine uma dungeon narrada sendo o primeiro a detectar o chefe."
+  },
+  {
+    "id": 133,
+    "nome": "Instinto de Eco.",
+    "categoria": "Geral",
+    "descricao": "Sempre que enfrentar um inimigo de rank superior ao seu, o dano do próximo ataque realizado é aumentado em\n20%.",
+    "condicao": "Alcance o rank C sem nunca recuar de um combate iniciado."
+  },
+  {
+    "id": 134,
+    "nome": "O Pulso do Trovejante.",
+    "categoria": "Geral",
+    "descricao": "Sempre que o jogador for o primeiro a agir em um combate, a resistência física do usuário aumenta em 25% pelos",
+    "condicao": "Alcance o rank B mantendo o maior número de vitórias solo da temporada."
+  },
+  {
+    "id": 135,
+    "nome": "Recuo da Adormecido.",
+    "categoria": "Geral",
+    "descricao": "Ao completar três esquivas consecutivas, o alcance dos sentidos do usuário aumenta temporariamente em 25%.",
+    "condicao": "Derrote um chefe de masmorra causando o maior dano do grupo."
+  },
+  {
+    "id": 136,
+    "nome": "Selo Puro.",
+    "categoria": "Geral",
+    "descricao": "Ao marcar ou identificar um alvo pela primeira vez, o dano do próximo ataque realizado é aumentado em 10%.",
+    "condicao": "Sobreviva a cinco investidas de um chefe de rank superior."
+  },
+  {
+    "id": 137,
+    "nome": "A Eco da Abençoado.",
+    "categoria": "Geral",
+    "descricao": "-- 13 of 63 --\n\nAo causar dano em um inimigo pelas costas, aliados próximos recebem +20% de resistência por um turno.",
+    "condicao": "Sobreviva a cinco investidas de um chefe de rank superior."
+  },
+  {
+    "id": 139,
+    "nome": "Instinto de Recuo.",
+    "categoria": "Geral",
+    "descricao": "Ao entrar em uma masmorra pela primeira vez, o jogador ganha 12% de chance adicional de acerto crítico no\npróximo turno.",
+    "condicao": "Complete dez dungeons utilizando somente uma arma específica."
+  },
+  {
+    "id": 140,
+    "nome": "Passo da Desesperado.",
+    "categoria": "Geral",
+    "descricao": "Sempre que perder um aliado em combate, aliados próximos recebem +30% de resistência por um turno. Além\ndisso, o usuário se torna 5% mais difícil de ser detectado por um turno.",
+    "condicao": "Proteja um aliado recebendo dano fatal em seu lugar por três vezes."
+  },
+  {
+    "id": 141,
+    "nome": "Herança Calculado.",
+    "categoria": "Geral",
+    "descricao": "Após bloquear um golpe com sucesso, o alcance dos sentidos do usuário aumenta temporariamente em 10%.",
+    "condicao": "Vença uma disputa de guilda estando em desvantagem numérica."
+  },
+  {
+    "id": 142,
+    "nome": "Reflexo Radiante.",
+    "categoria": "Geral",
+    "descricao": "Ao causar dano em um inimigo pelas costas, aliados próximos recebem +20% de resistência por um turno.",
+    "condicao": "Realize dez transações comerciais bem-sucedidas com outros jogadores."
+  },
+  {
+    "id": 143,
+    "nome": "Abençoado Instância.",
+    "categoria": "Geral",
+    "descricao": "Ao permanecer imóvel por dois turnos consecutivos, o usuário se torna 5% mais difícil de ser detectado por um\nturno. Além disso, o usuário recebe +20% em todos os atributos base até o fim do combate.",
+    "condicao": "Finalize cinco combates consecutivos sem ser atingido uma única vez."
+  },
+  {
+    "id": 144,
+    "nome": "Pulso Sombrio.",
+    "categoria": "Geral",
+    "descricao": "Após acertar três ataques seguidos no mesmo alvo, o jogador ignora 8% da resistência do alvo no próximo\nataque. Além disso, o alcance dos sentidos do usuário aumenta temporariamente em 20%.",
+    "condicao": "Alcance o rank C sem nunca recuar de um combate iniciado."
+  },
+  {
+    "id": 145,
+    "nome": "Instinto de Salto.",
+    "categoria": "Geral",
+    "descricao": "Sempre que perder um aliado em combate, o alcance dos sentidos do usuário aumenta temporariamente em\n25%.",
+    "condicao": "Resista a cinco efeitos de status distintos ao longo de uma campanha."
+  },
+  {
+    "id": 146,
+    "nome": "Guarda da Brutal.",
+    "categoria": "Geral",
+    "descricao": "Ao causar dano em um inimigo pelas costas, o usuário recebe +30% em todos os atributos base até o fim do\ncombate.",
+    "condicao": "Vença dez combates um contra um."
+  },
+  {
+    "id": 148,
+    "nome": "Vínculo da Repentino.",
+    "categoria": "Geral",
+    "descricao": "Ao ser o responsável por abrir a luta contra um chefe, o tempo de recarga da última habilidade usada é reduzido\nem 15%.",
+    "condicao": "Vença uma disputa de guilda estando em desvantagem numérica."
+  },
+  {
+    "id": 150,
+    "nome": "Sombrio Salto.",
+    "categoria": "Geral",
+    "descricao": "Ao proteger um aliado recebendo dano em seu lugar, o usuário se torna 20% mais difícil de ser detectado por um\nturno. Além disso, a resistência física do usuário aumenta em 15% pelos próximos dois turnos.",
+    "condicao": "Sobreviva ao colapso de uma masmorra escapando antes do fechamento do portal."
+  },
+  {
+    "id": 151,
+    "nome": "Selo da Contido.",
+    "categoria": "Geral",
+    "descricao": "Ao proteger um aliado recebendo dano em seu lugar, o dano do próximo ataque realizado é aumentado em 15%.",
+    "condicao": "Finalize cinco combates consecutivos sem ser atingido uma única vez."
+  },
+  {
+    "id": 153,
+    "nome": "Rugido Repentino.",
+    "categoria": "Geral",
+    "descricao": "reduzido em 5%. Além disso, o jogador ignora 20% da resistência do alvo no próximo ataque.",
+    "condicao": "Derrote um chefe de masmorra causando o maior dano do grupo."
+  },
+  {
+    "id": 154,
+    "nome": "Selo do Solitário.",
+    "categoria": "Geral",
+    "descricao": "Quando o jogador executa um ataque crítico, o dano do próximo ataque realizado é aumentado em 12%. Além\ndisso, o usuário recebe +5% em todos os atributos base até o fim do combate.",
+    "condicao": "Termine três dungeons sem que nenhum membro do grupo seja derrubado."
+  },
+  {
+    "id": 155,
+    "nome": "Segunda Chance Preciso.",
+    "categoria": "Geral",
+    "descricao": "reduzido em 12%. Além disso, a agilidade do jogador aumenta em 10% por um turno.",
+    "condicao": "Vença uma disputa de guilda estando em desvantagem numérica."
+  },
+  {
+    "id": 156,
+    "nome": "O Eco do Corrompido.",
+    "categoria": "Geral",
+    "descricao": "Ao desviar completamente de um ataque inimigo, o tempo de recarga da última habilidade usada é reduzido em\n20%.",
+    "condicao": "Sobreviva ao colapso de uma masmorra escapando antes do fechamento do portal."
+  },
+  {
+    "id": 157,
+    "nome": "Assinatura Silencioso.",
+    "categoria": "Geral",
+    "descricao": "Sempre que o jogador utilizar um item de cura, o jogador ganha 8% de chance adicional de acerto crítico no\npróximo turno. Além disso, o jogador ganha 5% de chance adicional de acerto crítico no próximo turno.",
+    "condicao": "Realize dez transações comerciais bem-sucedidas com outros jogadores."
+  },
+  {
+    "id": 158,
+    "nome": "Ardente Chama.",
+    "categoria": "Geral",
+    "descricao": "Sempre que o jogador utilizar um item de cura, o usuário recebe +12% em todos os atributos base até o fim do\ncombate. Além disso, o usuário recebe +5% em todos os atributos base até o fim do combate.",
+    "condicao": "Derrote um chefe de masmorra causando o maior dano do grupo."
+  },
+  {
+    "id": 160,
+    "nome": "A Pulso da Desperto.",
+    "categoria": "Geral",
+    "descricao": "Ao permanecer em combate por mais de cinco turnos seguidos, o dano do próximo ataque realizado é aumentado\nem 12%.",
+    "condicao": "Finalize uma GVG sendo o responsável por derrubar o boss inimigo primeiro."
+  },
+  {
+    "id": 162,
+    "nome": "Cicatriz Ardente.",
+    "categoria": "Geral",
+    "descricao": "Ao entrar em uma masmorra pela primeira vez, o dano do próximo ataque realizado é aumentado em 15%. Além\ndisso, o jogador ganha 20% de chance adicional de acerto crítico no próximo turno.",
+    "condicao": "Resista a cinco efeitos de status distintos ao longo de uma campanha."
+  },
+  {
+    "id": 164,
+    "nome": "Esquecido Marca.",
+    "categoria": "Geral",
+    "descricao": "Ao marcar ou identificar um alvo pela primeira vez, o próximo ataque recebido tem seu dano reduzido em 15%.",
+    "condicao": "Complete uma masmorra sorteada sozinho, sem apoio de aliados."
+  },
+  {
+    "id": 165,
+    "nome": "O Escudo do Calculado.",
+    "categoria": "Geral",
+    "descricao": "Sempre que perder um aliado em combate, o jogador ganha 20% de chance adicional de acerto crítico no\npróximo turno. Além disso, o dano do próximo ataque realizado é aumentado em 10%.",
+    "condicao": "Vença uma disputa de guilda estando em desvantagem numérica."
+  },
+  {
+    "id": 166,
+    "nome": "Pulso Fatal.",
+    "categoria": "Geral",
+    "descricao": "Após vencer um combate sem receber nenhum dano, a agilidade do jogador aumenta em 10% por um turno.",
+    "condicao": "Complete dez dungeons utilizando somente uma arma específica."
+  },
+  {
+    "id": 168,
+    "nome": "Trovejante Cicatriz.",
+    "categoria": "Geral",
+    "descricao": "Sempre que enfrentar um inimigo de rank superior ao seu, o alcance dos sentidos do usuário aumenta\ntemporariamente em 15%.",
+    "condicao": "Complete uma masmorra sorteada sozinho, sem apoio de aliados."
+  },
+  {
+    "id": 169,
+    "nome": "Trovejante Reflexo.",
+    "categoria": "Geral",
+    "descricao": "Após acertar três ataques seguidos no mesmo alvo, aliados próximos recebem +25% de resistência por um turno.",
+    "condicao": "Realize dez transações comerciais bem-sucedidas com outros jogadores."
+  },
+  {
+    "id": 170,
+    "nome": "Selo do Vingativo.",
+    "categoria": "Geral",
+    "descricao": "Sempre que o jogador utilizar um item de cura, a resistência física do usuário aumenta em 15% pelos próximos\ndois turnos.",
+    "condicao": "Finalize uma GVG sendo o responsável por derrubar o boss inimigo primeiro."
+  },
+  {
+    "id": 172,
+    "nome": "A Fôlego da Fatal.",
+    "categoria": "Geral",
+    "descricao": "Ao completar três esquivas consecutivas, o dano do próximo ataque realizado é aumentado em 10%.",
+    "condicao": "Alcance o rank C sem nunca recuar de um combate iniciado."
+  },
+  {
+    "id": 173,
+    "nome": "Selo da Solitário.",
+    "categoria": "Geral",
+    "descricao": "Sempre que enfrentar um inimigo de rank superior ao seu, o usuário recebe +20% em todos os atributos base até\no fim do combate.",
+    "condicao": "Adquira esta passiva ao permanecer como último sobrevivente em três ocasiões distintas."
+  },
+  {
+    "id": 174,
+    "nome": "Distorcido Passo.",
+    "categoria": "Geral",
+    "descricao": "Após resistir com sucesso a um efeito de status negativo, o jogador ganha 8% de chance adicional de acerto\ncrítico no próximo turno.\n\n-- 16 of 63 --",
+    "condicao": "Sobreviva ao colapso de uma masmorra escapando antes do fechamento do portal."
+  },
+  {
+    "id": 175,
+    "nome": "A Eco da Instintivo.",
+    "categoria": "Geral",
+    "descricao": "Após resistir com sucesso a um efeito de status negativo, a agilidade do jogador aumenta em 5% por um turno.\nAlém disso, o usuário se torna 15% mais difícil de ser detectado por um turno.",
+    "condicao": "Adquira esta passiva ao permanecer como último sobrevivente em três ocasiões distintas."
+  },
+  {
+    "id": 178,
+    "nome": "Esquecido Olhar.",
+    "categoria": "Geral",
+    "descricao": "Ao entrar em uma masmorra pela primeira vez, o alcance dos sentidos do usuário aumenta temporariamente em\n25%.",
+    "condicao": "Complete dez dungeons utilizando somente uma arma específica."
+  },
+  {
+    "id": 179,
+    "nome": "Segunda Chance da Desesperado.",
+    "categoria": "Geral",
+    "descricao": "Quando o jogador consegue escapar de uma emboscada, aliados próximos recebem +12% de resistência por um\nturno. Além disso, o alcance dos sentidos do usuário aumenta temporariamente em 15%.",
+    "condicao": "Vença uma disputa de guilda estando em desvantagem numérica."
+  },
+  {
+    "id": 180,
+    "nome": "Segunda Chance Vingativo.",
+    "categoria": "Geral",
+    "descricao": "Quando o jogador consegue escapar de uma emboscada, o tempo de recarga da última habilidade usada é\nreduzido em 15%.",
+    "condicao": "Complete dez dungeons utilizando somente uma arma específica."
+  },
+  {
+    "id": 181,
+    "nome": "Selo da Rebelde.",
+    "categoria": "Geral",
+    "descricao": "Sempre que perder um aliado em combate, o alcance dos sentidos do usuário aumenta temporariamente em 8%.",
+    "condicao": "Derrote um chefe de masmorra causando o maior dano do grupo."
+  },
+  {
+    "id": 182,
+    "nome": "Fôrma Brutal.",
+    "categoria": "Geral",
+    "descricao": "Após bloquear um golpe com sucesso, aliados próximos recebem +20% de resistência por um turno.",
+    "condicao": "Complete uma masmorra sorteada sozinho, sem apoio de aliados."
+  },
+  {
+    "id": 185,
+    "nome": "Ardente Gélida.",
+    "categoria": "Geral",
+    "descricao": "Quando o jogador se torna o último sobrevivente de seu grupo, o tempo de recarga da última habilidade usada é\nreduzido em 12%.",
+    "condicao": "Termine uma dungeon narrada sendo o primeiro a detectar o chefe."
+  },
+  {
+    "id": 186,
+    "nome": "Vínculo da Perfeito.",
+    "categoria": "Geral",
+    "descricao": "Sempre que o jogador utilizar um item de cura, o dano do próximo ataque realizado é aumentado em 10%.",
+    "condicao": "Complete uma GVG protegendo o cristal da guilda sem que ele seja destruído."
+  },
+  {
+    "id": 187,
+    "nome": "Rebelde Última Linha.",
+    "categoria": "Geral",
+    "descricao": "-- 17 of 63 --\n\nApós recuar estrategicamente de uma luta desfavorável, o próximo ataque recebido tem seu dano reduzido em\n12%.",
+    "condicao": "Complete uma GVG protegendo o cristal da guilda sem que ele seja destruído."
+  },
+  {
+    "id": 188,
+    "nome": "Pulso da Contido.",
+    "categoria": "Geral",
+    "descricao": "Ao marcar ou identificar um alvo pela primeira vez, o tempo de recarga da última habilidade usada é reduzido em\n30%.",
+    "condicao": "Termine uma dungeon narrada sendo o primeiro a detectar o chefe."
+  },
+  {
+    "id": 189,
+    "nome": "Assinatura Implacável.",
+    "categoria": "Geral",
+    "descricao": "Ao permanecer imóvel por dois turnos consecutivos, o alcance dos sentidos do usuário aumenta temporariamente\nem 20%.",
+    "condicao": "Vença dez combates um contra um."
+  },
+  {
+    "id": 190,
+    "nome": "Selo Repentino.",
+    "categoria": "Geral",
+    "descricao": "Sempre que enfrentar um inimigo de rank superior ao seu, o próximo ataque recebido tem seu dano reduzido em\n30%.",
+    "condicao": "Complete uma masmorra sorteada sozinho, sem apoio de aliados."
+  },
+  {
+    "id": 192,
+    "nome": "A Retaliação da Esquecido.",
+    "categoria": "Geral",
+    "descricao": "Quando o jogador recebe cura de um aliado, a resistência física do usuário aumenta em 30% pelos próximos dois\nturnos.",
+    "condicao": "Alcance o rank B mantendo o maior número de vitórias solo da temporada."
+  },
+  {
+    "id": 193,
+    "nome": "Amaldiçoado Elo.",
+    "categoria": "Geral",
+    "descricao": "Ao causar dano em um inimigo pelas costas, o próximo ataque recebido tem seu dano reduzido em 8%. Além\ndisso, o tempo de recarga da última habilidade usada é reduzido em 10%.",
+    "condicao": "Complete dez dungeons utilizando somente uma arma específica."
+  },
+  {
+    "id": 194,
+    "nome": "Ímpeto Adormecido.",
+    "categoria": "Geral",
+    "descricao": "Após resistir com sucesso a um efeito de status negativo, o tempo de recarga da última habilidade usada é\nreduzido em 25%.",
+    "condicao": "Sobreviva a cinco investidas de um chefe de rank superior."
+  },
+  {
+    "id": 195,
+    "nome": "Recuo Brutal.",
+    "categoria": "Geral",
+    "descricao": "Ao desviar completamente de um ataque inimigo, o dano do próximo ataque realizado é aumentado em 30%.",
+    "condicao": "Sobreviva a cinco investidas de um chefe de rank superior."
+  },
+  {
+    "id": 196,
+    "nome": "Passo Ardente.",
+    "categoria": "Geral",
+    "descricao": "Sempre que o jogador for o primeiro a agir em um combate, o alcance dos sentidos do usuário aumenta\ntemporariamente em 30%.",
+    "condicao": "Resista a cinco efeitos de status distintos ao longo de uma campanha."
+  },
+  {
+    "id": 199,
+    "nome": "Herança Trovejante.",
+    "categoria": "Geral",
+    "descricao": "-- 18 of 63 --\n\nSempre que o jogador for atingido por um ataque físico, o alcance dos sentidos do usuário aumenta\ntemporariamente em 25%.",
+    "condicao": "Complete uma masmorra sorteada sozinho, sem apoio de aliados."
+  },
+  {
+    "id": 200,
+    "nome": "Recuo Devastador.",
+    "categoria": "Geral",
+    "descricao": "Ao causar dano em um inimigo pelas costas, o próximo ataque recebido tem seu dano reduzido em 12%.",
+    "condicao": "Vença dez combates um contra um.\n\n-- 19 of 63 --\n\nPontos | Atributos"
+  },
+  {
+    "id": 202,
+    "nome": "Golpe Espectral.",
+    "categoria": "Geral",
+    "descricao": "Ao entrar em uma masmorra pela primeira vez, o jogador ignora 10% da resistência do alvo no próximo ataque.",
+    "condicao": "Termine três dungeons sem que nenhum membro do grupo seja derrubado."
+  },
+  {
+    "id": 203,
+    "nome": "Selo da Esquecido.",
+    "categoria": "Geral",
+    "descricao": "Sempre que o jogador for o primeiro a agir em um combate, o usuário se torna 15% mais difícil de ser detectado\npor um turno.",
+    "condicao": "Sobreviva a cinco investidas de um chefe de rank superior."
+  },
+  {
+    "id": 204,
+    "nome": "Reflexo Repentino.",
+    "categoria": "Geral",
+    "descricao": "Sempre que o jogador for atingido por um ataque físico, o usuário se torna 8% mais difícil de ser detectado por um\nturno.",
+    "condicao": "Complete dez dungeons utilizando somente uma arma específica."
+  },
+  {
+    "id": 205,
+    "nome": "Espectral Segunda Chance.",
+    "categoria": "Geral",
+    "descricao": "Sempre que um aliado próximo for derrubado em combate, o jogador ignora 8% da resistência do alvo no próximo\nataque.",
+    "condicao": "Resista a cinco efeitos de status distintos ao longo de uma campanha."
+  },
+  {
+    "id": 206,
+    "nome": "A Selo da Errático.",
+    "categoria": "Geral",
+    "descricao": "Ao ser alvo de uma habilidade de controle ou imobilização, o usuário recebe +20% em todos os atributos base até\no fim do combate.",
+    "condicao": "Vença dez combates um contra um."
+  },
+  {
+    "id": 207,
+    "nome": "Brutal Cicatriz.",
+    "categoria": "Geral",
+    "descricao": "Após resistir com sucesso a um efeito de status negativo, a agilidade do jogador aumenta em 25% por um turno.",
+    "condicao": "Proteja um aliado recebendo dano fatal em seu lugar por três vezes."
+  },
+  {
+    "id": 209,
+    "nome": "Instinto de Elo.",
+    "categoria": "Geral",
+    "descricao": "Após bloquear um golpe com sucesso, o jogador ganha 30% de chance adicional de acerto crítico no próximo\nturno.",
+    "condicao": "Alcance o rank C sem nunca recuar de um combate iniciado."
+  },
+  {
+    "id": 210,
+    "nome": "Selo da Adormecido.",
+    "categoria": "Geral",
+    "descricao": "Ao marcar ou identificar um alvo pela primeira vez, o jogador ganha 8% de chance adicional de acerto crítico no\npróximo turno.",
+    "condicao": "Derrote um chefe de masmorra causando o maior dano do grupo."
+  },
+  {
+    "id": 212,
+    "nome": "Selo do Sombrio.",
+    "categoria": "Geral",
+    "descricao": "Ao entrar em uma masmorra pela primeira vez, aliados próximos recebem +8% de resistência por um turno.",
+    "condicao": "Termine uma dungeon narrada sendo o primeiro a detectar o chefe.\n\n-- 20 of 63 --"
+  },
+  {
+    "id": 213,
+    "nome": "Instinto de Marca.",
+    "categoria": "Geral",
+    "descricao": "Sempre que o jogador for atingido por um ataque físico, a resistência física do usuário aumenta em 15% pelos\npróximos dois turnos.",
+    "condicao": "Vença dez combates um contra um."
+  },
+  {
+    "id": 214,
+    "nome": "A Passo da Adormecido.",
+    "categoria": "Geral",
+    "descricao": "Após acertar três ataques seguidos no mesmo alvo, o jogador ignora 15% da resistência do alvo no próximo\nataque.",
+    "condicao": "Termine uma dungeon narrada sendo o primeiro a detectar o chefe."
+  },
+  {
+    "id": 215,
+    "nome": "Eco Desesperado.",
+    "categoria": "Geral",
+    "descricao": "Sempre que matar um monstro com um único golpe, o dano do próximo ataque realizado é aumentado em 10%.",
+    "condicao": "Vença dez combates um contra um."
+  },
+  {
+    "id": 216,
+    "nome": "Selo do Repentino.",
+    "categoria": "Geral",
+    "descricao": "Quando o jogador se torna o último sobrevivente de seu grupo, aliados próximos recebem +8% de resistência por\num turno.",
+    "condicao": "Finalize cinco combates consecutivos sem ser atingido uma única vez."
+  },
+  {
+    "id": 217,
+    "nome": "O Eco do Ardente.",
+    "categoria": "Geral",
+    "descricao": "Após interromper a habilidade de um inimigo, o dano do próximo ataque realizado é aumentado em 8%.",
+    "condicao": "Alcance o rank B mantendo o maior número de vitórias solo da temporada."
+  },
+  {
+    "id": 218,
+    "nome": "Vingativo Herança.",
+    "categoria": "Geral",
+    "descricao": "Ao entrar em uma masmorra pela primeira vez, o dano do próximo ataque realizado é aumentado em 12%. Além\ndisso, a resistência física do usuário aumenta em 10% pelos próximos dois turnos.",
+    "condicao": "Sobreviva a cinco investidas de um chefe de rank superior."
+  },
+  {
+    "id": 219,
+    "nome": "Retaliação da Silencioso.",
+    "categoria": "Geral",
+    "descricao": "Quando o jogador consegue escapar de uma emboscada, o jogador ganha 30% de chance adicional de acerto\ncrítico no próximo turno. Além disso, a resistência física do usuário aumenta em 8% pelos próximos dois turnos.",
+    "condicao": "Vença dez combates um contra um."
+  },
+  {
+    "id": 220,
+    "nome": "Herança Brutal.",
+    "categoria": "Geral",
+    "descricao": "Quando o jogador se torna o último sobrevivente de seu grupo, a resistência física do usuário aumenta em 20%\npelos próximos dois turnos. Além disso, a resistência física do usuário aumenta em 5% pelos próximos dois\nturnos.",
+    "condicao": "Vença vinte combates utilizando apenas contra-ataques."
+  },
+  {
+    "id": 224,
+    "nome": "O Vínculo do Rebelde.",
+    "categoria": "Geral",
+    "descricao": "Sempre que um aliado próximo for derrubado em combate, a resistência física do usuário aumenta em 12% pelos\npróximos dois turnos.",
+    "condicao": "Resista a cinco efeitos de status distintos ao longo de uma campanha.\n\n-- 21 of 63 --"
+  },
+  {
+    "id": 225,
+    "nome": "Selo do Errático.",
+    "categoria": "Geral",
+    "descricao": "",
+    "condicao": "Resista a cinco efeitos de status distintos ao longo de uma campanha."
+  },
+  {
+    "id": 226,
+    "nome": "A Recuo da Coroado.",
+    "categoria": "Geral",
+    "descricao": "Ao marcar ou identificar um alvo pela primeira vez, o usuário se torna 30% mais difícil de ser detectado por um\nturno. Além disso, o usuário recebe +20% em todos os atributos base até o fim do combate.",
+    "condicao": "Alcance o rank C sem nunca recuar de um combate iniciado."
+  },
+  {
+    "id": 227,
+    "nome": "Chama Rebelde.",
+    "categoria": "Geral",
+    "descricao": "Ao ser alvo de uma habilidade de controle ou imobilização, o jogador ignora 12% da resistência do alvo no\npróximo ataque.",
+    "condicao": "Adquira esta passiva ao permanecer como último sobrevivente em três ocasiões distintas."
+  },
+  {
+    "id": 229,
+    "nome": "Instinto de Selo.",
+    "categoria": "Geral",
+    "descricao": "Sempre que um aliado próximo for derrubado em combate, o próximo ataque recebido tem seu dano reduzido em\n5%.",
+    "condicao": "Alcance o rank B mantendo o maior número de vitórias solo da temporada."
+  },
+  {
+    "id": 233,
+    "nome": "Selo do Frio.",
+    "categoria": "Geral",
+    "descricao": "Ao permanecer em combate por mais de cinco turnos seguidos, o tempo de recarga da última habilidade usada é\nreduzido em 5%.",
+    "condicao": "Derrote um chefe de masmorra causando o maior dano do grupo."
+  },
+  {
+    "id": 234,
+    "nome": "Devastador Segunda Chance.",
+    "categoria": "Geral",
+    "descricao": "Sempre que finalizar um combate como o único ileso do grupo, o alcance dos sentidos do usuário aumenta\ntemporariamente em 15%. Além disso, aliados próximos recebem +20% de resistência por um turno.",
+    "condicao": "Derrote um chefe de masmorra causando o maior dano do grupo."
+  },
+  {
+    "id": 235,
+    "nome": "Guarda Abençoado.",
+    "categoria": "Geral",
+    "descricao": "Ao entrar em uma masmorra pela primeira vez, o tempo de recarga da última habilidade usada é reduzido em\n12%.",
+    "condicao": "Sobreviva a uma emboscada sem perder nenhum aliado."
+  },
+  {
+    "id": 238,
+    "nome": "Silencioso Recuo.",
+    "categoria": "Geral",
+    "descricao": "Ao ser alvo de uma habilidade de controle ou imobilização, o usuário recebe +30% em todos os atributos base até\no fim do combate.",
+    "condicao": "Termine uma dungeon narrada sendo o primeiro a detectar o chefe."
+  },
+  {
+    "id": 240,
+    "nome": "Vínculo Errático.",
+    "categoria": "Geral",
+    "descricao": "Quando o jogador executa um ataque crítico, a agilidade do jogador aumenta em 10% por um turno.",
+    "condicao": "Proteja um aliado recebendo dano fatal em seu lugar por três vezes."
+  },
+  {
+    "id": 241,
+    "nome": "Selo do Calculado.",
+    "categoria": "Geral",
+    "descricao": "Ao permanecer imóvel por dois turnos consecutivos, aliados próximos recebem +5% de resistência por um turno.",
+    "condicao": "Finalize cinco combates consecutivos sem ser atingido uma única vez."
+  },
+  {
+    "id": 242,
+    "nome": "Runa Devastador.",
+    "categoria": "Geral",
+    "descricao": "Após resistir com sucesso a um efeito de status negativo, o usuário recebe +20% em todos os atributos base até\no fim do combate. Além disso, aliados próximos recebem +8% de resistência por um turno.",
+    "condicao": "Sobreviva a uma emboscada sem perder nenhum aliado."
+  },
+  {
+    "id": 243,
+    "nome": "Selo do Corrompido.",
+    "categoria": "Geral",
+    "descricao": "Sempre que o jogador for o primeiro a agir em um combate, o alcance dos sentidos do usuário aumenta\ntemporariamente em 5%.",
+    "condicao": "Alcance o rank B mantendo o maior número de vitórias solo da temporada."
+  },
+  {
+    "id": 244,
+    "nome": "Amaldiçoado Instinto.",
+    "categoria": "Geral",
+    "descricao": "Sempre que um aliado próximo for derrubado em combate, a agilidade do jogador aumenta em 25% por um turno.",
+    "condicao": "Termine uma dungeon narrada sendo o primeiro a detectar o chefe."
+  },
+  {
+    "id": 245,
+    "nome": "Fôlego Repentino.",
+    "categoria": "Geral",
+    "descricao": "Sempre que finalizar um combate como o único ileso do grupo, o alcance dos sentidos do usuário aumenta\ntemporariamente em 15%.",
+    "condicao": "Sobreviva ao colapso de uma masmorra escapando antes do fechamento do portal."
+  },
+  {
+    "id": 248,
+    "nome": "Escudo Errático.",
+    "categoria": "Geral",
+    "descricao": "Ao proteger um aliado recebendo dano em seu lugar, o jogador ganha 15% de chance adicional de acerto crítico\nno próximo turno.",
+    "condicao": "Sobreviva ao colapso de uma masmorra escapando antes do fechamento do portal."
+  },
+  {
+    "id": 249,
+    "nome": "Selo da Desperto.",
+    "categoria": "Geral",
+    "descricao": "Após vencer um combate sem receber nenhum dano, o jogador ganha 20% de chance adicional de acerto crítico\nno próximo turno.\n\n-- 23 of 63 --",
+    "condicao": "Complete uma GVG protegendo o cristal da guilda sem que ele seja destruído."
+  },
+  {
+    "id": 250,
+    "nome": "A Segunda Chance da Rebelde.",
+    "categoria": "Geral",
+    "descricao": "Sempre que o jogador for atingido por um ataque físico, o dano do próximo ataque realizado é aumentado em\n20%. Além disso, o jogador ganha 20% de chance adicional de acerto crítico no próximo turno.",
+    "condicao": "Finalize cinco combates consecutivos sem ser atingido uma única vez."
+  },
+  {
+    "id": 251,
+    "nome": "Reflexo da Trovejante.",
+    "categoria": "Geral",
+    "descricao": "Ao permanecer imóvel por dois turnos consecutivos, aliados próximos recebem +12% de resistência por um turno.\nAlém disso, o próximo ataque recebido tem seu dano reduzido em 10%.",
+    "condicao": "Vença uma disputa de guilda estando em desvantagem numérica."
+  },
+  {
+    "id": 252,
+    "nome": "Chama Inabalável.",
+    "categoria": "Geral",
+    "descricao": "Sempre que atacar um inimigo já debilitado, o usuário recebe +10% em todos os atributos base até o fim do\ncombate.",
+    "condicao": "Sobreviva ao colapso de uma masmorra escapando antes do fechamento do portal."
+  },
+  {
+    "id": 253,
+    "nome": "Instinto de Retaliação.",
+    "categoria": "Geral",
+    "descricao": "Após resistir com sucesso a um efeito de status negativo, aliados próximos recebem +30% de resistência por um\nturno.",
+    "condicao": "Finalize uma GVG sendo o responsável por derrubar o boss inimigo primeiro."
+  },
+  {
+    "id": 255,
+    "nome": "Selo da Abençoado.",
+    "categoria": "Geral",
+    "descricao": "Ao ser alvo de uma habilidade de controle ou imobilização, o jogador ignora 10% da resistência do alvo no\npróximo ataque.",
+    "condicao": "Finalize uma GVG sendo o responsável por derrubar o boss inimigo primeiro."
+  },
+  {
+    "id": 257,
+    "nome": "Selo da Perfeito.",
+    "categoria": "Geral",
+    "descricao": "Após recuar estrategicamente de uma luta desfavorável, o próximo ataque recebido tem seu dano reduzido em\n15%.",
+    "condicao": "Complete dez dungeons utilizando somente uma arma específica."
+  },
+  {
+    "id": 258,
+    "nome": "Marca Gélido.",
+    "categoria": "Geral",
+    "descricao": "Quando o jogador consegue escapar de uma emboscada, o tempo de recarga da última habilidade usada é\nreduzido em 30%.",
+    "condicao": "Complete dez dungeons utilizando somente uma arma específica."
+  },
+  {
+    "id": 260,
+    "nome": "A Escudo da Ancestral.",
+    "categoria": "Geral",
+    "descricao": "Após vencer um combate sem receber nenhum dano, a agilidade do jogador aumenta em 5% por um turno. Além",
+    "condicao": "Vença vinte combates utilizando apenas contra-ataques."
+  },
+  {
+    "id": 261,
+    "nome": "Selo da Repentino.",
+    "categoria": "Geral",
+    "descricao": "Sempre que o jogador for atingido por um ataque físico, o alcance dos sentidos do usuário aumenta\ntemporariamente em 8%.\n\n-- 24 of 63 --",
+    "condicao": "Finalize uma GVG sendo o responsável por derrubar o boss inimigo primeiro."
+  },
+  {
+    "id": 262,
+    "nome": "Selo da Puro.",
+    "categoria": "Geral",
+    "descricao": "Ao causar dano em um inimigo pelas costas, o jogador ganha 10% de chance adicional de acerto crítico no\npróximo turno.",
+    "condicao": "Adquira esta passiva ao permanecer como último sobrevivente em três ocasiões distintas."
+  },
+  {
+    "id": 263,
+    "nome": "Runa Renascido.",
+    "categoria": "Geral",
+    "descricao": "Ao permanecer imóvel por dois turnos consecutivos, a resistência física do usuário aumenta em 20% pelos\npróximos dois turnos.",
+    "condicao": "Termine três dungeons sem que nenhum membro do grupo seja derrubado."
+  },
+  {
+    "id": 264,
+    "nome": "Golpe Amaldiçoado.",
+    "categoria": "Geral",
+    "descricao": "Ao causar dano em um inimigo pelas costas, o usuário se torna 15% mais difícil de ser detectado por um turno.",
+    "condicao": "Alcance o rank B mantendo o maior número de vitórias solo da temporada."
+  },
+  {
+    "id": 265,
+    "nome": "A Runa da Selvagem.",
+    "categoria": "Geral",
+    "descricao": "Ao permanecer em combate por mais de cinco turnos seguidos, o jogador ganha 12% de chance adicional de\nacerto crítico no próximo turno.",
+    "condicao": "Alcance o rank C sem nunca recuar de um combate iniciado."
+  },
+  {
+    "id": 266,
+    "nome": "Assinatura Repentino.",
+    "categoria": "Geral",
+    "descricao": "Quando o jogador consegue escapar de uma emboscada, o usuário recebe +15% em todos os atributos base até\no fim do combate.",
+    "condicao": "Complete uma GVG protegendo o cristal da guilda sem que ele seja destruído."
+  },
+  {
+    "id": 267,
+    "nome": "Presença Brutal.",
+    "categoria": "Geral",
+    "descricao": "Após interromper a habilidade de um inimigo, o usuário recebe +5% em todos os atributos base até o fim do\ncombate. Além disso, o jogador ignora 15% da resistência do alvo no próximo ataque.",
+    "condicao": "Complete uma GVG protegendo o cristal da guilda sem que ele seja destruído."
+  },
+  {
+    "id": 268,
+    "nome": "Errático Brasa.",
+    "categoria": "Geral",
+    "descricao": "Após interromper a habilidade de um inimigo, o dano do próximo ataque realizado é aumentado em 25%.",
+    "condicao": "Complete uma masmorra sorteada sozinho, sem apoio de aliados."
+  },
+  {
+    "id": 270,
+    "nome": "Retaliação Implacável.",
+    "categoria": "Geral",
+    "descricao": "Sempre que o jogador for o primeiro a agir em um combate, o jogador ignora 20% da resistência do alvo no\npróximo ataque. Além disso, a resistência física do usuário aumenta em 8% pelos próximos dois turnos.",
+    "condicao": "Vença uma disputa de guilda estando em desvantagem numérica."
+  },
+  {
+    "id": 272,
+    "nome": "Selo do Instintivo.",
+    "categoria": "Geral",
+    "descricao": "Após interromper a habilidade de um inimigo, o jogador ignora 5% da resistência do alvo no próximo ataque.",
+    "condicao": "Sobreviva ao colapso de uma masmorra escapando antes do fechamento do portal."
+  },
+  {
+    "id": 276,
+    "nome": "Presença Renascido.",
+    "categoria": "Geral",
+    "descricao": "Quando o jogador executa um ataque crítico, a agilidade do jogador aumenta em 20% por um turno.",
+    "condicao": "Finalize cinco combates consecutivos sem ser atingido uma única vez."
+  },
+  {
+    "id": 277,
+    "nome": "O Chama do Distorcido.",
+    "categoria": "Geral",
+    "descricao": "disso, a resistência física do usuário aumenta em 5% pelos próximos dois turnos.",
+    "condicao": "Complete uma masmorra sorteada sozinho, sem apoio de aliados."
+  },
+  {
+    "id": 278,
+    "nome": "Desesperado Ímpeto.",
+    "categoria": "Geral",
+    "descricao": "Ao ser alvo de uma habilidade de controle ou imobilização, o jogador ganha 10% de chance adicional de acerto\ncrítico no próximo turno.",
+    "condicao": "Termine uma dungeon narrada sendo o primeiro a detectar o chefe."
+  },
+  {
+    "id": 279,
+    "nome": "O Postura do Selvagem.",
+    "categoria": "Geral",
+    "descricao": "Após vencer um combate sem receber nenhum dano, o tempo de recarga da última habilidade usada é reduzido\nem 25%.",
+    "condicao": "Realize dez transações comerciais bem-sucedidas com outros jogadores."
+  },
+  {
+    "id": 280,
+    "nome": "Instinto de Segunda Chance.",
+    "categoria": "Geral",
+    "descricao": "Após vencer um combate sem receber nenhum dano, o dano do próximo ataque realizado é aumentado em 30%.",
+    "condicao": "Vença uma disputa de guilda estando em desvantagem numérica."
+  },
+  {
+    "id": 281,
+    "nome": "Trovejante Brasa.",
+    "categoria": "Geral",
+    "descricao": "Sempre que um aliado próximo for derrubado em combate, aliados próximos recebem +8% de resistência por um\nturno.",
+    "condicao": "Termine três dungeons sem que nenhum membro do grupo seja derrubado."
+  },
+  {
+    "id": 282,
+    "nome": "Fôrma Errático.",
+    "categoria": "Geral",
+    "descricao": "Sempre que o jogador for o primeiro a agir em um combate, o tempo de recarga da última habilidade usada é\nreduzido em 10%. Além disso, o tempo de recarga da última habilidade usada é reduzido em 15%.",
+    "condicao": "Termine três dungeons sem que nenhum membro do grupo seja derrubado."
+  },
+  {
+    "id": 283,
+    "nome": "Olhar da Vingativo.",
+    "categoria": "Geral",
+    "descricao": "Após vencer um combate sem receber nenhum dano, o alcance dos sentidos do usuário aumenta\ntemporariamente em 8%. Além disso, o jogador ignora 10% da resistência do alvo no próximo ataque.",
+    "condicao": "Alcance o rank B mantendo o maior número de vitórias solo da temporada."
+  },
+  {
+    "id": 285,
+    "nome": "A Rugido da Distorcido.",
+    "categoria": "Geral",
+    "descricao": "Ao permanecer imóvel por dois turnos consecutivos, o usuário recebe +20% em todos os atributos base até o fim\ndo combate.",
+    "condicao": "Derrote um chefe de masmorra causando o maior dano do grupo."
+  },
+  {
+    "id": 286,
+    "nome": "Silencioso Última Linha.",
+    "categoria": "Geral",
+    "descricao": "Sempre que finalizar um combate como o único ileso do grupo, a agilidade do jogador aumenta em 20% por um\nturno.\n\n-- 26 of 63 --",
+    "condicao": "Finalize uma GVG sendo o responsável por derrubar o boss inimigo primeiro."
+  },
+  {
+    "id": 288,
+    "nome": "Selo do Brutal.",
+    "categoria": "Geral",
+    "descricao": "Ao proteger um aliado recebendo dano em seu lugar, o usuário recebe +15% em todos os atributos base até o fim\ndo combate.",
+    "condicao": "Resista a cinco efeitos de status distintos ao longo de uma campanha."
+  },
+  {
+    "id": 289,
+    "nome": "Elo Implacável.",
+    "categoria": "Geral",
+    "descricao": "Quando o jogador executa um ataque crítico, aliados próximos recebem +15% de resistência por um turno.",
+    "condicao": "Realize dez transações comerciais bem-sucedidas com outros jogadores."
+  },
+  {
+    "id": 290,
+    "nome": "Escudo Instintivo.",
+    "categoria": "Geral",
+    "descricao": "Ao desviar completamente de um ataque inimigo, o jogador ignora 20% da resistência do alvo no próximo ataque.\nAlém disso, o tempo de recarga da última habilidade usada é reduzido em 10%.",
+    "condicao": "Termine três dungeons sem que nenhum membro do grupo seja derrubado."
+  },
+  {
+    "id": 292,
+    "nome": "Selo da Renascido.",
+    "categoria": "Geral",
+    "descricao": "Sempre que enfrentar um inimigo de rank superior ao seu, o usuário recebe +12% em todos os atributos base até\no fim do combate.",
+    "condicao": "Alcance o rank B mantendo o maior número de vitórias solo da temporada."
+  },
+  {
+    "id": 293,
+    "nome": "Salto Coroado.",
+    "categoria": "Geral",
+    "descricao": "Após recuar estrategicamente de uma luta desfavorável, aliados próximos recebem +15% de resistência por um\nturno. Além disso, o jogador ignora 8% da resistência do alvo no próximo ataque.",
+    "condicao": "Proteja um aliado recebendo dano fatal em seu lugar por três vezes."
+  },
+  {
+    "id": 294,
+    "nome": "Escudo Radiante.",
+    "categoria": "Geral",
+    "descricao": "Ao permanecer imóvel por dois turnos consecutivos, a resistência física do usuário aumenta em 20% pelos\npróximos dois turnos.",
+    "condicao": "Alcance o rank C sem nunca recuar de um combate iniciado."
+  },
+  {
+    "id": 295,
+    "nome": "Brutal Rugido.",
+    "categoria": "Geral",
+    "descricao": "Sempre que o jogador for o primeiro a agir em um combate, o tempo de recarga da última habilidade usada é\nreduzido em 30%.",
+    "condicao": "Proteja um aliado recebendo dano fatal em seu lugar por três vezes."
+  },
+  {
+    "id": 297,
+    "nome": "Escudo da Desperto.",
+    "categoria": "Geral",
+    "descricao": "Ao causar dano em um inimigo pelas costas, aliados próximos recebem +8% de resistência por um turno.",
+    "condicao": "Resista a cinco efeitos de status distintos ao longo de uma campanha."
+  },
+  {
+    "id": 298,
+    "nome": "Selo da Calculado.",
+    "categoria": "Geral",
+    "descricao": "Ao permanecer em combate por mais de cinco turnos seguidos, o dano do próximo ataque realizado é aumentado\nem 8%.",
+    "condicao": "Vença dez combates um contra um."
+  },
+  {
+    "id": 299,
+    "nome": "Passo Coroado.",
+    "categoria": "Geral",
+    "descricao": "-- 27 of 63 --\n\nAo desviar completamente de um ataque inimigo, o usuário se torna 15% mais difícil de ser detectado por um\nturno. Além disso, o tempo de recarga da última habilidade usada é reduzido em 5%.",
+    "condicao": "Complete dez dungeons utilizando somente uma arma específica."
+  },
+  {
+    "id": 301,
+    "nome": "Instância Distorcido.",
+    "categoria": "Geral",
+    "descricao": "Ao proteger um aliado recebendo dano em seu lugar, o tempo de recarga da última habilidade usada é reduzido\nem 20%.",
+    "condicao": "Realize dez transações comerciais bem-sucedidas com outros jogadores."
+  },
+  {
+    "id": 302,
+    "nome": "Marca Persistente.",
+    "categoria": "Geral",
+    "descricao": "Ao entrar em uma masmorra pela primeira vez, o usuário se torna 8% mais difícil de ser detectado por um turno.",
+    "condicao": "Sobreviva ao colapso de uma masmorra escapando antes do fechamento do portal."
+  },
+  {
+    "id": 305,
+    "nome": "Fantasma Postura.",
+    "categoria": "Geral",
+    "descricao": "Ao completar três esquivas consecutivas, o usuário se torna 20% mais difícil de ser detectado por um turno.",
+    "condicao": "Vença uma disputa de guilda estando em desvantagem numérica."
+  },
+  {
+    "id": 306,
+    "nome": "Fôlego Instintivo.",
+    "categoria": "Geral",
+    "descricao": "Após interromper a habilidade de um inimigo, o jogador ignora 25% da resistência do alvo no próximo ataque.",
+    "condicao": "Alcance o rank C sem nunca recuar de um combate iniciado."
+  },
+  {
+    "id": 308,
+    "nome": "Ímpeto Trovejante.",
+    "categoria": "Geral",
+    "descricao": "Sempre que finalizar um combate como o único ileso do grupo, o próximo ataque recebido tem seu dano reduzido\nem 30%. Além disso, o usuário recebe +10% em todos os atributos base até o fim do combate.",
+    "condicao": "Sobreviva a cinco investidas de um chefe de rank superior."
+  },
+  {
+    "id": 310,
+    "nome": "Herança Frio.",
+    "categoria": "Geral",
+    "descricao": "Sempre que o jogador for o primeiro a agir em um combate, aliados próximos recebem +10% de resistência por\num turno.",
+    "condicao": "Resista a cinco efeitos de status distintos ao longo de uma campanha."
+  },
+  {
+    "id": 312,
+    "nome": "Retaliação da Ardente.",
+    "categoria": "Geral",
+    "descricao": "Sempre que perder um aliado em combate, o alcance dos sentidos do usuário aumenta temporariamente em\n15%.",
+    "condicao": "Adquira esta passiva ao permanecer como último sobrevivente em três ocasiões distintas.\n\n-- 29 of 63 --"
+  },
+  {
+    "id": 313,
+    "nome": "A Rugido da Rebelde.",
+    "categoria": "Geral",
+    "descricao": "Sempre que finalizar um combate como o único ileso do grupo, a resistência física do usuário aumenta em 5%\npelos próximos dois turnos.",
+    "condicao": "Proteja um aliado recebendo dano fatal em seu lugar por três vezes."
+  },
+  {
+    "id": 316,
+    "nome": "Radiante Recuo.",
+    "categoria": "Geral",
+    "descricao": "Sempre que enfrentar um inimigo de rank superior ao seu, o alcance dos sentidos do usuário aumenta\ntemporariamente em 15%.",
+    "condicao": "Proteja um aliado recebendo dano fatal em seu lugar por três vezes."
+  },
+  {
+    "id": 317,
+    "nome": "Assinatura Ardente.",
+    "categoria": "Geral",
+    "descricao": "Quando o jogador consegue escapar de uma emboscada, o próximo ataque recebido tem seu dano reduzido em\n10%.",
+    "condicao": "Complete uma GVG protegendo o cristal da guilda sem que ele seja destruído."
+  },
+  {
+    "id": 318,
+    "nome": "Brasa Perfeito.",
+    "categoria": "Geral",
+    "descricao": "Ao marcar ou identificar um alvo pela primeira vez, aliados próximos recebem +25% de resistência por um turno.",
+    "condicao": "Alcance o rank C sem nunca recuar de um combate iniciado."
+  },
+  {
+    "id": 319,
+    "nome": "Rebelde Ímpeto.",
+    "categoria": "Geral",
+    "descricao": "Ao entrar em uma masmorra pela primeira vez, o jogador ignora 5% da resistência do alvo no próximo ataque.",
+    "condicao": "Sobreviva a cinco investidas de um chefe de rank superior."
+  },
+  {
+    "id": 321,
+    "nome": "Vínculo da Persistente.",
+    "categoria": "Geral",
+    "descricao": "Ao permanecer imóvel por dois turnos consecutivos, a resistência física do usuário aumenta em 20% pelos\npróximos dois turnos.",
+    "condicao": "Vença dez combates um contra um."
+  },
+  {
+    "id": 322,
+    "nome": "A Escudo da Perfeito.",
+    "categoria": "Geral",
+    "descricao": "Sempre que enfrentar um inimigo de rank superior ao seu, o tempo de recarga da última habilidade usada é\nreduzido em 20%.",
+    "condicao": "Sobreviva a cinco investidas de um chefe de rank superior."
+  },
+  {
+    "id": 323,
+    "nome": "Recuo da Corrompido.",
+    "categoria": "Geral",
+    "descricao": "Ao completar três esquivas consecutivas, a resistência física do usuário aumenta em 8% pelos próximos dois",
+    "condicao": "Derrote um chefe de masmorra causando o maior dano do grupo."
+  },
+  {
+    "id": 324,
+    "nome": "Frio Eco.",
+    "categoria": "Geral",
+    "descricao": "Sempre que um aliado próximo for derrubado em combate, o jogador ganha 15% de chance adicional de acerto\ncrítico no próximo turno.",
+    "condicao": "Finalize cinco combates consecutivos sem ser atingido uma única vez."
+  },
+  {
+    "id": 325,
+    "nome": "Herança Errático.",
+    "categoria": "Geral",
+    "descricao": "-- 30 of 63 --\n\nSempre que o jogador for atingido por um ataque físico, a resistência física do usuário aumenta em 10% pelos\npróximos dois turnos.",
+    "condicao": "Vença vinte combates utilizando apenas contra-ataques."
+  },
+  {
+    "id": 326,
+    "nome": "Repentino Guarda.",
+    "categoria": "Geral",
+    "descricao": "Sempre que perder um aliado em combate, aliados próximos recebem +25% de resistência por um turno.",
+    "condicao": "Resista a cinco efeitos de status distintos ao longo de uma campanha."
+  },
+  {
+    "id": 328,
+    "nome": "Repentino Passo.",
+    "categoria": "Geral",
+    "descricao": "Ao permanecer em combate por mais de cinco turnos seguidos, a resistência física do usuário aumenta em 30%\npelos próximos dois turnos. Além disso, a agilidade do jogador aumenta em 15% por um turno.",
+    "condicao": "Derrote um chefe de masmorra causando o maior dano do grupo."
+  },
+  {
+    "id": 331,
+    "nome": "Postura da Fatal.",
+    "categoria": "Geral",
+    "descricao": "Quando o jogador consegue escapar de uma emboscada, o jogador ignora 12% da resistência do alvo no próximo\nataque.",
+    "condicao": "Complete uma masmorra sorteada sozinho, sem apoio de aliados."
+  },
+  {
+    "id": 332,
+    "nome": "Gélida da Frio.",
+    "categoria": "Geral",
+    "descricao": "Ao proteger um aliado recebendo dano em seu lugar, a resistência física do usuário aumenta em 12% pelos\npróximos dois turnos.",
+    "condicao": "Complete uma GVG protegendo o cristal da guilda sem que ele seja destruído."
+  },
+  {
+    "id": 333,
+    "nome": "Selo Trovejante.",
+    "categoria": "Geral",
+    "descricao": "Após recuar estrategicamente de uma luta desfavorável, a resistência física do usuário aumenta em 20% pelos\npróximos dois turnos.",
+    "condicao": "Vença vinte combates utilizando apenas contra-ataques."
+  },
+  {
+    "id": 334,
+    "nome": "Puro Escudo.",
+    "categoria": "Geral",
+    "descricao": "Ao entrar em uma masmorra pela primeira vez, o jogador ganha um escudo temporário equivalente a 10% de sua",
+    "condicao": "Termine uma dungeon narrada sendo o primeiro a detectar o chefe."
+  },
+  {
+    "id": 336,
+    "nome": "Renascido Guarda.",
+    "categoria": "Geral",
+    "descricao": "Após interromper a habilidade de um inimigo, o usuário se torna 8% mais difícil de ser detectado por um turno.",
+    "condicao": "Complete dez dungeons utilizando somente uma arma específica."
+  },
+  {
+    "id": 337,
+    "nome": "Última Linha da Corrompido.",
+    "categoria": "Geral",
+    "descricao": "Sempre que atacar um inimigo já debilitado, o tempo de recarga da última habilidade usada é reduzido em 25%.",
+    "condicao": "Termine três dungeons sem que nenhum membro do grupo seja derrubado.\n\n-- 31 of 63 --"
+  },
+  {
+    "id": 339,
+    "nome": "Passo Silencioso.",
+    "categoria": "Geral",
+    "descricao": "Após resistir com sucesso a um efeito de status negativo, o próximo ataque recebido tem seu dano reduzido em\n12%.",
+    "condicao": "Complete dez dungeons utilizando somente uma arma específica."
+  },
+  {
+    "id": 340,
+    "nome": "Fatal Salto.",
+    "categoria": "Geral",
+    "descricao": "Ao proteger um aliado recebendo dano em seu lugar, o usuário recebe +10% em todos os atributos base até o fim\ndo combate.",
+    "condicao": "Termine três dungeons sem que nenhum membro do grupo seja derrubado."
+  },
+  {
+    "id": 341,
+    "nome": "Desperto Selo.",
+    "categoria": "Geral",
+    "descricao": "Sempre que o jogador for atingido por um ataque físico, o dano do próximo ataque realizado é aumentado em\n15%.",
+    "condicao": "Vença dez combates um contra um."
+  },
+  {
+    "id": 342,
+    "nome": "Ancestral Instinto.",
+    "categoria": "Geral",
+    "descricao": "Sempre que matar um monstro com um único golpe, a resistência física do usuário aumenta em 5% pelos\npróximos dois turnos.",
+    "condicao": "Finalize cinco combates consecutivos sem ser atingido uma única vez."
+  },
+  {
+    "id": 343,
+    "nome": "Golpe Renascido.",
+    "categoria": "Geral",
+    "descricao": "Sempre que finalizar um combate como o único ileso do grupo, a agilidade do jogador aumenta em 5% por um\nturno. Além disso, a resistência física do usuário aumenta em 20% pelos próximos dois turnos.",
+    "condicao": "Vença vinte combates utilizando apenas contra-ataques."
+  },
+  {
+    "id": 344,
+    "nome": "Pulso Renascido.",
+    "categoria": "Geral",
+    "descricao": "Sempre que o jogador for atingido por um ataque físico, o jogador ganha um escudo temporário equivalente a",
+    "condicao": "Derrote um chefe de masmorra causando o maior dano do grupo."
+  },
+  {
+    "id": 345,
+    "nome": "A Fôlego da Rebelde.",
+    "categoria": "Geral",
+    "descricao": "Ao causar dano em um inimigo pelas costas, o jogador ignora 30% da resistência do alvo no próximo ataque.",
+    "condicao": "Derrote um chefe de masmorra causando o maior dano do grupo."
+  },
+  {
+    "id": 347,
+    "nome": "Golpe da Inabalável.",
+    "categoria": "Geral",
+    "descricao": "Sempre que perder um aliado em combate, a resistência física do usuário aumenta em 10% pelos próximos dois\nturnos.",
+    "condicao": "Resista a cinco efeitos de status distintos ao longo de uma campanha."
+  },
+  {
+    "id": 348,
+    "nome": "Silencioso Elo.",
+    "categoria": "Geral",
+    "descricao": "Ao marcar ou identificar um alvo pela primeira vez, aliados próximos recebem +30% de resistência por um turno.\nAlém disso, o usuário se torna 10% mais difícil de ser detectado por um turno.",
+    "condicao": "Finalize cinco combates consecutivos sem ser atingido uma única vez."
+  },
+  {
+    "id": 349,
+    "nome": "Marca Inabalável.",
+    "categoria": "Geral",
+    "descricao": "Quando o jogador executa um ataque crítico, o alcance dos sentidos do usuário aumenta temporariamente em\n5%. Além disso, o alcance dos sentidos do usuário aumenta temporariamente em 15%.",
+    "condicao": "Derrote um chefe de masmorra causando o maior dano do grupo."
+  },
+  {
+    "id": 352,
+    "nome": "Chama Brutal.",
+    "categoria": "Geral",
+    "descricao": "Sempre que matar um monstro com um único golpe, o usuário recebe +30% em todos os atributos base até o fim\ndo combate.",
+    "condicao": "Proteja um aliado recebendo dano fatal em seu lugar por três vezes."
+  },
+  {
+    "id": 353,
+    "nome": "Ancestral Herança.",
+    "categoria": "Geral",
+    "descricao": "Após interromper a habilidade de um inimigo, o usuário recebe +12% em todos os atributos base até o fim do\ncombate.",
+    "condicao": "Derrote um chefe de masmorra causando o maior dano do grupo."
+  },
+  {
+    "id": 355,
+    "nome": "O Rugido do Contido.",
+    "categoria": "Geral",
+    "descricao": "Sempre que um aliado próximo for derrubado em combate, o jogador ganha 20% de chance adicional de acerto\ncrítico no próximo turno. Além disso, o próximo ataque recebido tem seu dano reduzido em 8%.",
+    "condicao": "Finalize cinco combates consecutivos sem ser atingido uma única vez."
+  },
+  {
+    "id": 357,
+    "nome": "Guarda Ancestral.",
+    "categoria": "Geral",
+    "descricao": "Quando o jogador executa um ataque crítico, o próximo ataque recebido tem seu dano reduzido em 10%.",
+    "condicao": "Vença dez combates um contra um."
+  },
+  {
+    "id": 358,
+    "nome": "Runa da Perfeito.",
+    "categoria": "Geral",
+    "descricao": "Ao permanecer em combate por mais de cinco turnos seguidos, o próximo ataque recebido tem seu dano\nreduzido em 8%. Além disso, aliados próximos recebem +8% de resistência por um turno.",
+    "condicao": "Proteja um aliado recebendo dano fatal em seu lugar por três vezes."
+  },
+  {
+    "id": 360,
+    "nome": "O Postura do Devastador.",
+    "categoria": "Geral",
+    "descricao": "Sempre que o jogador for atingido por um ataque físico, a resistência física do usuário aumenta em 5% pelos\npróximos dois turnos.",
+    "condicao": "Complete uma GVG protegendo o cristal da guilda sem que ele seja destruído."
+  },
+  {
+    "id": 361,
+    "nome": "Radiante Fôrma.",
+    "categoria": "Geral",
+    "descricao": "Ao permanecer em combate por mais de cinco turnos seguidos, o dano do próximo ataque realizado é aumentado\nem 8%. Além disso, o jogador ignora 20% da resistência do alvo no próximo ataque.",
+    "condicao": "Sobreviva a cinco investidas de um chefe de rank superior."
+  },
+  {
+    "id": 362,
+    "nome": "Renascido Fôrma.",
+    "categoria": "Geral",
+    "descricao": "-- 33 of 63 --\n\nAo permanecer em combate por mais de cinco turnos seguidos, o alcance dos sentidos do usuário aumenta\ntemporariamente em 25%.",
+    "condicao": "Termine três dungeons sem que nenhum membro do grupo seja derrubado."
+  },
+  {
+    "id": 363,
+    "nome": "Eco da Fantasma.",
+    "categoria": "Geral",
+    "descricao": "Após acertar três ataques seguidos no mesmo alvo, aliados próximos recebem +30% de resistência por um turno.",
+    "condicao": "Derrote um chefe de masmorra causando o maior dano do grupo."
+  },
+  {
+    "id": 364,
+    "nome": "Golpe Distorcido.",
+    "categoria": "Geral",
+    "descricao": "Sempre que matar um monstro com um único golpe, a agilidade do jogador aumenta em 20% por um turno.",
+    "condicao": "Adquira esta passiva ao permanecer como último sobrevivente em três ocasiões distintas."
+  },
+  {
+    "id": 366,
+    "nome": "Vingativo Runa.",
+    "categoria": "Geral",
+    "descricao": "Sempre que o jogador for atingido por um ataque físico, o alcance dos sentidos do usuário aumenta\ntemporariamente em 10%.",
+    "condicao": "Alcance o rank B mantendo o maior número de vitórias solo da temporada."
+  },
+  {
+    "id": 367,
+    "nome": "Eco Gélido.",
+    "categoria": "Geral",
+    "descricao": "Ao completar três esquivas consecutivas, o dano do próximo ataque realizado é aumentado em 5%.",
+    "condicao": "Sobreviva a cinco investidas de um chefe de rank superior."
+  },
+  {
+    "id": 368,
+    "nome": "Ancestral Eco.",
+    "categoria": "Geral",
+    "descricao": "Ao ser alvo de uma habilidade de controle ou imobilização, aliados próximos recebem +30% de resistência por\num turno. Além disso, aliados próximos recebem +15% de resistência por um turno.",
+    "condicao": "Termine três dungeons sem que nenhum membro do grupo seja derrubado."
+  },
+  {
+    "id": 369,
+    "nome": "O Cicatriz do Desesperado.",
+    "categoria": "Geral",
+    "descricao": "Sempre que perder um aliado em combate, o jogador ignora 20% da resistência do alvo no próximo ataque.",
+    "condicao": "Termine uma dungeon narrada sendo o primeiro a detectar o chefe."
+  },
+  {
+    "id": 370,
+    "nome": "A Fôlego da Puro.",
+    "categoria": "Geral",
+    "descricao": "Sempre que o jogador utilizar um item de cura, a agilidade do jogador aumenta em 15% por um turno.",
+    "condicao": "Finalize cinco combates consecutivos sem ser atingido uma única vez."
+  },
+  {
+    "id": 372,
+    "nome": "Selo da Distorcido.",
+    "categoria": "Geral",
+    "descricao": "Sempre que o jogador utilizar um item de cura, o próximo ataque recebido tem seu dano reduzido em 10%.",
+    "condicao": "Termine uma dungeon narrada sendo o primeiro a detectar o chefe."
+  },
+  {
+    "id": 373,
+    "nome": "Última Linha Gélido.",
+    "categoria": "Geral",
+    "descricao": "Após bloquear um golpe com sucesso, o dano do próximo ataque realizado é aumentado em 8%.",
+    "condicao": "Vença dez combates um contra um."
+  },
+  {
+    "id": 374,
+    "nome": "Coroado Ímpeto.",
+    "categoria": "Geral",
+    "descricao": "Após interromper a habilidade de um inimigo, o próximo ataque recebido tem seu dano reduzido em 5%.",
+    "condicao": "Alcance o rank C sem nunca recuar de um combate iniciado."
+  },
+  {
+    "id": 375,
+    "nome": "Segunda Chance Renascido.",
+    "categoria": "Geral",
+    "descricao": "Ao completar três esquivas consecutivas, o tempo de recarga da última habilidade usada é reduzido em 25%.",
+    "condicao": "Complete uma masmorra sorteada sozinho, sem apoio de aliados.\n\n-- 34 of 63 --"
+  },
+  {
+    "id": 377,
+    "nome": "A Gélida da Instintivo.",
+    "categoria": "Geral",
+    "descricao": "",
+    "condicao": "Complete uma GVG protegendo o cristal da guilda sem que ele seja destruído."
+  },
+  {
+    "id": 378,
+    "nome": "Brutal Salto.",
+    "categoria": "Geral",
+    "descricao": "Ao desviar completamente de um ataque inimigo, o dano do próximo ataque realizado é aumentado em 20%.",
+    "condicao": "Vença vinte combates utilizando apenas contra-ataques."
+  },
+  {
+    "id": 379,
+    "nome": "Sopro da Adormecido.",
+    "categoria": "Geral",
+    "descricao": "Após acertar três ataques seguidos no mesmo alvo, o jogador ignora 20% da resistência do alvo no próximo\nataque. Além disso, o alcance dos sentidos do usuário aumenta temporariamente em 20%.",
+    "condicao": "Sobreviva a cinco investidas de um chefe de rank superior."
+  },
+  {
+    "id": 380,
+    "nome": "Marca Devastador.",
+    "categoria": "Geral",
+    "descricao": "Ao ser alvo de uma habilidade de controle ou imobilização, o dano do próximo ataque realizado é aumentado em\n30%. Além disso, o jogador ignora 8% da resistência do alvo no próximo ataque.",
+    "condicao": "Realize dez transações comerciais bem-sucedidas com outros jogadores."
+  },
+  {
+    "id": 381,
+    "nome": "Inabalável Retaliação.",
+    "categoria": "Geral",
+    "descricao": "Sempre que o jogador utilizar um item de cura, aliados próximos recebem +8% de resistência por um turno. Além\ndisso, aliados próximos recebem +5% de resistência por um turno.",
+    "condicao": "Sobreviva ao colapso de uma masmorra escapando antes do fechamento do portal."
+  },
+  {
+    "id": 382,
+    "nome": "Selvagem Instância.",
+    "categoria": "Geral",
+    "descricao": "Sempre que o jogador for o primeiro a agir em um combate, o tempo de recarga da última habilidade usada é\nreduzido em 15%.",
+    "condicao": "Complete uma GVG protegendo o cristal da guilda sem que ele seja destruído."
+  },
+  {
+    "id": 384,
+    "nome": "Desesperado Fôlego.",
+    "categoria": "Geral",
+    "descricao": "Ao permanecer em combate por mais de cinco turnos seguidos, o próximo ataque recebido tem seu dano\nreduzido em 15%.",
+    "condicao": "Realize dez transações comerciais bem-sucedidas com outros jogadores."
+  },
+  {
+    "id": 386,
+    "nome": "Presença Fantasma.",
+    "categoria": "Geral",
+    "descricao": "Sempre que matar um monstro com um único golpe, a agilidade do jogador aumenta em 10% por um turno.",
+    "condicao": "Proteja um aliado recebendo dano fatal em seu lugar por três vezes."
+  },
+  {
+    "id": 387,
+    "nome": "Vínculo Trovejante.",
+    "categoria": "Geral",
+    "descricao": "Ao permanecer em combate por mais de cinco turnos seguidos, a resistência física do usuário aumenta em 8%\npelos próximos dois turnos.",
+    "condicao": "Alcance o rank C sem nunca recuar de um combate iniciado."
+  },
+  {
+    "id": 388,
+    "nome": "Runa Abençoado.",
+    "categoria": "Geral",
+    "descricao": "Quando o jogador recebe cura de um aliado, o próximo ataque recebido tem seu dano reduzido em 20%. Além\ndisso, o usuário se torna 15% mais difícil de ser detectado por um turno.\n\n-- 35 of 63 --",
+    "condicao": "Termine três dungeons sem que nenhum membro do grupo seja derrubado."
+  },
+  {
+    "id": 390,
+    "nome": "Reflexo da Fatal.",
+    "categoria": "Geral",
+    "descricao": "Após vencer um combate sem receber nenhum dano, o jogador ganha um escudo temporário equivalente a 15%",
+    "condicao": "Termine uma dungeon narrada sendo o primeiro a detectar o chefe."
+  },
+  {
+    "id": 392,
+    "nome": "Fatal Vínculo.",
+    "categoria": "Geral",
+    "descricao": "Sempre que perder um aliado em combate, a agilidade do jogador aumenta em 30% por um turno. Além disso, o\njogador ganha 5% de chance adicional de acerto crítico no próximo turno.",
+    "condicao": "Realize dez transações comerciais bem-sucedidas com outros jogadores."
+  },
+  {
+    "id": 393,
+    "nome": "Guarda da Corrompido.",
+    "categoria": "Geral",
+    "descricao": "Ao proteger um aliado recebendo dano em seu lugar, o alcance dos sentidos do usuário aumenta\ntemporariamente em 10%.",
+    "condicao": "Termine três dungeons sem que nenhum membro do grupo seja derrubado."
+  },
+  {
+    "id": 395,
+    "nome": "A Vínculo da Errático.",
+    "categoria": "Geral",
+    "descricao": "Ao marcar ou identificar um alvo pela primeira vez, o dano do próximo ataque realizado é aumentado em 10%.",
+    "condicao": "Sobreviva a cinco investidas de um chefe de rank superior."
+  },
+  {
+    "id": 396,
+    "nome": "Radiante Postura.",
+    "categoria": "Geral",
+    "descricao": "Quando o jogador recebe cura de um aliado, a agilidade do jogador aumenta em 12% por um turno.",
+    "condicao": "Proteja um aliado recebendo dano fatal em seu lugar por três vezes."
+  },
+  {
+    "id": 398,
+    "nome": "Fantasma Ímpeto.",
+    "categoria": "Geral",
+    "descricao": "Sempre que um aliado próximo for derrubado em combate, aliados próximos recebem +15% de resistência por\num turno.",
+    "condicao": "Adquira esta passiva ao permanecer como último sobrevivente em três ocasiões distintas."
+  },
+  {
+    "id": 399,
+    "nome": "A Vínculo da Abençoado.",
+    "categoria": "Geral",
+    "descricao": "Após interromper a habilidade de um inimigo, o usuário se torna 8% mais difícil de ser detectado por um turno.\nAlém disso, o dano do próximo ataque realizado é aumentado em 20%.",
+    "condicao": "Proteja um aliado recebendo dano fatal em seu lugar por três vezes."
+  },
+  {
+    "id": 401,
+    "nome": "O Gélida do Vingativo.",
+    "categoria": "Geral",
+    "descricao": "Após bloquear um golpe com sucesso, o jogador ignora 30% da resistência do alvo no próximo ataque.",
+    "condicao": "Resista a cinco efeitos de status distintos ao longo de uma campanha."
+  },
+  {
+    "id": 402,
+    "nome": "Ardente Escudo.",
+    "categoria": "Geral",
+    "descricao": "Ao proteger um aliado recebendo dano em seu lugar, o jogador ganha 10% de chance adicional de acerto crítico\nno próximo turno. Além disso, o jogador ignora 10% da resistência do alvo no próximo ataque.",
+    "condicao": "Complete uma masmorra sorteada sozinho, sem apoio de aliados."
+  },
+  {
+    "id": 404,
+    "nome": "O Runa do Coroado.",
+    "categoria": "Geral",
+    "descricao": "reduzido em 8%. Além disso, aliados próximos recebem +5% de resistência por um turno.",
+    "condicao": "Derrote um chefe de masmorra causando o maior dano do grupo."
+  },
+  {
+    "id": 405,
+    "nome": "Coroado Instância.",
+    "categoria": "Geral",
+    "descricao": "Ao ser alvo de uma habilidade de controle ou imobilização, aliados próximos recebem +15% de resistência por\num turno.",
+    "condicao": "Termine uma dungeon narrada sendo o primeiro a detectar o chefe."
+  },
+  {
+    "id": 406,
+    "nome": "Guarda da Perfeito.",
+    "categoria": "Geral",
+    "descricao": "Sempre que atacar um inimigo já debilitado, aliados próximos recebem +12% de resistência por um turno. Além\ndisso, o próximo ataque recebido tem seu dano reduzido em 20%.",
+    "condicao": "Complete uma GVG protegendo o cristal da guilda sem que ele seja destruído."
+  },
+  {
+    "id": 408,
+    "nome": "Instinto Coroado.",
+    "categoria": "Geral",
+    "descricao": "Ao ser o responsável por abrir a luta contra um chefe, o jogador ignora 30% da resistência do alvo no próximo\nataque.",
+    "condicao": "Sobreviva ao colapso de uma masmorra escapando antes do fechamento do portal."
+  },
+  {
+    "id": 409,
+    "nome": "A Sopro da Distorcido.",
+    "categoria": "Geral",
+    "descricao": "Ao completar três esquivas consecutivas, o dano do próximo ataque realizado é aumentado em 8%.",
+    "condicao": "Termine uma dungeon narrada sendo o primeiro a detectar o chefe."
+  },
+  {
+    "id": 411,
+    "nome": "Escudo Solitário.",
+    "categoria": "Geral",
+    "descricao": "Após vencer um combate sem receber nenhum dano, o alcance dos sentidos do usuário aumenta\ntemporariamente em 5%.",
+    "condicao": "Resista a cinco efeitos de status distintos ao longo de uma campanha."
+  },
+  {
+    "id": 413,
+    "nome": "A Instância da Brutal.",
+    "categoria": "Geral",
+    "descricao": "Ao ser o responsável por abrir a luta contra um chefe, o jogador ganha 12% de chance adicional de acerto crítico\nno próximo turno.",
+    "condicao": "Resista a cinco efeitos de status distintos ao longo de uma campanha."
+  },
+  {
+    "id": 415,
+    "nome": "Elo Radiante.",
+    "categoria": "Geral",
+    "descricao": "Ao completar três esquivas consecutivas, o tempo de recarga da última habilidade usada é reduzido em 25%.\nAlém disso, o alcance dos sentidos do usuário aumenta temporariamente em 10%.",
+    "condicao": "Adquira esta passiva ao permanecer como último sobrevivente em três ocasiões distintas."
+  },
+  {
+    "id": 416,
+    "nome": "A Postura da Preciso.",
+    "categoria": "Geral",
+    "descricao": "Sempre que o jogador for o primeiro a agir em um combate, o tempo de recarga da última habilidade usada é\nreduzido em 25%.",
+    "condicao": "Sobreviva a cinco investidas de um chefe de rank superior."
+  },
+  {
+    "id": 417,
+    "nome": "Instância da Coroado.",
+    "categoria": "Geral",
+    "descricao": "Após recuar estrategicamente de uma luta desfavorável, o usuário recebe +5% em todos os atributos base até o\nfim do combate.",
+    "condicao": "Finalize uma GVG sendo o responsável por derrubar o boss inimigo primeiro."
+  },
+  {
+    "id": 418,
+    "nome": "Herança da Gélido.",
+    "categoria": "Geral",
+    "descricao": "Sempre que atacar um inimigo já debilitado, o jogador ganha 10% de chance adicional de acerto crítico no\npróximo turno.",
+    "condicao": "Termine uma dungeon narrada sendo o primeiro a detectar o chefe."
+  },
+  {
+    "id": 419,
+    "nome": "Ancestral Segunda Chance.",
+    "categoria": "Geral",
+    "descricao": "Sempre que o jogador for atingido por um ataque físico, o usuário se torna 15% mais difícil de ser detectado por\num turno. Além disso, o usuário se torna 20% mais difícil de ser detectado por um turno.",
+    "condicao": "Realize dez transações comerciais bem-sucedidas com outros jogadores."
+  },
+  {
+    "id": 421,
+    "nome": "Instância Desperto.",
+    "categoria": "Geral",
+    "descricao": "Quando o jogador consegue escapar de uma emboscada, o jogador ganha 20% de chance adicional de acerto\ncrítico no próximo turno.",
+    "condicao": "Alcance o rank C sem nunca recuar de um combate iniciado."
+  },
+  {
+    "id": 422,
+    "nome": "Pulso da Instintivo.",
+    "categoria": "Geral",
+    "descricao": "Ao proteger um aliado recebendo dano em seu lugar, o jogador ganha 10% de chance adicional de acerto crítico\nno próximo turno.",
+    "condicao": "Sobreviva a cinco investidas de um chefe de rank superior."
+  },
+  {
+    "id": 425,
+    "nome": "Errático Vínculo.",
+    "categoria": "Geral",
+    "descricao": "Após acertar três ataques seguidos no mesmo alvo, o usuário se torna 30% mais difícil de ser detectado por um\nturno.",
+    "condicao": "Adquira esta passiva ao permanecer como último sobrevivente em três ocasiões distintas."
+  },
+  {
+    "id": 427,
+    "nome": "O Presença do Errático.",
+    "categoria": "Geral",
+    "descricao": "Após recuar estrategicamente de uma luta desfavorável, o usuário se torna 25% mais difícil de ser detectado por\num turno.",
+    "condicao": "Complete dez dungeons utilizando somente uma arma específica."
+  },
+  {
+    "id": 428,
+    "nome": "O Gélida do Repentino.",
+    "categoria": "Geral",
+    "descricao": "Sempre que perder um aliado em combate, a resistência física do usuário aumenta em 15% pelos próximos dois\nturnos.",
+    "condicao": "Termine três dungeons sem que nenhum membro do grupo seja derrubado."
+  },
+  {
+    "id": 431,
+    "nome": "Preciso Rugido.",
+    "categoria": "Geral",
+    "descricao": "Sempre que matar um monstro com um único golpe, o alcance dos sentidos do usuário aumenta temporariamente\nem 8%.",
+    "condicao": "Termine três dungeons sem que nenhum membro do grupo seja derrubado."
+  },
+  {
+    "id": 433,
+    "nome": "Gélido Chama.",
+    "categoria": "Geral",
+    "descricao": "Ao causar dano em um inimigo pelas costas, o tempo de recarga da última habilidade usada é reduzido em 25%.",
+    "condicao": "Vença uma disputa de guilda estando em desvantagem numérica."
+  },
+  {
+    "id": 434,
+    "nome": "Brasa da Frio.",
+    "categoria": "Geral",
+    "descricao": "Sempre que perder um aliado em combate, o dano do próximo ataque realizado é aumentado em 12%. Além\ndisso, o alcance dos sentidos do usuário aumenta temporariamente em 10%.",
+    "condicao": "Realize dez transações comerciais bem-sucedidas com outros jogadores."
+  },
+  {
+    "id": 435,
+    "nome": "Perfeito Marca.",
+    "categoria": "Geral",
+    "descricao": "Sempre que o jogador for atingido por um ataque físico, o próximo ataque recebido tem seu dano reduzido em\n10%.",
+    "condicao": "Alcance o rank B mantendo o maior número de vitórias solo da temporada."
+  },
+  {
+    "id": 436,
+    "nome": "Fôlego Espectral.",
+    "categoria": "Geral",
+    "descricao": "Ao completar três esquivas consecutivas, aliados próximos recebem +30% de resistência por um turno. Além",
+    "condicao": "Sobreviva a uma emboscada sem perder nenhum aliado."
+  },
+  {
+    "id": 437,
+    "nome": "Silencioso Olhar.",
+    "categoria": "Geral",
+    "descricao": "-- 39 of 63 --\n\nSempre que o jogador for atingido por um ataque físico, o jogador ignora 15% da resistência do alvo no próximo\nataque.",
+    "condicao": "Termine três dungeons sem que nenhum membro do grupo seja derrubado."
+  },
+  {
+    "id": 438,
+    "nome": "Olhar Devastador.",
+    "categoria": "Geral",
+    "descricao": "Quando o jogador consegue escapar de uma emboscada, a resistência física do usuário aumenta em 20% pelos\npróximos dois turnos.",
+    "condicao": "Vença uma disputa de guilda estando em desvantagem numérica."
+  },
+  {
+    "id": 439,
+    "nome": "Selo do Rebelde.",
+    "categoria": "Geral",
+    "descricao": "Ao marcar ou identificar um alvo pela primeira vez, o alcance dos sentidos do usuário aumenta temporariamente\nem 30%. Além disso, o dano do próximo ataque realizado é aumentado em 20%.",
+    "condicao": "Finalize uma GVG sendo o responsável por derrubar o boss inimigo primeiro."
+  },
+  {
+    "id": 440,
+    "nome": "Selvagem Chama.",
+    "categoria": "Geral",
+    "descricao": "Após bloquear um golpe com sucesso, o tempo de recarga da última habilidade usada é reduzido em 5%.",
+    "condicao": "Alcance o rank C sem nunca recuar de um combate iniciado."
+  },
+  {
+    "id": 441,
+    "nome": "Persistente Eco.",
+    "categoria": "Geral",
+    "descricao": "Ao completar três esquivas consecutivas, o jogador ignora 15% da resistência do alvo no próximo ataque.",
+    "condicao": "Vença dez combates um contra um."
+  },
+  {
+    "id": 442,
+    "nome": "Guarda da Silencioso.",
+    "categoria": "Geral",
+    "descricao": "Após vencer um combate sem receber nenhum dano, a agilidade do jogador aumenta em 5% por um turno.",
+    "condicao": "Complete uma GVG protegendo o cristal da guilda sem que ele seja destruído."
+  },
+  {
+    "id": 443,
+    "nome": "Esquecido Elo.",
+    "categoria": "Geral",
+    "descricao": "Após interromper a habilidade de um inimigo, o alcance dos sentidos do usuário aumenta temporariamente em\n20%.",
+    "condicao": "Complete dez dungeons utilizando somente uma arma específica."
+  },
+  {
+    "id": 444,
+    "nome": "O Golpe do Repentino.",
+    "categoria": "Geral",
+    "descricao": "Sempre que o jogador utilizar um item de cura, o usuário se torna 5% mais difícil de ser detectado por um turno.",
+    "condicao": "Termine uma dungeon narrada sendo o primeiro a detectar o chefe."
+  },
+  {
+    "id": 445,
+    "nome": "Renascido Recuo.",
+    "categoria": "Geral",
+    "descricao": "Ao entrar em uma masmorra pela primeira vez, o jogador ignora 30% da resistência do alvo no próximo ataque.",
+    "condicao": "Termine três dungeons sem que nenhum membro do grupo seja derrubado."
+  },
+  {
+    "id": 446,
+    "nome": "A Elo da Inabalável.",
+    "categoria": "Geral",
+    "descricao": "Sempre que o jogador for o primeiro a agir em um combate, o usuário recebe +12% em todos os atributos base\naté o fim do combate.",
+    "condicao": "Alcance o rank B mantendo o maior número de vitórias solo da temporada."
+  },
+  {
+    "id": 447,
+    "nome": "Reflexo Desesperado.",
+    "categoria": "Geral",
+    "descricao": "Após vencer um combate sem receber nenhum dano, o tempo de recarga da última habilidade usada é reduzido\nem 25%. Além disso, o próximo ataque recebido tem seu dano reduzido em 5%.",
+    "condicao": "Sobreviva a cinco investidas de um chefe de rank superior."
+  },
+  {
+    "id": 449,
+    "nome": "O Passo do Sombrio.",
+    "categoria": "Geral",
+    "descricao": "Após resistir com sucesso a um efeito de status negativo, o usuário se torna 8% mais difícil de ser detectado por\num turno. Além disso, o dano do próximo ataque realizado é aumentado em 8%.",
+    "condicao": "Termine uma dungeon narrada sendo o primeiro a detectar o chefe."
+  },
+  {
+    "id": 450,
+    "nome": "Herança Desperto.",
+    "categoria": "Geral",
+    "descricao": "-- 40 of 63 --\n\nApós interromper a habilidade de um inimigo, o tempo de recarga da última habilidade usada é reduzido em 5%.",
+    "condicao": "Resista a cinco efeitos de status distintos ao longo de uma campanha."
+  },
+  {
+    "id": 451,
+    "nome": "Gélido Guarda.",
+    "categoria": "Geral",
+    "descricao": "Quando o jogador consegue escapar de uma emboscada, o usuário se torna 12% mais difícil de ser detectado por\num turno. Além disso, o jogador ignora 20% da resistência do alvo no próximo ataque.",
+    "condicao": "Proteja um aliado recebendo dano fatal em seu lugar por três vezes."
+  },
+  {
+    "id": 452,
+    "nome": "Escudo Repentino.",
+    "categoria": "Geral",
+    "descricao": "Após acertar três ataques seguidos no mesmo alvo, o dano do próximo ataque realizado é aumentado em 5%.\nAlém disso, a agilidade do jogador aumenta em 5% por um turno.",
+    "condicao": "Proteja um aliado recebendo dano fatal em seu lugar por três vezes."
+  },
+  {
+    "id": 453,
+    "nome": "O Assinatura do Repentino.",
+    "categoria": "Geral",
+    "descricao": "Ao desviar completamente de um ataque inimigo, o jogador ganha um escudo temporário equivalente a 30% de",
+    "condicao": "Finalize uma GVG sendo o responsável por derrubar o boss inimigo primeiro."
+  },
+  {
+    "id": 454,
+    "nome": "Calculado Runa.",
+    "categoria": "Geral",
+    "descricao": "Sempre que perder um aliado em combate, o jogador ganha 20% de chance adicional de acerto crítico no\npróximo turno. Além disso, o usuário se torna 15% mais difícil de ser detectado por um turno.",
+    "condicao": "Vença dez combates um contra um."
+  },
+  {
+    "id": 455,
+    "nome": "Guarda Solitário.",
+    "categoria": "Geral",
+    "descricao": "Sempre que o jogador for o primeiro a agir em um combate, o jogador ganha 15% de chance adicional de acerto\ncrítico no próximo turno.",
+    "condicao": "Vença dez combates um contra um."
+  },
+  {
+    "id": 456,
+    "nome": "Inabalável Instinto.",
+    "categoria": "Geral",
+    "descricao": "Ao permanecer em combate por mais de cinco turnos seguidos, o jogador ganha 30% de chance adicional de\nacerto crítico no próximo turno. Além disso, o alcance dos sentidos do usuário aumenta temporariamente em 8%.",
+    "condicao": "Adquira esta passiva ao permanecer como último sobrevivente em três ocasiões distintas."
+  },
+  {
+    "id": 458,
+    "nome": "O Sombra do Puro.",
+    "categoria": "Geral",
+    "descricao": "Quando o jogador recebe cura de um aliado, o jogador ignora 15% da resistência do alvo no próximo ataque.",
+    "condicao": "Sobreviva a uma emboscada sem perder nenhum aliado."
+  },
+  {
+    "id": 460,
+    "nome": "Passo Desperto.",
+    "categoria": "Geral",
+    "descricao": "Após acertar três ataques seguidos no mesmo alvo, o usuário recebe +5% em todos os atributos base até o fim\ndo combate.",
+    "condicao": "Vença dez combates um contra um."
+  },
+  {
+    "id": 462,
+    "nome": "Elo Brutal.",
+    "categoria": "Geral",
+    "descricao": "-- 41 of 63 --\n\nSempre que matar um monstro com um único golpe, a agilidade do jogador aumenta em 8% por um turno. Além\ndisso, o alcance dos sentidos do usuário aumenta temporariamente em 8%.",
+    "condicao": "Vença vinte combates utilizando apenas contra-ataques."
+  },
+  {
+    "id": 463,
+    "nome": "Ancestral Sombra.",
+    "categoria": "Geral",
+    "descricao": "Sempre que o jogador for atingido por um ataque físico, a agilidade do jogador aumenta em 5% por um turno.\nAlém disso, o usuário se torna 20% mais difícil de ser detectado por um turno.",
+    "condicao": "Derrote um chefe de masmorra causando o maior dano do grupo."
+  },
+  {
+    "id": 464,
+    "nome": "A Escudo da Contido.",
+    "categoria": "Geral",
+    "descricao": "reduzido em 10%. Além disso, a agilidade do jogador aumenta em 10% por um turno.",
+    "condicao": "Sobreviva a uma emboscada sem perder nenhum aliado."
+  },
+  {
+    "id": 465,
+    "nome": "Runa Inabalável.",
+    "categoria": "Geral",
+    "descricao": "Ao causar dano em um inimigo pelas costas, o alcance dos sentidos do usuário aumenta temporariamente em\n12%.",
+    "condicao": "Adquira esta passiva ao permanecer como último sobrevivente em três ocasiões distintas."
+  },
+  {
+    "id": 466,
+    "nome": "Ardente Passo.",
+    "categoria": "Geral",
+    "descricao": "Quando o jogador recebe cura de um aliado, o jogador ignora 5% da resistência do alvo no próximo ataque.",
+    "condicao": "Adquira esta passiva ao permanecer como último sobrevivente em três ocasiões distintas."
+  },
+  {
+    "id": 468,
+    "nome": "O Passo do Ardente.",
+    "categoria": "Geral",
+    "descricao": "Sempre que perder um aliado em combate, o alcance dos sentidos do usuário aumenta temporariamente em\n10%.",
+    "condicao": "Sobreviva ao colapso de uma masmorra escapando antes do fechamento do portal."
+  },
+  {
+    "id": 469,
+    "nome": "Gélida Trovejante.",
+    "categoria": "Geral",
+    "descricao": "Após bloquear um golpe com sucesso, o tempo de recarga da última habilidade usada é reduzido em 8%.",
+    "condicao": "Termine três dungeons sem que nenhum membro do grupo seja derrubado."
+  },
+  {
+    "id": 470,
+    "nome": "O Brasa do Coroado.",
+    "categoria": "Geral",
+    "descricao": "Após acertar três ataques seguidos no mesmo alvo, o jogador ignora 30% da resistência do alvo no próximo",
+    "condicao": "Complete dez dungeons utilizando somente uma arma específica."
+  },
+  {
+    "id": 471,
+    "nome": "Última Linha da Fatal.",
+    "categoria": "Geral",
+    "descricao": "Sempre que matar um monstro com um único golpe, aliados próximos recebem +12% de resistência por um",
+    "condicao": "Alcance o rank C sem nunca recuar de um combate iniciado."
+  },
+  {
+    "id": 472,
+    "nome": "Guarda Persistente.",
+    "categoria": "Geral",
+    "descricao": "Ao permanecer imóvel por dois turnos consecutivos, o jogador ignora 15% da resistência do alvo no próximo\nataque.",
+    "condicao": "Resista a cinco efeitos de status distintos ao longo de uma campanha."
+  },
+  {
+    "id": 475,
+    "nome": "Solitário Golpe.",
+    "categoria": "Geral",
+    "descricao": "Ao entrar em uma masmorra pela primeira vez, o jogador ignora 15% da resistência do alvo no próximo ataque.",
+    "condicao": "Resista a cinco efeitos de status distintos ao longo de uma campanha."
+  },
+  {
+    "id": 476,
+    "nome": "Perfeito Escudo.",
+    "categoria": "Geral",
+    "descricao": "Quando o jogador recebe cura de um aliado, o jogador ignora 25% da resistência do alvo no próximo ataque.",
+    "condicao": "Vença dez combates um contra um."
+  },
+  {
+    "id": 477,
+    "nome": "Selo do Persistente.",
+    "categoria": "Geral",
+    "descricao": "Sempre que finalizar um combate como o único ileso do grupo, a resistência física do usuário aumenta em 12%\npelos próximos dois turnos.",
+    "condicao": "Vença vinte combates utilizando apenas contra-ataques."
+  },
+  {
+    "id": 478,
+    "nome": "Retaliação Contido.",
+    "categoria": "Geral",
+    "descricao": "Sempre que o jogador for o primeiro a agir em um combate, a agilidade do jogador aumenta em 20% por um\nturno. Além disso, o próximo ataque recebido tem seu dano reduzido em 5%.",
+    "condicao": "Termine uma dungeon narrada sendo o primeiro a detectar o chefe."
+  },
+  {
+    "id": 479,
+    "nome": "Selo da Coroado.",
+    "categoria": "Geral",
+    "descricao": "Quando o jogador executa um ataque crítico, o próximo ataque recebido tem seu dano reduzido em 30%.",
+    "condicao": "Proteja um aliado recebendo dano fatal em seu lugar por três vezes."
+  },
+  {
+    "id": 480,
+    "nome": "O Sombra do Frio.",
+    "categoria": "Geral",
+    "descricao": "Ao marcar ou identificar um alvo pela primeira vez, o próximo ataque recebido tem seu dano reduzido em 12%.",
+    "condicao": "Complete uma GVG protegendo o cristal da guilda sem que ele seja destruído."
+  },
+  {
+    "id": 481,
+    "nome": "Frio Brasa.",
+    "categoria": "Geral",
+    "descricao": "Quando o jogador se torna o último sobrevivente de seu grupo, o tempo de recarga da última habilidade usada é\nreduzido em 12%.",
+    "condicao": "Finalize cinco combates consecutivos sem ser atingido uma única vez."
+  },
+  {
+    "id": 482,
+    "nome": "Sombrio Runa.",
+    "categoria": "Geral",
+    "descricao": "Sempre que enfrentar um inimigo de rank superior ao seu, aliados próximos recebem +20% de resistência por um\nturno. Além disso, o próximo ataque recebido tem seu dano reduzido em 5%.",
+    "condicao": "Vença uma disputa de guilda estando em desvantagem numérica."
+  },
+  {
+    "id": 483,
+    "nome": "Rugido Distorcido.",
+    "categoria": "Geral",
+    "descricao": "Quando o jogador consegue escapar de uma emboscada, o próximo ataque recebido tem seu dano reduzido em\n20%. Além disso, o alcance dos sentidos do usuário aumenta temporariamente em 10%.",
+    "condicao": "Derrote um chefe de masmorra causando o maior dano do grupo."
+  },
+  {
+    "id": 485,
+    "nome": "Selo do Puro.",
+    "categoria": "Geral",
+    "descricao": "Quando o jogador consegue escapar de uma emboscada, o usuário se torna 20% mais difícil de ser detectado por\num turno.",
+    "condicao": "Derrote um chefe de masmorra causando o maior dano do grupo."
+  },
+  {
+    "id": 486,
+    "nome": "Olhar Vingativo.",
+    "categoria": "Geral",
+    "descricao": "Sempre que perder um aliado em combate, o próximo ataque recebido tem seu dano reduzido em 8%.",
+    "condicao": "Sobreviva a cinco investidas de um chefe de rank superior."
+  },
+  {
+    "id": 487,
+    "nome": "Espectral Rugido.",
+    "categoria": "Geral",
+    "descricao": "Quando o jogador recebe cura de um aliado, o tempo de recarga da última habilidade usada é reduzido em 20%.",
+    "condicao": "Termine três dungeons sem que nenhum membro do grupo seja derrubado.\n\n-- 43 of 63 --"
+  },
+  {
+    "id": 488,
+    "nome": "Pulso Silencioso.",
+    "categoria": "Geral",
+    "descricao": "Ao entrar em uma masmorra pela primeira vez, o próximo ataque recebido tem seu dano reduzido em 12%. Além\ndisso, o jogador ganha 10% de chance adicional de acerto crítico no próximo turno.",
+    "condicao": "Vença vinte combates utilizando apenas contra-ataques."
+  },
+  {
+    "id": 490,
+    "nome": "Repentino Assinatura.",
+    "categoria": "Geral",
+    "descricao": "Sempre que matar um monstro com um único golpe, a agilidade do jogador aumenta em 5% por um turno.",
+    "condicao": "Resista a cinco efeitos de status distintos ao longo de uma campanha."
+  },
+  {
+    "id": 492,
+    "nome": "Marca Desesperado.",
+    "categoria": "Geral",
+    "descricao": "Ao permanecer imóvel por dois turnos consecutivos, o dano do próximo ataque realizado é aumentado em 25%.\nAlém disso, aliados próximos recebem +20% de resistência por um turno.",
+    "condicao": "Termine uma dungeon narrada sendo o primeiro a detectar o chefe."
+  },
+  {
+    "id": 495,
+    "nome": "Cicatriz Persistente.",
+    "categoria": "Geral",
+    "descricao": "Após interromper a habilidade de um inimigo, o usuário se torna 15% mais difícil de ser detectado por um turno.",
+    "condicao": "Resista a cinco efeitos de status distintos ao longo de uma campanha."
+  },
+  {
+    "id": 496,
+    "nome": "Eco Abençoado.",
+    "categoria": "Geral",
+    "descricao": "Após recuar estrategicamente de uma luta desfavorável, o tempo de recarga da última habilidade usada é\nreduzido em 5%.",
+    "condicao": "Vença vinte combates utilizando apenas contra-ataques."
+  },
+  {
+    "id": 497,
+    "nome": "Cicatriz Fantasma.",
+    "categoria": "Geral",
+    "descricao": "Após vencer um combate sem receber nenhum dano, o jogador ganha 25% de chance adicional de acerto crítico\nno próximo turno.",
+    "condicao": "Complete uma masmorra sorteada sozinho, sem apoio de aliados."
+  },
+  {
+    "id": 498,
+    "nome": "Postura da Fantasma.",
+    "categoria": "Geral",
+    "descricao": "Após resistir com sucesso a um efeito de status negativo, o alcance dos sentidos do usuário aumenta\ntemporariamente em 30%.",
+    "condicao": "Complete uma masmorra sorteada sozinho, sem apoio de aliados."
+  },
+  {
+    "id": 499,
+    "nome": "Sombra Inabalável.",
+    "categoria": "Geral",
+    "descricao": "Ao desviar completamente de um ataque inimigo, o jogador ganha 10% de chance adicional de acerto crítico no\npróximo turno.",
+    "condicao": "Sobreviva ao colapso de uma masmorra escapando antes do fechamento do portal."
+  },
+  {
+    "id": 500,
+    "nome": "A Elo da Renascido.",
+    "categoria": "Geral",
+    "descricao": "-- 44 of 63 --\n\nApós recuar estrategicamente de uma luta desfavorável, o jogador ignora 25% da resistência do alvo no próximo\nataque. Além disso, o tempo de recarga da última habilidade usada é reduzido em 15%.",
+    "condicao": "Vença dez combates um contra um.\n\n-- 45 of 63 --\n\nDungeon Sorteadas | Instantâneas"
+  },
+  {
+    "id": 501,
+    "nome": "Presença da Selvagem.",
+    "categoria": "Geral",
+    "descricao": "Quando o jogador executa um ataque crítico, o alcance dos sentidos do usuário aumenta temporariamente em\n15%.",
+    "condicao": "Alcance o rank C sem nunca recuar de um combate iniciado."
+  },
+  {
+    "id": 502,
+    "nome": "Salto da Sombrio.",
+    "categoria": "Geral",
+    "descricao": "Sempre que atacar um inimigo já debilitado, aliados próximos recebem +15% de resistência por um turno.",
+    "condicao": "Resista a cinco efeitos de status distintos ao longo de uma campanha."
+  },
+  {
+    "id": 503,
+    "nome": "Distorcido Fôlego.",
+    "categoria": "Geral",
+    "descricao": "Ao ser o responsável por abrir a luta contra um chefe, o usuário recebe +25% em todos os atributos base até o fim\ndo combate.",
+    "condicao": "Vença uma disputa de guilda estando em desvantagem numérica."
+  },
+  {
+    "id": 507,
+    "nome": "Instintivo Eco.",
+    "categoria": "Geral",
+    "descricao": "Quando o jogador consegue escapar de uma emboscada, aliados próximos recebem +20% de resistência por um",
+    "condicao": "Alcance o rank C sem nunca recuar de um combate iniciado."
+  },
+  {
+    "id": 508,
+    "nome": "Esquecido Retaliação.",
+    "categoria": "Geral",
+    "descricao": "Ao permanecer em combate por mais de cinco turnos seguidos, o tempo de recarga da última habilidade usada é\nreduzido em 25%.",
+    "condicao": "Vença dez combates um contra um."
+  },
+  {
+    "id": 509,
+    "nome": "Frio Sopro.",
+    "categoria": "Geral",
+    "descricao": "Quando o jogador consegue escapar de uma emboscada, o tempo de recarga da última habilidade usada é\nreduzido em 30%.",
+    "condicao": "Proteja um aliado recebendo dano fatal em seu lugar por três vezes."
+  },
+  {
+    "id": 511,
+    "nome": "Instintivo Instinto.",
+    "categoria": "Geral",
+    "descricao": "Ao proteger um aliado recebendo dano em seu lugar, o usuário recebe +12% em todos os atributos base até o fim\ndo combate.",
+    "condicao": "Alcance o rank C sem nunca recuar de um combate iniciado."
+  },
+  {
+    "id": 513,
+    "nome": "A Presença da Brutal.",
+    "categoria": "Geral",
+    "descricao": "Sempre que enfrentar um inimigo de rank superior ao seu, o tempo de recarga da última habilidade usada é\nreduzido em 15%. Além disso, a resistência física do usuário aumenta em 20% pelos próximos dois turnos.",
+    "condicao": "Termine três dungeons sem que nenhum membro do grupo seja derrubado."
+  },
+  {
+    "id": 514,
+    "nome": "Calculado Golpe.",
+    "categoria": "Geral",
+    "descricao": "Ao marcar ou identificar um alvo pela primeira vez, o usuário recebe +12% em todos os atributos base até o fim\ndo combate. Além disso, o tempo de recarga da última habilidade usada é reduzido em 20%.",
+    "condicao": "Alcance o rank B mantendo o maior número de vitórias solo da temporada."
+  },
+  {
+    "id": 516,
+    "nome": "Segunda Chance Implacável.",
+    "categoria": "Geral",
+    "descricao": "Ao ser alvo de uma habilidade de controle ou imobilização, o jogador ignora 12% da resistência do alvo no\npróximo ataque.",
+    "condicao": "Vença vinte combates utilizando apenas contra-ataques."
+  },
+  {
+    "id": 517,
+    "nome": "Retaliação Ancestral.",
+    "categoria": "Geral",
+    "descricao": "Sempre que atacar um inimigo já debilitado, o próximo ataque recebido tem seu dano reduzido em 8%.",
+    "condicao": "Vença uma disputa de guilda estando em desvantagem numérica."
+  },
+  {
+    "id": 518,
+    "nome": "Gélida Repentino.",
+    "categoria": "Geral",
+    "descricao": "Sempre que finalizar um combate como o único ileso do grupo, o jogador ignora 20% da resistência do alvo no\npróximo ataque.",
+    "condicao": "Termine três dungeons sem que nenhum membro do grupo seja derrubado."
+  },
+  {
+    "id": 521,
+    "nome": "Postura Renascido.",
+    "categoria": "Geral",
+    "descricao": "Ao ser o responsável por abrir a luta contra um chefe, o dano do próximo ataque realizado é aumentado em 30%.",
+    "condicao": "Finalize uma GVG sendo o responsável por derrubar o boss inimigo primeiro."
+  },
+  {
+    "id": 522,
+    "nome": "Persistente Rugido.",
+    "categoria": "Geral",
+    "descricao": "Após acertar três ataques seguidos no mesmo alvo, o próximo ataque recebido tem seu dano reduzido em 8%.",
+    "condicao": "Alcance o rank B mantendo o maior número de vitórias solo da temporada."
+  },
+  {
+    "id": 523,
+    "nome": "A Instinto da Sombrio.",
+    "categoria": "Geral",
+    "descricao": "Sempre que enfrentar um inimigo de rank superior ao seu, o próximo ataque recebido tem seu dano reduzido em\n10%.",
+    "condicao": "Sobreviva ao colapso de uma masmorra escapando antes do fechamento do portal."
+  },
+  {
+    "id": 524,
+    "nome": "Assinatura Persistente.",
+    "categoria": "Geral",
+    "descricao": "Ao permanecer em combate por mais de cinco turnos seguidos, o usuário recebe +12% em todos os atributos\nbase até o fim do combate.",
+    "condicao": "Vença dez combates um contra um."
+  },
+  {
+    "id": 525,
+    "nome": "A Fôlego da Repentino.",
+    "categoria": "Geral",
+    "descricao": "-- 47 of 63 --",
+    "condicao": "Vença uma disputa de guilda estando em desvantagem numérica."
+  },
+  {
+    "id": 526,
+    "nome": "A Fôrma da Trovejante.",
+    "categoria": "Geral",
+    "descricao": "Quando o jogador executa um ataque crítico, o dano do próximo ataque realizado é aumentado em 5%.",
+    "condicao": "Adquira esta passiva ao permanecer como último sobrevivente em três ocasiões distintas."
+  },
+  {
+    "id": 527,
+    "nome": "Escudo Desperto.",
+    "categoria": "Geral",
+    "descricao": "Ao ser o responsável por abrir a luta contra um chefe, o tempo de recarga da última habilidade usada é reduzido\nem 10%.",
+    "condicao": "Complete dez dungeons utilizando somente uma arma específica."
+  },
+  {
+    "id": 528,
+    "nome": "Selo da Amaldiçoado.",
+    "categoria": "Geral",
+    "descricao": "Sempre que o jogador utilizar um item de cura, aliados próximos recebem +15% de resistência por um turno.\nAlém disso, o tempo de recarga da última habilidade usada é reduzido em 20%.",
+    "condicao": "Sobreviva a uma emboscada sem perder nenhum aliado."
+  },
+  {
+    "id": 529,
+    "nome": "Instintivo Elo.",
+    "categoria": "Geral",
+    "descricao": "Sempre que finalizar um combate como o único ileso do grupo, a resistência física do usuário aumenta em 10%\npelos próximos dois turnos.",
+    "condicao": "Complete uma GVG protegendo o cristal da guilda sem que ele seja destruído."
+  },
+  {
+    "id": 530,
+    "nome": "Última Linha da Instintivo.",
+    "categoria": "Geral",
+    "descricao": "Quando o jogador se torna o último sobrevivente de seu grupo, o jogador ignora 30% da resistência do alvo no\npróximo ataque.",
+    "condicao": "Alcance o rank C sem nunca recuar de um combate iniciado."
+  },
+  {
+    "id": 532,
+    "nome": "Coroado Retaliação.",
+    "categoria": "Geral",
+    "descricao": "Sempre que finalizar um combate como o único ileso do grupo, o próximo ataque recebido tem seu dano reduzido\nem 25%. Além disso, a agilidade do jogador aumenta em 15% por um turno.",
+    "condicao": "Complete dez dungeons utilizando somente uma arma específica."
+  },
+  {
+    "id": 533,
+    "nome": "Segunda Chance da Desperto.",
+    "categoria": "Geral",
+    "descricao": "Ao ser o responsável por abrir a luta contra um chefe, a resistência física do usuário aumenta em 15% pelos\npróximos dois turnos.",
+    "condicao": "Derrote um chefe de masmorra causando o maior dano do grupo."
+  },
+  {
+    "id": 534,
+    "nome": "Runa Fatal.",
+    "categoria": "Geral",
+    "descricao": "Quando o jogador se torna o último sobrevivente de seu grupo, o próximo ataque recebido tem seu dano reduzido\nem 25%. Além disso, o dano do próximo ataque realizado é aumentado em 8%.",
+    "condicao": "Alcance o rank C sem nunca recuar de um combate iniciado."
+  },
+  {
+    "id": 535,
+    "nome": "Postura Solitário.",
+    "categoria": "Geral",
+    "descricao": "Ao causar dano em um inimigo pelas costas, o usuário se torna 5% mais difícil de ser detectado por um turno.",
+    "condicao": "Realize dez transações comerciais bem-sucedidas com outros jogadores."
+  },
+  {
+    "id": 537,
+    "nome": "Fantasma Retaliação.",
+    "categoria": "Geral",
+    "descricao": "Ao entrar em uma masmorra pela primeira vez, o usuário se torna 25% mais difícil de ser detectado por um turno.\nAlém disso, o usuário se torna 5% mais difícil de ser detectado por um turno.",
+    "condicao": "Adquira esta passiva ao permanecer como último sobrevivente em três ocasiões distintas.\n\n-- 48 of 63 --"
+  },
+  {
+    "id": 538,
+    "nome": "O Gélida do Ancestral.",
+    "categoria": "Geral",
+    "descricao": "Sempre que enfrentar um inimigo de rank superior ao seu, o tempo de recarga da última habilidade usada é\nreduzido em 10%.",
+    "condicao": "Alcance o rank B mantendo o maior número de vitórias solo da temporada."
+  },
+  {
+    "id": 539,
+    "nome": "Postura Desperto.",
+    "categoria": "Geral",
+    "descricao": "Após acertar três ataques seguidos no mesmo alvo, o usuário recebe +12% em todos os atributos base até o fim\ndo combate.",
+    "condicao": "Alcance o rank B mantendo o maior número de vitórias solo da temporada."
+  },
+  {
+    "id": 540,
+    "nome": "Esquecido Passo.",
+    "categoria": "Geral",
+    "descricao": "Sempre que um aliado próximo for derrubado em combate, o alcance dos sentidos do usuário aumenta\ntemporariamente em 30%.",
+    "condicao": "Adquira esta passiva ao permanecer como último sobrevivente em três ocasiões distintas."
+  },
+  {
+    "id": 541,
+    "nome": "Radiante Sombra.",
+    "categoria": "Geral",
+    "descricao": "Sempre que o jogador utilizar um item de cura, o dano do próximo ataque realizado é aumentado em 30%. Além\ndisso, o jogador ignora 5% da resistência do alvo no próximo ataque.",
+    "condicao": "Sobreviva a uma emboscada sem perder nenhum aliado."
+  },
+  {
+    "id": 543,
+    "nome": "Instinto de Última Linha.",
+    "categoria": "Geral",
+    "descricao": "Após recuar estrategicamente de uma luta desfavorável, o dano do próximo ataque realizado é aumentado em\n15%.",
+    "condicao": "Adquira esta passiva ao permanecer como último sobrevivente em três ocasiões distintas."
+  },
+  {
+    "id": 544,
+    "nome": "Instância Instintivo.",
+    "categoria": "Geral",
+    "descricao": "Ao marcar ou identificar um alvo pela primeira vez, aliados próximos recebem +8% de resistência por um turno.",
+    "condicao": "Complete uma GVG protegendo o cristal da guilda sem que ele seja destruído."
+  },
+  {
+    "id": 547,
+    "nome": "Amaldiçoado Chama.",
+    "categoria": "Geral",
+    "descricao": "Sempre que o jogador utilizar um item de cura, o próximo ataque recebido tem seu dano reduzido em 30%.",
+    "condicao": "Realize dez transações comerciais bem-sucedidas com outros jogadores."
+  },
+  {
+    "id": 549,
+    "nome": "Corrompido Presença.",
+    "categoria": "Geral",
+    "descricao": "Ao marcar ou identificar um alvo pela primeira vez, aliados próximos recebem +5% de resistência por um turno.\nAlém disso, a resistência física do usuário aumenta em 15% pelos próximos dois turnos.",
+    "condicao": "Alcance o rank B mantendo o maior número de vitórias solo da temporada."
+  },
+  {
+    "id": 550,
+    "nome": "Selvagem Reflexo.",
+    "categoria": "Geral",
+    "descricao": "-- 49 of 63 --\n\nAo causar dano em um inimigo pelas costas, a resistência física do usuário aumenta em 25% pelos próximos dois\nturnos.",
+    "condicao": "Realize dez transações comerciais bem-sucedidas com outros jogadores."
+  },
+  {
+    "id": 551,
+    "nome": "Fantasma Selo.",
+    "categoria": "Geral",
+    "descricao": "Ao completar três esquivas consecutivas, o jogador ganha 25% de chance adicional de acerto crítico no próximo\nturno.",
+    "condicao": "Complete dez dungeons utilizando somente uma arma específica."
+  },
+  {
+    "id": 552,
+    "nome": "Runa Puro.",
+    "categoria": "Geral",
+    "descricao": "Ao entrar em uma masmorra pela primeira vez, o jogador ganha 20% de chance adicional de acerto crítico no\npróximo turno.",
+    "condicao": "Vença vinte combates utilizando apenas contra-ataques."
+  },
+  {
+    "id": 554,
+    "nome": "Reflexo da Solitário.",
+    "categoria": "Geral",
+    "descricao": "Ao ser o responsável por abrir a luta contra um chefe, a resistência física do usuário aumenta em 15% pelos\npróximos dois turnos.",
+    "condicao": "Resista a cinco efeitos de status distintos ao longo de uma campanha."
+  },
+  {
+    "id": 555,
+    "nome": "Instinto Gélido.",
+    "categoria": "Geral",
+    "descricao": "Após vencer um combate sem receber nenhum dano, o dano do próximo ataque realizado é aumentado em 5%.",
+    "condicao": "Complete uma masmorra sorteada sozinho, sem apoio de aliados."
+  },
+  {
+    "id": 556,
+    "nome": "Brutal Olhar.",
+    "categoria": "Geral",
+    "descricao": "Ao desviar completamente de um ataque inimigo, a agilidade do jogador aumenta em 15% por um turno. Além",
+    "condicao": "Complete uma GVG protegendo o cristal da guilda sem que ele seja destruído."
+  },
+  {
+    "id": 558,
+    "nome": "Pulso Distorcido.",
+    "categoria": "Geral",
+    "descricao": "Ao permanecer imóvel por dois turnos consecutivos, o dano do próximo ataque realizado é aumentado em 20%.",
+    "condicao": "Alcance o rank C sem nunca recuar de um combate iniciado."
+  },
+  {
+    "id": 559,
+    "nome": "A Cicatriz da Perfeito.",
+    "categoria": "Geral",
+    "descricao": "Após resistir com sucesso a um efeito de status negativo, a agilidade do jogador aumenta em 15% por um turno.",
+    "condicao": "Vença vinte combates utilizando apenas contra-ataques."
+  },
+  {
+    "id": 561,
+    "nome": "Calculado Instância.",
+    "categoria": "Geral",
+    "descricao": "Após recuar estrategicamente de uma luta desfavorável, a agilidade do jogador aumenta em 10% por um turno.",
+    "condicao": "Vença dez combates um contra um."
+  },
+  {
+    "id": 562,
+    "nome": "Reflexo da Amaldiçoado.",
+    "categoria": "Geral",
+    "descricao": "Sempre que o jogador utilizar um item de cura, o tempo de recarga da última habilidade usada é reduzido em\n12%.",
+    "condicao": "Adquira esta passiva ao permanecer como último sobrevivente em três ocasiões distintas.\n\n-- 50 of 63 --"
+  },
+  {
+    "id": 563,
+    "nome": "A Pulso da Rebelde.",
+    "categoria": "Geral",
+    "descricao": "Ao ser o responsável por abrir a luta contra um chefe, a agilidade do jogador aumenta em 12% por um turno.\nAlém disso, o jogador ignora 8% da resistência do alvo no próximo ataque.",
+    "condicao": "Sobreviva ao colapso de uma masmorra escapando antes do fechamento do portal."
+  },
+  {
+    "id": 564,
+    "nome": "O Marca do Adormecido.",
+    "categoria": "Geral",
+    "descricao": "Ao causar dano em um inimigo pelas costas, o jogador ignora 15% da resistência do alvo no próximo ataque.",
+    "condicao": "Sobreviva a uma emboscada sem perder nenhum aliado."
+  },
+  {
+    "id": 565,
+    "nome": "O Instância do Desperto.",
+    "categoria": "Geral",
+    "descricao": "Sempre que finalizar um combate como o único ileso do grupo, o usuário se torna 8% mais difícil de ser detectado\npor um turno.",
+    "condicao": "Sobreviva a cinco investidas de um chefe de rank superior."
+  },
+  {
+    "id": 569,
+    "nome": "Brasa Radiante.",
+    "categoria": "Geral",
+    "descricao": "Ao marcar ou identificar um alvo pela primeira vez, o próximo ataque recebido tem seu dano reduzido em 5%.\nAlém disso, o dano do próximo ataque realizado é aumentado em 5%.",
+    "condicao": "Termine uma dungeon narrada sendo o primeiro a detectar o chefe."
+  },
+  {
+    "id": 570,
+    "nome": "Ímpeto da Rebelde.",
+    "categoria": "Geral",
+    "descricao": "Sempre que matar um monstro com um único golpe, aliados próximos recebem +10% de resistência por um\nturno.",
+    "condicao": "Finalize uma GVG sendo o responsável por derrubar o boss inimigo primeiro."
+  },
+  {
+    "id": 573,
+    "nome": "Gélido Herança.",
+    "categoria": "Geral",
+    "descricao": "Quando o jogador executa um ataque crítico, a agilidade do jogador aumenta em 30% por um turno.",
+    "condicao": "Sobreviva a cinco investidas de um chefe de rank superior."
+  },
+  {
+    "id": 574,
+    "nome": "A Salto da Abençoado.",
+    "categoria": "Geral",
+    "descricao": "Ao permanecer imóvel por dois turnos consecutivos, o jogador ganha 8% de chance adicional de acerto crítico no\npróximo turno.",
+    "condicao": "Finalize cinco combates consecutivos sem ser atingido uma única vez."
+  },
+  {
+    "id": 575,
+    "nome": "Postura Errático.",
+    "categoria": "Geral",
+    "descricao": "-- 51 of 63 --\n\nAo completar três esquivas consecutivas, o próximo ataque recebido tem seu dano reduzido em 20%. Além disso,\na resistência física do usuário aumenta em 5% pelos próximos dois turnos.",
+    "condicao": "Finalize cinco combates consecutivos sem ser atingido uma única vez."
+  },
+  {
+    "id": 576,
+    "nome": "Marca Vingativo.",
+    "categoria": "Geral",
+    "descricao": "Sempre que matar um monstro com um único golpe, o dano do próximo ataque realizado é aumentado em 30%.\nAlém disso, o próximo ataque recebido tem seu dano reduzido em 10%.",
+    "condicao": "Derrote um chefe de masmorra causando o maior dano do grupo."
+  },
+  {
+    "id": 577,
+    "nome": "Puro Segunda Chance.",
+    "categoria": "Geral",
+    "descricao": "Ao completar três esquivas consecutivas, aliados próximos recebem +10% de resistência por um turno.",
+    "condicao": "Sobreviva ao colapso de uma masmorra escapando antes do fechamento do portal."
+  },
+  {
+    "id": 582,
+    "nome": "Pulso da Gélido.",
+    "categoria": "Geral",
+    "descricao": "Ao proteger um aliado recebendo dano em seu lugar, a resistência física do usuário aumenta em 10% pelos\npróximos dois turnos.",
+    "condicao": "Derrote um chefe de masmorra causando o maior dano do grupo."
+  },
+  {
+    "id": 584,
+    "nome": "Sombrio Reflexo.",
+    "categoria": "Geral",
+    "descricao": "Ao ser o responsável por abrir a luta contra um chefe, aliados próximos recebem +20% de resistência por um\nturno. Além disso, aliados próximos recebem +5% de resistência por um turno.",
+    "condicao": "Vença vinte combates utilizando apenas contra-ataques."
+  },
+  {
+    "id": 585,
+    "nome": "Cicatriz da Gélido.",
+    "categoria": "Geral",
+    "descricao": "Quando o jogador se torna o último sobrevivente de seu grupo, o jogador ignora 5% da resistência do alvo no\npróximo ataque. Além disso, o próximo ataque recebido tem seu dano reduzido em 5%.",
+    "condicao": "Alcance o rank B mantendo o maior número de vitórias solo da temporada."
+  },
+  {
+    "id": 588,
+    "nome": "Selo da Selvagem.",
+    "categoria": "Geral",
+    "descricao": "Quando o jogador executa um ataque crítico, aliados próximos recebem +10% de resistência por um turno.",
+    "condicao": "Sobreviva a cinco investidas de um chefe de rank superior."
+  },
+  {
+    "id": 590,
+    "nome": "O Cicatriz do Inabalável.",
+    "categoria": "Geral",
+    "descricao": "Sempre que o jogador for o primeiro a agir em um combate, o próximo ataque recebido tem seu dano reduzido em\n8%. Além disso, o usuário recebe +15% em todos os atributos base até o fim do combate.",
+    "condicao": "Proteja um aliado recebendo dano fatal em seu lugar por três vezes."
+  },
+  {
+    "id": 593,
+    "nome": "Coroado Eco.",
+    "categoria": "Geral",
+    "descricao": "Quando o jogador executa um ataque crítico, o alcance dos sentidos do usuário aumenta temporariamente em\n30%.",
+    "condicao": "Termine uma dungeon narrada sendo o primeiro a detectar o chefe."
+  },
+  {
+    "id": 595,
+    "nome": "Fôlego Vingativo.",
+    "categoria": "Geral",
+    "descricao": "Quando o jogador executa um ataque crítico, o jogador ignora 20% da resistência do alvo no próximo ataque.",
+    "condicao": "Vença uma disputa de guilda estando em desvantagem numérica."
+  },
+  {
+    "id": 596,
+    "nome": "Vingativo Reflexo.",
+    "categoria": "Geral",
+    "descricao": "Após bloquear um golpe com sucesso, o jogador ganha 25% de chance adicional de acerto crítico no próximo\nturno.",
+    "condicao": "Complete uma masmorra sorteada sozinho, sem apoio de aliados."
+  },
+  {
+    "id": 597,
+    "nome": "Vínculo Radiante.",
+    "categoria": "Geral",
+    "descricao": "Quando o jogador consegue escapar de uma emboscada, a agilidade do jogador aumenta em 8% por um turno.",
+    "condicao": "Vença dez combates um contra um."
+  },
+  {
+    "id": 599,
+    "nome": "Segunda Chance da Inabalável.",
+    "categoria": "Geral",
+    "descricao": "Sempre que um aliado próximo for derrubado em combate, a resistência física do usuário aumenta em 20% pelos\npróximos dois turnos.",
+    "condicao": "Realize dez transações comerciais bem-sucedidas com outros jogadores.\n\n-- 53 of 63 --"
+  },
+  {
+    "id": 600,
+    "nome": "Abençoado Segunda Chance.",
+    "categoria": "Geral",
+    "descricao": "Após recuar estrategicamente de uma luta desfavorável, o usuário se torna 25% mais difícil de ser detectado por\num turno.",
+    "condicao": "Complete dez dungeons utilizando somente uma arma específica.\n\n-- 54 of 63 --\n\nDungeon Narradas | Compradas"
+  },
+  {
+    "id": 602,
+    "nome": "Postura Radiante.",
+    "categoria": "Geral",
+    "descricao": "Ao ser alvo de uma habilidade de controle ou imobilização, o jogador ganha 5% de chance adicional de acerto\ncrítico no próximo turno. Além disso, o usuário recebe +15% em todos os atributos base até o fim do combate.",
+    "condicao": "Adquira esta passiva ao permanecer como último sobrevivente em três ocasiões distintas."
+  },
+  {
+    "id": 603,
+    "nome": "Abençoado Gélida.",
+    "categoria": "Geral",
+    "descricao": "Sempre que matar um monstro com um único golpe, a resistência física do usuário aumenta em 30% pelos\npróximos dois turnos. Além disso, o próximo ataque recebido tem seu dano reduzido em 8%.",
+    "condicao": "Finalize uma GVG sendo o responsável por derrubar o boss inimigo primeiro."
+  },
+  {
+    "id": 604,
+    "nome": "Errático Retaliação.",
+    "categoria": "Geral",
+    "descricao": "Sempre que matar um monstro com um único golpe, o usuário recebe +10% em todos os atributos base até o fim\ndo combate.",
+    "condicao": "Adquira esta passiva ao permanecer como último sobrevivente em três ocasiões distintas."
+  },
+  {
+    "id": 607,
+    "nome": "O Olhar do Silencioso.",
+    "categoria": "Geral",
+    "descricao": "Quando o jogador executa um ataque crítico, o dano do próximo ataque realizado é aumentado em 12%. Além\ndisso, o jogador ignora 20% da resistência do alvo no próximo ataque.",
+    "condicao": "Realize dez transações comerciais bem-sucedidas com outros jogadores."
+  },
+  {
+    "id": 608,
+    "nome": "A Assinatura da Brutal.",
+    "categoria": "Geral",
+    "descricao": "Sempre que o jogador for atingido por um ataque físico, o usuário se torna 12% mais difícil de ser detectado por\num turno. Além disso, o dano do próximo ataque realizado é aumentado em 15%.",
+    "condicao": "Adquira esta passiva ao permanecer como último sobrevivente em três ocasiões distintas."
+  },
+  {
+    "id": 611,
+    "nome": "Vínculo da Coroado.",
+    "categoria": "Geral",
+    "descricao": "Quando o jogador recebe cura de um aliado, aliados próximos recebem +12% de resistência por um turno. Além\ndisso, a resistência física do usuário aumenta em 15% pelos próximos dois turnos.",
+    "condicao": "Sobreviva a uma emboscada sem perder nenhum aliado."
+  },
+  {
+    "id": 613,
+    "nome": "Solitário Marca.",
+    "categoria": "Geral",
+    "descricao": "Sempre que matar um monstro com um único golpe, o alcance dos sentidos do usuário aumenta temporariamente\nem 8%. Além disso, o usuário recebe +15% em todos os atributos base até o fim do combate.",
+    "condicao": "Derrote um chefe de masmorra causando o maior dano do grupo."
+  },
+  {
+    "id": 615,
+    "nome": "Presença Ancestral.",
+    "categoria": "Geral",
+    "descricao": "Quando o jogador se torna o último sobrevivente de seu grupo, o jogador ganha 30% de chance adicional de\nacerto crítico no próximo turno.",
+    "condicao": "Complete uma GVG protegendo o cristal da guilda sem que ele seja destruído."
+  },
+  {
+    "id": 616,
+    "nome": "Frio Golpe.",
+    "categoria": "Geral",
+    "descricao": "Ao ser alvo de uma habilidade de controle ou imobilização, o jogador ignora 10% da resistência do alvo no\npróximo ataque.",
+    "condicao": "Resista a cinco efeitos de status distintos ao longo de uma campanha."
+  },
+  {
+    "id": 617,
+    "nome": "Marca da Amaldiçoado.",
+    "categoria": "Geral",
+    "descricao": "Ao completar três esquivas consecutivas, o jogador ganha 10% de chance adicional de acerto crítico no próximo\nturno.",
+    "condicao": "Sobreviva ao colapso de uma masmorra escapando antes do fechamento do portal."
+  },
+  {
+    "id": 618,
+    "nome": "O Sombra do Desesperado.",
+    "categoria": "Geral",
+    "descricao": "Quando o jogador recebe cura de um aliado, o alcance dos sentidos do usuário aumenta temporariamente em\n12%.",
+    "condicao": "Sobreviva ao colapso de uma masmorra escapando antes do fechamento do portal."
+  },
+  {
+    "id": 620,
+    "nome": "Repentino Brasa.",
+    "categoria": "Geral",
+    "descricao": "Ao ser alvo de uma habilidade de controle ou imobilização, o jogador ignora 8% da resistência do alvo no próximo\nataque. Além disso, o usuário recebe +20% em todos os atributos base até o fim do combate.",
+    "condicao": "Vença dez combates um contra um."
+  },
+  {
+    "id": 621,
+    "nome": "Herança Fantasma.",
+    "categoria": "Geral",
+    "descricao": "Ao permanecer em combate por mais de cinco turnos seguidos, aliados próximos recebem +30% de resistência\npor um turno.",
+    "condicao": "Resista a cinco efeitos de status distintos ao longo de uma campanha."
+  },
+  {
+    "id": 622,
+    "nome": "O Selo do Desesperado.",
+    "categoria": "Geral",
+    "descricao": "Após bloquear um golpe com sucesso, o usuário se torna 8% mais difícil de ser detectado por um turno. Além\ndisso, o usuário recebe +5% em todos os atributos base até o fim do combate.",
+    "condicao": "Resista a cinco efeitos de status distintos ao longo de uma campanha."
+  },
+  {
+    "id": 623,
+    "nome": "Sombra da Preciso.",
+    "categoria": "Geral",
+    "descricao": "Após acertar três ataques seguidos no mesmo alvo, o tempo de recarga da última habilidade usada é reduzido\nem 8%.",
+    "condicao": "Termine uma dungeon narrada sendo o primeiro a detectar o chefe."
+  },
+  {
+    "id": 626,
+    "nome": "Fantasma Recuo.",
+    "categoria": "Geral",
+    "descricao": "Ao marcar ou identificar um alvo pela primeira vez, o jogador ignora 20% da resistência do alvo no próximo\nataque.",
+    "condicao": "Derrote um chefe de masmorra causando o maior dano do grupo."
+  },
+  {
+    "id": 627,
+    "nome": "Rebelde Brasa.",
+    "categoria": "Geral",
+    "descricao": "Quando o jogador consegue escapar de uma emboscada, o dano do próximo ataque realizado é aumentado em\n12%.",
+    "condicao": "Finalize uma GVG sendo o responsável por derrubar o boss inimigo primeiro."
+  },
+  {
+    "id": 629,
+    "nome": "A Reflexo da Implacável.",
+    "categoria": "Geral",
+    "descricao": "Ao ser alvo de uma habilidade de controle ou imobilização, o jogador ignora 10% da resistência do alvo no\npróximo ataque.",
+    "condicao": "Sobreviva ao colapso de uma masmorra escapando antes do fechamento do portal."
+  },
+  {
+    "id": 630,
+    "nome": "Pulso da Desesperado.",
+    "categoria": "Geral",
+    "descricao": "Sempre que o jogador for o primeiro a agir em um combate, aliados próximos recebem +8% de resistência por um\nturno.",
+    "condicao": "Adquira esta passiva ao permanecer como último sobrevivente em três ocasiões distintas."
+  },
+  {
+    "id": 632,
+    "nome": "Sopro Errático.",
+    "categoria": "Geral",
+    "descricao": "Ao permanecer imóvel por dois turnos consecutivos, o tempo de recarga da última habilidade usada é reduzido\nem 12%. Além disso, o jogador ganha 20% de chance adicional de acerto crítico no próximo turno.",
+    "condicao": "Alcance o rank C sem nunca recuar de um combate iniciado."
+  },
+  {
+    "id": 633,
+    "nome": "Instância Amaldiçoado.",
+    "categoria": "Geral",
+    "descricao": "Sempre que o jogador for atingido por um ataque físico, o usuário se torna 12% mais difícil de ser detectado por\num turno.",
+    "condicao": "Realize dez transações comerciais bem-sucedidas com outros jogadores."
+  },
+  {
+    "id": 634,
+    "nome": "Solitário Cicatriz.",
+    "categoria": "Geral",
+    "descricao": "Sempre que finalizar um combate como o único ileso do grupo, o jogador ignora 15% da resistência do alvo no\npróximo ataque.",
+    "condicao": "Sobreviva ao colapso de uma masmorra escapando antes do fechamento do portal."
+  },
+  {
+    "id": 636,
+    "nome": "Sopro da Brutal.",
+    "categoria": "Geral",
+    "descricao": "Ao completar três esquivas consecutivas, o jogador ignora 8% da resistência do alvo no próximo ataque. Além\ndisso, aliados próximos recebem +20% de resistência por um turno.",
+    "condicao": "Sobreviva a cinco investidas de um chefe de rank superior.\n\n-- 57 of 63 --"
+  },
+  {
+    "id": 638,
+    "nome": "A Olhar da Distorcido.",
+    "categoria": "Geral",
+    "descricao": "ataque. Além disso, aliados próximos recebem +8% de resistência por um turno.",
+    "condicao": "Vença dez combates um contra um."
+  },
+  {
+    "id": 639,
+    "nome": "O Fôlego do Corrompido.",
+    "categoria": "Geral",
+    "descricao": "Sempre que atacar um inimigo já debilitado, a agilidade do jogador aumenta em 25% por um turno.",
+    "condicao": "Complete uma GVG protegendo o cristal da guilda sem que ele seja destruído."
+  },
+  {
+    "id": 640,
+    "nome": "Segunda Chance da Abençoado.",
+    "categoria": "Geral",
+    "descricao": "Ao permanecer imóvel por dois turnos consecutivos, aliados próximos recebem +25% de resistência por um turno.",
+    "condicao": "Adquira esta passiva ao permanecer como último sobrevivente em três ocasiões distintas."
+  },
+  {
+    "id": 641,
+    "nome": "Brasa Sombrio.",
+    "categoria": "Geral",
+    "descricao": "Após bloquear um golpe com sucesso, o alcance dos sentidos do usuário aumenta temporariamente em 20%.",
+    "condicao": "Adquira esta passiva ao permanecer como último sobrevivente em três ocasiões distintas."
+  },
+  {
+    "id": 643,
+    "nome": "Implacável Passo.",
+    "categoria": "Geral",
+    "descricao": "Ao causar dano em um inimigo pelas costas, a agilidade do jogador aumenta em 5% por um turno.",
+    "condicao": "Vença dez combates um contra um."
+  },
+  {
+    "id": 645,
+    "nome": "Vínculo Selvagem.",
+    "categoria": "Geral",
+    "descricao": "Ao proteger um aliado recebendo dano em seu lugar, o alcance dos sentidos do usuário aumenta\ntemporariamente em 8%.",
+    "condicao": "Complete dez dungeons utilizando somente uma arma específica."
+  },
+  {
+    "id": 646,
+    "nome": "Assinatura Amaldiçoado.",
+    "categoria": "Geral",
+    "descricao": "Quando o jogador executa um ataque crítico, o jogador ganha 30% de chance adicional de acerto crítico no\npróximo turno. Além disso, a agilidade do jogador aumenta em 15% por um turno.",
+    "condicao": "Finalize uma GVG sendo o responsável por derrubar o boss inimigo primeiro."
+  },
+  {
+    "id": 647,
+    "nome": "Fantasma Fôrma.",
+    "categoria": "Geral",
+    "descricao": "Sempre que matar um monstro com um único golpe, o próximo ataque recebido tem seu dano reduzido em 25%.",
+    "condicao": "Complete uma GVG protegendo o cristal da guilda sem que ele seja destruído."
+  },
+  {
+    "id": 648,
+    "nome": "Errático Postura.",
+    "categoria": "Geral",
+    "descricao": "Sempre que perder um aliado em combate, o jogador ganha 10% de chance adicional de acerto crítico no\npróximo turno.",
+    "condicao": "Vença uma disputa de guilda estando em desvantagem numérica."
+  },
+  {
+    "id": 650,
+    "nome": "O Presença do Fatal.",
+    "categoria": "Geral",
+    "descricao": "Sempre que enfrentar um inimigo de rank superior ao seu, o tempo de recarga da última habilidade usada é\nreduzido em 5%.",
+    "condicao": "Derrote um chefe de masmorra causando o maior dano do grupo."
+  },
+  {
+    "id": 655,
+    "nome": "Selo do Fatal.",
+    "categoria": "Geral",
+    "descricao": "Sempre que matar um monstro com um único golpe, o dano do próximo ataque realizado é aumentado em 20%.\nAlém disso, aliados próximos recebem +20% de resistência por um turno.",
+    "condicao": "Alcance o rank B mantendo o maior número de vitórias solo da temporada."
+  },
+  {
+    "id": 656,
+    "nome": "Brutal Postura.",
+    "categoria": "Geral",
+    "descricao": "Sempre que o jogador utilizar um item de cura, o usuário se torna 15% mais difícil de ser detectado por um turno.",
+    "condicao": "Sobreviva ao colapso de uma masmorra escapando antes do fechamento do portal."
+  },
+  {
+    "id": 657,
+    "nome": "O Última Linha do Implacável.",
+    "categoria": "Geral",
+    "descricao": "Ao permanecer em combate por mais de cinco turnos seguidos, aliados próximos recebem +12% de resistência\npor um turno. Além disso, o alcance dos sentidos do usuário aumenta temporariamente em 20%.",
+    "condicao": "Complete uma masmorra sorteada sozinho, sem apoio de aliados."
+  },
+  {
+    "id": 658,
+    "nome": "Ímpeto da Contido.",
+    "categoria": "Geral",
+    "descricao": "Sempre que finalizar um combate como o único ileso do grupo, o tempo de recarga da última habilidade usada é\nreduzido em 10%.",
+    "condicao": "Sobreviva ao colapso de uma masmorra escapando antes do fechamento do portal."
+  },
+  {
+    "id": 659,
+    "nome": "Gélida Fatal.",
+    "categoria": "Geral",
+    "descricao": "Ao permanecer imóvel por dois turnos consecutivos, o próximo ataque recebido tem seu dano reduzido em 25%.\nAlém disso, a agilidade do jogador aumenta em 8% por um turno.",
+    "condicao": "Finalize cinco combates consecutivos sem ser atingido uma única vez."
+  },
+  {
+    "id": 660,
+    "nome": "Salto da Implacável.",
+    "categoria": "Geral",
+    "descricao": "Sempre que o jogador for o primeiro a agir em um combate, o tempo de recarga da última habilidade usada é\nreduzido em 15%.",
+    "condicao": "Realize dez transações comerciais bem-sucedidas com outros jogadores."
+  },
+  {
+    "id": 662,
+    "nome": "Escudo Ardente.",
+    "categoria": "Geral",
+    "descricao": "Após recuar estrategicamente de uma luta desfavorável, o jogador ganha 10% de chance adicional de acerto\ncrítico no próximo turno.",
+    "condicao": "Vença uma disputa de guilda estando em desvantagem numérica."
+  },
+  {
+    "id": 663,
+    "nome": "A Selo da Rebelde.",
+    "categoria": "Geral",
+    "descricao": "Sempre que perder um aliado em combate, a resistência física do usuário aumenta em 10% pelos próximos dois\nturnos.",
+    "condicao": "Resista a cinco efeitos de status distintos ao longo de uma campanha."
+  },
+  {
+    "id": 664,
+    "nome": "Abençoado Sopro.",
+    "categoria": "Geral",
+    "descricao": "Após recuar estrategicamente de uma luta desfavorável, o jogador ganha 12% de chance adicional de acerto\ncrítico no próximo turno.",
+    "condicao": "Sobreviva a uma emboscada sem perder nenhum aliado."
+  },
+  {
+    "id": 665,
+    "nome": "A Ímpeto da Brutal.",
+    "categoria": "Geral",
+    "descricao": "Após vencer um combate sem receber nenhum dano, a agilidade do jogador aumenta em 5% por um turno.",
+    "condicao": "Proteja um aliado recebendo dano fatal em seu lugar por três vezes."
+  },
+  {
+    "id": 666,
+    "nome": "Reflexo Gélido.",
+    "categoria": "Geral",
+    "descricao": "",
+    "condicao": "Termine uma dungeon narrada sendo o primeiro a detectar o chefe."
+  },
+  {
+    "id": 667,
+    "nome": "Brasa Devastador.",
+    "categoria": "Geral",
+    "descricao": "Além disso, a resistência física do usuário aumenta em 5% pelos próximos dois turnos.",
+    "condicao": "Realize dez transações comerciais bem-sucedidas com outros jogadores."
+  },
+  {
+    "id": 668,
+    "nome": "O Última Linha do Solitário.",
+    "categoria": "Geral",
+    "descricao": "Ao entrar em uma masmorra pela primeira vez, a agilidade do jogador aumenta em 10% por um turno. Além\ndisso, o jogador ignora 20% da resistência do alvo no próximo ataque.",
+    "condicao": "Sobreviva a uma emboscada sem perder nenhum aliado."
+  },
+  {
+    "id": 671,
+    "nome": "Desesperado Passo.",
+    "categoria": "Geral",
+    "descricao": "Após vencer um combate sem receber nenhum dano, o próximo ataque recebido tem seu dano reduzido em 20%.\nAlém disso, o tempo de recarga da última habilidade usada é reduzido em 10%.",
+    "condicao": "Termine uma dungeon narrada sendo o primeiro a detectar o chefe."
+  },
+  {
+    "id": 672,
+    "nome": "Golpe Repentino.",
+    "categoria": "Geral",
+    "descricao": "Ao permanecer imóvel por dois turnos consecutivos, o próximo ataque recebido tem seu dano reduzido em 8%.\nAlém disso, o usuário recebe +5% em todos os atributos base até o fim do combate.",
+    "condicao": "Vença vinte combates utilizando apenas contra-ataques."
+  },
+  {
+    "id": 673,
+    "nome": "Rugido Fantasma.",
+    "categoria": "Geral",
+    "descricao": "Após interromper a habilidade de um inimigo, a agilidade do jogador aumenta em 12% por um turno. Além disso,\na agilidade do jogador aumenta em 15% por um turno.",
+    "condicao": "Finalize cinco combates consecutivos sem ser atingido uma única vez."
+  },
+  {
+    "id": 675,
+    "nome": "Postura Coroado.",
+    "categoria": "Geral",
+    "descricao": "Após interromper a habilidade de um inimigo, a agilidade do jogador aumenta em 20% por um turno. Além disso,\no alcance dos sentidos do usuário aumenta temporariamente em 15%.",
+    "condicao": "Vença uma disputa de guilda estando em desvantagem numérica."
+  },
+  {
+    "id": 678,
+    "nome": "Preciso Reflexo.",
+    "categoria": "Geral",
+    "descricao": "Sempre que matar um monstro com um único golpe, o tempo de recarga da última habilidade usada é reduzido\nem 5%.",
+    "condicao": "Proteja um aliado recebendo dano fatal em seu lugar por três vezes."
+  },
+  {
+    "id": 679,
+    "nome": "Selvagem Eco.",
+    "categoria": "Geral",
+    "descricao": "Ao proteger um aliado recebendo dano em seu lugar, a agilidade do jogador aumenta em 12% por um turno.",
+    "condicao": "Alcance o rank B mantendo o maior número de vitórias solo da temporada."
+  },
+  {
+    "id": 681,
+    "nome": "A Chama da Vingativo.",
+    "categoria": "Geral",
+    "descricao": "Sempre que o jogador for atingido por um ataque físico, o jogador ganha 15% de chance adicional de acerto\ncrítico no próximo turno.",
+    "condicao": "Sobreviva a cinco investidas de um chefe de rank superior."
+  },
+  {
+    "id": 683,
+    "nome": "Distorcido Brasa.",
+    "categoria": "Geral",
+    "descricao": "Quando o jogador se torna o último sobrevivente de seu grupo, aliados próximos recebem +8% de resistência por\num turno. Além disso, o jogador ignora 8% da resistência do alvo no próximo ataque.",
+    "condicao": "Complete dez dungeons utilizando somente uma arma específica."
+  },
+  {
+    "id": 684,
+    "nome": "O Retaliação do Contido.",
+    "categoria": "Geral",
+    "descricao": "Quando o jogador executa um ataque crítico, o usuário se torna 10% mais difícil de ser detectado por um turno.",
+    "condicao": "Alcance o rank B mantendo o maior número de vitórias solo da temporada."
+  },
+  {
+    "id": 685,
+    "nome": "A Golpe da Desesperado.",
+    "categoria": "Geral",
+    "descricao": "Após recuar estrategicamente de uma luta desfavorável, o alcance dos sentidos do usuário aumenta\ntemporariamente em 25%.",
+    "condicao": "Realize dez transações comerciais bem-sucedidas com outros jogadores."
+  },
+  {
+    "id": 686,
+    "nome": "Escudo Calculado.",
+    "categoria": "Geral",
+    "descricao": "Sempre que o jogador for o primeiro a agir em um combate, aliados próximos recebem +8% de resistência por um\nturno. Além disso, o jogador ignora 10% da resistência do alvo no próximo ataque.\n\n-- 61 of 63 --",
+    "condicao": "Vença dez combates um contra um."
+  },
+  {
+    "id": 687,
+    "nome": "A Recuo da Ancestral.",
+    "categoria": "Geral",
+    "descricao": "Após acertar três ataques seguidos no mesmo alvo, o jogador ignora 30% da resistência do alvo no próximo\nataque.",
+    "condicao": "Complete uma GVG protegendo o cristal da guilda sem que ele seja destruído."
+  },
+  {
+    "id": 688,
+    "nome": "Recuo Espectral.",
+    "categoria": "Geral",
+    "descricao": "Ao entrar em uma masmorra pela primeira vez, a agilidade do jogador aumenta em 10% por um turno. Além\ndisso, o usuário se torna 5% mais difícil de ser detectado por um turno.",
+    "condicao": "Vença dez combates um contra um."
+  },
+  {
+    "id": 690,
+    "nome": "Vínculo Espectral.",
+    "categoria": "Geral",
+    "descricao": "Após resistir com sucesso a um efeito de status negativo, a resistência física do usuário aumenta em 12% pelos\npróximos dois turnos. Além disso, o tempo de recarga da última habilidade usada é reduzido em 15%.",
+    "condicao": "Derrote um chefe de masmorra causando o maior dano do grupo."
+  },
+  {
+    "id": 691,
+    "nome": "Solitário Postura.",
+    "categoria": "Geral",
+    "descricao": "Ao ser o responsável por abrir a luta contra um chefe, a agilidade do jogador aumenta em 8% por um turno. Além",
+    "condicao": "Finalize uma GVG sendo o responsável por derrubar o boss inimigo primeiro."
+  },
+  {
+    "id": 692,
+    "nome": "Selo do Implacável.",
+    "categoria": "Geral",
+    "descricao": "Quando o jogador recebe cura de um aliado, o dano do próximo ataque realizado é aumentado em 30%. Além\ndisso, o usuário se torna 20% mais difícil de ser detectado por um turno.",
+    "condicao": "Termine três dungeons sem que nenhum membro do grupo seja derrubado."
+  },
+  {
+    "id": 693,
+    "nome": "Ardente Presença.",
+    "categoria": "Geral",
+    "descricao": "Quando o jogador recebe cura de um aliado, a agilidade do jogador aumenta em 10% por um turno. Além disso,\naliados próximos recebem +15% de resistência por um turno.",
+    "condicao": "Termine uma dungeon narrada sendo o primeiro a detectar o chefe."
+  },
+  {
+    "id": 694,
+    "nome": "Golpe da Desesperado.",
+    "categoria": "Geral",
+    "descricao": "Ao causar dano em um inimigo pelas costas, o jogador ganha 5% de chance adicional de acerto crítico no\npróximo turno.",
+    "condicao": "Vença dez combates um contra um."
+  },
+  {
+    "id": 695,
+    "nome": "A Instância da Solitário.",
+    "categoria": "Geral",
+    "descricao": "Ao ser o responsável por abrir a luta contra um chefe, aliados próximos recebem +12% de resistência por um\nturno.",
+    "condicao": "Vença dez combates um contra um."
+  },
+  {
+    "id": 696,
+    "nome": "Salto Devastador.",
+    "categoria": "Geral",
+    "descricao": "Após bloquear um golpe com sucesso, o alcance dos sentidos do usuário aumenta temporariamente em 12%.\nAlém disso, a agilidade do jogador aumenta em 8% por um turno.",
+    "condicao": "Derrote um chefe de masmorra causando o maior dano do grupo."
+  },
+  {
+    "id": 698,
+    "nome": "Assinatura da Espectral.",
+    "categoria": "Geral",
+    "descricao": "Após interromper a habilidade de um inimigo, a agilidade do jogador aumenta em 10% por um turno. Além disso,\no jogador ganha 20% de chance adicional de acerto crítico no próximo turno.",
+    "condicao": "Complete uma GVG protegendo o cristal da guilda sem que ele seja destruído.\n\n-- 62 of 63 --"
+  },
+  {
+    "id": 700,
+    "nome": "Gélida Corrompido.",
+    "categoria": "Geral",
+    "descricao": "Ao ser o responsável por abrir a luta contra um chefe, o dano do próximo ataque realizado é aumentado em 12%.",
+    "condicao": "Complete dez dungeons utilizando somente uma arma específica.\n\n-- 63 of 63 --"
+  }
+]

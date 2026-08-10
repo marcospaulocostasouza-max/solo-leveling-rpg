@@ -1,0 +1,42 @@
+{
+  "id": "rufus_deng",
+  "papel": "Vilão",
+  "base_em": "Rufus (Octopath Traveler)",
+  "nome": "Rufus Deng",
+  "idade": "33",
+  "nacionalidade": "Sul-coreano, executor bruto de uma organização criminosa",
+  "aparencia": "Musculatura exagerada visível sob trajes rasgados, cabeça raspada e nós dos dedos cobertos por cicatrizes de socos.",
+  "altura_peso": "1,95m / 115kg",
+  "personalidade": "Bruto, direto e movido puramente pela violência como forma de expressão.",
+  "historia": "Braço direito físico de uma organização criminosa conhecida como Corvos, Rufus atuou como executor pessoal em incontáveis 'mensagens' violentas.",
+  "classe": "Lutador",
+  "classe_avancada": "Berserk",
+  "rank": "B",
+  "nivel": 75,
+  "estilo_luta": "Proficiência em Combate Desarmado",
+  "atributos": {
+    "forca": 85,
+    "resistencia": 70,
+    "velocidade": 45,
+    "sentidos": 40,
+    "inteligencia": 25,
+    "poder_magico": 10
+  },
+  "elemento": "Terra",
+  "habilidade_unica": "Mensagem dos Corvos — desfere uma sequência de socos brutais que ignora parte da defesa do alvo, aumentando em intensidade a cada acerto consecutivo.",
+  "titulo": "O Braço Direito Físico dos Corvos",
+  "equipamentos": {
+    "arma": "Punhos Reforçados com Manoplas de Metal",
+    "itens": "Trajes Rasgados de Propósito, Tatuagem do Corvo, Cicatrizes de Combate"
+  },
+  "tecnicas": [
+    "Golpe Esmagador",
+    "Sequência Brutal",
+    "Intimidação Física"
+  ],
+  "formaFalar": "Fala com tom frio e calculista, frequentemente manipulando as palavras para obter vantagem. Suas frases são precisas e raramente revelam emoções verdadeiras.",
+  "localizacao": "Localização desconhecida — opera nas sombras",
+  "profissao": "Antagonista",
+  "objetivos": "Expandir seu poder e influência, eliminando qualquer ameaça aos seus planos.",
+  "valores": "O poder é o único caminho. A fraqueza é imperdoável. Os fins justificam os meios."
+}

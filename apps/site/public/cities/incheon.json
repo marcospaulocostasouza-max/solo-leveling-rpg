@@ -1,0 +1,19 @@
+{
+  "id": "incheon",
+  "name": "Incheon",
+  "image": "/images/cities/incheon.webp",
+  "description": "Principal aeroporto internacional",
+  "population": "2.9 milhões",
+  "dangerLevel": "D",
+  "guilds": [],
+  "npcs": [],
+  "players": [],
+  "portals": [],
+  "dungeons": [],
+  "bosses": [],
+  "shops": [],
+  "quests": [],
+  "events": [],
+  "resources": [],
+  "notes": ""
+}

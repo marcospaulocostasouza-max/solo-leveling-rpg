@@ -1,0 +1,178 @@
+{
+  "npcId": "redeye",
+  "npcNome": "Redeye",
+  "npcTitulo": "A Fera de Olho Vermelho",
+  "totalMissoes": 10,
+  "missoes": [
+    {
+      "id": "redeye_01",
+      "npcId": "redeye",
+      "numero": 1,
+      "nome": "Capítulo 1: Rumores sobre Redeye",
+      "descricao": "Relatos alarmantes começam a circular entre guildas sobre Redeye. Antiga fera-guardiã domada por um caçador veterano, Redeye foi exposto a uma anomalia de mana negra, corrompendo permanentemente seu corpo e apagando qualquer vínculo....",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Investigue 3 relatos de testemunhas sobre Redeye",
+      "recompensas": {
+        "xp": 25650,
+        "won": 171000,
+        "item": "Pelagem Corrompida por Mana Negra"
+      }
+    },
+    {
+      "id": "redeye_02",
+      "npcId": "redeye",
+      "numero": 2,
+      "nome": "Capítulo 2: Rastreando A Fera de Olho Vermelho",
+      "descricao": "Reúna evidências concretas da atividade de Redeye antes que a Associação classifique o caso como perdido.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Reúna provas em 2 locais diferentes ligados a Redeye",
+      "recompensas": {
+        "xp": 29700,
+        "won": 198000,
+        "item": "Pelagem Corrompida por Mana Negra"
+      }
+    },
+    {
+      "id": "redeye_03",
+      "npcId": "redeye",
+      "numero": 3,
+      "nome": "Capítulo 3: Confronto com Redeye",
+      "descricao": "É hora de enfrentar Redeye diretamente. Prepare-se: como A Fera de Olho Vermelho, este será um combate de Rank S.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Derrote Redeye em combate direto",
+      "recompensas": {
+        "xp": 33750,
+        "won": 225000,
+        "item": "Réplica Reforçada de: Garras e Presas Naturais"
+      }
+    },
+    {
+      "id": "redeye_04",
+      "npcId": "redeye",
+      "numero": 4,
+      "nome": "Capítulo 4: A Queda de A Fera de Olho Vermelho",
+      "descricao": "Com Redeye neutralizado(a), reste apenas reportar o caso à Associação e lidar com as consequências reveladas.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Entregue o relatório final sobre Redeye à Associação",
+      "recompensas": {
+        "xp": 37800,
+        "won": 252000,
+        "item": "Réplica Reforçada de: Garras e Presas Naturais"
+      }
+    },
+    {
+      "id": "redeye_05",
+      "npcId": "redeye",
+      "numero": 5,
+      "nome": "Reforço de Redeye",
+      "descricao": "Redeye pede que você adquira, em qualquer Loja de Itens da Associação, um equipamento de Rank S compatível com Combate Desarmado para reforçar seu arsenal de combate.",
+      "categoria": "secundaria",
+      "tipo": "loja",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Comprar 1 equipamento de Rank S (peça de armadura ou arma)",
+      "recompensas": {
+        "xp": 8100,
+        "won": 54000,
+        "item": "Réplica Reforçada de: Garras e Presas Naturais"
+      }
+    },
+    {
+      "id": "redeye_06",
+      "npcId": "redeye",
+      "numero": 6,
+      "nome": "Provisões de Redeye",
+      "descricao": "Antes da próxima incursão, Redeye pede que você compre poções de recuperação e um acessório de afinidade elemental Escuridão na loja mais próxima.",
+      "categoria": "secundaria",
+      "tipo": "loja",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Comprar 3 poções + 1 acessório elemental",
+      "recompensas": {
+        "xp": 7425,
+        "won": 49500,
+        "item": "Pelagem Corrompida por Mana Negra"
+      }
+    },
+    {
+      "id": "redeye_07",
+      "npcId": "redeye",
+      "numero": 7,
+      "nome": "Receita de Redeye",
+      "descricao": "Usando materiais coletados em dungeons de afinidade Escuridão, produza o item indicado por Redeye em uma bancada de criação da guilda.",
+      "categoria": "secundaria",
+      "tipo": "producao",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Produzir 1 item de afinidade Escuridão (Rank S)",
+      "recompensas": {
+        "xp": 8775,
+        "won": 58500,
+        "item": "Fragmento de Mana (Escuridão)"
+      }
+    },
+    {
+      "id": "redeye_08",
+      "npcId": "redeye",
+      "numero": 8,
+      "nome": "Suprimento Especial de Redeye",
+      "descricao": "Redeye ensina uma técnica pessoal de preparo; produza 3 unidades de um item de suporte (poção, munição ou material) ligado ao estilo de combate de Combate Desarmado.",
+      "categoria": "secundaria",
+      "tipo": "producao",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Produzir 3 itens de suporte",
+      "recompensas": {
+        "xp": 9450,
+        "won": 63000,
+        "item": "Fragmento de Mana (Escuridão)"
+      }
+    },
+    {
+      "id": "redeye_09",
+      "npcId": "redeye",
+      "numero": 9,
+      "nome": "Treino de Combate com Redeye",
+      "descricao": "Redeye solicita ajuda para conter uma infestação: derrote sombras corrompidas em dungeons de Rank S ou inferior.",
+      "categoria": "cacada",
+      "tipo": "caca",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Derrotar 40 Sombras Corrompidas",
+      "recompensas": {
+        "xp": 10800,
+        "won": 72000,
+        "item": "Pelagem Corrompida por Mana Negra"
+      }
+    },
+    {
+      "id": "redeye_10",
+      "npcId": "redeye",
+      "numero": 10,
+      "nome": "Caçada Recomendada por Redeye",
+      "descricao": "Uma variante mais forte de sombras corrompidas tem aparecido nas rondas de Redeye; elimine essas ameaças antes que evoluam.",
+      "categoria": "cacada",
+      "tipo": "caca",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Derrotar 9 Sombras Corrompidas (variante fortalecida)",
+      "recompensas": {
+        "xp": 13500,
+        "won": 90000,
+        "item": "Réplica Reforçada de: Garras e Presas Naturais"
+      }
+    }
+  ]
+}

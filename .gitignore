@@ -1,0 +1,15 @@
+node_modules/
+.next/
+.env
+.env.local
+.env.*
+!.env.example
+*.log
+.DS_Store
+# Sessões privadas do WhatsApp devem continuar locais e não ser versionadas
+.wwebjs_auth/
+.wwebjs_cache/
+
+# Backups e bancos locais: nunca versionar
+backups/
+*.db

@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "nome": "Hallasan",
+    "tipo": "Montanha",
+    "descricao": "Montanha mais alta da Coreia do Sul, na ilha de Jeju. Vulcão inativo com clima extremo.",
+    "bonus": "Treinos: +25% XP em quests de treino. Câmara do vulcão: +25% em quests diárias.",
+    "risco": "Extremo - temperaturas abaixo de -10°C, ventos até 50km/h, magma até 1100°C, gases tóxicos",
+    "ranks_permitidos": "B, A, S",
+    "titulos": ["Yeti", "Fênix"]
+  },
+  {
+    "id": 2,
+    "nome": "Ilha das Memórias",
+    "tipo": "Ilha Mística",
+    "descricao": "Ilha com densa neblina que causa alucinações com lembranças do passado. Planta nativa solta toxina alucinógena.",
+    "bonus": "One-posts: +15% de recompensas quando feitos aqui",
+    "risco": "Alto - toxina alucinógena pode ser mortal",
+    "ranks_permitidos": "Todos",
+    "titulos": ["Dependente Químico"]
+  },
+  {
+    "id": 3,
+    "nome": "Guilda de Caçadores",
+    "tipo": "Ponto de Encontro",
+    "descricao": "Ponto principal de caçadores. Rankings são dados, missões emitidas, guildas recrutam.",
+    "bonus": "Solicitar missões aos narradores ou teste para subir de ranking",
+    "risco": "Nenhum",
+    "ranks_permitidos": "Todos",
+    "titulos": ["Cãozinho do Governo"]
+  },
+  {
+    "id": 4,
+    "nome": "Templos",
+    "tipo": "Religioso",
+    "descricao": "Inúmeros templos budistas pela Coreia. Locais únicos para conciliação espiritual.",
+    "bonus": "Treinos em templos dão 2 pontos de maestria ao invés de 1",
+    "risco": "Nenhum",
+    "ranks_permitidos": "Todos",
+    "titulos": ["Monge"]
+  },
+  {
+    "id": 5,
+    "nome": "Parque das Zelkova",
+    "tipo": "Parque",
+    "descricao": "Parque de árvores Zelkova em Seodaemun-gu divisa com Jungnang-gu. Dungeon Break Zelkova.",
+    "bonus": "Cenas de 200 palavras (06:00-18:00): 10% chance de achar assombrações. Cenas de 400 palavras (23:00-01:00): 40% chance.",
+    "risco": "Assombrações podem atacar",
+    "ranks_permitidos": "Todos",
+    "titulos": ["Exorcista"]
+  },
+  {
+    "id": 6,
+    "nome": "Pontos Turísticos",
+    "tipo": "Lazer",
+    "descricao": "Caçadores têm passe livre para qualquer ponto turístico do país.",
+    "bonus": "+25% para recompensas de interação",
+    "risco": "Nenhum",
+    "ranks_permitidos": "Todos",
+    "titulos": ["Turista"]
+  }
+]

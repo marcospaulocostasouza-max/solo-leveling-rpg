@@ -1,0 +1,178 @@
+{
+  "npcId": "galdera",
+  "npcNome": "Galdera",
+  "npcTitulo": "O Deus Caído, Devorador de Cidades",
+  "totalMissoes": 10,
+  "missoes": [
+    {
+      "id": "galdera_01",
+      "npcId": "galdera",
+      "numero": 1,
+      "nome": "Capítulo 1: Rumores sobre Galdera",
+      "descricao": "Relatos alarmantes começam a circular entre guildas sobre Galdera. Antes da fundação da Associação de Caçadores, Galdera é tido como a origem de um evento cataclísmico que abriu os primeiros grandes portais da história registrada, consumindo cidades inteiras para for...",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Investigue 3 relatos de testemunhas sobre Galdera",
+      "recompensas": {
+        "xp": 25650,
+        "won": 171000,
+        "item": "Restos do Selo Original"
+      }
+    },
+    {
+      "id": "galdera_02",
+      "npcId": "galdera",
+      "numero": 2,
+      "nome": "Capítulo 2: Rastreando O Deus Caído, Devorador de Cidades",
+      "descricao": "Reúna evidências concretas da atividade de Galdera antes que a Associação classifique o caso como perdido.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Reúna provas em 2 locais diferentes ligados a Galdera",
+      "recompensas": {
+        "xp": 29700,
+        "won": 198000,
+        "item": "Restos do Selo Original"
+      }
+    },
+    {
+      "id": "galdera_03",
+      "npcId": "galdera",
+      "numero": 3,
+      "nome": "Capítulo 3: Confronto com Galdera",
+      "descricao": "É hora de enfrentar Galdera diretamente. Prepare-se: como O Deus Caído, Devorador de Cidades, este será um combate de Rank S.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Derrote Galdera em combate direto",
+      "recompensas": {
+        "xp": 33750,
+        "won": 225000,
+        "item": "Réplica Reforçada de: Lâmina do Caído (fusão com o próprio corpo)"
+      }
+    },
+    {
+      "id": "galdera_04",
+      "npcId": "galdera",
+      "numero": 4,
+      "nome": "Capítulo 4: A Queda de O Deus Caído, Devorador de Cidades",
+      "descricao": "Com Galdera neutralizado(a), reste apenas reportar o caso à Associação e lidar com as consequências reveladas.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Entregue o relatório final sobre Galdera à Associação",
+      "recompensas": {
+        "xp": 37800,
+        "won": 252000,
+        "item": "Réplica Reforçada de: Lâmina do Caído (fusão com o próprio corpo)"
+      }
+    },
+    {
+      "id": "galdera_05",
+      "npcId": "galdera",
+      "numero": 5,
+      "nome": "Reforço de Galdera",
+      "descricao": "Galdera pede que você adquira, em qualquer Loja de Itens da Associação, um equipamento de Rank S compatível com Espadas para reforçar seu arsenal de combate.",
+      "categoria": "secundaria",
+      "tipo": "loja",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Comprar 1 equipamento de Rank S (peça de armadura ou arma)",
+      "recompensas": {
+        "xp": 8100,
+        "won": 54000,
+        "item": "Réplica Reforçada de: Lâmina do Caído (fusão com o próprio corpo)"
+      }
+    },
+    {
+      "id": "galdera_06",
+      "npcId": "galdera",
+      "numero": 6,
+      "nome": "Provisões de Galdera",
+      "descricao": "Antes da próxima incursão, Galdera pede que você compre poções de recuperação e um acessório de afinidade elemental Escuridão na loja mais próxima.",
+      "categoria": "secundaria",
+      "tipo": "loja",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Comprar 3 poções + 1 acessório elemental",
+      "recompensas": {
+        "xp": 7425,
+        "won": 49500,
+        "item": "Núcleo de Mana Primordial"
+      }
+    },
+    {
+      "id": "galdera_07",
+      "npcId": "galdera",
+      "numero": 7,
+      "nome": "Receita de Galdera",
+      "descricao": "Usando materiais coletados em dungeons de afinidade Escuridão, produza o item indicado por Galdera em uma bancada de criação da guilda.",
+      "categoria": "secundaria",
+      "tipo": "producao",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Produzir 1 item de afinidade Escuridão (Rank S)",
+      "recompensas": {
+        "xp": 8775,
+        "won": 58500,
+        "item": "Fragmento de Mana (Escuridão)"
+      }
+    },
+    {
+      "id": "galdera_08",
+      "npcId": "galdera",
+      "numero": 8,
+      "nome": "Suprimento Especial de Galdera",
+      "descricao": "Galdera ensina uma técnica pessoal de preparo; produza 3 unidades de um item de suporte (poção, munição ou material) ligado ao estilo de combate de Espadas.",
+      "categoria": "secundaria",
+      "tipo": "producao",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Produzir 3 itens de suporte",
+      "recompensas": {
+        "xp": 9450,
+        "won": 63000,
+        "item": "Fragmento de Mana (Escuridão)"
+      }
+    },
+    {
+      "id": "galdera_09",
+      "npcId": "galdera",
+      "numero": 9,
+      "nome": "Treino de Combate com Galdera",
+      "descricao": "Galdera solicita ajuda para conter uma infestação: derrote sombras corrompidas em dungeons de Rank S ou inferior.",
+      "categoria": "cacada",
+      "tipo": "caca",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Derrotar 40 Sombras Corrompidas",
+      "recompensas": {
+        "xp": 10800,
+        "won": 72000,
+        "item": "Restos do Selo Original"
+      }
+    },
+    {
+      "id": "galdera_10",
+      "npcId": "galdera",
+      "numero": 10,
+      "nome": "Caçada Recomendada por Galdera",
+      "descricao": "Uma variante mais forte de sombras corrompidas tem aparecido nas rondas de Galdera; elimine essas ameaças antes que evoluam.",
+      "categoria": "cacada",
+      "tipo": "caca",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Derrotar 9 Sombras Corrompidas (variante fortalecida)",
+      "recompensas": {
+        "xp": 13500,
+        "won": 90000,
+        "item": "Réplica Reforçada de: Lâmina do Caído (fusão com o próprio corpo)"
+      }
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "id": "elrica_edoras",
+  "papel": "Heroína",
+  "base_em": "Elrica (Champions of the Continent)",
+  "nome": "Elrica Edoras",
+  "idade": "33",
+  "nacionalidade": "Sul-coreana, guerreira remanescente de Cragspear",
+  "aparencia": "Postura firme e cansada, cabelos loiros curtos cortados de forma prática, veste uma armadura leve de combate cheia de marcas de batalha.",
+  "altura_peso": "1,72m / 65kg",
+  "personalidade": "Pragmática e desconfiada de qualquer aliança temporária, mas cumpre sua palavra até o fim quando decide lutar ao lado de alguém.",
+  "historia": "Guerreira de Cragspear que enfrentou sozinha incontáveis incursões. Despertou durante um confronto brutal contra uma horda vinda de um portal recém-aberto.",
+  "classe": "Lutador",
+  "classe_avancada": "Hrymir",
+  "rank": "C",
+  "nivel": 62,
+  "estilo_luta": "Proficiência em Espadas",
+  "atributos": {
+    "forca": 60,
+    "resistencia": 58,
+    "velocidade": 50,
+    "sentidos": 52,
+    "inteligencia": 38,
+    "poder_magico": 18
+  },
+  "elemento": "Terra",
+  "habilidade_unica": "Última Linha — enquanto for a única sobrevivente do grupo em combate, recebe um grande aumento de força e resistência até que um aliado seja reanimado.",
+  "titulo": "A Defensora Solitária de Cragspear",
+  "equipamentos": {
+    "arma": "Espada Curta de Combate Rápido",
+    "itens": "Armadura Leve Marcada por Batalhas, Bandagens de Emergência, Diário de Patrulha"
+  },
+  "tecnicas": [
+    "Corte Solitário",
+    "Postura da Última Linha",
+    "Investida Desesperada"
+  ],
+  "formaFalar": "Fala com determinação e honra, valorizando a força e a coragem. Suas palavras são firmes e inspiradoras.",
+  "localizacao": "Coreia do Sul",
+  "profissao": "Caçador(a) Lutador",
+  "objetivos": "Proteger os inocentes, evoluir como caçador e desvendar os mistérios dos portais.",
+  "valores": "A vida é preciosa. A coragem é essencial. A lealdade é inegociável."
+}

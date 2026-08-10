@@ -1,0 +1,178 @@
+{
+  "npcId": "lyblac",
+  "npcNome": "Lyblac",
+  "npcTitulo": "A Filha do Selo Rompido",
+  "totalMissoes": 10,
+  "missoes": [
+    {
+      "id": "lyblac_01",
+      "npcId": "lyblac",
+      "numero": 1,
+      "nome": "Capítulo 1: Rumores sobre Lyblac",
+      "descricao": "Relatos alarmantes começam a circular entre guildas sobre Lyblac. Filha de uma entidade primordial selada há séculos sob uma antiga instalação hoje conhecida como 'Portal de Hornburg', Lyblac dedicou sua longuíssima existência a reunir artefatos e catalisadores de m...",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Investigue 3 relatos de testemunhas sobre Lyblac",
+      "recompensas": {
+        "xp": 25650,
+        "won": 171000,
+        "item": "Fragmentos do Selo de Hornburg"
+      }
+    },
+    {
+      "id": "lyblac_02",
+      "npcId": "lyblac",
+      "numero": 2,
+      "nome": "Capítulo 2: Rastreando A Filha do Selo Rompido",
+      "descricao": "Reúna evidências concretas da atividade de Lyblac antes que a Associação classifique o caso como perdido.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Reúna provas em 2 locais diferentes ligados a Lyblac",
+      "recompensas": {
+        "xp": 29700,
+        "won": 198000,
+        "item": "Fragmentos do Selo de Hornburg"
+      }
+    },
+    {
+      "id": "lyblac_03",
+      "npcId": "lyblac",
+      "numero": 3,
+      "nome": "Capítulo 3: Confronto com Lyblac",
+      "descricao": "É hora de enfrentar Lyblac diretamente. Prepare-se: como A Filha do Selo Rompido, este será um combate de Rank S.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Derrote Lyblac em combate direto",
+      "recompensas": {
+        "xp": 33750,
+        "won": 225000,
+        "item": "Réplica Reforçada de: Cajado Ritualístico de Ossos Selados"
+      }
+    },
+    {
+      "id": "lyblac_04",
+      "npcId": "lyblac",
+      "numero": 4,
+      "nome": "Capítulo 4: A Queda de A Filha do Selo Rompido",
+      "descricao": "Com Lyblac neutralizado(a), reste apenas reportar o caso à Associação e lidar com as consequências reveladas.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Entregue o relatório final sobre Lyblac à Associação",
+      "recompensas": {
+        "xp": 37800,
+        "won": 252000,
+        "item": "Réplica Reforçada de: Cajado Ritualístico de Ossos Selados"
+      }
+    },
+    {
+      "id": "lyblac_05",
+      "npcId": "lyblac",
+      "numero": 5,
+      "nome": "Reforço de Lyblac",
+      "descricao": "Lyblac pede que você adquira, em qualquer Loja de Itens da Associação, um equipamento de Rank S compatível com Cajados e Orbes para reforçar seu arsenal de combate.",
+      "categoria": "secundaria",
+      "tipo": "loja",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Comprar 1 equipamento de Rank S (peça de armadura ou arma)",
+      "recompensas": {
+        "xp": 8100,
+        "won": 54000,
+        "item": "Réplica Reforçada de: Cajado Ritualístico de Ossos Selados"
+      }
+    },
+    {
+      "id": "lyblac_06",
+      "npcId": "lyblac",
+      "numero": 6,
+      "nome": "Provisões de Lyblac",
+      "descricao": "Antes da próxima incursão, Lyblac pede que você compre poções de recuperação e um acessório de afinidade elemental Escuridão na loja mais próxima.",
+      "categoria": "secundaria",
+      "tipo": "loja",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Comprar 3 poções + 1 acessório elemental",
+      "recompensas": {
+        "xp": 7425,
+        "won": 49500,
+        "item": "Grimório Proibido"
+      }
+    },
+    {
+      "id": "lyblac_07",
+      "npcId": "lyblac",
+      "numero": 7,
+      "nome": "Receita de Lyblac",
+      "descricao": "Usando materiais coletados em dungeons de afinidade Escuridão, produza o item indicado por Lyblac em uma bancada de criação da guilda.",
+      "categoria": "secundaria",
+      "tipo": "producao",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Produzir 1 item de afinidade Escuridão (Rank S)",
+      "recompensas": {
+        "xp": 8775,
+        "won": 58500,
+        "item": "Fragmento de Mana (Escuridão)"
+      }
+    },
+    {
+      "id": "lyblac_08",
+      "npcId": "lyblac",
+      "numero": 8,
+      "nome": "Suprimento Especial de Lyblac",
+      "descricao": "Lyblac ensina uma técnica pessoal de preparo; produza 3 unidades de um item de suporte (poção, munição ou material) ligado ao estilo de combate de Cajados e Orbes.",
+      "categoria": "secundaria",
+      "tipo": "producao",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Produzir 3 itens de suporte",
+      "recompensas": {
+        "xp": 9450,
+        "won": 63000,
+        "item": "Fragmento de Mana (Escuridão)"
+      }
+    },
+    {
+      "id": "lyblac_09",
+      "npcId": "lyblac",
+      "numero": 9,
+      "nome": "Treino de Combate com Lyblac",
+      "descricao": "Lyblac solicita ajuda para conter uma infestação: derrote sombras corrompidas em dungeons de Rank S ou inferior.",
+      "categoria": "cacada",
+      "tipo": "caca",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Derrotar 40 Sombras Corrompidas",
+      "recompensas": {
+        "xp": 10800,
+        "won": 72000,
+        "item": "Fragmentos do Selo de Hornburg"
+      }
+    },
+    {
+      "id": "lyblac_10",
+      "npcId": "lyblac",
+      "numero": 10,
+      "nome": "Caçada Recomendada por Lyblac",
+      "descricao": "Uma variante mais forte de sombras corrompidas tem aparecido nas rondas de Lyblac; elimine essas ameaças antes que evoluam.",
+      "categoria": "cacada",
+      "tipo": "caca",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Derrotar 9 Sombras Corrompidas (variante fortalecida)",
+      "recompensas": {
+        "xp": 13500,
+        "won": 90000,
+        "item": "Réplica Reforçada de: Cajado Ritualístico de Ossos Selados"
+      }
+    }
+  ]
+}

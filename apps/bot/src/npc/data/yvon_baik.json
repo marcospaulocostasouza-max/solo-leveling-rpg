@@ -1,0 +1,42 @@
+{
+  "id": "yvon_baik",
+  "papel": "Vilão",
+  "base_em": "Yvon (Octopath Traveler)",
+  "nome": "Yvon Baik",
+  "idade": "44",
+  "nacionalidade": "Sul-coreano, ex-reitor de uma academia de formação de caçadores",
+  "aparencia": "Postura acadêmica impecável, óculos de aro dourado, cabelos grisalhos penteados com extrema precisão.",
+  "altura_peso": "1,78m / 70kg",
+  "personalidade": "Arrogante, convencido da própria superioridade intelectual e disposto a qualquer crime para manter o prestígio.",
+  "historia": "Reitor de uma prestigiada academia, Yvon assassinou o reitor anterior ao descobrir que este guardava um grimório raro capaz de ampliar drasticamente o poder mágico.",
+  "classe": "Mago Elemental",
+  "classe_avancada": "Archon",
+  "rank": "A",
+  "nivel": 88,
+  "estilo_luta": "Proficiência em Cajados e Orbes",
+  "atributos": {
+    "forca": 28,
+    "resistencia": 45,
+    "velocidade": 40,
+    "sentidos": 58,
+    "inteligencia": 92,
+    "poder_magico": 89
+  },
+  "elemento": "Escuridão",
+  "habilidade_unica": "Grimório Roubado — conjura um feitiço aleatório de alto poder a cada dois turnos, imprevisível mas sempre devastador.",
+  "titulo": "O Reitor que Matou pelo Grimório",
+  "equipamentos": {
+    "arma": "Cajado Acadêmico Ornamentado",
+    "itens": "Grimório Roubado do Antigo Reitor, Vestes de Reitor Bordadas, Selo Falsificado da Academia"
+  },
+  "tecnicas": [
+    "Explosão Arcana Instável",
+    "Julgamento do Reitor",
+    "Fúria do Conhecimento Roubado"
+  ],
+  "formaFalar": "Fala com tom frio e calculista, frequentemente manipulando as palavras para obter vantagem. Suas frases são precisas e raramente revelam emoções verdadeiras.",
+  "localizacao": "Localização desconhecida — opera nas sombras",
+  "profissao": "Antagonista",
+  "objetivos": "Expandir seu poder e influência, eliminando qualquer ameaça aos seus planos.",
+  "valores": "O poder é o único caminho. A fraqueza é imperdoável. Os fins justificam os meios."
+}

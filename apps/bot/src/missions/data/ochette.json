@@ -1,0 +1,178 @@
+{
+  "npcId": "ochette",
+  "npcNome": "Ochette",
+  "npcTitulo": "A Guardiã das Feras",
+  "totalMissoes": 10,
+  "missoes": [
+    {
+      "id": "ochette_01",
+      "npcId": "ochette",
+      "numero": 1,
+      "nome": "Capítulo 1: O Despertar de Ochette",
+      "descricao": "Acompanhe os primeiros passos de Ochette como Caçador(a). Criada por uma comunidade isolada que vive nas proximidades de uma zona de portais instáveis, Ochette foi treinada desde criança para capturar e domar as criaturas que emergem das dungeons ao invés de...",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Complete a introdução: converse com Ochette e participe de sua primeira incursão",
+      "recompensas": {
+        "xp": 25650,
+        "won": 171000,
+        "item": "Coleira de Vínculo com Monstros"
+      }
+    },
+    {
+      "id": "ochette_02",
+      "npcId": "ochette",
+      "numero": 2,
+      "nome": "Capítulo 2: A Trilha de A Guardiã das Feras",
+      "descricao": "Ochette pede ajuda para investigar pistas ligadas ao seu passado, aprofundando o mistério por trás de seu título de 'A Guardiã das Feras'.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Ajude Ochette a reunir 3 pistas em diferentes localizações",
+      "recompensas": {
+        "xp": 29700,
+        "won": 198000,
+        "item": "Apito de Chamado da Floresta"
+      }
+    },
+    {
+      "id": "ochette_03",
+      "npcId": "ochette",
+      "numero": 3,
+      "nome": "Capítulo 3: O Confronto de Ochette",
+      "descricao": "O passado de Ochette finalmente alcança o presente. Enfrente ao lado dele(a) a ameaça central de sua história.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Vença o confronto decisivo ao lado de Ochette",
+      "recompensas": {
+        "xp": 33750,
+        "won": 225000,
+        "item": "Réplica Reforçada de: Garras Retráteis Reforçadas + Arco Curto"
+      }
+    },
+    {
+      "id": "ochette_04",
+      "npcId": "ochette",
+      "numero": 4,
+      "nome": "Capítulo 4: A Guardiã das Feras",
+      "descricao": "Com a ameaça derrotada, Ochette consolida seu lugar no mundo dos caçadores, consagrando-se como A Guardiã das Feras.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Complete a missão final e testemunhe o desfecho da história de Ochette",
+      "recompensas": {
+        "xp": 37800,
+        "won": 252000,
+        "item": "Réplica Reforçada de: Garras Retráteis Reforçadas + Arco Curto"
+      }
+    },
+    {
+      "id": "ochette_05",
+      "npcId": "ochette",
+      "numero": 5,
+      "nome": "Reforço de Ochette",
+      "descricao": "Ochette pede que você adquira, em qualquer Loja de Itens da Associação, um equipamento de Rank S compatível com Arcos para reforçar seu arsenal de combate.",
+      "categoria": "secundaria",
+      "tipo": "loja",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Comprar 1 equipamento de Rank S (peça de armadura ou arma)",
+      "recompensas": {
+        "xp": 8100,
+        "won": 54000,
+        "item": "Réplica Reforçada de: Garras Retráteis Reforçadas + Arco Curto"
+      }
+    },
+    {
+      "id": "ochette_06",
+      "npcId": "ochette",
+      "numero": 6,
+      "nome": "Provisões de Ochette",
+      "descricao": "Antes da próxima incursão, Ochette pede que você compre poções de recuperação e um acessório de afinidade elemental Madeira na loja mais próxima.",
+      "categoria": "secundaria",
+      "tipo": "loja",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Comprar 3 poções + 1 acessório elemental",
+      "recompensas": {
+        "xp": 7425,
+        "won": 49500,
+        "item": "Apito de Chamado da Floresta"
+      }
+    },
+    {
+      "id": "ochette_07",
+      "npcId": "ochette",
+      "numero": 7,
+      "nome": "Receita de Ochette",
+      "descricao": "Usando materiais coletados em dungeons de afinidade Madeira, produza o item indicado por Ochette em uma bancada de criação da guilda.",
+      "categoria": "secundaria",
+      "tipo": "producao",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Produzir 1 item de afinidade Madeira (Rank S)",
+      "recompensas": {
+        "xp": 8775,
+        "won": 58500,
+        "item": "Fragmento de Mana (Madeira)"
+      }
+    },
+    {
+      "id": "ochette_08",
+      "npcId": "ochette",
+      "numero": 8,
+      "nome": "Suprimento Especial de Ochette",
+      "descricao": "Ochette ensina uma técnica pessoal de preparo; produza 3 unidades de um item de suporte (poção, munição ou material) ligado ao estilo de combate de Arcos.",
+      "categoria": "secundaria",
+      "tipo": "producao",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Produzir 3 itens de suporte",
+      "recompensas": {
+        "xp": 9450,
+        "won": 63000,
+        "item": "Fragmento de Mana (Madeira)"
+      }
+    },
+    {
+      "id": "ochette_09",
+      "npcId": "ochette",
+      "numero": 9,
+      "nome": "Treino de Combate com Ochette",
+      "descricao": "Ochette solicita ajuda para conter uma infestação: derrote guardiões de madeira em dungeons de Rank S ou inferior.",
+      "categoria": "cacada",
+      "tipo": "caca",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Derrotar 40 Guardiões de Madeira",
+      "recompensas": {
+        "xp": 10800,
+        "won": 72000,
+        "item": "Coleira de Vínculo com Monstros"
+      }
+    },
+    {
+      "id": "ochette_10",
+      "npcId": "ochette",
+      "numero": 10,
+      "nome": "Caçada Recomendada por Ochette",
+      "descricao": "Uma variante mais forte de guardiões de madeira tem aparecido nas rondas de Ochette; elimine essas ameaças antes que evoluam.",
+      "categoria": "cacada",
+      "tipo": "caca",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Derrotar 9 Guardiões de Madeira (variante fortalecida)",
+      "recompensas": {
+        "xp": 13500,
+        "won": 90000,
+        "item": "Réplica Reforçada de: Garras Retráteis Reforçadas + Arco Curto"
+      }
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "id": "suwon",
+  "name": "Suwon",
+  "image": "/images/cities/suwon.webp",
+  "description": "Fortaleza de Hwaseong",
+  "population": "1.2 milhões",
+  "dangerLevel": "C",
+  "guilds": [],
+  "npcs": [],
+  "players": [],
+  "portals": [],
+  "dungeons": [],
+  "bosses": [],
+  "shops": [],
+  "quests": [],
+  "events": [],
+  "resources": [],
+  "notes": ""
+}

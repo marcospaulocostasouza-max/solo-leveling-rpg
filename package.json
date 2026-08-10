@@ -1,0 +1,29 @@
+{
+  "name": "solo-leveling-rpg-completo",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "install:all": "npm --prefix apps/bot install && npm --prefix apps/site install",
+    "dev": "node scripts/dev.js",
+    "db:audit": "node scripts/db-audit.js",
+    "db:migrate": "node scripts/migrate-sqlite-to-postgres.js",
+    "db:fix-identities": "node scripts/fix-postgres-identities.js",
+    "db:verify": "node scripts/db-verify.js",
+    "db:encode-url": "node scripts/encode-database-url.js",
+    "db:encode-serverless-url": "node scripts/encode-database-url.js DATABASE_URL_SERVERLESS",
+    "db:configure-pooler-tls": "node scripts/configure-postgres-tls.js",
+    "db:use-postgres": "node scripts/configure-database-provider.js",
+    "db:test-cutover": "node scripts/test-postgres-cutover.js",
+    "test:site-auth": "node scripts/test-site-auth.js",
+    "site:configure-url": "node scripts/configure-site-url.js",
+    "bot": "node apps/bot/index.js",
+    "site": "npm --prefix apps/site run dev",
+    "site:build": "npm --prefix apps/site run build",
+    "site:start": "npm --prefix apps/site run start"
+  },
+  "dependencies": {
+    "dotenv": "^16.6.1",
+    "pg": "^8.23.0",
+    "sqlite3": "^6.0.1"
+  }
+}

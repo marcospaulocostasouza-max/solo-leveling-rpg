@@ -1,0 +1,19 @@
+{
+  "id": "jeonju",
+  "name": "Jeonju",
+  "image": "/images/cities/jeonju.webp",
+  "description": "Berço da cultura coreana",
+  "population": "650 mil",
+  "dangerLevel": "C",
+  "guilds": [],
+  "npcs": [],
+  "players": [],
+  "portals": [],
+  "dungeons": [],
+  "bosses": [],
+  "shops": [],
+  "quests": [],
+  "events": [],
+  "resources": [],
+  "notes": ""
+}

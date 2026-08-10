@@ -1,0 +1,178 @@
+{
+  "npcId": "vide_o_corruptor",
+  "npcNome": "Vide, o Corruptor",
+  "npcTitulo": "O Deus da Sombra Que Consome",
+  "totalMissoes": 10,
+  "missoes": [
+    {
+      "id": "vide_o_corruptor_01",
+      "npcId": "vide_o_corruptor",
+      "numero": 1,
+      "nome": "Capítulo 1: Rumores sobre Vide, o Corruptor",
+      "descricao": "Relatos alarmantes começam a circular entre guildas sobre Vide, o Corruptor. Cultuado em segredo por uma seita conhecida como Ordem da Meia-Noite, Vide é apontado como a origem da 'Sombra', uma corrupção de mana que se espalha silenciosamente através de portais instáveis, tran...",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Investigue 3 relatos de testemunhas sobre Vide, o Corruptor",
+      "recompensas": {
+        "xp": 25650,
+        "won": 171000,
+        "item": "Fragmentos de Fiéis Corrompidos"
+      }
+    },
+    {
+      "id": "vide_o_corruptor_02",
+      "npcId": "vide_o_corruptor",
+      "numero": 2,
+      "nome": "Capítulo 2: Rastreando O Deus da Sombra Que Consome",
+      "descricao": "Reúna evidências concretas da atividade de Vide, o Corruptor antes que a Associação classifique o caso como perdido.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Reúna provas em 2 locais diferentes ligados a Vide, o Corruptor",
+      "recompensas": {
+        "xp": 29700,
+        "won": 198000,
+        "item": "Fragmentos de Fiéis Corrompidos"
+      }
+    },
+    {
+      "id": "vide_o_corruptor_03",
+      "npcId": "vide_o_corruptor",
+      "numero": 3,
+      "nome": "Capítulo 3: Confronto com Vide, o Corruptor",
+      "descricao": "É hora de enfrentar Vide, o Corruptor diretamente. Prepare-se: como O Deus da Sombra Que Consome, este será um combate de Rank S.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Derrote Vide, o Corruptor em combate direto",
+      "recompensas": {
+        "xp": 33750,
+        "won": 225000,
+        "item": "Réplica Reforçada de: Nenhuma (manifestação de mana pura)"
+      }
+    },
+    {
+      "id": "vide_o_corruptor_04",
+      "npcId": "vide_o_corruptor",
+      "numero": 4,
+      "nome": "Capítulo 4: A Queda de O Deus da Sombra Que Consome",
+      "descricao": "Com Vide, o Corruptor neutralizado(a), reste apenas reportar o caso à Associação e lidar com as consequências reveladas.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Entregue o relatório final sobre Vide, o Corruptor à Associação",
+      "recompensas": {
+        "xp": 37800,
+        "won": 252000,
+        "item": "Réplica Reforçada de: Nenhuma (manifestação de mana pura)"
+      }
+    },
+    {
+      "id": "vide_o_corruptor_05",
+      "npcId": "vide_o_corruptor",
+      "numero": 5,
+      "nome": "Reforço de Vide, o Corruptor",
+      "descricao": "Vide, o Corruptor pede que você adquira, em qualquer Loja de Itens da Associação, um equipamento de Rank S compatível com Combate Desarmado para reforçar seu arsenal de combate.",
+      "categoria": "secundaria",
+      "tipo": "loja",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Comprar 1 equipamento de Rank S (peça de armadura ou arma)",
+      "recompensas": {
+        "xp": 8100,
+        "won": 54000,
+        "item": "Réplica Reforçada de: Nenhuma (manifestação de mana pura)"
+      }
+    },
+    {
+      "id": "vide_o_corruptor_06",
+      "npcId": "vide_o_corruptor",
+      "numero": 6,
+      "nome": "Provisões de Vide, o Corruptor",
+      "descricao": "Antes da próxima incursão, Vide, o Corruptor pede que você compre poções de recuperação e um acessório de afinidade elemental Escuridão na loja mais próxima.",
+      "categoria": "secundaria",
+      "tipo": "loja",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Comprar 3 poções + 1 acessório elemental",
+      "recompensas": {
+        "xp": 7425,
+        "won": 49500,
+        "item": "Núcleo da Sombra Original"
+      }
+    },
+    {
+      "id": "vide_o_corruptor_07",
+      "npcId": "vide_o_corruptor",
+      "numero": 7,
+      "nome": "Receita de Vide, o Corruptor",
+      "descricao": "Usando materiais coletados em dungeons de afinidade Escuridão, produza o item indicado por Vide, o Corruptor em uma bancada de criação da guilda.",
+      "categoria": "secundaria",
+      "tipo": "producao",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Produzir 1 item de afinidade Escuridão (Rank S)",
+      "recompensas": {
+        "xp": 8775,
+        "won": 58500,
+        "item": "Fragmento de Mana (Escuridão)"
+      }
+    },
+    {
+      "id": "vide_o_corruptor_08",
+      "npcId": "vide_o_corruptor",
+      "numero": 8,
+      "nome": "Suprimento Especial de Vide, o Corruptor",
+      "descricao": "Vide, o Corruptor ensina uma técnica pessoal de preparo; produza 3 unidades de um item de suporte (poção, munição ou material) ligado ao estilo de combate de Combate Desarmado.",
+      "categoria": "secundaria",
+      "tipo": "producao",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Produzir 3 itens de suporte",
+      "recompensas": {
+        "xp": 9450,
+        "won": 63000,
+        "item": "Fragmento de Mana (Escuridão)"
+      }
+    },
+    {
+      "id": "vide_o_corruptor_09",
+      "npcId": "vide_o_corruptor",
+      "numero": 9,
+      "nome": "Treino de Combate com Vide, o Corruptor",
+      "descricao": "Vide, o Corruptor solicita ajuda para conter uma infestação: derrote sombras corrompidas em dungeons de Rank S ou inferior.",
+      "categoria": "cacada",
+      "tipo": "caca",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Derrotar 40 Sombras Corrompidas",
+      "recompensas": {
+        "xp": 10800,
+        "won": 72000,
+        "item": "Fragmentos de Fiéis Corrompidos"
+      }
+    },
+    {
+      "id": "vide_o_corruptor_10",
+      "npcId": "vide_o_corruptor",
+      "numero": 10,
+      "nome": "Caçada Recomendada por Vide, o Corruptor",
+      "descricao": "Uma variante mais forte de sombras corrompidas tem aparecido nas rondas de Vide, o Corruptor; elimine essas ameaças antes que evoluam.",
+      "categoria": "cacada",
+      "tipo": "caca",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Derrotar 9 Sombras Corrompidas (variante fortalecida)",
+      "recompensas": {
+        "xp": 13500,
+        "won": 90000,
+        "item": "Réplica Reforçada de: Nenhuma (manifestação de mana pura)"
+      }
+    }
+  ]
+}

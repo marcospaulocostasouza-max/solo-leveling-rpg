@@ -1,0 +1,9 @@
+{
+  "locations": [
+    {"id":"hunter-association","name":"Associação dos Caçadores","x":28.8,"y":17.9,"location":"Goyang — Região Metropolitana de Seul","kind":"Sede institucional","travelTargetId":"goyang","reason":"Fica próxima da cidade-base de Seul, permitindo acesso rápido aos caçadores sem transformar a capital neutra em território institucional conquistável."},
+    {"id":"zelkova-park","name":"Parque das Zelkova","x":34.1,"y":18.9,"location":"Região de Seul","kind":"Área sobrenatural","travelTargetId":"seoul","reason":"Reserva natural conhecida pela Dungeon Break Zelkova e pelas aparições sobrenaturais ligadas às regras de horário do RPG."},
+    {"id":"hallasan","name":"Hallasan","x":43.1,"y":89.3,"location":"Jeju","kind":"Treinamento extremo","travelTargetId":"jeju","reason":"Montanha e vulcão usados por caçadores para treinamento em condições extremas de frio, calor, pressão e gases."},
+    {"id":"memories","name":"Ilha das Memórias","x":13.7,"y":71.8,"location":"Mar Amarelo","kind":"Ilha mística","travelTargetId":"mokpo","reason":"Ilha tomada por neblina e toxina alucinógena; sua posição isolada exige viagem até a costa antes da travessia narrativa."},
+    {"id":"temple-seoul","name":"Templo de Treinamento","x":37.0,"y":23.0,"location":"Seul","kind":"Templo","travelTargetId":"seoul","reason":"Templos são pontos de espiritualidade e treinamento, com bônus de maestria conforme as regras do RPG."}
+  ]
+}

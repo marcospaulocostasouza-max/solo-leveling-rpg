@@ -1,0 +1,42 @@
+{
+  "id": "helgenish",
+  "papel": "Vilão",
+  "base_em": "Helgenish (Octopath Traveler)",
+  "nome": "Helgenish",
+  "idade": "37",
+  "nacionalidade": "Sul-coreano, caçador rival especializado em domar bestas de dungeon",
+  "aparencia": "Corpo coberto de peles e trofeus de caça, cabelos longos desgrenhados presos em tranças rústicas, cicatrizes de mordidas cobrindo os braços.",
+  "altura_peso": "1,88m / 92kg",
+  "personalidade": "Competitivo até a obsessão, vê outros domadores como rivais a serem superados a qualquer custo.",
+  "historia": "Domador de bestas rival de uma caçadora respeitada, Helgenish passou a expor feras capturadas a fragmentos de mana corrompida para torná-las mais fortes.",
+  "classe": "Ranger",
+  "classe_avancada": "Domador",
+  "rank": "A",
+  "nivel": 81,
+  "estilo_luta": "Proficiência em Lanças e Armadilhas",
+  "atributos": {
+    "forca": 70,
+    "resistencia": 62,
+    "velocidade": 58,
+    "sentidos": 75,
+    "inteligencia": 45,
+    "poder_magico": 38
+  },
+  "elemento": "Terra",
+  "habilidade_unica": "Corrupção Forçada — invoca sua besta corrompida para um ataque conjunto devastador, mas ambos recebem dano contínuo pelo resto da batalha.",
+  "titulo": "O Domador que Corrompe suas Feras",
+  "equipamentos": {
+    "arma": "Lança de Caça Entalhada com Ossos",
+    "itens": "Peles e Trofeus de Caça, Fragmentos de Mana Corrompida, Coleira Forçada"
+  },
+  "tecnicas": [
+    "Investida da Fera Corrompida",
+    "Armadilha Cruel",
+    "Golpe Duplo Forçado"
+  ],
+  "formaFalar": "Fala com tom frio e calculista, frequentemente manipulando as palavras para obter vantagem. Suas frases são precisas e raramente revelam emoções verdadeiras.",
+  "localizacao": "Localização desconhecida — opera nas sombras",
+  "profissao": "Antagonista",
+  "objetivos": "Expandir seu poder e influência, eliminando qualquer ameaça aos seus planos.",
+  "valores": "O poder é o único caminho. A fraqueza é imperdoável. Os fins justificam os meios."
+}

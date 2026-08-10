@@ -1,0 +1,178 @@
+{
+  "npcId": "werner_choi",
+  "npcNome": "Werner Choi",
+  "npcTitulo": "O Guerreiro que Vendeu o Próprio Dojo",
+  "totalMissoes": 10,
+  "missoes": [
+    {
+      "id": "werner_choi_01",
+      "npcId": "werner_choi",
+      "numero": 1,
+      "nome": "Capítulo 1: Rumores sobre Werner Choi",
+      "descricao": "Relatos alarmantes começam a circular entre guildas sobre Werner Choi. Antigo companheiro de armas de um lendário mestre de dojo, Werner vendeu informações sobre as defesas do dojo em troca de poder, resultando na destruição do local....",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Investigue 3 relatos de testemunhas sobre Werner Choi",
+      "recompensas": {
+        "xp": 25650,
+        "won": 171000,
+        "item": "Armadura com Emblema Manchado"
+      }
+    },
+    {
+      "id": "werner_choi_02",
+      "npcId": "werner_choi",
+      "numero": 2,
+      "nome": "Capítulo 2: Rastreando O Guerreiro que Vendeu o Próprio Dojo",
+      "descricao": "Reúna evidências concretas da atividade de Werner Choi antes que a Associação classifique o caso como perdido.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Reúna provas em 2 locais diferentes ligados a Werner Choi",
+      "recompensas": {
+        "xp": 29700,
+        "won": 198000,
+        "item": "Armadura com Emblema Manchado"
+      }
+    },
+    {
+      "id": "werner_choi_03",
+      "npcId": "werner_choi",
+      "numero": 3,
+      "nome": "Capítulo 3: Confronto com Werner Choi",
+      "descricao": "É hora de enfrentar Werner Choi diretamente. Prepare-se: como O Guerreiro que Vendeu o Próprio Dojo, este será um combate de Rank S.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Derrote Werner Choi em combate direto",
+      "recompensas": {
+        "xp": 33750,
+        "won": 225000,
+        "item": "Réplica Reforçada de: Espada Pesada Roubada da Guilda Rival"
+      }
+    },
+    {
+      "id": "werner_choi_04",
+      "npcId": "werner_choi",
+      "numero": 4,
+      "nome": "Capítulo 4: A Queda de O Guerreiro que Vendeu o Próprio Dojo",
+      "descricao": "Com Werner Choi neutralizado(a), reste apenas reportar o caso à Associação e lidar com as consequências reveladas.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Entregue o relatório final sobre Werner Choi à Associação",
+      "recompensas": {
+        "xp": 37800,
+        "won": 252000,
+        "item": "Réplica Reforçada de: Espada Pesada Roubada da Guilda Rival"
+      }
+    },
+    {
+      "id": "werner_choi_05",
+      "npcId": "werner_choi",
+      "numero": 5,
+      "nome": "Reforço de Werner Choi",
+      "descricao": "Werner Choi pede que você adquira, em qualquer Loja de Itens da Associação, um equipamento de Rank S compatível com Espadas para reforçar seu arsenal de combate.",
+      "categoria": "secundaria",
+      "tipo": "loja",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Comprar 1 equipamento de Rank S (peça de armadura ou arma)",
+      "recompensas": {
+        "xp": 8100,
+        "won": 54000,
+        "item": "Réplica Reforçada de: Espada Pesada Roubada da Guilda Rival"
+      }
+    },
+    {
+      "id": "werner_choi_06",
+      "npcId": "werner_choi",
+      "numero": 6,
+      "nome": "Provisões de Werner Choi",
+      "descricao": "Antes da próxima incursão, Werner Choi pede que você compre poções de recuperação e um acessório de afinidade elemental Metal na loja mais próxima.",
+      "categoria": "secundaria",
+      "tipo": "loja",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Comprar 3 poções + 1 acessório elemental",
+      "recompensas": {
+        "xp": 7425,
+        "won": 49500,
+        "item": "Bolsa de Moedas da Traição"
+      }
+    },
+    {
+      "id": "werner_choi_07",
+      "npcId": "werner_choi",
+      "numero": 7,
+      "nome": "Receita de Werner Choi",
+      "descricao": "Usando materiais coletados em dungeons de afinidade Metal, produza o item indicado por Werner Choi em uma bancada de criação da guilda.",
+      "categoria": "secundaria",
+      "tipo": "producao",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Produzir 1 item de afinidade Metal (Rank S)",
+      "recompensas": {
+        "xp": 8775,
+        "won": 58500,
+        "item": "Fragmento de Mana (Metal)"
+      }
+    },
+    {
+      "id": "werner_choi_08",
+      "npcId": "werner_choi",
+      "numero": 8,
+      "nome": "Suprimento Especial de Werner Choi",
+      "descricao": "Werner Choi ensina uma técnica pessoal de preparo; produza 3 unidades de um item de suporte (poção, munição ou material) ligado ao estilo de combate de Espadas.",
+      "categoria": "secundaria",
+      "tipo": "producao",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Produzir 3 itens de suporte",
+      "recompensas": {
+        "xp": 9450,
+        "won": 63000,
+        "item": "Fragmento de Mana (Metal)"
+      }
+    },
+    {
+      "id": "werner_choi_09",
+      "npcId": "werner_choi",
+      "numero": 9,
+      "nome": "Treino de Combate com Werner Choi",
+      "descricao": "Werner Choi solicita ajuda para conter uma infestação: derrote autômatos de metal em dungeons de Rank S ou inferior.",
+      "categoria": "cacada",
+      "tipo": "caca",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Derrotar 40 Autômatos de Metal",
+      "recompensas": {
+        "xp": 10800,
+        "won": 72000,
+        "item": "Armadura com Emblema Manchado"
+      }
+    },
+    {
+      "id": "werner_choi_10",
+      "npcId": "werner_choi",
+      "numero": 10,
+      "nome": "Caçada Recomendada por Werner Choi",
+      "descricao": "Uma variante mais forte de autômatos de metal tem aparecido nas rondas de Werner Choi; elimine essas ameaças antes que evoluam.",
+      "categoria": "cacada",
+      "tipo": "caca",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Derrotar 9 Autômatos de Metal (variante fortalecida)",
+      "recompensas": {
+        "xp": 13500,
+        "won": 90000,
+        "item": "Réplica Reforçada de: Espada Pesada Roubada da Guilda Rival"
+      }
+    }
+  ]
+}

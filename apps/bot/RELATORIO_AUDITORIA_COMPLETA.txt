@@ -1,0 +1,2877 @@
+================================================================================
+RELATÓRIO DE AUDITORIA COMPLETA DOS NPCs
+================================================================================
+
+Data: 06/08/2026, 08:07:30
+Total de NPCs encontrados: 72
+
+================================================================================
+DETALHAMENTO POR NPC
+================================================================================
+
+--------------------------------------------------------------------------------
+Nome: agnea_bristarni
+Arquivos existentes (18/18):
+  ✔ 01_identity.md
+  ✔ 02_summary.md
+  ✔ 03_history.md
+  ✔ 04_personality.md
+  ✔ 05_interpretation.md
+  ✔ 06_speech.md
+  ✔ 07_values.md
+  ✔ 08_likes.md
+  ✔ 09_dislikes.md
+  ✔ 10_traumas.md
+  ✔ 11_relationships.md
+  ✔ 12_goals.md
+  ✔ 13_knowledge.md
+  ✔ 14_curiosities.md
+  ✔ 15_narrative_gaps.md
+  ✔ 16_absolute_rules.md
+  ✔ 17_dialog_examples.md
+  ✔ 18_scene_examples.md
+Arquivos ausentes: Nenhum
+Arquivos vazios (2):
+  ⚠ 17_dialog_examples.md
+  ⚠ 18_scene_examples.md
+Arquivos incompletos (4):
+  ⚠ 08_likes.md
+  ⚠ 09_dislikes.md
+  ⚠ 13_knowledge.md
+  ⚠ 14_curiosities.md
+Problemas encontrados (7):
+  ⚠ 08_likes.md: incompleto (Conteúdo abaixo do ideal (289 caracteres))
+  ⚠ 09_dislikes.md: incompleto (Conteúdo abaixo do ideal (171 caracteres))
+  ⚠ 13_knowledge.md: incompleto (Conteúdo abaixo do ideal (218 caracteres))
+  ⚠ 14_curiosities.md: incompleto (Conteúdo abaixo do ideal (206 caracteres))
+  ⚠ 15_narrative_gaps.md: caracteres corrompidos
+  ⚠ 17_dialog_examples.md: vazio
+  ⚠ 18_scene_examples.md: vazio
+Nível de completude: 67%
+
+--------------------------------------------------------------------------------
+Nome: alaune_yeong
+Arquivos existentes (18/18):
+  ✔ 01_identity.md
+  ✔ 02_summary.md
+  ✔ 03_history.md
+  ✔ 04_personality.md
+  ✔ 05_interpretation.md
+  ✔ 06_speech.md
+  ✔ 07_values.md
+  ✔ 08_likes.md
+  ✔ 09_dislikes.md
+  ✔ 10_traumas.md
+  ✔ 11_relationships.md
+  ✔ 12_goals.md
+  ✔ 13_knowledge.md
+  ✔ 14_curiosities.md
+  ✔ 15_narrative_gaps.md
+  ✔ 16_absolute_rules.md
+  ✔ 17_dialog_examples.md
+  ✔ 18_scene_examples.md
+Arquivos ausentes: Nenhum
+Arquivos vazios: Nenhum
+Arquivos incompletos (2):
+  ⚠ 10_traumas.md
+  ⚠ 13_knowledge.md
+Problemas encontrados (6):
+  ⚠ 07_values.md: duplicações excessivas
+  ⚠ 07_values.md: blocos repetidos
+  ⚠ 10_traumas.md: incompleto (Conteúdo abaixo do ideal (196 caracteres))
+  ⚠ 13_knowledge.md: incompleto (Conteúdo abaixo do ideal (239 caracteres))
+  ⚠ 15_narrative_gaps.md: caracteres corrompidos
+  ⚠ 18_scene_examples.md: conteúdo incompatível com o tipo
+Nível de completude: 89%
+
+--------------------------------------------------------------------------------
+Nome: alexia_song
+Arquivos existentes (18/18):
+  ✔ 01_identity.md
+  ✔ 02_summary.md
+  ✔ 03_history.md
+  ✔ 04_personality.md
+  ✔ 05_interpretation.md
+  ✔ 06_speech.md
+  ✔ 07_values.md
+  ✔ 08_likes.md
+  ✔ 09_dislikes.md
+  ✔ 10_traumas.md
+  ✔ 11_relationships.md
+  ✔ 12_goals.md
+  ✔ 13_knowledge.md
+  ✔ 14_curiosities.md
+  ✔ 15_narrative_gaps.md
+  ✔ 16_absolute_rules.md
+  ✔ 17_dialog_examples.md
+  ✔ 18_scene_examples.md
+Arquivos ausentes: Nenhum
+Arquivos vazios: Nenhum
+Arquivos incompletos (6):
+  ⚠ 08_likes.md
+  ⚠ 09_dislikes.md
+  ⚠ 10_traumas.md
+  ⚠ 11_relationships.md
+  ⚠ 13_knowledge.md
+  ⚠ 14_curiosities.md
+Problemas encontrados (10):
+  ⚠ 07_values.md: duplicações excessivas
+  ⚠ 07_values.md: blocos repetidos
+  ⚠ 08_likes.md: incompleto (Conteúdo abaixo do ideal (276 caracteres))
+  ⚠ 09_dislikes.md: incompleto (Conteúdo abaixo do ideal (171 caracteres))
+  ⚠ 10_traumas.md: incompleto (Conteúdo abaixo do ideal (227 caracteres))
+  ⚠ 11_relationships.md: incompleto (Conteúdo abaixo do ideal (237 caracteres))
+  ⚠ 13_knowledge.md: incompleto (Conteúdo abaixo do ideal (227 caracteres))
+  ⚠ 14_curiosities.md: incompleto (Conteúdo abaixo do ideal (209 caracteres))
+  ⚠ 15_narrative_gaps.md: caracteres corrompidos
+  ⚠ 18_scene_examples.md: conteúdo incompatível com o tipo
+Nível de completude: 67%
+
+--------------------------------------------------------------------------------
+Nome: alfyn_greengrass
+Arquivos existentes (18/18):
+  ✔ 01_identity.md
+  ✔ 02_summary.md
+  ✔ 03_history.md
+  ✔ 04_personality.md
+  ✔ 05_interpretation.md
+  ✔ 06_speech.md
+  ✔ 07_values.md
+  ✔ 08_likes.md
+  ✔ 09_dislikes.md
+  ✔ 10_traumas.md
+  ✔ 11_relationships.md
+  ✔ 12_goals.md
+  ✔ 13_knowledge.md
+  ✔ 14_curiosities.md
+  ✔ 15_narrative_gaps.md
+  ✔ 16_absolute_rules.md
+  ✔ 17_dialog_examples.md
+  ✔ 18_scene_examples.md
+Arquivos ausentes: Nenhum
+Arquivos vazios (2):
+  ⚠ 17_dialog_examples.md
+  ⚠ 18_scene_examples.md
+Arquivos incompletos (6):
+  ⚠ 08_likes.md
+  ⚠ 09_dislikes.md
+  ⚠ 10_traumas.md
+  ⚠ 11_relationships.md
+  ⚠ 13_knowledge.md
+  ⚠ 14_curiosities.md
+Problemas encontrados (9):
+  ⚠ 08_likes.md: incompleto (Conteúdo abaixo do ideal (281 caracteres))
+  ⚠ 09_dislikes.md: incompleto (Conteúdo abaixo do ideal (171 caracteres))
+  ⚠ 10_traumas.md: incompleto (Conteúdo abaixo do ideal (227 caracteres))
+  ⚠ 11_relationships.md: incompleto (Conteúdo abaixo do ideal (237 caracteres))
+  ⚠ 13_knowledge.md: incompleto (Conteúdo abaixo do ideal (202 caracteres))
+  ⚠ 14_curiosities.md: incompleto (Conteúdo abaixo do ideal (216 caracteres))
+  ⚠ 15_narrative_gaps.md: caracteres corrompidos
+  ⚠ 17_dialog_examples.md: vazio
+  ⚠ 18_scene_examples.md: vazio
+Nível de completude: 56%
+
+--------------------------------------------------------------------------------
+Nome: arcanette
+Arquivos existentes (18/18):
+  ✔ 01_identity.md
+  ✔ 02_summary.md
+  ✔ 03_history.md
+  ✔ 04_personality.md
+  ✔ 05_interpretation.md
+  ✔ 06_speech.md
+  ✔ 07_values.md
+  ✔ 08_likes.md
+  ✔ 09_dislikes.md
+  ✔ 10_traumas.md
+  ✔ 11_relationships.md
+  ✔ 12_goals.md
+  ✔ 13_knowledge.md
+  ✔ 14_curiosities.md
+  ✔ 15_narrative_gaps.md
+  ✔ 16_absolute_rules.md
+  ✔ 17_dialog_examples.md
+  ✔ 18_scene_examples.md
+Arquivos ausentes: Nenhum
+Arquivos vazios: Nenhum
+Arquivos incompletos (1):
+  ⚠ 13_knowledge.md
+Problemas encontrados (5):
+  ⚠ 07_values.md: duplicações excessivas
+  ⚠ 07_values.md: blocos repetidos
+  ⚠ 13_knowledge.md: incompleto (Conteúdo abaixo do ideal (272 caracteres))
+  ⚠ 15_narrative_gaps.md: caracteres corrompidos
+  ⚠ 18_scene_examples.md: conteúdo incompatível com o tipo
+Nível de completude: 94%
+
+--------------------------------------------------------------------------------
+Nome: bargello_yeon
+Arquivos existentes (18/18):
+  ✔ 01_identity.md
+  ✔ 02_summary.md
+  ✔ 03_history.md
+  ✔ 04_personality.md
+  ✔ 05_interpretation.md
+  ✔ 06_speech.md
+  ✔ 07_values.md
+  ✔ 08_likes.md
+  ✔ 09_dislikes.md
+  ✔ 10_traumas.md
+  ✔ 11_relationships.md
+  ✔ 12_goals.md
+  ✔ 13_knowledge.md
+  ✔ 14_curiosities.md
+  ✔ 15_narrative_gaps.md
+  ✔ 16_absolute_rules.md
+  ✔ 17_dialog_examples.md
+  ✔ 18_scene_examples.md
+Arquivos ausentes: Nenhum
+Arquivos vazios: Nenhum
+Arquivos incompletos (2):
+  ⚠ 10_traumas.md
+  ⚠ 13_knowledge.md
+Problemas encontrados (6):
+  ⚠ 07_values.md: duplicações excessivas
+  ⚠ 07_values.md: blocos repetidos
+  ⚠ 10_traumas.md: incompleto (Conteúdo abaixo do ideal (196 caracteres))
+  ⚠ 13_knowledge.md: incompleto (Conteúdo abaixo do ideal (258 caracteres))
+  ⚠ 15_narrative_gaps.md: caracteres corrompidos
+  ⚠ 18_scene_examples.md: conteúdo incompatível com o tipo
+Nível de completude: 89%
+
+--------------------------------------------------------------------------------
+Nome: carinda_moon
+Arquivos existentes (18/18):
+  ✔ 01_identity.md
+  ✔ 02_summary.md
+  ✔ 03_history.md
+  ✔ 04_personality.md
+  ✔ 05_interpretation.md
+  ✔ 06_speech.md
+  ✔ 07_values.md
+  ✔ 08_likes.md
+  ✔ 09_dislikes.md
+  ✔ 10_traumas.md
+  ✔ 11_relationships.md
+  ✔ 12_goals.md
+  ✔ 13_knowledge.md
+  ✔ 14_curiosities.md
+  ✔ 15_narrative_gaps.md
+  ✔ 16_absolute_rules.md
+  ✔ 17_dialog_examples.md
+  ✔ 18_scene_examples.md
+Arquivos ausentes: Nenhum
+Arquivos vazios: Nenhum
+Arquivos incompletos (6):
+  ⚠ 08_likes.md
+  ⚠ 09_dislikes.md
+  ⚠ 10_traumas.md
+  ⚠ 11_relationships.md
+  ⚠ 13_knowledge.md
+  ⚠ 14_curiosities.md
+Problemas encontrados (10):
+  ⚠ 07_values.md: duplicações excessivas
+  ⚠ 07_values.md: blocos repetidos
+  ⚠ 08_likes.md: incompleto (Conteúdo abaixo do ideal (271 caracteres))
+  ⚠ 09_dislikes.md: incompleto (Conteúdo abaixo do ideal (171 caracteres))
+  ⚠ 10_traumas.md: incompleto (Conteúdo abaixo do ideal (227 caracteres))
+  ⚠ 11_relationships.md: incompleto (Conteúdo abaixo do ideal (237 caracteres))
+  ⚠ 13_knowledge.md: incompleto (Conteúdo abaixo do ideal (227 caracteres))
+  ⚠ 14_curiosities.md: incompleto (Conteúdo abaixo do ideal (220 caracteres))
+  ⚠ 15_narrative_gaps.md: caracteres corrompidos
+  ⚠ 18_scene_examples.md: conteúdo incompatível com o tipo
+Nível de completude: 67%
+
+--------------------------------------------------------------------------------
+Nome: castti_florenz
+Arquivos existentes (18/18):
+  ✔ 01_identity.md
+  ✔ 02_summary.md
+  ✔ 03_history.md
+  ✔ 04_personality.md
+  ✔ 05_interpretation.md
+  ✔ 06_speech.md
+  ✔ 07_values.md
+  ✔ 08_likes.md
+  ✔ 09_dislikes.md
+  ✔ 10_traumas.md
+  ✔ 11_relationships.md
+  ✔ 12_goals.md
+  ✔ 13_knowledge.md
+  ✔ 14_curiosities.md
+  ✔ 15_narrative_gaps.md
+  ✔ 16_absolute_rules.md
+  ✔ 17_dialog_examples.md
+  ✔ 18_scene_examples.md
+Arquivos ausentes: Nenhum
+Arquivos vazios: Nenhum
+Arquivos incompletos (6):
+  ⚠ 08_likes.md
+  ⚠ 09_dislikes.md
+  ⚠ 10_traumas.md
+  ⚠ 11_relationships.md
+  ⚠ 13_knowledge.md
+  ⚠ 14_curiosities.md
+Problemas encontrados (13):
+  ⚠ 05_interpretation.md: blocos repetidos
+  ⚠ 07_values.md: duplicações excessivas
+  ⚠ 07_values.md: blocos repetidos
+  ⚠ 08_likes.md: incompleto (Conteúdo abaixo do ideal (279 caracteres))
+  ⚠ 09_dislikes.md: incompleto (Conteúdo abaixo do ideal (171 caracteres))
+  ⚠ 10_traumas.md: incompleto (Conteúdo abaixo do ideal (227 caracteres))
+  ⚠ 11_relationships.md: incompleto (Conteúdo abaixo do ideal (237 caracteres))
+  ⚠ 13_knowledge.md: incompleto (Conteúdo abaixo do ideal (212 caracteres))
+  ⚠ 14_curiosities.md: incompleto (Conteúdo abaixo do ideal (207 caracteres))
+  ⚠ 15_narrative_gaps.md: caracteres corrompidos
+  ⚠ 17_dialog_examples.md: blocos repetidos
+  ⚠ 18_scene_examples.md: conteúdo incompatível com o tipo
+  ⚠ 18_scene_examples.md: blocos repetidos
+Nível de completude: 67%
+
+--------------------------------------------------------------------------------
+Nome: celsus_park
+Arquivos existentes (18/18):
+  ✔ 01_identity.md
+  ✔ 02_summary.md
+  ✔ 03_history.md
+  ✔ 04_personality.md
+  ✔ 05_interpretation.md
+  ✔ 06_speech.md
+  ✔ 07_values.md
+  ✔ 08_likes.md
+  ✔ 09_dislikes.md
+  ✔ 10_traumas.md
+  ✔ 11_relationships.md
+  ✔ 12_goals.md
+  ✔ 13_knowledge.md
+  ✔ 14_curiosities.md
+  ✔ 15_narrative_gaps.md
+  ✔ 16_absolute_rules.md
+  ✔ 17_dialog_examples.md
+  ✔ 18_scene_examples.md
+Arquivos ausentes: Nenhum
+Arquivos vazios: Nenhum
+Arquivos incompletos (6):
+  ⚠ 08_likes.md
+  ⚠ 09_dislikes.md
+  ⚠ 10_traumas.md
+  ⚠ 11_relationships.md
+  ⚠ 13_knowledge.md
+  ⚠ 14_curiosities.md
+Problemas encontrados (10):
+  ⚠ 07_values.md: duplicações excessivas
+  ⚠ 07_values.md: blocos repetidos
+  ⚠ 08_likes.md: incompleto (Conteúdo abaixo do ideal (273 caracteres))
+  ⚠ 09_dislikes.md: incompleto (Conteúdo abaixo do ideal (171 caracteres))
+  ⚠ 10_traumas.md: incompleto (Conteúdo abaixo do ideal (227 caracteres))
+  ⚠ 11_relationships.md: incompleto (Conteúdo abaixo do ideal (237 caracteres))
+  ⚠ 13_knowledge.md: incompleto (Conteúdo abaixo do ideal (225 caracteres))
+  ⚠ 14_curiosities.md: incompleto (Conteúdo abaixo do ideal (223 caracteres))
+  ⚠ 15_narrative_gaps.md: caracteres corrompidos
+  ⚠ 18_scene_examples.md: conteúdo incompatível com o tipo
+Nível de completude: 67%
+
+--------------------------------------------------------------------------------
+Nome: claude
+Arquivos existentes (18/18):
+  ✔ 01_identity.md
+  ✔ 02_summary.md
+  ✔ 03_history.md
+  ✔ 04_personality.md
+  ✔ 05_interpretation.md
+  ✔ 06_speech.md
+  ✔ 07_values.md
+  ✔ 08_likes.md
+  ✔ 09_dislikes.md
+  ✔ 10_traumas.md
+  ✔ 11_relationships.md
+  ✔ 12_goals.md
+  ✔ 13_knowledge.md
+  ✔ 14_curiosities.md
+  ✔ 15_narrative_gaps.md
+  ✔ 16_absolute_rules.md
+  ✔ 17_dialog_examples.md
+  ✔ 18_scene_examples.md
+Arquivos ausentes: Nenhum
+Arquivos vazios: Nenhum
+Arquivos incompletos (1):
+  ⚠ 13_knowledge.md
+Problemas encontrados (6):
+  ⚠ 07_values.md: duplicações excessivas
+  ⚠ 07_values.md: blocos repetidos
+  ⚠ 13_knowledge.md: incompleto (Conteúdo abaixo do ideal (280 caracteres))
+  ⚠ 15_narrative_gaps.md: caracteres corrompidos
+  ⚠ 17_dialog_examples.md: blocos repetidos
+  ⚠ 18_scene_examples.md: conteúdo incompatível com o tipo
+Nível de completude: 94%
+
+--------------------------------------------------------------------------------
+Nome: cyrus_albright
+Arquivos existentes (18/18):
+  ✔ 01_identity.md
+  ✔ 02_summary.md
+  ✔ 03_history.md
+  ✔ 04_personality.md
+  ✔ 05_interpretation.md
+  ✔ 06_speech.md
+  ✔ 07_values.md
+  ✔ 08_likes.md
+  ✔ 09_dislikes.md
+  ✔ 10_traumas.md
+  ✔ 11_relationships.md
+  ✔ 12_goals.md
+  ✔ 13_knowledge.md
+  ✔ 14_curiosities.md
+  ✔ 15_narrative_gaps.md
+  ✔ 16_absolute_rules.md
+  ✔ 17_dialog_examples.md
+  ✔ 18_scene_examples.md
+Arquivos ausentes: Nenhum
+Arquivos vazios (2):
+  ⚠ 17_dialog_examples.md
+  ⚠ 18_scene_examples.md
+Arquivos incompletos (6):
+  ⚠ 08_likes.md
+  ⚠ 09_dislikes.md
+  ⚠ 10_traumas.md
+  ⚠ 11_relationships.md
+  ⚠ 13_knowledge.md
+  ⚠ 14_curiosities.md
+Problemas encontrados (9):
+  ⚠ 08_likes.md: incompleto (Conteúdo abaixo do ideal (280 caracteres))
+  ⚠ 09_dislikes.md: incompleto (Conteúdo abaixo do ideal (171 caracteres))
+  ⚠ 10_traumas.md: incompleto (Conteúdo abaixo do ideal (227 caracteres))
+  ⚠ 11_relationships.md: incompleto (Conteúdo abaixo do ideal (237 caracteres))
+  ⚠ 13_knowledge.md: incompleto (Conteúdo abaixo do ideal (230 caracteres))
+  ⚠ 14_curiosities.md: incompleto (Conteúdo abaixo do ideal (209 caracteres))
+  ⚠ 15_narrative_gaps.md: caracteres corrompidos
+  ⚠ 17_dialog_examples.md: vazio
+  ⚠ 18_scene_examples.md: vazio
+Nível de completude: 56%
+
+--------------------------------------------------------------------------------
+Nome: darius_kwon
+Arquivos existentes (18/18):
+  ✔ 01_identity.md
+  ✔ 02_summary.md
+  ✔ 03_history.md
+  ✔ 04_personality.md
+  ✔ 05_interpretation.md
+  ✔ 06_speech.md
+  ✔ 07_values.md
+  ✔ 08_likes.md
+  ✔ 09_dislikes.md
+  ✔ 10_traumas.md
+  ✔ 11_relationships.md
+  ✔ 12_goals.md
+  ✔ 13_knowledge.md
+  ✔ 14_curiosities.md
+  ✔ 15_narrative_gaps.md
+  ✔ 16_absolute_rules.md
+  ✔ 17_dialog_examples.md
+  ✔ 18_scene_examples.md
+Arquivos ausentes: Nenhum
+Arquivos vazios: Nenhum
+Arquivos incompletos (1):
+  ⚠ 13_knowledge.md
+Problemas encontrados (5):
+  ⚠ 07_values.md: duplicações excessivas
+  ⚠ 07_values.md: blocos repetidos
+  ⚠ 13_knowledge.md: incompleto (Conteúdo abaixo do ideal (276 caracteres))
+  ⚠ 15_narrative_gaps.md: caracteres corrompidos
+  ⚠ 18_scene_examples.md: conteúdo incompatível com o tipo
+Nível de completude: 94%
+
+--------------------------------------------------------------------------------
+Nome: delitia_song
+Arquivos existentes (18/18):
+  ✔ 01_identity.md
+  ✔ 02_summary.md
+  ✔ 03_history.md
+  ✔ 04_personality.md
+  ✔ 05_interpretation.md
+  ✔ 06_speech.md
+  ✔ 07_values.md
+  ✔ 08_likes.md
+  ✔ 09_dislikes.md
+  ✔ 10_traumas.md
+  ✔ 11_relationships.md
+  ✔ 12_goals.md
+  ✔ 13_knowledge.md
+  ✔ 14_curiosities.md
+  ✔ 15_narrative_gaps.md
+  ✔ 16_absolute_rules.md
+  ✔ 17_dialog_examples.md
+  ✔ 18_scene_examples.md
+Arquivos ausentes: Nenhum
+Arquivos vazios: Nenhum
+Arquivos incompletos (2):
+  ⚠ 10_traumas.md
+  ⚠ 13_knowledge.md
+Problemas encontrados (6):
+  ⚠ 07_values.md: duplicações excessivas
+  ⚠ 07_values.md: blocos repetidos
+  ⚠ 10_traumas.md: incompleto (Conteúdo abaixo do ideal (196 caracteres))
+  ⚠ 13_knowledge.md: incompleto (Conteúdo abaixo do ideal (230 caracteres))
+  ⚠ 15_narrative_gaps.md: caracteres corrompidos
+  ⚠ 18_scene_examples.md: conteúdo incompatível com o tipo
+Nível de completude: 89%
+
+--------------------------------------------------------------------------------
+Nome: elrica_edoras
+Arquivos existentes (18/18):
+  ✔ 01_identity.md
+  ✔ 02_summary.md
+  ✔ 03_history.md
+  ✔ 04_personality.md
+  ✔ 05_interpretation.md
+  ✔ 06_speech.md
+  ✔ 07_values.md
+  ✔ 08_likes.md
+  ✔ 09_dislikes.md
+  ✔ 10_traumas.md
+  ✔ 11_relationships.md
+  ✔ 12_goals.md
+  ✔ 13_knowledge.md
+  ✔ 14_curiosities.md
+  ✔ 15_narrative_gaps.md
+  ✔ 16_absolute_rules.md
+  ✔ 17_dialog_examples.md
+  ✔ 18_scene_examples.md
+Arquivos ausentes: Nenhum
+Arquivos vazios (2):
+  ⚠ 17_dialog_examples.md
+  ⚠ 18_scene_examples.md
+Arquivos incompletos (2):
+  ⚠ 10_traumas.md
+  ⚠ 13_knowledge.md
+Problemas encontrados (5):
+  ⚠ 10_traumas.md: incompleto (Conteúdo abaixo do ideal (196 caracteres))
+  ⚠ 13_knowledge.md: incompleto (Conteúdo abaixo do ideal (264 caracteres))
+  ⚠ 15_narrative_gaps.md: caracteres corrompidos
+  ⚠ 17_dialog_examples.md: vazio
+  ⚠ 18_scene_examples.md: vazio
+Nível de completude: 78%
+
+--------------------------------------------------------------------------------
+Nome: eltrix_noh
+Arquivos existentes (18/18):
+  ✔ 01_identity.md
+  ✔ 02_summary.md
+  ✔ 03_history.md
+  ✔ 04_personality.md
+  ✔ 05_interpretation.md
+  ✔ 06_speech.md
+  ✔ 07_values.md
+  ✔ 08_likes.md
+  ✔ 09_dislikes.md
+  ✔ 10_traumas.md
+  ✔ 11_relationships.md
+  ✔ 12_goals.md
+  ✔ 13_knowledge.md
+  ✔ 14_curiosities.md
+  ✔ 15_narrative_gaps.md
+  ✔ 16_absolute_rules.md
+  ✔ 17_dialog_examples.md
+  ✔ 18_scene_examples.md
+Arquivos ausentes: Nenhum
+Arquivos vazios: Nenhum
+Arquivos incompletos (2):
+  ⚠ 10_traumas.md
+  ⚠ 13_knowledge.md
+Problemas encontrados (10):
+  ⚠ 05_interpretation.md: blocos repetidos
+  ⚠ 07_values.md: duplicações excessivas
+  ⚠ 07_values.md: blocos repetidos
+  ⚠ 10_traumas.md: incompleto (Conteúdo abaixo do ideal (196 caracteres))
+  ⚠ 13_knowledge.md: incompleto (Conteúdo abaixo do ideal (245 caracteres))
+  ⚠ 15_narrative_gaps.md: caracteres corrompidos
+  ⚠ 17_dialog_examples.md: blocos repetidos
+  ⚠ 18_scene_examples.md: duplicações excessivas
+  ⚠ 18_scene_examples.md: conteúdo incompatível com o tipo
+  ⚠ 18_scene_examples.md: blocos repetidos
+Nível de completude: 89%
+
+--------------------------------------------------------------------------------
+Nome: entidade_mae
+Arquivos existentes (18/18):
+  ✔ 01_identity.md
+  ✔ 02_summary.md
+  ✔ 03_history.md
+  ✔ 04_personality.md
+  ✔ 05_interpretation.md
+  ✔ 06_speech.md
+  ✔ 07_values.md
+  ✔ 08_likes.md
+  ✔ 09_dislikes.md
+  ✔ 10_traumas.md
+  ✔ 11_relationships.md
+  ✔ 12_goals.md
+  ✔ 13_knowledge.md
+  ✔ 14_curiosities.md
+  ✔ 15_narrative_gaps.md
+  ✔ 16_absolute_rules.md
+  ✔ 17_dialog_examples.md
+  ✔ 18_scene_examples.md
+Arquivos ausentes: Nenhum
+Arquivos vazios (2):
+  ⚠ 17_dialog_examples.md
+  ⚠ 18_scene_examples.md
+Arquivos incompletos (1):
+  ⚠ 13_knowledge.md
+Problemas encontrados (4):
+  ⚠ 13_knowledge.md: incompleto (Conteúdo abaixo do ideal (299 caracteres))
+  ⚠ 15_narrative_gaps.md: caracteres corrompidos
+  ⚠ 17_dialog_examples.md: vazio
+  ⚠ 18_scene_examples.md: vazio
+Nível de completude: 83%
+
+--------------------------------------------------------------------------------
+Nome: esperre_jin
+Arquivos existentes (18/18):
+  ✔ 01_identity.md
+  ✔ 02_summary.md
+  ✔ 03_history.md
+  ✔ 04_personality.md
+  ✔ 05_interpretation.md
+  ✔ 06_speech.md
+  ✔ 07_values.md
+  ✔ 08_likes.md
+  ✔ 09_dislikes.md
+  ✔ 10_traumas.md
+  ✔ 11_relationships.md
+  ✔ 12_goals.md
+  ✔ 13_knowledge.md
+  ✔ 14_curiosities.md
+  ✔ 15_narrative_gaps.md
+  ✔ 16_absolute_rules.md
+  ✔ 17_dialog_examples.md
+  ✔ 18_scene_examples.md
+Arquivos ausentes: Nenhum
+Arquivos vazios: Nenhum
+Arquivos incompletos (2):
+  ⚠ 10_traumas.md
+  ⚠ 13_knowledge.md
+Problemas encontrados (6):
+  ⚠ 07_values.md: duplicações excessivas
+  ⚠ 07_values.md: blocos repetidos
+  ⚠ 10_traumas.md: incompleto (Conteúdo abaixo do ideal (196 caracteres))
+  ⚠ 13_knowledge.md: incompleto (Conteúdo abaixo do ideal (268 caracteres))
+  ⚠ 15_narrative_gaps.md: caracteres corrompidos
+  ⚠ 18_scene_examples.md: conteúdo incompatível com o tipo
+Nível de completude: 89%
+
+--------------------------------------------------------------------------------
+Nome: galdera
+Arquivos existentes (18/18):
+  ✔ 01_identity.md
+  ✔ 02_summary.md
+  ✔ 03_history.md
+  ✔ 04_personality.md
+  ✔ 05_interpretation.md
+  ✔ 06_speech.md
+  ✔ 07_values.md
+  ✔ 08_likes.md
+  ✔ 09_dislikes.md
+  ✔ 10_traumas.md
+  ✔ 11_relationships.md
+  ✔ 12_goals.md
+  ✔ 13_knowledge.md
+  ✔ 14_curiosities.md
+  ✔ 15_narrative_gaps.md
+  ✔ 16_absolute_rules.md
+  ✔ 17_dialog_examples.md
+  ✔ 18_scene_examples.md
+Arquivos ausentes: Nenhum
+Arquivos vazios (2):
+  ⚠ 17_dialog_examples.md
+  ⚠ 18_scene_examples.md
+Arquivos incompletos (7):
+  ⚠ 08_likes.md
+  ⚠ 09_dislikes.md
+  ⚠ 10_traumas.md
+  ⚠ 11_relationships.md
+  ⚠ 12_goals.md
+  ⚠ 13_knowledge.md
+  ⚠ 14_curiosities.md
+Problemas encontrados (10):
+  ⚠ 08_likes.md: incompleto (Conteúdo abaixo do ideal (298 caracteres))
+  ⚠ 09_dislikes.md: incompleto (Conteúdo abaixo do ideal (180 caracteres))
+  ⚠ 10_traumas.md: incompleto (Conteúdo abaixo do ideal (227 caracteres))
+  ⚠ 11_relationships.md: incompleto (Conteúdo abaixo do ideal (237 caracteres))
+  ⚠ 12_goals.md: incompleto (Conteúdo abaixo do ideal (233 caracteres))
+  ⚠ 13_knowledge.md: incompleto (Conteúdo abaixo do ideal (217 caracteres))
+  ⚠ 14_curiosities.md: incompleto (Conteúdo abaixo do ideal (216 caracteres))
+  ⚠ 15_narrative_gaps.md: caracteres corrompidos
+  ⚠ 17_dialog_examples.md: vazio
+  ⚠ 18_scene_examples.md: vazio
+Nível de completude: 50%
+
+--------------------------------------------------------------------------------
+Nome: gaston_rho
+Arquivos existentes (18/18):
+  ✔ 01_identity.md
+  ✔ 02_summary.md
+  ✔ 03_history.md
+  ✔ 04_personality.md
+  ✔ 05_interpretation.md
+  ✔ 06_speech.md
+  ✔ 07_values.md
+  ✔ 08_likes.md
+  ✔ 09_dislikes.md
+  ✔ 10_traumas.md
+  ✔ 11_relationships.md
+  ✔ 12_goals.md
+  ✔ 13_knowledge.md
+  ✔ 14_curiosities.md
+  ✔ 15_narrative_gaps.md
+  ✔ 16_absolute_rules.md
+  ✔ 17_dialog_examples.md
+  ✔ 18_scene_examples.md
+Arquivos ausentes: Nenhum
+Arquivos vazios: Nenhum
+Arquivos incompletos (2):
+  ⚠ 10_traumas.md
+  ⚠ 13_knowledge.md
+Problemas encontrados (6):
+  ⚠ 07_values.md: duplicações excessivas
+  ⚠ 07_values.md: blocos repetidos
+  ⚠ 10_traumas.md: incompleto (Conteúdo abaixo do ideal (196 caracteres))
+  ⚠ 13_knowledge.md: incompleto (Conteúdo abaixo do ideal (263 caracteres))
+  ⚠ 15_narrative_gaps.md: caracteres corrompidos
+  ⚠ 18_scene_examples.md: conteúdo incompatível com o tipo
+Nível de completude: 89%
+
+--------------------------------------------------------------------------------
+Nome: gideon_ma
+Arquivos existentes (18/18):
+  ✔ 01_identity.md
+  ✔ 02_summary.md
+  ✔ 03_history.md
+  ✔ 04_personality.md
+  ✔ 05_interpretation.md
+  ✔ 06_speech.md
+  ✔ 07_values.md
+  ✔ 08_likes.md
+  ✔ 09_dislikes.md
+  ✔ 10_traumas.md
+  ✔ 11_relationships.md
+  ✔ 12_goals.md
+  ✔ 13_knowledge.md
+  ✔ 14_curiosities.md
+  ✔ 15_narrative_gaps.md
+  ✔ 16_absolute_rules.md
+  ✔ 17_dialog_examples.md
+  ✔ 18_scene_examples.md
+Arquivos ausentes: Nenhum
+Arquivos vazios: Nenhum
+Arquivos incompletos (2):
+  ⚠ 10_traumas.md
+  ⚠ 13_knowledge.md
+Problemas encontrados (6):
+  ⚠ 07_values.md: duplicações excessivas
+  ⚠ 07_values.md: blocos repetidos
+  ⚠ 10_traumas.md: incompleto (Conteúdo abaixo do ideal (196 caracteres))
+  ⚠ 13_knowledge.md: incompleto (Conteúdo abaixo do ideal (276 caracteres))
+  ⚠ 15_narrative_gaps.md: caracteres corrompidos
+  ⚠ 18_scene_examples.md: conteúdo incompatível com o tipo
+Nível de completude: 89%
+
+--------------------------------------------------------------------------------
+Nome: goodwin_cha
+Arquivos existentes (18/18):
+  ✔ 01_identity.md
+  ✔ 02_summary.md
+  ✔ 03_history.md
+  ✔ 04_personality.md
+  ✔ 05_interpretation.md
+  ✔ 06_speech.md
+  ✔ 07_values.md
+  ✔ 08_likes.md
+  ✔ 09_dislikes.md
+  ✔ 10_traumas.md
+  ✔ 11_relationships.md
+  ✔ 12_goals.md
+  ✔ 13_knowledge.md
+  ✔ 14_curiosities.md
+  ✔ 15_narrative_gaps.md
+  ✔ 16_absolute_rules.md
+  ✔ 17_dialog_examples.md
+  ✔ 18_scene_examples.md
+Arquivos ausentes: Nenhum
+Arquivos vazios: Nenhum
+Arquivos incompletos (2):
+  ⚠ 10_traumas.md
+  ⚠ 13_knowledge.md
+Problemas encontrados (6):
+  ⚠ 07_values.md: duplicações excessivas
+  ⚠ 07_values.md: blocos repetidos
+  ⚠ 10_traumas.md: incompleto (Conteúdo abaixo do ideal (196 caracteres))
+  ⚠ 13_knowledge.md: incompleto (Conteúdo abaixo do ideal (265 caracteres))
+  ⚠ 15_narrative_gaps.md: caracteres corrompidos
+  ⚠ 18_scene_examples.md: conteúdo incompatível com o tipo
+Nível de completude: 89%
+
+--------------------------------------------------------------------------------
+Nome: haanit
+Arquivos existentes (18/18):
+  ✔ 01_identity.md
+  ✔ 02_summary.md
+  ✔ 03_history.md
+  ✔ 04_personality.md
+  ✔ 05_interpretation.md
+  ✔ 06_speech.md
+  ✔ 07_values.md
+  ✔ 08_likes.md
+  ✔ 09_dislikes.md
+  ✔ 10_traumas.md
+  ✔ 11_relationships.md
+  ✔ 12_goals.md
+  ✔ 13_knowledge.md
+  ✔ 14_curiosities.md
+  ✔ 15_narrative_gaps.md
+  ✔ 16_absolute_rules.md
+  ✔ 17_dialog_examples.md
+  ✔ 18_scene_examples.md
+Arquivos ausentes: Nenhum
+Arquivos vazios (2):
+  ⚠ 17_dialog_examples.md
+  ⚠ 18_scene_examples.md
+Arquivos incompletos (6):
+  ⚠ 08_likes.md
+  ⚠ 09_dislikes.md
+  ⚠ 10_traumas.md
+  ⚠ 11_relationships.md
+  ⚠ 13_knowledge.md
+  ⚠ 14_curiosities.md
+Problemas encontrados (9):
+  ⚠ 08_likes.md: incompleto (Conteúdo abaixo do ideal (276 caracteres))
+  ⚠ 09_dislikes.md: incompleto (Conteúdo abaixo do ideal (171 caracteres))
+  ⚠ 10_traumas.md: incompleto (Conteúdo abaixo do ideal (227 caracteres))
+  ⚠ 11_relationships.md: incompleto (Conteúdo abaixo do ideal (183 caracteres))
+  ⚠ 13_knowledge.md: incompleto (Conteúdo abaixo do ideal (222 caracteres))
+  ⚠ 14_curiosities.md: incompleto (Conteúdo abaixo do ideal (210 caracteres))
+  ⚠ 15_narrative_gaps.md: caracteres corrompidos
+  ⚠ 17_dialog_examples.md: vazio
+  ⚠ 18_scene_examples.md: vazio
+Nível de completude: 56%
+
+--------------------------------------------------------------------------------
+Nome: harvey_jeong
+Arquivos existentes (18/18):
+  ✔ 01_identity.md
+  ✔ 02_summary.md
+  ✔ 03_history.md
+  ✔ 04_personality.md
+  ✔ 05_interpretation.md
+  ✔ 06_speech.md
+  ✔ 07_values.md
+  ✔ 08_likes.md
+  ✔ 09_dislikes.md
+  ✔ 10_traumas.md
+  ✔ 11_relationships.md
+  ✔ 12_goals.md
+  ✔ 13_knowledge.md
+  ✔ 14_curiosities.md
+  ✔ 15_narrative_gaps.md
+  ✔ 16_absolute_rules.md
+  ✔ 17_dialog_examples.md
+  ✔ 18_scene_examples.md
+Arquivos ausentes: Nenhum
+Arquivos vazios: Nenhum
+Arquivos incompletos (1):
+  ⚠ 13_knowledge.md
+Problemas encontrados (5):
+  ⚠ 07_values.md: duplicações excessivas
+  ⚠ 07_values.md: blocos repetidos
+  ⚠ 13_knowledge.md: incompleto (Conteúdo abaixo do ideal (248 caracteres))
+  ⚠ 15_narrative_gaps.md: caracteres corrompidos
+  ⚠ 18_scene_examples.md: conteúdo incompatível com o tipo
+Nível de completude: 94%
+
+--------------------------------------------------------------------------------
+Nome: heidne_ahn
+Arquivos existentes (18/18):
+  ✔ 01_identity.md
+  ✔ 02_summary.md
+  ✔ 03_history.md
+  ✔ 04_personality.md
+  ✔ 05_interpretation.md
+  ✔ 06_speech.md
+  ✔ 07_values.md
+  ✔ 08_likes.md
+  ✔ 09_dislikes.md
+  ✔ 10_traumas.md
+  ✔ 11_relationships.md
+  ✔ 12_goals.md
+  ✔ 13_knowledge.md
+  ✔ 14_curiosities.md
+  ✔ 15_narrative_gaps.md
+  ✔ 16_absolute_rules.md
+  ✔ 17_dialog_examples.md
+  ✔ 18_scene_examples.md
+Arquivos ausentes: Nenhum
+Arquivos vazios: Nenhum
+Arquivos incompletos (1):
+  ⚠ 13_knowledge.md
+Problemas encontrados (5):
+  ⚠ 07_values.md: duplicações excessivas
+  ⚠ 07_values.md: blocos repetidos
+  ⚠ 13_knowledge.md: incompleto (Conteúdo abaixo do ideal (248 caracteres))
+  ⚠ 15_narrative_gaps.md: caracteres corrompidos
+  ⚠ 18_scene_examples.md: conteúdo incompatível com o tipo
+Nível de completude: 94%
+
+--------------------------------------------------------------------------------
+Nome: helgenish
+Arquivos existentes (18/18):
+  ✔ 01_identity.md
+  ✔ 02_summary.md
+  ✔ 03_history.md
+  ✔ 04_personality.md
+  ✔ 05_interpretation.md
+  ✔ 06_speech.md
+  ✔ 07_values.md
+  ✔ 08_likes.md
+  ✔ 09_dislikes.md
+  ✔ 10_traumas.md
+  ✔ 11_relationships.md
+  ✔ 12_goals.md
+  ✔ 13_knowledge.md
+  ✔ 14_curiosities.md
+  ✔ 15_narrative_gaps.md
+  ✔ 16_absolute_rules.md
+  ✔ 17_dialog_examples.md
+  ✔ 18_scene_examples.md
+Arquivos ausentes: Nenhum
+Arquivos vazios: Nenhum
+Arquivos incompletos (2):
+  ⚠ 10_traumas.md
+  ⚠ 13_knowledge.md
+Problemas encontrados (6):
+  ⚠ 07_values.md: duplicações excessivas
+  ⚠ 07_values.md: blocos repetidos
+  ⚠ 10_traumas.md: incompleto (Conteúdo abaixo do ideal (196 caracteres))
+  ⚠ 13_knowledge.md: incompleto (Conteúdo abaixo do ideal (266 caracteres))
+  ⚠ 15_narrative_gaps.md: caracteres corrompidos
+  ⚠ 18_scene_examples.md: conteúdo incompatível com o tipo
+Nível de completude: 89%
+
+--------------------------------------------------------------------------------
+Nome: hikari_ku
+Arquivos existentes (18/18):
+  ✔ 01_identity.md
+  ✔ 02_summary.md
+  ✔ 03_history.md
+  ✔ 04_personality.md
+  ✔ 05_interpretation.md
+  ✔ 06_speech.md
+  ✔ 07_values.md
+  ✔ 08_likes.md
+  ✔ 09_dislikes.md
+  ✔ 10_traumas.md
+  ✔ 11_relationships.md
+  ✔ 12_goals.md
+  ✔ 13_knowledge.md
+  ✔ 14_curiosities.md
+  ✔ 15_narrative_gaps.md
+  ✔ 16_absolute_rules.md
+  ✔ 17_dialog_examples.md
+  ✔ 18_scene_examples.md
+Arquivos ausentes: Nenhum
+Arquivos vazios (2):
+  ⚠ 17_dialog_examples.md
+  ⚠ 18_scene_examples.md
+Arquivos incompletos (4):
+  ⚠ 08_likes.md
+  ⚠ 09_dislikes.md
+  ⚠ 13_knowledge.md
+  ⚠ 14_curiosities.md
+Problemas encontrados (7):
+  ⚠ 08_likes.md: incompleto (Conteúdo abaixo do ideal (279 caracteres))
+  ⚠ 09_dislikes.md: incompleto (Conteúdo abaixo do ideal (171 caracteres))
+  ⚠ 13_knowledge.md: incompleto (Conteúdo abaixo do ideal (213 caracteres))
+  ⚠ 14_curiosities.md: incompleto (Conteúdo abaixo do ideal (204 caracteres))
+  ⚠ 15_narrative_gaps.md: caracteres corrompidos
+  ⚠ 17_dialog_examples.md: vazio
+  ⚠ 18_scene_examples.md: vazio
+Nível de completude: 67%
+
+--------------------------------------------------------------------------------
+Nome: isla_gwon
+Arquivos existentes (18/18):
+  ✔ 01_identity.md
+  ✔ 02_summary.md
+  ✔ 03_history.md
+  ✔ 04_personality.md
+  ✔ 05_interpretation.md
+  ✔ 06_speech.md
+  ✔ 07_values.md
+  ✔ 08_likes.md
+  ✔ 09_dislikes.md
+  ✔ 10_traumas.md
+  ✔ 11_relationships.md
+  ✔ 12_goals.md
+  ✔ 13_knowledge.md
+  ✔ 14_curiosities.md
+  ✔ 15_narrative_gaps.md
+  ✔ 16_absolute_rules.md
+  ✔ 17_dialog_examples.md
+  ✔ 18_scene_examples.md
+Arquivos ausentes: Nenhum
+Arquivos vazios: Nenhum
+Arquivos incompletos (2):
+  ⚠ 10_traumas.md
+  ⚠ 13_knowledge.md
+Problemas encontrados (6):
+  ⚠ 07_values.md: duplicações excessivas
+  ⚠ 07_values.md: blocos repetidos
+  ⚠ 10_traumas.md: incompleto (Conteúdo abaixo do ideal (196 caracteres))
+  ⚠ 13_knowledge.md: incompleto (Conteúdo abaixo do ideal (264 caracteres))
+  ⚠ 15_narrative_gaps.md: caracteres corrompidos
+  ⚠ 18_scene_examples.md: conteúdo incompatível com o tipo
+Nível de completude: 89%
+
+--------------------------------------------------------------------------------
+Nome: kaldena_ryu
+Arquivos existentes (18/18):
+  ✔ 01_identity.md
+  ✔ 02_summary.md
+  ✔ 03_history.md
+  ✔ 04_personality.md
+  ✔ 05_interpretation.md
+  ✔ 06_speech.md
+  ✔ 07_values.md
+  ✔ 08_likes.md
+  ✔ 09_dislikes.md
+  ✔ 10_traumas.md
+  ✔ 11_relationships.md
+  ✔ 12_goals.md
+  ✔ 13_knowledge.md
+  ✔ 14_curiosities.md
+  ✔ 15_narrative_gaps.md
+  ✔ 16_absolute_rules.md
+  ✔ 17_dialog_examples.md
+  ✔ 18_scene_examples.md
+Arquivos ausentes: Nenhum
+Arquivos vazios: Nenhum
+Arquivos incompletos (1):
+  ⚠ 13_knowledge.md
+Problemas encontrados (5):
+  ⚠ 07_values.md: duplicações excessivas
+  ⚠ 07_values.md: blocos repetidos
+  ⚠ 13_knowledge.md: incompleto (Conteúdo abaixo do ideal (281 caracteres))
+  ⚠ 15_narrative_gaps.md: caracteres corrompidos
+  ⚠ 18_scene_examples.md: conteúdo incompatível com o tipo
+Nível de completude: 94%
+
+--------------------------------------------------------------------------------
+Nome: kazan
+Arquivos existentes (18/18):
+  ✔ 01_identity.md
+  ✔ 02_summary.md
+  ✔ 03_history.md
+  ✔ 04_personality.md
+  ✔ 05_interpretation.md
+  ✔ 06_speech.md
+  ✔ 07_values.md
+  ✔ 08_likes.md
+  ✔ 09_dislikes.md
+  ✔ 10_traumas.md
+  ✔ 11_relationships.md
+  ✔ 12_goals.md
+  ✔ 13_knowledge.md
+  ✔ 14_curiosities.md
+  ✔ 15_narrative_gaps.md
+  ✔ 16_absolute_rules.md
+  ✔ 17_dialog_examples.md
+  ✔ 18_scene_examples.md
+Arquivos ausentes: Nenhum
+Arquivos vazios: Nenhum
+Arquivos incompletos (1):
+  ⚠ 13_knowledge.md
+Problemas encontrados (5):
+  ⚠ 07_values.md: duplicações excessivas
+  ⚠ 07_values.md: blocos repetidos
+  ⚠ 13_knowledge.md: incompleto (Conteúdo abaixo do ideal (273 caracteres))
+  ⚠ 15_narrative_gaps.md: caracteres corrompidos
+  ⚠ 18_scene_examples.md: conteúdo incompatível com o tipo
+Nível de completude: 94%
+
+--------------------------------------------------------------------------------
+Nome: laurana_bae
+Arquivos existentes (18/18):
+  ✔ 01_identity.md
+  ✔ 02_summary.md
+  ✔ 03_history.md
+  ✔ 04_personality.md
+  ✔ 05_interpretation.md
+  ✔ 06_speech.md
+  ✔ 07_values.md
+  ✔ 08_likes.md
+  ✔ 09_dislikes.md
+  ✔ 10_traumas.md
+  ✔ 11_relationships.md
+  ✔ 12_goals.md
+  ✔ 13_knowledge.md
+  ✔ 14_curiosities.md
+  ✔ 15_narrative_gaps.md
+  ✔ 16_absolute_rules.md
+  ✔ 17_dialog_examples.md
+  ✔ 18_scene_examples.md
+Arquivos ausentes: Nenhum
+Arquivos vazios: Nenhum
+Arquivos incompletos (6):
+  ⚠ 08_likes.md
+  ⚠ 09_dislikes.md
+  ⚠ 10_traumas.md
+  ⚠ 11_relationships.md
+  ⚠ 13_knowledge.md
+  ⚠ 14_curiosities.md
+Problemas encontrados (13):
+  ⚠ 05_interpretation.md: blocos repetidos
+  ⚠ 07_values.md: duplicações excessivas
+  ⚠ 07_values.md: blocos repetidos
+  ⚠ 08_likes.md: incompleto (Conteúdo abaixo do ideal (270 caracteres))
+  ⚠ 09_dislikes.md: incompleto (Conteúdo abaixo do ideal (171 caracteres))
+  ⚠ 10_traumas.md: incompleto (Conteúdo abaixo do ideal (227 caracteres))
+  ⚠ 11_relationships.md: incompleto (Conteúdo abaixo do ideal (197 caracteres))
+  ⚠ 13_knowledge.md: incompleto (Conteúdo abaixo do ideal (241 caracteres))
+  ⚠ 14_curiosities.md: incompleto (Conteúdo abaixo do ideal (211 caracteres))
+  ⚠ 15_narrative_gaps.md: caracteres corrompidos
+  ⚠ 17_dialog_examples.md: blocos repetidos
+  ⚠ 18_scene_examples.md: conteúdo incompatível com o tipo
+  ⚠ 18_scene_examples.md: blocos repetidos
+Nível de completude: 67%
+
+--------------------------------------------------------------------------------
+Nome: lucia_yeom
+Arquivos existentes (18/18):
+  ✔ 01_identity.md
+  ✔ 02_summary.md
+  ✔ 03_history.md
+  ✔ 04_personality.md
+  ✔ 05_interpretation.md
+  ✔ 06_speech.md
+  ✔ 07_values.md
+  ✔ 08_likes.md
+  ✔ 09_dislikes.md
+  ✔ 10_traumas.md
+  ✔ 11_relationships.md
+  ✔ 12_goals.md
+  ✔ 13_knowledge.md
+  ✔ 14_curiosities.md
+  ✔ 15_narrative_gaps.md
+  ✔ 16_absolute_rules.md
+  ✔ 17_dialog_examples.md
+  ✔ 18_scene_examples.md
+Arquivos ausentes: Nenhum
+Arquivos vazios: Nenhum
+Arquivos incompletos (2):
+  ⚠ 10_traumas.md
+  ⚠ 13_knowledge.md
+Problemas encontrados (6):
+  ⚠ 07_values.md: duplicações excessivas
+  ⚠ 07_values.md: blocos repetidos
+  ⚠ 10_traumas.md: incompleto (Conteúdo abaixo do ideal (196 caracteres))
+  ⚠ 13_knowledge.md: incompleto (Conteúdo abaixo do ideal (277 caracteres))
+  ⚠ 15_narrative_gaps.md: caracteres corrompidos
+  ⚠ 18_scene_examples.md: conteúdo incompatível com o tipo
+Nível de completude: 89%
+
+--------------------------------------------------------------------------------
+Nome: ludo_wei
+Arquivos existentes (18/18):
+  ✔ 01_identity.md
+  ✔ 02_summary.md
+  ✔ 03_history.md
+  ✔ 04_personality.md
+  ✔ 05_interpretation.md
+  ✔ 06_speech.md
+  ✔ 07_values.md
+  ✔ 08_likes.md
+  ✔ 09_dislikes.md
+  ✔ 10_traumas.md
+  ✔ 11_relationships.md
+  ✔ 12_goals.md
+  ✔ 13_knowledge.md
+  ✔ 14_curiosities.md
+  ✔ 15_narrative_gaps.md
+  ✔ 16_absolute_rules.md
+  ✔ 17_dialog_examples.md
+  ✔ 18_scene_examples.md
+Arquivos ausentes: Nenhum
+Arquivos vazios: Nenhum
+Arquivos incompletos (6):
+  ⚠ 08_likes.md
+  ⚠ 09_dislikes.md
+  ⚠ 10_traumas.md
+  ⚠ 11_relationships.md
+  ⚠ 13_knowledge.md
+  ⚠ 14_curiosities.md
+Problemas encontrados (10):
+  ⚠ 07_values.md: duplicações excessivas
+  ⚠ 07_values.md: blocos repetidos
+  ⚠ 08_likes.md: incompleto (Conteúdo abaixo do ideal (276 caracteres))
+  ⚠ 09_dislikes.md: incompleto (Conteúdo abaixo do ideal (171 caracteres))
+  ⚠ 10_traumas.md: incompleto (Conteúdo abaixo do ideal (227 caracteres))
+  ⚠ 11_relationships.md: incompleto (Conteúdo abaixo do ideal (237 caracteres))
+  ⚠ 13_knowledge.md: incompleto (Conteúdo abaixo do ideal (225 caracteres))
+  ⚠ 14_curiosities.md: incompleto (Conteúdo abaixo do ideal (212 caracteres))
+  ⚠ 15_narrative_gaps.md: caracteres corrompidos
+  ⚠ 18_scene_examples.md: conteúdo incompatível com o tipo
+Nível de completude: 67%
+
+--------------------------------------------------------------------------------
+Nome: lyblac
+Arquivos existentes (18/18):
+  ✔ 01_identity.md
+  ✔ 02_summary.md
+  ✔ 03_history.md
+  ✔ 04_personality.md
+  ✔ 05_interpretation.md
+  ✔ 06_speech.md
+  ✔ 07_values.md
+  ✔ 08_likes.md
+  ✔ 09_dislikes.md
+  ✔ 10_traumas.md
+  ✔ 11_relationships.md
+  ✔ 12_goals.md
+  ✔ 13_knowledge.md
+  ✔ 14_curiosities.md
+  ✔ 15_narrative_gaps.md
+  ✔ 16_absolute_rules.md
+  ✔ 17_dialog_examples.md
+  ✔ 18_scene_examples.md
+Arquivos ausentes: Nenhum
+Arquivos vazios (2):
+  ⚠ 17_dialog_examples.md
+  ⚠ 18_scene_examples.md
+Arquivos incompletos (7):
+  ⚠ 08_likes.md
+  ⚠ 09_dislikes.md
+  ⚠ 10_traumas.md
+  ⚠ 11_relationships.md
+  ⚠ 12_goals.md
+  ⚠ 13_knowledge.md
+  ⚠ 14_curiosities.md
+Problemas encontrados (10):
+  ⚠ 08_likes.md: incompleto (Conteúdo abaixo do ideal (291 caracteres))
+  ⚠ 09_dislikes.md: incompleto (Conteúdo abaixo do ideal (180 caracteres))
+  ⚠ 10_traumas.md: incompleto (Conteúdo abaixo do ideal (227 caracteres))
+  ⚠ 11_relationships.md: incompleto (Conteúdo abaixo do ideal (226 caracteres))
+  ⚠ 12_goals.md: incompleto (Conteúdo abaixo do ideal (233 caracteres))
+  ⚠ 13_knowledge.md: incompleto (Conteúdo abaixo do ideal (226 caracteres))
+  ⚠ 14_curiosities.md: incompleto (Conteúdo abaixo do ideal (218 caracteres))
+  ⚠ 15_narrative_gaps.md: caracteres corrompidos
+  ⚠ 17_dialog_examples.md: vazio
+  ⚠ 18_scene_examples.md: vazio
+Nível de completude: 50%
+
+--------------------------------------------------------------------------------
+Nome: macy_eun
+Arquivos existentes (18/18):
+  ✔ 01_identity.md
+  ✔ 02_summary.md
+  ✔ 03_history.md
+  ✔ 04_personality.md
+  ✔ 05_interpretation.md
+  ✔ 06_speech.md
+  ✔ 07_values.md
+  ✔ 08_likes.md
+  ✔ 09_dislikes.md
+  ✔ 10_traumas.md
+  ✔ 11_relationships.md
+  ✔ 12_goals.md
+  ✔ 13_knowledge.md
+  ✔ 14_curiosities.md
+  ✔ 15_narrative_gaps.md
+  ✔ 16_absolute_rules.md
+  ✔ 17_dialog_examples.md
+  ✔ 18_scene_examples.md
+Arquivos ausentes: Nenhum
+Arquivos vazios: Nenhum
+Arquivos incompletos (5):
+  ⚠ 08_likes.md
+  ⚠ 09_dislikes.md
+  ⚠ 11_relationships.md
+  ⚠ 13_knowledge.md
+  ⚠ 14_curiosities.md
+Problemas encontrados (9):
+  ⚠ 07_values.md: duplicações excessivas
+  ⚠ 07_values.md: blocos repetidos
+  ⚠ 08_likes.md: incompleto (Conteúdo abaixo do ideal (279 caracteres))
+  ⚠ 09_dislikes.md: incompleto (Conteúdo abaixo do ideal (171 caracteres))
+  ⚠ 11_relationships.md: incompleto (Conteúdo abaixo do ideal (237 caracteres))
+  ⚠ 13_knowledge.md: incompleto (Conteúdo abaixo do ideal (221 caracteres))
+  ⚠ 14_curiosities.md: incompleto (Conteúdo abaixo do ideal (223 caracteres))
+  ⚠ 15_narrative_gaps.md: caracteres corrompidos
+  ⚠ 18_scene_examples.md: conteúdo incompatível com o tipo
+Nível de completude: 72%
+
+--------------------------------------------------------------------------------
+Nome: mattias_cardoso
+Arquivos existentes (18/18):
+  ✔ 01_identity.md
+  ✔ 02_summary.md
+  ✔ 03_history.md
+  ✔ 04_personality.md
+  ✔ 05_interpretation.md
+  ✔ 06_speech.md
+  ✔ 07_values.md
+  ✔ 08_likes.md
+  ✔ 09_dislikes.md
+  ✔ 10_traumas.md
+  ✔ 11_relationships.md
+  ✔ 12_goals.md
+  ✔ 13_knowledge.md
+  ✔ 14_curiosities.md
+  ✔ 15_narrative_gaps.md
+  ✔ 16_absolute_rules.md
+  ✔ 17_dialog_examples.md
+  ✔ 18_scene_examples.md
+Arquivos ausentes: Nenhum
+Arquivos vazios: Nenhum
+Arquivos incompletos (2):
+  ⚠ 10_traumas.md
+  ⚠ 13_knowledge.md
+Problemas encontrados (5):
+  ⚠ 07_values.md: duplicações excessivas
+  ⚠ 07_values.md: blocos repetidos
+  ⚠ 10_traumas.md: incompleto (Conteúdo abaixo do ideal (196 caracteres))
+  ⚠ 13_knowledge.md: incompleto (Conteúdo abaixo do ideal (254 caracteres))
+  ⚠ 15_narrative_gaps.md: caracteres corrompidos
+Nível de completude: 89%
+
+--------------------------------------------------------------------------------
+Nome: miguel_bang
+Arquivos existentes (18/18):
+  ✔ 01_identity.md
+  ✔ 02_summary.md
+  ✔ 03_history.md
+  ✔ 04_personality.md
+  ✔ 05_interpretation.md
+  ✔ 06_speech.md
+  ✔ 07_values.md
+  ✔ 08_likes.md
+  ✔ 09_dislikes.md
+  ✔ 10_traumas.md
+  ✔ 11_relationships.md
+  ✔ 12_goals.md
+  ✔ 13_knowledge.md
+  ✔ 14_curiosities.md
+  ✔ 15_narrative_gaps.md
+  ✔ 16_absolute_rules.md
+  ✔ 17_dialog_examples.md
+  ✔ 18_scene_examples.md
+Arquivos ausentes: Nenhum
+Arquivos vazios: Nenhum
+Arquivos incompletos (1):
+  ⚠ 13_knowledge.md
+Problemas encontrados (5):
+  ⚠ 07_values.md: duplicações excessivas
+  ⚠ 07_values.md: blocos repetidos
+  ⚠ 13_knowledge.md: incompleto (Conteúdo abaixo do ideal (253 caracteres))
+  ⚠ 15_narrative_gaps.md: caracteres corrompidos
+  ⚠ 18_scene_examples.md: conteúdo incompatível com o tipo
+Nível de completude: 94%
+
+--------------------------------------------------------------------------------
+Nome: mugen_ku
+Arquivos existentes (18/18):
+  ✔ 01_identity.md
+  ✔ 02_summary.md
+  ✔ 03_history.md
+  ✔ 04_personality.md
+  ✔ 05_interpretation.md
+  ✔ 06_speech.md
+  ✔ 07_values.md
+  ✔ 08_likes.md
+  ✔ 09_dislikes.md
+  ✔ 10_traumas.md
+  ✔ 11_relationships.md
+  ✔ 12_goals.md
+  ✔ 13_knowledge.md
+  ✔ 14_curiosities.md
+  ✔ 15_narrative_gaps.md
+  ✔ 16_absolute_rules.md
+  ✔ 17_dialog_examples.md
+  ✔ 18_scene_examples.md
+Arquivos ausentes: Nenhum
+Arquivos vazios: Nenhum
+Arquivos incompletos (2):
+  ⚠ 10_traumas.md
+  ⚠ 13_knowledge.md
+Problemas encontrados (9):
+  ⚠ 05_interpretation.md: blocos repetidos
+  ⚠ 07_values.md: duplicações excessivas
+  ⚠ 07_values.md: blocos repetidos
+  ⚠ 10_traumas.md: incompleto (Conteúdo abaixo do ideal (196 caracteres))
+  ⚠ 13_knowledge.md: incompleto (Conteúdo abaixo do ideal (266 caracteres))
+  ⚠ 15_narrative_gaps.md: caracteres corrompidos
+  ⚠ 17_dialog_examples.md: blocos repetidos
+  ⚠ 18_scene_examples.md: conteúdo incompatível com o tipo
+  ⚠ 18_scene_examples.md: blocos repetidos
+Nível de completude: 89%
+
+--------------------------------------------------------------------------------
+Nome: ochette
+Arquivos existentes (18/18):
+  ✔ 01_identity.md
+  ✔ 02_summary.md
+  ✔ 03_history.md
+  ✔ 04_personality.md
+  ✔ 05_interpretation.md
+  ✔ 06_speech.md
+  ✔ 07_values.md
+  ✔ 08_likes.md
+  ✔ 09_dislikes.md
+  ✔ 10_traumas.md
+  ✔ 11_relationships.md
+  ✔ 12_goals.md
+  ✔ 13_knowledge.md
+  ✔ 14_curiosities.md
+  ✔ 15_narrative_gaps.md
+  ✔ 16_absolute_rules.md
+  ✔ 17_dialog_examples.md
+  ✔ 18_scene_examples.md
+Arquivos ausentes: Nenhum
+Arquivos vazios: Nenhum
+Arquivos incompletos (6):
+  ⚠ 08_likes.md
+  ⚠ 09_dislikes.md
+  ⚠ 10_traumas.md
+  ⚠ 11_relationships.md
+  ⚠ 13_knowledge.md
+  ⚠ 14_curiosities.md
+Problemas encontrados (10):
+  ⚠ 07_values.md: duplicações excessivas
+  ⚠ 07_values.md: blocos repetidos
+  ⚠ 08_likes.md: incompleto (Conteúdo abaixo do ideal (293 caracteres))
+  ⚠ 09_dislikes.md: incompleto (Conteúdo abaixo do ideal (171 caracteres))
+  ⚠ 10_traumas.md: incompleto (Conteúdo abaixo do ideal (227 caracteres))
+  ⚠ 11_relationships.md: incompleto (Conteúdo abaixo do ideal (237 caracteres))
+  ⚠ 13_knowledge.md: incompleto (Conteúdo abaixo do ideal (220 caracteres))
+  ⚠ 14_curiosities.md: incompleto (Conteúdo abaixo do ideal (205 caracteres))
+  ⚠ 15_narrative_gaps.md: caracteres corrompidos
+  ⚠ 18_scene_examples.md: conteúdo incompatível com o tipo
+Nível de completude: 67%
+
+--------------------------------------------------------------------------------
+Nome: olberic_eisenberg
+Arquivos existentes (18/18):
+  ✔ 01_identity.md
+  ✔ 02_summary.md
+  ✔ 03_history.md
+  ✔ 04_personality.md
+  ✔ 05_interpretation.md
+  ✔ 06_speech.md
+  ✔ 07_values.md
+  ✔ 08_likes.md
+  ✔ 09_dislikes.md
+  ✔ 10_traumas.md
+  ✔ 11_relationships.md
+  ✔ 12_goals.md
+  ✔ 13_knowledge.md
+  ✔ 14_curiosities.md
+  ✔ 15_narrative_gaps.md
+  ✔ 16_absolute_rules.md
+  ✔ 17_dialog_examples.md
+  ✔ 18_scene_examples.md
+Arquivos ausentes: Nenhum
+Arquivos vazios (2):
+  ⚠ 17_dialog_examples.md
+  ⚠ 18_scene_examples.md
+Arquivos incompletos (5):
+  ⚠ 08_likes.md
+  ⚠ 09_dislikes.md
+  ⚠ 11_relationships.md
+  ⚠ 13_knowledge.md
+  ⚠ 14_curiosities.md
+Problemas encontrados (8):
+  ⚠ 08_likes.md: incompleto (Conteúdo abaixo do ideal (279 caracteres))
+  ⚠ 09_dislikes.md: incompleto (Conteúdo abaixo do ideal (171 caracteres))
+  ⚠ 11_relationships.md: incompleto (Conteúdo abaixo do ideal (131 caracteres))
+  ⚠ 13_knowledge.md: incompleto (Conteúdo abaixo do ideal (211 caracteres))
+  ⚠ 14_curiosities.md: incompleto (Conteúdo abaixo do ideal (216 caracteres))
+  ⚠ 15_narrative_gaps.md: caracteres corrompidos
+  ⚠ 17_dialog_examples.md: vazio
+  ⚠ 18_scene_examples.md: vazio
+Nível de completude: 61%
+
+--------------------------------------------------------------------------------
+Nome: ophilia_clement
+Arquivos existentes (18/18):
+  ✔ 01_identity.md
+  ✔ 02_summary.md
+  ✔ 03_history.md
+  ✔ 04_personality.md
+  ✔ 05_interpretation.md
+  ✔ 06_speech.md
+  ✔ 07_values.md
+  ✔ 08_likes.md
+  ✔ 09_dislikes.md
+  ✔ 10_traumas.md
+  ✔ 11_relationships.md
+  ✔ 12_goals.md
+  ✔ 13_knowledge.md
+  ✔ 14_curiosities.md
+  ✔ 15_narrative_gaps.md
+  ✔ 16_absolute_rules.md
+  ✔ 17_dialog_examples.md
+  ✔ 18_scene_examples.md
+Arquivos ausentes: Nenhum
+Arquivos vazios: Nenhum
+Arquivos incompletos (7):
+  ⚠ 08_likes.md
+  ⚠ 09_dislikes.md
+  ⚠ 11_relationships.md
+  ⚠ 13_knowledge.md
+  ⚠ 14_curiosities.md
+  ⚠ 17_dialog_examples.md
+  ⚠ 18_scene_examples.md
+Problemas encontrados (10):
+  ⚠ 08_likes.md: incompleto (Conteúdo abaixo do ideal (274 caracteres))
+  ⚠ 09_dislikes.md: incompleto (Conteúdo abaixo do ideal (171 caracteres))
+  ⚠ 11_relationships.md: incompleto (Conteúdo abaixo do ideal (237 caracteres))
+  ⚠ 13_knowledge.md: incompleto (Conteúdo abaixo do ideal (225 caracteres))
+  ⚠ 14_curiosities.md: incompleto (Conteúdo abaixo do ideal (226 caracteres))
+  ⚠ 15_narrative_gaps.md: caracteres corrompidos
+  ⚠ 17_dialog_examples.md: incompleto (Possui caracteres corrompidos (encoding); Possui apenas 0 exemplos (mínimo recomendado: 3))
+  ⚠ 17_dialog_examples.md: caracteres corrompidos
+  ⚠ 18_scene_examples.md: incompleto (Possui caracteres corrompidos (encoding); Possui apenas 0 exemplos (mínimo recomendado: 3))
+  ⚠ 18_scene_examples.md: caracteres corrompidos
+Nível de completude: 61%
+
+--------------------------------------------------------------------------------
+Nome: ori_choi
+Arquivos existentes (18/18):
+  ✔ 01_identity.md
+  ✔ 02_summary.md
+  ✔ 03_history.md
+  ✔ 04_personality.md
+  ✔ 05_interpretation.md
+  ✔ 06_speech.md
+  ✔ 07_values.md
+  ✔ 08_likes.md
+  ✔ 09_dislikes.md
+  ✔ 10_traumas.md
+  ✔ 11_relationships.md
+  ✔ 12_goals.md
+  ✔ 13_knowledge.md
+  ✔ 14_curiosities.md
+  ✔ 15_narrative_gaps.md
+  ✔ 16_absolute_rules.md
+  ✔ 17_dialog_examples.md
+  ✔ 18_scene_examples.md
+Arquivos ausentes: Nenhum
+Arquivos vazios: Nenhum
+Arquivos incompletos (2):
+  ⚠ 10_traumas.md
+  ⚠ 13_knowledge.md
+Problemas encontrados (6):
+  ⚠ 07_values.md: duplicações excessivas
+  ⚠ 07_values.md: blocos repetidos
+  ⚠ 10_traumas.md: incompleto (Conteúdo abaixo do ideal (196 caracteres))
+  ⚠ 13_knowledge.md: incompleto (Conteúdo abaixo do ideal (274 caracteres))
+  ⚠ 15_narrative_gaps.md: caracteres corrompidos
+  ⚠ 18_scene_examples.md: conteúdo incompatível com o tipo
+Nível de completude: 89%
+
+--------------------------------------------------------------------------------
+Nome: osvald_v_vanstein
+Arquivos existentes (18/18):
+  ✔ 01_identity.md
+  ✔ 02_summary.md
+  ✔ 03_history.md
+  ✔ 04_personality.md
+  ✔ 05_interpretation.md
+  ✔ 06_speech.md
+  ✔ 07_values.md
+  ✔ 08_likes.md
+  ✔ 09_dislikes.md
+  ✔ 10_traumas.md
+  ✔ 11_relationships.md
+  ✔ 12_goals.md
+  ✔ 13_knowledge.md
+  ✔ 14_curiosities.md
+  ✔ 15_narrative_gaps.md
+  ✔ 16_absolute_rules.md
+  ✔ 17_dialog_examples.md
+  ✔ 18_scene_examples.md
+Arquivos ausentes: Nenhum
+Arquivos vazios (2):
+  ⚠ 17_dialog_examples.md
+  ⚠ 18_scene_examples.md
+Arquivos incompletos (5):
+  ⚠ 08_likes.md
+  ⚠ 09_dislikes.md
+  ⚠ 11_relationships.md
+  ⚠ 13_knowledge.md
+  ⚠ 14_curiosities.md
+Problemas encontrados (8):
+  ⚠ 08_likes.md: incompleto (Conteúdo abaixo do ideal (275 caracteres))
+  ⚠ 09_dislikes.md: incompleto (Conteúdo abaixo do ideal (171 caracteres))
+  ⚠ 11_relationships.md: incompleto (Conteúdo abaixo do ideal (237 caracteres))
+  ⚠ 13_knowledge.md: incompleto (Conteúdo abaixo do ideal (233 caracteres))
+  ⚠ 14_curiosities.md: incompleto (Conteúdo abaixo do ideal (217 caracteres))
+  ⚠ 15_narrative_gaps.md: caracteres corrompidos
+  ⚠ 17_dialog_examples.md: vazio
+  ⚠ 18_scene_examples.md: vazio
+Nível de completude: 61%
+
+--------------------------------------------------------------------------------
+Nome: partitio_yellowil
+Arquivos existentes (18/18):
+  ✔ 01_identity.md
+  ✔ 02_summary.md
+  ✔ 03_history.md
+  ✔ 04_personality.md
+  ✔ 05_interpretation.md
+  ✔ 06_speech.md
+  ✔ 07_values.md
+  ✔ 08_likes.md
+  ✔ 09_dislikes.md
+  ✔ 10_traumas.md
+  ✔ 11_relationships.md
+  ✔ 12_goals.md
+  ✔ 13_knowledge.md
+  ✔ 14_curiosities.md
+  ✔ 15_narrative_gaps.md
+  ✔ 16_absolute_rules.md
+  ✔ 17_dialog_examples.md
+  ✔ 18_scene_examples.md
+Arquivos ausentes: Nenhum
+Arquivos vazios: Nenhum
+Arquivos incompletos (5):
+  ⚠ 08_likes.md
+  ⚠ 09_dislikes.md
+  ⚠ 11_relationships.md
+  ⚠ 13_knowledge.md
+  ⚠ 14_curiosities.md
+Problemas encontrados (11):
+  ⚠ 05_interpretation.md: blocos repetidos
+  ⚠ 07_values.md: duplicações excessivas
+  ⚠ 07_values.md: blocos repetidos
+  ⚠ 08_likes.md: incompleto (Conteúdo abaixo do ideal (279 caracteres))
+  ⚠ 09_dislikes.md: incompleto (Conteúdo abaixo do ideal (171 caracteres))
+  ⚠ 11_relationships.md: incompleto (Conteúdo abaixo do ideal (237 caracteres))
+  ⚠ 13_knowledge.md: incompleto (Conteúdo abaixo do ideal (208 caracteres))
+  ⚠ 14_curiosities.md: incompleto (Conteúdo abaixo do ideal (210 caracteres))
+  ⚠ 15_narrative_gaps.md: caracteres corrompidos
+  ⚠ 17_dialog_examples.md: blocos repetidos
+  ⚠ 18_scene_examples.md: blocos repetidos
+Nível de completude: 72%
+
+--------------------------------------------------------------------------------
+Nome: petrichor
+Arquivos existentes (18/18):
+  ✔ 01_identity.md
+  ✔ 02_summary.md
+  ✔ 03_history.md
+  ✔ 04_personality.md
+  ✔ 05_interpretation.md
+  ✔ 06_speech.md
+  ✔ 07_values.md
+  ✔ 08_likes.md
+  ✔ 09_dislikes.md
+  ✔ 10_traumas.md
+  ✔ 11_relationships.md
+  ✔ 12_goals.md
+  ✔ 13_knowledge.md
+  ✔ 14_curiosities.md
+  ✔ 15_narrative_gaps.md
+  ✔ 16_absolute_rules.md
+  ✔ 17_dialog_examples.md
+  ✔ 18_scene_examples.md
+Arquivos ausentes: Nenhum
+Arquivos vazios: Nenhum
+Arquivos incompletos (2):
+  ⚠ 10_traumas.md
+  ⚠ 13_knowledge.md
+Problemas encontrados (6):
+  ⚠ 07_values.md: duplicações excessivas
+  ⚠ 07_values.md: blocos repetidos
+  ⚠ 10_traumas.md: incompleto (Conteúdo abaixo do ideal (196 caracteres))
+  ⚠ 13_knowledge.md: incompleto (Conteúdo abaixo do ideal (262 caracteres))
+  ⚠ 15_narrative_gaps.md: caracteres corrompidos
+  ⚠ 18_scene_examples.md: conteúdo incompatível com o tipo
+Nível de completude: 89%
+
+--------------------------------------------------------------------------------
+Nome: phenn_doyoung
+Arquivos existentes (18/18):
+  ✔ 01_identity.md
+  ✔ 02_summary.md
+  ✔ 03_history.md
+  ✔ 04_personality.md
+  ✔ 05_interpretation.md
+  ✔ 06_speech.md
+  ✔ 07_values.md
+  ✔ 08_likes.md
+  ✔ 09_dislikes.md
+  ✔ 10_traumas.md
+  ✔ 11_relationships.md
+  ✔ 12_goals.md
+  ✔ 13_knowledge.md
+  ✔ 14_curiosities.md
+  ✔ 15_narrative_gaps.md
+  ✔ 16_absolute_rules.md
+  ✔ 17_dialog_examples.md
+  ✔ 18_scene_examples.md
+Arquivos ausentes: Nenhum
+Arquivos vazios: Nenhum
+Arquivos incompletos (5):
+  ⚠ 08_likes.md
+  ⚠ 09_dislikes.md
+  ⚠ 11_relationships.md
+  ⚠ 13_knowledge.md
+  ⚠ 14_curiosities.md
+Problemas encontrados (9):
+  ⚠ 07_values.md: duplicações excessivas
+  ⚠ 07_values.md: blocos repetidos
+  ⚠ 08_likes.md: incompleto (Conteúdo abaixo do ideal (268 caracteres))
+  ⚠ 09_dislikes.md: incompleto (Conteúdo abaixo do ideal (171 caracteres))
+  ⚠ 11_relationships.md: incompleto (Conteúdo abaixo do ideal (223 caracteres))
+  ⚠ 13_knowledge.md: incompleto (Conteúdo abaixo do ideal (220 caracteres))
+  ⚠ 14_curiosities.md: incompleto (Conteúdo abaixo do ideal (222 caracteres))
+  ⚠ 15_narrative_gaps.md: caracteres corrompidos
+  ⚠ 18_scene_examples.md: conteúdo incompatível com o tipo
+Nível de completude: 72%
+
+--------------------------------------------------------------------------------
+Nome: pius_kang
+Arquivos existentes (18/18):
+  ✔ 01_identity.md
+  ✔ 02_summary.md
+  ✔ 03_history.md
+  ✔ 04_personality.md
+  ✔ 05_interpretation.md
+  ✔ 06_speech.md
+  ✔ 07_values.md
+  ✔ 08_likes.md
+  ✔ 09_dislikes.md
+  ✔ 10_traumas.md
+  ✔ 11_relationships.md
+  ✔ 12_goals.md
+  ✔ 13_knowledge.md
+  ✔ 14_curiosities.md
+  ✔ 15_narrative_gaps.md
+  ✔ 16_absolute_rules.md
+  ✔ 17_dialog_examples.md
+  ✔ 18_scene_examples.md
+Arquivos ausentes: Nenhum
+Arquivos vazios: Nenhum
+Arquivos incompletos (6):
+  ⚠ 08_likes.md
+  ⚠ 09_dislikes.md
+  ⚠ 10_traumas.md
+  ⚠ 11_relationships.md
+  ⚠ 13_knowledge.md
+  ⚠ 14_curiosities.md
+Problemas encontrados (10):
+  ⚠ 07_values.md: duplicações excessivas
+  ⚠ 07_values.md: blocos repetidos
+  ⚠ 08_likes.md: incompleto (Conteúdo abaixo do ideal (277 caracteres))
+  ⚠ 09_dislikes.md: incompleto (Conteúdo abaixo do ideal (171 caracteres))
+  ⚠ 10_traumas.md: incompleto (Conteúdo abaixo do ideal (274 caracteres))
+  ⚠ 11_relationships.md: incompleto (Conteúdo abaixo do ideal (176 caracteres))
+  ⚠ 13_knowledge.md: incompleto (Conteúdo abaixo do ideal (230 caracteres))
+  ⚠ 14_curiosities.md: incompleto (Conteúdo abaixo do ideal (216 caracteres))
+  ⚠ 15_narrative_gaps.md: caracteres corrompidos
+  ⚠ 18_scene_examples.md: conteúdo incompatível com o tipo
+Nível de completude: 67%
+
+--------------------------------------------------------------------------------
+Nome: primrose_azelhart
+Arquivos existentes (18/18):
+  ✔ 01_identity.md
+  ✔ 02_summary.md
+  ✔ 03_history.md
+  ✔ 04_personality.md
+  ✔ 05_interpretation.md
+  ✔ 06_speech.md
+  ✔ 07_values.md
+  ✔ 08_likes.md
+  ✔ 09_dislikes.md
+  ✔ 10_traumas.md
+  ✔ 11_relationships.md
+  ✔ 12_goals.md
+  ✔ 13_knowledge.md
+  ✔ 14_curiosities.md
+  ✔ 15_narrative_gaps.md
+  ✔ 16_absolute_rules.md
+  ✔ 17_dialog_examples.md
+  ✔ 18_scene_examples.md
+Arquivos ausentes: Nenhum
+Arquivos vazios (2):
+  ⚠ 17_dialog_examples.md
+  ⚠ 18_scene_examples.md
+Arquivos incompletos (5):
+  ⚠ 08_likes.md
+  ⚠ 09_dislikes.md
+  ⚠ 11_relationships.md
+  ⚠ 13_knowledge.md
+  ⚠ 14_curiosities.md
+Problemas encontrados (8):
+  ⚠ 08_likes.md: incompleto (Conteúdo abaixo do ideal (287 caracteres))
+  ⚠ 09_dislikes.md: incompleto (Conteúdo abaixo do ideal (171 caracteres))
+  ⚠ 11_relationships.md: incompleto (Conteúdo abaixo do ideal (187 caracteres))
+  ⚠ 13_knowledge.md: incompleto (Conteúdo abaixo do ideal (225 caracteres))
+  ⚠ 14_curiosities.md: incompleto (Conteúdo abaixo do ideal (220 caracteres))
+  ⚠ 15_narrative_gaps.md: caracteres corrompidos
+  ⚠ 17_dialog_examples.md: vazio
+  ⚠ 18_scene_examples.md: vazio
+Nível de completude: 61%
+
+--------------------------------------------------------------------------------
+Nome: redeye
+Arquivos existentes (18/18):
+  ✔ 01_identity.md
+  ✔ 02_summary.md
+  ✔ 03_history.md
+  ✔ 04_personality.md
+  ✔ 05_interpretation.md
+  ✔ 06_speech.md
+  ✔ 07_values.md
+  ✔ 08_likes.md
+  ✔ 09_dislikes.md
+  ✔ 10_traumas.md
+  ✔ 11_relationships.md
+  ✔ 12_goals.md
+  ✔ 13_knowledge.md
+  ✔ 14_curiosities.md
+  ✔ 15_narrative_gaps.md
+  ✔ 16_absolute_rules.md
+  ✔ 17_dialog_examples.md
+  ✔ 18_scene_examples.md
+Arquivos ausentes: Nenhum
+Arquivos vazios: Nenhum
+Arquivos incompletos (2):
+  ⚠ 10_traumas.md
+  ⚠ 13_knowledge.md
+Problemas encontrados (6):
+  ⚠ 07_values.md: duplicações excessivas
+  ⚠ 07_values.md: blocos repetidos
+  ⚠ 10_traumas.md: incompleto (Conteúdo abaixo do ideal (196 caracteres))
+  ⚠ 13_knowledge.md: incompleto (Conteúdo abaixo do ideal (275 caracteres))
+  ⚠ 15_narrative_gaps.md: caracteres corrompidos
+  ⚠ 18_scene_examples.md: conteúdo incompatível com o tipo
+Nível de completude: 89%
+
+--------------------------------------------------------------------------------
+Nome: reime_oh
+Arquivos existentes (18/18):
+  ✔ 01_identity.md
+  ✔ 02_summary.md
+  ✔ 03_history.md
+  ✔ 04_personality.md
+  ✔ 05_interpretation.md
+  ✔ 06_speech.md
+  ✔ 07_values.md
+  ✔ 08_likes.md
+  ✔ 09_dislikes.md
+  ✔ 10_traumas.md
+  ✔ 11_relationships.md
+  ✔ 12_goals.md
+  ✔ 13_knowledge.md
+  ✔ 14_curiosities.md
+  ✔ 15_narrative_gaps.md
+  ✔ 16_absolute_rules.md
+  ✔ 17_dialog_examples.md
+  ✔ 18_scene_examples.md
+Arquivos ausentes: Nenhum
+Arquivos vazios: Nenhum
+Arquivos incompletos (2):
+  ⚠ 10_traumas.md
+  ⚠ 13_knowledge.md
+Problemas encontrados (6):
+  ⚠ 07_values.md: duplicações excessivas
+  ⚠ 07_values.md: blocos repetidos
+  ⚠ 10_traumas.md: incompleto (Conteúdo abaixo do ideal (196 caracteres))
+  ⚠ 13_knowledge.md: incompleto (Conteúdo abaixo do ideal (251 caracteres))
+  ⚠ 15_narrative_gaps.md: caracteres corrompidos
+  ⚠ 18_scene_examples.md: conteúdo incompatível com o tipo
+Nível de completude: 89%
+
+--------------------------------------------------------------------------------
+Nome: richard_han
+Arquivos existentes (18/18):
+  ✔ 01_identity.md
+  ✔ 02_summary.md
+  ✔ 03_history.md
+  ✔ 04_personality.md
+  ✔ 05_interpretation.md
+  ✔ 06_speech.md
+  ✔ 07_values.md
+  ✔ 08_likes.md
+  ✔ 09_dislikes.md
+  ✔ 10_traumas.md
+  ✔ 11_relationships.md
+  ✔ 12_goals.md
+  ✔ 13_knowledge.md
+  ✔ 14_curiosities.md
+  ✔ 15_narrative_gaps.md
+  ✔ 16_absolute_rules.md
+  ✔ 17_dialog_examples.md
+  ✔ 18_scene_examples.md
+Arquivos ausentes: Nenhum
+Arquivos vazios: Nenhum
+Arquivos incompletos (1):
+  ⚠ 13_knowledge.md
+Problemas encontrados (5):
+  ⚠ 07_values.md: duplicações excessivas
+  ⚠ 07_values.md: blocos repetidos
+  ⚠ 13_knowledge.md: incompleto (Conteúdo abaixo do ideal (247 caracteres))
+  ⚠ 15_narrative_gaps.md: caracteres corrompidos
+  ⚠ 18_scene_examples.md: conteúdo incompatível com o tipo
+Nível de completude: 94%
+
+--------------------------------------------------------------------------------
+Nome: rondo_baek
+Arquivos existentes (18/18):
+  ✔ 01_identity.md
+  ✔ 02_summary.md
+  ✔ 03_history.md
+  ✔ 04_personality.md
+  ✔ 05_interpretation.md
+  ✔ 06_speech.md
+  ✔ 07_values.md
+  ✔ 08_likes.md
+  ✔ 09_dislikes.md
+  ✔ 10_traumas.md
+  ✔ 11_relationships.md
+  ✔ 12_goals.md
+  ✔ 13_knowledge.md
+  ✔ 14_curiosities.md
+  ✔ 15_narrative_gaps.md
+  ✔ 16_absolute_rules.md
+  ✔ 17_dialog_examples.md
+  ✔ 18_scene_examples.md
+Arquivos ausentes: Nenhum
+Arquivos vazios: Nenhum
+Arquivos incompletos (2):
+  ⚠ 10_traumas.md
+  ⚠ 13_knowledge.md
+Problemas encontrados (6):
+  ⚠ 07_values.md: duplicações excessivas
+  ⚠ 07_values.md: blocos repetidos
+  ⚠ 10_traumas.md: incompleto (Conteúdo abaixo do ideal (196 caracteres))
+  ⚠ 13_knowledge.md: incompleto (Conteúdo abaixo do ideal (280 caracteres))
+  ⚠ 15_narrative_gaps.md: caracteres corrompidos
+  ⚠ 18_scene_examples.md: conteúdo incompatível com o tipo
+Nível de completude: 89%
+
+--------------------------------------------------------------------------------
+Nome: rufus_deng
+Arquivos existentes (18/18):
+  ✔ 01_identity.md
+  ✔ 02_summary.md
+  ✔ 03_history.md
+  ✔ 04_personality.md
+  ✔ 05_interpretation.md
+  ✔ 06_speech.md
+  ✔ 07_values.md
+  ✔ 08_likes.md
+  ✔ 09_dislikes.md
+  ✔ 10_traumas.md
+  ✔ 11_relationships.md
+  ✔ 12_goals.md
+  ✔ 13_knowledge.md
+  ✔ 14_curiosities.md
+  ✔ 15_narrative_gaps.md
+  ✔ 16_absolute_rules.md
+  ✔ 17_dialog_examples.md
+  ✔ 18_scene_examples.md
+Arquivos ausentes: Nenhum
+Arquivos vazios: Nenhum
+Arquivos incompletos (2):
+  ⚠ 10_traumas.md
+  ⚠ 13_knowledge.md
+Problemas encontrados (6):
+  ⚠ 07_values.md: duplicações excessivas
+  ⚠ 07_values.md: blocos repetidos
+  ⚠ 10_traumas.md: incompleto (Conteúdo abaixo do ideal (196 caracteres))
+  ⚠ 13_knowledge.md: incompleto (Conteúdo abaixo do ideal (263 caracteres))
+  ⚠ 15_narrative_gaps.md: caracteres corrompidos
+  ⚠ 18_scene_examples.md: conteúdo incompatível com o tipo
+Nível de completude: 89%
+
+--------------------------------------------------------------------------------
+Nome: saoirse_ryu
+Arquivos existentes (18/18):
+  ✔ 01_identity.md
+  ✔ 02_summary.md
+  ✔ 03_history.md
+  ✔ 04_personality.md
+  ✔ 05_interpretation.md
+  ✔ 06_speech.md
+  ✔ 07_values.md
+  ✔ 08_likes.md
+  ✔ 09_dislikes.md
+  ✔ 10_traumas.md
+  ✔ 11_relationships.md
+  ✔ 12_goals.md
+  ✔ 13_knowledge.md
+  ✔ 14_curiosities.md
+  ✔ 15_narrative_gaps.md
+  ✔ 16_absolute_rules.md
+  ✔ 17_dialog_examples.md
+  ✔ 18_scene_examples.md
+Arquivos ausentes: Nenhum
+Arquivos vazios: Nenhum
+Arquivos incompletos (2):
+  ⚠ 10_traumas.md
+  ⚠ 13_knowledge.md
+Problemas encontrados (6):
+  ⚠ 07_values.md: duplicações excessivas
+  ⚠ 07_values.md: blocos repetidos
+  ⚠ 10_traumas.md: incompleto (Conteúdo abaixo do ideal (196 caracteres))
+  ⚠ 13_knowledge.md: incompleto (Conteúdo abaixo do ideal (246 caracteres))
+  ⚠ 15_narrative_gaps.md: caracteres corrompidos
+  ⚠ 18_scene_examples.md: conteúdo incompatível com o tipo
+Nível de completude: 89%
+
+--------------------------------------------------------------------------------
+Nome: sazantos_do
+Arquivos existentes (18/18):
+  ✔ 01_identity.md
+  ✔ 02_summary.md
+  ✔ 03_history.md
+  ✔ 04_personality.md
+  ✔ 05_interpretation.md
+  ✔ 06_speech.md
+  ✔ 07_values.md
+  ✔ 08_likes.md
+  ✔ 09_dislikes.md
+  ✔ 10_traumas.md
+  ✔ 11_relationships.md
+  ✔ 12_goals.md
+  ✔ 13_knowledge.md
+  ✔ 14_curiosities.md
+  ✔ 15_narrative_gaps.md
+  ✔ 16_absolute_rules.md
+  ✔ 17_dialog_examples.md
+  ✔ 18_scene_examples.md
+Arquivos ausentes: Nenhum
+Arquivos vazios: Nenhum
+Arquivos incompletos (2):
+  ⚠ 10_traumas.md
+  ⚠ 13_knowledge.md
+Problemas encontrados (6):
+  ⚠ 07_values.md: duplicações excessivas
+  ⚠ 07_values.md: blocos repetidos
+  ⚠ 10_traumas.md: incompleto (Conteúdo abaixo do ideal (196 caracteres))
+  ⚠ 13_knowledge.md: incompleto (Conteúdo abaixo do ideal (268 caracteres))
+  ⚠ 15_narrative_gaps.md: caracteres corrompidos
+  ⚠ 18_scene_examples.md: conteúdo incompatível com o tipo
+Nível de completude: 89%
+
+--------------------------------------------------------------------------------
+Nome: simeon_ha
+Arquivos existentes (18/18):
+  ✔ 01_identity.md
+  ✔ 02_summary.md
+  ✔ 03_history.md
+  ✔ 04_personality.md
+  ✔ 05_interpretation.md
+  ✔ 06_speech.md
+  ✔ 07_values.md
+  ✔ 08_likes.md
+  ✔ 09_dislikes.md
+  ✔ 10_traumas.md
+  ✔ 11_relationships.md
+  ✔ 12_goals.md
+  ✔ 13_knowledge.md
+  ✔ 14_curiosities.md
+  ✔ 15_narrative_gaps.md
+  ✔ 16_absolute_rules.md
+  ✔ 17_dialog_examples.md
+  ✔ 18_scene_examples.md
+Arquivos ausentes: Nenhum
+Arquivos vazios: Nenhum
+Arquivos incompletos (2):
+  ⚠ 10_traumas.md
+  ⚠ 13_knowledge.md
+Problemas encontrados (5):
+  ⚠ 07_values.md: duplicações excessivas
+  ⚠ 07_values.md: blocos repetidos
+  ⚠ 10_traumas.md: incompleto (Conteúdo abaixo do ideal (196 caracteres))
+  ⚠ 13_knowledge.md: incompleto (Conteúdo abaixo do ideal (269 caracteres))
+  ⚠ 15_narrative_gaps.md: caracteres corrompidos
+Nível de completude: 89%
+
+--------------------------------------------------------------------------------
+Nome: solon_wi
+Arquivos existentes (18/18):
+  ✔ 01_identity.md
+  ✔ 02_summary.md
+  ✔ 03_history.md
+  ✔ 04_personality.md
+  ✔ 05_interpretation.md
+  ✔ 06_speech.md
+  ✔ 07_values.md
+  ✔ 08_likes.md
+  ✔ 09_dislikes.md
+  ✔ 10_traumas.md
+  ✔ 11_relationships.md
+  ✔ 12_goals.md
+  ✔ 13_knowledge.md
+  ✔ 14_curiosities.md
+  ✔ 15_narrative_gaps.md
+  ✔ 16_absolute_rules.md
+  ✔ 17_dialog_examples.md
+  ✔ 18_scene_examples.md
+Arquivos ausentes: Nenhum
+Arquivos vazios: Nenhum
+Arquivos incompletos (3):
+  ⚠ 05_interpretation.md
+  ⚠ 10_traumas.md
+  ⚠ 13_knowledge.md
+Problemas encontrados (7):
+  ⚠ 05_interpretation.md: incompleto (Conteúdo abaixo do ideal (254 caracteres))
+  ⚠ 07_values.md: duplicações excessivas
+  ⚠ 07_values.md: blocos repetidos
+  ⚠ 10_traumas.md: incompleto (Conteúdo abaixo do ideal (196 caracteres))
+  ⚠ 13_knowledge.md: incompleto (Conteúdo abaixo do ideal (263 caracteres))
+  ⚠ 15_narrative_gaps.md: caracteres corrompidos
+  ⚠ 18_scene_examples.md: conteúdo incompatível com o tipo
+Nível de completude: 83%
+
+--------------------------------------------------------------------------------
+Nome: stia_han
+Arquivos existentes (18/18):
+  ✔ 01_identity.md
+  ✔ 02_summary.md
+  ✔ 03_history.md
+  ✔ 04_personality.md
+  ✔ 05_interpretation.md
+  ✔ 06_speech.md
+  ✔ 07_values.md
+  ✔ 08_likes.md
+  ✔ 09_dislikes.md
+  ✔ 10_traumas.md
+  ✔ 11_relationships.md
+  ✔ 12_goals.md
+  ✔ 13_knowledge.md
+  ✔ 14_curiosities.md
+  ✔ 15_narrative_gaps.md
+  ✔ 16_absolute_rules.md
+  ✔ 17_dialog_examples.md
+  ✔ 18_scene_examples.md
+Arquivos ausentes: Nenhum
+Arquivos vazios: Nenhum
+Arquivos incompletos (6):
+  ⚠ 08_likes.md
+  ⚠ 09_dislikes.md
+  ⚠ 10_traumas.md
+  ⚠ 11_relationships.md
+  ⚠ 13_knowledge.md
+  ⚠ 14_curiosities.md
+Problemas encontrados (10):
+  ⚠ 07_values.md: duplicações excessivas
+  ⚠ 07_values.md: blocos repetidos
+  ⚠ 08_likes.md: incompleto (Conteúdo abaixo do ideal (280 caracteres))
+  ⚠ 09_dislikes.md: incompleto (Conteúdo abaixo do ideal (171 caracteres))
+  ⚠ 10_traumas.md: incompleto (Conteúdo abaixo do ideal (292 caracteres))
+  ⚠ 11_relationships.md: incompleto (Conteúdo abaixo do ideal (237 caracteres))
+  ⚠ 13_knowledge.md: incompleto (Conteúdo abaixo do ideal (225 caracteres))
+  ⚠ 14_curiosities.md: incompleto (Conteúdo abaixo do ideal (217 caracteres))
+  ⚠ 15_narrative_gaps.md: caracteres corrompidos
+  ⚠ 18_scene_examples.md: conteúdo incompatível com o tipo
+Nível de completude: 67%
+
+--------------------------------------------------------------------------------
+Nome: tanzy_woo
+Arquivos existentes (18/18):
+  ✔ 01_identity.md
+  ✔ 02_summary.md
+  ✔ 03_history.md
+  ✔ 04_personality.md
+  ✔ 05_interpretation.md
+  ✔ 06_speech.md
+  ✔ 07_values.md
+  ✔ 08_likes.md
+  ✔ 09_dislikes.md
+  ✔ 10_traumas.md
+  ✔ 11_relationships.md
+  ✔ 12_goals.md
+  ✔ 13_knowledge.md
+  ✔ 14_curiosities.md
+  ✔ 15_narrative_gaps.md
+  ✔ 16_absolute_rules.md
+  ✔ 17_dialog_examples.md
+  ✔ 18_scene_examples.md
+Arquivos ausentes: Nenhum
+Arquivos vazios: Nenhum
+Arquivos incompletos (2):
+  ⚠ 10_traumas.md
+  ⚠ 13_knowledge.md
+Problemas encontrados (5):
+  ⚠ 07_values.md: duplicações excessivas
+  ⚠ 07_values.md: blocos repetidos
+  ⚠ 10_traumas.md: incompleto (Conteúdo abaixo do ideal (196 caracteres))
+  ⚠ 13_knowledge.md: incompleto (Conteúdo abaixo do ideal (258 caracteres))
+  ⚠ 15_narrative_gaps.md: caracteres corrompidos
+Nível de completude: 89%
+
+--------------------------------------------------------------------------------
+Nome: tatloch
+Arquivos existentes (18/18):
+  ✔ 01_identity.md
+  ✔ 02_summary.md
+  ✔ 03_history.md
+  ✔ 04_personality.md
+  ✔ 05_interpretation.md
+  ✔ 06_speech.md
+  ✔ 07_values.md
+  ✔ 08_likes.md
+  ✔ 09_dislikes.md
+  ✔ 10_traumas.md
+  ✔ 11_relationships.md
+  ✔ 12_goals.md
+  ✔ 13_knowledge.md
+  ✔ 14_curiosities.md
+  ✔ 15_narrative_gaps.md
+  ✔ 16_absolute_rules.md
+  ✔ 17_dialog_examples.md
+  ✔ 18_scene_examples.md
+Arquivos ausentes: Nenhum
+Arquivos vazios: Nenhum
+Arquivos incompletos (2):
+  ⚠ 10_traumas.md
+  ⚠ 13_knowledge.md
+Problemas encontrados (6):
+  ⚠ 07_values.md: duplicações excessivas
+  ⚠ 07_values.md: blocos repetidos
+  ⚠ 10_traumas.md: incompleto (Conteúdo abaixo do ideal (196 caracteres))
+  ⚠ 13_knowledge.md: incompleto (Conteúdo abaixo do ideal (264 caracteres))
+  ⚠ 15_narrative_gaps.md: caracteres corrompidos
+  ⚠ 18_scene_examples.md: conteúdo incompatível com o tipo
+Nível de completude: 89%
+
+--------------------------------------------------------------------------------
+Nome: temenos_mistral
+Arquivos existentes (18/18):
+  ✔ 01_identity.md
+  ✔ 02_summary.md
+  ✔ 03_history.md
+  ✔ 04_personality.md
+  ✔ 05_interpretation.md
+  ✔ 06_speech.md
+  ✔ 07_values.md
+  ✔ 08_likes.md
+  ✔ 09_dislikes.md
+  ✔ 10_traumas.md
+  ✔ 11_relationships.md
+  ✔ 12_goals.md
+  ✔ 13_knowledge.md
+  ✔ 14_curiosities.md
+  ✔ 15_narrative_gaps.md
+  ✔ 16_absolute_rules.md
+  ✔ 17_dialog_examples.md
+  ✔ 18_scene_examples.md
+Arquivos ausentes: Nenhum
+Arquivos vazios: Nenhum
+Arquivos incompletos (5):
+  ⚠ 08_likes.md
+  ⚠ 09_dislikes.md
+  ⚠ 11_relationships.md
+  ⚠ 13_knowledge.md
+  ⚠ 14_curiosities.md
+Problemas encontrados (8):
+  ⚠ 07_values.md: duplicações excessivas
+  ⚠ 07_values.md: blocos repetidos
+  ⚠ 08_likes.md: incompleto (Conteúdo abaixo do ideal (283 caracteres))
+  ⚠ 09_dislikes.md: incompleto (Conteúdo abaixo do ideal (171 caracteres))
+  ⚠ 11_relationships.md: incompleto (Conteúdo abaixo do ideal (237 caracteres))
+  ⚠ 13_knowledge.md: incompleto (Conteúdo abaixo do ideal (196 caracteres))
+  ⚠ 14_curiosities.md: incompleto (Conteúdo abaixo do ideal (205 caracteres))
+  ⚠ 15_narrative_gaps.md: caracteres corrompidos
+Nível de completude: 72%
+
+--------------------------------------------------------------------------------
+Nome: therion
+Arquivos existentes (18/18):
+  ✔ 01_identity.md
+  ✔ 02_summary.md
+  ✔ 03_history.md
+  ✔ 04_personality.md
+  ✔ 05_interpretation.md
+  ✔ 06_speech.md
+  ✔ 07_values.md
+  ✔ 08_likes.md
+  ✔ 09_dislikes.md
+  ✔ 10_traumas.md
+  ✔ 11_relationships.md
+  ✔ 12_goals.md
+  ✔ 13_knowledge.md
+  ✔ 14_curiosities.md
+  ✔ 15_narrative_gaps.md
+  ✔ 16_absolute_rules.md
+  ✔ 17_dialog_examples.md
+  ✔ 18_scene_examples.md
+Arquivos ausentes: Nenhum
+Arquivos vazios (2):
+  ⚠ 17_dialog_examples.md
+  ⚠ 18_scene_examples.md
+Arquivos incompletos (5):
+  ⚠ 08_likes.md
+  ⚠ 09_dislikes.md
+  ⚠ 11_relationships.md
+  ⚠ 13_knowledge.md
+  ⚠ 14_curiosities.md
+Problemas encontrados (8):
+  ⚠ 08_likes.md: incompleto (Conteúdo abaixo do ideal (273 caracteres))
+  ⚠ 09_dislikes.md: incompleto (Conteúdo abaixo do ideal (171 caracteres))
+  ⚠ 11_relationships.md: incompleto (Conteúdo abaixo do ideal (237 caracteres))
+  ⚠ 13_knowledge.md: incompleto (Conteúdo abaixo do ideal (199 caracteres))
+  ⚠ 14_curiosities.md: incompleto (Conteúdo abaixo do ideal (225 caracteres))
+  ⚠ 15_narrative_gaps.md: caracteres corrompidos
+  ⚠ 17_dialog_examples.md: vazio
+  ⚠ 18_scene_examples.md: vazio
+Nível de completude: 61%
+
+--------------------------------------------------------------------------------
+Nome: throne_anguis
+Arquivos existentes (18/18):
+  ✔ 01_identity.md
+  ✔ 02_summary.md
+  ✔ 03_history.md
+  ✔ 04_personality.md
+  ✔ 05_interpretation.md
+  ✔ 06_speech.md
+  ✔ 07_values.md
+  ✔ 08_likes.md
+  ✔ 09_dislikes.md
+  ✔ 10_traumas.md
+  ✔ 11_relationships.md
+  ✔ 12_goals.md
+  ✔ 13_knowledge.md
+  ✔ 14_curiosities.md
+  ✔ 15_narrative_gaps.md
+  ✔ 16_absolute_rules.md
+  ✔ 17_dialog_examples.md
+  ✔ 18_scene_examples.md
+Arquivos ausentes: Nenhum
+Arquivos vazios: Nenhum
+Arquivos incompletos (5):
+  ⚠ 08_likes.md
+  ⚠ 09_dislikes.md
+  ⚠ 11_relationships.md
+  ⚠ 13_knowledge.md
+  ⚠ 14_curiosities.md
+Problemas encontrados (9):
+  ⚠ 07_values.md: duplicações excessivas
+  ⚠ 07_values.md: blocos repetidos
+  ⚠ 08_likes.md: incompleto (Conteúdo abaixo do ideal (276 caracteres))
+  ⚠ 09_dislikes.md: incompleto (Conteúdo abaixo do ideal (171 caracteres))
+  ⚠ 11_relationships.md: incompleto (Conteúdo abaixo do ideal (159 caracteres))
+  ⚠ 13_knowledge.md: incompleto (Conteúdo abaixo do ideal (207 caracteres))
+  ⚠ 14_curiosities.md: incompleto (Conteúdo abaixo do ideal (222 caracteres))
+  ⚠ 15_narrative_gaps.md: caracteres corrompidos
+  ⚠ 18_scene_examples.md: conteúdo incompatível com o tipo
+Nível de completude: 72%
+
+--------------------------------------------------------------------------------
+Nome: tressa_colzione
+Arquivos existentes (18/18):
+  ✔ 01_identity.md
+  ✔ 02_summary.md
+  ✔ 03_history.md
+  ✔ 04_personality.md
+  ✔ 05_interpretation.md
+  ✔ 06_speech.md
+  ✔ 07_values.md
+  ✔ 08_likes.md
+  ✔ 09_dislikes.md
+  ✔ 10_traumas.md
+  ✔ 11_relationships.md
+  ✔ 12_goals.md
+  ✔ 13_knowledge.md
+  ✔ 14_curiosities.md
+  ✔ 15_narrative_gaps.md
+  ✔ 16_absolute_rules.md
+  ✔ 17_dialog_examples.md
+  ✔ 18_scene_examples.md
+Arquivos ausentes: Nenhum
+Arquivos vazios (2):
+  ⚠ 17_dialog_examples.md
+  ⚠ 18_scene_examples.md
+Arquivos incompletos (6):
+  ⚠ 08_likes.md
+  ⚠ 09_dislikes.md
+  ⚠ 10_traumas.md
+  ⚠ 11_relationships.md
+  ⚠ 13_knowledge.md
+  ⚠ 14_curiosities.md
+Problemas encontrados (9):
+  ⚠ 08_likes.md: incompleto (Conteúdo abaixo do ideal (285 caracteres))
+  ⚠ 09_dislikes.md: incompleto (Conteúdo abaixo do ideal (171 caracteres))
+  ⚠ 10_traumas.md: incompleto (Conteúdo abaixo do ideal (227 caracteres))
+  ⚠ 11_relationships.md: incompleto (Conteúdo abaixo do ideal (237 caracteres))
+  ⚠ 13_knowledge.md: incompleto (Conteúdo abaixo do ideal (223 caracteres))
+  ⚠ 14_curiosities.md: incompleto (Conteúdo abaixo do ideal (206 caracteres))
+  ⚠ 15_narrative_gaps.md: caracteres corrompidos
+  ⚠ 17_dialog_examples.md: vazio
+  ⚠ 18_scene_examples.md: vazio
+Nível de completude: 56%
+
+--------------------------------------------------------------------------------
+Nome: trish_yamaguchi
+Arquivos existentes (18/18):
+  ✔ 01_identity.md
+  ✔ 02_summary.md
+  ✔ 03_history.md
+  ✔ 04_personality.md
+  ✔ 05_interpretation.md
+  ✔ 06_speech.md
+  ✔ 07_values.md
+  ✔ 08_likes.md
+  ✔ 09_dislikes.md
+  ✔ 10_traumas.md
+  ✔ 11_relationships.md
+  ✔ 12_goals.md
+  ✔ 13_knowledge.md
+  ✔ 14_curiosities.md
+  ✔ 15_narrative_gaps.md
+  ✔ 16_absolute_rules.md
+  ✔ 17_dialog_examples.md
+  ✔ 18_scene_examples.md
+Arquivos ausentes: Nenhum
+Arquivos vazios (2):
+  ⚠ 17_dialog_examples.md
+  ⚠ 18_scene_examples.md
+Arquivos incompletos (1):
+  ⚠ 13_knowledge.md
+Problemas encontrados (4):
+  ⚠ 13_knowledge.md: incompleto (Conteúdo abaixo do ideal (282 caracteres))
+  ⚠ 15_narrative_gaps.md: caracteres corrompidos
+  ⚠ 17_dialog_examples.md: vazio
+  ⚠ 18_scene_examples.md: vazio
+Nível de completude: 83%
+
+--------------------------------------------------------------------------------
+Nome: trousseau
+Arquivos existentes (18/18):
+  ✔ 01_identity.md
+  ✔ 02_summary.md
+  ✔ 03_history.md
+  ✔ 04_personality.md
+  ✔ 05_interpretation.md
+  ✔ 06_speech.md
+  ✔ 07_values.md
+  ✔ 08_likes.md
+  ✔ 09_dislikes.md
+  ✔ 10_traumas.md
+  ✔ 11_relationships.md
+  ✔ 12_goals.md
+  ✔ 13_knowledge.md
+  ✔ 14_curiosities.md
+  ✔ 15_narrative_gaps.md
+  ✔ 16_absolute_rules.md
+  ✔ 17_dialog_examples.md
+  ✔ 18_scene_examples.md
+Arquivos ausentes: Nenhum
+Arquivos vazios: Nenhum
+Arquivos incompletos (6):
+  ⚠ 08_likes.md
+  ⚠ 09_dislikes.md
+  ⚠ 11_relationships.md
+  ⚠ 12_goals.md
+  ⚠ 13_knowledge.md
+  ⚠ 14_curiosities.md
+Problemas encontrados (10):
+  ⚠ 07_values.md: duplicações excessivas
+  ⚠ 07_values.md: blocos repetidos
+  ⚠ 08_likes.md: incompleto (Conteúdo abaixo do ideal (286 caracteres))
+  ⚠ 09_dislikes.md: incompleto (Conteúdo abaixo do ideal (180 caracteres))
+  ⚠ 11_relationships.md: incompleto (Conteúdo abaixo do ideal (174 caracteres))
+  ⚠ 12_goals.md: incompleto (Conteúdo abaixo do ideal (233 caracteres))
+  ⚠ 13_knowledge.md: incompleto (Conteúdo abaixo do ideal (216 caracteres))
+  ⚠ 14_curiosities.md: incompleto (Conteúdo abaixo do ideal (216 caracteres))
+  ⚠ 15_narrative_gaps.md: caracteres corrompidos
+  ⚠ 18_scene_examples.md: conteúdo incompatível com o tipo
+Nível de completude: 67%
+
+--------------------------------------------------------------------------------
+Nome: vanessa_hysel
+Arquivos existentes (18/18):
+  ✔ 01_identity.md
+  ✔ 02_summary.md
+  ✔ 03_history.md
+  ✔ 04_personality.md
+  ✔ 05_interpretation.md
+  ✔ 06_speech.md
+  ✔ 07_values.md
+  ✔ 08_likes.md
+  ✔ 09_dislikes.md
+  ✔ 10_traumas.md
+  ✔ 11_relationships.md
+  ✔ 12_goals.md
+  ✔ 13_knowledge.md
+  ✔ 14_curiosities.md
+  ✔ 15_narrative_gaps.md
+  ✔ 16_absolute_rules.md
+  ✔ 17_dialog_examples.md
+  ✔ 18_scene_examples.md
+Arquivos ausentes: Nenhum
+Arquivos vazios: Nenhum
+Arquivos incompletos (2):
+  ⚠ 10_traumas.md
+  ⚠ 13_knowledge.md
+Problemas encontrados (6):
+  ⚠ 07_values.md: duplicações excessivas
+  ⚠ 07_values.md: blocos repetidos
+  ⚠ 10_traumas.md: incompleto (Conteúdo abaixo do ideal (196 caracteres))
+  ⚠ 13_knowledge.md: incompleto (Conteúdo abaixo do ideal (246 caracteres))
+  ⚠ 15_narrative_gaps.md: caracteres corrompidos
+  ⚠ 18_scene_examples.md: conteúdo incompatível com o tipo
+Nível de completude: 89%
+
+--------------------------------------------------------------------------------
+Nome: viator_yoon
+Arquivos existentes (18/18):
+  ✔ 01_identity.md
+  ✔ 02_summary.md
+  ✔ 03_history.md
+  ✔ 04_personality.md
+  ✔ 05_interpretation.md
+  ✔ 06_speech.md
+  ✔ 07_values.md
+  ✔ 08_likes.md
+  ✔ 09_dislikes.md
+  ✔ 10_traumas.md
+  ✔ 11_relationships.md
+  ✔ 12_goals.md
+  ✔ 13_knowledge.md
+  ✔ 14_curiosities.md
+  ✔ 15_narrative_gaps.md
+  ✔ 16_absolute_rules.md
+  ✔ 17_dialog_examples.md
+  ✔ 18_scene_examples.md
+Arquivos ausentes: Nenhum
+Arquivos vazios: Nenhum
+Arquivos incompletos (6):
+  ⚠ 08_likes.md
+  ⚠ 09_dislikes.md
+  ⚠ 10_traumas.md
+  ⚠ 11_relationships.md
+  ⚠ 13_knowledge.md
+  ⚠ 14_curiosities.md
+Problemas encontrados (10):
+  ⚠ 07_values.md: duplicações excessivas
+  ⚠ 07_values.md: blocos repetidos
+  ⚠ 08_likes.md: incompleto (Conteúdo abaixo do ideal (271 caracteres))
+  ⚠ 09_dislikes.md: incompleto (Conteúdo abaixo do ideal (171 caracteres))
+  ⚠ 10_traumas.md: incompleto (Conteúdo abaixo do ideal (295 caracteres))
+  ⚠ 11_relationships.md: incompleto (Conteúdo abaixo do ideal (237 caracteres))
+  ⚠ 13_knowledge.md: incompleto (Conteúdo abaixo do ideal (225 caracteres))
+  ⚠ 14_curiosities.md: incompleto (Conteúdo abaixo do ideal (207 caracteres))
+  ⚠ 15_narrative_gaps.md: caracteres corrompidos
+  ⚠ 18_scene_examples.md: conteúdo incompatível com o tipo
+Nível de completude: 67%
+
+--------------------------------------------------------------------------------
+Nome: vide_o_corruptor
+Arquivos existentes (18/18):
+  ✔ 01_identity.md
+  ✔ 02_summary.md
+  ✔ 03_history.md
+  ✔ 04_personality.md
+  ✔ 05_interpretation.md
+  ✔ 06_speech.md
+  ✔ 07_values.md
+  ✔ 08_likes.md
+  ✔ 09_dislikes.md
+  ✔ 10_traumas.md
+  ✔ 11_relationships.md
+  ✔ 12_goals.md
+  ✔ 13_knowledge.md
+  ✔ 14_curiosities.md
+  ✔ 15_narrative_gaps.md
+  ✔ 16_absolute_rules.md
+  ✔ 17_dialog_examples.md
+  ✔ 18_scene_examples.md
+Arquivos ausentes: Nenhum
+Arquivos vazios (2):
+  ⚠ 17_dialog_examples.md
+  ⚠ 18_scene_examples.md
+Arquivos incompletos (7):
+  ⚠ 08_likes.md
+  ⚠ 09_dislikes.md
+  ⚠ 10_traumas.md
+  ⚠ 11_relationships.md
+  ⚠ 12_goals.md
+  ⚠ 13_knowledge.md
+  ⚠ 14_curiosities.md
+Problemas encontrados (10):
+  ⚠ 08_likes.md: incompleto (Conteúdo abaixo do ideal (290 caracteres))
+  ⚠ 09_dislikes.md: incompleto (Conteúdo abaixo do ideal (180 caracteres))
+  ⚠ 10_traumas.md: incompleto (Conteúdo abaixo do ideal (227 caracteres))
+  ⚠ 11_relationships.md: incompleto (Conteúdo abaixo do ideal (237 caracteres))
+  ⚠ 12_goals.md: incompleto (Conteúdo abaixo do ideal (233 caracteres))
+  ⚠ 13_knowledge.md: incompleto (Conteúdo abaixo do ideal (222 caracteres))
+  ⚠ 14_curiosities.md: incompleto (Conteúdo abaixo do ideal (216 caracteres))
+  ⚠ 15_narrative_gaps.md: caracteres corrompidos
+  ⚠ 17_dialog_examples.md: vazio
+  ⚠ 18_scene_examples.md: vazio
+Nível de completude: 50%
+
+--------------------------------------------------------------------------------
+Nome: warden_davids
+Arquivos existentes (18/18):
+  ✔ 01_identity.md
+  ✔ 02_summary.md
+  ✔ 03_history.md
+  ✔ 04_personality.md
+  ✔ 05_interpretation.md
+  ✔ 06_speech.md
+  ✔ 07_values.md
+  ✔ 08_likes.md
+  ✔ 09_dislikes.md
+  ✔ 10_traumas.md
+  ✔ 11_relationships.md
+  ✔ 12_goals.md
+  ✔ 13_knowledge.md
+  ✔ 14_curiosities.md
+  ✔ 15_narrative_gaps.md
+  ✔ 16_absolute_rules.md
+  ✔ 17_dialog_examples.md
+  ✔ 18_scene_examples.md
+Arquivos ausentes: Nenhum
+Arquivos vazios: Nenhum
+Arquivos incompletos (2):
+  ⚠ 10_traumas.md
+  ⚠ 13_knowledge.md
+Problemas encontrados (6):
+  ⚠ 07_values.md: duplicações excessivas
+  ⚠ 07_values.md: blocos repetidos
+  ⚠ 10_traumas.md: incompleto (Conteúdo abaixo do ideal (196 caracteres))
+  ⚠ 13_knowledge.md: incompleto (Conteúdo abaixo do ideal (263 caracteres))
+  ⚠ 15_narrative_gaps.md: caracteres corrompidos
+  ⚠ 18_scene_examples.md: conteúdo incompatível com o tipo
+Nível de completude: 89%
+
+--------------------------------------------------------------------------------
+Nome: werner_choi
+Arquivos existentes (18/18):
+  ✔ 01_identity.md
+  ✔ 02_summary.md
+  ✔ 03_history.md
+  ✔ 04_personality.md
+  ✔ 05_interpretation.md
+  ✔ 06_speech.md
+  ✔ 07_values.md
+  ✔ 08_likes.md
+  ✔ 09_dislikes.md
+  ✔ 10_traumas.md
+  ✔ 11_relationships.md
+  ✔ 12_goals.md
+  ✔ 13_knowledge.md
+  ✔ 14_curiosities.md
+  ✔ 15_narrative_gaps.md
+  ✔ 16_absolute_rules.md
+  ✔ 17_dialog_examples.md
+  ✔ 18_scene_examples.md
+Arquivos ausentes: Nenhum
+Arquivos vazios: Nenhum
+Arquivos incompletos (1):
+  ⚠ 13_knowledge.md
+Problemas encontrados (5):
+  ⚠ 07_values.md: duplicações excessivas
+  ⚠ 07_values.md: blocos repetidos
+  ⚠ 13_knowledge.md: incompleto (Conteúdo abaixo do ideal (257 caracteres))
+  ⚠ 15_narrative_gaps.md: caracteres corrompidos
+  ⚠ 18_scene_examples.md: conteúdo incompatível com o tipo
+Nível de completude: 94%
+
+--------------------------------------------------------------------------------
+Nome: xerc_baek
+Arquivos existentes (18/18):
+  ✔ 01_identity.md
+  ✔ 02_summary.md
+  ✔ 03_history.md
+  ✔ 04_personality.md
+  ✔ 05_interpretation.md
+  ✔ 06_speech.md
+  ✔ 07_values.md
+  ✔ 08_likes.md
+  ✔ 09_dislikes.md
+  ✔ 10_traumas.md
+  ✔ 11_relationships.md
+  ✔ 12_goals.md
+  ✔ 13_knowledge.md
+  ✔ 14_curiosities.md
+  ✔ 15_narrative_gaps.md
+  ✔ 16_absolute_rules.md
+  ✔ 17_dialog_examples.md
+  ✔ 18_scene_examples.md
+Arquivos ausentes: Nenhum
+Arquivos vazios: Nenhum
+Arquivos incompletos (2):
+  ⚠ 10_traumas.md
+  ⚠ 13_knowledge.md
+Problemas encontrados (6):
+  ⚠ 07_values.md: duplicações excessivas
+  ⚠ 07_values.md: blocos repetidos
+  ⚠ 10_traumas.md: incompleto (Conteúdo abaixo do ideal (196 caracteres))
+  ⚠ 13_knowledge.md: incompleto (Conteúdo abaixo do ideal (261 caracteres))
+  ⚠ 15_narrative_gaps.md: caracteres corrompidos
+  ⚠ 18_scene_examples.md: conteúdo incompatível com o tipo
+Nível de completude: 89%
+
+--------------------------------------------------------------------------------
+Nome: yvon_baik
+Arquivos existentes (18/18):
+  ✔ 01_identity.md
+  ✔ 02_summary.md
+  ✔ 03_history.md
+  ✔ 04_personality.md
+  ✔ 05_interpretation.md
+  ✔ 06_speech.md
+  ✔ 07_values.md
+  ✔ 08_likes.md
+  ✔ 09_dislikes.md
+  ✔ 10_traumas.md
+  ✔ 11_relationships.md
+  ✔ 12_goals.md
+  ✔ 13_knowledge.md
+  ✔ 14_curiosities.md
+  ✔ 15_narrative_gaps.md
+  ✔ 16_absolute_rules.md
+  ✔ 17_dialog_examples.md
+  ✔ 18_scene_examples.md
+Arquivos ausentes: Nenhum
+Arquivos vazios: Nenhum
+Arquivos incompletos (1):
+  ⚠ 13_knowledge.md
+Problemas encontrados (5):
+  ⚠ 07_values.md: duplicações excessivas
+  ⚠ 07_values.md: blocos repetidos
+  ⚠ 13_knowledge.md: incompleto (Conteúdo abaixo do ideal (270 caracteres))
+  ⚠ 15_narrative_gaps.md: caracteres corrompidos
+  ⚠ 18_scene_examples.md: conteúdo incompatível com o tipo
+Nível de completude: 94%
+
+================================================================================
+RESUMO GERAL
+================================================================================
+
+Total de NPCs: 72
+NPCs 100% completos: 0
+NPCs com arquivos vazios: 16
+NPCs com arquivos incompletos: 72
+NPCs com inconsistências: 72
+NPCs com problemas de estrutura: 0
+
+================================================================================
+VERIFICAÇÕES ADICIONAIS
+================================================================================
+
+NPCs duplicados: Nenhum
+
+Pastas sem JSON correspondente: Nenhuma
+
+JSONs sem dataset correspondente (2):
+  ⚠ ophilia
+  ⚠ vysache
+
+Arquivos fora do padrão: Nenhum
+
+================================================================================
+LISTA DE PENDÊNCIAS PARA TREINAMENTO
+================================================================================
+
+  ☐ agnea_bristarni: preencher 2 arquivo(s) vazio(s): 17_dialog_examples.md, 18_scene_examples.md
+  ☐ agnea_bristarni: completar 4 arquivo(s) incompleto(s): 08_likes.md, 09_dislikes.md, 13_knowledge.md, 14_curiosities.md
+  ☐ alaune_yeong: completar 2 arquivo(s) incompleto(s): 10_traumas.md, 13_knowledge.md
+  ☐ alexia_song: completar 6 arquivo(s) incompleto(s): 08_likes.md, 09_dislikes.md, 10_traumas.md, 11_relationships.md, 13_knowledge.md, 14_curiosities.md
+  ☐ alfyn_greengrass: preencher 2 arquivo(s) vazio(s): 17_dialog_examples.md, 18_scene_examples.md
+  ☐ alfyn_greengrass: completar 6 arquivo(s) incompleto(s): 08_likes.md, 09_dislikes.md, 10_traumas.md, 11_relationships.md, 13_knowledge.md, 14_curiosities.md
+  ☐ arcanette: completar 1 arquivo(s) incompleto(s): 13_knowledge.md
+  ☐ bargello_yeon: completar 2 arquivo(s) incompleto(s): 10_traumas.md, 13_knowledge.md
+  ☐ carinda_moon: completar 6 arquivo(s) incompleto(s): 08_likes.md, 09_dislikes.md, 10_traumas.md, 11_relationships.md, 13_knowledge.md, 14_curiosities.md
+  ☐ castti_florenz: completar 6 arquivo(s) incompleto(s): 08_likes.md, 09_dislikes.md, 10_traumas.md, 11_relationships.md, 13_knowledge.md, 14_curiosities.md
+  ☐ celsus_park: completar 6 arquivo(s) incompleto(s): 08_likes.md, 09_dislikes.md, 10_traumas.md, 11_relationships.md, 13_knowledge.md, 14_curiosities.md
+  ☐ claude: completar 1 arquivo(s) incompleto(s): 13_knowledge.md
+  ☐ cyrus_albright: preencher 2 arquivo(s) vazio(s): 17_dialog_examples.md, 18_scene_examples.md
+  ☐ cyrus_albright: completar 6 arquivo(s) incompleto(s): 08_likes.md, 09_dislikes.md, 10_traumas.md, 11_relationships.md, 13_knowledge.md, 14_curiosities.md
+  ☐ darius_kwon: completar 1 arquivo(s) incompleto(s): 13_knowledge.md
+  ☐ delitia_song: completar 2 arquivo(s) incompleto(s): 10_traumas.md, 13_knowledge.md
+  ☐ elrica_edoras: preencher 2 arquivo(s) vazio(s): 17_dialog_examples.md, 18_scene_examples.md
+  ☐ elrica_edoras: completar 2 arquivo(s) incompleto(s): 10_traumas.md, 13_knowledge.md
+  ☐ eltrix_noh: completar 2 arquivo(s) incompleto(s): 10_traumas.md, 13_knowledge.md
+  ☐ entidade_mae: preencher 2 arquivo(s) vazio(s): 17_dialog_examples.md, 18_scene_examples.md
+  ☐ entidade_mae: completar 1 arquivo(s) incompleto(s): 13_knowledge.md
+  ☐ esperre_jin: completar 2 arquivo(s) incompleto(s): 10_traumas.md, 13_knowledge.md
+  ☐ galdera: preencher 2 arquivo(s) vazio(s): 17_dialog_examples.md, 18_scene_examples.md
+  ☐ galdera: completar 7 arquivo(s) incompleto(s): 08_likes.md, 09_dislikes.md, 10_traumas.md, 11_relationships.md, 12_goals.md, 13_knowledge.md, 14_curiosities.md
+  ☐ gaston_rho: completar 2 arquivo(s) incompleto(s): 10_traumas.md, 13_knowledge.md
+  ☐ gideon_ma: completar 2 arquivo(s) incompleto(s): 10_traumas.md, 13_knowledge.md
+  ☐ goodwin_cha: completar 2 arquivo(s) incompleto(s): 10_traumas.md, 13_knowledge.md
+  ☐ haanit: preencher 2 arquivo(s) vazio(s): 17_dialog_examples.md, 18_scene_examples.md
+  ☐ haanit: completar 6 arquivo(s) incompleto(s): 08_likes.md, 09_dislikes.md, 10_traumas.md, 11_relationships.md, 13_knowledge.md, 14_curiosities.md
+  ☐ harvey_jeong: completar 1 arquivo(s) incompleto(s): 13_knowledge.md
+  ☐ heidne_ahn: completar 1 arquivo(s) incompleto(s): 13_knowledge.md
+  ☐ helgenish: completar 2 arquivo(s) incompleto(s): 10_traumas.md, 13_knowledge.md
+  ☐ hikari_ku: preencher 2 arquivo(s) vazio(s): 17_dialog_examples.md, 18_scene_examples.md
+  ☐ hikari_ku: completar 4 arquivo(s) incompleto(s): 08_likes.md, 09_dislikes.md, 13_knowledge.md, 14_curiosities.md
+  ☐ isla_gwon: completar 2 arquivo(s) incompleto(s): 10_traumas.md, 13_knowledge.md
+  ☐ kaldena_ryu: completar 1 arquivo(s) incompleto(s): 13_knowledge.md
+  ☐ kazan: completar 1 arquivo(s) incompleto(s): 13_knowledge.md
+  ☐ laurana_bae: completar 6 arquivo(s) incompleto(s): 08_likes.md, 09_dislikes.md, 10_traumas.md, 11_relationships.md, 13_knowledge.md, 14_curiosities.md
+  ☐ lucia_yeom: completar 2 arquivo(s) incompleto(s): 10_traumas.md, 13_knowledge.md
+  ☐ ludo_wei: completar 6 arquivo(s) incompleto(s): 08_likes.md, 09_dislikes.md, 10_traumas.md, 11_relationships.md, 13_knowledge.md, 14_curiosities.md
+  ☐ lyblac: preencher 2 arquivo(s) vazio(s): 17_dialog_examples.md, 18_scene_examples.md
+  ☐ lyblac: completar 7 arquivo(s) incompleto(s): 08_likes.md, 09_dislikes.md, 10_traumas.md, 11_relationships.md, 12_goals.md, 13_knowledge.md, 14_curiosities.md
+  ☐ macy_eun: completar 5 arquivo(s) incompleto(s): 08_likes.md, 09_dislikes.md, 11_relationships.md, 13_knowledge.md, 14_curiosities.md
+  ☐ mattias_cardoso: completar 2 arquivo(s) incompleto(s): 10_traumas.md, 13_knowledge.md
+  ☐ miguel_bang: completar 1 arquivo(s) incompleto(s): 13_knowledge.md
+  ☐ mugen_ku: completar 2 arquivo(s) incompleto(s): 10_traumas.md, 13_knowledge.md
+  ☐ ochette: completar 6 arquivo(s) incompleto(s): 08_likes.md, 09_dislikes.md, 10_traumas.md, 11_relationships.md, 13_knowledge.md, 14_curiosities.md
+  ☐ olberic_eisenberg: preencher 2 arquivo(s) vazio(s): 17_dialog_examples.md, 18_scene_examples.md
+  ☐ olberic_eisenberg: completar 5 arquivo(s) incompleto(s): 08_likes.md, 09_dislikes.md, 11_relationships.md, 13_knowledge.md, 14_curiosities.md
+  ☐ ophilia_clement: completar 7 arquivo(s) incompleto(s): 08_likes.md, 09_dislikes.md, 11_relationships.md, 13_knowledge.md, 14_curiosities.md, 17_dialog_examples.md, 18_scene_examples.md
+  ☐ ori_choi: completar 2 arquivo(s) incompleto(s): 10_traumas.md, 13_knowledge.md
+  ☐ osvald_v_vanstein: preencher 2 arquivo(s) vazio(s): 17_dialog_examples.md, 18_scene_examples.md
+  ☐ osvald_v_vanstein: completar 5 arquivo(s) incompleto(s): 08_likes.md, 09_dislikes.md, 11_relationships.md, 13_knowledge.md, 14_curiosities.md
+  ☐ partitio_yellowil: completar 5 arquivo(s) incompleto(s): 08_likes.md, 09_dislikes.md, 11_relationships.md, 13_knowledge.md, 14_curiosities.md
+  ☐ petrichor: completar 2 arquivo(s) incompleto(s): 10_traumas.md, 13_knowledge.md
+  ☐ phenn_doyoung: completar 5 arquivo(s) incompleto(s): 08_likes.md, 09_dislikes.md, 11_relationships.md, 13_knowledge.md, 14_curiosities.md
+  ☐ pius_kang: completar 6 arquivo(s) incompleto(s): 08_likes.md, 09_dislikes.md, 10_traumas.md, 11_relationships.md, 13_knowledge.md, 14_curiosities.md
+  ☐ primrose_azelhart: preencher 2 arquivo(s) vazio(s): 17_dialog_examples.md, 18_scene_examples.md
+  ☐ primrose_azelhart: completar 5 arquivo(s) incompleto(s): 08_likes.md, 09_dislikes.md, 11_relationships.md, 13_knowledge.md, 14_curiosities.md
+  ☐ redeye: completar 2 arquivo(s) incompleto(s): 10_traumas.md, 13_knowledge.md
+  ☐ reime_oh: completar 2 arquivo(s) incompleto(s): 10_traumas.md, 13_knowledge.md
+  ☐ richard_han: completar 1 arquivo(s) incompleto(s): 13_knowledge.md
+  ☐ rondo_baek: completar 2 arquivo(s) incompleto(s): 10_traumas.md, 13_knowledge.md
+  ☐ rufus_deng: completar 2 arquivo(s) incompleto(s): 10_traumas.md, 13_knowledge.md
+  ☐ saoirse_ryu: completar 2 arquivo(s) incompleto(s): 10_traumas.md, 13_knowledge.md
+  ☐ sazantos_do: completar 2 arquivo(s) incompleto(s): 10_traumas.md, 13_knowledge.md
+  ☐ simeon_ha: completar 2 arquivo(s) incompleto(s): 10_traumas.md, 13_knowledge.md
+  ☐ solon_wi: completar 3 arquivo(s) incompleto(s): 05_interpretation.md, 10_traumas.md, 13_knowledge.md
+  ☐ stia_han: completar 6 arquivo(s) incompleto(s): 08_likes.md, 09_dislikes.md, 10_traumas.md, 11_relationships.md, 13_knowledge.md, 14_curiosities.md
+  ☐ tanzy_woo: completar 2 arquivo(s) incompleto(s): 10_traumas.md, 13_knowledge.md
+  ☐ tatloch: completar 2 arquivo(s) incompleto(s): 10_traumas.md, 13_knowledge.md
+  ☐ temenos_mistral: completar 5 arquivo(s) incompleto(s): 08_likes.md, 09_dislikes.md, 11_relationships.md, 13_knowledge.md, 14_curiosities.md
+  ☐ therion: preencher 2 arquivo(s) vazio(s): 17_dialog_examples.md, 18_scene_examples.md
+  ☐ therion: completar 5 arquivo(s) incompleto(s): 08_likes.md, 09_dislikes.md, 11_relationships.md, 13_knowledge.md, 14_curiosities.md
+  ☐ throne_anguis: completar 5 arquivo(s) incompleto(s): 08_likes.md, 09_dislikes.md, 11_relationships.md, 13_knowledge.md, 14_curiosities.md
+  ☐ tressa_colzione: preencher 2 arquivo(s) vazio(s): 17_dialog_examples.md, 18_scene_examples.md
+  ☐ tressa_colzione: completar 6 arquivo(s) incompleto(s): 08_likes.md, 09_dislikes.md, 10_traumas.md, 11_relationships.md, 13_knowledge.md, 14_curiosities.md
+  ☐ trish_yamaguchi: preencher 2 arquivo(s) vazio(s): 17_dialog_examples.md, 18_scene_examples.md
+  ☐ trish_yamaguchi: completar 1 arquivo(s) incompleto(s): 13_knowledge.md
+  ☐ trousseau: completar 6 arquivo(s) incompleto(s): 08_likes.md, 09_dislikes.md, 11_relationships.md, 12_goals.md, 13_knowledge.md, 14_curiosities.md
+  ☐ vanessa_hysel: completar 2 arquivo(s) incompleto(s): 10_traumas.md, 13_knowledge.md
+  ☐ viator_yoon: completar 6 arquivo(s) incompleto(s): 08_likes.md, 09_dislikes.md, 10_traumas.md, 11_relationships.md, 13_knowledge.md, 14_curiosities.md
+  ☐ vide_o_corruptor: preencher 2 arquivo(s) vazio(s): 17_dialog_examples.md, 18_scene_examples.md
+  ☐ vide_o_corruptor: completar 7 arquivo(s) incompleto(s): 08_likes.md, 09_dislikes.md, 10_traumas.md, 11_relationships.md, 12_goals.md, 13_knowledge.md, 14_curiosities.md
+  ☐ warden_davids: completar 2 arquivo(s) incompleto(s): 10_traumas.md, 13_knowledge.md
+  ☐ werner_choi: completar 1 arquivo(s) incompleto(s): 13_knowledge.md
+  ☐ xerc_baek: completar 2 arquivo(s) incompleto(s): 10_traumas.md, 13_knowledge.md
+  ☐ yvon_baik: completar 1 arquivo(s) incompleto(s): 13_knowledge.md
+
+================================================================================
+FIM DO RELATÓRIO
+================================================================================

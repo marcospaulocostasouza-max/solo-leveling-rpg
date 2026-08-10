@@ -1,0 +1,178 @@
+{
+  "npcId": "alaune_yeong",
+  "npcNome": "Alaune Yeong",
+  "npcTitulo": "A Rainha do Trono Apodrecido",
+  "totalMissoes": 10,
+  "missoes": [
+    {
+      "id": "alaune_yeong_01",
+      "npcId": "alaune_yeong",
+      "numero": 1,
+      "nome": "Capítulo 1: Rumores sobre Alaune Yeong",
+      "descricao": "Relatos alarmantes começam a circular entre guildas sobre Alaune Yeong. Ex-líder de uma comunidade que se isolou dentro de um castelo erguido sobre um portal profundo, Alaune foi corrompida por uma anomalia de mana, fundindo-a a uma força vegetal ancestral....",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Investigue 3 relatos de testemunhas sobre Alaune Yeong",
+      "recompensas": {
+        "xp": 25650,
+        "won": 171000,
+        "item": "Trajes Reais Decadentes"
+      }
+    },
+    {
+      "id": "alaune_yeong_02",
+      "npcId": "alaune_yeong",
+      "numero": 2,
+      "nome": "Capítulo 2: Rastreando A Rainha do Trono Apodrecido",
+      "descricao": "Reúna evidências concretas da atividade de Alaune Yeong antes que a Associação classifique o caso como perdido.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Reúna provas em 2 locais diferentes ligados a Alaune Yeong",
+      "recompensas": {
+        "xp": 29700,
+        "won": 198000,
+        "item": "Trajes Reais Decadentes"
+      }
+    },
+    {
+      "id": "alaune_yeong_03",
+      "npcId": "alaune_yeong",
+      "numero": 3,
+      "nome": "Capítulo 3: Confronto com Alaune Yeong",
+      "descricao": "É hora de enfrentar Alaune Yeong diretamente. Prepare-se: como A Rainha do Trono Apodrecido, este será um combate de Rank S.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Derrote Alaune Yeong em combate direto",
+      "recompensas": {
+        "xp": 33750,
+        "won": 225000,
+        "item": "Réplica Reforçada de: Cetro Vivo Entrelaçado"
+      }
+    },
+    {
+      "id": "alaune_yeong_04",
+      "npcId": "alaune_yeong",
+      "numero": 4,
+      "nome": "Capítulo 4: A Queda de A Rainha do Trono Apodrecido",
+      "descricao": "Com Alaune Yeong neutralizado(a), reste apenas reportar o caso à Associação e lidar com as consequências reveladas.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Entregue o relatório final sobre Alaune Yeong à Associação",
+      "recompensas": {
+        "xp": 37800,
+        "won": 252000,
+        "item": "Réplica Reforçada de: Cetro Vivo Entrelaçado"
+      }
+    },
+    {
+      "id": "alaune_yeong_05",
+      "npcId": "alaune_yeong",
+      "numero": 5,
+      "nome": "Reforço de Alaune Yeong",
+      "descricao": "Alaune Yeong pede que você adquira, em qualquer Loja de Itens da Associação, um equipamento de Rank S compatível com Cajados e Orbes para reforçar seu arsenal de combate.",
+      "categoria": "secundaria",
+      "tipo": "loja",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Comprar 1 equipamento de Rank S (peça de armadura ou arma)",
+      "recompensas": {
+        "xp": 8100,
+        "won": 54000,
+        "item": "Réplica Reforçada de: Cetro Vivo Entrelaçado"
+      }
+    },
+    {
+      "id": "alaune_yeong_06",
+      "npcId": "alaune_yeong",
+      "numero": 6,
+      "nome": "Provisões de Alaune Yeong",
+      "descricao": "Antes da próxima incursão, Alaune Yeong pede que você compre poções de recuperação e um acessório de afinidade elemental Planta na loja mais próxima.",
+      "categoria": "secundaria",
+      "tipo": "loja",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Comprar 3 poções + 1 acessório elemental",
+      "recompensas": {
+        "xp": 7425,
+        "won": 49500,
+        "item": "Coroa Coberta de Musgo"
+      }
+    },
+    {
+      "id": "alaune_yeong_07",
+      "npcId": "alaune_yeong",
+      "numero": 7,
+      "nome": "Receita de Alaune Yeong",
+      "descricao": "Usando materiais coletados em dungeons de afinidade Planta, produza o item indicado por Alaune Yeong em uma bancada de criação da guilda.",
+      "categoria": "secundaria",
+      "tipo": "producao",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Produzir 1 item de afinidade Planta (Rank S)",
+      "recompensas": {
+        "xp": 8775,
+        "won": 58500,
+        "item": "Fragmento de Mana (Planta)"
+      }
+    },
+    {
+      "id": "alaune_yeong_08",
+      "npcId": "alaune_yeong",
+      "numero": 8,
+      "nome": "Suprimento Especial de Alaune Yeong",
+      "descricao": "Alaune Yeong ensina uma técnica pessoal de preparo; produza 3 unidades de um item de suporte (poção, munição ou material) ligado ao estilo de combate de Cajados e Orbes.",
+      "categoria": "secundaria",
+      "tipo": "producao",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Produzir 3 itens de suporte",
+      "recompensas": {
+        "xp": 9450,
+        "won": 63000,
+        "item": "Fragmento de Mana (Planta)"
+      }
+    },
+    {
+      "id": "alaune_yeong_09",
+      "npcId": "alaune_yeong",
+      "numero": 9,
+      "nome": "Treino de Combate com Alaune Yeong",
+      "descricao": "Alaune Yeong solicita ajuda para conter uma infestação: derrote criaturas vegetais em dungeons de Rank S ou inferior.",
+      "categoria": "cacada",
+      "tipo": "caca",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Derrotar 40 Criaturas Vegetais",
+      "recompensas": {
+        "xp": 10800,
+        "won": 72000,
+        "item": "Trajes Reais Decadentes"
+      }
+    },
+    {
+      "id": "alaune_yeong_10",
+      "npcId": "alaune_yeong",
+      "numero": 10,
+      "nome": "Caçada Recomendada por Alaune Yeong",
+      "descricao": "Uma variante mais forte de criaturas vegetais tem aparecido nas rondas de Alaune Yeong; elimine essas ameaças antes que evoluam.",
+      "categoria": "cacada",
+      "tipo": "caca",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Derrotar 9 Criaturas Vegetais (variante fortalecida)",
+      "recompensas": {
+        "xp": 13500,
+        "won": 90000,
+        "item": "Réplica Reforçada de: Cetro Vivo Entrelaçado"
+      }
+    }
+  ]
+}

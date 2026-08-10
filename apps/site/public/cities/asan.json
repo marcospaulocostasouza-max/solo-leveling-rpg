@@ -1,0 +1,19 @@
+{
+  "id": "asan",
+  "name": "Asan",
+  "image": "/images/cities/asan.webp",
+  "description": "Cidade industrial",
+  "population": "320 mil",
+  "dangerLevel": "C",
+  "guilds": [],
+  "npcs": [],
+  "players": [],
+  "portals": [],
+  "dungeons": [],
+  "bosses": [],
+  "shops": [],
+  "quests": [],
+  "events": [],
+  "resources": [],
+  "notes": ""
+}

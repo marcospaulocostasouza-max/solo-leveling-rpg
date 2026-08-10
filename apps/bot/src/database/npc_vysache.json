@@ -1,0 +1,26 @@
+{
+    "nome": "Vysache",
+    "raca": "Coelho Vorpal",
+    "nivel": 84,
+    "rank": "S",
+    "classe": "Ferreiro",
+    "classe_avancada": "Ferreiro",
+    "personalidade": "????",
+    "historia": "????",
+    "aparencia": "Um coelho antropomórfico de pelagem prateada, com orelhas longas e olhos rubros que brilham como brasas. Veste um avental de couro negro manchado de fuligem e carrega um martelo de forja que parece pesado demais para qualquer criatura comum.",
+    "altura": "1,65m",
+    "peso": "70kg",
+    "nacionalidade": "Desconhecida",
+    "localizacao": "Forja Oculta",
+    "atributos": {
+        "forca": 120,
+        "resistencia": 100,
+        "velocidade": 60,
+        "sentidos": 70,
+        "inteligencia": 80,
+        "poder_magico": 90
+    },
+    "descricao": "Um ferreiro lendário da raça Coelho Vorpal. Possui vasta capacidade de criar itens de grau inferior e superior, desde itens rank E até S. Trabalha com base na afinidade que os players possuem com ele.",
+    "especialidade": "Forja de itens rank E a S",
+    "habilidade_especial": "Forja Nacional - Ao atingir 100% de afinidade, pode produzir um item de nível nacional"
+}

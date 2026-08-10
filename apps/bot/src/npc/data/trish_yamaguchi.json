@@ -1,0 +1,42 @@
+{
+  "id": "trish_yamaguchi",
+  "papel": "Vilã",
+  "base_em": "Trish (Octopath Traveler)",
+  "nome": "Trish Yamaguchi",
+  "idade": "29",
+  "nacionalidade": "Sul-coreana, executora venenosa de uma organização criminosa",
+  "aparencia": "Esguia e sinistra, cabelos negros curtos com mechas roxas, veste roupas escuras justas ideais para infiltração.",
+  "altura_peso": "1,68m / 52kg",
+  "personalidade": "Fria, calculista e mais interessada em elegância letal do que em violência bruta.",
+  "historia": "Parceira de execuções de Rufus dentro da organização Corvos, Trish especializou-se em eliminar alvos através de venenos indetectáveis.",
+  "classe": "Assassino",
+  "classe_avancada": "Lâmina Sombria",
+  "rank": "B",
+  "nivel": 74,
+  "estilo_luta": "Proficiência em Leques e Lâminas Ocultas",
+  "atributos": {
+    "forca": 40,
+    "resistencia": 38,
+    "velocidade": 78,
+    "sentidos": 72,
+    "inteligencia": 60,
+    "poder_magico": 32
+  },
+  "elemento": "Planta",
+  "habilidade_unica": "Veneno Indetectável — aplica um veneno de dano crescente que não pode ser removido por cura convencional, apenas por antídotos específicos, durante 4 turnos.",
+  "titulo": "A Executora Silenciosa dos Corvos",
+  "equipamentos": {
+    "arma": "Leque de Metal com Frascos de Veneno",
+    "itens": "Roupas de Infiltração Justas, Coleção de Toxinas Raras, Máscara de Seda"
+  },
+  "tecnicas": [
+    "Corte do Leque Envenenado",
+    "Névoa Silenciosa",
+    "Golpe Final Toxico"
+  ],
+  "formaFalar": "Fala com tom frio e calculista, frequentemente manipulando as palavras para obter vantagem. Suas frases são precisas e raramente revelam emoções verdadeiras.",
+  "localizacao": "Localização desconhecida — opera nas sombras",
+  "profissao": "Antagonista",
+  "objetivos": "Expandir seu poder e influência, eliminando qualquer ameaça aos seus planos.",
+  "valores": "O poder é o único caminho. A fraqueza é imperdoável. Os fins justificam os meios."
+}

@@ -1,0 +1,249 @@
+╔══════════════════════════════════════════════════════════════════════════════╗
+║              RELATÓRIO DE VERIFICAÇÃO COMPLETA DOS NPCs                     ║
+║              O QUE FALTA EM CADA NPC E INCONSISTÊNCIAS                      ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+Gerado em: 05/08/2026
+Total de arquivos JSON: 74
+Total de NPCs únicos: 74 (70 completos + 2 duplicados Ophilia + Vysache especial)
+
+═══════════════════════════════════════════════════════════════════════════════
+  RESUMO EXECUTIVO
+═══════════════════════════════════════════════════════════════════════════════
+
+  ✅ NPCs COMPLETOS:               16
+  ❌ NPCs COM PROBLEMAS:           58
+  ├── 🟡 Falta campos extendidos:  41 (vilões/antagonistas/CotC/OT0)
+  ├── 🟡 Dataset com arquivos
+  │     vazios (17/18):            16 (OT1/OT2)
+  └── 🔴 Problemas graves:          2 (Ophilia duplicada + Vysache)
+
+═══════════════════════════════════════════════════════════════════════════════
+  1. PROBLEMAS GRAVES (DUPLICIDADES E NPCs ESPECIAIS)
+═══════════════════════════════════════════════════════════════════════════════
+
+🔴 OPHILIA CLEMENT — NPC DUPLICADO
+   Arquivo 1: src/npc/data/ophilia.json       (id: "ophilia" - formato COMPLETO)
+   Arquivo 2: src/npc/data/ophilia_clement.json (id: "ophilia_clement" - formato RESUMIDO)
+   
+   PROBLEMAS:
+   • Ophilia possui 2 arquivos JSON com o MESMO nome "Ophilia Clement"
+   • O comando usado é "npc_ophilia_clement.js" (o JSON "ophilia.json" não tem comando)
+   • O dataset usa a pasta "ophilia_clement/" (não "ophilia/")
+   • O relatório da Etapa 8 usa "relatorio_ophilia_clement.md" (não "relatorio_ophilia.md")
+   • ophilia.json NÃO possui: comando, pasta de dataset, relatório
+   • Ophilia Clement (ophilia_clement.json) não possui campos extendidos
+   
+   RECOMENDAÇÃO: REMOVER o arquivo ophilia.json e manter apenas ophilia_clement.json,
+   porém copiar os campos adicionais (raca, organizacao, ocupacao, gostos, desgostos,
+   traumas, relacionamentos, lacunas_narrativas, regras_interpretacao) do ophilia.json
+   para o ophilia_clement.json.
+
+🔴 VYSACHE — NPC ESPECIAL DO SISTEMA DE FORJA
+   Arquivo: src/database/npc_vysache.json
+   Comando: src/commands/vysache.js (EXISTE)
+   
+   PROBLEMAS:
+   • Não possui campos extendidos: organizacao, ocupacao, gostos, desgostos,
+     traumas, relacionamentos, lacunas_narrativas, regras_interpretacao
+   • Não possui pasta no dataset (NPC_LORA/dataset/vysache/)
+   • Não possui relatório na Etapa 8 (relatorio_vysache.md)
+   • Não possui comando "npc_vysache.js" (usa "vysache.js")
+   • O JSON tem campos diferentes do padrão: "descricao", "especialidade",
+     "habilidade_especial", "altura", "peso" ao invés de "descricao na
+     personalidade/historia/etc"
+   • NÃO possui id (campo obrigatório no npcManager!) — usa "nome" como chave
+   
+   RECOMENDAÇÃO: Criar src/npc/data/vysache.json no formato padrão com id,
+   ou ajustar o npcManager para carregar também de src/database/.
+
+═══════════════════════════════════════════════════════════════════════════════
+  2. NPCs COM CAMPOS EXTENDIDOS FALTANDO (41 NPCs)
+═══════════════════════════════════════════════════════════════════════════════
+  Estes NPCs possuem apenas os 22 campos básicos do gerador automático.
+  Faltam os campos: raca, organizacao, ocupacao, gostos, desgostos, traumas,
+  relacionamentos, lacunas_narrativas, regras_interpretacao
+
+  ── Vilões / Ordem da Meia-Noite / Ot (28 NPCs) ──
+  ❌ Alaune Yeong      (alaune_yeong)
+  ❌ Arcanette         (arcanette)
+  ❌ Bargello Yeon     (bargello_yeon)
+  ❌ Claude            (claude)
+  ❌ Darius Kwon       (darius_kwon)
+  ❌ Delitia Song      (delitia_song)
+  ❌ Elrica Edoras     (elrica_edoras)
+  ❌ Eltrix Noh        (eltrix_noh)
+  ❌ Entidade 'Mãe'    (entidade_mae)
+  ❌ Esperre Jin       (esperre_jin)
+  ❌ Gaston Rho        (gaston_rho)
+  ❌ Gideon Ma         (gideon_ma)
+  ❌ Goodwin Cha       (goodwin_cha)
+  ❌ Harvey Jeong      (harvey_jeong)
+  ❌ Heidne Ahn        (heidne_ahn)
+  ❌ Helgenish         (helgenish)
+  ❌ Isla Gwon         (isla_gwon)
+  ❌ Kaldena Ryu       (kaldena_ryu)
+  ❌ Kazan             (kazan)
+  ❌ Lucia Yeom        (lucia_yeom)
+  ❌ Mattias Cardoso   (mattias_cardoso)
+  ❌ Miguel Bang       (miguel_bang)
+  ❌ Mugen Ku          (mugen_ku)
+  ❌ Ori Choi          (ori_choi)
+  ❌ Petrichor         (petrichor)
+  ❌ Redeye            (redeye)
+  ❌ Reime Oh          (reime_oh)
+  ❌ Richard Han       (richard_han)
+  ❌ Rondo Baek        (rondo_baek)
+  ❌ Rufus Deng        (rufus_deng)
+  ❌ Saoirse Ryu       (saoirse_ryu)
+  ❌ Sazantos Do       (sazantos_do)
+  ❌ Simeon Ha         (simeon_ha)
+  ❌ Solon Wi          (solon_wi)
+  ❌ Tanzy Woo         (tanzy_woo)
+  ❌ Tatloch           (tatloch)
+  ❌ Trish Yamaguchi   (trish_yamaguchi)
+  ❌ Vanessa Hysel     (vanessa_hysel)
+  ❌ Warden Davids     (warden_davids)
+  ❌ Werner Choi       (werner_choi)
+  ❌ Xerc Baek         (xerc_baek)
+  ❌ Yvon Baik         (yvon_baik)
+
+  Total: 42 NPCs (incluindo ophilia_clement)
+
+═══════════════════════════════════════════════════════════════════════════════
+  3. NPCs COM DATASET INCOMPLETO (ARQUIVOS 17/18 VAZIOS) — 16 NPCs
+═══════════════════════════════════════════════════════════════════════════════
+  Todos os 16 têm os arquivos 17_dialog_examples.md e 18_scene_examples.md VAZIOS.
+  O dataset tem os outros 16 arquivos, mas os exemplos de diálogo e cenas estão vazios.
+
+  ❌ Agnea Bristarni    (agnea_bristarni)
+  ❌ Alfyn Greengrass   (alfyn_greengrass)
+  ❌ Cyrus Albright     (cyrus_albright)
+  ❌ Elrica Edoras      (elrica_edoras)
+  ❌ Entidade 'Mãe'     (entidade_mae)
+  ❌ Galdera            (galdera)
+  ❌ H'aanit            (haanit)
+  ❌ Hikari Ku          (hikari_ku)
+  ❌ Lyblac             (lyblac)
+  ❌ Olberic Eisenberg  (olberic_eisenberg)
+  ❌ Osvald V. Vanstein (osvald_v_vanstein)
+  ❌ Primrose Azelhart  (primrose_azelhart)
+  ❌ Therion            (therion)
+  ❌ Tressa Colzione    (tressa_colzione)
+  ❌ Trish Yamaguchi    (trish_yamaguchi)
+  ❌ Vide, o Corruptor  (vide_o_corruptor)
+
+  NOTA: Trish Yamaguchi e Elrica Edoras aparecem tanto aqui quanto na lista de
+  campos extendidos (acumulam problemas de ambos os tipos).
+
+═══════════════════════════════════════════════════════════════════════════════
+  4. NPCs COMPLETOS (✅) — 16 NPCs
+═══════════════════════════════════════════════════════════════════════════════
+  Estes NPCs têm TODOS os campos: 22 básicos + 9 extendidos + comando + dataset + relatório.
+
+  ✅ Alexia Song        (alexia_song)
+  ✅ Carinda Moon       (carinda_moon)
+  ✅ Castti Florenz     (castti_florenz)
+  ✅ Celsus Park        (celsus_park)
+  ✅ Laurana Bae        (laurana_bae)
+  ✅ Ludo Wei           (ludo_wei)
+  ✅ Macy Eun           (macy_eun)
+  ✅ Ochette            (ochette)
+  ✅ Partitio Yellowil  (partitio_yellowil)
+  ✅ Phenn Doyoung      (phenn_doyoung)
+  ✅ Pius Kang          (pius_kang)
+  ✅ Stia Han           (stia_han)
+  ✅ Temenos Mistral    (temenos_mistral)
+  ✅ Throné Anguis      (throne_anguis)
+  ✅ Trousseau          (trousseau)
+  ✅ Viator Yoon        (viator_yoon)
+
+═══════════════════════════════════════════════════════════════════════════════
+  5. VERIFICAÇÃO DE COMANDOS (src/commands/)
+═══════════════════════════════════════════════════════════════════════════════
+  ✅ Todos os 73 NPCs possuem comando (npc_<id>.js)
+  ✅ Vysache possui comando próprio (vysache.js)
+  ❌ Ophilia (ophilia.json) NÃO possui comando npc_ophilia.js
+     → Usa apenas o comando npc_ophilia_clement.js (correto seria remover o JSON duplicado)
+
+═══════════════════════════════════════════════════════════════════════════════
+  6. VERIFICAÇÃO DO DATASET (NPC_LORA/dataset/)
+═══════════════════════════════════════════════════════════════════════════════
+  ✅ 72 pastas de NPCs existem no dataset
+  ✅ Todas as 72 pastas têm os 18 arquivos de dataset (nenhum arquivo faltando)
+  ❌ 16 pastas têm os arquivos 17_dialog_examples.md e 18_scene_examples.md VAZIOS
+  ❌ Pasta "ophilia" NÃO existe (só "ophilia_clement")
+  ❌ Pasta "vysache" NÃO existe
+
+═══════════════════════════════════════════════════════════════════════════════
+  7. VERIFICAÇÃO DE RELATÓRIOS (RELATORIOS_ETAPA8/)
+═══════════════════════════════════════════════════════════════════════════════
+  ✅ 72 relatórios existem (relatorio_<id>.md)
+  ✅ relatorio_geral.md existe (não é um NPC, é um relatório geral)
+  ❌ relatorio_ophilia.md NÃO existe (o JSON ophilia.json não tem relatório)
+  ❌ relatorio_vysache.md NÃO existe
+
+═══════════════════════════════════════════════════════════════════════════════
+  8. VERIFICAÇÃO DE CONSISTÊNCIA DE NOMES E IDS
+═══════════════════════════════════════════════════════════════════════════════
+  ✅ Todos os 74 JSONs têm "id" consistente com o nome do arquivo
+  ✅ Todos os "nome" dos NPCs são consistentes com os ids (sem erros)
+  ✅ Nenhum id duplicado (exceção: ophilia.json usa id "ophilia" mas é do mesmo
+     personagem que ophilia_clement.json — duplicidade DE PERSONAGEM, não de id)
+  
+  Variações de nome identificadas (aceitáveis):
+  • H'aanit        → haanit (id sem apóstrofo)
+  • Throné Anguis  → throne_anguis (id sem acento)
+  • Vide, o Corruptor → vide_o_corruptor (nome com vírgula)
+  • Entidade 'Mãe' → entidade_mae
+  • Osvald V. Vanstein → osvald_v_vanstein
+
+═══════════════════════════════════════════════════════════════════════════════
+  9. CONSISTÊNCIA ENTRE JSON E DATASET
+═══════════════════════════════════════════════════════════════════════════════
+  A verificação cruzada revelou que:
+
+  ✅ Nomes dos 74 JSONs correspondem aos nomes nas pastas do dataset
+  ✅ Os 6 atributos (força, resistência, velocidade, sentidos, inteligência,
+     poder mágico) existem em todos os 74 JSONs
+  ✅ Todos têm "equipamentos" com "arma" e "itens"
+  ✅ Todos têm array de "tecnicas" com pelo menos 1 técnica
+  ❌ Nenhum NPC verificado para consistência de VALORES entre JSON e arquivos
+     do dataset (requer análise manual de cada campo)
+
+═══════════════════════════════════════════════════════════════════════════════
+  10. AÇÕES RECOMENDADAS (EM ORDEM DE PRIORIDADE)
+═══════════════════════════════════════════════════════════════════════════════
+
+  PRIORIDADE ALTA — Corrigir problemas estruturais:
+  1. 🤝 REMOVER src/npc/data/ophilia.json (duplicado) — manter apenas ophilia_clement.json
+     e copiar os campos adicionais do ophilia.json para o ophilia_clement.json
+  2. 🔧 CRIAR src/npc/data/vysache.json no formato padrão com:
+     - id: "vysache"
+     - todos os 22 campos básicos + 9 extendidos
+     - Pode aproveitar os dados existentes em src/database/npc_vysache.json
+  3. 📁 CRIAR NPC_LORA/dataset/vysache/ com os 18 arquivos de dataset
+  4. 📝 CRIAR RELATORIOS_ETAPA8/relatorio_vysache.md
+
+  PRIORIDADE MÉDIA — Preencher campos extendidos:
+  5. 📝 Adicionar campos extendidos (raca, organizacao, ocupacao, gostos, desgostos,
+     traumas, relacionamentos, lacunas_narrativas, regras_interpretacao) para os
+     42 NPCs que não possuem (vilões, CotC, OT0)
+     → ESSES CAMPOS EXISTEM NOS ARQUIVOS DO DATASET! Basta copiar de:
+     - 01_identity.md  → raca, organizacao
+     - 08_likes.md     → gostos
+     - 09_dislikes.md  → desgostos
+     - 10_traumas.md   → traumas
+     - 11_relationships.md → relacionamentos
+     - 15_narrative_gaps.md → lacunas_narrativas
+     - 16_absolute_rules.md → regras_interpretacao
+
+  PRIORIDADE BAIXA — Preencher exemplos de dataset:
+  6. 📝 Preencher 17_dialog_examples.md e 18_scene_examples.md para os 16 NPCs
+     que têm os arquivos vazios (OT1/OT2: Agnea, Alfyn, Cyrus, Elrica, Entidade,
+     Galdera, H'aanit, Hikari, Lyblac, Olberic, Osvald, Primrose, Therion, Tressa,
+     Trish, Vide)
+
+═══════════════════════════════════════════════════════════════════════════════
+  FIM DO RELATÓRIO
+═══════════════════════════════════════════════════════════════════════════════

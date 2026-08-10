@@ -1,0 +1,19 @@
+{
+  "id": "daejeon",
+  "name": "Daejeon",
+  "image": "/images/cities/daejeon.webp",
+  "description": "Cidade da ciência e tecnologia",
+  "population": "1.5 milhões",
+  "dangerLevel": "C",
+  "guilds": [],
+  "npcs": [],
+  "players": [],
+  "portals": [],
+  "dungeons": [],
+  "bosses": [],
+  "shops": [],
+  "quests": [],
+  "events": [],
+  "resources": [],
+  "notes": ""
+}

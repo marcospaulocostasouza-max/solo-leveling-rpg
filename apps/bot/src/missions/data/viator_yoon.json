@@ -1,0 +1,178 @@
+{
+  "npcId": "viator_yoon",
+  "npcNome": "Viator Yoon",
+  "npcTitulo": "O Caçador de Relíquias Perdidas",
+  "totalMissoes": 10,
+  "missoes": [
+    {
+      "id": "viator_yoon_01",
+      "npcId": "viator_yoon",
+      "numero": 1,
+      "nome": "Capítulo 1: O Despertar de Viator Yoon",
+      "descricao": "Acompanhe os primeiros passos de Viator Yoon como Caçador(a). Guerreiro sem guilda fixa, Viator encontrou durante uma expedição uma chave antiga que, segundo lendas locais, abre o caminho para relíquias perdidas. Viaja reunindo pistas sobre as relíquias....",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Complete a introdução: converse com Viator Yoon e participe de sua primeira incursão",
+      "recompensas": {
+        "xp": 13680,
+        "won": 91200,
+        "item": "Chave Antiga Entalhada"
+      }
+    },
+    {
+      "id": "viator_yoon_02",
+      "npcId": "viator_yoon",
+      "numero": 2,
+      "nome": "Capítulo 2: A Trilha de O Caçador de Relíquias Perdidas",
+      "descricao": "Viator Yoon pede ajuda para investigar pistas ligadas ao seu passado, aprofundando o mistério por trás de seu título de 'O Caçador de Relíquias Perdidas'.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Ajude Viator Yoon a reunir 3 pistas em diferentes localizações",
+      "recompensas": {
+        "xp": 15840,
+        "won": 105600,
+        "item": "Armadura de Placas Sem Ornamentos"
+      }
+    },
+    {
+      "id": "viator_yoon_03",
+      "npcId": "viator_yoon",
+      "numero": 3,
+      "nome": "Capítulo 3: O Confronto de Viator Yoon",
+      "descricao": "O passado de Viator Yoon finalmente alcança o presente. Enfrente ao lado dele(a) a ameaça central de sua história.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Vença o confronto decisivo ao lado de Viator Yoon",
+      "recompensas": {
+        "xp": 18000,
+        "won": 120000,
+        "item": "Réplica Reforçada de: Espada Larga Simples"
+      }
+    },
+    {
+      "id": "viator_yoon_04",
+      "npcId": "viator_yoon",
+      "numero": 4,
+      "nome": "Capítulo 4: O Caçador de Relíquias Perdidas",
+      "descricao": "Com a ameaça derrotada, Viator Yoon consolida seu lugar no mundo dos caçadores, consagrando-se como O Caçador de Relíquias Perdidas.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Complete a missão final e testemunhe o desfecho da história de Viator Yoon",
+      "recompensas": {
+        "xp": 20160,
+        "won": 134400,
+        "item": "Réplica Reforçada de: Espada Larga Simples"
+      }
+    },
+    {
+      "id": "viator_yoon_05",
+      "npcId": "viator_yoon",
+      "numero": 5,
+      "nome": "Reforço de Viator Yoon",
+      "descricao": "Viator Yoon pede que você adquira, em qualquer Loja de Itens da Associação, um equipamento de Rank B compatível com Espadas para reforçar seu arsenal de combate.",
+      "categoria": "secundaria",
+      "tipo": "loja",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Comprar 1 equipamento de Rank B (peça de armadura ou arma)",
+      "recompensas": {
+        "xp": 4320,
+        "won": 28800,
+        "item": "Réplica Reforçada de: Espada Larga Simples"
+      }
+    },
+    {
+      "id": "viator_yoon_06",
+      "npcId": "viator_yoon",
+      "numero": 6,
+      "nome": "Provisões de Viator Yoon",
+      "descricao": "Antes da próxima incursão, Viator Yoon pede que você compre poções de recuperação e um acessório de afinidade elemental Terra na loja mais próxima.",
+      "categoria": "secundaria",
+      "tipo": "loja",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Comprar 3 poções + 1 acessório elemental",
+      "recompensas": {
+        "xp": 3960,
+        "won": 26400,
+        "item": "Armadura de Placas Sem Ornamentos"
+      }
+    },
+    {
+      "id": "viator_yoon_07",
+      "npcId": "viator_yoon",
+      "numero": 7,
+      "nome": "Receita de Viator Yoon",
+      "descricao": "Usando materiais coletados em dungeons de afinidade Terra, produza o item indicado por Viator Yoon em uma bancada de criação da guilda.",
+      "categoria": "secundaria",
+      "tipo": "producao",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Produzir 1 item de afinidade Terra (Rank B)",
+      "recompensas": {
+        "xp": 4680,
+        "won": 31200,
+        "item": "Fragmento de Mana (Terra)"
+      }
+    },
+    {
+      "id": "viator_yoon_08",
+      "npcId": "viator_yoon",
+      "numero": 8,
+      "nome": "Suprimento Especial de Viator Yoon",
+      "descricao": "Viator Yoon ensina uma técnica pessoal de preparo; produza 3 unidades de um item de suporte (poção, munição ou material) ligado ao estilo de combate de Espadas.",
+      "categoria": "secundaria",
+      "tipo": "producao",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Produzir 3 itens de suporte",
+      "recompensas": {
+        "xp": 5040,
+        "won": 33600,
+        "item": "Fragmento de Mana (Terra)"
+      }
+    },
+    {
+      "id": "viator_yoon_09",
+      "npcId": "viator_yoon",
+      "numero": 9,
+      "nome": "Treino de Combate com Viator Yoon",
+      "descricao": "Viator Yoon solicita ajuda para conter uma infestação: derrote golens de pedra em dungeons de Rank B ou inferior.",
+      "categoria": "cacada",
+      "tipo": "caca",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Derrotar 30 Golens de Pedra",
+      "recompensas": {
+        "xp": 5760,
+        "won": 38400,
+        "item": "Chave Antiga Entalhada"
+      }
+    },
+    {
+      "id": "viator_yoon_10",
+      "npcId": "viator_yoon",
+      "numero": 10,
+      "nome": "Caçada Recomendada por Viator Yoon",
+      "descricao": "Uma variante mais forte de golens de pedra tem aparecido nas rondas de Viator Yoon; elimine essas ameaças antes que evoluam.",
+      "categoria": "cacada",
+      "tipo": "caca",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Derrotar 7 Golens de Pedra (variante fortalecida)",
+      "recompensas": {
+        "xp": 7200,
+        "won": 48000,
+        "item": "Réplica Reforçada de: Espada Larga Simples"
+      }
+    }
+  ]
+}

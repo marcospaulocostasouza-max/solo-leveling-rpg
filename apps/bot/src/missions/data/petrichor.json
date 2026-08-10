@@ -1,0 +1,178 @@
+{
+  "npcId": "petrichor",
+  "npcNome": "Petrichor",
+  "npcTitulo": "O Caçador que Corrompe o Que Toca",
+  "totalMissoes": 10,
+  "missoes": [
+    {
+      "id": "petrichor_01",
+      "npcId": "petrichor",
+      "numero": 1,
+      "nome": "Capítulo 1: Rumores sobre Petrichor",
+      "descricao": "Relatos alarmantes começam a circular entre guildas sobre Petrichor. Agente de uma organização oculta especializado em corromper deliberadamente a fauna de dungeon através de exposição controlada a mana negra....",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Investigue 3 relatos de testemunhas sobre Petrichor",
+      "recompensas": {
+        "xp": 25650,
+        "won": 171000,
+        "item": "Máscara Ritualística"
+      }
+    },
+    {
+      "id": "petrichor_02",
+      "npcId": "petrichor",
+      "numero": 2,
+      "nome": "Capítulo 2: Rastreando O Caçador que Corrompe o Que Toca",
+      "descricao": "Reúna evidências concretas da atividade de Petrichor antes que a Associação classifique o caso como perdido.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Reúna provas em 2 locais diferentes ligados a Petrichor",
+      "recompensas": {
+        "xp": 29700,
+        "won": 198000,
+        "item": "Máscara Ritualística"
+      }
+    },
+    {
+      "id": "petrichor_03",
+      "npcId": "petrichor",
+      "numero": 3,
+      "nome": "Capítulo 3: Confronto com Petrichor",
+      "descricao": "É hora de enfrentar Petrichor diretamente. Prepare-se: como O Caçador que Corrompe o Que Toca, este será um combate de Rank S.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Derrote Petrichor em combate direto",
+      "recompensas": {
+        "xp": 33750,
+        "won": 225000,
+        "item": "Réplica Reforçada de: Lança Ritualística de Caça"
+      }
+    },
+    {
+      "id": "petrichor_04",
+      "npcId": "petrichor",
+      "numero": 4,
+      "nome": "Capítulo 4: A Queda de O Caçador que Corrompe o Que Toca",
+      "descricao": "Com Petrichor neutralizado(a), reste apenas reportar o caso à Associação e lidar com as consequências reveladas.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Entregue o relatório final sobre Petrichor à Associação",
+      "recompensas": {
+        "xp": 37800,
+        "won": 252000,
+        "item": "Réplica Reforçada de: Lança Ritualística de Caça"
+      }
+    },
+    {
+      "id": "petrichor_05",
+      "npcId": "petrichor",
+      "numero": 5,
+      "nome": "Reforço de Petrichor",
+      "descricao": "Petrichor pede que você adquira, em qualquer Loja de Itens da Associação, um equipamento de Rank S compatível com Lanças para reforçar seu arsenal de combate.",
+      "categoria": "secundaria",
+      "tipo": "loja",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Comprar 1 equipamento de Rank S (peça de armadura ou arma)",
+      "recompensas": {
+        "xp": 8100,
+        "won": 54000,
+        "item": "Réplica Reforçada de: Lança Ritualística de Caça"
+      }
+    },
+    {
+      "id": "petrichor_06",
+      "npcId": "petrichor",
+      "numero": 6,
+      "nome": "Provisões de Petrichor",
+      "descricao": "Antes da próxima incursão, Petrichor pede que você compre poções de recuperação e um acessório de afinidade elemental Escuridão na loja mais próxima.",
+      "categoria": "secundaria",
+      "tipo": "loja",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Comprar 3 poções + 1 acessório elemental",
+      "recompensas": {
+        "xp": 7425,
+        "won": 49500,
+        "item": "Peles de Criaturas Corrompidas"
+      }
+    },
+    {
+      "id": "petrichor_07",
+      "npcId": "petrichor",
+      "numero": 7,
+      "nome": "Receita de Petrichor",
+      "descricao": "Usando materiais coletados em dungeons de afinidade Escuridão, produza o item indicado por Petrichor em uma bancada de criação da guilda.",
+      "categoria": "secundaria",
+      "tipo": "producao",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Produzir 1 item de afinidade Escuridão (Rank S)",
+      "recompensas": {
+        "xp": 8775,
+        "won": 58500,
+        "item": "Fragmento de Mana (Escuridão)"
+      }
+    },
+    {
+      "id": "petrichor_08",
+      "npcId": "petrichor",
+      "numero": 8,
+      "nome": "Suprimento Especial de Petrichor",
+      "descricao": "Petrichor ensina uma técnica pessoal de preparo; produza 3 unidades de um item de suporte (poção, munição ou material) ligado ao estilo de combate de Lanças.",
+      "categoria": "secundaria",
+      "tipo": "producao",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Produzir 3 itens de suporte",
+      "recompensas": {
+        "xp": 9450,
+        "won": 63000,
+        "item": "Fragmento de Mana (Escuridão)"
+      }
+    },
+    {
+      "id": "petrichor_09",
+      "npcId": "petrichor",
+      "numero": 9,
+      "nome": "Treino de Combate com Petrichor",
+      "descricao": "Petrichor solicita ajuda para conter uma infestação: derrote sombras corrompidas em dungeons de Rank S ou inferior.",
+      "categoria": "cacada",
+      "tipo": "caca",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Derrotar 40 Sombras Corrompidas",
+      "recompensas": {
+        "xp": 10800,
+        "won": 72000,
+        "item": "Máscara Ritualística"
+      }
+    },
+    {
+      "id": "petrichor_10",
+      "npcId": "petrichor",
+      "numero": 10,
+      "nome": "Caçada Recomendada por Petrichor",
+      "descricao": "Uma variante mais forte de sombras corrompidas tem aparecido nas rondas de Petrichor; elimine essas ameaças antes que evoluam.",
+      "categoria": "cacada",
+      "tipo": "caca",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Derrotar 9 Sombras Corrompidas (variante fortalecida)",
+      "recompensas": {
+        "xp": 13500,
+        "won": 90000,
+        "item": "Réplica Reforçada de: Lança Ritualística de Caça"
+      }
+    }
+  ]
+}

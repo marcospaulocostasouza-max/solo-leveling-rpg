@@ -1,0 +1,42 @@
+{
+  "id": "delitia_song",
+  "papel": "Heroína",
+  "base_em": "Delitia (Octopath Traveler 0)",
+  "nome": "Delitia Song",
+  "idade": "21",
+  "nacionalidade": "Sul-coreana, caçadora de Emberglow em busca do irmão desaparecido",
+  "aparencia": "Atlética e competitiva, cabelos castanhos presos em rabo de cavalo alto, veste roupas de caça leves e carrega um arco composto.",
+  "altura_peso": "1,69m / 58kg",
+  "personalidade": "Competitiva ao extremo, desafia qualquer caçador que cruze seu caminho para testar suas próprias habilidades.",
+  "historia": "Caçadora talentosa de Emberglow, Delitia passou a desafiar outros caçadores em duelos na esperança de ficar forte o bastante para encontrar o irmão desaparecido.",
+  "classe": "Ranger",
+  "classe_avancada": "Herói do Arco",
+  "rank": "B",
+  "nivel": 66,
+  "estilo_luta": "Proficiência em Arcos",
+  "atributos": {
+    "forca": 55,
+    "resistencia": 48,
+    "velocidade": 72,
+    "sentidos": 78,
+    "inteligencia": 40,
+    "poder_magico": 20
+  },
+  "elemento": "Vento",
+  "habilidade_unica": "Desafio Aberto — provoca o inimigo mais forte em campo a atacá-la primeiro, aumentando sua própria evasão e taxa crítica enquanto o efeito durar.",
+  "titulo": "A Desafiante de Emberglow",
+  "equipamentos": {
+    "arma": "Arco Composto Artesanal",
+    "itens": "Carcás de Competição, Retrato do Irmão Desaparecido, Faixa de Vitórias em Duelo"
+  },
+  "tecnicas": [
+    "Flecha do Desafio",
+    "Investida Competitiva",
+    "Tiro da Busca"
+  ],
+  "formaFalar": "Fala de forma prática e observadora, com um tom calmo e conectado à natureza.",
+  "localizacao": "Coreia do Sul",
+  "profissao": "Caçador(a) Ranger",
+  "objetivos": "Proteger os inocentes, evoluir como caçador e desvendar os mistérios dos portais.",
+  "valores": "A vida é preciosa. A coragem é essencial. A lealdade é inegociável."
+}

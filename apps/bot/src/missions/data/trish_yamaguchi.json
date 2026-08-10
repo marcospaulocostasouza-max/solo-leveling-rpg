@@ -1,0 +1,178 @@
+{
+  "npcId": "trish_yamaguchi",
+  "npcNome": "Trish Yamaguchi",
+  "npcTitulo": "A Executora Silenciosa dos Corvos",
+  "totalMissoes": 10,
+  "missoes": [
+    {
+      "id": "trish_yamaguchi_01",
+      "npcId": "trish_yamaguchi",
+      "numero": 1,
+      "nome": "Capítulo 1: Rumores sobre Trish Yamaguchi",
+      "descricao": "Relatos alarmantes começam a circular entre guildas sobre Trish Yamaguchi. Parceira de execuções de Rufus dentro da organização Corvos, Trish especializou-se em eliminar alvos através de venenos indetectáveis....",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Investigue 3 relatos de testemunhas sobre Trish Yamaguchi",
+      "recompensas": {
+        "xp": 13680,
+        "won": 91200,
+        "item": "Roupas de Infiltração Justas"
+      }
+    },
+    {
+      "id": "trish_yamaguchi_02",
+      "npcId": "trish_yamaguchi",
+      "numero": 2,
+      "nome": "Capítulo 2: Rastreando A Executora Silenciosa dos Corvos",
+      "descricao": "Reúna evidências concretas da atividade de Trish Yamaguchi antes que a Associação classifique o caso como perdido.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Reúna provas em 2 locais diferentes ligados a Trish Yamaguchi",
+      "recompensas": {
+        "xp": 15840,
+        "won": 105600,
+        "item": "Roupas de Infiltração Justas"
+      }
+    },
+    {
+      "id": "trish_yamaguchi_03",
+      "npcId": "trish_yamaguchi",
+      "numero": 3,
+      "nome": "Capítulo 3: Confronto com Trish Yamaguchi",
+      "descricao": "É hora de enfrentar Trish Yamaguchi diretamente. Prepare-se: como A Executora Silenciosa dos Corvos, este será um combate de Rank B.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Derrote Trish Yamaguchi em combate direto",
+      "recompensas": {
+        "xp": 18000,
+        "won": 120000,
+        "item": "Réplica Reforçada de: Leque de Metal com Frascos de Veneno"
+      }
+    },
+    {
+      "id": "trish_yamaguchi_04",
+      "npcId": "trish_yamaguchi",
+      "numero": 4,
+      "nome": "Capítulo 4: A Queda de A Executora Silenciosa dos Corvos",
+      "descricao": "Com Trish Yamaguchi neutralizado(a), reste apenas reportar o caso à Associação e lidar com as consequências reveladas.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Entregue o relatório final sobre Trish Yamaguchi à Associação",
+      "recompensas": {
+        "xp": 20160,
+        "won": 134400,
+        "item": "Réplica Reforçada de: Leque de Metal com Frascos de Veneno"
+      }
+    },
+    {
+      "id": "trish_yamaguchi_05",
+      "npcId": "trish_yamaguchi",
+      "numero": 5,
+      "nome": "Reforço de Trish Yamaguchi",
+      "descricao": "Trish Yamaguchi pede que você adquira, em qualquer Loja de Itens da Associação, um equipamento de Rank B compatível com Leques e Lâminas Ocultas para reforçar seu arsenal de combate.",
+      "categoria": "secundaria",
+      "tipo": "loja",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Comprar 1 equipamento de Rank B (peça de armadura ou arma)",
+      "recompensas": {
+        "xp": 4320,
+        "won": 28800,
+        "item": "Réplica Reforçada de: Leque de Metal com Frascos de Veneno"
+      }
+    },
+    {
+      "id": "trish_yamaguchi_06",
+      "npcId": "trish_yamaguchi",
+      "numero": 6,
+      "nome": "Provisões de Trish Yamaguchi",
+      "descricao": "Antes da próxima incursão, Trish Yamaguchi pede que você compre poções de recuperação e um acessório de afinidade elemental Planta na loja mais próxima.",
+      "categoria": "secundaria",
+      "tipo": "loja",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Comprar 3 poções + 1 acessório elemental",
+      "recompensas": {
+        "xp": 3960,
+        "won": 26400,
+        "item": "Coleção de Toxinas Raras"
+      }
+    },
+    {
+      "id": "trish_yamaguchi_07",
+      "npcId": "trish_yamaguchi",
+      "numero": 7,
+      "nome": "Receita de Trish Yamaguchi",
+      "descricao": "Usando materiais coletados em dungeons de afinidade Planta, produza o item indicado por Trish Yamaguchi em uma bancada de criação da guilda.",
+      "categoria": "secundaria",
+      "tipo": "producao",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Produzir 1 item de afinidade Planta (Rank B)",
+      "recompensas": {
+        "xp": 4680,
+        "won": 31200,
+        "item": "Fragmento de Mana (Planta)"
+      }
+    },
+    {
+      "id": "trish_yamaguchi_08",
+      "npcId": "trish_yamaguchi",
+      "numero": 8,
+      "nome": "Suprimento Especial de Trish Yamaguchi",
+      "descricao": "Trish Yamaguchi ensina uma técnica pessoal de preparo; produza 3 unidades de um item de suporte (poção, munição ou material) ligado ao estilo de combate de Leques e Lâminas Ocultas.",
+      "categoria": "secundaria",
+      "tipo": "producao",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Produzir 3 itens de suporte",
+      "recompensas": {
+        "xp": 5040,
+        "won": 33600,
+        "item": "Fragmento de Mana (Planta)"
+      }
+    },
+    {
+      "id": "trish_yamaguchi_09",
+      "npcId": "trish_yamaguchi",
+      "numero": 9,
+      "nome": "Treino de Combate com Trish Yamaguchi",
+      "descricao": "Trish Yamaguchi solicita ajuda para conter uma infestação: derrote criaturas vegetais em dungeons de Rank B ou inferior.",
+      "categoria": "cacada",
+      "tipo": "caca",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Derrotar 30 Criaturas Vegetais",
+      "recompensas": {
+        "xp": 5760,
+        "won": 38400,
+        "item": "Roupas de Infiltração Justas"
+      }
+    },
+    {
+      "id": "trish_yamaguchi_10",
+      "npcId": "trish_yamaguchi",
+      "numero": 10,
+      "nome": "Caçada Recomendada por Trish Yamaguchi",
+      "descricao": "Uma variante mais forte de criaturas vegetais tem aparecido nas rondas de Trish Yamaguchi; elimine essas ameaças antes que evoluam.",
+      "categoria": "cacada",
+      "tipo": "caca",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Derrotar 7 Criaturas Vegetais (variante fortalecida)",
+      "recompensas": {
+        "xp": 7200,
+        "won": 48000,
+        "item": "Réplica Reforçada de: Leque de Metal com Frascos de Veneno"
+      }
+    }
+  ]
+}

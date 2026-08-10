@@ -1,0 +1,42 @@
+{
+  "id": "gideon_ma",
+  "papel": "Vilão",
+  "base_em": "Gideon (Octopath Traveler)",
+  "nome": "Gideon Ma",
+  "idade": "50",
+  "nacionalidade": "Sul-coreano, magistrado corrupto de uma cidade portuária",
+  "aparencia": "Corpulento e de voz grave, veste trajes formais de magistrado carregados de joias, cabelos grisalhos penteados para trás.",
+  "altura_peso": "1,84m / 105kg",
+  "personalidade": "Corrupto até a raiz, usa a própria posição de autoridade para extorquir comerciantes em troca de propina constante.",
+  "historia": "Magistrado responsável por arbitrar disputas comerciais, Gideon construiu um esquema de extorsão forçando comerciantes a pagar 'taxas de proteção'.",
+  "classe": "Lutador",
+  "classe_avancada": "Hrymir",
+  "rank": "B",
+  "nivel": 70,
+  "estilo_luta": "Proficiência em Armas Ocultas (Bastão-Lâmina)",
+  "atributos": {
+    "forca": 62,
+    "resistencia": 60,
+    "velocidade": 35,
+    "sentidos": 48,
+    "inteligencia": 55,
+    "poder_magico": 20
+  },
+  "elemento": "Metal",
+  "habilidade_unica": "Taxa de Proteção — obriga o grupo adversário a perder uma porção de itens ou ouro do inventário a cada turno, revertendo parte disso em cura para si mesmo.",
+  "titulo": "O Magistrado que Vendia Justiça",
+  "equipamentos": {
+    "arma": "Bastão Cerimonial com Lâmina Oculta",
+    "itens": "Trajes Formais Carregados de Joias, Registro de Extorsões, Selo Falsificado do Tribunal"
+  },
+  "tecnicas": [
+    "Golpe da Propina",
+    "Julgamento Comprado",
+    "Extorsão Violenta"
+  ],
+  "formaFalar": "Fala com tom frio e calculista, frequentemente manipulando as palavras para obter vantagem. Suas frases são precisas e raramente revelam emoções verdadeiras.",
+  "localizacao": "Localização desconhecida — opera nas sombras",
+  "profissao": "Antagonista",
+  "objetivos": "Expandir seu poder e influência, eliminando qualquer ameaça aos seus planos.",
+  "valores": "O poder é o único caminho. A fraqueza é imperdoável. Os fins justificam os meios."
+}

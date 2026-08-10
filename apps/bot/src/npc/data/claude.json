@@ -1,0 +1,42 @@
+{
+  "id": "claude",
+  "papel": "Vilão",
+  "base_em": "Claude (Ordem da Meia-Noite — ligado a Throné)",
+  "nome": "Claude",
+  "idade": "Aparenta 25 anos (idade real desconhecida — resultado de experimento oculto)",
+  "nacionalidade": "Origem incerta; criado a partir de um experimento de uma organização oculta",
+  "aparencia": "Beleza perturbadora e artificial, cabelos negros perfeitamente simétricos, veste roupas escuras elegantes.",
+  "altura_peso": "1,75m / 62kg",
+  "personalidade": "Frio de uma forma quase inumana, trata pessoas — incluindo crianças que criou — como ferramentas descartáveis.",
+  "historia": "Resultado de um experimento fracassado, Claude escapou de seus criadores e fundou sua própria organização criminosa, treinando crianças órfãs como ladras e assassinas.",
+  "classe": "Assassino",
+  "classe_avancada": "Lâmina Sombria",
+  "rank": "S",
+  "nivel": 94,
+  "estilo_luta": "Proficiência em Adagas",
+  "atributos": {
+    "forca": 58,
+    "resistencia": 50,
+    "velocidade": 88,
+    "sentidos": 85,
+    "inteligencia": 78,
+    "poder_magico": 55
+  },
+  "elemento": "Sombra",
+  "habilidade_unica": "Controle da Coleira — inflige um debuff que impede o alvo de usar habilidades especiais por 2 turnos, simbolizando o mesmo controle que exerce sobre seus 'filhos'.",
+  "titulo": "O Fundador Sem Coração dos Corvos Negros",
+  "equipamentos": {
+    "arma": "Par de Adagas Perfeitamente Simétricas",
+    "itens": "Roupas Escuras Elegantes, Coleiras de Controle Sobressalentes, Registro de 'Filhos' Descartados"
+  },
+  "tecnicas": [
+    "Corte do Vazio",
+    "Controle Absoluto",
+    "Golpe do Fundador Sem Alma"
+  ],
+  "formaFalar": "Fala com tom frio e calculista, frequentemente manipulando as palavras para obter vantagem. Suas frases são precisas e raramente revelam emoções verdadeiras.",
+  "localizacao": "Localização desconhecida — opera nas sombras",
+  "profissao": "Antagonista",
+  "objetivos": "Expandir seu poder e influência, eliminando qualquer ameaça aos seus planos.",
+  "valores": "O poder é o único caminho. A fraqueza é imperdoável. Os fins justificam os meios."
+}

@@ -1,0 +1,42 @@
+{
+  "id": "tatloch",
+  "papel": "Vilã",
+  "base_em": "Tatloch (Champions of the Continent)",
+  "nome": "Tatloch",
+  "idade": "Aparenta 40 anos (idade real desconhecida)",
+  "nacionalidade": "Sul-coreana, autoproclamada 'Imperatriz' de uma nação congelada no tempo",
+  "aparencia": "Imponente e gélida, cabelos brancos longos como gelo entrelaçado, veste trajes imperiais cobertos por uma camada permanente de geada.",
+  "altura_peso": "1,76m / desconhecido",
+  "personalidade": "Autoritária, presa a costumes e protocolos de uma era que já não existe, e absolutamente convencida de sua própria legitimidade como governante.",
+  "historia": "Antiga líder de uma nação erguida ao redor de um portal que parou o tempo, Tatloch governa um território congelado onde nada envelhece, mantendo súditos petrificados.",
+  "classe": "Mago Elemental",
+  "classe_avancada": "Sábio",
+  "rank": "S",
+  "nivel": 97,
+  "estilo_luta": "Proficiência em Cajados e Orbes",
+  "atributos": {
+    "forca": 40,
+    "resistencia": 72,
+    "velocidade": 45,
+    "sentidos": 68,
+    "inteligencia": 82,
+    "poder_magico": 95
+  },
+  "elemento": "Gelo",
+  "habilidade_unica": "Decreto do Tempo Parado — congela o campo de batalha por um turno, impedindo qualquer inimigo de agir, exceto ela mesma, que ataca livremente durante esse período.",
+  "titulo": "A Imperatriz que Parou o Tempo",
+  "equipamentos": {
+    "arma": "Cajado de Gelo Eterno",
+    "itens": "Trajes Imperiais Congelados, Coroa de Geada, Relógio Imperial Parado"
+  },
+  "tecnicas": [
+    "Decreto Gélido",
+    "Congelamento Imperial",
+    "Julgamento do Tempo Parado"
+  ],
+  "formaFalar": "Fala com tom frio e calculista, frequentemente manipulando as palavras para obter vantagem. Suas frases são precisas e raramente revelam emoções verdadeiras.",
+  "localizacao": "Localização desconhecida — opera nas sombras",
+  "profissao": "Antagonista",
+  "objetivos": "Expandir seu poder e influência, eliminando qualquer ameaça aos seus planos.",
+  "valores": "O poder é o único caminho. A fraqueza é imperdoável. Os fins justificam os meios."
+}

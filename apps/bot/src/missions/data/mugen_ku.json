@@ -1,0 +1,178 @@
+{
+  "npcId": "mugen_ku",
+  "npcNome": "Mugen Ku",
+  "npcTitulo": "O Usurpador que Corrompeu o Clã",
+  "totalMissoes": 10,
+  "missoes": [
+    {
+      "id": "mugen_ku_01",
+      "npcId": "mugen_ku",
+      "numero": 1,
+      "nome": "Capítulo 1: Rumores sobre Mugen Ku",
+      "descricao": "Relatos alarmantes começam a circular entre guildas sobre Mugen Ku. Antigo instrutor de segunda linha, Mugen orquestrou um golpe sangrento contra a liderança legítima da guilda, culpando um jovem herdeiro....",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Investigue 3 relatos de testemunhas sobre Mugen Ku",
+      "recompensas": {
+        "xp": 25650,
+        "won": 171000,
+        "item": "Armadura de Placas Negras"
+      }
+    },
+    {
+      "id": "mugen_ku_02",
+      "npcId": "mugen_ku",
+      "numero": 2,
+      "nome": "Capítulo 2: Rastreando O Usurpador que Corrompeu o Clã",
+      "descricao": "Reúna evidências concretas da atividade de Mugen Ku antes que a Associação classifique o caso como perdido.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Reúna provas em 2 locais diferentes ligados a Mugen Ku",
+      "recompensas": {
+        "xp": 29700,
+        "won": 198000,
+        "item": "Armadura de Placas Negras"
+      }
+    },
+    {
+      "id": "mugen_ku_03",
+      "npcId": "mugen_ku",
+      "numero": 3,
+      "nome": "Capítulo 3: Confronto com Mugen Ku",
+      "descricao": "É hora de enfrentar Mugen Ku diretamente. Prepare-se: como O Usurpador que Corrompeu o Clã, este será um combate de Rank S.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Derrote Mugen Ku em combate direto",
+      "recompensas": {
+        "xp": 33750,
+        "won": 225000,
+        "item": "Réplica Reforçada de: Espada Negra Corrosiva"
+      }
+    },
+    {
+      "id": "mugen_ku_04",
+      "npcId": "mugen_ku",
+      "numero": 4,
+      "nome": "Capítulo 4: A Queda de O Usurpador que Corrompeu o Clã",
+      "descricao": "Com Mugen Ku neutralizado(a), reste apenas reportar o caso à Associação e lidar com as consequências reveladas.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Entregue o relatório final sobre Mugen Ku à Associação",
+      "recompensas": {
+        "xp": 37800,
+        "won": 252000,
+        "item": "Réplica Reforçada de: Espada Negra Corrosiva"
+      }
+    },
+    {
+      "id": "mugen_ku_05",
+      "npcId": "mugen_ku",
+      "numero": 5,
+      "nome": "Reforço de Mugen Ku",
+      "descricao": "Mugen Ku pede que você adquira, em qualquer Loja de Itens da Associação, um equipamento de Rank S compatível com Espadas para reforçar seu arsenal de combate.",
+      "categoria": "secundaria",
+      "tipo": "loja",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Comprar 1 equipamento de Rank S (peça de armadura ou arma)",
+      "recompensas": {
+        "xp": 8100,
+        "won": 54000,
+        "item": "Réplica Reforçada de: Espada Negra Corrosiva"
+      }
+    },
+    {
+      "id": "mugen_ku_06",
+      "npcId": "mugen_ku",
+      "numero": 6,
+      "nome": "Provisões de Mugen Ku",
+      "descricao": "Antes da próxima incursão, Mugen Ku pede que você compre poções de recuperação e um acessório de afinidade elemental Escuridão na loja mais próxima.",
+      "categoria": "secundaria",
+      "tipo": "loja",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Comprar 3 poções + 1 acessório elemental",
+      "recompensas": {
+        "xp": 7425,
+        "won": 49500,
+        "item": "Símbolos do Clã Usurpado"
+      }
+    },
+    {
+      "id": "mugen_ku_07",
+      "npcId": "mugen_ku",
+      "numero": 7,
+      "nome": "Receita de Mugen Ku",
+      "descricao": "Usando materiais coletados em dungeons de afinidade Escuridão, produza o item indicado por Mugen Ku em uma bancada de criação da guilda.",
+      "categoria": "secundaria",
+      "tipo": "producao",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Produzir 1 item de afinidade Escuridão (Rank S)",
+      "recompensas": {
+        "xp": 8775,
+        "won": 58500,
+        "item": "Fragmento de Mana (Escuridão)"
+      }
+    },
+    {
+      "id": "mugen_ku_08",
+      "npcId": "mugen_ku",
+      "numero": 8,
+      "nome": "Suprimento Especial de Mugen Ku",
+      "descricao": "Mugen Ku ensina uma técnica pessoal de preparo; produza 3 unidades de um item de suporte (poção, munição ou material) ligado ao estilo de combate de Espadas.",
+      "categoria": "secundaria",
+      "tipo": "producao",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Produzir 3 itens de suporte",
+      "recompensas": {
+        "xp": 9450,
+        "won": 63000,
+        "item": "Fragmento de Mana (Escuridão)"
+      }
+    },
+    {
+      "id": "mugen_ku_09",
+      "npcId": "mugen_ku",
+      "numero": 9,
+      "nome": "Treino de Combate com Mugen Ku",
+      "descricao": "Mugen Ku solicita ajuda para conter uma infestação: derrote sombras corrompidas em dungeons de Rank S ou inferior.",
+      "categoria": "cacada",
+      "tipo": "caca",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Derrotar 40 Sombras Corrompidas",
+      "recompensas": {
+        "xp": 10800,
+        "won": 72000,
+        "item": "Armadura de Placas Negras"
+      }
+    },
+    {
+      "id": "mugen_ku_10",
+      "npcId": "mugen_ku",
+      "numero": 10,
+      "nome": "Caçada Recomendada por Mugen Ku",
+      "descricao": "Uma variante mais forte de sombras corrompidas tem aparecido nas rondas de Mugen Ku; elimine essas ameaças antes que evoluam.",
+      "categoria": "cacada",
+      "tipo": "caca",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Derrotar 9 Sombras Corrompidas (variante fortalecida)",
+      "recompensas": {
+        "xp": 13500,
+        "won": 90000,
+        "item": "Réplica Reforçada de: Espada Negra Corrosiva"
+      }
+    }
+  ]
+}

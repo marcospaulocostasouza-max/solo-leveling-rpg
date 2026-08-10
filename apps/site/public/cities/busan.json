@@ -1,0 +1,19 @@
+{
+  "id": "busan",
+  "name": "Busan",
+  "image": "/images/cities/busan.webp",
+  "description": "Maior porto do país",
+  "population": "3.5 milhões",
+  "dangerLevel": "D",
+  "guilds": [],
+  "npcs": [],
+  "players": [],
+  "portals": [],
+  "dungeons": [],
+  "bosses": [],
+  "shops": [],
+  "quests": [],
+  "events": [],
+  "resources": [],
+  "notes": ""
+}

@@ -1,0 +1,10 @@
+{
+  "generatorStatus": "coordinates_ready_rules_pending",
+  "note": "Gates usam coordenadas independentes e podem surgir em qualquer ponto do mapa. O algoritmo definitivo de sorteio permanece aberto até as regras finais do RPG.",
+  "weeklyLimit": 1,
+  "defaultLifetimeDays": 7,
+  "active": [
+    {"id":"weekly-demo-01","name":"Gate da Ruptura Violeta","x":52.8,"y":40.5,"travelTargetId":"wonju","travelTargetName":"Wonju","rank":"C","type":"common","status":"open","rewardWon":250000,"rewardXp":5000,"expiresInDays":6,"boss":"Desconhecido"},
+    {"id":"weekly-demo-02","name":"Gate Carmesim Instável","x":69.2,"y":23.8,"travelTargetId":"gangneung","travelTargetName":"Gangneung","rank":"B","type":"red","status":"open","rewardWon":500000,"rewardXp":10000,"expiresInDays":4,"boss":"Desconhecido"}
+  ]
+}

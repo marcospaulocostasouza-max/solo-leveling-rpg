@@ -1,0 +1,42 @@
+{
+  "id": "alaune_yeong",
+  "papel": "Vilã",
+  "base_em": "Alaune (Champions of the Continent)",
+  "nome": "Alaune Yeong",
+  "idade": "Aparenta 35 anos (idade real desconhecida)",
+  "nacionalidade": "Sul-coreana, autoproclamada 'Rainha' de um reino de dungeon abandonado",
+  "aparencia": "Bela e imponente, cabelos loiro-esverdeados longos entrelaçados com vinhas vivas, veste trajes reais decadentes cobertos por musgo e flores negras.",
+  "altura_peso": "1,73m / desconhecido",
+  "personalidade": "Fria, teatral e convencida de sua própria realeza mesmo sem súditos vivos. Trata intrusos como usurpadores de um trono que só ela reconhece.",
+  "historia": "Ex-líder de uma comunidade que se isolou dentro de um castelo erguido sobre um portal profundo, Alaune foi corrompida por uma anomalia de mana, fundindo-a a uma força vegetal ancestral.",
+  "classe": "Mago Elemental",
+  "classe_avancada": "Druida",
+  "rank": "S",
+  "nivel": 96,
+  "estilo_luta": "Proficiência em Cajados e Orbes",
+  "atributos": {
+    "forca": 42,
+    "resistencia": 68,
+    "velocidade": 48,
+    "sentidos": 65,
+    "inteligencia": 78,
+    "poder_magico": 92
+  },
+  "elemento": "Planta",
+  "habilidade_unica": "Domínio da Corte Oca — invoca raízes espectrais que prendem os inimigos no lugar por um turno, drenando parte de seu HP para curar a própria Alaune.",
+  "titulo": "A Rainha do Trono Apodrecido",
+  "equipamentos": {
+    "arma": "Cetro Vivo Entrelaçado",
+    "itens": "Trajes Reais Decadentes, Coroa Coberta de Musgo, Selo da Corte Extinta"
+  },
+  "tecnicas": [
+    "Ordem da Rainha",
+    "Raízes do Trono",
+    "Julgamento Vegetal"
+  ],
+  "formaFalar": "Fala com tom frio e calculista, frequentemente manipulando as palavras para obter vantagem. Suas frases são precisas e raramente revelam emoções verdadeiras.",
+  "localizacao": "Localização desconhecida — opera nas sombras",
+  "profissao": "Antagonista",
+  "objetivos": "Expandir seu poder e influência, eliminando qualquer ameaça aos seus planos.",
+  "valores": "O poder é o único caminho. A fraqueza é imperdoável. Os fins justificam os meios."
+}

@@ -1,0 +1,178 @@
+{
+  "npcId": "tressa_colzione",
+  "npcNome": "Tressa Colzione",
+  "npcTitulo": "A Mercadora Errante",
+  "totalMissoes": 10,
+  "missoes": [
+    {
+      "id": "tressa_colzione_01",
+      "npcId": "tressa_colzione",
+      "numero": 1,
+      "nome": "Capítulo 1: O Despertar de Tressa Colzione",
+      "descricao": "Acompanhe os primeiros passos de Tressa Colzione como Caçador(a). Filha de donos de uma pequena loja de itens para caçadores, Tressa cresceu ouvindo histórias de dungeons trazidas por clientes exaustos. Seu Despertar ocorreu aos 16 anos, quando negociou a própria so...",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Complete a introdução: converse com Tressa Colzione e participe de sua primeira incursão",
+      "recompensas": {
+        "xp": 13680,
+        "won": 91200,
+        "item": "Bolsa Dimensional de Comércio"
+      }
+    },
+    {
+      "id": "tressa_colzione_02",
+      "npcId": "tressa_colzione",
+      "numero": 2,
+      "nome": "Capítulo 2: A Trilha de A Mercadora Errante",
+      "descricao": "Tressa Colzione pede ajuda para investigar pistas ligadas ao seu passado, aprofundando o mistério por trás de seu título de 'A Mercadora Errante'.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Ajude Tressa Colzione a reunir 3 pistas em diferentes localizações",
+      "recompensas": {
+        "xp": 15840,
+        "won": 105600,
+        "item": "Balança de Avaliação Mágica"
+      }
+    },
+    {
+      "id": "tressa_colzione_03",
+      "npcId": "tressa_colzione",
+      "numero": 3,
+      "nome": "Capítulo 3: O Confronto de Tressa Colzione",
+      "descricao": "O passado de Tressa Colzione finalmente alcança o presente. Enfrente ao lado dele(a) a ameaça central de sua história.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Vença o confronto decisivo ao lado de Tressa Colzione",
+      "recompensas": {
+        "xp": 18000,
+        "won": 120000,
+        "item": "Réplica Reforçada de: Par de Adagas Cravejadas de Moedas"
+      }
+    },
+    {
+      "id": "tressa_colzione_04",
+      "npcId": "tressa_colzione",
+      "numero": 4,
+      "nome": "Capítulo 4: A Mercadora Errante",
+      "descricao": "Com a ameaça derrotada, Tressa Colzione consolida seu lugar no mundo dos caçadores, consagrando-se como A Mercadora Errante.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Complete a missão final e testemunhe o desfecho da história de Tressa Colzione",
+      "recompensas": {
+        "xp": 20160,
+        "won": 134400,
+        "item": "Réplica Reforçada de: Par de Adagas Cravejadas de Moedas"
+      }
+    },
+    {
+      "id": "tressa_colzione_05",
+      "npcId": "tressa_colzione",
+      "numero": 5,
+      "nome": "Reforço de Tressa Colzione",
+      "descricao": "Tressa Colzione pede que você adquira, em qualquer Loja de Itens da Associação, um equipamento de Rank B compatível com Adagas para reforçar seu arsenal de combate.",
+      "categoria": "secundaria",
+      "tipo": "loja",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Comprar 1 equipamento de Rank B (peça de armadura ou arma)",
+      "recompensas": {
+        "xp": 4320,
+        "won": 28800,
+        "item": "Réplica Reforçada de: Par de Adagas Cravejadas de Moedas"
+      }
+    },
+    {
+      "id": "tressa_colzione_06",
+      "npcId": "tressa_colzione",
+      "numero": 6,
+      "nome": "Provisões de Tressa Colzione",
+      "descricao": "Antes da próxima incursão, Tressa Colzione pede que você compre poções de recuperação e um acessório de afinidade elemental Metal na loja mais próxima.",
+      "categoria": "secundaria",
+      "tipo": "loja",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Comprar 3 poções + 1 acessório elemental",
+      "recompensas": {
+        "xp": 3960,
+        "won": 26400,
+        "item": "Balança de Avaliação Mágica"
+      }
+    },
+    {
+      "id": "tressa_colzione_07",
+      "npcId": "tressa_colzione",
+      "numero": 7,
+      "nome": "Receita de Tressa Colzione",
+      "descricao": "Usando materiais coletados em dungeons de afinidade Metal, produza o item indicado por Tressa Colzione em uma bancada de criação da guilda.",
+      "categoria": "secundaria",
+      "tipo": "producao",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Produzir 1 item de afinidade Metal (Rank B)",
+      "recompensas": {
+        "xp": 4680,
+        "won": 31200,
+        "item": "Fragmento de Mana (Metal)"
+      }
+    },
+    {
+      "id": "tressa_colzione_08",
+      "npcId": "tressa_colzione",
+      "numero": 8,
+      "nome": "Suprimento Especial de Tressa Colzione",
+      "descricao": "Tressa Colzione ensina uma técnica pessoal de preparo; produza 3 unidades de um item de suporte (poção, munição ou material) ligado ao estilo de combate de Adagas.",
+      "categoria": "secundaria",
+      "tipo": "producao",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Produzir 3 itens de suporte",
+      "recompensas": {
+        "xp": 5040,
+        "won": 33600,
+        "item": "Fragmento de Mana (Metal)"
+      }
+    },
+    {
+      "id": "tressa_colzione_09",
+      "npcId": "tressa_colzione",
+      "numero": 9,
+      "nome": "Treino de Combate com Tressa Colzione",
+      "descricao": "Tressa Colzione solicita ajuda para conter uma infestação: derrote autômatos de metal em dungeons de Rank B ou inferior.",
+      "categoria": "cacada",
+      "tipo": "caca",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Derrotar 30 Autômatos de Metal",
+      "recompensas": {
+        "xp": 5760,
+        "won": 38400,
+        "item": "Bolsa Dimensional de Comércio"
+      }
+    },
+    {
+      "id": "tressa_colzione_10",
+      "npcId": "tressa_colzione",
+      "numero": 10,
+      "nome": "Caçada Recomendada por Tressa Colzione",
+      "descricao": "Uma variante mais forte de autômatos de metal tem aparecido nas rondas de Tressa Colzione; elimine essas ameaças antes que evoluam.",
+      "categoria": "cacada",
+      "tipo": "caca",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Derrotar 7 Autômatos de Metal (variante fortalecida)",
+      "recompensas": {
+        "xp": 7200,
+        "won": 48000,
+        "item": "Réplica Reforçada de: Par de Adagas Cravejadas de Moedas"
+      }
+    }
+  ]
+}

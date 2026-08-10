@@ -1,0 +1,42 @@
+{
+  "id": "werner_choi",
+  "papel": "Vilão",
+  "base_em": "Werner (Octopath Traveler)",
+  "nome": "Werner Choi",
+  "idade": "46",
+  "nacionalidade": "Sul-coreano, ex-companheiro de armas transformado em traidor",
+  "aparencia": "Corpo robusto de guerreiro veterano, cabelos ruivos grisalhos curtos, uma armadura pesada exibindo o emblema de uma guilda que ele mesmo ajudou a destruir.",
+  "altura_peso": "1,90m / 102kg",
+  "personalidade": "Frio, ambicioso e disposto a sacrificar qualquer laço antigo em nome de poder e reconhecimento.",
+  "historia": "Antigo companheiro de armas de um lendário mestre de dojo, Werner vendeu informações sobre as defesas do dojo em troca de poder, resultando na destruição do local.",
+  "classe": "Lutador",
+  "classe_avancada": "Herói da Espada",
+  "rank": "S",
+  "nivel": 95,
+  "estilo_luta": "Proficiência em Espadas",
+  "atributos": {
+    "forca": 90,
+    "resistencia": 85,
+    "velocidade": 48,
+    "sentidos": 50,
+    "inteligencia": 42,
+    "poder_magico": 15
+  },
+  "elemento": "Metal",
+  "habilidade_unica": "Golpe da Traição — ignora toda a defesa de um único alvo em um ataque devastador, mas deixa Werner vulnerável a contra-ataques por um turno inteiro.",
+  "titulo": "O Guerreiro que Vendeu o Próprio Dojo",
+  "equipamentos": {
+    "arma": "Espada Pesada Roubada da Guilda Rival",
+    "itens": "Armadura com Emblema Manchado, Bolsa de Moedas da Traição, Carta de Recomendação Falsa"
+  },
+  "tecnicas": [
+    "Corte da Traição",
+    "Fúria de Ferro",
+    "Golpe Sem Honra"
+  ],
+  "formaFalar": "Fala com tom frio e calculista, frequentemente manipulando as palavras para obter vantagem. Suas frases são precisas e raramente revelam emoções verdadeiras.",
+  "localizacao": "Localização desconhecida — opera nas sombras",
+  "profissao": "Antagonista",
+  "objetivos": "Expandir seu poder e influência, eliminando qualquer ameaça aos seus planos.",
+  "valores": "O poder é o único caminho. A fraqueza é imperdoável. Os fins justificam os meios."
+}

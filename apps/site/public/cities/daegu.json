@@ -1,0 +1,19 @@
+{
+  "id": "daegu",
+  "name": "Daegu",
+  "image": "/images/cities/daegu.webp",
+  "description": "Centro industrial e tecnológico",
+  "population": "2.4 milhões",
+  "dangerLevel": "D",
+  "guilds": [],
+  "npcs": [],
+  "players": [],
+  "portals": [],
+  "dungeons": [],
+  "bosses": [],
+  "shops": [],
+  "quests": [],
+  "events": [],
+  "resources": [],
+  "notes": ""
+}

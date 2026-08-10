@@ -1,0 +1,42 @@
+{
+  "id": "bargello_yeon",
+  "papel": "Herói",
+  "base_em": "Bargello (Champions of the Continent)",
+  "nome": "Bargello Yeon",
+  "idade": "34",
+  "nacionalidade": "Sul-coreano, líder de guilda caído em desgraça em Valore",
+  "aparencia": "Corpo imponente com armadura pesada de placas escurecidas pelo tempo, cabelos negros curtos e uma cicatriz cruzando o queixo. Carrega uma espada larga.",
+  "altura_peso": "1,92m / 100kg",
+  "personalidade": "Orgulhoso, disciplinado e assombrado por decisões que custaram a queda de sua própria guilda. Busca redenção através de atos de proteção.",
+  "historia": "Antigo líder de uma guilda respeitada, Bargello viu sua organização ruir após um ataque coordenado a um portal instável. Exilado, agora protege comunidades de ameaças.",
+  "classe": "Lutador",
+  "classe_avancada": "Herói da Espada",
+  "rank": "A",
+  "nivel": 88,
+  "estilo_luta": "Proficiência em Espadas",
+  "atributos": {
+    "forca": 88,
+    "resistencia": 80,
+    "velocidade": 50,
+    "sentidos": 52,
+    "inteligencia": 45,
+    "poder_magico": 20
+  },
+  "elemento": "Terra",
+  "habilidade_unica": "Comando do Caído — assume o dano de um aliado prestes a ser derrotado, redirecionando o golpe para si mesmo e recebendo redução de dano ao fazê-lo.",
+  "titulo": "O Comandante que Caiu com sua Guilda",
+  "equipamentos": {
+    "arma": "Espada Larga da Guilda Extinta",
+    "itens": "Armadura de Placas Escurecida, Estandarte Guardado, Lista de Nomes Perdidos"
+  },
+  "tecnicas": [
+    "Golpe do Comando",
+    "Escudo do Sacrifício",
+    "Corte da Redenção"
+  ],
+  "formaFalar": "Fala com determinação e honra, valorizando a força e a coragem. Suas palavras são firmes e inspiradoras.",
+  "localizacao": "Coreia do Sul",
+  "profissao": "Caçador(a) Lutador",
+  "objetivos": "Proteger os inocentes, evoluir como caçador e desvendar os mistérios dos portais.",
+  "valores": "A vida é preciosa. A coragem é essencial. A lealdade é inegociável."
+}

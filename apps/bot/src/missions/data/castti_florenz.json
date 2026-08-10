@@ -1,0 +1,178 @@
+{
+  "npcId": "castti_florenz",
+  "npcNome": "Castti Florenz",
+  "npcTitulo": "A Curandeira Sem Memórias",
+  "totalMissoes": 10,
+  "missoes": [
+    {
+      "id": "castti_florenz_01",
+      "npcId": "castti_florenz",
+      "numero": 1,
+      "nome": "Capítulo 1: O Despertar de Castti Florenz",
+      "descricao": "Acompanhe os primeiros passos de Castti Florenz como Caçador(a). Encontrada à deriva perto de uma zona de colapso de dungeon sem memória de quem era, Castti foi acolhida por um grupo itinerante de curandeiros que viajava tratando vítimas de acidentes em portais. De...",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Complete a introdução: converse com Castti Florenz e participe de sua primeira incursão",
+      "recompensas": {
+        "xp": 17100,
+        "won": 114000,
+        "item": "Bolsa de Ingredientes Raros"
+      }
+    },
+    {
+      "id": "castti_florenz_02",
+      "npcId": "castti_florenz",
+      "numero": 2,
+      "nome": "Capítulo 2: A Trilha de A Curandeira Sem Memórias",
+      "descricao": "Castti Florenz pede ajuda para investigar pistas ligadas ao seu passado, aprofundando o mistério por trás de seu título de 'A Curandeira Sem Memórias'.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Ajude Castti Florenz a reunir 3 pistas em diferentes localizações",
+      "recompensas": {
+        "xp": 19800,
+        "won": 132000,
+        "item": "Diário de Memórias Fragmentadas"
+      }
+    },
+    {
+      "id": "castti_florenz_03",
+      "npcId": "castti_florenz",
+      "numero": 3,
+      "nome": "Capítulo 3: O Confronto de Castti Florenz",
+      "descricao": "O passado de Castti Florenz finalmente alcança o presente. Enfrente ao lado dele(a) a ameaça central de sua história.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Vença o confronto decisivo ao lado de Castti Florenz",
+      "recompensas": {
+        "xp": 22500,
+        "won": 150000,
+        "item": "Réplica Reforçada de: Machado de Colheita Reforçado"
+      }
+    },
+    {
+      "id": "castti_florenz_04",
+      "npcId": "castti_florenz",
+      "numero": 4,
+      "nome": "Capítulo 4: A Curandeira Sem Memórias",
+      "descricao": "Com a ameaça derrotada, Castti Florenz consolida seu lugar no mundo dos caçadores, consagrando-se como A Curandeira Sem Memórias.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Complete a missão final e testemunhe o desfecho da história de Castti Florenz",
+      "recompensas": {
+        "xp": 25200,
+        "won": 168000,
+        "item": "Réplica Reforçada de: Machado de Colheita Reforçado"
+      }
+    },
+    {
+      "id": "castti_florenz_05",
+      "npcId": "castti_florenz",
+      "numero": 5,
+      "nome": "Reforço de Castti Florenz",
+      "descricao": "Castti Florenz pede que você adquira, em qualquer Loja de Itens da Associação, um equipamento de Rank A compatível com Machados para reforçar seu arsenal de combate.",
+      "categoria": "secundaria",
+      "tipo": "loja",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Comprar 1 equipamento de Rank A (peça de armadura ou arma)",
+      "recompensas": {
+        "xp": 5400,
+        "won": 36000,
+        "item": "Réplica Reforçada de: Machado de Colheita Reforçado"
+      }
+    },
+    {
+      "id": "castti_florenz_06",
+      "npcId": "castti_florenz",
+      "numero": 6,
+      "nome": "Provisões de Castti Florenz",
+      "descricao": "Antes da próxima incursão, Castti Florenz pede que você compre poções de recuperação e um acessório de afinidade elemental Água na loja mais próxima.",
+      "categoria": "secundaria",
+      "tipo": "loja",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Comprar 3 poções + 1 acessório elemental",
+      "recompensas": {
+        "xp": 4950,
+        "won": 33000,
+        "item": "Diário de Memórias Fragmentadas"
+      }
+    },
+    {
+      "id": "castti_florenz_07",
+      "npcId": "castti_florenz",
+      "numero": 7,
+      "nome": "Receita de Castti Florenz",
+      "descricao": "Usando materiais coletados em dungeons de afinidade Água, produza o item indicado por Castti Florenz em uma bancada de criação da guilda.",
+      "categoria": "secundaria",
+      "tipo": "producao",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Produzir 1 item de afinidade Água (Rank A)",
+      "recompensas": {
+        "xp": 5850,
+        "won": 39000,
+        "item": "Fragmento de Mana (Água)"
+      }
+    },
+    {
+      "id": "castti_florenz_08",
+      "npcId": "castti_florenz",
+      "numero": 8,
+      "nome": "Suprimento Especial de Castti Florenz",
+      "descricao": "Castti Florenz ensina uma técnica pessoal de preparo; produza 3 unidades de um item de suporte (poção, munição ou material) ligado ao estilo de combate de Machados.",
+      "categoria": "secundaria",
+      "tipo": "producao",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Produzir 3 itens de suporte",
+      "recompensas": {
+        "xp": 6300,
+        "won": 42000,
+        "item": "Fragmento de Mana (Água)"
+      }
+    },
+    {
+      "id": "castti_florenz_09",
+      "npcId": "castti_florenz",
+      "numero": 9,
+      "nome": "Treino de Combate com Castti Florenz",
+      "descricao": "Castti Florenz solicita ajuda para conter uma infestação: derrote criaturas aquáticas em dungeons de Rank A ou inferior.",
+      "categoria": "cacada",
+      "tipo": "caca",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Derrotar 35 Criaturas Aquáticas",
+      "recompensas": {
+        "xp": 7200,
+        "won": 48000,
+        "item": "Bolsa de Ingredientes Raros"
+      }
+    },
+    {
+      "id": "castti_florenz_10",
+      "npcId": "castti_florenz",
+      "numero": 10,
+      "nome": "Caçada Recomendada por Castti Florenz",
+      "descricao": "Uma variante mais forte de criaturas aquáticas tem aparecido nas rondas de Castti Florenz; elimine essas ameaças antes que evoluam.",
+      "categoria": "cacada",
+      "tipo": "caca",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Derrotar 8 Criaturas Aquáticas (variante fortalecida)",
+      "recompensas": {
+        "xp": 9000,
+        "won": 60000,
+        "item": "Réplica Reforçada de: Machado de Colheita Reforçado"
+      }
+    }
+  ]
+}

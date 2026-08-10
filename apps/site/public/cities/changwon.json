@@ -1,0 +1,19 @@
+{
+  "id": "changwon",
+  "name": "Changwon",
+  "image": "/images/cities/changwon.webp",
+  "description": "Cidade planejada",
+  "population": "1.0 milhões",
+  "dangerLevel": "C",
+  "guilds": [],
+  "npcs": [],
+  "players": [],
+  "portals": [],
+  "dungeons": [],
+  "bosses": [],
+  "shops": [],
+  "quests": [],
+  "events": [],
+  "resources": [],
+  "notes": ""
+}

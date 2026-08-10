@@ -1,0 +1,178 @@
+{
+  "npcId": "heidne_ahn",
+  "npcNome": "Heidne Ahn",
+  "npcTitulo": "A Ladra dos Refugiados",
+  "totalMissoes": 10,
+  "missoes": [
+    {
+      "id": "heidne_ahn_01",
+      "npcId": "heidne_ahn",
+      "numero": 1,
+      "nome": "Capítulo 1: O Despertar de Heidne Ahn",
+      "descricao": "Acompanhe os primeiros passos de Heidne Ahn como Caçador(a). Ladra que sobrevive roubando de guildas corruptas e nobres exploradores, Heidne foi caçada por caçadores contratados diversas vezes. Seus roubos financiam refugiados de vilas destruídas....",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Complete a introdução: converse com Heidne Ahn e participe de sua primeira incursão",
+      "recompensas": {
+        "xp": 13680,
+        "won": 91200,
+        "item": "Capa Surrada de Infiltração"
+      }
+    },
+    {
+      "id": "heidne_ahn_02",
+      "npcId": "heidne_ahn",
+      "numero": 2,
+      "nome": "Capítulo 2: A Trilha de A Ladra dos Refugiados",
+      "descricao": "Heidne Ahn pede ajuda para investigar pistas ligadas ao seu passado, aprofundando o mistério por trás de seu título de 'A Ladra dos Refugiados'.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Ajude Heidne Ahn a reunir 3 pistas em diferentes localizações",
+      "recompensas": {
+        "xp": 15840,
+        "won": 105600,
+        "item": "Mapa de Rotas de Fuga"
+      }
+    },
+    {
+      "id": "heidne_ahn_03",
+      "npcId": "heidne_ahn",
+      "numero": 3,
+      "nome": "Capítulo 3: O Confronto de Heidne Ahn",
+      "descricao": "O passado de Heidne Ahn finalmente alcança o presente. Enfrente ao lado dele(a) a ameaça central de sua história.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Vença o confronto decisivo ao lado de Heidne Ahn",
+      "recompensas": {
+        "xp": 18000,
+        "won": 120000,
+        "item": "Réplica Reforçada de: Adagas Gastas de Fuga"
+      }
+    },
+    {
+      "id": "heidne_ahn_04",
+      "npcId": "heidne_ahn",
+      "numero": 4,
+      "nome": "Capítulo 4: A Ladra dos Refugiados",
+      "descricao": "Com a ameaça derrotada, Heidne Ahn consolida seu lugar no mundo dos caçadores, consagrando-se como A Ladra dos Refugiados.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Complete a missão final e testemunhe o desfecho da história de Heidne Ahn",
+      "recompensas": {
+        "xp": 20160,
+        "won": 134400,
+        "item": "Réplica Reforçada de: Adagas Gastas de Fuga"
+      }
+    },
+    {
+      "id": "heidne_ahn_05",
+      "npcId": "heidne_ahn",
+      "numero": 5,
+      "nome": "Reforço de Heidne Ahn",
+      "descricao": "Heidne Ahn pede que você adquira, em qualquer Loja de Itens da Associação, um equipamento de Rank B compatível com Adagas para reforçar seu arsenal de combate.",
+      "categoria": "secundaria",
+      "tipo": "loja",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Comprar 1 equipamento de Rank B (peça de armadura ou arma)",
+      "recompensas": {
+        "xp": 4320,
+        "won": 28800,
+        "item": "Réplica Reforçada de: Adagas Gastas de Fuga"
+      }
+    },
+    {
+      "id": "heidne_ahn_06",
+      "npcId": "heidne_ahn",
+      "numero": 6,
+      "nome": "Provisões de Heidne Ahn",
+      "descricao": "Antes da próxima incursão, Heidne Ahn pede que você compre poções de recuperação e um acessório de afinidade elemental Sombra na loja mais próxima.",
+      "categoria": "secundaria",
+      "tipo": "loja",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Comprar 3 poções + 1 acessório elemental",
+      "recompensas": {
+        "xp": 3960,
+        "won": 26400,
+        "item": "Mapa de Rotas de Fuga"
+      }
+    },
+    {
+      "id": "heidne_ahn_07",
+      "npcId": "heidne_ahn",
+      "numero": 7,
+      "nome": "Receita de Heidne Ahn",
+      "descricao": "Usando materiais coletados em dungeons de afinidade Sombra, produza o item indicado por Heidne Ahn em uma bancada de criação da guilda.",
+      "categoria": "secundaria",
+      "tipo": "producao",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Produzir 1 item de afinidade Sombra (Rank B)",
+      "recompensas": {
+        "xp": 4680,
+        "won": 31200,
+        "item": "Fragmento de Mana (Sombra)"
+      }
+    },
+    {
+      "id": "heidne_ahn_08",
+      "npcId": "heidne_ahn",
+      "numero": 8,
+      "nome": "Suprimento Especial de Heidne Ahn",
+      "descricao": "Heidne Ahn ensina uma técnica pessoal de preparo; produza 3 unidades de um item de suporte (poção, munição ou material) ligado ao estilo de combate de Adagas.",
+      "categoria": "secundaria",
+      "tipo": "producao",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Produzir 3 itens de suporte",
+      "recompensas": {
+        "xp": 5040,
+        "won": 33600,
+        "item": "Fragmento de Mana (Sombra)"
+      }
+    },
+    {
+      "id": "heidne_ahn_09",
+      "npcId": "heidne_ahn",
+      "numero": 9,
+      "nome": "Treino de Combate com Heidne Ahn",
+      "descricao": "Heidne Ahn solicita ajuda para conter uma infestação: derrote sombras rastejantes em dungeons de Rank B ou inferior.",
+      "categoria": "cacada",
+      "tipo": "caca",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Derrotar 30 Sombras Rastejantes",
+      "recompensas": {
+        "xp": 5760,
+        "won": 38400,
+        "item": "Capa Surrada de Infiltração"
+      }
+    },
+    {
+      "id": "heidne_ahn_10",
+      "npcId": "heidne_ahn",
+      "numero": 10,
+      "nome": "Caçada Recomendada por Heidne Ahn",
+      "descricao": "Uma variante mais forte de sombras rastejantes tem aparecido nas rondas de Heidne Ahn; elimine essas ameaças antes que evoluam.",
+      "categoria": "cacada",
+      "tipo": "caca",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Derrotar 7 Sombras Rastejantes (variante fortalecida)",
+      "recompensas": {
+        "xp": 7200,
+        "won": 48000,
+        "item": "Réplica Reforçada de: Adagas Gastas de Fuga"
+      }
+    }
+  ]
+}

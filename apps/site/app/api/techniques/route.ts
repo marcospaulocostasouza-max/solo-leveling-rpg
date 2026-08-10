@@ -1,0 +1,6 @@
+import { NextResponse } from "next/server";
+import database from "@/lib/rpg";
+import { currentPlayerId } from "@/lib/session";
+export const runtime = "nodejs";
+export async function GET() { const id = await currentPlayerId(); if (!id) return NextResponse.json({ error: "Não autenticado." }, { status: 401 }); const player = await database.playerById(id); const classes = [player?.classe, player?.classe_avancada].filter(Boolean); const techniques = await database.all(`SELECT * FROM tecnicas WHERE LOWER(classe) IN (${classes.map(() => "?").join(",") || "''"}) OR LOWER(classe) = 'todas' ORDER BY classe, nivel_desbloqueio, nome`, classes.map((c:string) => c.toLowerCase())); return NextResponse.json({ techniques }); }
+export async function POST(request: Request) { const id = await currentPlayerId(); if (!id) return NextResponse.json({ error: "Não autenticado." }, { status: 401 }); const { techniqueId } = await request.json().catch(() => ({})); if (!Number.isInteger(techniqueId)) return NextResponse.json({ error: "Técnica inválida." }, { status: 400 }); try { return NextResponse.json({ ok: true, result: await database.purchaseTechnique(id, techniqueId) }); } catch (error) { return NextResponse.json({ error: error instanceof Error ? error.message : "Compra indisponível." }, { status: 400 }); } }

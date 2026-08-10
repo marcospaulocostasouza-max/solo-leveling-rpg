@@ -1,0 +1,178 @@
+{
+  "npcId": "claude",
+  "npcNome": "Claude",
+  "npcTitulo": "O Fundador Sem Coração dos Corvos Negros",
+  "totalMissoes": 10,
+  "missoes": [
+    {
+      "id": "claude_01",
+      "npcId": "claude",
+      "numero": 1,
+      "nome": "Capítulo 1: Rumores sobre Claude",
+      "descricao": "Relatos alarmantes começam a circular entre guildas sobre Claude. Resultado de um experimento fracassado, Claude escapou de seus criadores e fundou sua própria organização criminosa, treinando crianças órfãs como ladras e assassinas....",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Investigue 3 relatos de testemunhas sobre Claude",
+      "recompensas": {
+        "xp": 25650,
+        "won": 171000,
+        "item": "Roupas Escuras Elegantes"
+      }
+    },
+    {
+      "id": "claude_02",
+      "npcId": "claude",
+      "numero": 2,
+      "nome": "Capítulo 2: Rastreando O Fundador Sem Coração dos Corvos Negros",
+      "descricao": "Reúna evidências concretas da atividade de Claude antes que a Associação classifique o caso como perdido.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Reúna provas em 2 locais diferentes ligados a Claude",
+      "recompensas": {
+        "xp": 29700,
+        "won": 198000,
+        "item": "Roupas Escuras Elegantes"
+      }
+    },
+    {
+      "id": "claude_03",
+      "npcId": "claude",
+      "numero": 3,
+      "nome": "Capítulo 3: Confronto com Claude",
+      "descricao": "É hora de enfrentar Claude diretamente. Prepare-se: como O Fundador Sem Coração dos Corvos Negros, este será um combate de Rank S.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Derrote Claude em combate direto",
+      "recompensas": {
+        "xp": 33750,
+        "won": 225000,
+        "item": "Réplica Reforçada de: Par de Adagas Perfeitamente Simétricas"
+      }
+    },
+    {
+      "id": "claude_04",
+      "npcId": "claude",
+      "numero": 4,
+      "nome": "Capítulo 4: A Queda de O Fundador Sem Coração dos Corvos Negros",
+      "descricao": "Com Claude neutralizado(a), reste apenas reportar o caso à Associação e lidar com as consequências reveladas.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Entregue o relatório final sobre Claude à Associação",
+      "recompensas": {
+        "xp": 37800,
+        "won": 252000,
+        "item": "Réplica Reforçada de: Par de Adagas Perfeitamente Simétricas"
+      }
+    },
+    {
+      "id": "claude_05",
+      "npcId": "claude",
+      "numero": 5,
+      "nome": "Reforço de Claude",
+      "descricao": "Claude pede que você adquira, em qualquer Loja de Itens da Associação, um equipamento de Rank S compatível com Adagas para reforçar seu arsenal de combate.",
+      "categoria": "secundaria",
+      "tipo": "loja",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Comprar 1 equipamento de Rank S (peça de armadura ou arma)",
+      "recompensas": {
+        "xp": 8100,
+        "won": 54000,
+        "item": "Réplica Reforçada de: Par de Adagas Perfeitamente Simétricas"
+      }
+    },
+    {
+      "id": "claude_06",
+      "npcId": "claude",
+      "numero": 6,
+      "nome": "Provisões de Claude",
+      "descricao": "Antes da próxima incursão, Claude pede que você compre poções de recuperação e um acessório de afinidade elemental Sombra na loja mais próxima.",
+      "categoria": "secundaria",
+      "tipo": "loja",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Comprar 3 poções + 1 acessório elemental",
+      "recompensas": {
+        "xp": 7425,
+        "won": 49500,
+        "item": "Coleiras de Controle Sobressalentes"
+      }
+    },
+    {
+      "id": "claude_07",
+      "npcId": "claude",
+      "numero": 7,
+      "nome": "Receita de Claude",
+      "descricao": "Usando materiais coletados em dungeons de afinidade Sombra, produza o item indicado por Claude em uma bancada de criação da guilda.",
+      "categoria": "secundaria",
+      "tipo": "producao",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Produzir 1 item de afinidade Sombra (Rank S)",
+      "recompensas": {
+        "xp": 8775,
+        "won": 58500,
+        "item": "Fragmento de Mana (Sombra)"
+      }
+    },
+    {
+      "id": "claude_08",
+      "npcId": "claude",
+      "numero": 8,
+      "nome": "Suprimento Especial de Claude",
+      "descricao": "Claude ensina uma técnica pessoal de preparo; produza 3 unidades de um item de suporte (poção, munição ou material) ligado ao estilo de combate de Adagas.",
+      "categoria": "secundaria",
+      "tipo": "producao",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Produzir 3 itens de suporte",
+      "recompensas": {
+        "xp": 9450,
+        "won": 63000,
+        "item": "Fragmento de Mana (Sombra)"
+      }
+    },
+    {
+      "id": "claude_09",
+      "npcId": "claude",
+      "numero": 9,
+      "nome": "Treino de Combate com Claude",
+      "descricao": "Claude solicita ajuda para conter uma infestação: derrote sombras rastejantes em dungeons de Rank S ou inferior.",
+      "categoria": "cacada",
+      "tipo": "caca",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Derrotar 40 Sombras Rastejantes",
+      "recompensas": {
+        "xp": 10800,
+        "won": 72000,
+        "item": "Roupas Escuras Elegantes"
+      }
+    },
+    {
+      "id": "claude_10",
+      "npcId": "claude",
+      "numero": 10,
+      "nome": "Caçada Recomendada por Claude",
+      "descricao": "Uma variante mais forte de sombras rastejantes tem aparecido nas rondas de Claude; elimine essas ameaças antes que evoluam.",
+      "categoria": "cacada",
+      "tipo": "caca",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Derrotar 9 Sombras Rastejantes (variante fortalecida)",
+      "recompensas": {
+        "xp": 13500,
+        "won": 90000,
+        "item": "Réplica Reforçada de: Par de Adagas Perfeitamente Simétricas"
+      }
+    }
+  ]
+}

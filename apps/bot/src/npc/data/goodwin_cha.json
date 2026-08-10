@@ -1,0 +1,42 @@
+{
+  "id": "goodwin_cha",
+  "papel": "Herói",
+  "base_em": "Goodwin (Octopath Traveler 0)",
+  "nome": "Goodwin Cha",
+  "idade": "30",
+  "nacionalidade": "Sul-coreano, sobrevivente de naufrágio em Shipwreck Island",
+  "aparencia": "Pele curtida pelo sal e pelo sol, cabelos grisalhos precocemente, veste roupas surradas de marinheiro adaptadas com fitas de dança improvisadas.",
+  "altura_peso": "1,81m / 76kg",
+  "personalidade": "Grato pela segunda chance na vida, encontra alegria simples em pequenas coisas depois de sobreviver ao que quase o matou.",
+  "historia": "Antigo tripulante de um navio de exploração que naufragou perto de uma ilha corrompida por mana instável, Goodwin foi o único sobrevivente. Seu Despertar veio da pura vontade de sobreviver.",
+  "classe": "Assassino",
+  "classe_avancada": "Sword Dancer",
+  "rank": "A",
+  "nivel": 79,
+  "estilo_luta": "Proficiência em Adagas",
+  "atributos": {
+    "forca": 48,
+    "resistencia": 52,
+    "velocidade": 66,
+    "sentidos": 60,
+    "inteligencia": 45,
+    "poder_magico": 28
+  },
+  "elemento": "Água",
+  "habilidade_unica": "Instinto de Sobrevivência — quando abaixo de 25% de HP, recupera automaticamente uma pequena porção de vida e ganha velocidade aumentada por 2 turnos, uma vez por batalha.",
+  "titulo": "O Náufrago que Dança com a Morte",
+  "equipamentos": {
+    "arma": "Adagas Improvisadas de Naufrágio",
+    "itens": "Roupas Surradas de Marinheiro, Diário de Sobrevivência, Amuleto de Sorte Recuperado do Mar"
+  },
+  "tecnicas": [
+    "Passo do Náufrago",
+    "Corte da Segunda Chance",
+    "Dança da Sobrevivência"
+  ],
+  "formaFalar": "Fala de forma direta e observadora, raramente revelando mais do que o necessário. Prefere ações a palavras.",
+  "localizacao": "Coreia do Sul",
+  "profissao": "Caçador(a) Assassino",
+  "objetivos": "Proteger os inocentes, evoluir como caçador e desvendar os mistérios dos portais.",
+  "valores": "A vida é preciosa. A coragem é essencial. A lealdade é inegociável."
+}

@@ -1,0 +1,42 @@
+{
+  "id": "simeon_ha",
+  "papel": "Vilão",
+  "base_em": "Simeon (Octopath Traveler)",
+  "nome": "Simeon Ha",
+  "idade": "40",
+  "nacionalidade": "Sul-coreano, líder de uma organização criminosa disfarçada de guilda legítima",
+  "aparencia": "Elegante e refinado, ternos impecáveis mesmo em confrontos violentos, cabelos negros penteados com precisão.",
+  "altura_peso": "1,82m / 74kg",
+  "personalidade": "Calculista, cruel sob uma fachada de sofisticação, e obcecado em eliminar qualquer ameaça ao controle absoluto que exerce.",
+  "historia": "Líder secreto de uma rede criminosa que controla o contrabando de itens raros, Simeon ordenou a execução do líder de uma guilda rival diante da filha deste.",
+  "classe": "Assassino",
+  "classe_avancada": "Lâmina Sombria",
+  "rank": "S",
+  "nivel": 92,
+  "estilo_luta": "Proficiência em Adagas",
+  "atributos": {
+    "forca": 58,
+    "resistencia": 45,
+    "velocidade": 78,
+    "sentidos": 82,
+    "inteligencia": 70,
+    "poder_magico": 30
+  },
+  "elemento": "Escuridão",
+  "habilidade_unica": "Demonstração de Poder — executa um ataque combinado contra o alvo com menor HP no grupo inimigo, com dano aumentado se o alvo estiver abaixo de 50% de vida.",
+  "titulo": "O Chefe que Executou um Rival Diante da Filha",
+  "equipamentos": {
+    "arma": "Adagas Ocultas de Contrabandista",
+    "itens": "Terno Impecável, Rede de Contatos Criminosos, Relógio de Ouro Roubado"
+  },
+  "tecnicas": [
+    "Corte da Execução",
+    "Sombra do Submundo",
+    "Golpe Sem Piedade"
+  ],
+  "formaFalar": "Fala com tom frio e calculista, frequentemente manipulando as palavras para obter vantagem. Suas frases são precisas e raramente revelam emoções verdadeiras.",
+  "localizacao": "Localização desconhecida — opera nas sombras",
+  "profissao": "Antagonista",
+  "objetivos": "Expandir seu poder e influência, eliminando qualquer ameaça aos seus planos.",
+  "valores": "O poder é o único caminho. A fraqueza é imperdoável. Os fins justificam os meios."
+}

@@ -1,0 +1,42 @@
+{
+  "id": "petrichor",
+  "papel": "Vilão",
+  "base_em": "Petrichor (Ordem da Meia-Noite — ligado a Ochette)",
+  "nome": "Petrichor",
+  "idade": "Desconhecida — 'Caçador Sombrio' de origem obscura",
+  "nacionalidade": "Origem incerta; caçador ligado a uma organização oculta",
+  "aparencia": "Vestido em peles escuras de criaturas corrompidas, rosto quase sempre coberto por uma máscara ritualística.",
+  "altura_peso": "1,85m / 78kg",
+  "personalidade": "Frio e desapegado da vida que corrompe, vê criaturas e comunidades como recursos a serem explorados.",
+  "historia": "Agente de uma organização oculta especializado em corromper deliberadamente a fauna de dungeon através de exposição controlada a mana negra.",
+  "classe": "Ranger",
+  "classe_avancada": "Herói do Arco",
+  "rank": "S",
+  "nivel": 93,
+  "estilo_luta": "Proficiência em Lanças e Armadilhas",
+  "atributos": {
+    "forca": 75,
+    "resistencia": 65,
+    "velocidade": 70,
+    "sentidos": 90,
+    "inteligencia": 58,
+    "poder_magico": 62
+  },
+  "elemento": "Escuridão",
+  "habilidade_unica": "Corrupção Deliberada — expõe um monstro aliado a mana negra concentrada, ampliando drasticamente seu poder por 3 turnos ao custo da própria sanidade da criatura.",
+  "titulo": "O Caçador que Corrompe o Que Toca",
+  "equipamentos": {
+    "arma": "Lança Ritualística de Caça",
+    "itens": "Máscara Ritualística, Peles de Criaturas Corrompidas, Frascos de Mana Negra Concentrada"
+  },
+  "tecnicas": [
+    "Investida da Corrupção",
+    "Armadilha Sombria",
+    "Golpe do Caçador Silencioso"
+  ],
+  "formaFalar": "Fala com tom frio e calculista, frequentemente manipulando as palavras para obter vantagem. Suas frases são precisas e raramente revelam emoções verdadeiras.",
+  "localizacao": "Localização desconhecida — opera nas sombras",
+  "profissao": "Antagonista",
+  "objetivos": "Expandir seu poder e influência, eliminando qualquer ameaça aos seus planos.",
+  "valores": "O poder é o único caminho. A fraqueza é imperdoável. Os fins justificam os meios."
+}

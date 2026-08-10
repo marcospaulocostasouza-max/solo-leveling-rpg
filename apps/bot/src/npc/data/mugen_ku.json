@@ -1,0 +1,42 @@
+{
+  "id": "mugen_ku",
+  "papel": "Vilão",
+  "base_em": "Mugen (Octopath Traveler II — rota de Hikari)",
+  "nome": "Mugen Ku",
+  "idade": "50",
+  "nacionalidade": "Sul-coreano, usurpador de uma guilda tradicional de artes marciais",
+  "aparencia": "Corpo maciço coberto por armadura de placas negras entalhadas com símbolos de clã, cabelos grisalhos longos amarrados em um rabo severo.",
+  "altura_peso": "1,95m / 110kg",
+  "personalidade": "Ambicioso, cruel e absolutamente convencido de que força é a única verdade que importa.",
+  "historia": "Antigo instrutor de segunda linha, Mugen orquestrou um golpe sangrento contra a liderança legítima da guilda, culpando um jovem herdeiro.",
+  "classe": "Lutador",
+  "classe_avancada": "Hrymir",
+  "rank": "S",
+  "nivel": 96,
+  "estilo_luta": "Proficiência em Espadas",
+  "atributos": {
+    "forca": 92,
+    "resistencia": 84,
+    "velocidade": 55,
+    "sentidos": 58,
+    "inteligencia": 50,
+    "poder_magico": 35
+  },
+  "elemento": "Escuridão",
+  "habilidade_unica": "Lâmina Corrosiva do Usurpador — cada golpe acerta com um veneno corrosivo que reduz permanentemente a defesa do alvo, acumulando-se a cada acerto.",
+  "titulo": "O Usurpador que Corrompeu o Clã",
+  "equipamentos": {
+    "arma": "Espada Negra Corrosiva",
+    "itens": "Armadura de Placas Negras, Símbolos do Clã Usurpado, Registro de Lutadores Leais"
+  },
+  "tecnicas": [
+    "Corte da Usurpação",
+    "Fúria do Tirano",
+    "Golpe Corrosivo Final"
+  ],
+  "formaFalar": "Fala com tom frio e calculista, frequentemente manipulando as palavras para obter vantagem. Suas frases são precisas e raramente revelam emoções verdadeiras.",
+  "localizacao": "Localização desconhecida — opera nas sombras",
+  "profissao": "Antagonista",
+  "objetivos": "Expandir seu poder e influência, eliminando qualquer ameaça aos seus planos.",
+  "valores": "O poder é o único caminho. A fraqueza é imperdoável. Os fins justificam os meios."
+}

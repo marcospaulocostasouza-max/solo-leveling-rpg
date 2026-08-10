@@ -1,0 +1,42 @@
+{
+  "id": "vanessa_hysel",
+  "papel": "Vilã",
+  "base_em": "Vanessa Hysel (Octopath Traveler)",
+  "nome": "Vanessa Hysel",
+  "idade": "39",
+  "nacionalidade": "Sul-coreana, curandeira itinerante disfarçada de benfeitora",
+  "aparencia": "Doce e maternal à primeira vista, cabelos castanhos ondulados, veste roupas simples de curandeira de vila.",
+  "altura_peso": "1,65m / 58kg",
+  "personalidade": "Calculista sob uma fachada calorosa e acolhedora, capaz de fingir compaixão genuína enquanto lucra com o sofrimento.",
+  "historia": "Curandeira itinerante que contamina poços de água com toxinas de ação lenta em vilas isoladas, vendendo o antídoto a preços exorbitantes.",
+  "classe": "Curador",
+  "classe_avancada": "Apotecário",
+  "rank": "B",
+  "nivel": 72,
+  "estilo_luta": "Proficiência em Cajados e Orbes",
+  "atributos": {
+    "forca": 24,
+    "resistencia": 40,
+    "velocidade": 38,
+    "sentidos": 55,
+    "inteligencia": 68,
+    "poder_magico": 70
+  },
+  "elemento": "Planta",
+  "habilidade_unica": "Cura Envenenada — aplica um efeito de cura aparente no grupo adversário que, após dois turnos, se converte em dano contínuo proporcional ao HP curado.",
+  "titulo": "A Curandeira que Envenenava Vilas Inteiras",
+  "equipamentos": {
+    "arma": "Cajado de Curandeira Falsa",
+    "itens": "Bolsa de Toxinas Disfarçadas de Remédio, Roupas de Benfeitora, Registro de Preços Exorbitantes"
+  },
+  "tecnicas": [
+    "Toque Envenenado",
+    "Falsa Salvação",
+    "Colapso Silencioso"
+  ],
+  "formaFalar": "Fala com tom frio e calculista, frequentemente manipulando as palavras para obter vantagem. Suas frases são precisas e raramente revelam emoções verdadeiras.",
+  "localizacao": "Localização desconhecida — opera nas sombras",
+  "profissao": "Antagonista",
+  "objetivos": "Expandir seu poder e influência, eliminando qualquer ameaça aos seus planos.",
+  "valores": "O poder é o único caminho. A fraqueza é imperdoável. Os fins justificam os meios."
+}

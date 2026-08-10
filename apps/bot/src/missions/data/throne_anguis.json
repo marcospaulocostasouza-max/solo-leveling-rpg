@@ -1,0 +1,178 @@
+{
+  "npcId": "throne_anguis",
+  "npcNome": "Throné Anguis",
+  "npcTitulo": "A Serpente Liberta",
+  "totalMissoes": 10,
+  "missoes": [
+    {
+      "id": "throne_anguis_01",
+      "npcId": "throne_anguis",
+      "numero": 1,
+      "nome": "Capítulo 1: O Despertar de Throné Anguis",
+      "descricao": "Acompanhe os primeiros passos de Throné Anguis como Caçador(a). Criada desde muito cedo por uma organização criminosa que treinava crianças órfãs como ladras e assassinas, forçadas a competir entre si pela aprovação de um líder cruel e manipulador, Throné cresceu ...",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Complete a introdução: converse com Throné Anguis e participe de sua primeira incursão",
+      "recompensas": {
+        "xp": 25650,
+        "won": 171000,
+        "item": "Coleira Desativada (relíquia pessoal)"
+      }
+    },
+    {
+      "id": "throne_anguis_02",
+      "npcId": "throne_anguis",
+      "numero": 2,
+      "nome": "Capítulo 2: A Trilha de A Serpente Liberta",
+      "descricao": "Throné Anguis pede ajuda para investigar pistas ligadas ao seu passado, aprofundando o mistério por trás de seu título de 'A Serpente Liberta'.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Ajude Throné Anguis a reunir 3 pistas em diferentes localizações",
+      "recompensas": {
+        "xp": 29700,
+        "won": 198000,
+        "item": "Kit de Infiltração Silenciosa"
+      }
+    },
+    {
+      "id": "throne_anguis_03",
+      "npcId": "throne_anguis",
+      "numero": 3,
+      "nome": "Capítulo 3: O Confronto de Throné Anguis",
+      "descricao": "O passado de Throné Anguis finalmente alcança o presente. Enfrente ao lado dele(a) a ameaça central de sua história.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Vença o confronto decisivo ao lado de Throné Anguis",
+      "recompensas": {
+        "xp": 33750,
+        "won": 225000,
+        "item": "Réplica Reforçada de: Adagas Gêmeas 'Liberdade'"
+      }
+    },
+    {
+      "id": "throne_anguis_04",
+      "npcId": "throne_anguis",
+      "numero": 4,
+      "nome": "Capítulo 4: A Serpente Liberta",
+      "descricao": "Com a ameaça derrotada, Throné Anguis consolida seu lugar no mundo dos caçadores, consagrando-se como A Serpente Liberta.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Complete a missão final e testemunhe o desfecho da história de Throné Anguis",
+      "recompensas": {
+        "xp": 37800,
+        "won": 252000,
+        "item": "Réplica Reforçada de: Adagas Gêmeas 'Liberdade'"
+      }
+    },
+    {
+      "id": "throne_anguis_05",
+      "npcId": "throne_anguis",
+      "numero": 5,
+      "nome": "Reforço de Throné Anguis",
+      "descricao": "Throné Anguis pede que você adquira, em qualquer Loja de Itens da Associação, um equipamento de Rank S compatível com Adagas para reforçar seu arsenal de combate.",
+      "categoria": "secundaria",
+      "tipo": "loja",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Comprar 1 equipamento de Rank S (peça de armadura ou arma)",
+      "recompensas": {
+        "xp": 8100,
+        "won": 54000,
+        "item": "Réplica Reforçada de: Adagas Gêmeas 'Liberdade'"
+      }
+    },
+    {
+      "id": "throne_anguis_06",
+      "npcId": "throne_anguis",
+      "numero": 6,
+      "nome": "Provisões de Throné Anguis",
+      "descricao": "Antes da próxima incursão, Throné Anguis pede que você compre poções de recuperação e um acessório de afinidade elemental Areia na loja mais próxima.",
+      "categoria": "secundaria",
+      "tipo": "loja",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Comprar 3 poções + 1 acessório elemental",
+      "recompensas": {
+        "xp": 7425,
+        "won": 49500,
+        "item": "Kit de Infiltração Silenciosa"
+      }
+    },
+    {
+      "id": "throne_anguis_07",
+      "npcId": "throne_anguis",
+      "numero": 7,
+      "nome": "Receita de Throné Anguis",
+      "descricao": "Usando materiais coletados em dungeons de afinidade Areia, produza o item indicado por Throné Anguis em uma bancada de criação da guilda.",
+      "categoria": "secundaria",
+      "tipo": "producao",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Produzir 1 item de afinidade Areia (Rank S)",
+      "recompensas": {
+        "xp": 8775,
+        "won": 58500,
+        "item": "Fragmento de Mana (Areia)"
+      }
+    },
+    {
+      "id": "throne_anguis_08",
+      "npcId": "throne_anguis",
+      "numero": 8,
+      "nome": "Suprimento Especial de Throné Anguis",
+      "descricao": "Throné Anguis ensina uma técnica pessoal de preparo; produza 3 unidades de um item de suporte (poção, munição ou material) ligado ao estilo de combate de Adagas.",
+      "categoria": "secundaria",
+      "tipo": "producao",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Produzir 3 itens de suporte",
+      "recompensas": {
+        "xp": 9450,
+        "won": 63000,
+        "item": "Fragmento de Mana (Areia)"
+      }
+    },
+    {
+      "id": "throne_anguis_09",
+      "npcId": "throne_anguis",
+      "numero": 9,
+      "nome": "Treino de Combate com Throné Anguis",
+      "descricao": "Throné Anguis solicita ajuda para conter uma infestação: derrote vermes das dunas em dungeons de Rank S ou inferior.",
+      "categoria": "cacada",
+      "tipo": "caca",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Derrotar 40 Vermes das Dunas",
+      "recompensas": {
+        "xp": 10800,
+        "won": 72000,
+        "item": "Coleira Desativada (relíquia pessoal)"
+      }
+    },
+    {
+      "id": "throne_anguis_10",
+      "npcId": "throne_anguis",
+      "numero": 10,
+      "nome": "Caçada Recomendada por Throné Anguis",
+      "descricao": "Uma variante mais forte de vermes das dunas tem aparecido nas rondas de Throné Anguis; elimine essas ameaças antes que evoluam.",
+      "categoria": "cacada",
+      "tipo": "caca",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Derrotar 9 Vermes das Dunas (variante fortalecida)",
+      "recompensas": {
+        "xp": 13500,
+        "won": 90000,
+        "item": "Réplica Reforçada de: Adagas Gêmeas 'Liberdade'"
+      }
+    }
+  ]
+}

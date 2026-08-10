@@ -1,0 +1,178 @@
+{
+  "npcId": "phenn_doyoung",
+  "npcNome": "Phenn Doyoung",
+  "npcTitulo": "O Batedor de Snowshard",
+  "totalMissoes": 10,
+  "missoes": [
+    {
+      "id": "phenn_doyoung_01",
+      "npcId": "phenn_doyoung",
+      "numero": 1,
+      "nome": "Capítulo 1: O Despertar de Phenn Doyoung",
+      "descricao": "Acompanhe os primeiros passos de Phenn Doyoung como Caçador(a). Amigo de infância de Stia, Phenn ficou preso em uma gruta gelada após o ataque que destruiu sua vila, sobrevivendo sozinho por dias até ser resgatado. O trauma o fez treinar obsessivamente com arco, e...",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Complete a introdução: converse com Phenn Doyoung e participe de sua primeira incursão",
+      "recompensas": {
+        "xp": 13680,
+        "won": 91200,
+        "item": "Amuleto Materno"
+      }
+    },
+    {
+      "id": "phenn_doyoung_02",
+      "npcId": "phenn_doyoung",
+      "numero": 2,
+      "nome": "Capítulo 2: A Trilha de O Batedor de Snowshard",
+      "descricao": "Phenn Doyoung pede ajuda para investigar pistas ligadas ao seu passado, aprofundando o mistério por trás de seu título de 'O Batedor de Snowshard'.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Ajude Phenn Doyoung a reunir 3 pistas em diferentes localizações",
+      "recompensas": {
+        "xp": 15840,
+        "won": 105600,
+        "item": "Carcás Reforçado"
+      }
+    },
+    {
+      "id": "phenn_doyoung_03",
+      "npcId": "phenn_doyoung",
+      "numero": 3,
+      "nome": "Capítulo 3: O Confronto de Phenn Doyoung",
+      "descricao": "O passado de Phenn Doyoung finalmente alcança o presente. Enfrente ao lado dele(a) a ameaça central de sua história.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Vença o confronto decisivo ao lado de Phenn Doyoung",
+      "recompensas": {
+        "xp": 18000,
+        "won": 120000,
+        "item": "Réplica Reforçada de: Arco Curto de Caça"
+      }
+    },
+    {
+      "id": "phenn_doyoung_04",
+      "npcId": "phenn_doyoung",
+      "numero": 4,
+      "nome": "Capítulo 4: O Batedor de Snowshard",
+      "descricao": "Com a ameaça derrotada, Phenn Doyoung consolida seu lugar no mundo dos caçadores, consagrando-se como O Batedor de Snowshard.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Complete a missão final e testemunhe o desfecho da história de Phenn Doyoung",
+      "recompensas": {
+        "xp": 20160,
+        "won": 134400,
+        "item": "Réplica Reforçada de: Arco Curto de Caça"
+      }
+    },
+    {
+      "id": "phenn_doyoung_05",
+      "npcId": "phenn_doyoung",
+      "numero": 5,
+      "nome": "Reforço de Phenn Doyoung",
+      "descricao": "Phenn Doyoung pede que você adquira, em qualquer Loja de Itens da Associação, um equipamento de Rank B compatível com Arcos para reforçar seu arsenal de combate.",
+      "categoria": "secundaria",
+      "tipo": "loja",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Comprar 1 equipamento de Rank B (peça de armadura ou arma)",
+      "recompensas": {
+        "xp": 4320,
+        "won": 28800,
+        "item": "Réplica Reforçada de: Arco Curto de Caça"
+      }
+    },
+    {
+      "id": "phenn_doyoung_06",
+      "npcId": "phenn_doyoung",
+      "numero": 6,
+      "nome": "Provisões de Phenn Doyoung",
+      "descricao": "Antes da próxima incursão, Phenn Doyoung pede que você compre poções de recuperação e um acessório de afinidade elemental Gelo na loja mais próxima.",
+      "categoria": "secundaria",
+      "tipo": "loja",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Comprar 3 poções + 1 acessório elemental",
+      "recompensas": {
+        "xp": 3960,
+        "won": 26400,
+        "item": "Carcás Reforçado"
+      }
+    },
+    {
+      "id": "phenn_doyoung_07",
+      "npcId": "phenn_doyoung",
+      "numero": 7,
+      "nome": "Receita de Phenn Doyoung",
+      "descricao": "Usando materiais coletados em dungeons de afinidade Gelo, produza o item indicado por Phenn Doyoung em uma bancada de criação da guilda.",
+      "categoria": "secundaria",
+      "tipo": "producao",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Produzir 1 item de afinidade Gelo (Rank B)",
+      "recompensas": {
+        "xp": 4680,
+        "won": 31200,
+        "item": "Fragmento de Mana (Gelo)"
+      }
+    },
+    {
+      "id": "phenn_doyoung_08",
+      "npcId": "phenn_doyoung",
+      "numero": 8,
+      "nome": "Suprimento Especial de Phenn Doyoung",
+      "descricao": "Phenn Doyoung ensina uma técnica pessoal de preparo; produza 3 unidades de um item de suporte (poção, munição ou material) ligado ao estilo de combate de Arcos.",
+      "categoria": "secundaria",
+      "tipo": "producao",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Produzir 3 itens de suporte",
+      "recompensas": {
+        "xp": 5040,
+        "won": 33600,
+        "item": "Fragmento de Mana (Gelo)"
+      }
+    },
+    {
+      "id": "phenn_doyoung_09",
+      "npcId": "phenn_doyoung",
+      "numero": 9,
+      "nome": "Treino de Combate com Phenn Doyoung",
+      "descricao": "Phenn Doyoung solicita ajuda para conter uma infestação: derrote feras geladas em dungeons de Rank B ou inferior.",
+      "categoria": "cacada",
+      "tipo": "caca",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Derrotar 30 Feras Geladas",
+      "recompensas": {
+        "xp": 5760,
+        "won": 38400,
+        "item": "Amuleto Materno"
+      }
+    },
+    {
+      "id": "phenn_doyoung_10",
+      "npcId": "phenn_doyoung",
+      "numero": 10,
+      "nome": "Caçada Recomendada por Phenn Doyoung",
+      "descricao": "Uma variante mais forte de feras geladas tem aparecido nas rondas de Phenn Doyoung; elimine essas ameaças antes que evoluam.",
+      "categoria": "cacada",
+      "tipo": "caca",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Derrotar 7 Feras Geladas (variante fortalecida)",
+      "recompensas": {
+        "xp": 7200,
+        "won": 48000,
+        "item": "Réplica Reforçada de: Arco Curto de Caça"
+      }
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "id": "richard_han",
+  "papel": "Herói",
+  "base_em": "Richard (Champions of the Continent)",
+  "nome": "Richard Han",
+  "idade": "45",
+  "nacionalidade": "Sul-coreano, ex-líder de uma grande guilda regional",
+  "aparencia": "Postura régia mesmo desgastado pelos anos, cabelos grisalhos penteados para trás, veste uma armadura ornamentada que já viu dias melhores.",
+  "altura_peso": "1,86m / 88kg",
+  "personalidade": "Justo, cansado e carregando o peso de decisões que sacrificaram alguns para salvar muitos.",
+  "historia": "Antigo líder de uma poderosa guilda, Richard foi forçado a tomar decisões impopulares durante uma crise de contenção. Hoje vive isolado nas ruínas do que já foi sua fortaleza.",
+  "classe": "Lutador",
+  "classe_avancada": "Herói da Espada",
+  "rank": "A",
+  "nivel": 89,
+  "estilo_luta": "Proficiência em Espadas",
+  "atributos": {
+    "forca": 78,
+    "resistencia": 75,
+    "velocidade": 48,
+    "sentidos": 58,
+    "inteligencia": 60,
+    "poder_magico": 25
+  },
+  "elemento": "Metal",
+  "habilidade_unica": "Decreto do Sacrifício — sacrifica parte do próprio HP para conceder um grande buff de ataque e defesa a todo o grupo por 3 turnos.",
+  "titulo": "O Rei Entre a Vida e a Morte",
+  "equipamentos": {
+    "arma": "Espada Cerimonial Ornamentada",
+    "itens": "Armadura Real Desgastada, Selo da Guilda Extinta, Retrato da Fortaleza Perdida"
+  },
+  "tecnicas": [
+    "Corte do Decreto",
+    "Postura Real",
+    "Golpe do Legado"
+  ],
+  "formaFalar": "Fala com determinação e honra, valorizando a força e a coragem. Suas palavras são firmes e inspiradoras.",
+  "localizacao": "Coreia do Sul",
+  "profissao": "Caçador(a) Lutador",
+  "objetivos": "Proteger os inocentes, evoluir como caçador e desvendar os mistérios dos portais.",
+  "valores": "A vida é preciosa. A coragem é essencial. A lealdade é inegociável."
+}

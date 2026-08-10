@@ -1,0 +1,186 @@
+/**
+ * TESTE INTEGRADO DA NOVA ARQUITETURA
+ * Simula o fluxo completo sem chamar o Ollama
+ */
+const { obterContexto } = require('./src/ia/contextManagerV2');
+const { construirPrompt } = require('./src/ia/promptBuilderV2');
+const { detectarCargaNecessaria } = require('./src/ia/cargaSobDemanda');
+
+let pass = 0;
+let fail = 0;
+
+function test(nome, condicao, detalhes) {
+    if (condicao) { pass++; console.log(`[PASS] ${nome}`); }
+    else { fail++; console.log(`[FAIL] ${nome} ${detalhes ? '- ' + detalhes : ''}`); }
+}
+
+async function main() {
+    console.log('=== TESTE INTEGRADO: FLUXO COMPLETO ===\n');
+
+    // =============================================
+    // TESTE 1: Mensagem casual (não deve carregar dados extras)
+    // =============================================
+    console.log('--- Teste 1: Mensagem casual ---');
+    const contexto1 = await obterContexto('cyrus_albright', '5511999999999', 'Oi, tudo bem?');
+    
+    test('NPC carregado', contexto1.npc !== null);
+    test('Personalidade sempre presente', contexto1.npc?.personalidade !== undefined);
+    test('Forma de falar sempre presente', contexto1.npc?.formaFalar !== undefined || contexto1.npc?.formaFalar === null);
+    test('Regras de interpretação sempre presentes', contexto1.npc?.regras_interpretacao !== undefined);
+    test('História NÃO carregada (casual)', contexto1.npc?.historia === undefined);
+    test('Classe NÃO carregada (casual)', contexto1.npc?.classe === undefined);
+    test('Atributos NÃO carregados (casual)', contexto1.npc?.atributos === undefined);
+    test('Aparência NÃO carregada (casual)', contexto1.npc?.aparencia === undefined);
+    test('Objetivos NÃO carregados (casual)', contexto1.npc?.objetivos === undefined);
+    test('Estado emocional presente', contexto1.estadoEmocional !== undefined);
+    test('Mood presente', contexto1.mood !== undefined);
+    test('Relacionamento presente', contexto1.relacionamento !== undefined || contexto1.favorabilidade !== undefined);
+    test('Memórias presentes', Array.isArray(contexto1.memorias));
+
+    // Construir prompt
+    const prompt1 = construirPrompt(contexto1, 'Oi, tudo bem?');
+    test('Prompt construído (casual)', prompt1.prompt.length > 0);
+    test('Prompt tem interpretação', prompt1.prompt.includes('INTERPRETAÇÃO'));
+    test('Prompt tem personalidade', prompt1.prompt.includes('Personalidade'));
+    test('Prompt NÃO tem história', !prompt1.prompt.includes('História:'));
+    test('Prompt NÃO tem classe', !prompt1.prompt.includes('Classe:'));
+    test('Prompt NÃO tem atributos', !prompt1.prompt.includes('Atributos:'));
+    test('Prompt NÃO tem aparência', !prompt1.prompt.includes('Aparência:'));
+    test('Prompt NÃO tem objetivos', !prompt1.prompt.includes('Objetivos:'));
+    test('Prompt tem forma de pensar', prompt1.prompt.includes('FORMA DE PENSAR'));
+
+    // =============================================
+    // TESTE 2: Pergunta sobre história
+    // =============================================
+    console.log('\n--- Teste 2: Pergunta sobre história ---');
+    const contexto2 = await obterContexto('cyrus_albright', '5511999999999', 'Me conte sua história');
+    
+    test('História carregada (pergunta)', contexto2.npc?.historia !== undefined);
+    test('Classe NÃO carregada (história)', contexto2.npc?.classe === undefined);
+    test('Atributos NÃO carregados (história)', contexto2.npc?.atributos === undefined);
+
+    const prompt2 = construirPrompt(contexto2, 'Me conte sua história');
+    test('Prompt tem história', prompt2.prompt.includes('História:'));
+    test('Prompt NÃO tem classe', !prompt2.prompt.includes('Classe:'));
+    test('Prompt NÃO tem atributos', !prompt2.prompt.includes('Atributos:'));
+
+    // =============================================
+    // TESTE 3: Pergunta sobre poder/atributos
+    // =============================================
+    console.log('\n--- Teste 3: Pergunta sobre poder ---');
+    const contexto3 = await obterContexto('cyrus_albright', '5511999999999', 'Quão forte você é?');
+    
+    test('Atributos carregados (poder)', contexto3.npc?.atributos !== undefined);
+    test('Classe carregada (poder)', contexto3.npc?.classe !== undefined);
+    test('História NÃO carregada (poder)', contexto3.npc?.historia === undefined);
+
+    const prompt3 = construirPrompt(contexto3, 'Quão forte você é?');
+    test('Prompt tem atributos', prompt3.prompt.includes('Atributos:'));
+    test('Prompt tem classe', prompt3.prompt.includes('Classe:'));
+    test('Prompt NÃO tem história', !prompt3.prompt.includes('História:'));
+
+    // =============================================
+    // TESTE 4: Pergunta sobre missão
+    // =============================================
+    console.log('\n--- Teste 4: Pergunta sobre missão ---');
+    const contexto4 = await obterContexto('cyrus_albright', '5511999999999', 'Tem alguma missão para mim?');
+    
+    test('Missão detectada', detectarCargaNecessaria('Tem alguma missão para mim?').missao === true);
+    test('História NÃO carregada (missão)', contexto4.npc?.historia === undefined);
+
+    // =============================================
+    // TESTE 5: Pergunta sobre aparência
+    // =============================================
+    console.log('\n--- Teste 5: Pergunta sobre aparência ---');
+    const contexto5 = await obterContexto('cyrus_albright', '5511999999999', 'Como você se parece?');
+    
+    test('Aparência carregada', contexto5.npc?.aparencia !== undefined);
+    test('História NÃO carregada (aparência)', contexto5.npc?.historia === undefined);
+
+    // =============================================
+    // TESTE 6: Pergunta sobre gostos
+    // =============================================
+    console.log('\n--- Teste 6: Pergunta sobre gostos ---');
+    const contexto6 = await obterContexto('cyrus_albright', '5511999999999', 'O que você gosta de fazer?');
+    
+    test('Gostos carregados', contexto6.npc?.gostos !== undefined);
+    test('Desgostos carregados', contexto6.npc?.desgostos !== undefined);
+
+    // =============================================
+    // TESTE 7: Pergunta sobre técnicas
+    // =============================================
+    console.log('\n--- Teste 7: Pergunta sobre técnicas ---');
+    const contexto7 = await obterContexto('cyrus_albright', '5511999999999', 'Como você luta?');
+    
+    test('Técnicas carregadas', contexto7.npc?.tecnicas !== undefined);
+    test('Estilo de luta carregado', contexto7.npc?.estilo_luta !== undefined);
+
+    // =============================================
+    // TESTE 8: Pergunta sobre magia
+    // =============================================
+    console.log('\n--- Teste 8: Pergunta sobre magia ---');
+    const contexto8 = await obterContexto('cyrus_albright', '5511999999999', 'Você usa magia?');
+    
+    test('Elemento carregado (magia)', contexto8.npc?.elemento !== undefined);
+    test('Habilidade única carregada (magia)', contexto8.npc?.habilidade_unica !== undefined);
+
+    // =============================================
+    // TESTE 9: Pergunta sobre equipamentos
+    // =============================================
+    console.log('\n--- Teste 9: Pergunta sobre equipamentos ---');
+    const contexto9 = await obterContexto('cyrus_albright', '5511999999999', 'Qual sua arma?');
+    
+    test('Equipamentos carregados', contexto9.npc?.equipamentos !== undefined);
+
+    // =============================================
+    // TESTE 10: Pergunta sobre relacionamentos
+    // =============================================
+    console.log('\n--- Teste 10: Pergunta sobre relacionamentos ---');
+    const contexto10 = await obterContexto('cyrus_albright', '5511999999999', 'Você conhece o Sung Jin-Woo?');
+    
+    test('Relacionamentos NPC carregados', contexto10.npc?.relacionamentos !== undefined);
+
+    // =============================================
+    // TESTE 11: Pergunta sobre organização
+    // =============================================
+    console.log('\n--- Teste 11: Pergunta sobre organização ---');
+    const contexto11 = await obterContexto('cyrus_albright', '5511999999999', 'Qual guilda você pertence?');
+    
+    test('Organização carregada', contexto11.npc?.organizacao !== undefined);
+    test('Ocupação carregada', contexto11.npc?.ocupacao !== undefined);
+
+    // =============================================
+    // TESTE 12: Pergunta sobre profissão
+    // =============================================
+    console.log('\n--- Teste 12: Pergunta sobre profissão ---');
+    const contexto12 = await obterContexto('cyrus_albright', '5511999999999', 'O que você faz da vida?');
+    
+    test('Profissão carregada', contexto12.npc?.profissao !== undefined);
+
+    // =============================================
+    // TESTE 13: Pergunta sobre regras de interpretação
+    // =============================================
+    console.log('\n--- Teste 13: Pergunta sobre regras ---');
+    const contexto13 = await obterContexto('cyrus_albright', '5511999999999', 'O que você faria se eu te traísse?');
+    
+    test('Regras de interpretação carregadas', contexto13.npc?.regras_interpretacao !== undefined);
+
+    // =============================================
+    // TESTE 14: Pergunta sobre lacunas narrativas
+    // =============================================
+    console.log('\n--- Teste 14: Pergunta sobre lacunas ---');
+    const contexto14 = await obterContexto('cyrus_albright', '5511999999999', 'Conte sobre sua infância');
+    
+    test('Lacunas narrativas carregadas', contexto14.npc?.lacunas_narrativas !== undefined);
+
+    // =============================================
+    // RESULTADO FINAL
+    // =============================================
+    console.log(`\n=== RESULTADO: ${pass} PASS, ${fail} FAIL ===`);
+    process.exit(fail > 0 ? 1 : 0);
+}
+
+main().catch(err => {
+    console.error('ERRO FATAL:', err);
+    process.exit(1);
+});

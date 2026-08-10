@@ -1,0 +1,8 @@
+- [x] Analisar estrutura de npc_lora_padronizado e NPC_LORA/dataset
+- [x] Verificar correspondência entre NPCs em ambas as pastas
+- [x] Substituir 17_dialog_examples.md e 18_scene_examples.md em todos os 72 NPCs
+- [x] Verificar integridade dos arquivos substituídos
+- [x] Analisar arquitetura de conversa (narrativeService, npcServiceV2, npcService, messageFormatter)
+- [ ] Atualizar formatarMensagem em messageFormatter.js para suportar npc.name e envolver nome em _*...*_
+- [ ] Adicionar formatarMensagem ao narrativeService.js (pipeline primário)
+- [ ] Verificar integridade das alterações

@@ -1,0 +1,178 @@
+{
+  "npcId": "eltrix_noh",
+  "npcNome": "Eltrix Noh",
+  "npcTitulo": "A Capitã da Guarda Dissolvida",
+  "totalMissoes": 10,
+  "missoes": [
+    {
+      "id": "eltrix_noh_01",
+      "npcId": "eltrix_noh",
+      "numero": 1,
+      "nome": "Capítulo 1: O Despertar de Eltrix Noh",
+      "descricao": "Acompanhe os primeiros passos de Eltrix Noh como Caçador(a). Ex-capitã de uma guarda de elite responsável por proteger uma fortaleza, Eltrix viu sua unidade dizimada durante uma incursão maciça. Sobrevivente, reúne os remanescentes....",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Complete a introdução: converse com Eltrix Noh e participe de sua primeira incursão",
+      "recompensas": {
+        "xp": 17100,
+        "won": 114000,
+        "item": "Armadura Funcional de Capitã"
+      }
+    },
+    {
+      "id": "eltrix_noh_02",
+      "npcId": "eltrix_noh",
+      "numero": 2,
+      "nome": "Capítulo 2: A Trilha de A Capitã da Guarda Dissolvida",
+      "descricao": "Eltrix Noh pede ajuda para investigar pistas ligadas ao seu passado, aprofundando o mistério por trás de seu título de 'A Capitã da Guarda Dissolvida'.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Ajude Eltrix Noh a reunir 3 pistas em diferentes localizações",
+      "recompensas": {
+        "xp": 19800,
+        "won": 132000,
+        "item": "Insígnia da Unidade Extinta"
+      }
+    },
+    {
+      "id": "eltrix_noh_03",
+      "npcId": "eltrix_noh",
+      "numero": 3,
+      "nome": "Capítulo 3: O Confronto de Eltrix Noh",
+      "descricao": "O passado de Eltrix Noh finalmente alcança o presente. Enfrente ao lado dele(a) a ameaça central de sua história.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Vença o confronto decisivo ao lado de Eltrix Noh",
+      "recompensas": {
+        "xp": 22500,
+        "won": 150000,
+        "item": "Réplica Reforçada de: Arco de Guerra e Lança Curta"
+      }
+    },
+    {
+      "id": "eltrix_noh_04",
+      "npcId": "eltrix_noh",
+      "numero": 4,
+      "nome": "Capítulo 4: A Capitã da Guarda Dissolvida",
+      "descricao": "Com a ameaça derrotada, Eltrix Noh consolida seu lugar no mundo dos caçadores, consagrando-se como A Capitã da Guarda Dissolvida.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Complete a missão final e testemunhe o desfecho da história de Eltrix Noh",
+      "recompensas": {
+        "xp": 25200,
+        "won": 168000,
+        "item": "Réplica Reforçada de: Arco de Guerra e Lança Curta"
+      }
+    },
+    {
+      "id": "eltrix_noh_05",
+      "npcId": "eltrix_noh",
+      "numero": 5,
+      "nome": "Reforço de Eltrix Noh",
+      "descricao": "Eltrix Noh pede que você adquira, em qualquer Loja de Itens da Associação, um equipamento de Rank A compatível com Arcos para reforçar seu arsenal de combate.",
+      "categoria": "secundaria",
+      "tipo": "loja",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Comprar 1 equipamento de Rank A (peça de armadura ou arma)",
+      "recompensas": {
+        "xp": 5400,
+        "won": 36000,
+        "item": "Réplica Reforçada de: Arco de Guerra e Lança Curta"
+      }
+    },
+    {
+      "id": "eltrix_noh_06",
+      "npcId": "eltrix_noh",
+      "numero": 6,
+      "nome": "Provisões de Eltrix Noh",
+      "descricao": "Antes da próxima incursão, Eltrix Noh pede que você compre poções de recuperação e um acessório de afinidade elemental Metal na loja mais próxima.",
+      "categoria": "secundaria",
+      "tipo": "loja",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Comprar 3 poções + 1 acessório elemental",
+      "recompensas": {
+        "xp": 4950,
+        "won": 33000,
+        "item": "Insígnia da Unidade Extinta"
+      }
+    },
+    {
+      "id": "eltrix_noh_07",
+      "npcId": "eltrix_noh",
+      "numero": 7,
+      "nome": "Receita de Eltrix Noh",
+      "descricao": "Usando materiais coletados em dungeons de afinidade Metal, produza o item indicado por Eltrix Noh em uma bancada de criação da guilda.",
+      "categoria": "secundaria",
+      "tipo": "producao",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Produzir 1 item de afinidade Metal (Rank A)",
+      "recompensas": {
+        "xp": 5850,
+        "won": 39000,
+        "item": "Fragmento de Mana (Metal)"
+      }
+    },
+    {
+      "id": "eltrix_noh_08",
+      "npcId": "eltrix_noh",
+      "numero": 8,
+      "nome": "Suprimento Especial de Eltrix Noh",
+      "descricao": "Eltrix Noh ensina uma técnica pessoal de preparo; produza 3 unidades de um item de suporte (poção, munição ou material) ligado ao estilo de combate de Arcos.",
+      "categoria": "secundaria",
+      "tipo": "producao",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Produzir 3 itens de suporte",
+      "recompensas": {
+        "xp": 6300,
+        "won": 42000,
+        "item": "Fragmento de Mana (Metal)"
+      }
+    },
+    {
+      "id": "eltrix_noh_09",
+      "npcId": "eltrix_noh",
+      "numero": 9,
+      "nome": "Treino de Combate com Eltrix Noh",
+      "descricao": "Eltrix Noh solicita ajuda para conter uma infestação: derrote autômatos de metal em dungeons de Rank A ou inferior.",
+      "categoria": "cacada",
+      "tipo": "caca",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Derrotar 35 Autômatos de Metal",
+      "recompensas": {
+        "xp": 7200,
+        "won": 48000,
+        "item": "Armadura Funcional de Capitã"
+      }
+    },
+    {
+      "id": "eltrix_noh_10",
+      "npcId": "eltrix_noh",
+      "numero": 10,
+      "nome": "Caçada Recomendada por Eltrix Noh",
+      "descricao": "Uma variante mais forte de autômatos de metal tem aparecido nas rondas de Eltrix Noh; elimine essas ameaças antes que evoluam.",
+      "categoria": "cacada",
+      "tipo": "caca",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Derrotar 8 Autômatos de Metal (variante fortalecida)",
+      "recompensas": {
+        "xp": 9000,
+        "won": 60000,
+        "item": "Réplica Reforçada de: Arco de Guerra e Lança Curta"
+      }
+    }
+  ]
+}

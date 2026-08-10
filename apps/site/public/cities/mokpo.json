@@ -1,0 +1,19 @@
+{
+  "id": "mokpo",
+  "name": "Mokpo",
+  "image": "/images/cities/mokpo.webp",
+  "description": "Porto do oeste",
+  "population": "220 mil",
+  "dangerLevel": "C",
+  "guilds": [],
+  "npcs": [],
+  "players": [],
+  "portals": [],
+  "dungeons": [],
+  "bosses": [],
+  "shops": [],
+  "quests": [],
+  "events": [],
+  "resources": [],
+  "notes": ""
+}

@@ -1,0 +1,178 @@
+{
+  "npcId": "kaldena_ryu",
+  "npcNome": "Kaldena Ryu",
+  "npcTitulo": "A Capitã que Perdeu Tudo",
+  "totalMissoes": 10,
+  "missoes": [
+    {
+      "id": "kaldena_ryu_01",
+      "npcId": "kaldena_ryu",
+      "numero": 1,
+      "nome": "Capítulo 1: Rumores sobre Kaldena Ryu",
+      "descricao": "Relatos alarmantes começam a circular entre guildas sobre Kaldena Ryu. Sobrevivente de um massacre orquestrado contra seu clã, Kaldena dedicou a vida a caçar os responsáveis, ascendendo através das fileiras da Associação....",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Investigue 3 relatos de testemunhas sobre Kaldena Ryu",
+      "recompensas": {
+        "xp": 17100,
+        "won": 114000,
+        "item": "Armadura Marcada pelo Massacre"
+      }
+    },
+    {
+      "id": "kaldena_ryu_02",
+      "npcId": "kaldena_ryu",
+      "numero": 2,
+      "nome": "Capítulo 2: Rastreando A Capitã que Perdeu Tudo",
+      "descricao": "Reúna evidências concretas da atividade de Kaldena Ryu antes que a Associação classifique o caso como perdido.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Reúna provas em 2 locais diferentes ligados a Kaldena Ryu",
+      "recompensas": {
+        "xp": 19800,
+        "won": 132000,
+        "item": "Armadura Marcada pelo Massacre"
+      }
+    },
+    {
+      "id": "kaldena_ryu_03",
+      "npcId": "kaldena_ryu",
+      "numero": 3,
+      "nome": "Capítulo 3: Confronto com Kaldena Ryu",
+      "descricao": "É hora de enfrentar Kaldena Ryu diretamente. Prepare-se: como A Capitã que Perdeu Tudo, este será um combate de Rank A.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Derrote Kaldena Ryu em combate direto",
+      "recompensas": {
+        "xp": 22500,
+        "won": 150000,
+        "item": "Réplica Reforçada de: Espada com Runas de Proteção Instáveis"
+      }
+    },
+    {
+      "id": "kaldena_ryu_04",
+      "npcId": "kaldena_ryu",
+      "numero": 4,
+      "nome": "Capítulo 4: A Queda de A Capitã que Perdeu Tudo",
+      "descricao": "Com Kaldena Ryu neutralizado(a), reste apenas reportar o caso à Associação e lidar com as consequências reveladas.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Entregue o relatório final sobre Kaldena Ryu à Associação",
+      "recompensas": {
+        "xp": 25200,
+        "won": 168000,
+        "item": "Réplica Reforçada de: Espada com Runas de Proteção Instáveis"
+      }
+    },
+    {
+      "id": "kaldena_ryu_05",
+      "npcId": "kaldena_ryu",
+      "numero": 5,
+      "nome": "Reforço de Kaldena Ryu",
+      "descricao": "Kaldena Ryu pede que você adquira, em qualquer Loja de Itens da Associação, um equipamento de Rank A compatível com Espadas para reforçar seu arsenal de combate.",
+      "categoria": "secundaria",
+      "tipo": "loja",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Comprar 1 equipamento de Rank A (peça de armadura ou arma)",
+      "recompensas": {
+        "xp": 5400,
+        "won": 36000,
+        "item": "Réplica Reforçada de: Espada com Runas de Proteção Instáveis"
+      }
+    },
+    {
+      "id": "kaldena_ryu_06",
+      "npcId": "kaldena_ryu",
+      "numero": 6,
+      "nome": "Provisões de Kaldena Ryu",
+      "descricao": "Antes da próxima incursão, Kaldena Ryu pede que você compre poções de recuperação e um acessório de afinidade elemental Escuridão na loja mais próxima.",
+      "categoria": "secundaria",
+      "tipo": "loja",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Comprar 3 poções + 1 acessório elemental",
+      "recompensas": {
+        "xp": 4950,
+        "won": 33000,
+        "item": "Símbolo do Clã Perdido"
+      }
+    },
+    {
+      "id": "kaldena_ryu_07",
+      "npcId": "kaldena_ryu",
+      "numero": 7,
+      "nome": "Receita de Kaldena Ryu",
+      "descricao": "Usando materiais coletados em dungeons de afinidade Escuridão, produza o item indicado por Kaldena Ryu em uma bancada de criação da guilda.",
+      "categoria": "secundaria",
+      "tipo": "producao",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Produzir 1 item de afinidade Escuridão (Rank A)",
+      "recompensas": {
+        "xp": 5850,
+        "won": 39000,
+        "item": "Fragmento de Mana (Escuridão)"
+      }
+    },
+    {
+      "id": "kaldena_ryu_08",
+      "npcId": "kaldena_ryu",
+      "numero": 8,
+      "nome": "Suprimento Especial de Kaldena Ryu",
+      "descricao": "Kaldena Ryu ensina uma técnica pessoal de preparo; produza 3 unidades de um item de suporte (poção, munição ou material) ligado ao estilo de combate de Espadas.",
+      "categoria": "secundaria",
+      "tipo": "producao",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Produzir 3 itens de suporte",
+      "recompensas": {
+        "xp": 6300,
+        "won": 42000,
+        "item": "Fragmento de Mana (Escuridão)"
+      }
+    },
+    {
+      "id": "kaldena_ryu_09",
+      "npcId": "kaldena_ryu",
+      "numero": 9,
+      "nome": "Treino de Combate com Kaldena Ryu",
+      "descricao": "Kaldena Ryu solicita ajuda para conter uma infestação: derrote sombras corrompidas em dungeons de Rank A ou inferior.",
+      "categoria": "cacada",
+      "tipo": "caca",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Derrotar 35 Sombras Corrompidas",
+      "recompensas": {
+        "xp": 7200,
+        "won": 48000,
+        "item": "Armadura Marcada pelo Massacre"
+      }
+    },
+    {
+      "id": "kaldena_ryu_10",
+      "npcId": "kaldena_ryu",
+      "numero": 10,
+      "nome": "Caçada Recomendada por Kaldena Ryu",
+      "descricao": "Uma variante mais forte de sombras corrompidas tem aparecido nas rondas de Kaldena Ryu; elimine essas ameaças antes que evoluam.",
+      "categoria": "cacada",
+      "tipo": "caca",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Derrotar 8 Sombras Corrompidas (variante fortalecida)",
+      "recompensas": {
+        "xp": 9000,
+        "won": 60000,
+        "item": "Réplica Reforçada de: Espada com Runas de Proteção Instáveis"
+      }
+    }
+  ]
+}

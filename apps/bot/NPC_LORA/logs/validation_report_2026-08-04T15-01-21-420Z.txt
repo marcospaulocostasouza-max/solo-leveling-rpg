@@ -1,0 +1,16 @@
+═══════════════════════════════════════════════════════════════
+              RELATÓRIO DE VALIDAÇÃO DO DATASET
+═══════════════════════════════════════════════════════════════
+
+Personagens encontrados: 1
+Personagens válidos:     1
+Personagens inválidos:   0
+Total de erros:         0
+Total de avisos:         0
+Arquivos faltando:      0
+Arquivos vazios:        0
+
+─── ophilia_clement [✓ VÁLIDO] ───
+  Arquivos: 18 total, 18 com conteúdo, 0 vazios
+
+═══════════════════════════════════════════════════════════════

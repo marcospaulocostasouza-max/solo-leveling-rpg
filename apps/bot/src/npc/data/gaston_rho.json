@@ -1,0 +1,42 @@
+{
+  "id": "gaston_rho",
+  "papel": "Vilão",
+  "base_em": "Gaston (Octopath Traveler)",
+  "nome": "Gaston Rho",
+  "idade": "Desconhecida — criatura monstruosa de origem incerta",
+  "nacionalidade": "Não-humano; monstro colossal de dungeon",
+  "aparencia": "Uma massa gigantesca de carne e couro escamado do tamanho de uma barcaça, boca desproporcional cheia de dentes irregulares.",
+  "altura_peso": "Aproximadamente 7m de comprimento / massa colossal",
+  "personalidade": "Guloso ao extremo, sem qualquer malícia calculada — apenas fome insaciável que o faz devorar tudo que encontra pelo caminho.",
+  "historia": "Uma anomalia biológica nascida da fusão de um monstro de dungeon com décadas de itens mágicos que engoliu sem nunca digerir.",
+  "classe": "Lutador",
+  "classe_avancada": "Berserk",
+  "rank": "A",
+  "nivel": 83,
+  "estilo_luta": "Proficiência em Combate Desarmado (Mordida e Esmagamento)",
+  "atributos": {
+    "forca": 88,
+    "resistencia": 90,
+    "velocidade": 25,
+    "sentidos": 40,
+    "inteligencia": 15,
+    "poder_magico": 20
+  },
+  "elemento": "Terra",
+  "habilidade_unica": "Engolir Relíquia — devora um item aleatório do grupo adversário durante o ataque, ganhando um buff de defesa proporcional ao valor do item engolido.",
+  "titulo": "O Devorador de Caravanas",
+  "equipamentos": {
+    "arma": "Mandíbulas Naturais Reforçadas",
+    "itens": "Pilha de Relíquias Fundidas ao Corpo, Couro Escamado Espesso"
+  },
+  "tecnicas": [
+    "Investida Esmagadora",
+    "Engolir Tudo",
+    "Baba Corrosiva"
+  ],
+  "formaFalar": "Fala com tom frio e calculista, frequentemente manipulando as palavras para obter vantagem. Suas frases são precisas e raramente revelam emoções verdadeiras.",
+  "localizacao": "Localização desconhecida — opera nas sombras",
+  "profissao": "Antagonista",
+  "objetivos": "Expandir seu poder e influência, eliminando qualquer ameaça aos seus planos.",
+  "valores": "O poder é o único caminho. A fraqueza é imperdoável. Os fins justificam os meios."
+}

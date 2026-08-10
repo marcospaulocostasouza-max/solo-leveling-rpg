@@ -1,0 +1,25 @@
+{
+  "_descricao": "CONFIGURAÇÃO DE THINKING - MODO SEM THINKING (TESTE CONTROLADO)",
+  "_aviso": "Durante o teste controlado, OLLAMA_THINKING=false no modelConfig.js. O serviço Ollama força think=false em todas as chamadas. Para reativar o thinking, mude OLLAMA_THINKING para true no modelConfig.js.",
+  "thinkingSempreAtivo": false,
+  "limiteThinking": 40,
+  "pesosPrioridade": {},
+  "excecoesSempreThinking": [],
+  "excecoesSempreRapido": [],
+  "memoria": {
+    "assuntosAtivosMax": 3,
+    "mensagensAposFimAssunto": 3,
+    "thinkContinuoSeUltimoFoiThinking": false,
+    "reverterAposAssuntoTerminar": true
+  },
+  "cache": {
+    "ativo": true,
+    "maxTrocasPorMinuto": 3,
+    "mensagensMinimasEntreTrocas": 2,
+    "cooldownMs": 10000
+  },
+  "performance": {
+    "logAtivo": true,
+    "detalhado": true
+  }
+}

@@ -1,0 +1,178 @@
+{
+  "npcId": "osvald_v_vanstein",
+  "npcNome": "Osvald V. Vanstein",
+  "npcTitulo": "O Erudito Vingativo",
+  "totalMissoes": 10,
+  "missoes": [
+    {
+      "id": "osvald_v_vanstein_01",
+      "npcId": "osvald_v_vanstein",
+      "numero": 1,
+      "nome": "Capítulo 1: O Despertar de Osvald V. Vanstein",
+      "descricao": "Acompanhe os primeiros passos de Osvald V. Vanstein como Caçador(a). Renomado pesquisador de fenômenos ligados a portais, Osvald foi incriminado por um colega ambicioso pela morte de sua própria esposa e o desaparecimento da filha, sendo preso injustamente por anos. Se...",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Complete a introdução: converse com Osvald V. Vanstein e participe de sua primeira incursão",
+      "recompensas": {
+        "xp": 17100,
+        "won": 114000,
+        "item": "Caderno de Provas Incriminatórias"
+      }
+    },
+    {
+      "id": "osvald_v_vanstein_02",
+      "npcId": "osvald_v_vanstein",
+      "numero": 2,
+      "nome": "Capítulo 2: A Trilha de O Erudito Vingativo",
+      "descricao": "Osvald V. Vanstein pede ajuda para investigar pistas ligadas ao seu passado, aprofundando o mistério por trás de seu título de 'O Erudito Vingativo'.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Ajude Osvald V. Vanstein a reunir 3 pistas em diferentes localizações",
+      "recompensas": {
+        "xp": 19800,
+        "won": 132000,
+        "item": "Óculos de Análise Arcana"
+      }
+    },
+    {
+      "id": "osvald_v_vanstein_03",
+      "npcId": "osvald_v_vanstein",
+      "numero": 3,
+      "nome": "Capítulo 3: O Confronto de Osvald V. Vanstein",
+      "descricao": "O passado de Osvald V. Vanstein finalmente alcança o presente. Enfrente ao lado dele(a) a ameaça central de sua história.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Vença o confronto decisivo ao lado de Osvald V. Vanstein",
+      "recompensas": {
+        "xp": 22500,
+        "won": 150000,
+        "item": "Réplica Reforçada de: Cajado de Maldição Selada"
+      }
+    },
+    {
+      "id": "osvald_v_vanstein_04",
+      "npcId": "osvald_v_vanstein",
+      "numero": 4,
+      "nome": "Capítulo 4: O Erudito Vingativo",
+      "descricao": "Com a ameaça derrotada, Osvald V. Vanstein consolida seu lugar no mundo dos caçadores, consagrando-se como O Erudito Vingativo.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Complete a missão final e testemunhe o desfecho da história de Osvald V. Vanstein",
+      "recompensas": {
+        "xp": 25200,
+        "won": 168000,
+        "item": "Réplica Reforçada de: Cajado de Maldição Selada"
+      }
+    },
+    {
+      "id": "osvald_v_vanstein_05",
+      "npcId": "osvald_v_vanstein",
+      "numero": 5,
+      "nome": "Reforço de Osvald V. Vanstein",
+      "descricao": "Osvald V. Vanstein pede que você adquira, em qualquer Loja de Itens da Associação, um equipamento de Rank A compatível com Cajados e Orbes para reforçar seu arsenal de combate.",
+      "categoria": "secundaria",
+      "tipo": "loja",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Comprar 1 equipamento de Rank A (peça de armadura ou arma)",
+      "recompensas": {
+        "xp": 5400,
+        "won": 36000,
+        "item": "Réplica Reforçada de: Cajado de Maldição Selada"
+      }
+    },
+    {
+      "id": "osvald_v_vanstein_06",
+      "npcId": "osvald_v_vanstein",
+      "numero": 6,
+      "nome": "Provisões de Osvald V. Vanstein",
+      "descricao": "Antes da próxima incursão, Osvald V. Vanstein pede que você compre poções de recuperação e um acessório de afinidade elemental Lava na loja mais próxima.",
+      "categoria": "secundaria",
+      "tipo": "loja",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Comprar 3 poções + 1 acessório elemental",
+      "recompensas": {
+        "xp": 4950,
+        "won": 33000,
+        "item": "Óculos de Análise Arcana"
+      }
+    },
+    {
+      "id": "osvald_v_vanstein_07",
+      "npcId": "osvald_v_vanstein",
+      "numero": 7,
+      "nome": "Receita de Osvald V. Vanstein",
+      "descricao": "Usando materiais coletados em dungeons de afinidade Lava, produza o item indicado por Osvald V. Vanstein em uma bancada de criação da guilda.",
+      "categoria": "secundaria",
+      "tipo": "producao",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Produzir 1 item de afinidade Lava (Rank A)",
+      "recompensas": {
+        "xp": 5850,
+        "won": 39000,
+        "item": "Fragmento de Mana (Lava)"
+      }
+    },
+    {
+      "id": "osvald_v_vanstein_08",
+      "npcId": "osvald_v_vanstein",
+      "numero": 8,
+      "nome": "Suprimento Especial de Osvald V. Vanstein",
+      "descricao": "Osvald V. Vanstein ensina uma técnica pessoal de preparo; produza 3 unidades de um item de suporte (poção, munição ou material) ligado ao estilo de combate de Cajados e Orbes.",
+      "categoria": "secundaria",
+      "tipo": "producao",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Produzir 3 itens de suporte",
+      "recompensas": {
+        "xp": 6300,
+        "won": 42000,
+        "item": "Fragmento de Mana (Lava)"
+      }
+    },
+    {
+      "id": "osvald_v_vanstein_09",
+      "npcId": "osvald_v_vanstein",
+      "numero": 9,
+      "nome": "Treino de Combate com Osvald V. Vanstein",
+      "descricao": "Osvald V. Vanstein solicita ajuda para conter uma infestação: derrote elementais de lava em dungeons de Rank A ou inferior.",
+      "categoria": "cacada",
+      "tipo": "caca",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Derrotar 35 Elementais de Lava",
+      "recompensas": {
+        "xp": 7200,
+        "won": 48000,
+        "item": "Caderno de Provas Incriminatórias"
+      }
+    },
+    {
+      "id": "osvald_v_vanstein_10",
+      "npcId": "osvald_v_vanstein",
+      "numero": 10,
+      "nome": "Caçada Recomendada por Osvald V. Vanstein",
+      "descricao": "Uma variante mais forte de elementais de lava tem aparecido nas rondas de Osvald V. Vanstein; elimine essas ameaças antes que evoluam.",
+      "categoria": "cacada",
+      "tipo": "caca",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Derrotar 8 Elementais de Lava (variante fortalecida)",
+      "recompensas": {
+        "xp": 9000,
+        "won": 60000,
+        "item": "Réplica Reforçada de: Cajado de Maldição Selada"
+      }
+    }
+  ]
+}

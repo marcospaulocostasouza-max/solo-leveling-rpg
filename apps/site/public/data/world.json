@@ -1,0 +1,26 @@
+{
+  "players": [
+    {"id":"irelia","name":"Irelia","x":34.8,"y":25.8,"location":"Seul","status":"online","guild":"Independente"}
+  ],
+  "npcs": [
+    {"id":"therion","name":"Therion","x":42.5,"y":45.2,"location":"Daejeon","status":"ativo"},
+    {"id":"ophilia","name":"Ophilia Clement","x":61.5,"y":54.5,"location":"Daegu","status":"ativo"}
+  ],
+  "guilds": [
+    {"id":"the-void","name":"The Void","x":31.5,"y":27.5,"territory":"Geumcheon-gu","level":1,"weeklyIncome":150000}
+  ],
+  "gates": [
+    {"id":"gate-seoul","name":"Gate de Seul","x":36.5,"y":25.2,"location":"Seul","authorized":true},
+    {"id":"gate-busan","name":"Gate de Busan","x":76.2,"y":68.4,"location":"Busan","authorized":true},
+    {"id":"gate-jeju","name":"Gate de Jeju","x":43.5,"y":91.0,"location":"Jeju","authorized":true}
+  ],
+  "dungeons": [
+    {"id":"zelkova","name":"Dungeon Break Zelkova","x":35.2,"y":23.4,"location":"Seodaemun-gu / Jungnang-gu","rank":"?"}
+  ],
+  "specialLocations": [
+    {"id":"hallasan","name":"Hallasan","x":42.0,"y":89.0,"location":"Jeju","kind":"Treinamento extremo"},
+    {"id":"memories","name":"Ilha das Memórias","x":18.0,"y":72.0,"location":"Mar Amarelo","kind":"Área mística"},
+    {"id":"hunter-association","name":"Guilda de Caçadores","x":35.0,"y":26.5,"location":"Seul","kind":"Associação"},
+    {"id":"zelkova-park","name":"Parque das Zelkova","x":34.0,"y":22.8,"location":"Seul","kind":"Área sobrenatural"}
+  ]
+}

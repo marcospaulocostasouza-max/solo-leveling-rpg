@@ -1,0 +1,19 @@
+{
+  "id": "cheonan",
+  "name": "Cheonan",
+  "image": "/images/cities/cheonan.webp",
+  "description": "Centro industrial",
+  "population": "650 mil",
+  "dangerLevel": "D",
+  "guilds": [],
+  "npcs": [],
+  "players": [],
+  "portals": [],
+  "dungeons": [],
+  "bosses": [],
+  "shops": [],
+  "quests": [],
+  "events": [],
+  "resources": [],
+  "notes": ""
+}

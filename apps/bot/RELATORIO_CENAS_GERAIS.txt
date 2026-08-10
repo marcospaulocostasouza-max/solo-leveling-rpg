@@ -1,0 +1,3063 @@
+RELATÓRIO DE CENAS GERAIS
+==========================
+Quantidade de blocos enviados para CENAS_GERAIS.md: 612
+
+Bloco 1
+Origem: Cenas.md
+Linhas: 12222-12226
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 2
+Origem: Cenas.md
+Linhas: 12227-12230
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 3
+Origem: Cenas.md
+Linhas: 12231-12234
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 4
+Origem: Cenas.md
+Linhas: 12235-12238
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 5
+Origem: Cenas.md
+Linhas: 12239-12242
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 6
+Origem: Cenas.md
+Linhas: 12243-12246
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 7
+Origem: Cenas.md
+Linhas: 12247-12250
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 8
+Origem: Cenas.md
+Linhas: 12251-12254
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 9
+Origem: Cenas.md
+Linhas: 12255-12258
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 10
+Origem: Cenas.md
+Linhas: 12259-12262
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 11
+Origem: Cenas.md
+Linhas: 12263-12266
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 12
+Origem: Cenas.md
+Linhas: 12267-12270
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 13
+Origem: Cenas.md
+Linhas: 12271-12274
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 14
+Origem: Cenas.md
+Linhas: 12275-12278
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 15
+Origem: Cenas.md
+Linhas: 12279-12282
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 16
+Origem: Cenas.md
+Linhas: 12283-12286
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 17
+Origem: Cenas.md
+Linhas: 12287-12290
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 18
+Origem: Cenas.md
+Linhas: 12291-12294
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 19
+Origem: Cenas.md
+Linhas: 12295-12298
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 20
+Origem: Cenas.md
+Linhas: 12299-12302
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 21
+Origem: Cenas.md
+Linhas: 12303-12306
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 22
+Origem: Cenas.md
+Linhas: 12307-12310
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 23
+Origem: Cenas.md
+Linhas: 12311-12314
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 24
+Origem: Cenas.md
+Linhas: 12315-12318
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 25
+Origem: Cenas.md
+Linhas: 12319-12326
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 26
+Origem: Cenas.md
+Linhas: 12327-12330
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 27
+Origem: Cenas.md
+Linhas: 12331-12334
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 28
+Origem: Cenas.md
+Linhas: 12335-12338
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 29
+Origem: Cenas.md
+Linhas: 12339-12342
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 30
+Origem: Cenas.md
+Linhas: 12344-12345
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 31
+Origem: Cenas.md
+Linhas: 12346-12346
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 32
+Origem: Cenas.md
+Linhas: 12347-12347
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 33
+Origem: Cenas.md
+Linhas: 12348-12348
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 34
+Origem: Cenas.md
+Linhas: 12349-12349
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 35
+Origem: Cenas.md
+Linhas: 12350-12350
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 36
+Origem: Cenas.md
+Linhas: 12351-12351
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 37
+Origem: Cenas.md
+Linhas: 12352-12352
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 38
+Origem: Cenas.md
+Linhas: 12353-12353
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 39
+Origem: Cenas.md
+Linhas: 12354-12354
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 40
+Origem: Cenas.md
+Linhas: 12355-12355
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 41
+Origem: Cenas.md
+Linhas: 12356-12356
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 42
+Origem: Cenas.md
+Linhas: 12357-12357
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 43
+Origem: Cenas.md
+Linhas: 12358-12358
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 44
+Origem: Cenas.md
+Linhas: 12359-12359
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 45
+Origem: Cenas.md
+Linhas: 12360-12360
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 46
+Origem: Cenas.md
+Linhas: 12361-12361
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 47
+Origem: Cenas.md
+Linhas: 12362-12362
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 48
+Origem: Cenas.md
+Linhas: 12363-12363
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 49
+Origem: Cenas.md
+Linhas: 12364-12364
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 50
+Origem: Cenas.md
+Linhas: 12365-12365
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 51
+Origem: Cenas.md
+Linhas: 12366-12366
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 52
+Origem: Cenas.md
+Linhas: 12367-12367
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 53
+Origem: Cenas.md
+Linhas: 12368-12368
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 54
+Origem: Cenas.md
+Linhas: 12369-12369
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 55
+Origem: Cenas.md
+Linhas: 12370-12370
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 56
+Origem: Cenas.md
+Linhas: 12371-12371
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 57
+Origem: Cenas.md
+Linhas: 12372-12372
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 58
+Origem: Cenas.md
+Linhas: 12373-12373
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 59
+Origem: Cenas.md
+Linhas: 12374-12377
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 60
+Origem: Cenas.md
+Linhas: 12378-12415
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 61
+Origem: Cenas.md
+Linhas: 12416-12453
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 62
+Origem: Cenas.md
+Linhas: 12454-12473
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 63
+Origem: Cenas.md
+Linhas: 12474-12491
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 64
+Origem: Cenas.md
+Linhas: 12492-12503
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 65
+Origem: Cenas.md
+Linhas: 12504-12529
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 66
+Origem: Cenas.md
+Linhas: 12530-12567
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 67
+Origem: Cenas.md
+Linhas: 12568-12605
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 68
+Origem: Cenas.md
+Linhas: 12606-12643
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 69
+Origem: Cenas.md
+Linhas: 12644-12681
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 70
+Origem: Cenas.md
+Linhas: 12682-12719
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 71
+Origem: Cenas.md
+Linhas: 12724-12757
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 72
+Origem: Cenas.md
+Linhas: 12758-12795
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 73
+Origem: Cenas.md
+Linhas: 12796-12833
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 74
+Origem: Cenas.md
+Linhas: 12834-12871
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 75
+Origem: Cenas.md
+Linhas: 12872-12909
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 76
+Origem: Cenas.md
+Linhas: 12910-12947
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 77
+Origem: Cenas.md
+Linhas: 12948-12959
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 78
+Origem: Cenas.md
+Linhas: 12960-12975
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 79
+Origem: Cenas.md
+Linhas: 12976-12985
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 80
+Origem: Cenas.md
+Linhas: 12986-12997
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 81
+Origem: Cenas.md
+Linhas: 12998-13023
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 82
+Origem: Cenas.md
+Linhas: 13024-13061
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 83
+Origem: Cenas.md
+Linhas: 13062-13099
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 84
+Origem: Cenas.md
+Linhas: 13100-13137
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 85
+Origem: Cenas.md
+Linhas: 13138-13175
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 86
+Origem: Cenas.md
+Linhas: 13176-13213
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 87
+Origem: Cenas.md
+Linhas: 13214-13251
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 88
+Origem: Cenas.md
+Linhas: 13252-13289
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 89
+Origem: Cenas.md
+Linhas: 13290-13327
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 90
+Origem: Cenas.md
+Linhas: 13328-13365
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 91
+Origem: Cenas.md
+Linhas: 13366-13403
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 92
+Origem: Cenas.md
+Linhas: 13404-13441
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 93
+Origem: Cenas.md
+Linhas: 13442-13479
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 94
+Origem: Cenas.md
+Linhas: 13480-13519
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 95
+Origem: Cenas.md
+Linhas: 13520-13523
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 96
+Origem: Cenas.md
+Linhas: 13524-13527
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 97
+Origem: Cenas.md
+Linhas: 13528-13531
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 98
+Origem: Cenas.md
+Linhas: 13532-13535
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 99
+Origem: Cenas.md
+Linhas: 13536-13539
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 100
+Origem: Cenas.md
+Linhas: 13540-13543
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 101
+Origem: Cenas.md
+Linhas: 13544-13547
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 102
+Origem: Cenas.md
+Linhas: 13548-13551
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 103
+Origem: Cenas.md
+Linhas: 13552-13555
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 104
+Origem: Cenas.md
+Linhas: 13556-13559
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 105
+Origem: Cenas.md
+Linhas: 13560-13563
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 106
+Origem: Cenas.md
+Linhas: 13564-13567
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 107
+Origem: Cenas.md
+Linhas: 13568-13571
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 108
+Origem: Cenas.md
+Linhas: 13572-13575
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 109
+Origem: Cenas.md
+Linhas: 13576-13581
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 110
+Origem: Cenas.md
+Linhas: 13582-13585
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 111
+Origem: Cenas.md
+Linhas: 13586-13589
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 112
+Origem: Cenas.md
+Linhas: 13590-13593
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 113
+Origem: Cenas.md
+Linhas: 13594-13597
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 114
+Origem: Cenas.md
+Linhas: 13598-13601
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 115
+Origem: Cenas.md
+Linhas: 13602-13605
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 116
+Origem: Cenas.md
+Linhas: 13606-13609
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 117
+Origem: Cenas.md
+Linhas: 13610-13613
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 118
+Origem: Cenas.md
+Linhas: 13614-13617
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 119
+Origem: Cenas.md
+Linhas: 13618-13621
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 120
+Origem: Cenas.md
+Linhas: 13622-13625
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 121
+Origem: Cenas.md
+Linhas: 13626-13629
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 122
+Origem: Cenas.md
+Linhas: 13630-13633
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 123
+Origem: Cenas.md
+Linhas: 13634-13637
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 124
+Origem: Cenas.md
+Linhas: 13638-13639
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 125
+Origem: E-CENAS.md
+Linhas: 295-297
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 126
+Origem: E-CENAS.md
+Linhas: 336-338
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 127
+Origem: E-CENAS.md
+Linhas: 392-393
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 128
+Origem: E-CENAS.md
+Linhas: 596-596
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 129
+Origem: E-CENAS.md
+Linhas: 702-702
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 130
+Origem: E-CENAS.md
+Linhas: 808-809
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 131
+Origem: E-CENAS.md
+Linhas: 1218-1219
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 132
+Origem: E-CENAS.md
+Linhas: 1319-1319
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 133
+Origem: E-CENAS.md
+Linhas: 1732-1732
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 134
+Origem: E-CENAS.md
+Linhas: 1944-1945
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 135
+Origem: E-CENAS.md
+Linhas: 2251-2251
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 136
+Origem: E-CENAS.md
+Linhas: 2360-2360
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 137
+Origem: E-CENAS.md
+Linhas: 2466-2467
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 138
+Origem: E-CENAS.md
+Linhas: 2878-2879
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 139
+Origem: E-CENAS.md
+Linhas: 2979-2979
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 140
+Origem: E-CENAS.md
+Linhas: 3088-3088
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 141
+Origem: E-CENAS.md
+Linhas: 3394-3394
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 142
+Origem: E-CENAS.md
+Linhas: 3604-3605
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 143
+Origem: E-CENAS.md
+Linhas: 4018-4019
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 144
+Origem: E-CENAS.md
+Linhas: 4119-4119
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 145
+Origem: E-CENAS.md
+Linhas: 4331-4331
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 146
+Origem: E-CENAS.md
+Linhas: 4541-4541
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 147
+Origem: E-CENAS.md
+Linhas: 4647-4648
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 148
+Origem: E-CENAS.md
+Linhas: 4850-4850
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 149
+Origem: E-CENAS.md
+Linhas: 5062-5063
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 150
+Origem: E-CENAS.md
+Linhas: 5372-5372
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 151
+Origem: E-CENAS.md
+Linhas: 5578-5578
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 152
+Origem: E-CENAS.md
+Linhas: 5685-5685
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 153
+Origem: E-CENAS.md
+Linhas: 5791-5792
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 154
+Origem: E-CENAS.md
+Linhas: 5994-5994
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 155
+Origem: E-CENAS.md
+Linhas: 6206-6207
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 156
+Origem: E-CENAS.md
+Linhas: 6307-6307
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 157
+Origem: E-CENAS.md
+Linhas: 6414-6414
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 158
+Origem: E-CENAS.md
+Linhas: 6516-6516
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 159
+Origem: E-CENAS.md
+Linhas: 6722-6722
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 160
+Origem: E-CENAS.md
+Linhas: 6831-6831
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 161
+Origem: E-CENAS.md
+Linhas: 6937-6938
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 162
+Origem: E-CENAS.md
+Linhas: 7243-7243
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 163
+Origem: E-CENAS.md
+Linhas: 7352-7352
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 164
+Origem: E-CENAS.md
+Linhas: 7458-7459
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 165
+Origem: E-CENAS.md
+Linhas: 7657-7657
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 166
+Origem: E-CENAS.md
+Linhas: 8025-8027
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 167
+Origem: E-CENAS.md
+Linhas: 8031-8032
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 168
+Origem: E-CENAS.md
+Linhas: 8038-8040
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 169
+Origem: E-CENAS.md
+Linhas: 8044-8046
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 170
+Origem: E-CENAS.md
+Linhas: 8052-8054
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 171
+Origem: E-CENAS.md
+Linhas: 8058-8060
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 172
+Origem: E-CENAS.md
+Linhas: 8113-8114
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 173
+Origem: E-CENAS.md
+Linhas: 8120-8122
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 174
+Origem: E-CENAS.md
+Linhas: 8126-8127
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 175
+Origem: E-CENAS.md
+Linhas: 8133-8135
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 176
+Origem: E-CENAS.md
+Linhas: 8139-8141
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 177
+Origem: E-CENAS.md
+Linhas: 8153-8154
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 178
+Origem: E-CENAS.md
+Linhas: 8160-8162
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 179
+Origem: E-CENAS.md
+Linhas: 8166-8168
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 180
+Origem: E-CENAS.md
+Linhas: 8174-8176
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 181
+Origem: E-CENAS.md
+Linhas: 8180-8182
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 182
+Origem: E-CENAS.md
+Linhas: 8188-8190
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 183
+Origem: E-CENAS.md
+Linhas: 8194-8196
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 184
+Origem: E-CENAS.md
+Linhas: 8202-8204
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 185
+Origem: E-CENAS.md
+Linhas: 8208-8210
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 186
+Origem: E-CENAS.md
+Linhas: 8216-8218
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 187
+Origem: E-CENAS.md
+Linhas: 8222-8224
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 188
+Origem: E-CENAS.md
+Linhas: 8228-8228
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 189
+Origem: E-CENAS.md
+Linhas: 8232-8234
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 190
+Origem: E-CENAS.md
+Linhas: 8238-8240
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 191
+Origem: E-CENAS.md
+Linhas: 8246-8248
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 192
+Origem: E-CENAS.md
+Linhas: 8252-8254
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 193
+Origem: E-CENAS.md
+Linhas: 8266-8268
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 194
+Origem: E-CENAS.md
+Linhas: 8274-8276
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 195
+Origem: E-CENAS.md
+Linhas: 8288-8290
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 196
+Origem: E-CENAS.md
+Linhas: 8294-8296
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 197
+Origem: E-CENAS.md
+Linhas: 8302-8304
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 198
+Origem: E-CENAS.md
+Linhas: 8308-8310
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 199
+Origem: E-CENAS.md
+Linhas: 8316-8318
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 200
+Origem: E-CENAS.md
+Linhas: 8322-8324
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 201
+Origem: E-CENAS.md
+Linhas: 8328-8328
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 202
+Origem: E-CENAS.md
+Linhas: 8332-8334
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 203
+Origem: E-CENAS.md
+Linhas: 8338-8340
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 204
+Origem: E-CENAS.md
+Linhas: 8352-8354
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 205
+Origem: E-CENAS.md
+Linhas: 8364-8366
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 206
+Origem: E-CENAS.md
+Linhas: 8370-8372
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 207
+Origem: E-CENAS.md
+Linhas: 8378-8380
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 208
+Origem: E-CENAS.md
+Linhas: 8384-8386
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 209
+Origem: E-CENAS.md
+Linhas: 8392-8394
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 210
+Origem: E-CENAS.md
+Linhas: 8398-8400
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 211
+Origem: E-CENAS.md
+Linhas: 8406-8408
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 212
+Origem: E-CENAS.md
+Linhas: 8412-8414
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 213
+Origem: E-CENAS.md
+Linhas: 8434-8436
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 214
+Origem: E-CENAS.md
+Linhas: 8440-8442
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 215
+Origem: E-CENAS.md
+Linhas: 8448-8448
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 216
+Origem: E-CENAS.md
+Linhas: 8452-8453
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 217
+Origem: E-CENAS.md
+Linhas: 8457-8459
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 218
+Origem: E-CENAS.md
+Linhas: 8471-8473
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 219
+Origem: E-CENAS.md
+Linhas: 8485-8486
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 220
+Origem: E-CENAS.md
+Linhas: 8492-8494
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 221
+Origem: E-CENAS.md
+Linhas: 8498-8500
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 222
+Origem: E-CENAS.md
+Linhas: 8506-8508
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 223
+Origem: E-CENAS.md
+Linhas: 8512-8514
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 224
+Origem: E-CENAS.md
+Linhas: 8520-8522
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 225
+Origem: E-CENAS.md
+Linhas: 8526-8528
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 226
+Origem: E-CENAS.md
+Linhas: 8534-8536
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 227
+Origem: E-CENAS.md
+Linhas: 8540-8542
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 228
+Origem: E-CENAS.md
+Linhas: 8548-8552
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 229
+Origem: E-CENAS.md
+Linhas: 8628-8630
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 230
+Origem: E-CENAS.md
+Linhas: 8634-8636
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 231
+Origem: E-CENAS.md
+Linhas: 8642-8644
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 232
+Origem: E-CENAS.md
+Linhas: 8648-8650
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 233
+Origem: E-CENAS.md
+Linhas: 8656-8658
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 234
+Origem: E-CENAS.md
+Linhas: 8662-8664
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 235
+Origem: E-CENAS.md
+Linhas: 8670-8672
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 236
+Origem: E-CENAS.md
+Linhas: 8676-8678
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 237
+Origem: E-CENAS.md
+Linhas: 8684-8686
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 238
+Origem: E-CENAS.md
+Linhas: 8690-8692
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 239
+Origem: E-CENAS.md
+Linhas: 8698-8700
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 240
+Origem: E-CENAS.md
+Linhas: 8704-8706
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 241
+Origem: E-CENAS.md
+Linhas: 8712-8714
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 242
+Origem: E-CENAS.md
+Linhas: 8718-8720
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 243
+Origem: E-CENAS.md
+Linhas: 8726-8728
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 244
+Origem: E-CENAS.md
+Linhas: 8732-8734
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 245
+Origem: E-CENAS.md
+Linhas: 8740-8742
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 246
+Origem: E-CENAS.md
+Linhas: 8754-8756
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 247
+Origem: E-CENAS.md
+Linhas: 8760-8762
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 248
+Origem: E-CENAS.md
+Linhas: 8784-8784
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 249
+Origem: E-CENAS.md
+Linhas: 8899-8899
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 250
+Origem: E-CENAS.md
+Linhas: 8983-8985
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 251
+Origem: E-CENAS.md
+Linhas: 9005-9007
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 252
+Origem: E-CENAS.md
+Linhas: 9019-9021
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 253
+Origem: E-CENAS.md
+Linhas: 9025-9027
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 254
+Origem: E-CENAS.md
+Linhas: 9033-9035
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 255
+Origem: E-CENAS.md
+Linhas: 9039-9040
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 256
+Origem: E-CENAS.md
+Linhas: 9046-9048
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 257
+Origem: E-CENAS.md
+Linhas: 9052-9054
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 258
+Origem: E-CENAS.md
+Linhas: 9064-9066
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 259
+Origem: E-CENAS.md
+Linhas: 9070-9072
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 260
+Origem: E-CENAS.md
+Linhas: 9078-9080
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 261
+Origem: E-CENAS.md
+Linhas: 9084-9086
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 262
+Origem: E-CENAS.md
+Linhas: 9092-9094
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 263
+Origem: E-CENAS.md
+Linhas: 9098-9099
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 264
+Origem: E-CENAS.md
+Linhas: 9105-9107
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 265
+Origem: E-CENAS.md
+Linhas: 9111-9112
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 266
+Origem: E-CENAS.md
+Linhas: 9124-9125
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 267
+Origem: E-CENAS.md
+Linhas: 9135-9136
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 268
+Origem: E-CENAS.md
+Linhas: 9140-9142
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 269
+Origem: E-CENAS.md
+Linhas: 9202-9204
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 270
+Origem: E-CENAS.md
+Linhas: 9208-9209
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 271
+Origem: E-CENAS.md
+Linhas: 9215-9217
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 272
+Origem: E-CENAS.md
+Linhas: 9221-9222
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 273
+Origem: E-CENAS.md
+Linhas: 9228-9230
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 274
+Origem: E-CENAS.md
+Linhas: 9234-9236
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 275
+Origem: E-CENAS.md
+Linhas: 9242-9244
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 276
+Origem: E-CENAS.md
+Linhas: 9257-9259
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 277
+Origem: E-CENAS.md
+Linhas: 9263-9264
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 278
+Origem: E-CENAS.md
+Linhas: 9270-9272
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 279
+Origem: E-CENAS.md
+Linhas: 9276-9278
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 280
+Origem: E-CENAS.md
+Linhas: 9284-9286
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 281
+Origem: E-CENAS.md
+Linhas: 9290-9292
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 282
+Origem: E-CENAS.md
+Linhas: 9298-9300
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 283
+Origem: E-CENAS.md
+Linhas: 9304-9306
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 284
+Origem: E-CENAS.md
+Linhas: 9312-9314
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 285
+Origem: E-CENAS.md
+Linhas: 9318-9319
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 286
+Origem: E-CENAS.md
+Linhas: 9325-9327
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 287
+Origem: E-CENAS.md
+Linhas: 9331-9332
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 288
+Origem: E-CENAS.md
+Linhas: 9779-9780
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 289
+Origem: E-CENAS.md
+Linhas: 9880-9880
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 290
+Origem: E-CENAS.md
+Linhas: 9884-9886
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 291
+Origem: E-CENAS.md
+Linhas: 9892-9894
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 292
+Origem: E-CENAS.md
+Linhas: 9900-9902
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 293
+Origem: E-CENAS.md
+Linhas: 9986-9987
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 294
+Origem: E-CENAS.md
+Linhas: 10086-10086
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 295
+Origem: E-CENAS.md
+Linhas: 10195-10195
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 296
+Origem: E-CENAS.md
+Linhas: 10225-10226
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 297
+Origem: E-CENAS.md
+Linhas: 10301-10302
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 298
+Origem: E-CENAS.md
+Linhas: 10401-10402
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 299
+Origem: E-CENAS.md
+Linhas: 10611-10612
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 300
+Origem: E-CENAS.md
+Linhas: 10712-10712
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 301
+Origem: E-CENAS.md
+Linhas: 11027-11027
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 302
+Origem: E-CENAS.md
+Linhas: 11133-11134
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 303
+Origem: E-CENAS.md
+Linhas: 11336-11336
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 304
+Origem: E-CENAS.md
+Linhas: 11546-11547
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 305
+Origem: E-CENAS.md
+Linhas: 11855-11855
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 306
+Origem: E-CENAS.md
+Linhas: 12067-12068
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 307
+Origem: E-CENAS.md
+Linhas: 12475-12475
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 308
+Origem: E-CENAS.md
+Linhas: 12479-12480
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 309
+Origem: E-CENAS.md
+Linhas: 12580-12580
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 310
+Origem: E-CENAS.md
+Linhas: 12687-12687
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 311
+Origem: E-CENAS.md
+Linhas: 12793-12794
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 312
+Origem: E-CENAS.md
+Linhas: 12999-13000
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 313
+Origem: E-CENAS.md
+Linhas: 13100-13100
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 314
+Origem: E-CENAS.md
+Linhas: 13209-13209
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 315
+Origem: E-CENAS.md
+Linhas: 13721-13721
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 316
+Origem: E-CENAS.md
+Linhas: 14137-14137
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 317
+Origem: E-CENAS.md
+Linhas: 14655-14655
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 318
+Origem: E-CENAS.md
+Linhas: 14867-14868
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 319
+Origem: E-CENAS.md
+Linhas: 15279-15279
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 320
+Origem: E-CENAS.md
+Linhas: 15283-15284
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 321
+Origem: E-CENAS.md
+Linhas: 15384-15384
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 322
+Origem: E-CENAS.md
+Linhas: 15800-15801
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 323
+Origem: E-CENAS.md
+Linhas: 15901-15901
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 324
+Origem: E-CENAS.md
+Linhas: 16314-16314
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 325
+Origem: E-CENAS.md
+Linhas: 16828-16828
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 326
+Origem: E-CENAS.md
+Linhas: 17039-17040
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 327
+Origem: E-CENAS.md
+Linhas: 17457-17457
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 328
+Origem: E-CENAS.md
+Linhas: 17572-17572
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 329
+Origem: E-CENAS.md
+Linhas: 17746-17748
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 330
+Origem: E-CENAS.md
+Linhas: 17759-17761
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 331
+Origem: E-CENAS.md
+Linhas: 17765-17767
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 332
+Origem: E-CENAS.md
+Linhas: 17806-17806
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 333
+Origem: E-CENAS.md
+Linhas: 17831-17833
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 334
+Origem: E-CENAS.md
+Linhas: 17837-17839
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 335
+Origem: E-CENAS.md
+Linhas: 17845-17847
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 336
+Origem: E-CENAS.md
+Linhas: 17851-17851
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 337
+Origem: E-CENAS.md
+Linhas: 17855-17855
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 338
+Origem: E-CENAS.md
+Linhas: 17861-17863
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 339
+Origem: E-CENAS.md
+Linhas: 17867-17869
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 340
+Origem: E-CENAS.md
+Linhas: 17881-17883
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 341
+Origem: E-CENAS.md
+Linhas: 17889-17891
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 342
+Origem: E-CENAS.md
+Linhas: 17895-17897
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 343
+Origem: E-CENAS.md
+Linhas: 17903-17905
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 344
+Origem: E-CENAS.md
+Linhas: 17909-17911
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 345
+Origem: E-CENAS.md
+Linhas: 17917-17919
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 346
+Origem: E-CENAS.md
+Linhas: 17923-17923
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 347
+Origem: E-CENAS.md
+Linhas: 17927-17928
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 348
+Origem: E-CENAS.md
+Linhas: 17934-17936
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 349
+Origem: E-CENAS.md
+Linhas: 17940-17941
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 350
+Origem: E-CENAS.md
+Linhas: 17947-17949
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 351
+Origem: E-CENAS.md
+Linhas: 17953-17955
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 352
+Origem: E-CENAS.md
+Linhas: 17961-17963
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 353
+Origem: E-CENAS.md
+Linhas: 17967-17969
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 354
+Origem: E-CENAS.md
+Linhas: 17975-17977
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 355
+Origem: E-CENAS.md
+Linhas: 17981-17982
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 356
+Origem: E-CENAS.md
+Linhas: 18002-18004
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 357
+Origem: E-CENAS.md
+Linhas: 18016-18018
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 358
+Origem: E-CENAS.md
+Linhas: 18022-18024
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 359
+Origem: E-CENAS.md
+Linhas: 18036-18037
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 360
+Origem: E-CENAS.md
+Linhas: 18043-18045
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 361
+Origem: E-CENAS.md
+Linhas: 18057-18059
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 362
+Origem: E-CENAS.md
+Linhas: 18063-18064
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 363
+Origem: E-CENAS.md
+Linhas: 18154-18155
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 364
+Origem: E-CENAS.md
+Linhas: 18223-18225
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 365
+Origem: E-CENAS.md
+Linhas: 18229-18231
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 366
+Origem: E-CENAS.md
+Linhas: 18265-18265
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 367
+Origem: E-CENAS.md
+Linhas: 18287-18289
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 368
+Origem: E-CENAS.md
+Linhas: 18488-18488
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 369
+Origem: E-CENAS.md
+Linhas: 18609-18609
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 370
+Origem: E-CENAS.md
+Linhas: 18645-18647
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 371
+Origem: E-CENAS.md
+Linhas: 18651-18653
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 372
+Origem: E-CENAS.md
+Linhas: 18659-18661
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 373
+Origem: E-CENAS.md
+Linhas: 18665-18667
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 374
+Origem: E-CENAS.md
+Linhas: 18673-18675
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 375
+Origem: E-CENAS.md
+Linhas: 18679-18681
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 376
+Origem: E-CENAS.md
+Linhas: 18687-18689
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 377
+Origem: E-CENAS.md
+Linhas: 18693-18695
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 378
+Origem: E-CENAS.md
+Linhas: 18701-18703
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 379
+Origem: E-CENAS.md
+Linhas: 18707-18709
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 380
+Origem: E-CENAS.md
+Linhas: 18715-18717
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 381
+Origem: E-CENAS.md
+Linhas: 18721-18721
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 382
+Origem: E-CENAS.md
+Linhas: 18725-18726
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 383
+Origem: E-CENAS.md
+Linhas: 18732-18734
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 384
+Origem: E-CENAS.md
+Linhas: 18738-18740
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 385
+Origem: E-CENAS.md
+Linhas: 18774-18776
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 386
+Origem: E-CENAS.md
+Linhas: 18780-18782
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 387
+Origem: E-CENAS.md
+Linhas: 18909-18911
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 388
+Origem: E-CENAS.md
+Linhas: 18931-18933
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 389
+Origem: E-CENAS.md
+Linhas: 18937-18939
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 390
+Origem: E-CENAS.md
+Linhas: 18951-18951
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 391
+Origem: E-CENAS.md
+Linhas: 19152-19153
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 392
+Origem: E-CENAS.md
+Linhas: 19184-19184
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 393
+Origem: E-CENAS.md
+Linhas: 19270-19272
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 394
+Origem: E-CENAS.md
+Linhas: 19276-19277
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 395
+Origem: E-CENAS.md
+Linhas: 19297-19299
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 396
+Origem: E-CENAS.md
+Linhas: 19303-19304
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 397
+Origem: E-CENAS.md
+Linhas: 19323-19325
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 398
+Origem: E-CENAS.md
+Linhas: 19329-19330
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 399
+Origem: E-CENAS.md
+Linhas: 19363-19365
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 400
+Origem: E-CENAS.md
+Linhas: 19369-19371
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 401
+Origem: E-CENAS.md
+Linhas: 19377-19379
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 402
+Origem: E-CENAS.md
+Linhas: 19383-19385
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 403
+Origem: E-CENAS.md
+Linhas: 19391-19393
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 404
+Origem: E-CENAS.md
+Linhas: 19397-19398
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 405
+Origem: E-CENAS.md
+Linhas: 19404-19406
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 406
+Origem: E-CENAS.md
+Linhas: 19410-19411
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 407
+Origem: E-CENAS.md
+Linhas: 19417-19417
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 408
+Origem: E-CENAS.md
+Linhas: 19421-19422
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 409
+Origem: E-CENAS.md
+Linhas: 19426-19427
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 410
+Origem: E-CENAS.md
+Linhas: 19433-19435
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 411
+Origem: E-CENAS.md
+Linhas: 19439-19441
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 412
+Origem: E-CENAS.md
+Linhas: 19453-19455
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 413
+Origem: E-CENAS.md
+Linhas: 19480-19482
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 414
+Origem: E-CENAS.md
+Linhas: 19507-19509
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 415
+Origem: E-CENAS.md
+Linhas: 19528-19530
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 416
+Origem: E-CENAS.md
+Linhas: 19534-19535
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 417
+Origem: E-CENAS.md
+Linhas: 19541-19543
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 418
+Origem: E-CENAS.md
+Linhas: 19547-19548
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 419
+Origem: E-CENAS.md
+Linhas: 19649-19649
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 420
+Origem: E-CENAS.md
+Linhas: 19692-19694
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 421
+Origem: E-CENAS.md
+Linhas: 19698-19700
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 422
+Origem: E-CENAS.md
+Linhas: 19706-19710
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 423
+Origem: E-CENAS.md
+Linhas: 19729-19731
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 424
+Origem: E-CENAS.md
+Linhas: 19911-19913
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 425
+Origem: E-CENAS.md
+Linhas: 19917-19919
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 426
+Origem: E-CENAS.md
+Linhas: 19925-19927
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 427
+Origem: E-CENAS.md
+Linhas: 19931-19933
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 428
+Origem: E-CENAS.md
+Linhas: 19939-19941
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 429
+Origem: E-CENAS.md
+Linhas: 19945-19947
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 430
+Origem: E-CENAS.md
+Linhas: 19953-19955
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 431
+Origem: E-CENAS.md
+Linhas: 19959-19961
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 432
+Origem: E-CENAS.md
+Linhas: 19967-19969
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 433
+Origem: E-CENAS.md
+Linhas: 19973-19975
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 434
+Origem: E-CENAS.md
+Linhas: 19981-19983
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 435
+Origem: E-CENAS.md
+Linhas: 19987-19989
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 436
+Origem: E-CENAS.md
+Linhas: 20009-20011
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 437
+Origem: E-CENAS.md
+Linhas: 20023-20025
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 438
+Origem: E-CENAS.md
+Linhas: 20029-20031
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 439
+Origem: E-CENAS.md
+Linhas: 20037-20039
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 440
+Origem: E-CENAS.md
+Linhas: 20043-20045
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 441
+Origem: E-CENAS.md
+Linhas: 20051-20053
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 442
+Origem: E-CENAS.md
+Linhas: 20057-20059
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 443
+Origem: E-CENAS.md
+Linhas: 20065-20067
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 444
+Origem: E-CENAS.md
+Linhas: 20071-20073
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 445
+Origem: E-CENAS.md
+Linhas: 20085-20087
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 446
+Origem: E-CENAS.md
+Linhas: 20116-20118
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 447
+Origem: E-CENAS.md
+Linhas: 20124-20127
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 448
+Origem: E-CENAS.md
+Linhas: 20133-20135
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 449
+Origem: E-CENAS.md
+Linhas: 20407-20407
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 450
+Origem: E-CENAS.md
+Linhas: 20921-20922
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 451
+Origem: E-CENAS.md
+Linhas: 21124-21124
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 452
+Origem: E-CENAS.md
+Linhas: 21229-21229
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 453
+Origem: E-CENAS.md
+Linhas: 21643-21643
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 454
+Origem: E-CENAS.md
+Linhas: 21855-21856
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 455
+Origem: E-CENAS.md
+Linhas: 22162-22162
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 456
+Origem: E-CENAS.md
+Linhas: 22786-22787
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 457
+Origem: E-CENAS.md
+Linhas: 22887-22887
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 458
+Origem: E-CENAS.md
+Linhas: 22994-22994
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 459
+Origem: E-CENAS.md
+Linhas: 23100-23101
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 460
+Origem: E-CENAS.md
+Linhas: 23308-23309
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 461
+Origem: E-CENAS.md
+Linhas: 23409-23409
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 462
+Origem: E-CENAS.md
+Linhas: 23822-23822
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 463
+Origem: E-CENAS.md
+Linhas: 24034-24035
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 464
+Origem: E-CENAS.md
+Linhas: 24340-24340
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 465
+Origem: E-CENAS.md
+Linhas: 24447-24447
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 466
+Origem: E-CENAS.md
+Linhas: 24756-24756
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 467
+Origem: E-CENAS.md
+Linhas: 24968-24969
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 468
+Origem: E-CENAS.md
+Linhas: 25069-25069
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 469
+Origem: E-CENAS.md
+Linhas: 25274-25274
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 470
+Origem: E-CENAS.md
+Linhas: 25486-25487
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 471
+Origem: E-CENAS.md
+Linhas: 25996-25996
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 472
+Origem: E-CENAS.md
+Linhas: 26414-26415
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 473
+Origem: E-CENAS.md
+Linhas: 26515-26515
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 474
+Origem: E-CENAS.md
+Linhas: 26622-26622
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 475
+Origem: E-CENAS.md
+Linhas: 26931-26931
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 476
+Origem: Cenas.md
+Linhas: 12720-12723
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 477
+Origem: E-CENAS.md
+Linhas: 1361-1361
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 478
+Origem: E-CENAS.md
+Linhas: 1526-1526
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 479
+Origem: E-CENAS.md
+Linhas: 1854-1854
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 480
+Origem: E-CENAS.md
+Linhas: 2183-2183
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 481
+Origem: E-CENAS.md
+Linhas: 2349-2349
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 482
+Origem: E-CENAS.md
+Linhas: 2519-2519
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 483
+Origem: E-CENAS.md
+Linhas: 3013-3013
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 484
+Origem: E-CENAS.md
+Linhas: 3342-3342
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 485
+Origem: E-CENAS.md
+Linhas: 3673-3673
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 486
+Origem: E-CENAS.md
+Linhas: 3838-3838
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 487
+Origem: E-CENAS.md
+Linhas: 4169-4169
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 488
+Origem: E-CENAS.md
+Linhas: 4335-4335
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 489
+Origem: E-CENAS.md
+Linhas: 4499-4499
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 490
+Origem: E-CENAS.md
+Linhas: 4668-4668
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 491
+Origem: E-CENAS.md
+Linhas: 4996-4996
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 492
+Origem: E-CENAS.md
+Linhas: 5163-5163
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 493
+Origem: E-CENAS.md
+Linhas: 5328-5328
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 494
+Origem: E-CENAS.md
+Linhas: 5494-5494
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 495
+Origem: E-CENAS.md
+Linhas: 5828-5828
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 496
+Origem: E-CENAS.md
+Linhas: 6156-6156
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 497
+Origem: E-CENAS.md
+Linhas: 6654-6654
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 498
+Origem: E-CENAS.md
+Linhas: 6820-6820
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 499
+Origem: E-CENAS.md
+Linhas: 6990-6990
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 500
+Origem: E-CENAS.md
+Linhas: 7317-7317
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 501
+Origem: E-CENAS.md
+Linhas: 7487-7487
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 502
+Origem: E-CENAS.md
+Linhas: 7661-7661
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 503
+Origem: E-CENAS.md
+Linhas: 8346-8348
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 504
+Origem: E-CENAS.md
+Linhas: 8358-8358
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 505
+Origem: E-CENAS.md
+Linhas: 9058-9058
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 506
+Origem: E-CENAS.md
+Linhas: 9569-9569
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 507
+Origem: E-CENAS.md
+Linhas: 9906-9906
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 508
+Origem: E-CENAS.md
+Linhas: 10406-10406
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 509
+Origem: E-CENAS.md
+Linhas: 10570-10570
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 510
+Origem: E-CENAS.md
+Linhas: 10738-10738
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 511
+Origem: E-CENAS.md
+Linhas: 10984-10984
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 512
+Origem: E-CENAS.md
+Linhas: 11154-11154
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 513
+Origem: E-CENAS.md
+Linhas: 11647-11647
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 514
+Origem: E-CENAS.md
+Linhas: 11812-11812
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 515
+Origem: E-CENAS.md
+Linhas: 11977-11977
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 516
+Origem: E-CENAS.md
+Linhas: 13134-13134
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 517
+Origem: E-CENAS.md
+Linhas: 13621-13621
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 518
+Origem: E-CENAS.md
+Linhas: 13787-13787
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 519
+Origem: E-CENAS.md
+Linhas: 13934-13935
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 520
+Origem: E-CENAS.md
+Linhas: 13955-13955
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 521
+Origem: E-CENAS.md
+Linhas: 14347-14348
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 522
+Origem: E-CENAS.md
+Linhas: 14448-14448
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 523
+Origem: E-CENAS.md
+Linhas: 14611-14611
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 524
+Origem: E-CENAS.md
+Linhas: 14777-14777
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 525
+Origem: E-CENAS.md
+Linhas: 15073-15073
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 526
+Origem: E-CENAS.md
+Linhas: 15109-15109
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 527
+Origem: E-CENAS.md
+Linhas: 15604-15604
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 528
+Origem: E-CENAS.md
+Linhas: 15935-15935
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 529
+Origem: E-CENAS.md
+Linhas: 16262-16262
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 530
+Origem: E-CENAS.md
+Linhas: 16752-16752
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 531
+Origem: E-CENAS.md
+Linhas: 17084-17084
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 532
+Origem: E-CENAS.md
+Linhas: 17247-17247
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 533
+Origem: E-CENAS.md
+Linhas: 17251-17251
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 534
+Origem: E-CENAS.md
+Linhas: 17752-17753
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 535
+Origem: E-CENAS.md
+Linhas: 17773-17775
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 536
+Origem: E-CENAS.md
+Linhas: 17779-17781
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 537
+Origem: E-CENAS.md
+Linhas: 17994-17996
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 538
+Origem: E-CENAS.md
+Linhas: 18030-18032
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 539
+Origem: E-CENAS.md
+Linhas: 18049-18051
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 540
+Origem: E-CENAS.md
+Linhas: 18209-18211
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 541
+Origem: E-CENAS.md
+Linhas: 18215-18217
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 542
+Origem: E-CENAS.md
+Linhas: 18274-18275
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 543
+Origem: E-CENAS.md
+Linhas: 18281-18283
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 544
+Origem: E-CENAS.md
+Linhas: 18295-18297
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 545
+Origem: E-CENAS.md
+Linhas: 18301-18303
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 546
+Origem: E-CENAS.md
+Linhas: 18315-18316
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 547
+Origem: E-CENAS.md
+Linhas: 18322-18324
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 548
+Origem: E-CENAS.md
+Linhas: 18328-18330
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 549
+Origem: E-CENAS.md
+Linhas: 18336-18338
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 550
+Origem: E-CENAS.md
+Linhas: 18342-18344
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 551
+Origem: E-CENAS.md
+Linhas: 18350-18352
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 552
+Origem: E-CENAS.md
+Linhas: 18356-18358
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 553
+Origem: E-CENAS.md
+Linhas: 18364-18366
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 554
+Origem: E-CENAS.md
+Linhas: 18370-18372
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 555
+Origem: E-CENAS.md
+Linhas: 18378-18380
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 556
+Origem: E-CENAS.md
+Linhas: 18384-18386
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 557
+Origem: E-CENAS.md
+Linhas: 18392-18394
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 558
+Origem: E-CENAS.md
+Linhas: 18398-18400
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 559
+Origem: E-CENAS.md
+Linhas: 18406-18408
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 560
+Origem: E-CENAS.md
+Linhas: 18412-18414
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 561
+Origem: E-CENAS.md
+Linhas: 18426-18428
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 562
+Origem: E-CENAS.md
+Linhas: 18434-18436
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 563
+Origem: E-CENAS.md
+Linhas: 18448-18450
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 564
+Origem: E-CENAS.md
+Linhas: 18454-18456
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 565
+Origem: E-CENAS.md
+Linhas: 18462-18464
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 566
+Origem: E-CENAS.md
+Linhas: 18468-18470
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 567
+Origem: E-CENAS.md
+Linhas: 18476-18478
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 568
+Origem: E-CENAS.md
+Linhas: 18482-18484
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 569
+Origem: E-CENAS.md
+Linhas: 18492-18494
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 570
+Origem: E-CENAS.md
+Linhas: 18498-18500
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 571
+Origem: E-CENAS.md
+Linhas: 18506-18508
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 572
+Origem: E-CENAS.md
+Linhas: 18512-18514
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 573
+Origem: E-CENAS.md
+Linhas: 18760-18762
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 574
+Origem: E-CENAS.md
+Linhas: 18766-18768
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 575
+Origem: E-CENAS.md
+Linhas: 18794-18796
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 576
+Origem: E-CENAS.md
+Linhas: 18802-18804
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 577
+Origem: E-CENAS.md
+Linhas: 18816-18818
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 578
+Origem: E-CENAS.md
+Linhas: 18822-18824
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 579
+Origem: E-CENAS.md
+Linhas: 18830-18832
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 580
+Origem: E-CENAS.md
+Linhas: 18836-18836
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 581
+Origem: E-CENAS.md
+Linhas: 18840-18841
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 582
+Origem: E-CENAS.md
+Linhas: 18847-18849
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 583
+Origem: E-CENAS.md
+Linhas: 18853-18855
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 584
+Origem: E-CENAS.md
+Linhas: 18861-18863
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 585
+Origem: E-CENAS.md
+Linhas: 18867-18869
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 586
+Origem: E-CENAS.md
+Linhas: 18875-18877
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 587
+Origem: E-CENAS.md
+Linhas: 18881-18883
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 588
+Origem: E-CENAS.md
+Linhas: 20432-20432
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 589
+Origem: E-CENAS.md
+Linhas: 20454-20455
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 590
+Origem: E-CENAS.md
+Linhas: 20629-20629
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 591
+Origem: E-CENAS.md
+Linhas: 20958-20958
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 592
+Origem: E-CENAS.md
+Linhas: 21287-21287
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 593
+Origem: E-CENAS.md
+Linhas: 21442-21443
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 594
+Origem: E-CENAS.md
+Linhas: 21781-21781
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 595
+Origem: E-CENAS.md
+Linhas: 22111-22111
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 596
+Origem: E-CENAS.md
+Linhas: 22372-22373
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 597
+Origem: E-CENAS.md
+Linhas: 22441-22441
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 598
+Origem: E-CENAS.md
+Linhas: 22606-22606
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 599
+Origem: E-CENAS.md
+Linhas: 23266-23266
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 600
+Origem: E-CENAS.md
+Linhas: 23435-23435
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 601
+Origem: E-CENAS.md
+Linhas: 23762-23762
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 602
+Origem: E-CENAS.md
+Linhas: 23928-23928
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 603
+Origem: E-CENAS.md
+Linhas: 24256-24256
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 604
+Origem: E-CENAS.md
+Linhas: 24553-24554
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 605
+Origem: E-CENAS.md
+Linhas: 24590-24590
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 606
+Origem: E-CENAS.md
+Linhas: 24918-24918
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 607
+Origem: E-CENAS.md
+Linhas: 25412-25412
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 608
+Origem: E-CENAS.md
+Linhas: 25904-25904
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 609
+Origem: E-CENAS.md
+Linhas: 26070-26070
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 610
+Origem: E-CENAS.md
+Linhas: 26234-26234
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 611
+Origem: E-CENAS.md
+Linhas: 26728-26729
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.
+
+Bloco 612
+Origem: E-CENAS.md
+Linhas: 26895-26895
+Motivo: nenhum NPC pôde ser identificado com segurança por nome, sobrenome, título, aliases e contexto textual.

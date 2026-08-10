@@ -1,0 +1,19 @@
+{
+  "id": "samcheok",
+  "name": "Samcheok",
+  "image": "/images/cities/samcheok.webp",
+  "description": "Cidade turística",
+  "population": "70 mil",
+  "dangerLevel": "C",
+  "guilds": [],
+  "npcs": [],
+  "players": [],
+  "portals": [],
+  "dungeons": [],
+  "bosses": [],
+  "shops": [],
+  "quests": [],
+  "events": [],
+  "resources": [],
+  "notes": ""
+}

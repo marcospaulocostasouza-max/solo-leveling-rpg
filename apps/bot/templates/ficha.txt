@@ -1,0 +1,54 @@
+╔══════════════════════════════════╗
+║       SOLO LEVELING: FICHA       ║
+╚══════════════════════════════════╝
+
+*IDENTIDADE*
+> Nome: 
+> Idade: 
+> Nacionalidade: 
+> Localização: Coreia do Sul
+
+*APARÊNCIA*
+> Aparência: 
+> Altura e Peso: 
+
+*PERSONALIDADE*
+> Personalidade: 
+
+*HISTÓRIA*
+> História: 
+
+*CLASSE*
+> Classe: 
+> Rank: E
+
+*ATRIBUTOS*
+> Força: _ (ex: 0-10)
+> Resistência: _ (ex: 0-10)
+> Velocidade: _ (ex: 0-10)
+> Agilidade: _ (ex: 0-10)
+> Inteligência: _ (ex: 0-10)
+> Poder Mágico: _ (ex: 0-10)
+> Mana: 100 (calculada automaticamente)
+
+*COMBATE*
+> Afinidade Elemental: 
+> Habilidade Única: (Preenchida pelo ADM após aprovação)
+
+*TÍTULO*
+> Título: (INDISPONÍVEL)
+
+*ITENS*
+> Inventário: 
+
+*TÉCNICAS*
+> Técnicas: 
+
+*NÍVEL*
+> Nível: 1
+> Experiência: 0
+
+Atributos Iniciais: 10 pontos livres
+
+Distribua os 10 pontos como quiser entre os atributos abaixo.
+Você pode colocar todos em um só ou distribuir entre vários.

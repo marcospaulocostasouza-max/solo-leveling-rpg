@@ -1,0 +1,178 @@
+{
+  "npcId": "gideon_ma",
+  "npcNome": "Gideon Ma",
+  "npcTitulo": "O Magistrado que Vendia Justiça",
+  "totalMissoes": 10,
+  "missoes": [
+    {
+      "id": "gideon_ma_01",
+      "npcId": "gideon_ma",
+      "numero": 1,
+      "nome": "Capítulo 1: Rumores sobre Gideon Ma",
+      "descricao": "Relatos alarmantes começam a circular entre guildas sobre Gideon Ma. Magistrado responsável por arbitrar disputas comerciais, Gideon construiu um esquema de extorsão forçando comerciantes a pagar 'taxas de proteção'....",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Investigue 3 relatos de testemunhas sobre Gideon Ma",
+      "recompensas": {
+        "xp": 13680,
+        "won": 91200,
+        "item": "Trajes Formais Carregados de Joias"
+      }
+    },
+    {
+      "id": "gideon_ma_02",
+      "npcId": "gideon_ma",
+      "numero": 2,
+      "nome": "Capítulo 2: Rastreando O Magistrado que Vendia Justiça",
+      "descricao": "Reúna evidências concretas da atividade de Gideon Ma antes que a Associação classifique o caso como perdido.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Reúna provas em 2 locais diferentes ligados a Gideon Ma",
+      "recompensas": {
+        "xp": 15840,
+        "won": 105600,
+        "item": "Trajes Formais Carregados de Joias"
+      }
+    },
+    {
+      "id": "gideon_ma_03",
+      "npcId": "gideon_ma",
+      "numero": 3,
+      "nome": "Capítulo 3: Confronto com Gideon Ma",
+      "descricao": "É hora de enfrentar Gideon Ma diretamente. Prepare-se: como O Magistrado que Vendia Justiça, este será um combate de Rank B.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Derrote Gideon Ma em combate direto",
+      "recompensas": {
+        "xp": 18000,
+        "won": 120000,
+        "item": "Réplica Reforçada de: Bastão Cerimonial com Lâmina Oculta"
+      }
+    },
+    {
+      "id": "gideon_ma_04",
+      "npcId": "gideon_ma",
+      "numero": 4,
+      "nome": "Capítulo 4: A Queda de O Magistrado que Vendia Justiça",
+      "descricao": "Com Gideon Ma neutralizado(a), reste apenas reportar o caso à Associação e lidar com as consequências reveladas.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Entregue o relatório final sobre Gideon Ma à Associação",
+      "recompensas": {
+        "xp": 20160,
+        "won": 134400,
+        "item": "Réplica Reforçada de: Bastão Cerimonial com Lâmina Oculta"
+      }
+    },
+    {
+      "id": "gideon_ma_05",
+      "npcId": "gideon_ma",
+      "numero": 5,
+      "nome": "Reforço de Gideon Ma",
+      "descricao": "Gideon Ma pede que você adquira, em qualquer Loja de Itens da Associação, um equipamento de Rank B compatível com Armas Ocultas (Bastão-Lâmina) para reforçar seu arsenal de combate.",
+      "categoria": "secundaria",
+      "tipo": "loja",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Comprar 1 equipamento de Rank B (peça de armadura ou arma)",
+      "recompensas": {
+        "xp": 4320,
+        "won": 28800,
+        "item": "Réplica Reforçada de: Bastão Cerimonial com Lâmina Oculta"
+      }
+    },
+    {
+      "id": "gideon_ma_06",
+      "npcId": "gideon_ma",
+      "numero": 6,
+      "nome": "Provisões de Gideon Ma",
+      "descricao": "Antes da próxima incursão, Gideon Ma pede que você compre poções de recuperação e um acessório de afinidade elemental Metal na loja mais próxima.",
+      "categoria": "secundaria",
+      "tipo": "loja",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Comprar 3 poções + 1 acessório elemental",
+      "recompensas": {
+        "xp": 3960,
+        "won": 26400,
+        "item": "Registro de Extorsões"
+      }
+    },
+    {
+      "id": "gideon_ma_07",
+      "npcId": "gideon_ma",
+      "numero": 7,
+      "nome": "Receita de Gideon Ma",
+      "descricao": "Usando materiais coletados em dungeons de afinidade Metal, produza o item indicado por Gideon Ma em uma bancada de criação da guilda.",
+      "categoria": "secundaria",
+      "tipo": "producao",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Produzir 1 item de afinidade Metal (Rank B)",
+      "recompensas": {
+        "xp": 4680,
+        "won": 31200,
+        "item": "Fragmento de Mana (Metal)"
+      }
+    },
+    {
+      "id": "gideon_ma_08",
+      "npcId": "gideon_ma",
+      "numero": 8,
+      "nome": "Suprimento Especial de Gideon Ma",
+      "descricao": "Gideon Ma ensina uma técnica pessoal de preparo; produza 3 unidades de um item de suporte (poção, munição ou material) ligado ao estilo de combate de Armas Ocultas (Bastão-Lâmina).",
+      "categoria": "secundaria",
+      "tipo": "producao",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Produzir 3 itens de suporte",
+      "recompensas": {
+        "xp": 5040,
+        "won": 33600,
+        "item": "Fragmento de Mana (Metal)"
+      }
+    },
+    {
+      "id": "gideon_ma_09",
+      "npcId": "gideon_ma",
+      "numero": 9,
+      "nome": "Treino de Combate com Gideon Ma",
+      "descricao": "Gideon Ma solicita ajuda para conter uma infestação: derrote autômatos de metal em dungeons de Rank B ou inferior.",
+      "categoria": "cacada",
+      "tipo": "caca",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Derrotar 30 Autômatos de Metal",
+      "recompensas": {
+        "xp": 5760,
+        "won": 38400,
+        "item": "Trajes Formais Carregados de Joias"
+      }
+    },
+    {
+      "id": "gideon_ma_10",
+      "npcId": "gideon_ma",
+      "numero": 10,
+      "nome": "Caçada Recomendada por Gideon Ma",
+      "descricao": "Uma variante mais forte de autômatos de metal tem aparecido nas rondas de Gideon Ma; elimine essas ameaças antes que evoluam.",
+      "categoria": "cacada",
+      "tipo": "caca",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Derrotar 7 Autômatos de Metal (variante fortalecida)",
+      "recompensas": {
+        "xp": 7200,
+        "won": 48000,
+        "item": "Réplica Reforçada de: Bastão Cerimonial com Lâmina Oculta"
+      }
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "id": "chuncheon",
+  "name": "Chuncheon",
+  "image": "/images/cities/chuncheon.webp",
+  "description": "Capital de Gangwon",
+  "population": "280 mil",
+  "dangerLevel": "C",
+  "guilds": [],
+  "npcs": [],
+  "players": [],
+  "portals": [],
+  "dungeons": [],
+  "bosses": [],
+  "shops": [],
+  "quests": [],
+  "events": [],
+  "resources": [],
+  "notes": ""
+}

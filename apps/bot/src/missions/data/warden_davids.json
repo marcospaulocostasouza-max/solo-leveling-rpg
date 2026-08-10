@@ -1,0 +1,178 @@
+{
+  "npcId": "warden_davids",
+  "npcNome": "Warden Davids",
+  "npcTitulo": "O Carcereiro que Vendia Detentos",
+  "totalMissoes": 10,
+  "missoes": [
+    {
+      "id": "warden_davids_01",
+      "npcId": "warden_davids",
+      "numero": 1,
+      "nome": "Capítulo 1: Rumores sobre Warden Davids",
+      "descricao": "Relatos alarmantes começam a circular entre guildas sobre Warden Davids. Diretor de um centro de detenção, Warden Davids lucrava secretamente vendendo trabalho forçado de detentos a guildas mineradoras em troca de subornos....",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Investigue 3 relatos de testemunhas sobre Warden Davids",
+      "recompensas": {
+        "xp": 13680,
+        "won": 91200,
+        "item": "Uniforme Impecável"
+      }
+    },
+    {
+      "id": "warden_davids_02",
+      "npcId": "warden_davids",
+      "numero": 2,
+      "nome": "Capítulo 2: Rastreando O Carcereiro que Vendia Detentos",
+      "descricao": "Reúna evidências concretas da atividade de Warden Davids antes que a Associação classifique o caso como perdido.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Reúna provas em 2 locais diferentes ligados a Warden Davids",
+      "recompensas": {
+        "xp": 15840,
+        "won": 105600,
+        "item": "Uniforme Impecável"
+      }
+    },
+    {
+      "id": "warden_davids_03",
+      "npcId": "warden_davids",
+      "numero": 3,
+      "nome": "Capítulo 3: Confronto com Warden Davids",
+      "descricao": "É hora de enfrentar Warden Davids diretamente. Prepare-se: como O Carcereiro que Vendia Detentos, este será um combate de Rank B.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Derrote Warden Davids em combate direto",
+      "recompensas": {
+        "xp": 18000,
+        "won": 120000,
+        "item": "Réplica Reforçada de: Correntes e Bastão de Disciplina"
+      }
+    },
+    {
+      "id": "warden_davids_04",
+      "npcId": "warden_davids",
+      "numero": 4,
+      "nome": "Capítulo 4: A Queda de O Carcereiro que Vendia Detentos",
+      "descricao": "Com Warden Davids neutralizado(a), reste apenas reportar o caso à Associação e lidar com as consequências reveladas.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Entregue o relatório final sobre Warden Davids à Associação",
+      "recompensas": {
+        "xp": 20160,
+        "won": 134400,
+        "item": "Réplica Reforçada de: Correntes e Bastão de Disciplina"
+      }
+    },
+    {
+      "id": "warden_davids_05",
+      "npcId": "warden_davids",
+      "numero": 5,
+      "nome": "Reforço de Warden Davids",
+      "descricao": "Warden Davids pede que você adquira, em qualquer Loja de Itens da Associação, um equipamento de Rank B compatível com Bastões e Correntes para reforçar seu arsenal de combate.",
+      "categoria": "secundaria",
+      "tipo": "loja",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Comprar 1 equipamento de Rank B (peça de armadura ou arma)",
+      "recompensas": {
+        "xp": 4320,
+        "won": 28800,
+        "item": "Réplica Reforçada de: Correntes e Bastão de Disciplina"
+      }
+    },
+    {
+      "id": "warden_davids_06",
+      "npcId": "warden_davids",
+      "numero": 6,
+      "nome": "Provisões de Warden Davids",
+      "descricao": "Antes da próxima incursão, Warden Davids pede que você compre poções de recuperação e um acessório de afinidade elemental Metal na loja mais próxima.",
+      "categoria": "secundaria",
+      "tipo": "loja",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Comprar 3 poções + 1 acessório elemental",
+      "recompensas": {
+        "xp": 3960,
+        "won": 26400,
+        "item": "Molho de Chaves do Centro de Detenção"
+      }
+    },
+    {
+      "id": "warden_davids_07",
+      "npcId": "warden_davids",
+      "numero": 7,
+      "nome": "Receita de Warden Davids",
+      "descricao": "Usando materiais coletados em dungeons de afinidade Metal, produza o item indicado por Warden Davids em uma bancada de criação da guilda.",
+      "categoria": "secundaria",
+      "tipo": "producao",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Produzir 1 item de afinidade Metal (Rank B)",
+      "recompensas": {
+        "xp": 4680,
+        "won": 31200,
+        "item": "Fragmento de Mana (Metal)"
+      }
+    },
+    {
+      "id": "warden_davids_08",
+      "npcId": "warden_davids",
+      "numero": 8,
+      "nome": "Suprimento Especial de Warden Davids",
+      "descricao": "Warden Davids ensina uma técnica pessoal de preparo; produza 3 unidades de um item de suporte (poção, munição ou material) ligado ao estilo de combate de Bastões e Correntes.",
+      "categoria": "secundaria",
+      "tipo": "producao",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Produzir 3 itens de suporte",
+      "recompensas": {
+        "xp": 5040,
+        "won": 33600,
+        "item": "Fragmento de Mana (Metal)"
+      }
+    },
+    {
+      "id": "warden_davids_09",
+      "npcId": "warden_davids",
+      "numero": 9,
+      "nome": "Treino de Combate com Warden Davids",
+      "descricao": "Warden Davids solicita ajuda para conter uma infestação: derrote autômatos de metal em dungeons de Rank B ou inferior.",
+      "categoria": "cacada",
+      "tipo": "caca",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Derrotar 30 Autômatos de Metal",
+      "recompensas": {
+        "xp": 5760,
+        "won": 38400,
+        "item": "Uniforme Impecável"
+      }
+    },
+    {
+      "id": "warden_davids_10",
+      "npcId": "warden_davids",
+      "numero": 10,
+      "nome": "Caçada Recomendada por Warden Davids",
+      "descricao": "Uma variante mais forte de autômatos de metal tem aparecido nas rondas de Warden Davids; elimine essas ameaças antes que evoluam.",
+      "categoria": "cacada",
+      "tipo": "caca",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Derrotar 7 Autômatos de Metal (variante fortalecida)",
+      "recompensas": {
+        "xp": 7200,
+        "won": 48000,
+        "item": "Réplica Reforçada de: Correntes e Bastão de Disciplina"
+      }
+    }
+  ]
+}

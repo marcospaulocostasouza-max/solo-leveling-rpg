@@ -1,0 +1,178 @@
+{
+  "npcId": "entidade_mae",
+  "npcNome": "Entidade 'Mãe'",
+  "npcTitulo": "A Mãe que Devora o Desespero",
+  "totalMissoes": 10,
+  "missoes": [
+    {
+      "id": "entidade_mae_01",
+      "npcId": "entidade_mae",
+      "numero": 1,
+      "nome": "Capítulo 1: Rumores sobre Entidade 'Mãe'",
+      "descricao": "Relatos alarmantes começam a circular entre guildas sobre Entidade 'Mãe'. Nascida de uma anomalia de mana que corrompeu um antigo santuário de cura, a entidade atrai vítimas enfraquecidas com promessas sussurradas de acolhimento....",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Investigue 3 relatos de testemunhas sobre Entidade 'Mãe'",
+      "recompensas": {
+        "xp": 25650,
+        "won": 171000,
+        "item": "Rostos Sussurrantes Absorvidos"
+      }
+    },
+    {
+      "id": "entidade_mae_02",
+      "npcId": "entidade_mae",
+      "numero": 2,
+      "nome": "Capítulo 2: Rastreando A Mãe que Devora o Desespero",
+      "descricao": "Reúna evidências concretas da atividade de Entidade 'Mãe' antes que a Associação classifique o caso como perdido.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Reúna provas em 2 locais diferentes ligados a Entidade 'Mãe'",
+      "recompensas": {
+        "xp": 29700,
+        "won": 198000,
+        "item": "Rostos Sussurrantes Absorvidos"
+      }
+    },
+    {
+      "id": "entidade_mae_03",
+      "npcId": "entidade_mae",
+      "numero": 3,
+      "nome": "Capítulo 3: Confronto com Entidade 'Mãe'",
+      "descricao": "É hora de enfrentar Entidade 'Mãe' diretamente. Prepare-se: como A Mãe que Devora o Desespero, este será um combate de Rank S.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Derrote Entidade 'Mãe' em combate direto",
+      "recompensas": {
+        "xp": 33750,
+        "won": 225000,
+        "item": "Réplica Reforçada de: Nenhuma (manipulação do próprio corpo orgânico)"
+      }
+    },
+    {
+      "id": "entidade_mae_04",
+      "npcId": "entidade_mae",
+      "numero": 4,
+      "nome": "Capítulo 4: A Queda de A Mãe que Devora o Desespero",
+      "descricao": "Com Entidade 'Mãe' neutralizado(a), reste apenas reportar o caso à Associação e lidar com as consequências reveladas.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Entregue o relatório final sobre Entidade 'Mãe' à Associação",
+      "recompensas": {
+        "xp": 37800,
+        "won": 252000,
+        "item": "Réplica Reforçada de: Nenhuma (manipulação do próprio corpo orgânico)"
+      }
+    },
+    {
+      "id": "entidade_mae_05",
+      "npcId": "entidade_mae",
+      "numero": 5,
+      "nome": "Reforço de Entidade 'Mãe'",
+      "descricao": "Entidade 'Mãe' pede que você adquira, em qualquer Loja de Itens da Associação, um equipamento de Rank S compatível com Manipulação Orgânica para reforçar seu arsenal de combate.",
+      "categoria": "secundaria",
+      "tipo": "loja",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Comprar 1 equipamento de Rank S (peça de armadura ou arma)",
+      "recompensas": {
+        "xp": 8100,
+        "won": 54000,
+        "item": "Réplica Reforçada de: Nenhuma (manipulação do próprio corpo orgânico)"
+      }
+    },
+    {
+      "id": "entidade_mae_06",
+      "npcId": "entidade_mae",
+      "numero": 6,
+      "nome": "Provisões de Entidade 'Mãe'",
+      "descricao": "Antes da próxima incursão, Entidade 'Mãe' pede que você compre poções de recuperação e um acessório de afinidade elemental Escuridão na loja mais próxima.",
+      "categoria": "secundaria",
+      "tipo": "loja",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Comprar 3 poções + 1 acessório elemental",
+      "recompensas": {
+        "xp": 7425,
+        "won": 49500,
+        "item": "Núcleo do Santuário Corrompido"
+      }
+    },
+    {
+      "id": "entidade_mae_07",
+      "npcId": "entidade_mae",
+      "numero": 7,
+      "nome": "Receita de Entidade 'Mãe'",
+      "descricao": "Usando materiais coletados em dungeons de afinidade Escuridão, produza o item indicado por Entidade 'Mãe' em uma bancada de criação da guilda.",
+      "categoria": "secundaria",
+      "tipo": "producao",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Produzir 1 item de afinidade Escuridão (Rank S)",
+      "recompensas": {
+        "xp": 8775,
+        "won": 58500,
+        "item": "Fragmento de Mana (Escuridão)"
+      }
+    },
+    {
+      "id": "entidade_mae_08",
+      "npcId": "entidade_mae",
+      "numero": 8,
+      "nome": "Suprimento Especial de Entidade 'Mãe'",
+      "descricao": "Entidade 'Mãe' ensina uma técnica pessoal de preparo; produza 3 unidades de um item de suporte (poção, munição ou material) ligado ao estilo de combate de Manipulação Orgânica.",
+      "categoria": "secundaria",
+      "tipo": "producao",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Produzir 3 itens de suporte",
+      "recompensas": {
+        "xp": 9450,
+        "won": 63000,
+        "item": "Fragmento de Mana (Escuridão)"
+      }
+    },
+    {
+      "id": "entidade_mae_09",
+      "npcId": "entidade_mae",
+      "numero": 9,
+      "nome": "Treino de Combate com Entidade 'Mãe'",
+      "descricao": "Entidade 'Mãe' solicita ajuda para conter uma infestação: derrote sombras corrompidas em dungeons de Rank S ou inferior.",
+      "categoria": "cacada",
+      "tipo": "caca",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Derrotar 40 Sombras Corrompidas",
+      "recompensas": {
+        "xp": 10800,
+        "won": 72000,
+        "item": "Rostos Sussurrantes Absorvidos"
+      }
+    },
+    {
+      "id": "entidade_mae_10",
+      "npcId": "entidade_mae",
+      "numero": 10,
+      "nome": "Caçada Recomendada por Entidade 'Mãe'",
+      "descricao": "Uma variante mais forte de sombras corrompidas tem aparecido nas rondas de Entidade 'Mãe'; elimine essas ameaças antes que evoluam.",
+      "categoria": "cacada",
+      "tipo": "caca",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Derrotar 9 Sombras Corrompidas (variante fortalecida)",
+      "recompensas": {
+        "xp": 13500,
+        "won": 90000,
+        "item": "Réplica Reforçada de: Nenhuma (manipulação do próprio corpo orgânico)"
+      }
+    }
+  ]
+}

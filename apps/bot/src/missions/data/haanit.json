@@ -1,0 +1,178 @@
+{
+  "npcId": "haanit",
+  "npcNome": "H'aanit",
+  "npcTitulo": "A Guardiã das Terras Geladas",
+  "totalMissoes": 10,
+  "missoes": [
+    {
+      "id": "haanit_01",
+      "npcId": "haanit",
+      "numero": 1,
+      "nome": "Capítulo 1: O Despertar de H'aanit",
+      "descricao": "Acompanhe os primeiros passos de H'aanit como Caçador(a). Treinada desde criança por um caçador veterano em uma vila remota famosa por domar bestas de dungeon, H'aanit despertou seu poder ao vincular-se de forma incompleta a um raro felino-monstro durante um...",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Complete a introdução: converse com H'aanit e participe de sua primeira incursão",
+      "recompensas": {
+        "xp": 25650,
+        "won": 171000,
+        "item": "Machado de Caça Reserva"
+      }
+    },
+    {
+      "id": "haanit_02",
+      "npcId": "haanit",
+      "numero": 2,
+      "nome": "Capítulo 2: A Trilha de A Guardiã das Terras Geladas",
+      "descricao": "H'aanit pede ajuda para investigar pistas ligadas ao seu passado, aprofundando o mistério por trás de seu título de 'A Guardiã das Terras Geladas'.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Ajude H'aanit a reunir 3 pistas em diferentes localizações",
+      "recompensas": {
+        "xp": 29700,
+        "won": 198000,
+        "item": "Coleira Ritual da Besta Companheira"
+      }
+    },
+    {
+      "id": "haanit_03",
+      "npcId": "haanit",
+      "numero": 3,
+      "nome": "Capítulo 3: O Confronto de H'aanit",
+      "descricao": "O passado de H'aanit finalmente alcança o presente. Enfrente ao lado dele(a) a ameaça central de sua história.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Vença o confronto decisivo ao lado de H'aanit",
+      "recompensas": {
+        "xp": 33750,
+        "won": 225000,
+        "item": "Réplica Reforçada de: Arco Longo Entalhado à Mão"
+      }
+    },
+    {
+      "id": "haanit_04",
+      "npcId": "haanit",
+      "numero": 4,
+      "nome": "Capítulo 4: A Guardiã das Terras Geladas",
+      "descricao": "Com a ameaça derrotada, H'aanit consolida seu lugar no mundo dos caçadores, consagrando-se como A Guardiã das Terras Geladas.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Complete a missão final e testemunhe o desfecho da história de H'aanit",
+      "recompensas": {
+        "xp": 37800,
+        "won": 252000,
+        "item": "Réplica Reforçada de: Arco Longo Entalhado à Mão"
+      }
+    },
+    {
+      "id": "haanit_05",
+      "npcId": "haanit",
+      "numero": 5,
+      "nome": "Reforço de H'aanit",
+      "descricao": "H'aanit pede que você adquira, em qualquer Loja de Itens da Associação, um equipamento de Rank S compatível com Arcos para reforçar seu arsenal de combate.",
+      "categoria": "secundaria",
+      "tipo": "loja",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Comprar 1 equipamento de Rank S (peça de armadura ou arma)",
+      "recompensas": {
+        "xp": 8100,
+        "won": 54000,
+        "item": "Réplica Reforçada de: Arco Longo Entalhado à Mão"
+      }
+    },
+    {
+      "id": "haanit_06",
+      "npcId": "haanit",
+      "numero": 6,
+      "nome": "Provisões de H'aanit",
+      "descricao": "Antes da próxima incursão, H'aanit pede que você compre poções de recuperação e um acessório de afinidade elemental Gelo na loja mais próxima.",
+      "categoria": "secundaria",
+      "tipo": "loja",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Comprar 3 poções + 1 acessório elemental",
+      "recompensas": {
+        "xp": 7425,
+        "won": 49500,
+        "item": "Coleira Ritual da Besta Companheira"
+      }
+    },
+    {
+      "id": "haanit_07",
+      "npcId": "haanit",
+      "numero": 7,
+      "nome": "Receita de H'aanit",
+      "descricao": "Usando materiais coletados em dungeons de afinidade Gelo, produza o item indicado por H'aanit em uma bancada de criação da guilda.",
+      "categoria": "secundaria",
+      "tipo": "producao",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Produzir 1 item de afinidade Gelo (Rank S)",
+      "recompensas": {
+        "xp": 8775,
+        "won": 58500,
+        "item": "Fragmento de Mana (Gelo)"
+      }
+    },
+    {
+      "id": "haanit_08",
+      "npcId": "haanit",
+      "numero": 8,
+      "nome": "Suprimento Especial de H'aanit",
+      "descricao": "H'aanit ensina uma técnica pessoal de preparo; produza 3 unidades de um item de suporte (poção, munição ou material) ligado ao estilo de combate de Arcos.",
+      "categoria": "secundaria",
+      "tipo": "producao",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Produzir 3 itens de suporte",
+      "recompensas": {
+        "xp": 9450,
+        "won": 63000,
+        "item": "Fragmento de Mana (Gelo)"
+      }
+    },
+    {
+      "id": "haanit_09",
+      "npcId": "haanit",
+      "numero": 9,
+      "nome": "Treino de Combate com H'aanit",
+      "descricao": "H'aanit solicita ajuda para conter uma infestação: derrote feras geladas em dungeons de Rank S ou inferior.",
+      "categoria": "cacada",
+      "tipo": "caca",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Derrotar 40 Feras Geladas",
+      "recompensas": {
+        "xp": 10800,
+        "won": 72000,
+        "item": "Machado de Caça Reserva"
+      }
+    },
+    {
+      "id": "haanit_10",
+      "npcId": "haanit",
+      "numero": 10,
+      "nome": "Caçada Recomendada por H'aanit",
+      "descricao": "Uma variante mais forte de feras geladas tem aparecido nas rondas de H'aanit; elimine essas ameaças antes que evoluam.",
+      "categoria": "cacada",
+      "tipo": "caca",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Derrotar 9 Feras Geladas (variante fortalecida)",
+      "recompensas": {
+        "xp": 13500,
+        "won": 90000,
+        "item": "Réplica Reforçada de: Arco Longo Entalhado à Mão"
+      }
+    }
+  ]
+}

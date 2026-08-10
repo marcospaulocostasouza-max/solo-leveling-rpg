@@ -1,0 +1,19 @@
+{
+  "id": "uijeongbu",
+  "name": "Uijeongbu",
+  "image": "/images/cities/uijeongbu.webp",
+  "description": "Cidade histórica",
+  "population": "450 mil",
+  "dangerLevel": "C",
+  "guilds": [],
+  "npcs": [],
+  "players": [],
+  "portals": [],
+  "dungeons": [],
+  "bosses": [],
+  "shops": [],
+  "quests": [],
+  "events": [],
+  "resources": [],
+  "notes": ""
+}

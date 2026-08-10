@@ -1,0 +1,17 @@
+==============================================
+RELATÓRIO DE IMPORTAÇÃO — CENAS2.md
+==============================================
+
+NPCs encontrados: 8
+Vide, Olberic Eisenberg, Trish Yamaguchi, Tressa Colzione, Therion, Primrose Azelhart, Osvald V. Vanstein, Lyblac
+
+NPCs importados: 8
+Vide, Olberic Eisenberg, Trish Yamaguchi, Tressa Colzione, Therion, Primrose Azelhart, Osvald V. Vanstein, Lyblac
+
+NPCs ignorados: 0
+Nenhum
+
+NPCs não identificados: 0
+Nenhum
+
+==============================================

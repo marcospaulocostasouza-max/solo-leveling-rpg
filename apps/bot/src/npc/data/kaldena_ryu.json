@@ -1,0 +1,42 @@
+{
+  "id": "kaldena_ryu",
+  "papel": "Vilã",
+  "base_em": "Kaldena (Octopath Traveler II — rota de Temenos)",
+  "nome": "Kaldena Ryu",
+  "idade": "38",
+  "nacionalidade": "Sul-coreana, capitã de guarda obcecada por vingança",
+  "aparencia": "Postura militar rígida marcada por cicatrizes de um massacre, cabelos negros cortados curtos, veste armadura de capitã reforçada.",
+  "altura_peso": "1,79m / 72kg",
+  "personalidade": "Consumida por dor e raiva desde a perda de todo o clã ao qual pertencia, tornou-se implacável na busca por poder.",
+  "historia": "Sobrevivente de um massacre orquestrado contra seu clã, Kaldena dedicou a vida a caçar os responsáveis, ascendendo através das fileiras da Associação.",
+  "classe": "Lutador",
+  "classe_avancada": "Hrymir",
+  "rank": "A",
+  "nivel": 90,
+  "estilo_luta": "Proficiência em Espadas",
+  "atributos": {
+    "forca": 80,
+    "resistencia": 68,
+    "velocidade": 60,
+    "sentidos": 65,
+    "inteligencia": 48,
+    "poder_magico": 50
+  },
+  "elemento": "Escuridão",
+  "habilidade_unica": "Fúria do Clã Perdido — quanto mais dano recebe, maior seu próximo golpe, entrando em um estado instável que ignora a própria segurança em busca de vingança.",
+  "titulo": "A Capitã que Perdeu Tudo",
+  "equipamentos": {
+    "arma": "Espada com Runas de Proteção Instáveis",
+    "itens": "Armadura Marcada pelo Massacre, Símbolo do Clã Perdido, Lista de Suspeitos"
+  },
+  "tecnicas": [
+    "Corte da Vingança",
+    "Fúria Instável",
+    "Golpe do Clã Destruído"
+  ],
+  "formaFalar": "Fala com tom frio e calculista, frequentemente manipulando as palavras para obter vantagem. Suas frases são precisas e raramente revelam emoções verdadeiras.",
+  "localizacao": "Localização desconhecida — opera nas sombras",
+  "profissao": "Antagonista",
+  "objetivos": "Expandir seu poder e influência, eliminando qualquer ameaça aos seus planos.",
+  "valores": "O poder é o único caminho. A fraqueza é imperdoável. Os fins justificam os meios."
+}

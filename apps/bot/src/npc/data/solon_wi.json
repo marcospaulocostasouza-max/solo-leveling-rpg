@@ -1,0 +1,42 @@
+{
+  "id": "solon_wi",
+  "papel": "Herói",
+  "base_em": "Solon (Champions of the Continent)",
+  "nome": "Solon Wi",
+  "idade": "58",
+  "nacionalidade": "Sul-coreano, estrategista veterano aposentado da Associação",
+  "aparencia": "Idoso mas de olhar penetrante, longa barba branca trançada, veste vestes de estrategista adornadas com símbolos de conselho.",
+  "altura_peso": "1,70m / 68kg",
+  "personalidade": "Sábio, paciente e disposto a jogar o longo jogo mesmo quando isso significa parecer passivo demais para os mais jovens.",
+  "historia": "Ex-conselheiro estratégico de uma das maiores guildas, Solon retirou-se após décadas de serviço. Seu Despertar veio quando decidiu agir por conta própria contra uma ameaça.",
+  "classe": "Mago Elemental",
+  "classe_avancada": "Sábio",
+  "rank": "B",
+  "nivel": 74,
+  "estilo_luta": "Proficiência em Cajados e Orbes",
+  "atributos": {
+    "forca": 30,
+    "resistencia": 45,
+    "velocidade": 35,
+    "sentidos": 68,
+    "inteligencia": 94,
+    "poder_magico": 76
+  },
+  "elemento": "Água",
+  "habilidade_unica": "Tabuleiro Estratégico — planeja a próxima rodada inteira do grupo, concedendo a todos os aliados uma ação extra garantida no turno seguinte.",
+  "titulo": "O Estrategista que se Recusa a se Calar",
+  "equipamentos": {
+    "arma": "Cajado de Apoio Entalhado",
+    "itens": "Vestes de Conselheiro, Mapa Estratégico Portátil, Registro de Batalhas Passadas"
+  },
+  "tecnicas": [
+    "Água do Cálculo",
+    "Movimento Antecipado",
+    "Xeque-Mate Elemental"
+  ],
+  "formaFalar": "Fala com inteligência e curiosidade, frequentemente fazendo referências a conhecimentos arcanos.",
+  "localizacao": "Coreia do Sul",
+  "profissao": "Caçador(a) Mago Elemental",
+  "objetivos": "Proteger os inocentes, evoluir como caçador e desvendar os mistérios dos portais.",
+  "valores": "A vida é preciosa. A coragem é essencial. A lealdade é inegociável."
+}

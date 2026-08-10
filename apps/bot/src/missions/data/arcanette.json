@@ -1,0 +1,178 @@
+{
+  "npcId": "arcanette",
+  "npcNome": "Arcanette",
+  "npcTitulo": "A Manipuladora por Trás da Vendeta",
+  "totalMissoes": 10,
+  "missoes": [
+    {
+      "id": "arcanette_01",
+      "npcId": "arcanette",
+      "numero": 1,
+      "nome": "Capítulo 1: Rumores sobre Arcanette",
+      "descricao": "Relatos alarmantes começam a circular entre guildas sobre Arcanette. Agente de altíssimo nível de uma organização oculta, Arcanette especializou-se em manipular figuras de autoridade dentro da Associação....",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Investigue 3 relatos de testemunhas sobre Arcanette",
+      "recompensas": {
+        "xp": 25650,
+        "won": 171000,
+        "item": "Trajes de Culto Extinto"
+      }
+    },
+    {
+      "id": "arcanette_02",
+      "npcId": "arcanette",
+      "numero": 2,
+      "nome": "Capítulo 2: Rastreando A Manipuladora por Trás da Vendeta",
+      "descricao": "Reúna evidências concretas da atividade de Arcanette antes que a Associação classifique o caso como perdido.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Reúna provas em 2 locais diferentes ligados a Arcanette",
+      "recompensas": {
+        "xp": 29700,
+        "won": 198000,
+        "item": "Trajes de Culto Extinto"
+      }
+    },
+    {
+      "id": "arcanette_03",
+      "npcId": "arcanette",
+      "numero": 3,
+      "nome": "Capítulo 3: Confronto com Arcanette",
+      "descricao": "É hora de enfrentar Arcanette diretamente. Prepare-se: como A Manipuladora por Trás da Vendeta, este será um combate de Rank S.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Derrote Arcanette em combate direto",
+      "recompensas": {
+        "xp": 33750,
+        "won": 225000,
+        "item": "Réplica Reforçada de: Cajado Cerimonial de Rituais Proibidos"
+      }
+    },
+    {
+      "id": "arcanette_04",
+      "npcId": "arcanette",
+      "numero": 4,
+      "nome": "Capítulo 4: A Queda de A Manipuladora por Trás da Vendeta",
+      "descricao": "Com Arcanette neutralizado(a), reste apenas reportar o caso à Associação e lidar com as consequências reveladas.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Entregue o relatório final sobre Arcanette à Associação",
+      "recompensas": {
+        "xp": 37800,
+        "won": 252000,
+        "item": "Réplica Reforçada de: Cajado Cerimonial de Rituais Proibidos"
+      }
+    },
+    {
+      "id": "arcanette_05",
+      "npcId": "arcanette",
+      "numero": 5,
+      "nome": "Reforço de Arcanette",
+      "descricao": "Arcanette pede que você adquira, em qualquer Loja de Itens da Associação, um equipamento de Rank S compatível com Cajados e Orbes para reforçar seu arsenal de combate.",
+      "categoria": "secundaria",
+      "tipo": "loja",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Comprar 1 equipamento de Rank S (peça de armadura ou arma)",
+      "recompensas": {
+        "xp": 8100,
+        "won": 54000,
+        "item": "Réplica Reforçada de: Cajado Cerimonial de Rituais Proibidos"
+      }
+    },
+    {
+      "id": "arcanette_06",
+      "npcId": "arcanette",
+      "numero": 6,
+      "nome": "Provisões de Arcanette",
+      "descricao": "Antes da próxima incursão, Arcanette pede que você compre poções de recuperação e um acessório de afinidade elemental Escuridão na loja mais próxima.",
+      "categoria": "secundaria",
+      "tipo": "loja",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Comprar 3 poções + 1 acessório elemental",
+      "recompensas": {
+        "xp": 7425,
+        "won": 49500,
+        "item": "Registros de Traumas Alheios"
+      }
+    },
+    {
+      "id": "arcanette_07",
+      "npcId": "arcanette",
+      "numero": 7,
+      "nome": "Receita de Arcanette",
+      "descricao": "Usando materiais coletados em dungeons de afinidade Escuridão, produza o item indicado por Arcanette em uma bancada de criação da guilda.",
+      "categoria": "secundaria",
+      "tipo": "producao",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Produzir 1 item de afinidade Escuridão (Rank S)",
+      "recompensas": {
+        "xp": 8775,
+        "won": 58500,
+        "item": "Fragmento de Mana (Escuridão)"
+      }
+    },
+    {
+      "id": "arcanette_08",
+      "npcId": "arcanette",
+      "numero": 8,
+      "nome": "Suprimento Especial de Arcanette",
+      "descricao": "Arcanette ensina uma técnica pessoal de preparo; produza 3 unidades de um item de suporte (poção, munição ou material) ligado ao estilo de combate de Cajados e Orbes.",
+      "categoria": "secundaria",
+      "tipo": "producao",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Produzir 3 itens de suporte",
+      "recompensas": {
+        "xp": 9450,
+        "won": 63000,
+        "item": "Fragmento de Mana (Escuridão)"
+      }
+    },
+    {
+      "id": "arcanette_09",
+      "npcId": "arcanette",
+      "numero": 9,
+      "nome": "Treino de Combate com Arcanette",
+      "descricao": "Arcanette solicita ajuda para conter uma infestação: derrote sombras corrompidas em dungeons de Rank S ou inferior.",
+      "categoria": "cacada",
+      "tipo": "caca",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Derrotar 40 Sombras Corrompidas",
+      "recompensas": {
+        "xp": 10800,
+        "won": 72000,
+        "item": "Trajes de Culto Extinto"
+      }
+    },
+    {
+      "id": "arcanette_10",
+      "npcId": "arcanette",
+      "numero": 10,
+      "nome": "Caçada Recomendada por Arcanette",
+      "descricao": "Uma variante mais forte de sombras corrompidas tem aparecido nas rondas de Arcanette; elimine essas ameaças antes que evoluam.",
+      "categoria": "cacada",
+      "tipo": "caca",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Derrotar 9 Sombras Corrompidas (variante fortalecida)",
+      "recompensas": {
+        "xp": 13500,
+        "won": 90000,
+        "item": "Réplica Reforçada de: Cajado Cerimonial de Rituais Proibidos"
+      }
+    }
+  ]
+}

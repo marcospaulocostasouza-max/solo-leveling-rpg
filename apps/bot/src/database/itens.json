@@ -1,0 +1,124 @@
+{
+    "armas": [
+        {
+            "nome": "Espada Simples",
+            "descricao": "Uma espada equilibrada de uso geral, eficiente em cortes e estocadas."
+        },
+        {
+            "nome": "Espada Longa Simples",
+            "descricao": "Uma espada maior com alcance superior, ideal para golpes mais pesados."
+        },
+        {
+            "nome": "Espada Curta Simples",
+            "descricao": "Uma espada pequena e rápida, usada para ataques ágeis e combate próximo."
+        },
+        {
+            "nome": "Adaga Simples",
+            "descricao": "Uma lâmina curta e leve, usada para ataques rápidos e furtivos."
+        },
+        {
+            "nome": "Adaga Dupla Simples",
+            "descricao": "Duas adagas usadas simultaneamente, focadas em velocidade e combos."
+        },
+        {
+            "nome": "Lança Simples",
+            "descricao": "Uma arma de haste longa que permite ataques mantendo distância."
+        },
+        {
+            "nome": "Machado Simples",
+            "descricao": "Uma arma pesada de corte, capaz de causar grandes danos."
+        },
+        {
+            "nome": "Machado Duplo Simples",
+            "descricao": "Um machado com duas lâminas, aumentando o poder de ataque."
+        },
+        {
+            "nome": "Martelo de Guerra Simples",
+            "descricao": "Uma arma pesada feita para esmagar defesas e armaduras."
+        },
+        {
+            "nome": "Foice Simples",
+            "descricao": "Uma lâmina curva usada para cortes amplos e movimentos imprevisíveis."
+        },
+        {
+            "nome": "Foice Curta Simples",
+            "descricao": "Uma foice menor, permitindo ataques rápidos e precisos."
+        },
+        {
+            "nome": "Cajado Simples",
+            "descricao": "Uma arma de madeira usada para golpes físicos e canalização de energia mágica."
+        },
+        {
+            "nome": "Cetro Simples",
+            "descricao": "Um símbolo de autoridade usado por magos e usuários de energia."
+        },
+        {
+            "nome": "Arco Simples",
+            "descricao": "Uma arma de longo alcance que dispara flechas com precisão."
+        },
+        {
+            "nome": "Arco Longo Simples",
+            "descricao": "Um arco maior com alcance e força superiores."
+        },
+        {
+            "nome": "Besta Simples",
+            "descricao": "Uma arma de disparo mecânica que oferece grande força e precisão."
+        },
+        {
+            "nome": "Chakram Simples",
+            "descricao": "Um disco cortante lançado à distância e capaz de retornar ao usuário."
+        },
+        {
+            "nome": "Corrente Simples",
+            "descricao": "Uma arma flexível usada para prender, atacar e controlar inimigos."
+        },
+        {
+            "nome": "Manoplas Simples",
+            "descricao": "Luvas reforçadas usadas para aumentar o impacto dos golpes."
+        },
+        {
+            "nome": "Luvas de Combate Simples",
+            "descricao": "Equipamento leve para lutadores focados em socos e agilidade."
+        },
+        {
+            "nome": "Escudo Simples",
+            "descricao": "Uma defesa portátil usada para bloquear ataques inimigos."
+        },
+        {
+            "nome": "Espada e Escudo Simples",
+            "descricao": "Combinação equilibrada entre ataque e defesa."
+        },
+        {
+            "nome": "Lança e Escudo Simples",
+            "descricao": "Estilo defensivo com alcance e proteção ao mesmo tempo."
+        },
+        {
+            "nome": "Katana Simples",
+            "descricao": "Uma espada curva de corte preciso, focada em velocidade e técnica."
+        },
+        {
+            "nome": "Nunchaku Simples",
+            "descricao": "Arma composta por bastões ligados por corrente, usada em ataques rápidos."
+        },
+        {
+            "nome": "Kusarigama Simples",
+            "descricao": "Combinação de foice e corrente, permitindo ataques variados."
+        },
+        {
+            "nome": "Tridente Simples",
+            "descricao": "Arma de três pontas usada para perfuração e controle de espaço."
+        },
+        {
+            "nome": "Pistola Simples",
+            "descricao": "Arma de fogo pequena para disparos rápidos a curta distância."
+        },
+        {
+            "nome": "Revólver Simples",
+            "descricao": "Arma de fogo com tambor giratório e vários disparos."
+        },
+        {
+            "nome": "Rifle Simples",
+            "descricao": "Arma de fogo longa com grande precisão e alcance."
+        }
+    ]
+}

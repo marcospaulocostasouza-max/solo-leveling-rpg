@@ -1,0 +1,42 @@
+{
+  "id": "mattias_cardoso",
+  "papel": "Vilão",
+  "base_em": "Mattias (Octopath Traveler)",
+  "nome": "Mattias Cardoso",
+  "idade": "52",
+  "nacionalidade": "Sul-coreano, ex-alto sacerdote de um dos maiores templos da Associação",
+  "aparencia": "Aparência serena e paternal à primeira vista, cabelos grisalhos bem cuidados, veste vestes clericais impecáveis.",
+  "altura_peso": "1,75m / 78kg",
+  "personalidade": "Manipulador, hipócrita e absolutamente convencido de que os fins justificam qualquer meio necessário para manter seu poder.",
+  "historia": "Alto sacerdote respeitado publicamente, Mattias secretamente orquestrou o desaparecimento de sacerdotisas rivais que ameaçavam expor sua corrupção financeira.",
+  "classe": "Curador",
+  "classe_avancada": "Apotecário",
+  "rank": "S",
+  "nivel": 90,
+  "estilo_luta": "Proficiência em Cajados e Orbes",
+  "atributos": {
+    "forca": 35,
+    "resistencia": 58,
+    "velocidade": 42,
+    "sentidos": 60,
+    "inteligencia": 75,
+    "poder_magico": 88
+  },
+  "elemento": "Escuridão",
+  "habilidade_unica": "Máscara da Devoção — cura a si mesmo massivamente ao mesmo tempo em que lança uma maldição que reduz a cura recebida pelo grupo adversário pela metade.",
+  "titulo": "O Sacerdote da Corrupção Oculta",
+  "equipamentos": {
+    "arma": "Cajado Ritual Roubado do Templo",
+    "itens": "Vestes Clericais Impecáveis, Documentos Financeiros Falsificados, Relicário Profanado"
+  },
+  "tecnicas": [
+    "Bênção Falsa",
+    "Maldição da Fachada",
+    "Julgamento Hipócrita"
+  ],
+  "formaFalar": "Fala com tom frio e calculista, frequentemente manipulando as palavras para obter vantagem. Suas frases são precisas e raramente revelam emoções verdadeiras.",
+  "localizacao": "Localização desconhecida — opera nas sombras",
+  "profissao": "Antagonista",
+  "objetivos": "Expandir seu poder e influência, eliminando qualquer ameaça aos seus planos.",
+  "valores": "O poder é o único caminho. A fraqueza é imperdoável. Os fins justificam os meios."
+}

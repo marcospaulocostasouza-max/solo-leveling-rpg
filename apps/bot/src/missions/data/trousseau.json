@@ -1,0 +1,178 @@
+{
+  "npcId": "trousseau",
+  "npcNome": "Trousseau",
+  "npcTitulo": "O Mestre das Pragas Silenciosas",
+  "totalMissoes": 10,
+  "missoes": [
+    {
+      "id": "trousseau_01",
+      "npcId": "trousseau",
+      "numero": 1,
+      "nome": "Capítulo 1: Rumores sobre Trousseau",
+      "descricao": "Relatos alarmantes começam a circular entre guildas sobre Trousseau. Antigo curandeiro de campo dedicado, membro de uma organização humanitária que tratava feridos em vilas próximas a portais instáveis, Trousseau via cada vida salva como uma vitória pessoal — até perde...",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Investigue 3 relatos de testemunhas sobre Trousseau",
+      "recompensas": {
+        "xp": 17100,
+        "won": 114000,
+        "item": "Máscara de Peste Artesanal"
+      }
+    },
+    {
+      "id": "trousseau_02",
+      "npcId": "trousseau",
+      "numero": 2,
+      "nome": "Capítulo 2: Rastreando O Mestre das Pragas Silenciosas",
+      "descricao": "Reúna evidências concretas da atividade de Trousseau antes que a Associação classifique o caso como perdido.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Reúna provas em 2 locais diferentes ligados a Trousseau",
+      "recompensas": {
+        "xp": 19800,
+        "won": 132000,
+        "item": "Máscara de Peste Artesanal"
+      }
+    },
+    {
+      "id": "trousseau_03",
+      "npcId": "trousseau",
+      "numero": 3,
+      "nome": "Capítulo 3: Confronto com Trousseau",
+      "descricao": "É hora de enfrentar Trousseau diretamente. Prepare-se: como O Mestre das Pragas Silenciosas, este será um combate de Rank A.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Derrote Trousseau em combate direto",
+      "recompensas": {
+        "xp": 22500,
+        "won": 150000,
+        "item": "Réplica Reforçada de: Cajado Envenenado 'Último Suspiro'"
+      }
+    },
+    {
+      "id": "trousseau_04",
+      "npcId": "trousseau",
+      "numero": 4,
+      "nome": "Capítulo 4: A Queda de O Mestre das Pragas Silenciosas",
+      "descricao": "Com Trousseau neutralizado(a), reste apenas reportar o caso à Associação e lidar com as consequências reveladas.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Entregue o relatório final sobre Trousseau à Associação",
+      "recompensas": {
+        "xp": 25200,
+        "won": 168000,
+        "item": "Réplica Reforçada de: Cajado Envenenado 'Último Suspiro'"
+      }
+    },
+    {
+      "id": "trousseau_05",
+      "npcId": "trousseau",
+      "numero": 5,
+      "nome": "Reforço de Trousseau",
+      "descricao": "Trousseau pede que você adquira, em qualquer Loja de Itens da Associação, um equipamento de Rank A compatível com Cajados e Orbes para reforçar seu arsenal de combate.",
+      "categoria": "secundaria",
+      "tipo": "loja",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Comprar 1 equipamento de Rank A (peça de armadura ou arma)",
+      "recompensas": {
+        "xp": 5400,
+        "won": 36000,
+        "item": "Réplica Reforçada de: Cajado Envenenado 'Último Suspiro'"
+      }
+    },
+    {
+      "id": "trousseau_06",
+      "npcId": "trousseau",
+      "numero": 6,
+      "nome": "Provisões de Trousseau",
+      "descricao": "Antes da próxima incursão, Trousseau pede que você compre poções de recuperação e um acessório de afinidade elemental Planta na loja mais próxima.",
+      "categoria": "secundaria",
+      "tipo": "loja",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Comprar 3 poções + 1 acessório elemental",
+      "recompensas": {
+        "xp": 4950,
+        "won": 33000,
+        "item": "Frascos de Toxinas Raras"
+      }
+    },
+    {
+      "id": "trousseau_07",
+      "npcId": "trousseau",
+      "numero": 7,
+      "nome": "Receita de Trousseau",
+      "descricao": "Usando materiais coletados em dungeons de afinidade Planta, produza o item indicado por Trousseau em uma bancada de criação da guilda.",
+      "categoria": "secundaria",
+      "tipo": "producao",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Produzir 1 item de afinidade Planta (Rank A)",
+      "recompensas": {
+        "xp": 5850,
+        "won": 39000,
+        "item": "Fragmento de Mana (Planta)"
+      }
+    },
+    {
+      "id": "trousseau_08",
+      "npcId": "trousseau",
+      "numero": 8,
+      "nome": "Suprimento Especial de Trousseau",
+      "descricao": "Trousseau ensina uma técnica pessoal de preparo; produza 3 unidades de um item de suporte (poção, munição ou material) ligado ao estilo de combate de Cajados e Orbes.",
+      "categoria": "secundaria",
+      "tipo": "producao",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Produzir 3 itens de suporte",
+      "recompensas": {
+        "xp": 6300,
+        "won": 42000,
+        "item": "Fragmento de Mana (Planta)"
+      }
+    },
+    {
+      "id": "trousseau_09",
+      "npcId": "trousseau",
+      "numero": 9,
+      "nome": "Treino de Combate com Trousseau",
+      "descricao": "Trousseau solicita ajuda para conter uma infestação: derrote criaturas vegetais em dungeons de Rank A ou inferior.",
+      "categoria": "cacada",
+      "tipo": "caca",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Derrotar 35 Criaturas Vegetais",
+      "recompensas": {
+        "xp": 7200,
+        "won": 48000,
+        "item": "Máscara de Peste Artesanal"
+      }
+    },
+    {
+      "id": "trousseau_10",
+      "npcId": "trousseau",
+      "numero": 10,
+      "nome": "Caçada Recomendada por Trousseau",
+      "descricao": "Uma variante mais forte de criaturas vegetais tem aparecido nas rondas de Trousseau; elimine essas ameaças antes que evoluam.",
+      "categoria": "cacada",
+      "tipo": "caca",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Derrotar 8 Criaturas Vegetais (variante fortalecida)",
+      "recompensas": {
+        "xp": 9000,
+        "won": 60000,
+        "item": "Réplica Reforçada de: Cajado Envenenado 'Último Suspiro'"
+      }
+    }
+  ]
+}

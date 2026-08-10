@@ -1,0 +1,42 @@
+{
+  "id": "darius_kwon",
+  "papel": "Vilão",
+  "base_em": "Darius (Octopath Traveler)",
+  "nome": "Darius Kwon",
+  "idade": "29",
+  "nacionalidade": "Sul-coreano, ex-parceiro de furtos transformado em inimigo",
+  "aparencia": "Magro e ágil, cabelos escuros curtos, veste roupas escuras de infiltração muito parecidas com as de seu antigo parceiro.",
+  "altura_peso": "1,77m / 63kg",
+  "personalidade": "Ganancioso, invejoso e ressentido por sempre ter sido considerado o parceiro 'menos talentoso'.",
+  "historia": "Antigo parceiro de furtos, Darius traiu a dupla durante um roubo, entregando informações a guardas em troca da própria liberdade.",
+  "classe": "Assassino",
+  "classe_avancada": "Shinobi",
+  "rank": "A",
+  "nivel": 87,
+  "estilo_luta": "Proficiência em Adagas",
+  "atributos": {
+    "forca": 55,
+    "resistencia": 40,
+    "velocidade": 85,
+    "sentidos": 78,
+    "inteligencia": 52,
+    "poder_magico": 24
+  },
+  "elemento": "Sombra",
+  "habilidade_unica": "Golpe do Parceiro Traído — ataca duas vezes em sequência contra o mesmo alvo, com a segunda instância causando dano extra se o alvo já estiver com algum debuff ativo.",
+  "titulo": "O Ladrão que Vendeu o Próprio Parceiro",
+  "equipamentos": {
+    "arma": "Adaga Herdada do Antigo Trabalho",
+    "itens": "Roupas de Infiltração Escuras, Mapa de Esconderijos Secretos, Bolsa de Itens Contrabandeados"
+  },
+  "tecnicas": [
+    "Corte da Traição Dupla",
+    "Fuga Calculada",
+    "Golpe do Rancor Antigo"
+  ],
+  "formaFalar": "Fala com tom frio e calculista, frequentemente manipulando as palavras para obter vantagem. Suas frases são precisas e raramente revelam emoções verdadeiras.",
+  "localizacao": "Localização desconhecida — opera nas sombras",
+  "profissao": "Antagonista",
+  "objetivos": "Expandir seu poder e influência, eliminando qualquer ameaça aos seus planos.",
+  "valores": "O poder é o único caminho. A fraqueza é imperdoável. Os fins justificam os meios."
+}

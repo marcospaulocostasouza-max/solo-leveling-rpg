@@ -1,0 +1,652 @@
+/**
+ * SISTEMA DE ITENS DA LOJA
+ * 
+ * Todos os itens organizados por categoria e rank.
+ * Cada item possui: nome, rank, tipo, bonus, preço, descrição
+ */
+
+const ITENS_LOJA = {
+    // =====================================
+    // RANK E
+    // =====================================
+    "E": {
+        "Slot de Cabeça": [
+            { nome: "Coroa do Aspirante", bonus: "Sentidos: +10", preco: 100000, descricao: "Peça recuperada de uma masmorra do aspirante, ainda impregnada de mana residual." },
+            { nome: "Elmo da Vila Fronteiriça", bonus: "Inteligência: +10", preco: 120000, descricao: "Forjada por artesãos iniciantes que buscavam equilibrar proteção e liberdade de movimento." },
+            { nome: "Diadema do Primeiro Portal", bonus: "Resistência: +5, Sentidos: +5", preco: 130000, descricao: "Um item iniciante encontrado junto aos restos de um caçador que não sobreviveu ao portal." },
+            { nome: "Máscara do Aprendiz", bonus: "Sentidos: +15", preco: 150000, descricao: "Carrega consigo um brilho fraco, como se ecoasse a lembrança de seu antigo dono." },
+            { nome: "Capuz da Gilda Novata", bonus: "Inteligência: +15", preco: 170000, descricao: "Dizem que foi usada por um sobrevivente de um clã inteiro dizimado em uma masmorra selada." },
+            { nome: "Tiara do Despertar Precoce", bonus: "Resistência: +10, Sentidos: +5", preco: 180000, descricao: "Sua superfície guarda gravações de um sistema antigo, ilegível para a maioria dos caçadores." },
+            { nome: "Véu da Masmorra Rasa", bonus: "Sentidos: +15", preco: 200000, descricao: "Um artefato que reagiu de forma inesperada ao ser tocado por um usuário de baixo rank." },
+            { nome: "Capacete do Recruta", bonus: "Inteligência: +20", preco: 220000, descricao: "Popular entre aventureiros que precisaram se reerguer após uma queda de rank." },
+            { nome: "Grimório-Frontal da Bênção Menor", bonus: "Resistência: +10, Sentidos: +10", preco: 230000, descricao: "Item recuperado após o colapso de uma torre proibida, ainda pulsando com energia latente." },
+            { nome: "Laço do Selo Instável", bonus: "Sentidos: +20", preco: 250000, descricao: "Comum entre membros de guildas que caçam em pares, prezando sinergia acima de força bruta." }
+        ],
+        "Slot de Corpo": [
+            { nome: "Manto do Aspirante", bonus: "Resistência: +10", preco: 100000, descricao: "Peça recuperada de uma masmorra do aspirante, ainda impregnada de mana residual." },
+            { nome: "Peitoral da Vila Fronteiriça", bonus: "Força: +10", preco: 120000, descricao: "Forjada por artesãos iniciantes que buscavam equilibrar proteção e liberdade de movimento." },
+            { nome: "Armadura do Primeiro Portal", bonus: "Resistência: +5, Força: +5", preco: 130000, descricao: "Um item iniciante encontrado junto aos restos de um caçador que não sobreviveu ao portal." },
+            { nome: "Sobretudo do Aprendiz", bonus: "Força: +15", preco: 150000, descricao: "Carrega consigo um brilho fraco, como se ecoasse a lembrança de seu antigo dono." },
+            { nome: "Túnica da Gilda Novata", bonus: "Resistência: +15", preco: 170000, descricao: "Dizem que foi usada por um sobrevivente de um clã inteiro dizimado em uma masmorra selada." },
+            { nome: "Couraça do Despertar Precoce", bonus: "Força: +10, Resistência: +5", preco: 180000, descricao: "Sua superfície guarda gravações de um sistema antigo, ilegível para a maioria dos caçadores." },
+            { nome: "Casaco da Masmorra Rasa", bonus: "Resistência: +15", preco: 200000, descricao: "Um artefato que reagiu de forma inesperada ao ser tocado por um usuário de baixo rank." },
+            { nome: "Vestimenta do Recruta", bonus: "Força: +20", preco: 220000, descricao: "Popular entre aventureiros que precisaram se reerguer após uma queda de rank." },
+            { nome: "Cota de Malha da Bênção Menor", bonus: "Resistência: +10, Força: +10", preco: 230000, descricao: "Item recuperado após o colapso de uma torre proibida, ainda pulsando com energia latente." },
+            { nome: "Robe do Selo Instável", bonus: "Força: +20", preco: 250000, descricao: "Comum entre membros de guildas que caçam em pares, prezando sinergia acima de força bruta." }
+        ],
+        "Slot de Pernas": [
+            { nome: "Calça do Aspirante", bonus: "Agilidade: +10", preco: 100000, descricao: "Peça recuperada de uma masmorra do aspirante, ainda impregnada de mana residual." },
+            { nome: "Grevas da Vila Fronteiriça", bonus: "Resistência: +10", preco: 120000, descricao: "Forjada por artesãos iniciantes que buscavam equilibrar proteção e liberdade de movimento." },
+            { nome: "Saiote do Primeiro Portal", bonus: "Agilidade: +5, Resistência: +5", preco: 130000, descricao: "Um item iniciante encontrado junto aos restos de um caçador que não sobreviveu ao portal." },
+            { nome: "Perneira do Aprendiz", bonus: "Resistência: +15", preco: 150000, descricao: "Carrega consigo um brilho fraco, como se ecoasse a lembrança de seu antigo dono." },
+            { nome: "Calção da Gilda Novata", bonus: "Agilidade: +15", preco: 170000, descricao: "Dizem que foi usada por um sobrevivente de um clã inteiro dizimado em uma masmorra selada." },
+            { nome: "Legging Rúnica do Despertar Precoce", bonus: "Resistência: +10, Agilidade: +5", preco: 180000, descricao: "Sua superfície guarda gravações de um sistema antigo, ilegível para a maioria dos caçadores." },
+            { nome: "Anqueiras da Masmorra Rasa", bonus: "Agilidade: +15", preco: 200000, descricao: "Um artefato que reagiu de forma inesperada ao ser tocado por um usuário de baixo rank." },
+            { nome: "Calça-Armadura do Recruta", bonus: "Resistência: +20", preco: 220000, descricao: "Popular entre aventureiros que precisaram se reerguer após uma queda de rank." },
+            { nome: "Faixa de Perna da Bênção Menor", bonus: "Agilidade: +10, Resistência: +10", preco: 230000, descricao: "Item recuperado após o colapso de uma torre proibida, ainda pulsando com energia latente." },
+            { nome: "Calça Élfica do Selo Instável", bonus: "Resistência: +20", preco: 250000, descricao: "Comum entre membros de guildas que caçam em pares, prezando sinergia acima de força bruta." }
+        ],
+        "Slot de Pés": [
+            { nome: "Botas do Novato Curioso", bonus: "Agilidade: +10", preco: 100000, descricao: "Ao Novato Curioso pode ser sentido nas solas gastas desta peça, remanescente de uma masmorra devastada." },
+            { nome: "Sandálias da Trilha Inicial", bonus: "Força: +10", preco: 120000, descricao: "Forjada por ferreiros ligados à Trilha Inicial, equilibrando passo firme e avanço silencioso." },
+            { nome: "Coturnos do Portal Menor", bonus: "Agilidade: +5, Força: +5", preco: 130000, descricao: "Um item recuperado dos escombros deixados pelo Portal Menor, ainda gelado ao toque." },
+            { nome: "Sapatilhas do Estudante Errante", bonus: "Força: +15", preco: 150000, descricao: "Carrega o peso simbólico do Estudante Errante, moldado para quem enfrenta o desconhecido." },
+            { nome: "Grevas de Pé da Companhia Jovem", bonus: "Agilidade: +15", preco: 170000, descricao: "Dizem que pertenceu a um caçador marcado pela Companhia Jovem, jamais visto após a última incursão." },
+            { nome: "Botins do Brilho Fraco", bonus: "Força: +10, Agilidade: +5", preco: 180000, descricao: "Sua sola guarda símbolos entalhados do Brilho Fraco, quase apagados pelo tempo." },
+            { nome: "Solado Rúnico da Cova Simples", bonus: "Agilidade: +15", preco: 200000, descricao: "Peça associada à Cova Simples, reagindo de forma sutil à presença de mana hostil." },
+            { nome: "Polainas do Guarda Iniciante", bonus: "Força: +20", preco: 220000, descricao: "Item cobiçado por quem busca reconstruir a reputação após cruzar o caminho do Guarda Iniciante." },
+            { nome: "Borzeguins da Dádiva Pequena", bonus: "Agilidade: +10, Força: +10", preco: 230000, descricao: "Fragmento recuperado do covil da Dádiva Pequena, ainda impregnado de energia latente." },
+            { nome: "Chinelos Rituais da Marca Novata", bonus: "Força: +20", preco: 250000, descricao: "Comum entre caçadores que sobreviveram ao encontro com a Marca Novata, prezando mobilidade acima de tudo." }
+        ],
+        "Slot de Acessórios": [
+            { nome: "Anel do Aspirante", bonus: "Poder Mágico: +10", preco: 100000, descricao: "Peça recuperada de uma masmorra do aspirante, ainda impregnada de mana residual." },
+            { nome: "Colar da Vila Fronteiriça", bonus: "Inteligência: +10", preco: 120000, descricao: "Forjada por artesãos iniciantes que buscavam equilibrar proteção e liberdade de movimento." },
+            { nome: "Brinco do Primeiro Portal", bonus: "Agilidade: +5, Sorte: +5", preco: 130000, descricao: "Um item iniciante encontrado junto aos restos de um caçador que não sobreviveu ao portal." },
+            { nome: "Bracelete do Aprendiz", bonus: "Sorte: +15", preco: 150000, descricao: "Carrega consigo um brilho fraco, como se ecoasse a lembrança de seu antigo dono." },
+            { nome: "Broche da Gilda Novata", bonus: "Poder Mágico: +15", preco: 170000, descricao: "Dizem que foi usada por um sobrevivente de um clã inteiro dizimado em uma masmorra selada." },
+            { nome: "Pingente do Despertar Precoce", bonus: "Inteligência: +10, Agilidade: +5", preco: 180000, descricao: "Sua superfície guarda gravações de um sistema antigo, ilegível para a maioria dos caçadores." },
+            { nome: "Pulseira da Masmorra Rasa", bonus: "Agilidade: +15", preco: 200000, descricao: "Um artefato que reagiu de forma inesperada ao ser tocado por um usuário de baixo rank." },
+            { nome: "Fivela do Recruta", bonus: "Sorte: +20", preco: 220000, descricao: "Popular entre aventureiros que precisaram se reerguer após uma queda de rank." },
+            { nome: "Amuleto da Bênção Menor", bonus: "Poder Mágico: +10, Inteligência: +10", preco: 230000, descricao: "Item recuperado após o colapso de uma torre proibida, ainda pulsando com energia latente." },
+            { nome: "Presilha do Selo Instável", bonus: "Inteligência: +20", preco: 250000, descricao: "Comum entre membros de guildas que caçam em pares, prezando sinergia acima de força bruta." }
+        ],
+        "Itens de Apoio": [
+            { nome: "Poção do Aspirante", bonus: "Regenera 10 HP", preco: 100000, descricao: "Item de apoio iniciante, muito usado por caçadores em expedições.", tipo: "consumivel" },
+            { nome: "Pergaminho da Vila Fronteiriça", bonus: "Regenera 11 MP", preco: 120000, descricao: "Item de apoio iniciante, muito usado por caçadores em expedições.", tipo: "consumivel" },
+            { nome: "Talismã do Primeiro Portal", bonus: "Resistência a veneno (3 turnos)", preco: 130000, descricao: "Item de apoio iniciante, muito usado por caçadores em expedições.", tipo: "consumivel" },
+            { nome: "Amuleto de Bolso do Aprendiz", bonus: "Reduz CD em 9%", preco: 150000, descricao: "Item de apoio iniciante, muito usado por caçadores em expedições.", tipo: "consumivel" },
+            { nome: "Cristal Portátil da Gilda Novata", bonus: "Revela armadilhas (14m, 2 turnos)", preco: 170000, descricao: "Item de apoio iniciante, muito usado por caçadores em expedições.", tipo: "consumivel" },
+            { nome: "Fumaça Ritual do Despertar Precoce", bonus: "Velocidade +10% (3 turnos)", preco: 180000, descricao: "Item de apoio iniciante, muito usado por caçadores em expedições.", tipo: "consumivel" },
+            { nome: "Frasco Selado da Masmorra Rasa", bonus: "Expande inventário (16 slots)", preco: 200000, descricao: "Item de apoio iniciante, muito usado por caçadores em expedições.", tipo: "consumivel" },
+            { nome: "Bússola Encantada do Recruta", bonus: "Sinal de socorro", preco: 220000, descricao: "Item de apoio iniciante, muito usado por caçadores em expedições.", tipo: "consumivel" },
+            { nome: "Vela Ritualística da Bênção Menor", bonus: "Cura sangramento/veneno", preco: 230000, descricao: "Item de apoio iniciante, muito usado por caçadores em expedições.", tipo: "consumivel" },
+            { nome: "Bolsa Dimensional do Selo Instável", bonus: "Visão no escuro (5 turnos)", preco: 250000, descricao: "Item de apoio iniciante, muito usado por caçadores em expedições.", tipo: "consumivel" },
+            { nome: "Picareta do Minerador", bonus: "Permite minerar cristais em dungeons", preco: 20000, descricao: "Ferramenta essencial para mineradores. Quebra após um único uso em dungeon.", tipo: "consumivel" }
+        ],
+        "Arma 1": [
+            { nome: "Adaga do Aspirante", bonus: "Força: +5, Agilidade: +5", preco: 100000, descricao: "Arma de uma mão [1-FP]", tipo: "arma" },
+            { nome: "Katana Curta da Vila Fronteiriça", bonus: "Agilidade: +5, Força: +5", preco: 120000, descricao: "Arma de uma mão [1-FP]", tipo: "arma" },
+            { nome: "Espada Curta do Primeiro Portal", bonus: "Poder Mágico: +5, Sentidos: +5", preco: 130000, descricao: "Arma de uma mão [1-FP]", tipo: "arma" },
+            { nome: "Sai do Aprendiz", bonus: "Força: +10, Agilidade: +5", preco: 150000, descricao: "Arma de uma mão [1-FP]", tipo: "arma" },
+            { nome: "Punhal da Gilda Novata", bonus: "Agilidade: +10, Força: +5", preco: 170000, descricao: "Arma de uma mão [1-FP]", tipo: "arma" },
+            { nome: "Manopla de Combate do Despertar Precoce", bonus: "Poder Mágico: +10, Sentidos: +5", preco: 180000, descricao: "Arma de uma mão [1-FP]", tipo: "arma" },
+            { nome: "Tonfa da Masmorra Rasa", bonus: "Força: +10, Agilidade: +5", preco: 200000, descricao: "Arma de uma mão [1-FP]", tipo: "arma" },
+            { nome: "Cetro Menor do Recruta", bonus: "Agilidade: +10, Força: +10", preco: 220000, descricao: "Arma de uma mão [1-FP]", tipo: "arma" },
+            { nome: "Pistola Encantada da Bênção Menor", bonus: "Poder Mágico: +10, Sentidos: +10", preco: 230000, descricao: "Arma de uma mão [1-FP]", tipo: "arma" },
+            { nome: "Faca Ritual do Selo Instável", bonus: "Força: +10, Agilidade: +10", preco: 250000, descricao: "Arma de uma mão [1-FP]", tipo: "arma" }
+        ],
+        "Arma 2": [
+            { nome: "Espadão do Aspirante", bonus: "Força: +15", preco: 130000, descricao: "Arma de duas mãos [2-FP]", tipo: "arma" },
+            { nome: "Lança Longa da Vila Fronteiriça", bonus: "Poder Mágico: +15", preco: 150000, descricao: "Arma de duas mãos [2-FP]", tipo: "arma" },
+            { nome: "Machado de Guerra do Primeiro Portal", bonus: "Força: +10, Poder Mágico: +5", preco: 170000, descricao: "Arma de duas mãos [2-FP]", tipo: "arma" },
+            { nome: "Foice Longa do Aprendiz", bonus: "Força: +20", preco: 200000, descricao: "Arma de duas mãos [2-FP]", tipo: "arma" },
+            { nome: "Alabarda da Gilda Novata", bonus: "Poder Mágico: +20", preco: 220000, descricao: "Arma de duas mãos [2-FP]", tipo: "arma" },
+            { nome: "Martelo de Batalha do Despertar Precoce", bonus: "Força: +10, Poder Mágico: +10", preco: 240000, descricao: "Arma de duas mãos [2-FP]", tipo: "arma" },
+            { nome: "Arco Longo da Masmorra Rasa", bonus: "Força: +25", preco: 260000, descricao: "Arma de duas mãos [2-FP]", tipo: "arma" },
+            { nome: "Fuzil de Precisão do Recruta", bonus: "Poder Mágico: +25", preco: 280000, descricao: "Arma de duas mãos [2-FP]", tipo: "arma" },
+            { nome: "Naginata da Bênção Menor", bonus: "Força: +15, Poder Mágico: +10", preco: 300000, descricao: "Arma de duas mãos [2-FP]", tipo: "arma" },
+            { nome: "Claymore Rúnica do Selo Instável", bonus: "Força: +30", preco: 320000, descricao: "Arma de duas mãos [2-FP]", tipo: "arma" }
+        ]
+    },
+    
+    // =====================================
+    // RANK D
+    // =====================================
+    "D": {
+        "Slot de Cabeça": [
+            { nome: "Coroa do Caçador Errante", bonus: "Sentidos: +20", preco: 280000, descricao: "Peça recuperada de uma masmorra do caçador errante, ainda impregnada de mana residual." },
+            { nome: "Elmo da Névoa Cinzenta", bonus: "Inteligência: +20", preco: 300000, descricao: "Forjada por artesãos experientes que buscavam equilibrar proteção e liberdade de movimento." },
+            { nome: "Diadema do Portal Instável", bonus: "Resistência: +15, Sentidos: +10", preco: 320000, descricao: "Um item experiente encontrado junto aos restos de um caçador que não sobreviveu ao portal." },
+            { nome: "Máscara da Torre Baixa", bonus: "Sentidos: +25", preco: 340000, descricao: "Carrega consigo um brilho fraco, como se ecoasse a lembrança de seu antigo dono." },
+            { nome: "Capuz do Contrato Menor", bonus: "Inteligência: +25", preco: 360000, descricao: "Dizem que foi usada por um sobrevivente de um clã inteiro dizimado em uma masmorra selada." },
+            { nome: "Tiara da Relíquia Esquecida", bonus: "Resistência: +20, Sentidos: +10", preco: 370000, descricao: "Sua superfície guarda gravações de um sistema antigo, ilegível para a maioria dos caçadores." },
+            { nome: "Véu do Duelista", bonus: "Sentidos: +30", preco: 390000, descricao: "Um artefato que reagiu de forma inesperada ao ser tocado por um usuário de baixo rank." },
+            { nome: "Capacete da Trilha Sombria", bonus: "Inteligência: +30", preco: 410000, descricao: "Popular entre aventureiros que precisaram se reerguer após uma queda de rank." },
+            { nome: "Grimório-Frontal do Espírito Adormecido", bonus: "Resistência: +20, Sentidos: +15", preco: 430000, descricao: "Item recuperado após o colapso de uma torre proibida, ainda pulsando com energia latente." },
+            { nome: "Laço da Runa Rachada", bonus: "Sentidos: +35", preco: 450000, descricao: "Comum entre membros de guildas que caçam em pares, prezando sinergia acima de força bruta." }
+        ],
+        "Slot de Corpo": [
+            { nome: "Manto do Caçador Errante", bonus: "Resistência: +20", preco: 280000, descricao: "Peça recuperada de uma masmorra do caçador errante, ainda impregnada de mana residual." },
+            { nome: "Peitoral da Névoa Cinzenta", bonus: "Força: +20", preco: 300000, descricao: "Forjada por artesãos experientes que buscavam equilibrar proteção e liberdade de movimento." },
+            { nome: "Armadura do Portal Instável", bonus: "Resistência: +15, Força: +10", preco: 320000, descricao: "Um item experiente encontrado junto aos restos de um caçador que não sobreviveu ao portal." },
+            { nome: "Sobretudo da Torre Baixa", bonus: "Força: +25", preco: 340000, descricao: "Carrega consigo um brilho fraco, como se ecoasse a lembrança de seu antigo dono." },
+            { nome: "Túnica do Contrato Menor", bonus: "Resistência: +25", preco: 360000, descricao: "Dizem que foi usada por um sobrevivente de um clã inteiro dizimado em uma masmorra selada." },
+            { nome: "Couraça da Relíquia Esquecida", bonus: "Força: +20, Resistência: +10", preco: 370000, descricao: "Sua superfície guarda gravações de um sistema antigo, ilegível para a maioria dos caçadores." },
+            { nome: "Casaco do Duelista", bonus: "Resistência: +30", preco: 390000, descricao: "Um artefato que reagiu de forma inesperada ao ser tocado por um usuário de baixo rank." },
+            { nome: "Vestimenta da Trilha Sombria", bonus: "Força: +30", preco: 410000, descricao: "Popular entre aventureiros que precisaram se reerguer após uma queda de rank." },
+            { nome: "Cota de Malha do Espírito Adormecido", bonus: "Resistência: +20, Força: +15", preco: 430000, descricao: "Item recuperado após o colapso de uma torre proibida, ainda pulsando com energia latente." },
+            { nome: "Robe da Runa Rachada", bonus: "Força: +35", preco: 450000, descricao: "Comum entre membros de guildas que caçam em pares, prezando sinergia acima de força bruta." }
+        ],
+        "Slot de Pernas": [
+            { nome: "Calça do Caçador Errante", bonus: "Agilidade: +20", preco: 280000, descricao: "Peça recuperada de uma masmorra do caçador errante, ainda impregnada de mana residual." },
+            { nome: "Grevas da Névoa Cinzenta", bonus: "Resistência: +20", preco: 300000, descricao: "Forjada por artesãos experientes que buscavam equilibrar proteção e liberdade de movimento." },
+            { nome: "Saiote do Portal Instável", bonus: "Agilidade: +15, Resistência: +10", preco: 320000, descricao: "Um item experiente encontrado junto aos restos de um caçador que não sobreviveu ao portal." },
+            { nome: "Perneira da Torre Baixa", bonus: "Resistência: +25", preco: 340000, descricao: "Carrega consigo um brilho fraco, como se ecoasse a lembrança de seu antigo dono." },
+            { nome: "Calção do Contrato Menor", bonus: "Agilidade: +25", preco: 360000, descricao: "Dizem que foi usada por um sobrevivente de um clã inteiro dizimado em uma masmorra selada." },
+            { nome: "Legging Rúnica da Relíquia Esquecida", bonus: "Resistência: +20, Agilidade: +10", preco: 370000, descricao: "Sua superfície guarda gravações de um sistema antigo, ilegível para a maioria dos caçadores." },
+            { nome: "Anqueiras do Duelista", bonus: "Agilidade: +30", preco: 390000, descricao: "Um artefato que reagiu de forma inesperada ao ser tocado por um usuário de baixo rank." },
+            { nome: "Calça-Armadura da Trilha Sombria", bonus: "Resistência: +30", preco: 410000, descricao: "Popular entre aventureiros que precisaram se reerguer após uma queda de rank." },
+            { nome: "Faixa de Perna do Espírito Adormecido", bonus: "Agilidade: +20, Resistência: +15", preco: 430000, descricao: "Item recuperado após o colapso de uma torre proibida, ainda pulsando com energia latente." },
+            { nome: "Calça Élfica da Runa Rachada", bonus: "Resistência: +35", preco: 450000, descricao: "Comum entre membros de guildas que caçam em pares, prezando sinergia acima de força bruta." }
+        ],
+        "Slot de Pés": [
+            { nome: "Botas do Batedor Experiente", bonus: "Agilidade: +20", preco: 280000, descricao: "Ao Batedor Experiente pode ser sentido nas solas gastas desta peça, remanescente de uma masmorra devastada." },
+            { nome: "Sandálias da Bruma Baixa", bonus: "Força: +20", preco: 300000, descricao: "Forjada por ferreiros ligados à Bruma Baixa, equilibrando passo firme e avanço silencioso." },
+            { nome: "Coturnos da Fenda Menor", bonus: "Agilidade: +15, Força: +10", preco: 320000, descricao: "Um item recuperado dos escombros deixados pela Fenda Menor, ainda gelado ao toque." },
+            { nome: "Sapatilhas da Muralha Rasa", bonus: "Força: +25", preco: 340000, descricao: "Carrega o peso simbólico da Muralha Rasa, moldado para quem enfrenta o desconhecido." },
+            { nome: "Grevas de Pé do Pacto Simples", bonus: "Agilidade: +25", preco: 360000, descricao: "Dizem que pertenceu a um caçador marcado pelo Pacto Simples, jamais visto após a última incursão." },
+            { nome: "Botins do Talismã Gasto", bonus: "Força: +20, Agilidade: +10", preco: 370000, descricao: "Sua sola guarda símbolos entalhados do Talismã Gasto, quase apagados pelo tempo." },
+            { nome: "Solado Rúnico do Combatente Solitário", bonus: "Agilidade: +30", preco: 390000, descricao: "Peça associada ao Combatente Solitário, reagindo de forma sutil à presença de mana hostil." },
+            { nome: "Polainas do Caminho Sombrio", bonus: "Força: +30", preco: 410000, descricao: "Item cobiçado por quem busca reconstruir a reputação após cruzar o caminho do Caminho Sombrio." },
+            { nome: "Borzeguins da Alma Cansada", bonus: "Agilidade: +20, Força: +15", preco: 430000, descricao: "Fragmento recuperado do covil da Alma Cansada, ainda impregnado de energia latente." },
+            { nome: "Chinelos Rituais da Pedra Gravada", bonus: "Força: +35", preco: 450000, descricao: "Comum entre caçadores que sobreviveram ao encontro com a Pedra Gravada, prezando mobilidade acima de tudo." }
+        ],
+        "Slot de Acessórios": [
+            { nome: "Anel do Caçador Errante", bonus: "Poder Mágico: +20", preco: 280000, descricao: "Peça recuperada de uma masmorra do caçador errante, ainda impregnada de mana residual." },
+            { nome: "Colar da Névoa Cinzenta", bonus: "Inteligência: +20", preco: 300000, descricao: "Forjada por artesãos experientes que buscavam equilibrar proteção e liberdade de movimento." },
+            { nome: "Brinco do Portal Instável", bonus: "Agilidade: +15, Sorte: +10", preco: 320000, descricao: "Um item experiente encontrado junto aos restos de um caçador que não sobreviveu ao portal." },
+            { nome: "Bracelete da Torre Baixa", bonus: "Sorte: +25", preco: 340000, descricao: "Carrega consigo um brilho fraco, como se ecoasse a lembrança de seu antigo dono." },
+            { nome: "Broche do Contrato Menor", bonus: "Poder Mágico: +25", preco: 360000, descricao: "Dizem que foi usada por um sobrevivente de um clã inteiro dizimado em uma masmorra selada." },
+            { nome: "Pingente da Relíquia Esquecida", bonus: "Inteligência: +20, Agilidade: +10", preco: 370000, descricao: "Sua superfície guarda gravações de um sistema antigo, ilegível para a maioria dos caçadores." },
+            { nome: "Pulseira do Duelista", bonus: "Agilidade: +30", preco: 390000, descricao: "Um artefato que reagiu de forma inesperada ao ser tocado por um usuário de baixo rank." },
+            { nome: "Fivela da Trilha Sombria", bonus: "Sorte: +30", preco: 410000, descricao: "Popular entre aventureiros que precisaram se reerguer após uma queda de rank." },
+            { nome: "Amuleto do Espírito Adormecido", bonus: "Poder Mágico: +20, Inteligência: +15", preco: 430000, descricao: "Item recuperado após o colapso de uma torre proibida, ainda pulsando com energia latente." },
+            { nome: "Presilha da Runa Rachada", bonus: "Inteligência: +35", preco: 450000, descricao: "Comum entre membros de guildas que caçam em pares, prezando sinergia acima de força bruta." }
+        ],
+        "Itens de Apoio": [
+            { nome: "Poção do Caçador Errante", bonus: "Regenera 20 HP", preco: 280000, descricao: "Item de apoio experiente, muito usado por caçadores em expedições.", tipo: "consumivel" },
+            { nome: "Pergaminho da Névoa Cinzenta", bonus: "Regenera 21 MP", preco: 300000, descricao: "Item de apoio experiente, muito usado por caçadores em expedições.", tipo: "consumivel" },
+            { nome: "Talismã do Portal Instável", bonus: "Resistência a veneno (3 turnos)", preco: 320000, descricao: "Item de apoio experiente, muito usado por caçadores em expedições.", tipo: "consumivel" },
+            { nome: "Amuleto de Bolso da Torre Baixa", bonus: "Reduz CD em 13%", preco: 340000, descricao: "Item de apoio experiente, muito usado por caçadores em expedições.", tipo: "consumivel" },
+            { nome: "Cristal Portátil do Contrato Menor", bonus: "Revela armadilhas (26m, 2 turnos)", preco: 360000, descricao: "Item de apoio experiente, muito usado por caçadores em expedições.", tipo: "consumivel" },
+            { nome: "Fumaça Ritual da Relíquia Esquecida", bonus: "Velocidade +14% (3 turnos)", preco: 370000, descricao: "Item de apoio experiente, muito usado por caçadores em expedições.", tipo: "consumivel" },
+            { nome: "Frasco Selado do Duelista", bonus: "Expande inventário (30 slots)", preco: 390000, descricao: "Item de apoio experiente, muito usado por caçadores em expedições.", tipo: "consumivel" },
+            { nome: "Bússola Encantada da Trilha Sombria", bonus: "Sinal de socorro", preco: 410000, descricao: "Item de apoio experiente, muito usado por caçadores em expedições.", tipo: "consumivel" },
+            { nome: "Vela Ritualística do Espírito Adormecido", bonus: "Cura sangramento/veneno", preco: 430000, descricao: "Item de apoio experiente, muito usado por caçadores em expedições.", tipo: "consumivel" },
+            { nome: "Bolsa Dimensional da Runa Rachada", bonus: "Visão no escuro (5 turnos)", preco: 450000, descricao: "Item de apoio experiente, muito usado por caçadores em expedições.", tipo: "consumivel" },
+            { nome: "Picareta do Minerador", bonus: "Permite minerar cristais em dungeons", preco: 20000, descricao: "Ferramenta essencial para mineradores. Quebra após um único uso em dungeon.", tipo: "consumivel" }
+        ],
+        "Arma 1": [
+            { nome: "Adaga do Caçador Errante", bonus: "Força: +10, Agilidade: +10", preco: 280000, descricao: "Arma de uma mão [1-FP]", tipo: "arma" },
+            { nome: "Katana Curta da Névoa Cinzenta", bonus: "Agilidade: +10, Força: +10", preco: 300000, descricao: "Arma de uma mão [1-FP]", tipo: "arma" },
+            { nome: "Espada Curta do Portal Instável", bonus: "Poder Mágico: +15, Sentidos: +10", preco: 320000, descricao: "Arma de uma mão [1-FP]", tipo: "arma" },
+            { nome: "Sai da Torre Baixa", bonus: "Força: +15, Agilidade: +10", preco: 340000, descricao: "Arma de uma mão [1-FP]", tipo: "arma" },
+            { nome: "Punhal do Contrato Menor", bonus: "Agilidade: +15, Força: +10", preco: 360000, descricao: "Arma de uma mão [1-FP]", tipo: "arma" },
+            { nome: "Manopla de Combate da Relíquia Esquecida", bonus: "Poder Mágico: +20, Sentidos: +10", preco: 370000, descricao: "Arma de uma mão [1-FP]", tipo: "arma" },
+            { nome: "Tonfa do Duelista", bonus: "Força: +20, Agilidade: +10", preco: 390000, descricao: "Arma de uma mão [1-FP]", tipo: "arma" },
+            { nome: "Cetro Menor da Trilha Sombria", bonus: "Agilidade: +20, Força: +10", preco: 410000, descricao: "Arma de uma mão [1-FP]", tipo: "arma" },
+            { nome: "Pistola Encantada do Espírito Adormecido", bonus: "Poder Mágico: +20, Sentidos: +15", preco: 430000, descricao: "Arma de uma mão [1-FP]", tipo: "arma" },
+            { nome: "Faca Ritual da Runa Rachada", bonus: "Força: +20, Agilidade: +15", preco: 450000, descricao: "Arma de uma mão [1-FP]", tipo: "arma" }
+        ],
+        "Arma 2": [
+            { nome: "Espadão do Caçador Errante", bonus: "Força: +30", preco: 360000, descricao: "Arma de duas mãos [2-FP]", tipo: "arma" },
+            { nome: "Lança Longa da Névoa Cinzenta", bonus: "Poder Mágico: +30", preco: 390000, descricao: "Arma de duas mãos [2-FP]", tipo: "arma" },
+            { nome: "Machado de Guerra do Portal Instável", bonus: "Força: +20, Poder Mágico: +15", preco: 410000, descricao: "Arma de duas mãos [2-FP]", tipo: "arma" },
+            { nome: "Foice Longa da Torre Baixa", bonus: "Força: +35", preco: 440000, descricao: "Arma de duas mãos [2-FP]", tipo: "arma" },
+            { nome: "Alabarda do Contrato Menor", bonus: "Poder Mágico: +35", preco: 460000, descricao: "Arma de duas mãos [2-FP]", tipo: "arma" },
+            { nome: "Martelo de Batalha da Relíquia Esquecida", bonus: "Força: +25, Poder Mágico: +15", preco: 490000, descricao: "Arma de duas mãos [2-FP]", tipo: "arma" },
+            { nome: "Arco Longo do Duelista", bonus: "Força: +40", preco: 510000, descricao: "Arma de duas mãos [2-FP]", tipo: "arma" },
+            { nome: "Fuzil de Precisão da Trilha Sombria", bonus: "Poder Mágico: +45", preco: 540000, descricao: "Arma de duas mãos [2-FP]", tipo: "arma" },
+            { nome: "Naginata do Espírito Adormecido", bonus: "Força: +25, Poder Mágico: +20", preco: 560000, descricao: "Arma de duas mãos [2-FP]", tipo: "arma" },
+            { nome: "Claymore Rúnica da Runa Rachada", bonus: "Força: +50", preco: 580000, descricao: "Arma de duas mãos [2-FP]", tipo: "arma" }
+        ]
+    },
+    
+    // =====================================
+    // RANK C
+    // =====================================
+    "C": {
+        "Slot de Cabeça": [
+            { nome: "Coroa do Regressor", bonus: "Sentidos: +35", preco: 500000, descricao: "Peça recuperada de uma masmorra do regressor, ainda impregnada de mana residual." },
+            { nome: "Elmo da Torre Selada", bonus: "Inteligência: +35", preco: 530000, descricao: "Forjada por artesãos veteranos que buscavam equilibrar proteção e liberdade de movimento." },
+            { nome: "Diadema do Dungeon Oculto", bonus: "Resistência: +25, Sentidos: +15", preco: 560000, descricao: "Um item veterano encontrado junto aos restos de um caçador que não sobreviveu ao portal." },
+            { nome: "Máscara da Constelação Menor", bonus: "Sentidos: +40", preco: 580000, descricao: "Carrega consigo um brilho fraco, como se ecoasse a lembrança de seu antigo dono." },
+            { nome: "Capuz do Sistema Corrompido", bonus: "Inteligência: +45", preco: 610000, descricao: "Dizem que foi usada por um sobrevivente de um clã inteiro dizimado em uma masmorra selada." },
+            { nome: "Tiara da Guilda Sombria", bonus: "Resistência: +25, Sentidos: +20", preco: 640000, descricao: "Sua superfície guarda gravações de um sistema antigo, ilegível para a maioria dos caçadores." },
+            { nome: "Véu do Sangue Antigo", bonus: "Sentidos: +50", preco: 670000, descricao: "Um artefato que reagiu de forma inesperada ao ser tocado por um usuário de baixo rank." },
+            { nome: "Capacete da Espada Partida", bonus: "Inteligência: +50", preco: 690000, descricao: "Popular entre aventureiros que precisaram se reerguer após uma queda de rank." },
+            { nome: "Grimório-Frontal do Rank Oculto", bonus: "Resistência: +35, Sentidos: +20", preco: 720000, descricao: "Item recuperado após o colapso de uma torre proibida, ainda pulsando com energia latente." },
+            { nome: "Laço da Vila Amaldiçoada", bonus: "Sentidos: +55", preco: 750000, descricao: "Comum entre membros de guildas que caçam em pares, prezando sinergia acima de força bruta." }
+        ],
+        "Slot de Corpo": [
+            { nome: "Manto do Regressor", bonus: "Resistência: +35", preco: 500000, descricao: "Peça recuperada de uma masmorra do regressor, ainda impregnada de mana residual." },
+            { nome: "Peitoral da Torre Selada", bonus: "Força: +35", preco: 530000, descricao: "Forjada por artesãos veteranos que buscavam equilibrar proteção e liberdade de movimento." },
+            { nome: "Armadura do Dungeon Oculto", bonus: "Resistência: +25, Força: +15", preco: 560000, descricao: "Um item veterano encontrado junto aos restos de um caçador que não sobreviveu ao portal." },
+            { nome: "Sobretudo da Constelação Menor", bonus: "Força: +40", preco: 580000, descricao: "Carrega consigo um brilho fraco, como se ecoasse a lembrança de seu antigo dono." },
+            { nome: "Túnica do Sistema Corrompido", bonus: "Resistência: +45", preco: 610000, descricao: "Dizem que foi usada por um sobrevivente de um clã inteiro dizimado em uma masmorra selada." },
+            { nome: "Couraça da Guilda Sombria", bonus: "Força: +25, Resistência: +20", preco: 640000, descricao: "Sua superfície guarda gravações de um sistema antigo, ilegível para a maioria dos caçadores." },
+            { nome: "Casaco do Sangue Antigo", bonus: "Resistência: +50", preco: 670000, descricao: "Um artefato que reagiu de forma inesperada ao ser tocado por um usuário de baixo rank." },
+            { nome: "Vestimenta da Espada Partida", bonus: "Força: +50", preco: 690000, descricao: "Popular entre aventureiros que precisaram se reerguer após uma queda de rank." },
+            { nome: "Cota de Malha do Rank Oculto", bonus: "Resistência: +35, Força: +20", preco: 720000, descricao: "Item recuperado após o colapso de uma torre proibida, ainda pulsando com energia latente." },
+            { nome: "Robe da Vila Amaldiçoada", bonus: "Força: +55", preco: 750000, descricao: "Comum entre membros de guildas que caçam em pares, prezando sinergia acima de força bruta." }
+        ],
+        "Slot de Pernas": [
+            { nome: "Calça do Regressor", bonus: "Agilidade: +35", preco: 500000, descricao: "Peça recuperada de uma masmorra do regressor, ainda impregnada de mana residual." },
+            { nome: "Grevas da Torre Selada", bonus: "Resistência: +35", preco: 530000, descricao: "Forjada por artesãos veteranos que buscavam equilibrar proteção e liberdade de movimento." },
+            { nome: "Saiote do Dungeon Oculto", bonus: "Agilidade: +25, Resistência: +15", preco: 560000, descricao: "Um item veterano encontrado junto aos restos de um caçador que não sobreviveu ao portal." },
+            { nome: "Perneira da Constelação Menor", bonus: "Resistência: +40", preco: 580000, descricao: "Carrega consigo um brilho fraco, como se ecoasse a lembrança de seu antigo dono." },
+            { nome: "Calção do Sistema Corrompido", bonus: "Agilidade: +45", preco: 610000, descricao: "Dizem que foi usada por um sobrevivente de um clã inteiro dizimado em uma masmorra selada." },
+            { nome: "Legging Rúnica da Guilda Sombria", bonus: "Resistência: +25, Agilidade: +20", preco: 640000, descricao: "Sua superfície guarda gravações de um sistema antigo, ilegível para a maioria dos caçadores." },
+            { nome: "Anqueiras do Sangue Antigo", bonus: "Agilidade: +50", preco: 670000, descricao: "Um artefato que reagiu de forma inesperada ao ser tocado por um usuário de baixo rank." },
+            { nome: "Calça-Armadura da Espada Partida", bonus: "Resistência: +50", preco: 690000, descricao: "Popular entre aventureiros que precisaram se reerguer após uma queda de rank." },
+            { nome: "Faixa de Perna do Rank Oculto", bonus: "Agilidade: +35, Resistência: +20", preco: 720000, descricao: "Item recuperado após o colapso de uma torre proibida, ainda pulsando com energia latente." },
+            { nome: "Calça Élfica da Vila Amaldiçoada", bonus: "Resistência: +55", preco: 750000, descricao: "Comum entre membros de guildas que caçam em pares, prezando sinergia acima de força bruta." }
+        ],
+        "Slot de Pés": [
+            { nome: "Botas do Rastreador Veterano", bonus: "Agilidade: +35", preco: 500000, descricao: "Ao Rastreador Veterano pode ser sentido nas solas gastas desta peça, remanescente de uma masmorra devastada." },
+            { nome: "Sandálias da Torre Enferrujada", bonus: "Força: +35", preco: 530000, descricao: "Forjada por ferreiros ligados à Torre Enferrujada, equilibrando passo firme e avanço silencioso." },
+            { nome: "Coturnos da Caverna Oculta", bonus: "Agilidade: +25, Força: +15", preco: 560000, descricao: "Um item recuperado dos escombros deixados pela Caverna Oculta, ainda gelado ao toque." },
+            { nome: "Sapatilhas da Estrela Cadente", bonus: "Força: +40", preco: 580000, descricao: "Carrega o peso simbólico da Estrela Cadente, moldado para quem enfrenta o desconhecido." },
+            { nome: "Grevas de Pé do Circuito Instável", bonus: "Agilidade: +45", preco: 610000, descricao: "Dizem que pertenceu a um caçador marcado pelo Circuito Instável, jamais visto após a última incursão." },
+            { nome: "Botins do Clã Errante", bonus: "Força: +25, Agilidade: +20", preco: 640000, descricao: "Sua sola guarda símbolos entalhados do Clã Errante, quase apagados pelo tempo." },
+            { nome: "Solado Rúnico da Marca de Sangue", bonus: "Agilidade: +50", preco: 670000, descricao: "Peça associada à Marca de Sangue, reagindo de forma sutil à presença de mana hostil." },
+            { nome: "Polainas da Lâmina Cega", bonus: "Força: +50", preco: 690000, descricao: "Item cobiçado por quem busca reconstruir a reputação após cruzar o caminho da Lâmina Cega." },
+            { nome: "Borzeguins da Zona Cinzenta", bonus: "Agilidade: +35, Força: +20", preco: 720000, descricao: "Fragmento recuperado do covil da Zona Cinzenta, ainda impregnado de energia latente." },
+            { nome: "Chinelos Rituais do Vilarejo Abandonado", bonus: "Força: +55", preco: 750000, descricao: "Comum entre caçadores que sobreviveram ao encontro com o Vilarejo Abandonado, prezando mobilidade acima de tudo." }
+        ],
+        "Slot de Acessórios": [
+            { nome: "Anel do Regressor", bonus: "Poder Mágico: +35", preco: 500000, descricao: "Peça recuperada de uma masmorra do regressor, ainda impregnada de mana residual." },
+            { nome: "Colar da Torre Selada", bonus: "Inteligência: +35", preco: 530000, descricao: "Forjada por artesãos veteranos que buscavam equilibrar proteção e liberdade de movimento." },
+            { nome: "Brinco do Dungeon Oculto", bonus: "Agilidade: +25, Sorte: +15", preco: 560000, descricao: "Um item veterano encontrado junto aos restos de um caçador que não sobreviveu ao portal." },
+            { nome: "Bracelete da Constelação Menor", bonus: "Sorte: +40", preco: 580000, descricao: "Carrega consigo um brilho fraco, como se ecoasse a lembrança de seu antigo dono." },
+            { nome: "Broche do Sistema Corrompido", bonus: "Poder Mágico: +45", preco: 610000, descricao: "Dizem que foi usada por um sobrevivente de um clã inteiro dizimado em uma masmorra selada." },
+            { nome: "Pingente da Guilda Sombria", bonus: "Inteligência: +25, Agilidade: +20", preco: 640000, descricao: "Sua superfície guarda gravações de um sistema antigo, ilegível para a maioria dos caçadores." },
+            { nome: "Pulseira do Sangue Antigo", bonus: "Agilidade: +50", preco: 670000, descricao: "Um artefato que reagiu de forma inesperada ao ser tocado por um usuário de baixo rank." },
+            { nome: "Fivela da Espada Partida", bonus: "Sorte: +50", preco: 690000, descricao: "Popular entre aventureiros que precisaram se reerguer após uma queda de rank." },
+            { nome: "Amuleto do Rank Oculto", bonus: "Poder Mágico: +35, Inteligência: +20", preco: 720000, descricao: "Item recuperado após o colapso de uma torre proibida, ainda pulsando com energia latente." },
+            { nome: "Presilha da Vila Amaldiçoada", bonus: "Inteligência: +55", preco: 750000, descricao: "Comum entre membros de guildas que caçam em pares, prezando sinergia acima de força bruta." }
+        ],
+        "Itens de Apoio": [
+            { nome: "Poção do Regressor", bonus: "Regenera 35 HP", preco: 500000, descricao: "Item de apoio veterano, muito usado por caçadores em expedições.", tipo: "consumivel" },
+            { nome: "Pergaminho da Torre Selada", bonus: "Regenera 37 MP", preco: 530000, descricao: "Item de apoio veterano, muito usado por caçadores em expedições.", tipo: "consumivel" },
+            { nome: "Talismã do Dungeon Oculto", bonus: "Resistência a veneno (3 turnos)", preco: 560000, descricao: "Item de apoio veterano, muito usado por caçadores em expedições.", tipo: "consumivel" },
+            { nome: "Amuleto de Bolso da Constelação Menor", bonus: "Reduz CD em 18%", preco: 580000, descricao: "Item de apoio veterano, muito usado por caçadores em expedições.", tipo: "consumivel" },
+            { nome: "Cristal Portátil do Sistema Corrompido", bonus: "Revela armadilhas (43m, 2 turnos)", preco: 610000, descricao: "Item de apoio veterano, muito usado por caçadores em expedições.", tipo: "consumivel" },
+            { nome: "Fumaça Ritual da Guilda Sombria", bonus: "Velocidade +20% (3 turnos)", preco: 640000, descricao: "Item de apoio veterano, muito usado por caçadores em expedições.", tipo: "consumivel" },
+            { nome: "Frasco Selado do Sangue Antigo", bonus: "Expande inventário (48 slots)", preco: 670000, descricao: "Item de apoio veterano, muito usado por caçadores em expedições.", tipo: "consumivel" },
+            { nome: "Bússola Encantada da Espada Partida", bonus: "Sinal de socorro", preco: 690000, descricao: "Item de apoio veterano, muito usado por caçadores em expedições.", tipo: "consumivel" },
+            { nome: "Vela Ritualística do Rank Oculto", bonus: "Cura sangramento/veneno", preco: 720000, descricao: "Item de apoio veterano, muito usado por caçadores em expedições.", tipo: "consumivel" },
+            { nome: "Bolsa Dimensional da Vila Amaldiçoada", bonus: "Visão no escuro (5 turnos)", preco: 750000, descricao: "Item de apoio veterano, muito usado por caçadores em expedições.", tipo: "consumivel" },
+            { nome: "Picareta do Minerador", bonus: "Permite minerar cristais em dungeons", preco: 20000, descricao: "Ferramenta essencial para mineradores. Quebra após um único uso em dungeon.", tipo: "consumivel" }
+        ],
+        "Arma 1": [
+            { nome: "Adaga do Regressor", bonus: "Força: +20, Agilidade: +15", preco: 500000, descricao: "Arma de uma mão [1-FP]", tipo: "arma" },
+            { nome: "Katana Curta da Torre Selada", bonus: "Agilidade: +20, Força: +15", preco: 530000, descricao: "Arma de uma mão [1-FP]", tipo: "arma" },
+            { nome: "Espada Curta do Dungeon Oculto", bonus: "Poder Mágico: +25, Sentidos: +15", preco: 560000, descricao: "Arma de uma mão [1-FP]", tipo: "arma" },
+            { nome: "Sai da Constelação Menor", bonus: "Força: +25, Agilidade: +15", preco: 580000, descricao: "Arma de uma mão [1-FP]", tipo: "arma" },
+            { nome: "Punhal do Sistema Corrompido", bonus: "Agilidade: +25, Força: +20", preco: 610000, descricao: "Arma de uma mão [1-FP]", tipo: "arma" },
+            { nome: "Manopla de Combate da Guilda Sombria", bonus: "Poder Mágico: +25, Sentidos: +20", preco: 640000, descricao: "Arma de uma mão [1-FP]", tipo: "arma" },
+            { nome: "Tonfa do Sangue Antigo", bonus: "Força: +30, Agilidade: +20", preco: 670000, descricao: "Arma de uma mão [1-FP]", tipo: "arma" },
+            { nome: "Cetro Menor da Espada Partida", bonus: "Agilidade: +30, Força: +20", preco: 690000, descricao: "Arma de uma mão [1-FP]", tipo: "arma" },
+            { nome: "Pistola Encantada do Rank Oculto", bonus: "Poder Mágico: +35, Sentidos: +20", preco: 720000, descricao: "Arma de uma mão [1-FP]", tipo: "arma" },
+            { nome: "Faca Ritual da Vila Amaldiçoada", bonus: "Força: +35, Agilidade: +20", preco: 750000, descricao: "Arma de uma mão [1-FP]", tipo: "arma" }
+        ],
+        "Arma 2": [
+            { nome: "Espadão do Regressor", bonus: "Força: +50", preco: 650000, descricao: "Arma de duas mãos [2-FP]", tipo: "arma" },
+            { nome: "Lança Longa da Torre Selada", bonus: "Poder Mágico: +50", preco: 690000, descricao: "Arma de duas mãos [2-FP]", tipo: "arma" },
+            { nome: "Machado de Guerra do Dungeon Oculto", bonus: "Força: +35, Poder Mágico: +20", preco: 720000, descricao: "Arma de duas mãos [2-FP]", tipo: "arma" },
+            { nome: "Foice Longa da Constelação Menor", bonus: "Força: +60", preco: 760000, descricao: "Arma de duas mãos [2-FP]", tipo: "arma" },
+            { nome: "Alabarda do Sistema Corrompido", bonus: "Poder Mágico: +60", preco: 790000, descricao: "Arma de duas mãos [2-FP]", tipo: "arma" },
+            { nome: "Martelo de Batalha da Guilda Sombria", bonus: "Força: +40, Poder Mágico: +25", preco: 830000, descricao: "Arma de duas mãos [2-FP]", tipo: "arma" },
+            { nome: "Arco Longo do Sangue Antigo", bonus: "Força: +70", preco: 870000, descricao: "Arma de duas mãos [2-FP]", tipo: "arma" },
+            { nome: "Fuzil de Precisão da Espada Partida", bonus: "Poder Mágico: +70", preco: 900000, descricao: "Arma de duas mãos [2-FP]", tipo: "arma" },
+            { nome: "Naginata do Rank Oculto", bonus: "Força: +45, Poder Mágico: +30", preco: 940000, descricao: "Arma de duas mãos [2-FP]", tipo: "arma" },
+            { nome: "Claymore Rúnica da Vila Amaldiçoada", bonus: "Força: +75", preco: 980000, descricao: "Arma de duas mãos [2-FP]", tipo: "arma" }
+        ]
+    },
+    
+    // =====================================
+    // RANK B
+    // =====================================
+    "B": {
+        "Slot de Cabeça": [
+            { nome: "Coroa do Herói Caído", bonus: "Sentidos: +55", preco: 800000, descricao: "Peça recuperada de uma masmorra do herói caído, ainda impregnada de mana residual." },
+            { nome: "Elmo da Torre Proibida", bonus: "Inteligência: +60", preco: 840000, descricao: "Forjada por artesãos elites que buscavam equilibrar proteção e liberdade de movimento." },
+            { nome: "Diadema do Dragão Adormecido", bonus: "Resistência: +35, Sentidos: +25", preco: 890000, descricao: "Um item elite encontrado junto aos restos de um caçador que não sobreviveu ao portal." },
+            { nome: "Máscara da Constelação Rubra", bonus: "Sentidos: +65", preco: 930000, descricao: "Carrega consigo um brilho fraco, como se ecoasse a lembrança de seu antigo dono." },
+            { nome: "Capuz do Pacto Sombrio", bonus: "Inteligência: +65", preco: 980000, descricao: "Dizem que foi usada por um sobrevivente de um clã inteiro dizimado em uma masmorra selada." },
+            { nome: "Tiara da Ordem Fragmentada", bonus: "Resistência: +40, Sentidos: +30", preco: 1020000, descricao: "Sua superfície guarda gravações de um sistema antigo, ilegível para a maioria dos caçadores." },
+            { nome: "Véu do Rei Exilado", bonus: "Sentidos: +70", preco: 1070000, descricao: "Um artefato que reagiu de forma inesperada ao ser tocado por um usuário de baixo rank." },
+            { nome: "Capacete da Chama Ancestral", bonus: "Inteligência: +75", preco: 1110000, descricao: "Popular entre aventureiros que precisaram se reerguer após uma queda de rank." },
+            { nome: "Grimório-Frontal do Abismo Selado", bonus: "Resistência: +45, Sentidos: +30", preco: 1160000, descricao: "Item recuperado após o colapso de uma torre proibida, ainda pulsando com energia latente." },
+            { nome: "Laço da Lâmina Celestial", bonus: "Sentidos: +80", preco: 1200000, descricao: "Comum entre membros de guildas que caçam em pares, prezando sinergia acima de força bruta." }
+        ],
+        "Slot de Corpo": [
+            { nome: "Manto do Herói Caído", bonus: "Resistência: +55", preco: 800000, descricao: "Peça recuperada de uma masmorra do herói caído, ainda impregnada de mana residual." },
+            { nome: "Peitoral da Torre Proibida", bonus: "Força: +60", preco: 840000, descricao: "Forjada por artesãos elites que buscavam equilibrar proteção e liberdade de movimento." },
+            { nome: "Armadura do Dragão Adormecido", bonus: "Resistência: +35, Força: +25", preco: 890000, descricao: "Um item elite encontrado junto aos restos de um caçador que não sobreviveu ao portal." },
+            { nome: "Sobretudo da Constelação Rubra", bonus: "Força: +65", preco: 930000, descricao: "Carrega consigo um brilho fraco, como se ecoasse a lembrança de seu antigo dono." },
+            { nome: "Túnica do Pacto Sombrio", bonus: "Resistência: +65", preco: 980000, descricao: "Dizem que foi usada por um sobrevivente de um clã inteiro dizimado em uma masmorra selada." },
+            { nome: "Couraça da Ordem Fragmentada", bonus: "Força: +40, Resistência: +30", preco: 1020000, descricao: "Sua superfície guarda gravações de um sistema antigo, ilegível para a maioria dos caçadores." },
+            { nome: "Casaco do Rei Exilado", bonus: "Resistência: +70", preco: 1070000, descricao: "Um artefato que reagiu de forma inesperada ao ser tocado por um usuário de baixo rank." },
+            { nome: "Vestimenta da Chama Ancestral", bonus: "Força: +75", preco: 1110000, descricao: "Popular entre aventureiros que precisaram se reerguer após uma queda de rank." },
+            { nome: "Cota de Malha do Abismo Selado", bonus: "Resistência: +45, Força: +30", preco: 1160000, descricao: "Item recuperado após o colapso de uma torre proibida, ainda pulsando com energia latente." },
+            { nome: "Robe da Lâmina Celestial", bonus: "Força: +80", preco: 1200000, descricao: "Comum entre membros de guildas que caçam em pares, prezando sinergia acima de força bruta." }
+        ],
+        "Slot de Pernas": [
+            { nome: "Calça do Herói Caído", bonus: "Agilidade: +55", preco: 800000, descricao: "Peça recuperada de uma masmorra do herói caído, ainda impregnada de mana residual." },
+            { nome: "Grevas da Torre Proibida", bonus: "Resistência: +60", preco: 840000, descricao: "Forjada por artesãos elites que buscavam equilibrar proteção e liberdade de movimento." },
+            { nome: "Saiote do Dragão Adormecido", bonus: "Agilidade: +35, Resistência: +25", preco: 890000, descricao: "Um item elite encontrado junto aos restos de um caçador que não sobreviveu ao portal." },
+            { nome: "Perneira da Constelação Rubra", bonus: "Resistência: +65", preco: 930000, descricao: "Carrega consigo um brilho fraco, como se ecoasse a lembrança de seu antigo dono." },
+            { nome: "Calção do Pacto Sombrio", bonus: "Agilidade: +65", preco: 980000, descricao: "Dizem que foi usada por um sobrevivente de um clã inteiro dizimado em uma masmorra selada." },
+            { nome: "Legging Rúnica da Ordem Fragmentada", bonus: "Resistência: +40, Agilidade: +30", preco: 1020000, descricao: "Sua superfície guarda gravações de um sistema antigo, ilegível para a maioria dos caçadores." },
+            { nome: "Anqueiras do Rei Exilado", bonus: "Agilidade: +70", preco: 1070000, descricao: "Um artefato que reagiu de forma inesperada ao ser tocado por um usuário de baixo rank." },
+            { nome: "Calça-Armadura da Chama Ancestral", bonus: "Resistência: +75", preco: 1110000, descricao: "Popular entre aventureiros que precisaram se reerguer após uma queda de rank." },
+            { nome: "Faixa de Perna do Abismo Selado", bonus: "Agilidade: +45, Resistência: +30", preco: 1160000, descricao: "Item recuperado após o colapso de uma torre proibida, ainda pulsando com energia latente." },
+            { nome: "Calça Élfica da Lâmina Celestial", bonus: "Resistência: +80", preco: 1200000, descricao: "Comum entre membros de guildas que caçam em pares, prezando sinergia acima de força bruta." }
+        ],
+        "Slot de Pés": [
+            { nome: "Botas do Cavaleiro Errante", bonus: "Agilidade: +55", preco: 800000, descricao: "Ao Cavaleiro Errante pode ser sentido nas solas gastas desta peça, remanescente de uma masmorra devastada." },
+            { nome: "Sandálias da Torre Quebrada", bonus: "Força: +60", preco: 840000, descricao: "Forjada por ferreiros ligados à Torre Quebrada, equilibrando passo firme e avanço silencioso." },
+            { nome: "Coturnos da Fera do Pântano", bonus: "Agilidade: +35, Força: +25", preco: 890000, descricao: "Um item recuperado dos escombros deixados pela Fera do Pântano, ainda gelado ao toque." },
+            { nome: "Sapatilhas da Constelação Cinzenta", bonus: "Força: +65", preco: 930000, descricao: "Carrega o peso simbólico da Constelação Cinzenta, moldado para quem enfrenta o desconhecido." },
+            { nome: "Grevas de Pé do Voto Quebrado", bonus: "Agilidade: +65", preco: 980000, descricao: "Dizem que pertenceu a um caçador marcado pelo Voto Quebrado, jamais visto após a última incursão." },
+            { nome: "Botins da Ordem Silenciosa", bonus: "Força: +40, Agilidade: +30", preco: 1020000, descricao: "Sua sola guarda símbolos entalhados da Ordem Silenciosa, quase apagados pelo tempo." },
+            { nome: "Solado Rúnico do Barão Exilado", bonus: "Agilidade: +70", preco: 1070000, descricao: "Peça associada ao Barão Exilado, reagindo de forma sutil à presença de mana hostil." },
+            { nome: "Polainas da Chama Selvagem", bonus: "Força: +75", preco: 1110000, descricao: "Item cobiçado por quem busca reconstruir a reputação após cruzar o caminho da Chama Selvagem." },
+            { nome: "Borzeguins da Fenda Instável", bonus: "Agilidade: +45, Força: +30", preco: 1160000, descricao: "Fragmento recuperado do covil da Fenda Instável, ainda impregnado de energia latente." },
+            { nome: "Chinelos Rituais da Lâmina Forjada", bonus: "Força: +80", preco: 1200000, descricao: "Comum entre caçadores que sobreviveram ao encontro com a Lâmina Forjada, prezando mobilidade acima de tudo." }
+        ],
+        "Slot de Acessórios": [
+            { nome: "Anel do Herói Caído", bonus: "Poder Mágico: +55", preco: 800000, descricao: "Peça recuperada de uma masmorra do herói caído, ainda impregnada de mana residual." },
+            { nome: "Colar da Torre Proibida", bonus: "Inteligência: +60", preco: 840000, descricao: "Forjada por artesãos elites que buscavam equilibrar proteção e liberdade de movimento." },
+            { nome: "Brinco do Dragão Adormecido", bonus: "Agilidade: +35, Sorte: +25", preco: 890000, descricao: "Um item elite encontrado junto aos restos de um caçador que não sobreviveu ao portal." },
+            { nome: "Bracelete da Constelação Rubra", bonus: "Sorte: +65", preco: 930000, descricao: "Carrega consigo um brilho fraco, como se ecoasse a lembrança de seu antigo dono." },
+            { nome: "Broche do Pacto Sombrio", bonus: "Poder Mágico: +65", preco: 980000, descricao: "Dizem que foi usada por um sobrevivente de um clã inteiro dizimado em uma masmorra selada." },
+            { nome: "Pingente da Ordem Fragmentada", bonus: "Inteligência: +40, Agilidade: +30", preco: 1020000, descricao: "Sua superfície guarda gravações de um sistema antigo, ilegível para a maioria dos caçadores." },
+            { nome: "Pulseira do Rei Exilado", bonus: "Agilidade: +70", preco: 1070000, descricao: "Um artefato que reagiu de forma inesperada ao ser tocado por um usuário de baixo rank." },
+            { nome: "Fivela da Chama Ancestral", bonus: "Sorte: +75", preco: 1110000, descricao: "Popular entre aventureiros que precisaram se reerguer após uma queda de rank." },
+            { nome: "Amuleto do Abismo Selado", bonus: "Poder Mágico: +45, Inteligência: +30", preco: 1160000, descricao: "Item recuperado após o colapso de uma torre proibida, ainda pulsando com energia latente." },
+            { nome: "Presilha da Lâmina Celestial", bonus: "Inteligência: +80", preco: 1200000, descricao: "Comum entre membros de guildas que caçam em pares, prezando sinergia acima de força bruta." }
+        ],
+        "Itens de Apoio": [
+            { nome: "Poção do Herói Caído", bonus: "Regenera 55 HP", preco: 800000, descricao: "Item de apoio elite, muito usado por caçadores em expedições.", tipo: "consumivel" },
+            { nome: "Pergaminho da Torre Proibida", bonus: "Regenera 57 MP", preco: 840000, descricao: "Item de apoio elite, muito usado por caçadores em expedições.", tipo: "consumivel" },
+            { nome: "Talismã do Dragão Adormecido", bonus: "Resistência a veneno (3 turnos)", preco: 890000, descricao: "Item de apoio elite, muito usado por caçadores em expedições.", tipo: "consumivel" },
+            { nome: "Amuleto de Bolso da Constelação Rubra", bonus: "Reduz CD em 26%", preco: 930000, descricao: "Item de apoio elite, muito usado por caçadores em expedições.", tipo: "consumivel" },
+            { nome: "Cristal Portátil do Pacto Sombrio", bonus: "Revela armadilhas (66m, 2 turnos)", preco: 980000, descricao: "Item de apoio elite, muito usado por caçadores em expedições.", tipo: "consumivel" },
+            { nome: "Fumaça Ritual da Ordem Fragmentada", bonus: "Velocidade +27% (3 turnos)", preco: 1020000, descricao: "Item de apoio elite, muito usado por caçadores em expedições.", tipo: "consumivel" },
+            { nome: "Frasco Selado do Rei Exilado", bonus: "Expande inventário (71 slots)", preco: 1070000, descricao: "Item de apoio elite, muito usado por caçadores em expedições.", tipo: "consumivel" },
+            { nome: "Bússola Encantada da Chama Ancestral", bonus: "Sinal de socorro", preco: 1110000, descricao: "Item de apoio elite, muito usado por caçadores em expedições.", tipo: "consumivel" },
+            { nome: "Vela Ritualística do Abismo Selado", bonus: "Cura sangramento/veneno", preco: 1160000, descricao: "Item de apoio elite, muito usado por caçadores em expedições.", tipo: "consumivel" },
+            { nome: "Bolsa Dimensional da Lâmina Celestial", bonus: "Visão no escuro (5 turnos)", preco: 1200000, descricao: "Item de apoio elite, muito usado por caçadores em expedições.", tipo: "consumivel" },
+            { nome: "Picareta do Minerador", bonus: "Permite minerar cristais em dungeons", preco: 20000, descricao: "Ferramenta essencial para mineradores. Quebra após um único uso em dungeon.", tipo: "consumivel" }
+        ],
+        "Arma 1": [
+            { nome: "Adaga do Herói Caído", bonus: "Força: +35, Agilidade: +20", preco: 800000, descricao: "Arma de uma mão [1-FP]", tipo: "arma" },
+            { nome: "Katana Curta da Torre Proibida", bonus: "Agilidade: +35, Força: +25", preco: 840000, descricao: "Arma de uma mão [1-FP]", tipo: "arma" },
+            { nome: "Espada Curta do Dragão Adormecido", bonus: "Poder Mágico: +35, Sentidos: +25", preco: 890000, descricao: "Arma de uma mão [1-FP]", tipo: "arma" },
+            { nome: "Sai da Constelação Rubra", bonus: "Força: +40, Agilidade: +25", preco: 930000, descricao: "Arma de uma mão [1-FP]", tipo: "arma" },
+            { nome: "Punhal do Pacto Sombrio", bonus: "Agilidade: +40, Força: +25", preco: 980000, descricao: "Arma de uma mão [1-FP]", tipo: "arma" },
+            { nome: "Manopla de Combate da Ordem Fragmentada", bonus: "Poder Mágico: +40, Sentidos: +30", preco: 1020000, descricao: "Arma de uma mão [1-FP]", tipo: "arma" },
+            { nome: "Tonfa do Rei Exilado", bonus: "Força: +40, Agilidade: +30", preco: 1070000, descricao: "Arma de uma mão [1-FP]", tipo: "arma" },
+            { nome: "Cetro Menor da Chama Ancestral", bonus: "Agilidade: +45, Força: +30", preco: 1110000, descricao: "Arma de uma mão [1-FP]", tipo: "arma" },
+            { nome: "Pistola Encantada do Abismo Selado", bonus: "Poder Mágico: +45, Sentidos: +30", preco: 1160000, descricao: "Arma de uma mão [1-FP]", tipo: "arma" },
+            { nome: "Faca Ritual da Lâmina Celestial", bonus: "Força: +50, Agilidade: +30", preco: 1200000, descricao: "Arma de uma mão [1-FP]", tipo: "arma" }
+        ],
+        "Arma 2": [
+            { nome: "Espadão do Herói Caído", bonus: "Força: +75", preco: 1040000, descricao: "Arma de duas mãos [2-FP]", tipo: "arma" },
+            { nome: "Lança Longa da Torre Proibida", bonus: "Poder Mágico: +80", preco: 1100000, descricao: "Arma de duas mãos [2-FP]", tipo: "arma" },
+            { nome: "Machado de Guerra do Dragão Adormecido", bonus: "Força: +50, Poder Mágico: +35", preco: 1160000, descricao: "Arma de duas mãos [2-FP]", tipo: "arma" },
+            { nome: "Foice Longa da Constelação Rubra", bonus: "Força: +90", preco: 1210000, descricao: "Arma de duas mãos [2-FP]", tipo: "arma" },
+            { nome: "Alabarda do Pacto Sombrio", bonus: "Poder Mágico: +95", preco: 1270000, descricao: "Arma de duas mãos [2-FP]", tipo: "arma" },
+            { nome: "Martelo de Batalha da Ordem Fragmentada", bonus: "Força: +55, Poder Mágico: +40", preco: 1330000, descricao: "Arma de duas mãos [2-FP]", tipo: "arma" },
+            { nome: "Arco Longo do Rei Exilado", bonus: "Força: +100", preco: 1390000, descricao: "Arma de duas mãos [2-FP]", tipo: "arma" },
+            { nome: "Fuzil de Precisão da Chama Ancestral", bonus: "Poder Mágico: +105", preco: 1440000, descricao: "Arma de duas mãos [2-FP]", tipo: "arma" },
+            { nome: "Naginata do Abismo Selado", bonus: "Força: +65, Poder Mágico: +45", preco: 1500000, descricao: "Arma de duas mãos [2-FP]", tipo: "arma" },
+            { nome: "Claymore Rúnica da Lâmina Celestial", bonus: "Força: +110", preco: 1560000, descricao: "Arma de duas mãos [2-FP]", tipo: "arma" }
+        ]
+    },
+    
+    // =====================================
+    // RANK A
+    // =====================================
+    "A": {
+        "Slot de Cabeça": [
+            { nome: "Coroa do Monarca Esquecido", bonus: "Sentidos: +80", preco: 1400000, descricao: "Peça recuperada de uma masmorra do monarca esquecido, ainda impregnada de mana residual." },
+            { nome: "Elmo da Torre do Fim", bonus: "Inteligência: +85", preco: 1470000, descricao: "Forjada por artesãos lendários que buscavam equilibrar proteção e liberdade de movimento." },
+            { nome: "Diadema do Dragão Ancião", bonus: "Resistência: +55, Sentidos: +35", preco: 1530000, descricao: "Um item lendário encontrado junto aos restos de um caçador que não sobreviveu ao portal." },
+            { nome: "Máscara da Constelação Dourada", bonus: "Sentidos: +90", preco: 1600000, descricao: "Carrega consigo um brilho fraco, como se ecoasse a lembrança de seu antigo dono." },
+            { nome: "Capuz do Juízo Final", bonus: "Inteligência: +95", preco: 1670000, descricao: "Dizem que foi usada por um sobrevivente de um clã inteiro dizimado em uma masmorra selada." },
+            { nome: "Tiara da Ordem Estelar", bonus: "Resistência: +60, Sentidos: +40", preco: 1730000, descricao: "Sua superfície guarda gravações de um sistema antigo, ilegível para a maioria dos caçadores." },
+            { nome: "Véu do Império Caído", bonus: "Sentidos: +105", preco: 1800000, descricao: "Um artefato que reagiu de forma inesperada ao ser tocado por um usuário de baixo rank." },
+            { nome: "Capacete da Chama Eterna", bonus: "Inteligência: +105", preco: 1870000, descricao: "Popular entre aventureiros que precisaram se reerguer após uma queda de rank." },
+            { nome: "Grimório-Frontal do Vazio Absoluto", bonus: "Resistência: +65, Sentidos: +45", preco: 1930000, descricao: "Item recuperado após o colapso de uma torre proibida, ainda pulsando com energia latente." },
+            { nome: "Laço da Espada Divina", bonus: "Sentidos: +115", preco: 2000000, descricao: "Comum entre membros de guildas que caçam em pares, prezando sinergia acima de força bruta." }
+        ],
+        "Slot de Corpo": [
+            { nome: "Manto do Monarca Esquecido", bonus: "Resistência: +80", preco: 1400000, descricao: "Peça recuperada de uma masmorra do monarca esquecido, ainda impregnada de mana residual." },
+            { nome: "Peitoral da Torre do Fim", bonus: "Força: +85", preco: 1470000, descricao: "Forjada por artesãos lendários que buscavam equilibrar proteção e liberdade de movimento." },
+            { nome: "Armadura do Dragão Ancião", bonus: "Resistência: +55, Força: +35", preco: 1530000, descricao: "Um item lendário encontrado junto aos restos de um caçador que não sobreviveu ao portal." },
+            { nome: "Sobretudo da Constelação Dourada", bonus: "Força: +90", preco: 1600000, descricao: "Carrega consigo um brilho fraco, como se ecoasse a lembrança de seu antigo dono." },
+            { nome: "Túnica do Juízo Final", bonus: "Resistência: +95", preco: 1670000, descricao: "Dizem que foi usada por um sobrevivente de um clã inteiro dizimado em uma masmorra selada." },
+            { nome: "Couraça da Ordem Estelar", bonus: "Força: +60, Resistência: +40", preco: 1730000, descricao: "Sua superfície guarda gravações de um sistema antigo, ilegível para a maioria dos caçadores." },
+            { nome: "Casaco do Império Caído", bonus: "Resistência: +105", preco: 1800000, descricao: "Um artefato que reagiu de forma inesperada ao ser tocado por um usuário de baixo rank." },
+            { nome: "Vestimenta da Chama Eterna", bonus: "Força: +105", preco: 1870000, descricao: "Popular entre aventureiros que precisaram se reerguer após uma queda de rank." },
+            { nome: "Cota de Malha do Vazio Absoluto", bonus: "Resistência: +65, Força: +45", preco: 1930000, descricao: "Item recuperado após o colapso de uma torre proibida, ainda pulsando com energia latente." },
+            { nome: "Robe da Espada Divina", bonus: "Força: +115", preco: 2000000, descricao: "Comum entre membros de guildas que caçam em pares, prezando sinergia acima de força bruta." }
+        ],
+        "Slot de Pernas": [
+            { nome: "Calça do Monarca Esquecido", bonus: "Agilidade: +80", preco: 1400000, descricao: "Peça recuperada de uma masmorra do monarca esquecido, ainda impregnada de mana residual." },
+            { nome: "Grevas da Torre do Fim", bonus: "Resistência: +85", preco: 1470000, descricao: "Forjada por artesãos lendários que buscavam equilibrar proteção e liberdade de movimento." },
+            { nome: "Saiote do Dragão Ancião", bonus: "Agilidade: +55, Resistência: +35", preco: 1530000, descricao: "Um item lendário encontrado junto aos restos de um caçador que não sobreviveu ao portal." },
+            { nome: "Perneira da Constelação Dourada", bonus: "Resistência: +90", preco: 1600000, descricao: "Carrega consigo um brilho fraco, como se ecoasse a lembrança de seu antigo dono." },
+            { nome: "Calção do Juízo Final", bonus: "Agilidade: +95", preco: 1670000, descricao: "Dizem que foi usada por um sobrevivente de um clã inteiro dizimado em uma masmorra selada." },
+            { nome: "Legging Rúnica da Ordem Estelar", bonus: "Resistência: +60, Agilidade: +40", preco: 1730000, descricao: "Sua superfície guarda gravações de um sistema antigo, ilegível para a maioria dos caçadores." },
+            { nome: "Anqueiras do Império Caído", bonus: "Agilidade: +105", preco: 1800000, descricao: "Um artefato que reagiu de forma inesperada ao ser tocado por um usuário de baixo rank." },
+            { nome: "Calça-Armadura da Chama Eterna", bonus: "Resistência: +105", preco: 1870000, descricao: "Popular entre aventureiros que precisaram se reerguer após uma queda de rank." },
+            { nome: "Faixa de Perna do Vazio Absoluto", bonus: "Agilidade: +65, Resistência: +45", preco: 1930000, descricao: "Item recuperado após o colapso de uma torre proibida, ainda pulsando com energia latente." },
+            { nome: "Calça Élfica da Espada Divina", bonus: "Resistência: +115", preco: 2000000, descricao: "Comum entre membros de guildas que caçam em pares, prezando sinergia acima de força bruta." }
+        ],
+        "Slot de Pés": [
+            { nome: "Botas do Guardião Ancestral", bonus: "Agilidade: +80", preco: 1400000, descricao: "Ao Guardião Ancestral pode ser sentido nas solas gastas desta peça, remanescente de uma masmorra devastada." },
+            { nome: "Sandálias da Torre Silenciada", bonus: "Força: +85", preco: 1470000, descricao: "Forjada por ferreiros ligados à Torre Silenciada, equilibrando passo firme e avanço silencioso." },
+            { nome: "Coturnos da Serpente Celeste", bonus: "Agilidade: +55, Força: +35", preco: 1530000, descricao: "Um item recuperado dos escombros deixados pela Serpente Celeste, ainda gelado ao toque." },
+            { nome: "Sapatilhas da Relíquia do Norte", bonus: "Força: +90", preco: 1600000, descricao: "Carrega o peso simbólico da Relíquia do Norte, moldado para quem enfrenta o desconhecido." },
+            { nome: "Grevas de Pé da Sentença Divina", bonus: "Agilidade: +95", preco: 1670000, descricao: "Dizem que pertenceu a um caçador marcado pela Sentença Divina, jamais visto após a última incursão." },
+            { nome: "Botins do Círculo Arcano", bonus: "Força: +60, Agilidade: +40", preco: 1730000, descricao: "Sua sola guarda símbolos entalhados do Círculo Arcano, quase apagados pelo tempo." },
+            { nome: "Solado Rúnico do Legado Sombrio", bonus: "Agilidade: +105", preco: 1800000, descricao: "Peça associada ao Legado Sombrio, reagindo de forma sutil à presença de mana hostil." },
+            { nome: "Polainas do Fogo Imortal", bonus: "Força: +105", preco: 1870000, descricao: "Item cobiçado por quem busca reconstruir a reputação após cruzar o caminho do Fogo Imortal." },
+            { nome: "Borzeguins do Abismo Sagrado", bonus: "Agilidade: +65, Força: +45", preco: 1930000, descricao: "Fragmento recuperado do covil do Abismo Sagrado, ainda impregnado de energia latente." },
+            { nome: "Chinelos Rituais da Lâmina Rúnica", bonus: "Força: +115", preco: 2000000, descricao: "Comum entre caçadores que sobreviveram ao encontro com a Lâmina Rúnica, prezando mobilidade acima de tudo." }
+        ],
+        "Slot de Acessórios": [
+            { nome: "Anel do Monarca Esquecido", bonus: "Poder Mágico: +80", preco: 1400000, descricao: "Peça recuperada de uma masmorra do monarca esquecido, ainda impregnada de mana residual." },
+            { nome: "Colar da Torre do Fim", bonus: "Inteligência: +85", preco: 1470000, descricao: "Forjada por artesãos lendários que buscavam equilibrar proteção e liberdade de movimento." },
+            { nome: "Brinco do Dragão Ancião", bonus: "Agilidade: +55, Sorte: +35", preco: 1530000, descricao: "Um item lendário encontrado junto aos restos de um caçador que não sobreviveu ao portal." },
+            { nome: "Bracelete da Constelação Dourada", bonus: "Sorte: +90", preco: 1600000, descricao: "Carrega consigo um brilho fraco, como se ecoasse a lembrança de seu antigo dono." },
+            { nome: "Broche do Juízo Final", bonus: "Poder Mágico: +95", preco: 1670000, descricao: "Dizem que foi usada por um sobrevivente de um clã inteiro dizimado em uma masmorra selada." },
+            { nome: "Pingente da Ordem Estelar", bonus: "Inteligência: +60, Agilidade: +40", preco: 1730000, descricao: "Sua superfície guarda gravações de um sistema antigo, ilegível para a maioria dos caçadores." },
+            { nome: "Pulseira do Império Caído", bonus: "Agilidade: +105", preco: 1800000, descricao: "Um artefato que reagiu de forma inesperada ao ser tocado por um usuário de baixo rank." },
+            { nome: "Fivela da Chama Eterna", bonus: "Sorte: +105", preco: 1870000, descricao: "Popular entre aventureiros que precisaram se reerguer após uma queda de rank." },
+            { nome: "Amuleto do Vazio Absoluto", bonus: "Poder Mágico: +65, Inteligência: +45", preco: 1930000, descricao: "Item recuperado após o colapso de uma torre proibida, ainda pulsando com energia latente." },
+            { nome: "Presilha da Espada Divina", bonus: "Inteligência: +115", preco: 2000000, descricao: "Comum entre membros de guildas que caçam em pares, prezando sinergia acima de força bruta." }
+        ],
+        "Itens de Apoio": [
+            { nome: "Poção do Monarca Esquecido", bonus: "Regenera 80 HP", preco: 1400000, descricao: "Item de apoio lendário, muito usado por caçadores em expedições.", tipo: "consumivel" },
+            { nome: "Pergaminho da Torre do Fim", bonus: "Regenera 83 MP", preco: 1470000, descricao: "Item de apoio lendário, muito usado por caçadores em expedições.", tipo: "consumivel" },
+            { nome: "Talismã do Dragão Ancião", bonus: "Resistência a veneno (3 turnos)", preco: 1530000, descricao: "Item de apoio lendário, muito usado por caçadores em expedições.", tipo: "consumivel" },
+            { nome: "Amuleto de Bolso da Constelação Dourada", bonus: "Reduz CD em 35%", preco: 1600000, descricao: "Item de apoio lendário, muito usado por caçadores em expedições.", tipo: "consumivel" },
+            { nome: "Cristal Portátil do Juízo Final", bonus: "Revela armadilhas (95m, 2 turnos)", preco: 1670000, descricao: "Item de apoio lendário, muito usado por caçadores em expedições.", tipo: "consumivel" },
+            { nome: "Fumaça Ritual da Ordem Estelar", bonus: "Velocidade +38% (3 turnos)", preco: 1730000, descricao: "Item de apoio lendário, muito usado por caçadores em expedições.", tipo: "consumivel" },
+            { nome: "Frasco Selado do Império Caído", bonus: "Expande inventário (103 slots)", preco: 1800000, descricao: "Item de apoio lendário, muito usado por caçadores em expedições.", tipo: "consumivel" },
+            { nome: "Bússola Encantada da Chama Eterna", bonus: "Sinal de socorro", preco: 1870000, descricao: "Item de apoio lendário, muito usado por caçadores em expedições.", tipo: "consumivel" },
+            { nome: "Vela Ritualística do Vazio Absoluto", bonus: "Cura sangramento/veneno", preco: 1930000, descricao: "Item de apoio lendário, muito usado por caçadores em expedições.", tipo: "consumivel" },
+            { nome: "Bolsa Dimensional da Espada Divina", bonus: "Visão no escuro (5 turnos)", preco: 2000000, descricao: "Item de apoio lendário, muito usado por caçadores em expedições.", tipo: "consumivel" },
+            { nome: "Picareta do Minerador", bonus: "Permite minerar cristais em dungeons", preco: 20000, descricao: "Ferramenta essencial para mineradores. Quebra após um único uso em dungeon.", tipo: "consumivel" }
+        ],
+        "Arma 1": [
+            { nome: "Adaga do Monarca Esquecido", bonus: "Força: +50, Agilidade: +30", preco: 1400000, descricao: "Arma de uma mão [1-FP]", tipo: "arma" },
+            { nome: "Katana Curta da Torre do Fim", bonus: "Agilidade: +50, Força: +35", preco: 1470000, descricao: "Arma de uma mão [1-FP]", tipo: "arma" },
+            { nome: "Espada Curta do Dragão Ancião", bonus: "Poder Mágico: +55, Sentidos: +35", preco: 1530000, descricao: "Arma de uma mão [1-FP]", tipo: "arma" },
+            { nome: "Sai da Constelação Dourada", bonus: "Força: +55, Agilidade: +35", preco: 1600000, descricao: "Arma de uma mão [1-FP]", tipo: "arma" },
+            { nome: "Punhal do Juízo Final", bonus: "Agilidade: +55, Força: +40", preco: 1670000, descricao: "Arma de uma mão [1-FP]", tipo: "arma" },
+            { nome: "Manopla de Combate da Ordem Estelar", bonus: "Poder Mágico: +60, Sentidos: +40", preco: 1730000, descricao: "Arma de uma mão [1-FP]", tipo: "arma" },
+            { nome: "Tonfa do Império Caído", bonus: "Força: +65, Agilidade: +40", preco: 1800000, descricao: "Arma de uma mão [1-FP]", tipo: "arma" },
+            { nome: "Cetro Menor da Chama Eterna", bonus: "Agilidade: +65, Força: +40", preco: 1870000, descricao: "Arma de uma mão [1-FP]", tipo: "arma" },
+            { nome: "Pistola Encantada do Vazio Absoluto", bonus: "Poder Mágico: +65, Sentidos: +45", preco: 1930000, descricao: "Arma de uma mão [1-FP]", tipo: "arma" },
+            { nome: "Faca Ritual da Espada Divina", bonus: "Força: +70, Agilidade: +45", preco: 2000000, descricao: "Arma de uma mão [1-FP]", tipo: "arma" }
+        ],
+        "Arma 2": [
+            { nome: "Espadão do Monarca Esquecido", bonus: "Força: +110", preco: 1820000, descricao: "Arma de duas mãos [2-FP]", tipo: "arma" },
+            { nome: "Lança Longa da Torre do Fim", bonus: "Poder Mágico: +115", preco: 1910000, descricao: "Arma de duas mãos [2-FP]", tipo: "arma" },
+            { nome: "Machado de Guerra do Dragão Ancião", bonus: "Força: +75, Poder Mágico: +50", preco: 1990000, descricao: "Arma de duas mãos [2-FP]", tipo: "arma" },
+            { nome: "Foice Longa da Constelação Dourada", bonus: "Força: +130", preco: 2080000, descricao: "Arma de duas mãos [2-FP]", tipo: "arma" },
+            { nome: "Alabarda do Juízo Final", bonus: "Poder Mágico: +135", preco: 2170000, descricao: "Arma de duas mãos [2-FP]", tipo: "arma" },
+            { nome: "Martelo de Batalha da Ordem Estelar", bonus: "Força: +85, Poder Mágico: +55", preco: 2250000, descricao: "Arma de duas mãos [2-FP]", tipo: "arma" },
+            { nome: "Arco Longo do Império Caído", bonus: "Força: +145", preco: 2340000, descricao: "Arma de duas mãos [2-FP]", tipo: "arma" },
+            { nome: "Fuzil de Precisão da Chama Eterna", bonus: "Poder Mágico: +150", preco: 2430000, descricao: "Arma de duas mãos [2-FP]", tipo: "arma" },
+            { nome: "Naginata do Vazio Absoluto", bonus: "Força: +95, Poder Mágico: +60", preco: 2510000, descricao: "Arma de duas mãos [2-FP]", tipo: "arma" },
+            { nome: "Claymore Rúnica da Espada Divina", bonus: "Força: +160", preco: 2600000, descricao: "Arma de duas mãos [2-FP]", tipo: "arma" }
+        ]
+    },
+    
+    // =====================================
+    // RANK S
+    // =====================================
+    "S": {
+        "Slot de Cabeça": [
+            { nome: "Coroa do Monarca Original", bonus: "Sentidos: +115", preco: 2200000, descricao: "Peça recuperada de uma masmorra do monarca original, ainda impregnada de mana residual." },
+            { nome: "Elmo da Torre Além do Céu", bonus: "Inteligência: +120", preco: 2340000, descricao: "Forjada por artesãos míticos que buscavam equilibrar proteção e liberdade de movimento." },
+            { nome: "Diadema do Deus Adormecido", bonus: "Resistência: +75, Sentidos: +50", preco: 2490000, descricao: "Um item mítico encontrado junto aos restos de um caçador que não sobreviveu ao portal." },
+            { nome: "Máscara da Constelação Suprema", bonus: "Sentidos: +130", preco: 2630000, descricao: "Carrega consigo um brilho fraco, como se ecoasse a lembrança de seu antigo dono." },
+            { nome: "Capuz do Apocalipse Selado", bonus: "Inteligência: +135", preco: 2780000, descricao: "Dizem que foi usada por um sobrevivente de um clã inteiro dizimado em uma masmorra selada." },
+            { nome: "Tiara da Origem Perdida", bonus: "Resistência: +85, Sentidos: +55", preco: 2920000, descricao: "Sua superfície guarda gravações de um sistema antigo, ilegível para a maioria dos caçadores." },
+            { nome: "Véu do Trono Vazio", bonus: "Sentidos: +145", preco: 3070000, descricao: "Um artefato que reagiu de forma inesperada ao ser tocado por um usuário de baixo rank." },
+            { nome: "Capacete da Chama Primordial", bonus: "Inteligência: +150", preco: 3210000, descricao: "Popular entre aventureiros que precisaram se reerguer após uma queda de rank." },
+            { nome: "Grimório-Frontal do Absoluto", bonus: "Resistência: +95, Sentidos: +60", preco: 3360000, descricao: "Item recuperado após o colapso de uma torre proibida, ainda pulsando com energia latente." },
+            { nome: "Laço da Última Página", bonus: "Sentidos: +160", preco: 3500000, descricao: "Comum entre membros de guildas que caçam em pares, prezando sinergia acima de força bruta." }
+        ],
+        "Slot de Corpo": [
+            { nome: "Manto do Monarca Original", bonus: "Resistência: +115", preco: 2200000, descricao: "Peça recuperada de uma masmorra do monarca original, ainda impregnada de mana residual." },
+            { nome: "Peitoral da Torre Além do Céu", bonus: "Força: +120", preco: 2340000, descricao: "Forjada por artesãos míticos que buscavam equilibrar proteção e liberdade de movimento." },
+            { nome: "Armadura do Deus Adormecido", bonus: "Resistência: +75, Força: +50", preco: 2490000, descricao: "Um item mítico encontrado junto aos restos de um caçador que não sobreviveu ao portal." },
+            { nome: "Sobretudo da Constelação Suprema", bonus: "Força: +130", preco: 2630000, descricao: "Carrega consigo um brilho fraco, como se ecoasse a lembrança de seu antigo dono." },
+            { nome: "Túnica do Apocalipse Selado", bonus: "Resistência: +135", preco: 2780000, descricao: "Dizem que foi usada por um sobrevivente de um clã inteiro dizimado em uma masmorra selada." },
+            { nome: "Couraça da Origem Perdida", bonus: "Força: +85, Resistência: +55", preco: 2920000, descricao: "Sua superfície guarda gravações de um sistema antigo, ilegível para a maioria dos caçadores." },
+            { nome: "Casaco do Trono Vazio", bonus: "Resistência: +145", preco: 3070000, descricao: "Um artefato que reagiu de forma inesperada ao ser tocado por um usuário de baixo rank." },
+            { nome: "Vestimenta da Chama Primordial", bonus: "Força: +150", preco: 3210000, descricao: "Popular entre aventureiros que precisaram se reerguer após uma queda de rank." },
+            { nome: "Cota de Malha do Absoluto", bonus: "Resistência: +95, Força: +60", preco: 3360000, descricao: "Item recuperado após o colapso de uma torre proibida, ainda pulsando com energia latente." },
+            { nome: "Robe da Última Página", bonus: "Força: +160", preco: 3500000, descricao: "Comum entre membros de guildas que caçam em pares, prezando sinergia acima de força bruta." }
+        ],
+        "Slot de Pernas": [
+            { nome: "Calça do Monarca Original", bonus: "Agilidade: +115", preco: 2200000, descricao: "Peça recuperada de uma masmorra do monarca original, ainda impregnada de mana residual." },
+            { nome: "Grevas da Torre Além do Céu", bonus: "Resistência: +120", preco: 2340000, descricao: "Forjada por artesãos míticos que buscavam equilibrar proteção e liberdade de movimento." },
+            { nome: "Saiote do Deus Adormecido", bonus: "Agilidade: +75, Resistência: +50", preco: 2490000, descricao: "Um item mítico encontrado junto aos restos de um caçador que não sobreviveu ao portal." },
+            { nome: "Perneira da Constelação Suprema", bonus: "Resistência: +130", preco: 2630000, descricao: "Carrega consigo um brilho fraco, como se ecoasse a lembrança de seu antigo dono." },
+            { nome: "Calção do Apocalipse Selado", bonus: "Agilidade: +135", preco: 2780000, descricao: "Dizem que foi usada por um sobrevivente de um clã inteiro dizimado em uma masmorra selada." },
+            { nome: "Legging Rúnica da Origem Perdida", bonus: "Resistência: +85, Agilidade: +55", preco: 2920000, descricao: "Sua superfície guarda gravações de um sistema antigo, ilegível para a maioria dos caçadores." },
+            { nome: "Anqueiras do Trono Vazio", bonus: "Agilidade: +145", preco: 3070000, descricao: "Um artefato que reagiu de forma inesperada ao ser tocado por um usuário de baixo rank." },
+            { nome: "Calça-Armadura da Chama Primordial", bonus: "Resistência: +150", preco: 3210000, descricao: "Popular entre aventureiros que precisaram se reerguer após uma queda de rank." },
+            { nome: "Faixa de Perna do Absoluto", bonus: "Agilidade: +95, Resistência: +60", preco: 3360000, descricao: "Item recuperado após o colapso de uma torre proibida, ainda pulsando com energia latente." },
+            { nome: "Calça Élfica da Última Página", bonus: "Resistência: +160", preco: 3500000, descricao: "Comum entre membros de guildas que caçam em pares, prezando sinergia acima de força bruta." }
+        ],
+        "Slot de Pés": [
+            { nome: "Botas do Imperador Eterno", bonus: "Agilidade: +115", preco: 2200000, descricao: "Ao Imperador Eterno pode ser sentido nas solas gastas desta peça, remanescente de uma masmorra devastada." },
+            { nome: "Sandálias do Coração das Estrelas", bonus: "Força: +120", preco: 2340000, descricao: "Forjada por ferreiros ligados ao Coração das Estrelas, equilibrando passo firme e avanço silencioso." },
+            { nome: "Coturnos do Titã Esquecido", bonus: "Agilidade: +75, Força: +50", preco: 2490000, descricao: "Um item recuperado dos escombros deixados pelo Titã Esquecido, ainda gelado ao toque." },
+            { nome: "Sapatilhas do Véu do Infinito", bonus: "Força: +130", preco: 2630000, descricao: "Carrega o peso simbólico do Véu do Infinito, moldado para quem enfrenta o desconhecido." },
+            { nome: "Grevas de Pé da Profecia Silenciada", bonus: "Agilidade: +135", preco: 2780000, descricao: "Dizem que pertenceu a um caçador marcado pela Profecia Silenciada, jamais visto após a última incursão." },
+            { nome: "Botins do Santuário Perdido", bonus: "Força: +85, Agilidade: +55", preco: 2920000, descricao: "Sua sola guarda símbolos entalhados do Santuário Perdido, quase apagados pelo tempo." },
+            { nome: "Solado Rúnico da Lâmina do Cosmos", bonus: "Agilidade: +145", preco: 3070000, descricao: "Peça associada à Lâmina do Cosmos, reagindo de forma sutil à presença de mana hostil." },
+            { nome: "Polainas da Ruína Celestial", bonus: "Força: +150", preco: 3210000, descricao: "Item cobiçado por quem busca reconstruir a reputação após cruzar o caminho da Ruína Celestial." },
+            { nome: "Borzeguins do Anjo Caído", bonus: "Agilidade: +95, Força: +60", preco: 3360000, descricao: "Fragmento recuperado do covil do Anjo Caído, ainda impregnado de energia latente." },
+            { nome: "Chinelos Rituais do Eco da Criação", bonus: "Força: +160", preco: 3500000, descricao: "Comum entre caçadores que sobreviveram ao encontro com o Eco da Criação, prezando mobilidade acima de tudo." }
+        ],
+        "Slot de Acessórios": [
+            { nome: "Anel do Monarca Original", bonus: "Poder Mágico: +115", preco: 2200000, descricao: "Peça recuperada de uma masmorra do monarca original, ainda impregnada de mana residual." },
+            { nome: "Colar da Torre Além do Céu", bonus: "Inteligência: +120", preco: 2340000, descricao: "Forjada por artesãos míticos que buscavam equilibrar proteção e liberdade de movimento." },
+            { nome: "Brinco do Deus Adormecido", bonus: "Agilidade: +75, Sorte: +50", preco: 2490000, descricao: "Um item mítico encontrado junto aos restos de um caçador que não sobreviveu ao portal." },
+            { nome: "Bracelete da Constelação Suprema", bonus: "Sorte: +130", preco: 2630000, descricao: "Carrega consigo um brilho fraco, como se ecoasse a lembrança de seu antigo dono." },
+            { nome: "Broche do Apocalipse Selado", bonus: "Poder Mágico: +135", preco: 2780000, descricao: "Dizem que foi usada por um sobrevivente de um clã inteiro dizimado em uma masmorra selada." },
+            { nome: "Pingente da Origem Perdida", bonus: "Inteligência: +85, Agilidade: +55", preco: 2920000, descricao: "Sua superfície guarda gravações de um sistema antigo, ilegível para a maioria dos caçadores." },
+            { nome: "Pulseira do Trono Vazio", bonus: "Agilidade: +145", preco: 3070000, descricao: "Um artefato que reagiu de forma inesperada ao ser tocado por um usuário de baixo rank." },
+            { nome: "Fivela da Chama Primordial", bonus: "Sorte: +150", preco: 3210000, descricao: "Popular entre aventureiros que precisaram se reerguer após uma queda de rank." },
+            { nome: "Amuleto do Absoluto", bonus: "Poder Mágico: +95, Inteligência: +60", preco: 3360000, descricao: "Item recuperado após o colapso de uma torre proibida, ainda pulsando com energia latente." },
+            { nome: "Presilha da Última Página", bonus: "Inteligência: +160", preco: 3500000, descricao: "Comum entre membros de guildas que caçam em pares, prezando sinergia acima de força bruta." }
+        ],
+        "Itens de Apoio": [
+            { nome: "Poção do Monarca Original", bonus: "Regenera 115 HP", preco: 2200000, descricao: "Item de apoio mítico, muito usado por caçadores em expedições.", tipo: "consumivel" },
+            { nome: "Pergaminho da Torre Além do Céu", bonus: "Regenera 120 MP", preco: 2340000, descricao: "Item de apoio mítico, muito usado por caçadores em expedições.", tipo: "consumivel" },
+            { nome: "Talismã do Deus Adormecido", bonus: "Resistência a veneno (3 turnos)", preco: 2490000, descricao: "Item de apoio mítico, muito usado por caçadores em expedições.", tipo: "consumivel" },
+            { nome: "Amuleto de Bolso da Constelação Suprema", bonus: "Reduz CD em 48%", preco: 2630000, descricao: "Item de apoio mítico, muito usado por caçadores em expedições.", tipo: "consumivel" },
+            { nome: "Cristal Portátil do Apocalipse Selado", bonus: "Revela armadilhas (135m, 2 turnos)", preco: 2780000, descricao: "Item de apoio mítico, muito usado por caçadores em expedições.", tipo: "consumivel" },
+            { nome: "Fumaça Ritual da Origem Perdida", bonus: "Velocidade +50% (3 turnos)", preco: 2920000, descricao: "Item de apoio mítico, muito usado por caçadores em expedições.", tipo: "consumivel" },
+            { nome: "Frasco Selado do Trono Vazio", bonus: "Expande inventário (145 slots)", preco: 3070000, descricao: "Item de apoio mítico, muito usado por caçadores em expedições.", tipo: "consumivel" },
+            { nome: "Bússola Encantada da Chama Primordial", bonus: "Sinal de socorro", preco: 3210000, descricao: "Item de apoio mítico, muito usado por caçadores em expedições.", tipo: "consumivel" },
+            { nome: "Vela Ritualística do Absoluto", bonus: "Cura sangramento/veneno", preco: 3360000, descricao: "Item de apoio mítico, muito usado por caçadores em expedições.", tipo: "consumivel" },
+            { nome: "Bolsa Dimensional da Última Página", bonus: "Visão no escuro (5 turnos)", preco: 3500000, descricao: "Item de apoio mítico, muito usado por caçadores em expedições.", tipo: "consumivel" },
+            { nome: "Picareta do Minerador", bonus: "Permite minerar cristais em dungeons", preco: 20000, descricao: "Ferramenta essencial para mineradores. Quebra após um único uso em dungeon.", tipo: "consumivel" }
+        ],
+        "Arma 1": [
+            { nome: "Adaga do Monarca Original", bonus: "Força: +70, Agilidade: +45", preco: 2200000, descricao: "Arma de uma mão [1-FP]", tipo: "arma" },
+            { nome: "Katana Curta da Torre Além do Céu", bonus: "Agilidade: +70, Força: +50", preco: 2340000, descricao: "Arma de uma mão [1-FP]", tipo: "arma" },
+            { nome: "Espada Curta do Deus Adormecido", bonus: "Poder Mágico: +75, Sentidos: +50", preco: 2490000, descricao: "Arma de uma mão [1-FP]", tipo: "arma" },
+            { nome: "Sai da Constelação Suprema", bonus: "Força: +80, Agilidade: +50", preco: 2630000, descricao: "Arma de uma mão [1-FP]", tipo: "arma" },
+            { nome: "Punhal do Apocalipse Selado", bonus: "Agilidade: +80, Força: +55", preco: 2780000, descricao: "Arma de uma mão [1-FP]", tipo: "arma" },
+            { nome: "Manopla de Combate da Origem Perdida", bonus: "Poder Mágico: +85, Sentidos: +55", preco: 2920000, descricao: "Arma de uma mão [1-FP]", tipo: "arma" },
+            { nome: "Tonfa do Trono Vazio", bonus: "Força: +85, Agilidade: +60", preco: 3070000, descricao: "Arma de uma mão [1-FP]", tipo: "arma" },
+            { nome: "Cetro Menor da Chama Primordial", bonus: "Agilidade: +90, Força: +60", preco: 3210000, descricao: "Arma de uma mão [1-FP]", tipo: "arma" },
+            { nome: "Pistola Encantada do Absoluto", bonus: "Poder Mágico: +95, Sentidos: +60", preco: 3360000, descricao: "Arma de uma mão [1-FP]", tipo: "arma" },
+            { nome: "Faca Ritual da Última Página", bonus: "Força: +95, Agilidade: +65", preco: 3500000, descricao: "Arma de uma mão [1-FP]", tipo: "arma" }
+        ],
+        "Arma 2": [
+            { nome: "Espadão do Monarca Original", bonus: "Força: +160", preco: 2860000, descricao: "Arma de duas mãos [2-FP]", tipo: "arma" },
+            { nome: "Lança Longa da Torre Além do Céu", bonus: "Poder Mágico: +170", preco: 3050000, descricao: "Arma de duas mãos [2-FP]", tipo: "arma" },
+            { nome: "Machado de Guerra do Deus Adormecido", bonus: "Força: +105, Poder Mágico: +70", preco: 3240000, descricao: "Arma de duas mãos [2-FP]", tipo: "arma" },
+            { nome: "Foice Longa da Constelação Suprema", bonus: "Força: +180", preco: 3420000, descricao: "Arma de duas mãos [2-FP]", tipo: "arma" },
+            { nome: "Alabarda do Apocalipse Selado", bonus: "Poder Mágico: +190", preco: 3610000, descricao: "Arma de duas mãos [2-FP]", tipo: "arma" },
+            { nome: "Martelo de Batalha da Origem Perdida", bonus: "Força: +115, Poder Mágico: +80", preco: 3800000, descricao: "Arma de duas mãos [2-FP]", tipo: "arma" },
+            { nome: "Arco Longo do Trono Vazio", bonus: "Força: +205", preco: 3990000, descricao: "Arma de duas mãos [2-FP]", tipo: "arma" },
+            { nome: "Fuzil de Precisão da Chama Primordial", bonus: "Poder Mágico: +210", preco: 4170000, descricao: "Arma de duas mãos [2-FP]", tipo: "arma" },
+            { nome: "Naginata do Absoluto", bonus: "Força: +130, Poder Mágico: +85", preco: 4360000, descricao: "Arma de duas mãos [2-FP]", tipo: "arma" },
+            { nome: "Claymore Rúnica da Última Página", bonus: "Força: +225", preco: 4550000, descricao: "Arma de duas mãos [2-FP]", tipo: "arma" }
+        ]
+    }
+};
+
+/**
+ * Busca itens de uma categoria e rank específicos
+ */
+function getItensLoja(categoria, rank) {
+    const rankUpper = rank.toUpperCase();
+    const itensRank = ITENS_LOJA[rankUpper];
+    
+    if (!itensRank) return [];
+    
+    const itensCategoria = itensRank[categoria];
+    return itensCategoria || [];
+}
+
+/**
+ * Busca todos os ranks disponíveis
+ */
+function getRanksDisponiveis() {
+    return Object.keys(ITENS_LOJA).sort();
+}
+
+module.exports = {
+    ITENS_LOJA,
+    getItensLoja,
+    getRanksDisponiveis
+};

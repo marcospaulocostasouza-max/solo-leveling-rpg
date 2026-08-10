@@ -1,0 +1,119 @@
+RELATÓRIO DE GERAÇÃO DE DATASET JSONL
+=====================================
+Total de NPCs: 72
+Total de exemplos: 11532
+Total de linhas: 11532
+Total de caracteres de conteúdo: 10108540
+Estimativa de tokens: 2660143
+Tamanho final do dataset: 12089321 bytes
+Duplicatas idênticas removidas: 45
+
+Exemplos por NPC (72)
+- agnea_bristarni: 18
+- alaune_yeong: 140
+- alexia_song: 260
+- alfyn_greengrass: 136
+- arcanette: 106
+- bargello_yeon: 140
+- carinda_moon: 137
+- castti_florenz: 1040
+- celsus_park: 146
+- claude: 121
+- cyrus_albright: 18
+- darius_kwon: 139
+- delitia_song: 259
+- elrica_edoras: 20
+- eltrix_noh: 144
+- entidade_mae: 18
+- esperre_jin: 142
+- galdera: 22
+- gaston_rho: 111
+- gideon_ma: 139
+- goodwin_cha: 143
+- haanit: 141
+- harvey_jeong: 107
+- heidne_ahn: 141
+- helgenish: 106
+- hikari_ku: 18
+- isla_gwon: 138
+- kaldena_ryu: 200
+- kazan: 106
+- laurana_bae: 272
+- lucia_yeom: 141
+- ludo_wei: 144
+- lyblac: 125
+- macy_eun: 146
+- mattias_cardoso: 146
+- miguel_bang: 142
+- mugen_ku: 230
+- ochette: 98
+- olberic_eisenberg: 140
+- ophilia_clement: 21
+- ori_choi: 247
+- osvald_v_vanstein: 140
+- partitio_yellowil: 225
+- petrichor: 139
+- phenn_doyoung: 142
+- pius_kang: 146
+- primrose_azelhart: 586
+- redeye: 139
+- reime_oh: 145
+- richard_han: 258
+- rondo_baek: 254
+- rufus_deng: 139
+- saoirse_ryu: 205
+- sazantos_do: 136
+- simeon_ha: 141
+- solon_wi: 115
+- stia_han: 258
+- tanzy_woo: 112
+- tatloch: 114
+- temenos_mistral: 147
+- therion: 140
+- throne_anguis: 145
+- tressa_colzione: 144
+- trish_yamaguchi: 30
+- trousseau: 144
+- vanessa_hysel: 107
+- viator_yoon: 145
+- vide_o_corruptor: 139
+- warden_davids: 142
+- werner_choi: 248
+- xerc_baek: 254
+- yvon_baik: 145
+
+Exemplos por seção (18)
+- 01_identity.md: 72
+- 02_summary.md: 72
+- 03_history.md: 72
+- 04_personality.md: 72
+- 05_interpretation.md: 133
+- 06_speech.md: 72
+- 07_values.md: 320
+- 08_likes.md: 72
+- 09_dislikes.md: 72
+- 10_traumas.md: 72
+- 11_relationships.md: 72
+- 12_goals.md: 72
+- 13_knowledge.md: 72
+- 14_curiosities.md: 72
+- 15_narrative_gaps.md: 72
+- 16_absolute_rules.md: 72
+- 17_dialog_examples.md: 2893
+- 18_scene_examples.md: 7178
+
+Arquivos vazios (0)
+- Nenhum
+
+Arquivos inexistentes (0)
+- Nenhum
+
+Arquivos ignorados (2)
+- src\npc\data\ophilia.json: id legado "ophilia" associado por nome ao dataset ophilia_clement
+- src\npc\data\vysache.json: JSON de runtime sem dataset de treinamento correspondente (vysache)
+
+Erros encontrados (0)
+- Nenhum
+
+DATASET PRONTO PARA FINE-TUNING?
+SIM

@@ -1,0 +1,19 @@
+{
+  "id": "ulsan",
+  "name": "Ulsan",
+  "image": "/images/cities/ulsan.webp",
+  "description": "Capital industrial da Coreia",
+  "population": "1.1 milhões",
+  "dangerLevel": "D",
+  "guilds": [],
+  "npcs": [],
+  "players": [],
+  "portals": [],
+  "dungeons": [],
+  "bosses": [],
+  "shops": [],
+  "quests": [],
+  "events": [],
+  "resources": [],
+  "notes": ""
+}

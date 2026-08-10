@@ -1,0 +1,105 @@
+{
+  "source": "Solo. RPg.zip/src/tecnicas/iniciais/assassino.js",
+  "className": "Assassino",
+  "techniques": [
+    {
+      "id": "assassino-0",
+      "nome": "Ataque Furtivo",
+      "tipo": "Passiva",
+      "descricao": "Ataques furtivos causam +10% de dano.",
+      "custo_mana": 0,
+      "nivel_desbloqueio": 1,
+      "custo_maestria": 10
+    },
+    {
+      "id": "assassino-1",
+      "nome": "Emboscada Fantasmagórica",
+      "tipo": "Mágica",
+      "descricao": "Fica invisível por 1 turno e avança rapidamente.",
+      "custo_mana": 2000,
+      "nivel_desbloqueio": 3,
+      "custo_maestria": 20
+    },
+    {
+      "id": "assassino-2",
+      "nome": "Fúria das Profundezas",
+      "tipo": "Buff",
+      "descricao": "Aumenta AGI e ATK em 20% por 2 turnos.",
+      "custo_mana": 3000,
+      "nivel_desbloqueio": 5,
+      "custo_maestria": 40
+    },
+    {
+      "id": "assassino-3",
+      "nome": "Perfuramento de Assassino",
+      "tipo": "Mágica",
+      "descricao": "Golpe preciso que ignora parte da defesa.",
+      "custo_mana": 1500,
+      "nivel_desbloqueio": 7,
+      "custo_maestria": 80
+    },
+    {
+      "id": "assassino-4",
+      "nome": "Marca daExecução",
+      "tipo": "Mágica",
+      "descricao": "Marca inimigo aumentando dano recebido.",
+      "custo_mana": 3000,
+      "nivel_desbloqueio": 9,
+      "custo_maestria": 160
+    },
+    {
+      "id": "assassino-5",
+      "nome": "Morte das Profundezas",
+      "tipo": "Mágica",
+      "descricao": "Corte mágico em X que executa inimigos.",
+      "custo_mana": 3000,
+      "nivel_desbloqueio": 11,
+      "custo_maestria": 320
+    },
+    {
+      "id": "assassino-6",
+      "nome": "Ponto Fraco [Passivo]",
+      "tipo": "Passiva",
+      "descricao": "Ataques cegos em pontos vitais causam dano dobrado.",
+      "custo_mana": 0,
+      "nivel_desbloqueio": 13,
+      "custo_maestria": 640
+    },
+    {
+      "id": "assassino-7",
+      "nome": "Célere",
+      "tipo": "Suporte",
+      "descricao": "Corre por paredes e água com -30% agilidade.",
+      "custo_mana": 200,
+      "nivel_desbloqueio": 15,
+      "custo_maestria": 1280
+    },
+    {
+      "id": "assassino-8",
+      "nome": "Mãos Mágicas",
+      "tipo": "Utilidade",
+      "descricao": "Rouba itens tocados por 2 turnos.",
+      "custo_mana": 900,
+      "nivel_desbloqueio": 18,
+      "custo_maestria": 2560
+    },
+    {
+      "id": "assassino-9",
+      "nome": "Sede de Sangue",
+      "tipo": "Mágica",
+      "descricao": "Reduz atributos de inimigos mais fracos.",
+      "custo_mana": 1500,
+      "nivel_desbloqueio": 20,
+      "custo_maestria": 5120
+    },
+    {
+      "id": "assassino-10",
+      "nome": "Ligação de Sangue",
+      "tipo": "Utilidade",
+      "descricao": "Puxa objetos tocados anteriormente.",
+      "custo_mana": 700,
+      "nivel_desbloqueio": 23,
+      "custo_maestria": 100000
+    }
+  ]
+}

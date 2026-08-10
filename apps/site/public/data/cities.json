@@ -1,0 +1,344 @@
+{
+  "cities": [
+    {
+      "id": "seoul",
+      "name": "Seul",
+      "x": 35.4167,
+      "y": 20.5078,
+      "width": 60,
+      "height": 30,
+      "dangerLevel": "D",
+      "type": "city"
+    },
+    {
+      "id": "incheon",
+      "name": "Incheon",
+      "x": 22.6562,
+      "y": 21.582,
+      "width": 60,
+      "height": 30,
+      "dangerLevel": "D",
+      "type": "city"
+    },
+    {
+      "id": "suwon",
+      "name": "Suwon",
+      "x": 33.3984,
+      "y": 27.5391,
+      "width": 60,
+      "height": 30,
+      "dangerLevel": "D",
+      "type": "city"
+    },
+    {
+      "id": "goyang",
+      "name": "Goyang",
+      "x": 26.9531,
+      "y": 15.7227,
+      "width": 60,
+      "height": 30,
+      "dangerLevel": "C",
+      "type": "city"
+    },
+    {
+      "id": "uijeongbu",
+      "name": "Uijeongbu",
+      "x": 35.8724,
+      "y": 12.9883,
+      "width": 60,
+      "height": 30,
+      "dangerLevel": "C",
+      "type": "city"
+    },
+    {
+      "id": "pocheon",
+      "name": "Pocheon",
+      "x": 40.2344,
+      "y": 7.1289,
+      "width": 60,
+      "height": 30,
+      "dangerLevel": "C",
+      "type": "city"
+    },
+    {
+      "id": "chuncheon",
+      "name": "Chuncheon",
+      "x": 51.4323,
+      "y": 13.0859,
+      "width": 60,
+      "height": 30,
+      "dangerLevel": "C",
+      "type": "city"
+    },
+    {
+      "id": "sokcho",
+      "name": "Sokcho",
+      "x": 63.0859,
+      "y": 9.8633,
+      "width": 60,
+      "height": 30,
+      "dangerLevel": "C",
+      "type": "city"
+    },
+    {
+      "id": "gangneung",
+      "name": "Gangneung",
+      "x": 65.3646,
+      "y": 17.4805,
+      "width": 60,
+      "height": 30,
+      "dangerLevel": "C",
+      "type": "city"
+    },
+    {
+      "id": "wonju",
+      "name": "Wonju",
+      "x": 53.3203,
+      "y": 25.8789,
+      "width": 60,
+      "height": 30,
+      "dangerLevel": "C",
+      "type": "city"
+    },
+    {
+      "id": "donghae",
+      "name": "Donghae",
+      "x": 70.9635,
+      "y": 26.3672,
+      "width": 60,
+      "height": 30,
+      "dangerLevel": "C",
+      "type": "city"
+    },
+    {
+      "id": "samcheok",
+      "name": "Samcheok",
+      "x": 76.1719,
+      "y": 33.5938,
+      "width": 60,
+      "height": 30,
+      "dangerLevel": "C",
+      "type": "city"
+    },
+    {
+      "id": "cheonan",
+      "name": "Cheonan",
+      "x": 37.1094,
+      "y": 34.7656,
+      "width": 60,
+      "height": 30,
+      "dangerLevel": "C",
+      "type": "city"
+    },
+    {
+      "id": "cheongju",
+      "name": "Cheongju",
+      "x": 48.9583,
+      "y": 34.668,
+      "width": 60,
+      "height": 30,
+      "dangerLevel": "C",
+      "type": "city"
+    },
+    {
+      "id": "asan",
+      "name": "Asan",
+      "x": 29.0365,
+      "y": 37.5977,
+      "width": 60,
+      "height": 30,
+      "dangerLevel": "C",
+      "type": "city"
+    },
+    {
+      "id": "daejeon",
+      "name": "Daejeon",
+      "x": 42.9036,
+      "y": 44.2383,
+      "width": 60,
+      "height": 30,
+      "dangerLevel": "D",
+      "type": "city"
+    },
+    {
+      "id": "gunsan",
+      "name": "Gunsan",
+      "x": 29.2318,
+      "y": 49.6094,
+      "width": 60,
+      "height": 30,
+      "dangerLevel": "C",
+      "type": "city"
+    },
+    {
+      "id": "jeonju",
+      "name": "Jeonju",
+      "x": 36.5234,
+      "y": 55.5664,
+      "width": 60,
+      "height": 30,
+      "dangerLevel": "C",
+      "type": "city"
+    },
+    {
+      "id": "gimcheon",
+      "name": "Gimcheon",
+      "x": 49.0885,
+      "y": 53.125,
+      "width": 60,
+      "height": 30,
+      "dangerLevel": "C",
+      "type": "city"
+    },
+    {
+      "id": "daegu",
+      "name": "Daegu",
+      "x": 65.1042,
+      "y": 51.7578,
+      "width": 60,
+      "height": 30,
+      "dangerLevel": "D",
+      "type": "city"
+    },
+    {
+      "id": "jinju",
+      "name": "Jinju",
+      "x": 52.9948,
+      "y": 62.793,
+      "width": 60,
+      "height": 30,
+      "dangerLevel": "C",
+      "type": "city"
+    },
+    {
+      "id": "changwon",
+      "name": "Changwon",
+      "x": 64.974,
+      "y": 60.2539,
+      "width": 60,
+      "height": 30,
+      "dangerLevel": "D",
+      "type": "city"
+    },
+    {
+      "id": "busan",
+      "name": "Busan",
+      "x": 75.1953,
+      "y": 66.4062,
+      "width": 60,
+      "height": 30,
+      "dangerLevel": "D",
+      "type": "city"
+    },
+    {
+      "id": "pohang",
+      "name": "Pohang",
+      "x": 78.6458,
+      "y": 46.1914,
+      "width": 60,
+      "height": 30,
+      "dangerLevel": "C",
+      "type": "city"
+    },
+    {
+      "id": "ulsan",
+      "name": "Ulsan",
+      "x": 78.8411,
+      "y": 56.4453,
+      "width": 60,
+      "height": 30,
+      "dangerLevel": "D",
+      "type": "city"
+    },
+    {
+      "id": "gwangju",
+      "name": "Gwangju",
+      "x": 26.9531,
+      "y": 62.3047,
+      "width": 60,
+      "height": 30,
+      "dangerLevel": "D",
+      "type": "city"
+    },
+    {
+      "id": "yeosu",
+      "name": "Yeosu",
+      "x": 43.8151,
+      "y": 70.9961,
+      "width": 60,
+      "height": 30,
+      "dangerLevel": "C",
+      "type": "city"
+    },
+    {
+      "id": "mokpo",
+      "name": "Mokpo",
+      "x": 22.5911,
+      "y": 69.6289,
+      "width": 60,
+      "height": 30,
+      "dangerLevel": "C",
+      "type": "city"
+    },
+    {
+      "id": "tongyeong",
+      "name": "Tongyeong",
+      "x": 61.5885,
+      "y": 69.4336,
+      "width": 60,
+      "height": 30,
+      "dangerLevel": "C",
+      "type": "city"
+    },
+    {
+      "id": "jeju",
+      "name": "Jeju",
+      "x": 42.0573,
+      "y": 88.8672,
+      "width": 60,
+      "height": 30,
+      "dangerLevel": "B",
+      "type": "island"
+    },
+    {
+      "id": "ulleungdo",
+      "name": "Ulleungdo",
+      "x": 75.651,
+      "y": 7.6172,
+      "width": 60,
+      "height": 30,
+      "dangerLevel": "C",
+      "type": "island"
+    },
+    {
+      "id": "dokdo",
+      "name": "Dokdo",
+      "x": 78.6458,
+      "y": 23.7305,
+      "width": 60,
+      "height": 30,
+      "dangerLevel": "C",
+      "type": "island"
+    },
+    {
+      "id": "heuksando",
+      "name": "Heuksando",
+      "x": 20.638,
+      "y": 83.5938,
+      "width": 60,
+      "height": 30,
+      "dangerLevel": "C",
+      "type": "island"
+    },
+    {
+      "id": "geomundo",
+      "name": "Geomundo",
+      "x": 72.6562,
+      "y": 81.6406,
+      "width": 60,
+      "height": 30,
+      "dangerLevel": "C",
+      "type": "island"
+    }
+  ]
+}

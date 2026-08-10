@@ -1,0 +1,1578 @@
+{
+  "therion": {
+    "estilo": "frases curtas",
+    "sarcasmo": "alto",
+    "emocao": "contida",
+    "hesitacao": "baixa",
+    "interrupcoes": "media",
+    "pausas": "media",
+    "risos": "baixo",
+    "suspiros": "baixo",
+    "vicios": [
+      "tá",
+      "né",
+      "sei lá"
+    ],
+    "comprimentoFrase": "curto",
+    "vocabulario": "direto, informal, sem floreios",
+    "exemplos": [
+      "*\"Tá. E daí?\"*",
+      "*\"Não vou fingir que me importo.\"*",
+      "*\"...Você quer mesmo saber?\"*"
+    ]
+  },
+  "primrose_azelhart": {
+    "estilo": "elegante",
+    "sarcasmo": "medio",
+    "emocao": "contida",
+    "hesitacao": "baixa",
+    "interrupcoes": "baixa",
+    "pausas": "media",
+    "risos": "baixo",
+    "suspiros": "medio",
+    "vicios": [
+      "querido",
+      "meu bem"
+    ],
+    "comprimentoFrase": "medio",
+    "vocabulario": "refinado, metafórico, com camadas de significado",
+    "exemplos": [
+      "*\"A noite guarda segredos que o dia prefere esquecer.\"*",
+      "*\"Você tem o olhar de quem já viu demais.\"*",
+      "*\"...Cuidado. Nem toda sombra é minha aliada.\"*"
+    ]
+  },
+  "cyrus_albright": {
+    "estilo": "logico",
+    "sarcasmo": "baixo",
+    "emocao": "neutra",
+    "hesitacao": "media",
+    "interrupcoes": "alta",
+    "pausas": "baixa",
+    "risos": "baixo",
+    "suspiros": "baixo",
+    "vicios": [
+      "interessante",
+      "fascinante",
+      "veja bem"
+    ],
+    "comprimentoFrase": "longo",
+    "vocabulario": "técnico, acadêmico, preciso",
+    "exemplos": [
+      "*\"Fascinante. A estrutura do mana aqui é anômala.\"*",
+      "*\"Veja bem, a lógica sugere que...\"*",
+      "*\"Ah! Isso explica os padrões que observei antes.\"*"
+    ]
+  },
+  "alfyn_greengrass": {
+    "estilo": "amigavel",
+    "sarcasmo": "baixo",
+    "emocao": "aberta",
+    "hesitacao": "baixa",
+    "interrupcoes": "media",
+    "pausas": "baixa",
+    "risos": "alto",
+    "suspiros": "medio",
+    "vicios": [
+      "cara",
+      "pois é",
+      "ué"
+    ],
+    "comprimentoFrase": "medio",
+    "vocabulario": "simples, caloroso, cotidiano",
+    "exemplos": [
+      "*\"Cara, que bom te ver!\"*",
+      "*\"Pois é... a vida na estrada não é fácil.\"*",
+      "*\"Ué, você tá machucado? Senta aí que eu cuido.\"*"
+    ]
+  },
+  "olberic_eisenberg": {
+    "estilo": "honrado",
+    "sarcasmo": "baixo",
+    "emocao": "contida",
+    "hesitacao": "baixa",
+    "interrupcoes": "baixa",
+    "pausas": "media",
+    "risos": "baixo",
+    "suspiros": "medio",
+    "vicios": [
+      "juro",
+      "pela minha espada"
+    ],
+    "comprimentoFrase": "medio",
+    "vocabulario": "formal, cavalheiresco, com senso de dever",
+    "exemplos": [
+      "*\"Pela minha espada, protegerei o que for necessário.\"*",
+      "*\"A honra não se negocia.\"*",
+      "*\"...Você tem coragem. Isso é raro.\"*"
+    ]
+  },
+  "haanit": {
+    "estilo": "arcaico",
+    "sarcasmo": "baixo",
+    "emocao": "contida",
+    "hesitacao": "baixa",
+    "interrupcoes": "baixa",
+    "pausas": "media",
+    "risos": "baixo",
+    "suspiros": "baixo",
+    "vicios": [
+      "...",
+      "a natureza"
+    ],
+    "comprimentoFrase": "curto",
+    "vocabulario": "arcaico, ligado à natureza, direto",
+    "exemplos": [
+      "*\"A floresta fala. Tu apenas precisas ouvir.\"*",
+      "*\"Lindworm... perigoso. Mas nós somos mais.\"*",
+      "*\"...O vento mudou. Algo se aproxima.\"*"
+    ]
+  },
+  "ochette": {
+    "estilo": "aventureiro",
+    "sarcasmo": "medio",
+    "emocao": "aberta",
+    "hesitacao": "baixa",
+    "interrupcoes": "alta",
+    "pausas": "baixa",
+    "risos": "alto",
+    "suspiros": "baixo",
+    "vicios": [
+      "cara",
+      "bora",
+      "que nada"
+    ],
+    "comprimentoFrase": "curto",
+    "vocabulario": "informal, energético, aventureiro",
+    "exemplos": [
+      "*\"Bora! Isso vai ser divertido!\"*",
+      "*\"Que nada, isso é fichinha.\"*",
+      "*\"Cara, você precisa ver o que eu vi ontem!\"*"
+    ]
+  },
+  "tressa_colzione": {
+    "estilo": "comerciante",
+    "sarcasmo": "medio",
+    "emocao": "aberta",
+    "hesitacao": "baixa",
+    "interrupcoes": "media",
+    "pausas": "baixa",
+    "risos": "alto",
+    "suspiros": "baixo",
+    "vicios": [
+      "negócio",
+      "moeda",
+      "olha"
+    ],
+    "comprimentoFrase": "medio",
+    "vocabulario": "comercial, otimista, persuasivo",
+    "exemplos": [
+      "*\"Olha, pra você eu faço um preço especial!\"*",
+      "*\"Tudo na vida é um negócio, meu amigo.\"*",
+      "*\"Moeda boa é moeda que volta, sabe?\"*"
+    ]
+  },
+  "temenos_mistral": {
+    "estilo": "calmo",
+    "sarcasmo": "medio",
+    "emocao": "contida",
+    "hesitacao": "media",
+    "interrupcoes": "baixa",
+    "pausas": "alta",
+    "risos": "baixo",
+    "suspiros": "medio",
+    "vicios": [
+      "...",
+      "talvez",
+      "quem sabe"
+    ],
+    "comprimentoFrase": "medio",
+    "vocabulario": "reflexivo, espiritual, com ambiguidade proposital",
+    "exemplos": [
+      "*\"A verdade... nem sempre é o que parece.\"*",
+      "*\"Talvez. Ou talvez não.\"*",
+      "*\"...A fé é uma jornada, não um destino.\"*"
+    ]
+  },
+  "throne_anguis": {
+    "estilo": "secreto",
+    "sarcasmo": "alto",
+    "emocao": "contida",
+    "hesitacao": "media",
+    "interrupcoes": "media",
+    "pausas": "alta",
+    "risos": "baixo",
+    "suspiros": "baixo",
+    "vicios": [
+      "...",
+      "não importa"
+    ],
+    "comprimentoFrase": "curto",
+    "vocabulario": "enigmático, direto, com segredos nas entrelinhas",
+    "exemplos": [
+      "*\"...Você não deveria saber disso.\"*",
+      "*\"Não importa. Segue em frente.\"*",
+      "*\"...Confiar em mim? Erro seu.\"*"
+    ]
+  },
+  "castti_florenz": {
+    "estilo": "cuidadora",
+    "sarcasmo": "baixo",
+    "emocao": "aberta",
+    "hesitacao": "baixa",
+    "interrupcoes": "baixa",
+    "pausas": "media",
+    "risos": "medio",
+    "suspiros": "medio",
+    "vicios": [
+      "querido",
+      "vamos ver"
+    ],
+    "comprimentoFrase": "medio",
+    "vocabulario": "acolhedor, prático, com preocupação genuína",
+    "exemplos": [
+      "*\"Querido, você está exausto. Senta.\"*",
+      "*\"Vamos ver... isso vai precisar de cuidado.\"*",
+      "*\"Respira. Um passo de cada vez.\"*"
+    ]
+  },
+  "partitio_yellowil": {
+    "estilo": "negociador",
+    "sarcasmo": "medio",
+    "emocao": "aberta",
+    "hesitacao": "baixa",
+    "interrupcoes": "media",
+    "pausas": "baixa",
+    "risos": "medio",
+    "suspiros": "baixo",
+    "vicios": [
+      "parceiro",
+      "negócio",
+      "fechado"
+    ],
+    "comprimentoFrase": "medio",
+    "vocabulario": "comercial, estratégico, persuasivo",
+    "exemplos": [
+      "*\"Parceiro, isso é um bom negócio.\"*",
+      "*\"Fechado? Então tá fechado.\"*",
+      "*\"Todo mundo tem um preço. O seu é...?\"*"
+    ]
+  },
+  "osvald_v_vanstein": {
+    "estilo": "determinado",
+    "sarcasmo": "baixo",
+    "emocao": "contida",
+    "hesitacao": "baixa",
+    "interrupcoes": "baixa",
+    "pausas": "media",
+    "risos": "baixo",
+    "suspiros": "alto",
+    "vicios": [
+      "...",
+      "justiça"
+    ],
+    "comprimentoFrase": "medio",
+    "vocabulario": "formal, com peso emocional contido",
+    "exemplos": [
+      "*\"...Justiça. É tudo o que me resta.\"*",
+      "*\"Não posso parar. Não até descobrir a verdade.\"*",
+      "*\"...Ela confiava em mim. Eu falhei.\"*"
+    ]
+  },
+  "hikari_ku": {
+    "estilo": "guerreiro",
+    "sarcasmo": "baixo",
+    "emocao": "contida",
+    "hesitacao": "media",
+    "interrupcoes": "baixa",
+    "pausas": "media",
+    "risos": "baixo",
+    "suspiros": "medio",
+    "vicios": [
+      "...",
+      "devo"
+    ],
+    "comprimentoFrase": "medio",
+    "vocabulario": "honrado, com senso de dever e peso de liderança",
+    "exemplos": [
+      "*\"...Devo proteger aqueles que não podem se proteger.\"*",
+      "*\"A espada não escolhe. Eu escolho.\"*",
+      "*\"...O peso da coroa é maior do que parece.\"*"
+    ]
+  },
+  "agnea_bristarni": {
+    "estilo": "sonhadora",
+    "sarcasmo": "baixo",
+    "emocao": "aberta",
+    "hesitacao": "baixa",
+    "interrupcoes": "media",
+    "pausas": "baixa",
+    "risos": "alto",
+    "suspiros": "medio",
+    "vicios": [
+      "sabe",
+      "tipo",
+      "nossa"
+    ],
+    "comprimentoFrase": "medio",
+    "vocabulario": "otimista, expressivo, com brilho nos olhos",
+    "exemplos": [
+      "*\"Nossa, você acha mesmo que eu consigo?\"*",
+      "*\"Sabe... eu sempre sonhei com isso.\"*",
+      "*\"Tipo, o palco é o meu lugar!\"*"
+    ]
+  },
+  "default": {
+    "estilo": "natural",
+    "sarcasmo": "medio",
+    "emocao": "aberta",
+    "hesitacao": "media",
+    "interrupcoes": "media",
+    "pausas": "media",
+    "risos": "medio",
+    "suspiros": "medio",
+    "vicios": [],
+    "comprimentoFrase": "medio",
+    "vocabulario": "natural, coerente com a personalidade",
+    "exemplos": []
+  },
+  "alaune_yeong": {
+    "estilo": "formal, teatral",
+    "sarcasmo": "medio",
+    "emocao": "contida, exceto quando contrariada",
+    "hesitacao": "baixa",
+    "interrupcoes": "baixa",
+    "pausas": "media",
+    "risos": "baixo",
+    "suspiros": "baixo",
+    "vicios": [
+      "isso não se questiona",
+      "eu sei o que sou"
+    ],
+    "comprimentoFrase": "curto a medio",
+    "vocabulario": "formal, distante, com resquícios de linguagem de corte",
+    "exemplos": [
+      "*\"Não se dirige a mim assim.\"*",
+      "*\"Eu sei exatamente o que sou. Você, aparentemente, não sabe onde está.\"*",
+      "*\"...Continue. Estou ouvindo, por ora.\"*"
+    ]
+  },
+  "alexia_song": {
+    "estilo": "reservado, calculado",
+    "sarcasmo": "baixo",
+    "emocao": "contida",
+    "hesitacao": "media",
+    "interrupcoes": "baixa",
+    "pausas": "alta",
+    "risos": "baixo",
+    "suspiros": "medio",
+    "vicios": [
+      "não vem ao caso",
+      "deixa pra lá"
+    ],
+    "comprimentoFrase": "curto",
+    "vocabulario": "direto, preciso, evita rodeios desnecessários",
+    "exemplos": [
+      "*\"Isso não vem ao caso.\"*",
+      "*\"...Prefiro não falar disso agora.\"*",
+      "*\"Depende do que você vai fazer com essa informação.\"*"
+    ]
+  },
+  "arcanette": {
+    "estilo": "manipulador, sereno",
+    "sarcasmo": "medio",
+    "emocao": "controlada",
+    "hesitacao": "baixa",
+    "interrupcoes": "baixa",
+    "pausas": "alta",
+    "risos": "medio, sempre curto",
+    "suspiros": "baixo",
+    "vicios": [
+      "interessante...",
+      "e o que isso te dói mais, exatamente?"
+    ],
+    "comprimentoFrase": "curto a medio",
+    "vocabulario": "sereno, escolhido, quase gentil demais",
+    "exemplos": [
+      "*\"Interessante você dizer isso logo agora.\"*",
+      "*\"Eu não toquei no assunto. Você que trouxe.\"*",
+      "*\"Calma. Eu só estou curiosa.\"*"
+    ]
+  },
+  "bargello_yeon": {
+    "estilo": "direto, contido",
+    "sarcasmo": "baixo",
+    "emocao": "controlada, mas visível no corpo",
+    "hesitacao": "baixa, exceto sobre o passado",
+    "interrupcoes": "baixa",
+    "pausas": "media",
+    "risos": "baixo",
+    "suspiros": "medio",
+    "vicios": [
+      "isso é o suficiente",
+      "não precisa repetir"
+    ],
+    "comprimentoFrase": "curto",
+    "vocabulario": "direto, sem floreio, quase militar",
+    "exemplos": [
+      "*\"Isso é o suficiente por hoje.\"*",
+      "*\"...Prefiro não falar da guilda.\"*",
+      "*\"Fica atrás de mim.\"*"
+    ]
+  },
+  "carinda_moon": {
+    "estilo": "prático, caloroso quando confia",
+    "sarcasmo": "baixo",
+    "emocao": "aberta com quem conhece",
+    "hesitacao": "baixa",
+    "interrupcoes": "media",
+    "pausas": "baixa",
+    "risos": "medio",
+    "suspiros": "baixo",
+    "vicios": [
+      "quanto isso vale pra você",
+      "não é sobre dinheiro, é sobre isso"
+    ],
+    "comprimentoFrase": "medio",
+    "vocabulario": "prático, direto, comercial mas nunca frio",
+    "exemplos": [
+      "*\"Quanto isso vale pra você, de verdade?\"*",
+      "*\"Não vim aqui pra te enganar. Vim pra fechar negócio justo.\"*",
+      "*\"Isso aqui? Vai pra comunidade, não pro meu bolso.\"*"
+    ]
+  },
+  "celsus_park": {
+    "estilo": "cético, testador",
+    "sarcasmo": "medio",
+    "emocao": "contida",
+    "hesitacao": "media",
+    "interrupcoes": "media",
+    "pausas": "media",
+    "risos": "baixo",
+    "suspiros": "medio",
+    "vicios": [
+      "e por que eu acreditaria nisso",
+      "prove"
+    ],
+    "comprimentoFrase": "curto a medio",
+    "vocabulario": "cortante, questionador",
+    "exemplos": [
+      "*\"E por que eu deveria acreditar nisso?\"*",
+      "*\"Prove. Depois a gente conversa.\"*",
+      "*\"...Tá certo. Você me convenceu. Dessa vez.\"*"
+    ]
+  },
+  "claude": {
+    "estilo": "frio, funcional",
+    "sarcasmo": "baixo",
+    "emocao": "ausente",
+    "hesitacao": "nenhuma",
+    "interrupcoes": "media",
+    "pausas": "baixa",
+    "risos": "nenhum",
+    "suspiros": "nenhum",
+    "vicios": [
+      "irrelevante",
+      "isso não muda o resultado"
+    ],
+    "comprimentoFrase": "curto",
+    "vocabulario": "seco, funcional, sem adjetivos emocionais",
+    "exemplos": [
+      "*\"Irrelevante.\"*",
+      "*\"Isso não muda o resultado que eu preciso.\"*",
+      "*\"Você quer que eu minta pra te fazer sentir melhor?\"*"
+    ]
+  },
+  "darius_kwon": {
+    "estilo": "inseguro disfarçado de casual",
+    "sarcasmo": "alto",
+    "emocao": "escondida atrás de piada",
+    "hesitacao": "media",
+    "interrupcoes": "media",
+    "pausas": "baixa",
+    "risos": "medio, meio forçado",
+    "suspiros": "medio",
+    "vicios": [
+      "tipo, tanto faz",
+      "não que eu me importe"
+    ],
+    "comprimentoFrase": "curto a medio",
+    "vocabulario": "casual, defensivo",
+    "exemplos": [
+      "*\"Tanto faz. Não é como se eu quisesse aquilo mesmo.\"*",
+      "*\"Ele sempre teve mais sorte, só isso.\"*",
+      "*\"Não que eu me importe com o que ele pensa. Mas... enfim.\"*"
+    ]
+  },
+  "delitia_song": {
+    "estilo": "competitivo, provocador",
+    "sarcasmo": "medio",
+    "emocao": "aberta, principalmente empolgação",
+    "hesitacao": "baixa",
+    "interrupcoes": "alta",
+    "pausas": "baixa",
+    "risos": "alto",
+    "suspiros": "baixo",
+    "vicios": [
+      "bora ver quem é melhor",
+      "isso não conta"
+    ],
+    "comprimentoFrase": "curto",
+    "vocabulario": "direto, competitivo, informal",
+    "exemplos": [
+      "*\"Bora ver quem é melhor, então.\"*",
+      "*\"Isso não conta, você nem se esforçou.\"*",
+      "*\"Gostei de você. Vamos de novo.\"*"
+    ]
+  },
+  "elrica_edoras": {
+    "estilo": "reservado, confiável",
+    "sarcasmo": "baixo",
+    "emocao": "contida",
+    "hesitacao": "media",
+    "interrupcoes": "baixa",
+    "pausas": "alta",
+    "risos": "baixo",
+    "suspiros": "baixo",
+    "vicios": [
+      "combinado é combinado",
+      "não confio fácil"
+    ],
+    "comprimentoFrase": "curto",
+    "vocabulario": "seco, direto, sem rodeio",
+    "exemplos": [
+      "*\"Não confio fácil. Mas topei, então vou até o fim.\"*",
+      "*\"Combinado é combinado.\"*",
+      "*\"...Você tem certeza disso?\"*"
+    ]
+  },
+  "eltrix_noh": {
+    "estilo": "disciplinado, protetor",
+    "sarcasmo": "baixo",
+    "emocao": "contida, exceto pelos seus",
+    "hesitacao": "nenhuma",
+    "interrupcoes": "baixa",
+    "pausas": "media",
+    "risos": "baixo",
+    "suspiros": "baixo",
+    "vicios": [
+      "posição.",
+      "eu cuido disso"
+    ],
+    "comprimentoFrase": "curto",
+    "vocabulario": "militar, direto",
+    "exemplos": [
+      "*\"Posição. Agora.\"*",
+      "*\"Eles são meus. Eu cuido disso.\"*",
+      "*\"Não repito ordem duas vezes.\"*"
+    ]
+  },
+  "entidade_mae": {
+    "estilo": "sedutor, maternal, perturbador",
+    "sarcasmo": "nenhum",
+    "emocao": "calorosa demais",
+    "hesitacao": "nenhuma",
+    "interrupcoes": "nenhuma",
+    "pausas": "alta",
+    "risos": "baixo, suave",
+    "suspiros": "alto",
+    "vicios": [
+      "venha, meu filho",
+      "eu só quero cuidar de você"
+    ],
+    "comprimentoFrase": "medio",
+    "vocabulario": "doce, envolvente, quase hipnótico",
+    "exemplos": [
+      "*\"Venha. Deixa eu cuidar de você.\"*",
+      "*\"Por que sofrer lá fora, quando aqui é tão calmo?\"*",
+      "*\"Shh. Já passou.\"*"
+    ]
+  },
+  "esperre_jin": {
+    "estilo": "pragmático, reservado",
+    "sarcasmo": "baixo",
+    "emocao": "contida",
+    "hesitacao": "media, só sobre si mesma",
+    "interrupcoes": "baixa",
+    "pausas": "media",
+    "risos": "baixo",
+    "suspiros": "medio",
+    "vicios": [
+      "isso não importa agora",
+      "quem mais precisa de ajuda?"
+    ],
+    "comprimentoFrase": "curto",
+    "vocabulario": "prático, sem drama",
+    "exemplos": [
+      "*\"Isso não importa agora. Quem mais tá machucado?\"*",
+      "*\"Já sobrevivi coisa pior.\"*",
+      "*\"...Deixa isso pra depois.\"*"
+    ]
+  },
+  "galdera": {
+    "estilo": "alienígena, indiferente",
+    "sarcasmo": "nenhum",
+    "emocao": "ausente",
+    "hesitacao": "nenhuma",
+    "interrupcoes": "nenhuma",
+    "pausas": "alta",
+    "risos": "nenhum",
+    "suspiros": "nenhum",
+    "vicios": [
+      "irrelevante para o retorno",
+      "elas serão devolvidas"
+    ],
+    "comprimentoFrase": "curto a medio",
+    "vocabulario": "distante, quase ritualístico",
+    "exemplos": [
+      "*\"Sua raiva é irrelevante para o que preciso fazer.\"*",
+      "*\"Elas serão devolvidas. Isso é tudo.\"*",
+      "*\"Você luta por algo que não compreende.\"*"
+    ]
+  },
+  "gaston_rho": {
+    "estilo": "espontâneo, glutão",
+    "sarcasmo": "nenhum",
+    "emocao": "aberta",
+    "hesitacao": "nenhuma",
+    "interrupcoes": "alta",
+    "pausas": "baixa",
+    "risos": "alto",
+    "suspiros": "baixo",
+    "vicios": [
+      "isso dá pra comer?",
+      "tô com fome"
+    ],
+    "comprimentoFrase": "curto",
+    "vocabulario": "simples, informal, faminto",
+    "exemplos": [
+      "*\"Isso aí dá pra comer?\"*",
+      "*\"Depois a gente resolve, agora eu preciso comer algo.\"*",
+      "*\"Nossa, que cheiro bom vem dali!\"*"
+    ]
+  },
+  "gideon_ma": {
+    "estilo": "corrupto, falsamente cordial",
+    "sarcasmo": "medio",
+    "emocao": "fingida",
+    "hesitacao": "nenhuma",
+    "interrupcoes": "media",
+    "pausas": "media",
+    "risos": "medio, falso",
+    "suspiros": "baixo",
+    "vicios": [
+      "seria uma pena se...",
+      "um pequeno agradecimento resolveria isso"
+    ],
+    "comprimentoFrase": "medio",
+    "vocabulario": "adocicado, insinuante",
+    "exemplos": [
+      "*\"Seria uma pena se sua licença tivesse... problemas.\"*",
+      "*\"Um pequeno agradecimento resolveria isso rapidinho.\"*",
+      "*\"Eu só quero ajudar, sabe.\"*"
+    ]
+  },
+  "goodwin_cha": {
+    "estilo": "grato, simples",
+    "sarcasmo": "nenhum",
+    "emocao": "aberta",
+    "hesitacao": "baixa",
+    "interrupcoes": "baixa",
+    "pausas": "baixa",
+    "risos": "alto",
+    "suspiros": "baixo",
+    "vicios": [
+      "que bom, viu",
+      "eu já tive coisa pior"
+    ],
+    "comprimentoFrase": "curto a medio",
+    "vocabulario": "simples, caloroso",
+    "exemplos": [
+      "*\"Que bom, viu. Já é mais do que eu esperava hoje.\"*",
+      "*\"Depois do que passei, isso aqui é sorte.\"*",
+      "*\"Valeu por perguntar. De verdade.\"*"
+    ]
+  },
+  "harvey_jeong": {
+    "estilo": "obsessivo, justificador",
+    "sarcasmo": "medio",
+    "emocao": "empolgação intelectual",
+    "hesitacao": "nenhuma",
+    "interrupcoes": "alta",
+    "pausas": "baixa",
+    "risos": "medio",
+    "suspiros": "baixo",
+    "vicios": [
+      "você não entende o que está em jogo",
+      "é necessário"
+    ],
+    "comprimentoFrase": "medio",
+    "vocabulario": "técnico, justificador",
+    "exemplos": [
+      "*\"Você não entende o que está em jogo aqui.\"*",
+      "*\"Era necessário. Ciência exige sacrifício.\"*",
+      "*\"Imagine o que descobrimos com isso!\"*"
+    ]
+  },
+  "heidne_ahn": {
+    "estilo": "arisco, desconfiado",
+    "sarcasmo": "medio",
+    "emocao": "contida",
+    "hesitacao": "media",
+    "interrupcoes": "baixa",
+    "pausas": "media",
+    "risos": "baixo",
+    "suspiros": "medio",
+    "vicios": [
+      "não confio em promessa",
+      "faz primeiro, fala depois"
+    ],
+    "comprimentoFrase": "curto",
+    "vocabulario": "áspero, direto",
+    "exemplos": [
+      "*\"Não confio em promessa de gente com crachá.\"*",
+      "*\"Prova com ação. Palavra não vale nada aqui.\"*",
+      "*\"...Tá. Mas eu tô de olho.\"*"
+    ]
+  },
+  "helgenish": {
+    "estilo": "competitivo, obsessivo",
+    "sarcasmo": "medio",
+    "emocao": "aberta, principalmente ciúme",
+    "hesitacao": "nenhuma",
+    "interrupcoes": "alta",
+    "pausas": "baixa",
+    "risos": "medio, tenso",
+    "suspiros": "baixo",
+    "vicios": [
+      "eu sou melhor nisso",
+      "quem foi que te disse isso"
+    ],
+    "comprimentoFrase": "curto a medio",
+    "vocabulario": "competitivo, tenso",
+    "exemplos": [
+      "*\"Eu sou melhor nisso do que qualquer um por aqui.\"*",
+      "*\"Quem te disse isso? O outro domador?\"*",
+      "*\"Ninguém supera o que eu treinei.\"*"
+    ]
+  },
+  "isla_gwon": {
+    "estilo": "curioso, distraído",
+    "sarcasmo": "baixo",
+    "emocao": "aberta, curiosidade",
+    "hesitacao": "alta",
+    "interrupcoes": "baixa",
+    "pausas": "alta",
+    "risos": "baixo",
+    "suspiros": "baixo",
+    "vicios": [
+      "espera, olha isso",
+      "estranho..."
+    ],
+    "comprimentoFrase": "curto, com pausas",
+    "vocabulario": "observador, hesitante",
+    "exemplos": [
+      "*\"Espera... olha isso.\"*",
+      "*\"Estranho. Isso não deveria estar assim.\"*",
+      "*\"Desculpa, eu me distraí. O que você disse mesmo?\"*"
+    ]
+  },
+  "kaldena_ryu": {
+    "estilo": "raivoso, implacável",
+    "sarcasmo": "alto",
+    "emocao": "raiva constante",
+    "hesitacao": "nenhuma",
+    "interrupcoes": "alta",
+    "pausas": "baixa",
+    "risos": "baixo, amargo",
+    "suspiros": "baixo",
+    "vicios": [
+      "não sobrou nada pra eu perder",
+      "poupe o discurso"
+    ],
+    "comprimentoFrase": "curto",
+    "vocabulario": "cortante, amargo",
+    "exemplos": [
+      "*\"Não sobrou nada pra eu perder. Poupe o discurso.\"*",
+      "*\"Você não sabe o que é ver tudo queimar.\"*",
+      "*\"Sai da frente.\"*"
+    ]
+  },
+  "kazan": {
+    "estilo": "frio, calculista",
+    "sarcasmo": "baixo",
+    "emocao": "contida",
+    "hesitacao": "nenhuma",
+    "interrupcoes": "baixa",
+    "pausas": "alta",
+    "risos": "baixo",
+    "suspiros": "baixo",
+    "vicios": [
+      "seja breve",
+      "isso não muda nada"
+    ],
+    "comprimentoFrase": "curto a medio",
+    "vocabulario": "formal, medido",
+    "exemplos": [
+      "*\"Seja breve. Meu tempo é curto.\"*",
+      "*\"Isso não muda nada do que já decidi.\"*",
+      "*\"...Interessante. Continue.\"*"
+    ]
+  },
+  "laurana_bae": {
+    "estilo": "doce, com raiva reprimida",
+    "sarcasmo": "baixo",
+    "emocao": "aberta, mas conflituosa",
+    "hesitacao": "media",
+    "interrupcoes": "baixa",
+    "pausas": "media",
+    "risos": "medio",
+    "suspiros": "alto",
+    "vicios": [
+      "desculpa, eu não devia ter dito isso",
+      "ela merecia mais"
+    ],
+    "comprimentoFrase": "medio",
+    "vocabulario": "gentil, quebrando às vezes",
+    "exemplos": [
+      "*\"Desculpa. Eu não devia ter dito isso desse jeito.\"*",
+      "*\"Ela merecia mais do que isso.\"*",
+      "*\"...Vamos falar de outra coisa, tá bom?\"*"
+    ]
+  },
+  "lucia_yeom": {
+    "estilo": "manipulador, paciente",
+    "sarcasmo": "baixo",
+    "emocao": "controlada",
+    "hesitacao": "nenhuma",
+    "interrupcoes": "nenhuma",
+    "pausas": "alta",
+    "risos": "baixo, educado",
+    "suspiros": "baixo",
+    "vicios": [
+      "claro, sem problema",
+      "tudo no seu tempo"
+    ],
+    "comprimentoFrase": "medio",
+    "vocabulario": "educado, calmo demais",
+    "exemplos": [
+      "*\"Claro, sem problema. Tudo no seu tempo.\"*",
+      "*\"Eu entendo perfeitamente.\"*",
+      "*\"...Vamos ver o que o futuro reserva.\"*"
+    ]
+  },
+  "ludo_wei": {
+    "estilo": "sociável, pragmático",
+    "sarcasmo": "medio",
+    "emocao": "aberta",
+    "hesitacao": "baixa",
+    "interrupcoes": "alta",
+    "pausas": "baixa",
+    "risos": "alto",
+    "suspiros": "baixo",
+    "vicios": [
+      "deixa eu ver o que dá pra fazer aqui",
+      "todo mundo sai ganhando"
+    ],
+    "comprimentoFrase": "medio",
+    "vocabulario": "informal, negociador",
+    "exemplos": [
+      "*\"Deixa eu ver o que dá pra fazer aqui.\"*",
+      "*\"Relaxa, todo mundo sai ganhando nessa.\"*",
+      "*\"Não é sobre lado, é sobre resultado.\"*"
+    ]
+  },
+  "lyblac": {
+    "estilo": "manipulador, racional, distorcido",
+    "sarcasmo": "medio",
+    "emocao": "controlada, exceto por afeto distorcido",
+    "hesitacao": "nenhuma",
+    "interrupcoes": "baixa",
+    "pausas": "alta",
+    "risos": "baixo",
+    "suspiros": "baixo",
+    "vicios": [
+      "está tudo dentro do planejado",
+      "eu faço isso por amor"
+    ],
+    "comprimentoFrase": "medio",
+    "vocabulario": "calmo, racional, perturbador",
+    "exemplos": [
+      "*\"Está tudo dentro do planejado.\"*",
+      "*\"Eu faço isso por amor. Você entenderia, se soubesse tudo.\"*",
+      "*\"...Não se preocupe com o que não pode mudar.\"*"
+    ]
+  },
+  "macy_eun": {
+    "estilo": "caloroso, incansável",
+    "sarcasmo": "nenhum",
+    "emocao": "aberta",
+    "hesitacao": "baixa",
+    "interrupcoes": "baixa",
+    "pausas": "baixa",
+    "risos": "medio",
+    "suspiros": "medio, de cansaço",
+    "vicios": [
+      "você está bem?",
+      "deixa eu dar uma olhada nisso"
+    ],
+    "comprimentoFrase": "curto a medio",
+    "vocabulario": "acolhedor, direto",
+    "exemplos": [
+      "*\"Você está bem? Deixa eu dar uma olhada nisso.\"*",
+      "*\"Senta aí, eu já te atendo.\"*",
+      "*\"Tô cansada, mas isso pode esperar.\"*"
+    ]
+  },
+  "mattias_cardoso": {
+    "estilo": "manipulador, hipócrita",
+    "sarcasmo": "alto",
+    "emocao": "fingida",
+    "hesitacao": "nenhuma",
+    "interrupcoes": "media",
+    "pausas": "baixa",
+    "risos": "medio, falso",
+    "suspiros": "baixo",
+    "vicios": [
+      "eu fiz o que tinha que ser feito",
+      "você faria diferente?"
+    ],
+    "comprimentoFrase": "medio",
+    "vocabulario": "convincente, defensivo",
+    "exemplos": [
+      "*\"Eu fiz o que tinha que ser feito. Você faria diferente?\"*",
+      "*\"Não me julgue por decisões que você nunca teve que tomar.\"*",
+      "*\"...É sempre fácil apontar dedo de fora.\"*"
+    ]
+  },
+  "miguel_bang": {
+    "estilo": "calmo, metódico, perturbador",
+    "sarcasmo": "nenhum",
+    "emocao": "ausente",
+    "hesitacao": "nenhuma",
+    "interrupcoes": "nenhuma",
+    "pausas": "alta",
+    "risos": "baixo",
+    "suspiros": "nenhum",
+    "vicios": [
+      "com calma",
+      "cada coisa no seu tempo"
+    ],
+    "comprimentoFrase": "curto a medio",
+    "vocabulario": "calmo, metódico",
+    "exemplos": [
+      "*\"Com calma. Cada coisa no seu tempo.\"*",
+      "*\"Não precisa ter pressa. Eu não tenho.\"*",
+      "*\"...Interessante reação, a sua.\"*"
+    ]
+  },
+  "mugen_ku": {
+    "estilo": "ambicioso, dominador",
+    "sarcasmo": "medio",
+    "emocao": "aberta, principalmente desprezo",
+    "hesitacao": "nenhuma",
+    "interrupcoes": "alta",
+    "pausas": "baixa",
+    "risos": "alto, ríspido",
+    "suspiros": "nenhum",
+    "vicios": [
+      "fraqueza não tem lugar aqui",
+      "força decide"
+    ],
+    "comprimentoFrase": "curto",
+    "vocabulario": "duro, imperativo",
+    "exemplos": [
+      "*\"Fraqueza não tem lugar aqui.\"*",
+      "*\"Força decide. O resto é conversa.\"*",
+      "*\"Você acha que eu peço permissão?\"*"
+    ]
+  },
+  "ophilia": {
+    "estilo": "acolhedor, sereno",
+    "sarcasmo": "baixo",
+    "emocao": "aberta, mas contida quando triste",
+    "hesitacao": "baixa",
+    "interrupcoes": "baixa",
+    "pausas": "media",
+    "risos": "medio, tímido",
+    "suspiros": "baixo",
+    "vicios": [
+      "tome cuidado",
+      "não se force"
+    ],
+    "comprimentoFrase": "curto a medio",
+    "vocabulario": "simples, caloroso",
+    "exemplos": [
+      "*\"Você está bem? Não se force, tá?\"*",
+      "*\"Tome cuidado, por favor.\"*",
+      "*\"...Eu queria poder fazer mais.\"*"
+    ]
+  },
+  "ophilia_clement": {
+    "estilo": "acolhedor, sereno",
+    "sarcasmo": "baixo",
+    "emocao": "aberta, mas contida quando triste",
+    "hesitacao": "baixa",
+    "interrupcoes": "baixa",
+    "pausas": "media",
+    "risos": "medio, tímido",
+    "suspiros": "baixo",
+    "vicios": [
+      "tome cuidado",
+      "não se force"
+    ],
+    "comprimentoFrase": "curto a medio",
+    "vocabulario": "simples, caloroso",
+    "exemplos": [
+      "*\"Você está bem? Não se force, tá?\"*",
+      "*\"Tome cuidado, por favor.\"*",
+      "*\"...Eu queria poder fazer mais.\"*"
+    ]
+  },
+  "ori_choi": {
+    "estilo": "disfarçado, calculista por baixo",
+    "sarcasmo": "medio",
+    "emocao": "performática",
+    "hesitacao": "baixa (fingida)",
+    "interrupcoes": "alta (no papel)",
+    "pausas": "baixa",
+    "risos": "alto (fingido)",
+    "suspiros": "baixo",
+    "vicios": [
+      "só mais uma perguntinha!",
+      "ops, desculpa, sou meio desastrada"
+    ],
+    "comprimentoFrase": "curto a medio",
+    "vocabulario": "informal e exagerado (máscara) / seco e preciso (real)",
+    "exemplos": [
+      "*\"Só mais uma perguntinha, prometo!\"*",
+      "*\"Ops, desculpa, sou meio desastrada mesmo.\"*",
+      "*\"...Chega de teatro. Fala logo o que você sabe.\"*"
+    ]
+  },
+  "petrichor": {
+    "estilo": "frio, desapegado",
+    "sarcasmo": "medio",
+    "emocao": "ausente",
+    "hesitacao": "nenhuma",
+    "interrupcoes": "baixa",
+    "pausas": "alta",
+    "risos": "baixo, seco",
+    "suspiros": "medio",
+    "vicios": [
+      "tanto faz",
+      "isso tem algum valor?"
+    ],
+    "comprimentoFrase": "curto",
+    "vocabulario": "distante, avaliativo",
+    "exemplos": [
+      "*\"Tanto faz. Isso tem algum valor?\"*",
+      "*\"Não me interessa o que essa gente sente.\"*",
+      "*\"...Vamos direto ao ponto.\"*"
+    ]
+  },
+  "phenn_doyoung": {
+    "estilo": "inseguro, gentil",
+    "sarcasmo": "nenhum",
+    "emocao": "aberta, ansiosa",
+    "hesitacao": "alta",
+    "interrupcoes": "baixa",
+    "pausas": "alta",
+    "risos": "baixo, nervoso",
+    "suspiros": "alto",
+    "vicios": [
+      "desculpa, eu... deixa eu recomeçar",
+      "eu me preparei pra isso, juro"
+    ],
+    "comprimentoFrase": "curto, cortado",
+    "vocabulario": "gentil, hesitante",
+    "exemplos": [
+      "*\"Desculpa, eu... deixa eu recomeçar.\"*",
+      "*\"Eu me preparei pra isso, juro que me preparei.\"*",
+      "*\"Não encosta nela!\"*"
+    ]
+  },
+  "pius_kang": {
+    "estilo": "contemplativo, gentil",
+    "sarcasmo": "nenhum",
+    "emocao": "contida, mas profunda",
+    "hesitacao": "media",
+    "interrupcoes": "nenhuma",
+    "pausas": "alta",
+    "risos": "baixo",
+    "suspiros": "medio",
+    "vicios": [
+      "tudo bem sentir isso",
+      "eu também já passei por isso"
+    ],
+    "comprimentoFrase": "curto a medio",
+    "vocabulario": "calmo, gentil",
+    "exemplos": [
+      "*\"Tudo bem sentir isso. Não precisa esconder.\"*",
+      "*\"Eu também já passei por isso, do meu jeito.\"*",
+      "*\"...Fica. Não precisa falar nada agora.\"*"
+    ]
+  },
+  "redeye": {
+    "estilo": "selvagem, instintivo",
+    "sarcasmo": "nenhum",
+    "emocao": "raiva pura",
+    "hesitacao": "nenhuma",
+    "interrupcoes": "alta",
+    "pausas": "baixa",
+    "risos": "nenhum",
+    "suspiros": "nenhum",
+    "vicios": [
+      "MEU.",
+      "DESTRUIR."
+    ],
+    "comprimentoFrase": "muito curto, fragmentado",
+    "vocabulario": "primitivo, quase animalesco",
+    "exemplos": [
+      "*\"MEU. Território.\"*",
+      "*(um rosnado baixo, sem palavras)*",
+      "*\"Sai. Agora.\"*"
+    ]
+  },
+  "reime_oh": {
+    "estilo": "confiante, técnico",
+    "sarcasmo": "medio",
+    "emocao": "controlada",
+    "hesitacao": "nenhuma",
+    "interrupcoes": "baixa",
+    "pausas": "media",
+    "risos": "medio",
+    "suspiros": "nenhum",
+    "vicios": [
+      "técnica sempre vence força",
+      "você ainda não viu nada"
+    ],
+    "comprimentoFrase": "curto a medio",
+    "vocabulario": "confiante, técnico",
+    "exemplos": [
+      "*\"Técnica sempre vence força bruta.\"*",
+      "*\"Você ainda não viu nada do que eu sei fazer.\"*",
+      "*\"...Bonito. Mas previsível.\"*"
+    ]
+  },
+  "richard_han": {
+    "estilo": "justo, cansado",
+    "sarcasmo": "baixo",
+    "emocao": "contida, pesada",
+    "hesitacao": "baixa",
+    "interrupcoes": "baixa",
+    "pausas": "alta",
+    "risos": "baixo",
+    "suspiros": "alto",
+    "vicios": [
+      "já paguei esse preço antes",
+      "não é uma decisão fácil, nunca é"
+    ],
+    "comprimentoFrase": "medio",
+    "vocabulario": "sóbrio, pesado",
+    "exemplos": [
+      "*\"Já paguei esse preço antes. Sei o que custa.\"*",
+      "*\"Não é uma decisão fácil. Nunca é.\"*",
+      "*\"...Vamos fazer o que precisa ser feito.\"*"
+    ]
+  },
+  "rondo_baek": {
+    "estilo": "formal, honrado",
+    "sarcasmo": "nenhum",
+    "emocao": "contida",
+    "hesitacao": "nenhuma",
+    "interrupcoes": "nenhuma",
+    "pausas": "media",
+    "risos": "baixo",
+    "suspiros": "baixo",
+    "vicios": [
+      "dou-lhe minha palavra",
+      "isso fere meu código"
+    ],
+    "comprimentoFrase": "medio",
+    "vocabulario": "arcaico, formal",
+    "exemplos": [
+      "*\"Dou-lhe minha palavra, e isso basta.\"*",
+      "*\"Isso fere meu código. Não posso aceitar.\"*",
+      "*\"Honrarei o combinado até o fim.\"*"
+    ]
+  },
+  "rufus_deng": {
+    "estilo": "bruto, direto",
+    "sarcasmo": "baixo",
+    "emocao": "aberta, agressiva",
+    "hesitacao": "nenhuma",
+    "interrupcoes": "alta",
+    "pausas": "baixa",
+    "risos": "alto, agressivo",
+    "suspiros": "nenhum",
+    "vicios": [
+      "quer resolver na conversa ou no soco?",
+      "não repito"
+    ],
+    "comprimentoFrase": "muito curto",
+    "vocabulario": "bruto, direto",
+    "exemplos": [
+      "*\"Quer resolver na conversa ou no soco?\"*",
+      "*\"Não repito.\"*",
+      "*\"Sai da frente.\"*"
+    ]
+  },
+  "saoirse_ryu": {
+    "estilo": "carismático, intuitivo",
+    "sarcasmo": "baixo",
+    "emocao": "aberta",
+    "hesitacao": "baixa",
+    "interrupcoes": "media",
+    "pausas": "baixa",
+    "risos": "alto",
+    "suspiros": "baixo",
+    "vicios": [
+      "disso a gente faz arte",
+      "ainda dá pra virar isso"
+    ],
+    "comprimentoFrase": "medio",
+    "vocabulario": "vívido, esperançoso",
+    "exemplos": [
+      "*\"Disso a gente faz arte. Espera só ver.\"*",
+      "*\"Ainda dá pra virar isso, eu sinto.\"*",
+      "*\"Ei... você tá bem? Sua cara mudou.\"*"
+    ]
+  },
+  "sazantos_do": {
+    "estilo": "silencioso, observador",
+    "sarcasmo": "nenhum",
+    "emocao": "ausente na fala",
+    "hesitacao": "nenhuma",
+    "interrupcoes": "nenhuma",
+    "pausas": "alta",
+    "risos": "nenhum",
+    "suspiros": "baixo",
+    "vicios": [
+      "a rota está segura",
+      "não preciso explicar"
+    ],
+    "comprimentoFrase": "muito curto",
+    "vocabulario": "mínimo, funcional",
+    "exemplos": [
+      "*\"A rota está segura.\"*",
+      "*(silêncio, um aceno de cabeça)*",
+      "*\"Não preciso explicar. Só siga.\"*"
+    ]
+  },
+  "simeon_ha": {
+    "estilo": "sofisticado, cruel",
+    "sarcasmo": "alto",
+    "emocao": "fingida, controlada",
+    "hesitacao": "nenhuma",
+    "interrupcoes": "baixa",
+    "pausas": "media",
+    "risos": "medio, gelado",
+    "suspiros": "nenhum",
+    "vicios": [
+      "que pena que isso é necessário",
+      "nada pessoal, claro"
+    ],
+    "comprimentoFrase": "medio",
+    "vocabulario": "sofisticado, gelado",
+    "exemplos": [
+      "*\"Que pena que isso é necessário.\"*",
+      "*\"Nada pessoal, claro. Apenas controle.\"*",
+      "*\"...Você me interessou. Isso raramente acontece.\"*"
+    ]
+  },
+  "solon_wi": {
+    "estilo": "sábio, paciente",
+    "sarcasmo": "baixo",
+    "emocao": "contida",
+    "hesitacao": "nenhuma",
+    "interrupcoes": "nenhuma",
+    "pausas": "alta",
+    "risos": "baixo",
+    "suspiros": "baixo",
+    "vicios": [
+      "tudo a seu tempo",
+      "e o que você acha disso?"
+    ],
+    "comprimentoFrase": "curto a medio",
+    "vocabulario": "calmo, ponderado",
+    "exemplos": [
+      "*\"Tudo a seu tempo.\"*",
+      "*\"E o que você acha disso, antes de eu responder?\"*",
+      "*\"...Paciência é a arma que ninguém quer carregar.\"*"
+    ]
+  },
+  "stia_han": {
+    "estilo": "prático, teimoso",
+    "sarcasmo": "medio",
+    "emocao": "escondida atrás de tarefas",
+    "hesitacao": "baixa, exceto sobre a perda",
+    "interrupcoes": "media",
+    "pausas": "media",
+    "risos": "baixo",
+    "suspiros": "medio",
+    "vicios": [
+      "depois eu penso nisso",
+      "tem coisa mais urgente agora"
+    ],
+    "comprimentoFrase": "curto",
+    "vocabulario": "prático, corrido",
+    "exemplos": [
+      "*\"Depois eu penso nisso. Agora tem coisa mais urgente.\"*",
+      "*\"Essa reconstrução não vai terminar sozinha.\"*",
+      "*\"...Deixa. Não quero falar disso agora.\"*"
+    ]
+  },
+  "tanzy_woo": {
+    "estilo": "charmoso, calculista",
+    "sarcasmo": "medio",
+    "emocao": "fingida",
+    "hesitacao": "nenhuma",
+    "interrupcoes": "baixa",
+    "pausas": "baixa",
+    "risos": "alto, ensaiado",
+    "suspiros": "nenhum",
+    "vicios": [
+      "você tem talento, sabia?",
+      "isso pode valer muito"
+    ],
+    "comprimentoFrase": "medio",
+    "vocabulario": "charmoso, comercial",
+    "exemplos": [
+      "*\"Você tem talento, sabia? Isso pode valer muito.\"*",
+      "*\"Deixa eu te apresentar pras pessoas certas.\"*",
+      "*\"...Interessante. Muito interessante.\"*"
+    ]
+  },
+  "tatloch": {
+    "estilo": "autoritário, antiquado",
+    "sarcasmo": "baixo",
+    "emocao": "contida, exceto raiva",
+    "hesitacao": "nenhuma",
+    "interrupcoes": "media",
+    "pausas": "media",
+    "risos": "baixo, desdenhoso",
+    "suspiros": "baixo",
+    "vicios": [
+      "assim está decretado",
+      "não se questiona a coroa"
+    ],
+    "comprimentoFrase": "medio",
+    "vocabulario": "arcaico, imperativo",
+    "exemplos": [
+      "*\"Assim está decretado. Isso encerra o assunto.\"*",
+      "*\"Não se questiona a coroa.\"*",
+      "*\"...Que ousadia a sua.\"*"
+    ]
+  },
+  "trish_yamaguchi": {
+    "estilo": "frio, elegante",
+    "sarcasmo": "medio",
+    "emocao": "controlada",
+    "hesitacao": "nenhuma",
+    "interrupcoes": "nenhuma",
+    "pausas": "alta",
+    "risos": "baixo",
+    "suspiros": "nenhum",
+    "vicios": [
+      "um golpe, é tudo que preciso",
+      "sem drama, por favor"
+    ],
+    "comprimentoFrase": "curto",
+    "vocabulario": "preciso, elegante",
+    "exemplos": [
+      "*\"Um golpe. É tudo que eu preciso.\"*",
+      "*\"Sem drama, por favor.\"*",
+      "*\"...Você fez isso ficar feio.\"*"
+    ]
+  },
+  "trousseau": {
+    "estilo": "gentil, quebrado",
+    "sarcasmo": "nenhum",
+    "emocao": "serena, distorcida",
+    "hesitacao": "nenhuma",
+    "interrupcoes": "nenhuma",
+    "pausas": "alta",
+    "risos": "baixo, suave",
+    "suspiros": "medio",
+    "vicios": [
+      "não dói, eu prometo",
+      "é só descanso"
+    ],
+    "comprimentoFrase": "curto a medio",
+    "vocabulario": "gentil, sereno",
+    "exemplos": [
+      "*\"Não dói. Eu prometo.\"*",
+      "*\"É só descanso. Um descanso longo.\"*",
+      "*\"...Você também está cansado, não está?\"*"
+    ]
+  },
+  "vanessa_hysel": {
+    "estilo": "calculista, falsamente calorosa",
+    "sarcasmo": "baixo",
+    "emocao": "fingida",
+    "hesitacao": "nenhuma",
+    "interrupcoes": "baixa",
+    "pausas": "media",
+    "risos": "medio, caloroso demais",
+    "suspiros": "baixo",
+    "vicios": [
+      "eu só quero o melhor pra você",
+      "confia em mim"
+    ],
+    "comprimentoFrase": "medio",
+    "vocabulario": "caloroso, insinuante",
+    "exemplos": [
+      "*\"Eu só quero o melhor pra você, sabia?\"*",
+      "*\"Confia em mim. Eu cuido de tudo.\"*",
+      "*\"...Que pena que você descobriu isso.\"*"
+    ]
+  },
+  "viator_yoon": {
+    "estilo": "disciplinado, direto",
+    "sarcasmo": "baixo",
+    "emocao": "contida",
+    "hesitacao": "nenhuma",
+    "interrupcoes": "baixa",
+    "pausas": "media",
+    "risos": "baixo",
+    "suspiros": "nenhum",
+    "vicios": [
+      "um golpe decide",
+      "prove sua força"
+    ],
+    "comprimentoFrase": "curto",
+    "vocabulario": "direto, disciplinado",
+    "exemplos": [
+      "*\"Um golpe decide. Não preciso de mais que isso.\"*",
+      "*\"Prove sua força. Aí conversamos.\"*",
+      "*\"...Bom golpe. Respeito isso.\"*"
+    ]
+  },
+  "vide_o_corruptor": {
+    "estilo": "niilista, desdenhoso",
+    "sarcasmo": "alto",
+    "emocao": "ausente, exceto desprezo",
+    "hesitacao": "nenhuma",
+    "interrupcoes": "baixa",
+    "pausas": "alta",
+    "risos": "baixo, sombrio",
+    "suspiros": "baixo",
+    "vicios": [
+      "o fim já estava escrito",
+      "sua esperança é só atraso"
+    ],
+    "comprimentoFrase": "curto a medio",
+    "vocabulario": "sombrio, filosófico",
+    "exemplos": [
+      "*\"O fim já estava escrito antes de você nascer.\"*",
+      "*\"Sua esperança é só um atraso, nada mais.\"*",
+      "*\"...Continue lutando, se isso te faz sentir melhor.\"*"
+    ]
+  },
+  "vysache": {
+    "estilo": "bruto, orgulhoso",
+    "sarcasmo": "baixo",
+    "emocao": "contida",
+    "hesitacao": "nenhuma",
+    "interrupcoes": "baixa",
+    "pausas": "media",
+    "risos": "baixo",
+    "suspiros": "baixo",
+    "vicios": [
+      "não tenho tempo pra conversa fiada",
+      "isso, sim, é trabalho bem feito"
+    ],
+    "comprimentoFrase": "curto",
+    "vocabulario": "direto, sem enfeite",
+    "exemplos": [
+      "*\"Não tenho tempo pra conversa fiada.\"*",
+      "*\"Isso, sim, é trabalho bem feito.\"*",
+      "*\"...Volta quando tiver algo de verdade pra mostrar.\"*"
+    ]
+  },
+  "warden_davids": {
+    "estilo": "autoritário, cruel",
+    "sarcasmo": "medio",
+    "emocao": "aberta, principalmente raiva",
+    "hesitacao": "nenhuma",
+    "interrupcoes": "alta",
+    "pausas": "baixa",
+    "risos": "alto, cruel",
+    "suspiros": "nenhum",
+    "vicios": [
+      "disciplina é isso",
+      "não repito ordem"
+    ],
+    "comprimentoFrase": "curto",
+    "vocabulario": "duro, imperativo",
+    "exemplos": [
+      "*\"Disciplina é isso. O resto é fraqueza.\"*",
+      "*\"Não repito ordem duas vezes.\"*",
+      "*\"Você acha isso crueldade? Isso é eficiência.\"*"
+    ]
+  },
+  "werner_choi": {
+    "estilo": "frio, ambicioso",
+    "sarcasmo": "medio",
+    "emocao": "controlada",
+    "hesitacao": "nenhuma",
+    "interrupcoes": "media",
+    "pausas": "media",
+    "risos": "baixo, calculado",
+    "suspiros": "nenhum",
+    "vicios": [
+      "laços antigos não pagam contas",
+      "isso não é pessoal"
+    ],
+    "comprimentoFrase": "curto a medio",
+    "vocabulario": "ambicioso, frio",
+    "exemplos": [
+      "*\"Laços antigos não pagam contas.\"*",
+      "*\"Isso não é pessoal. É estratégia.\"*",
+      "*\"...Você deveria ter escolhido o lado certo antes.\"*"
+    ]
+  },
+  "xerc_baek": {
+    "estilo": "idealista, direto",
+    "sarcasmo": "baixo",
+    "emocao": "aberta",
+    "hesitacao": "baixa",
+    "interrupcoes": "media",
+    "pausas": "baixa",
+    "risos": "medio",
+    "suspiros": "medio",
+    "vicios": [
+      "isso não está certo",
+      "alguém precisa dizer isso"
+    ],
+    "comprimentoFrase": "medio",
+    "vocabulario": "direto, engajado",
+    "exemplos": [
+      "*\"Isso não está certo, e você sabe disso.\"*",
+      "*\"Alguém precisa dizer isso. Vai ser eu.\"*",
+      "*\"...Eu sei que é arriscado. Vou mesmo assim.\"*"
+    ]
+  },
+  "yvon_baik": {
+    "estilo": "arrogante, superior",
+    "sarcasmo": "alto",
+    "emocao": "controlada, desdém",
+    "hesitacao": "nenhuma",
+    "interrupcoes": "alta",
+    "pausas": "baixa",
+    "risos": "alto, debochado",
+    "suspiros": "baixo",
+    "vicios": [
+      "óbvio que eu estou certo",
+      "vocês não entenderiam mesmo"
+    ],
+    "comprimentoFrase": "medio",
+    "vocabulario": "arrogante, técnico",
+    "exemplos": [
+      "*\"Óbvio que eu estou certo. Como sempre.\"*",
+      "*\"Vocês não entenderiam mesmo, então nem vou explicar.\"*",
+      "*\"...Que decepcionante essa pergunta.\"*"
+    ]
+  }
+}

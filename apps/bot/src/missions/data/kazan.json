@@ -1,0 +1,178 @@
+{
+  "npcId": "kazan",
+  "npcNome": "Kazan",
+  "npcTitulo": "O Conselheiro que Odeia o Amanhã",
+  "totalMissoes": 10,
+  "missoes": [
+    {
+      "id": "kazan_01",
+      "npcId": "kazan",
+      "numero": 1,
+      "nome": "Capítulo 1: Rumores sobre Kazan",
+      "descricao": "Relatos alarmantes começam a circular entre guildas sobre Kazan. Conselheiro de confiança de um importante líder de guilda, Kazan carrega o trauma de ter visto seu reino de origem ser conquistado e destruído....",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Investigue 3 relatos de testemunhas sobre Kazan",
+      "recompensas": {
+        "xp": 17100,
+        "won": 114000,
+        "item": "Roupas Discretas de Conselheiro"
+      }
+    },
+    {
+      "id": "kazan_02",
+      "npcId": "kazan",
+      "numero": 2,
+      "nome": "Capítulo 2: Rastreando O Conselheiro que Odeia o Amanhã",
+      "descricao": "Reúna evidências concretas da atividade de Kazan antes que a Associação classifique o caso como perdido.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Reúna provas em 2 locais diferentes ligados a Kazan",
+      "recompensas": {
+        "xp": 19800,
+        "won": 132000,
+        "item": "Roupas Discretas de Conselheiro"
+      }
+    },
+    {
+      "id": "kazan_03",
+      "npcId": "kazan",
+      "numero": 3,
+      "nome": "Capítulo 3: Confronto com Kazan",
+      "descricao": "É hora de enfrentar Kazan diretamente. Prepare-se: como O Conselheiro que Odeia o Amanhã, este será um combate de Rank A.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Derrote Kazan em combate direto",
+      "recompensas": {
+        "xp": 22500,
+        "won": 150000,
+        "item": "Réplica Reforçada de: Lâmina Fina Escondida nas Vestes"
+      }
+    },
+    {
+      "id": "kazan_04",
+      "npcId": "kazan",
+      "numero": 4,
+      "nome": "Capítulo 4: A Queda de O Conselheiro que Odeia o Amanhã",
+      "descricao": "Com Kazan neutralizado(a), reste apenas reportar o caso à Associação e lidar com as consequências reveladas.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Entregue o relatório final sobre Kazan à Associação",
+      "recompensas": {
+        "xp": 25200,
+        "won": 168000,
+        "item": "Réplica Reforçada de: Lâmina Fina Escondida nas Vestes"
+      }
+    },
+    {
+      "id": "kazan_05",
+      "npcId": "kazan",
+      "numero": 5,
+      "nome": "Reforço de Kazan",
+      "descricao": "Kazan pede que você adquira, em qualquer Loja de Itens da Associação, um equipamento de Rank A compatível com Adagas para reforçar seu arsenal de combate.",
+      "categoria": "secundaria",
+      "tipo": "loja",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Comprar 1 equipamento de Rank A (peça de armadura ou arma)",
+      "recompensas": {
+        "xp": 5400,
+        "won": 36000,
+        "item": "Réplica Reforçada de: Lâmina Fina Escondida nas Vestes"
+      }
+    },
+    {
+      "id": "kazan_06",
+      "npcId": "kazan",
+      "numero": 6,
+      "nome": "Provisões de Kazan",
+      "descricao": "Antes da próxima incursão, Kazan pede que você compre poções de recuperação e um acessório de afinidade elemental Sombra na loja mais próxima.",
+      "categoria": "secundaria",
+      "tipo": "loja",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Comprar 3 poções + 1 acessório elemental",
+      "recompensas": {
+        "xp": 4950,
+        "won": 33000,
+        "item": "Registro de Manipulações Passadas"
+      }
+    },
+    {
+      "id": "kazan_07",
+      "npcId": "kazan",
+      "numero": 7,
+      "nome": "Receita de Kazan",
+      "descricao": "Usando materiais coletados em dungeons de afinidade Sombra, produza o item indicado por Kazan em uma bancada de criação da guilda.",
+      "categoria": "secundaria",
+      "tipo": "producao",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Produzir 1 item de afinidade Sombra (Rank A)",
+      "recompensas": {
+        "xp": 5850,
+        "won": 39000,
+        "item": "Fragmento de Mana (Sombra)"
+      }
+    },
+    {
+      "id": "kazan_08",
+      "npcId": "kazan",
+      "numero": 8,
+      "nome": "Suprimento Especial de Kazan",
+      "descricao": "Kazan ensina uma técnica pessoal de preparo; produza 3 unidades de um item de suporte (poção, munição ou material) ligado ao estilo de combate de Adagas.",
+      "categoria": "secundaria",
+      "tipo": "producao",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Produzir 3 itens de suporte",
+      "recompensas": {
+        "xp": 6300,
+        "won": 42000,
+        "item": "Fragmento de Mana (Sombra)"
+      }
+    },
+    {
+      "id": "kazan_09",
+      "npcId": "kazan",
+      "numero": 9,
+      "nome": "Treino de Combate com Kazan",
+      "descricao": "Kazan solicita ajuda para conter uma infestação: derrote sombras rastejantes em dungeons de Rank A ou inferior.",
+      "categoria": "cacada",
+      "tipo": "caca",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Derrotar 35 Sombras Rastejantes",
+      "recompensas": {
+        "xp": 7200,
+        "won": 48000,
+        "item": "Roupas Discretas de Conselheiro"
+      }
+    },
+    {
+      "id": "kazan_10",
+      "npcId": "kazan",
+      "numero": 10,
+      "nome": "Caçada Recomendada por Kazan",
+      "descricao": "Uma variante mais forte de sombras rastejantes tem aparecido nas rondas de Kazan; elimine essas ameaças antes que evoluam.",
+      "categoria": "cacada",
+      "tipo": "caca",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Derrotar 8 Sombras Rastejantes (variante fortalecida)",
+      "recompensas": {
+        "xp": 9000,
+        "won": 60000,
+        "item": "Réplica Reforçada de: Lâmina Fina Escondida nas Vestes"
+      }
+    }
+  ]
+}

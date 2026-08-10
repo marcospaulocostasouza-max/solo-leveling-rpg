@@ -1,0 +1,42 @@
+{
+  "id": "reime_oh",
+  "papel": "Heroína",
+  "base_em": "Reime (Octopath Traveler 0)",
+  "nome": "Reime Oh",
+  "idade": "24",
+  "nacionalidade": "Sul-coreana, campeã invicta da arena de Victors Hollow",
+  "aparencia": "Corpo ágil e definido, cabelos negros curtos com uma faixa de campeã amarrada no braço, veste armadura leve otimizada para velocidade.",
+  "altura_peso": "1,71m / 60kg",
+  "personalidade": "Confiante, competitiva e obcecada em provar que técnica supera força bruta. Trata cada combate como uma dança calculada.",
+  "historia": "Campeã invicta da arena de duelos de Victors Hollow, Reime construiu sua reputação vencendo caçadores muito mais fortes fisicamente através de pura finesse.",
+  "classe": "Lutador",
+  "classe_avancada": "Hrymir",
+  "rank": "S",
+  "nivel": 91,
+  "estilo_luta": "Proficiência em Espadas",
+  "atributos": {
+    "forca": 70,
+    "resistencia": 55,
+    "velocidade": 88,
+    "sentidos": 80,
+    "inteligencia": 50,
+    "poder_magico": 18
+  },
+  "elemento": "Vento",
+  "habilidade_unica": "Leitura de Combate — analisa o padrão de ataque do inimigo por um turno, garantindo esquiva total ao próximo golpe recebido e um contra-ataque automático.",
+  "titulo": "A Invicta de Victors Hollow",
+  "equipamentos": {
+    "arma": "Espada Curva de Duelo",
+    "itens": "Faixa de Campeã, Armadura Leve de Torneio, Registro de Vitórias"
+  },
+  "tecnicas": [
+    "Corte da Finesse",
+    "Contra-Ataque Perfeito",
+    "Dança das Lâminas"
+  ],
+  "formaFalar": "Fala com determinação e honra, valorizando a força e a coragem. Suas palavras são firmes e inspiradoras.",
+  "localizacao": "Coreia do Sul",
+  "profissao": "Caçador(a) Lutador",
+  "objetivos": "Proteger os inocentes, evoluir como caçador e desvendar os mistérios dos portais.",
+  "valores": "A vida é preciosa. A coragem é essencial. A lealdade é inegociável."
+}

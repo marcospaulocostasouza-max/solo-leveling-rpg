@@ -1,0 +1,207 @@
+
+╔══════════════════════════════════════════════════════════════╗
+║           RELATÓRIO DE AUDITORIA DO SISTEMA DE NPCs          ║
+╚══════════════════════════════════════════════════════════════╝
+
+════════════════════════════════════════════════════════════════
+  RESUMO EXECUTIVO
+════════════════════════════════════════════════════════════════
+
+  Total de NPCs encontrados:     74
+  Total de NPCs funcionais:      74
+  Total de NPCs com problemas:   0
+  Total de problemas encontrados: 5
+
+════════════════════════════════════════════════════════════════
+  DETALHAMENTO POR CATEGORIA
+════════════════════════════════════════════════════════════════
+
+
+--- INTEGRACAO ---
+Problemas encontrados: 3
+
+  NPC: Ophilia Clement
+    • Nome duplicado: Ophilia Clement
+    Severidade: ALTO
+
+  NPC: Ophilia Clement
+    • Arquivo de comando não existe: npc_ophilia.js
+    Severidade: MÉDIO
+
+  NPC: Vysache
+    • Arquivo de comando não existe: npc_vysache.js
+    Severidade: MÉDIO
+
+
+--- BASECONHECIMENTO ---
+Problemas encontrados: 0
+
+
+--- SISTEMADIALOGO ---
+Problemas encontrados: 0
+
+
+--- PERSONALIDADE ---
+Problemas encontrados: 0
+
+
+--- FORMATACAO ---
+Problemas encontrados: 0
+
+
+--- MEMORIA ---
+Problemas encontrados: 0
+
+
+--- THINKING ---
+Problemas encontrados: 0
+
+
+--- ERROS ---
+Problemas encontrados: 2
+
+  NPC: N/A
+    • INCOMPATIBILIDADE CRÍTICA: contextOptimizer retorna estrutura diferente do que promptBuilder espera. promptBuilder acessa contexto.estadoEmocional, contexto.missaoAtual, contexto.mundo que não existem no contexto otimizado. Isso causa perda de informações de humor, missão e mundo durante os diálogos.
+    Severidade: CRÍTICO
+
+  NPC: N/A
+    • Arquivo rotinas_geradas.js existe mas não é referenciado no scheduler - possível código morto
+    Severidade: BAIXO
+
+
+--- TESTES ---
+Problemas encontrados: 0
+
+
+════════════════════════════════════════════════════════════════
+  ARQUIVOS AFETADOS
+════════════════════════════════════════════════════════════════
+  • src/ia/contextOptimizer.js + src/ia/promptBuilder.js
+  • src/npc/rotinas_geradas.js
+
+════════════════════════════════════════════════════════════════
+  CORREÇÕES REALIZADAS AUTOMATICAMENTE
+════════════════════════════════════════════════════════════════
+  • MemoryManager integrado no contextManager para carregar memórias durante os diálogos
+  • contextOptimizer agora inclui memórias no contexto otimizado
+
+════════════════════════════════════════════════════════════════
+  CORREÇÕES QUE AINDA PRECISAM SER FEITAS
+════════════════════════════════════════════════════════════════
+  • Corrigir incompatibilidade entre contextOptimizer e promptBuilder - o contextOptimizer deve retornar a estrutura completa esperada pelo promptBuilder
+
+════════════════════════════════════════════════════════════════
+  RECOMENDAÇÕES DE MELHORIA
+════════════════════════════════════════════════════════════════
+
+  1. Integrar MemoryManager no contextManager para carregar memórias
+     durante os diálogos (atualmente retorna array vazio).
+
+  2. Corrigir incompatibilidade entre contextOptimizer e promptBuilder:
+     O contextOptimizer deve retornar a estrutura completa esperada
+     pelo promptBuilder (npc completo, estadoEmocional, missaoAtual, mundo).
+
+  3. Integrar MoodManager no contextManager para carregar o humor
+     permanente do NPC (atualmente retorna humor padrão "Neutro").
+
+  4. Integrar RelationshipManager no contextManager para carregar
+     o relacionamento entre NPC e jogador (atualmente retorna padrão).
+
+  5. Integrar Scheduler no contextManager para incluir informação
+     sobre a rotina atual do NPC (disponibilidade, ação atual).
+
+  6. Corrigir bug no performanceMonitor onde os métodos inicioTotal()
+     e fimTotal() sobrescrevem a si mesmos com números.
+
+  7. Remover import não utilizado no messageFormatter.js.
+
+  8. Adicionar rotinas personalizadas para cada NPC no scheduler
+     (atualmente muitos NPCs usam rotinas genéricas idênticas).
+
+  9. Implementar Memory Engine para criar memórias automaticamente
+     durante as conversas (atualmente as memórias não são criadas).
+
+  10. Considerar adicionar validação de schema ao carregar NPCs
+      para garantir que todos os campos obrigatórios estão presentes.
+
+════════════════════════════════════════════════════════════════
+  LISTA DE TODOS OS NPCs ENCONTRADOS
+════════════════════════════════════════════════════════════════
+  ✓ Agnea Bristarni (agnea_bristarni)
+  ✓ Alaune Yeong (alaune_yeong)
+  ✓ Alexia Song (alexia_song)
+  ✓ Alfyn Greengrass (alfyn_greengrass)
+  ✓ Arcanette (arcanette)
+  ✓ Bargello Yeon (bargello_yeon)
+  ✓ Carinda Moon (carinda_moon)
+  ✓ Castti Florenz (castti_florenz)
+  ✓ Celsus Park (celsus_park)
+  ✓ Claude (claude)
+  ✓ Cyrus Albright (cyrus_albright)
+  ✓ Darius Kwon (darius_kwon)
+  ✓ Delitia Song (delitia_song)
+  ✓ Elrica Edoras (elrica_edoras)
+  ✓ Eltrix Noh (eltrix_noh)
+  ✓ Entidade 'Mãe' (entidade_mae)
+  ✓ Esperre Jin (esperre_jin)
+  ✓ Galdera (galdera)
+  ✓ Gaston Rho (gaston_rho)
+  ✓ Gideon Ma (gideon_ma)
+  ✓ Goodwin Cha (goodwin_cha)
+  ✓ H'aanit (haanit)
+  ✓ Harvey Jeong (harvey_jeong)
+  ✓ Heidne Ahn (heidne_ahn)
+  ✓ Helgenish (helgenish)
+  ✓ Hikari Ku (hikari_ku)
+  ✓ Isla Gwon (isla_gwon)
+  ✓ Kaldena Ryu (kaldena_ryu)
+  ✓ Kazan (kazan)
+  ✓ Laurana Bae (laurana_bae)
+  ✓ Lucia Yeom (lucia_yeom)
+  ✓ Ludo Wei (ludo_wei)
+  ✓ Lyblac (lyblac)
+  ✓ Macy Eun (macy_eun)
+  ✓ Mattias Cardoso (mattias_cardoso)
+  ✓ Miguel Bang (miguel_bang)
+  ✓ Mugen Ku (mugen_ku)
+  ✓ Ochette (ochette)
+  ✓ Olberic Eisenberg (olberic_eisenberg)
+  ✓ Ophilia Clement (ophilia)
+  ✓ Ophilia Clement (ophilia_clement)
+  ✓ Ori Choi (ori_choi)
+  ✓ Osvald V. Vanstein (osvald_v_vanstein)
+  ✓ Partitio Yellowil (partitio_yellowil)
+  ✓ Petrichor (petrichor)
+  ✓ Phenn Doyoung (phenn_doyoung)
+  ✓ Pius Kang (pius_kang)
+  ✓ Primrose Azelhart (primrose_azelhart)
+  ✓ Redeye (redeye)
+  ✓ Reime Oh (reime_oh)
+  ✓ Richard Han (richard_han)
+  ✓ Rondo Baek (rondo_baek)
+  ✓ Rufus Deng (rufus_deng)
+  ✓ Saoirse Ryu (saoirse_ryu)
+  ✓ Sazantos Do (sazantos_do)
+  ✓ Simeon Ha (simeon_ha)
+  ✓ Solon Wi (solon_wi)
+  ✓ Stia Han (stia_han)
+  ✓ Tanzy Woo (tanzy_woo)
+  ✓ Tatloch (tatloch)
+  ✓ Temenos Mistral (temenos_mistral)
+  ✓ Therion (therion)
+  ✓ Throné Anguis (throne_anguis)
+  ✓ Tressa Colzione (tressa_colzione)
+  ✓ Trish Yamaguchi (trish_yamaguchi)
+  ✓ Trousseau (trousseau)
+  ✓ Vanessa Hysel (vanessa_hysel)
+  ✓ Viator Yoon (viator_yoon)
+  ✓ Vide, o Corruptor (vide_o_corruptor)
+  ✓ Vysache (vysache)
+  ✓ Warden Davids (warden_davids)
+  ✓ Werner Choi (werner_choi)
+  ✓ Xerc Baek (xerc_baek)
+  ✓ Yvon Baik (yvon_baik)
+
+════════════════════════════════════════════════════════════════
+  FIM DO RELATÓRIO
+════════════════════════════════════════════════════════════════

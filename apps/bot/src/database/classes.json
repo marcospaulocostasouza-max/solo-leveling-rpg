@@ -1,0 +1,58 @@
+{
+    "classes": {
+        "assassino": {
+            "nome": "[✦] Assassino",
+            "descricao": "Especialista em ataques rapidos e furtivos. Causa dano massivo em unico alvo.",
+            "bonus": "+10% Dano Critico",
+            "foco": "Agilidade e Forca"
+        },
+        "curador": {
+            "nome": "[✦] Curador",
+            "descricao": "Mestre em magias de cura e suporte. Mantem o grupo vivo.",
+            "bonus": "+10% Cura Realizada",
+            "foco": "Inteligencia e Poder Magico"
+        },
+        "lutador": {
+            "nome": "[✦] Lutador",
+            "descricao": "Combate corpo a corpo versatil. Equilibrio entre ataque e defesa.",
+            "bonus": "+5% Dano e +5% Defesa",
+            "foco": "Forca e Resistencia"
+        },
+        "mago_barreira": {
+            "nome": "[✦] Mago da Barreira",
+            "descricao": "Especialista em protecao e escudos magicos.",
+            "bonus": "+10% Efetividade de Escudos",
+            "foco": "Inteligencia e Resistencia"
+        },
+        "mago_elemental": {
+            "nome": "[✦] Mago Elemental",
+            "descricao": "Manipula os elementos para causar dano magico massivo.",
+            "bonus": "+10% Dano Elemental",
+            "foco": "Poder Magico e Inteligencia"
+        },
+        "mago_invocador": {
+            "nome": "[✦] Mago Invocador",
+            "descricao": "Invoca criaturas para lutar ao seu lado.",
+            "bonus": "+10% Poder das Invocacoes",
+            "foco": "Poder Magico e Inteligencia"
+        },
+        "mago_maldicao": {
+            "nome": "[✦] Mago da Maldicao",
+            "descricao": "Aplica maldicoes que enfraquecem inimigos.",
+            "bonus": "+10% Duracao de Maldicoes",
+            "foco": "Inteligencia e Poder Magico"
+        },
+        "ranger": {
+            "nome": "[✦] Ranger",
+            "descricao": "Atirador de longa distancia. Precisao mortal.",
+            "bonus": "+10% Precisao",
+            "foco": "Agilidade e Sentidos"
+        },
+        "tanker": {
+            "nome": "[✦] Tanker",
+            "descricao": "Linha de frente resistente. Absorve dano do grupo.",
+            "bonus": "+15% Defesa",
+            "foco": "Resistencia e Forca"
+        }
+    }
+}

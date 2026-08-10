@@ -1,0 +1,178 @@
+{
+  "npcId": "lucia_yeom",
+  "npcNome": "Lucia Yeom",
+  "npcTitulo": "A Sombra Por Trás do Trono Acadêmico",
+  "totalMissoes": 10,
+  "missoes": [
+    {
+      "id": "lucia_yeom_01",
+      "npcId": "lucia_yeom",
+      "numero": 1,
+      "nome": "Capítulo 1: Rumores sobre Lucia Yeom",
+      "descricao": "Relatos alarmantes começam a circular entre guildas sobre Lucia Yeom. Agente infiltrada que serviu como conselheira sombria por trás da ascensão corrupta de um reitor acadêmico....",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Investigue 3 relatos de testemunhas sobre Lucia Yeom",
+      "recompensas": {
+        "xp": 17100,
+        "won": 114000,
+        "item": "Disfarces Diversos"
+      }
+    },
+    {
+      "id": "lucia_yeom_02",
+      "npcId": "lucia_yeom",
+      "numero": 2,
+      "nome": "Capítulo 2: Rastreando A Sombra Por Trás do Trono Acadêmico",
+      "descricao": "Reúna evidências concretas da atividade de Lucia Yeom antes que a Associação classifique o caso como perdido.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Reúna provas em 2 locais diferentes ligados a Lucia Yeom",
+      "recompensas": {
+        "xp": 19800,
+        "won": 132000,
+        "item": "Disfarces Diversos"
+      }
+    },
+    {
+      "id": "lucia_yeom_03",
+      "npcId": "lucia_yeom",
+      "numero": 3,
+      "nome": "Capítulo 3: Confronto com Lucia Yeom",
+      "descricao": "É hora de enfrentar Lucia Yeom diretamente. Prepare-se: como A Sombra Por Trás do Trono Acadêmico, este será um combate de Rank A.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Derrote Lucia Yeom em combate direto",
+      "recompensas": {
+        "xp": 22500,
+        "won": 150000,
+        "item": "Réplica Reforçada de: Adagas Ocultas Sem Marca"
+      }
+    },
+    {
+      "id": "lucia_yeom_04",
+      "npcId": "lucia_yeom",
+      "numero": 4,
+      "nome": "Capítulo 4: A Queda de A Sombra Por Trás do Trono Acadêmico",
+      "descricao": "Com Lucia Yeom neutralizado(a), reste apenas reportar o caso à Associação e lidar com as consequências reveladas.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Entregue o relatório final sobre Lucia Yeom à Associação",
+      "recompensas": {
+        "xp": 25200,
+        "won": 168000,
+        "item": "Réplica Reforçada de: Adagas Ocultas Sem Marca"
+      }
+    },
+    {
+      "id": "lucia_yeom_05",
+      "npcId": "lucia_yeom",
+      "numero": 5,
+      "nome": "Reforço de Lucia Yeom",
+      "descricao": "Lucia Yeom pede que você adquira, em qualquer Loja de Itens da Associação, um equipamento de Rank A compatível com Adagas para reforçar seu arsenal de combate.",
+      "categoria": "secundaria",
+      "tipo": "loja",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Comprar 1 equipamento de Rank A (peça de armadura ou arma)",
+      "recompensas": {
+        "xp": 5400,
+        "won": 36000,
+        "item": "Réplica Reforçada de: Adagas Ocultas Sem Marca"
+      }
+    },
+    {
+      "id": "lucia_yeom_06",
+      "npcId": "lucia_yeom",
+      "numero": 6,
+      "nome": "Provisões de Lucia Yeom",
+      "descricao": "Antes da próxima incursão, Lucia Yeom pede que você compre poções de recuperação e um acessório de afinidade elemental Sombra na loja mais próxima.",
+      "categoria": "secundaria",
+      "tipo": "loja",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Comprar 3 poções + 1 acessório elemental",
+      "recompensas": {
+        "xp": 4950,
+        "won": 33000,
+        "item": "Rede de Contatos Anônimos"
+      }
+    },
+    {
+      "id": "lucia_yeom_07",
+      "npcId": "lucia_yeom",
+      "numero": 7,
+      "nome": "Receita de Lucia Yeom",
+      "descricao": "Usando materiais coletados em dungeons de afinidade Sombra, produza o item indicado por Lucia Yeom em uma bancada de criação da guilda.",
+      "categoria": "secundaria",
+      "tipo": "producao",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Produzir 1 item de afinidade Sombra (Rank A)",
+      "recompensas": {
+        "xp": 5850,
+        "won": 39000,
+        "item": "Fragmento de Mana (Sombra)"
+      }
+    },
+    {
+      "id": "lucia_yeom_08",
+      "npcId": "lucia_yeom",
+      "numero": 8,
+      "nome": "Suprimento Especial de Lucia Yeom",
+      "descricao": "Lucia Yeom ensina uma técnica pessoal de preparo; produza 3 unidades de um item de suporte (poção, munição ou material) ligado ao estilo de combate de Adagas.",
+      "categoria": "secundaria",
+      "tipo": "producao",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Produzir 3 itens de suporte",
+      "recompensas": {
+        "xp": 6300,
+        "won": 42000,
+        "item": "Fragmento de Mana (Sombra)"
+      }
+    },
+    {
+      "id": "lucia_yeom_09",
+      "npcId": "lucia_yeom",
+      "numero": 9,
+      "nome": "Treino de Combate com Lucia Yeom",
+      "descricao": "Lucia Yeom solicita ajuda para conter uma infestação: derrote sombras rastejantes em dungeons de Rank A ou inferior.",
+      "categoria": "cacada",
+      "tipo": "caca",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Derrotar 35 Sombras Rastejantes",
+      "recompensas": {
+        "xp": 7200,
+        "won": 48000,
+        "item": "Disfarces Diversos"
+      }
+    },
+    {
+      "id": "lucia_yeom_10",
+      "npcId": "lucia_yeom",
+      "numero": 10,
+      "nome": "Caçada Recomendada por Lucia Yeom",
+      "descricao": "Uma variante mais forte de sombras rastejantes tem aparecido nas rondas de Lucia Yeom; elimine essas ameaças antes que evoluam.",
+      "categoria": "cacada",
+      "tipo": "caca",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Derrotar 8 Sombras Rastejantes (variante fortalecida)",
+      "recompensas": {
+        "xp": 9000,
+        "won": 60000,
+        "item": "Réplica Reforçada de: Adagas Ocultas Sem Marca"
+      }
+    }
+  ]
+}

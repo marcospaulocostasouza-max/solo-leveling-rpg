@@ -1,0 +1,42 @@
+{
+  "id": "redeye",
+  "papel": "Vilão",
+  "base_em": "Redeye (Octopath Traveler)",
+  "nome": "Redeye",
+  "idade": "Desconhecida — fera corrompida por mana negra",
+  "nacionalidade": "Não-humano; monstro de dungeon corrompido",
+  "aparencia": "Um enorme lobo mutado do tamanho de um urso, pelagem negra irregular manchada por veios de mana pulsante vermelha, e um único olho brilhando em vermelho intenso.",
+  "altura_peso": "Aproximadamente 3m de comprimento / massa muito acima do normal",
+  "personalidade": "Selvagem, territorial e movido por instinto puro de destruição desde que uma anomalia de mana corrompeu seu corpo e mente.",
+  "historia": "Antiga fera-guardiã domada por um caçador veterano, Redeye foi exposto a uma anomalia de mana negra, corrompendo permanentemente seu corpo e apagando qualquer vínculo.",
+  "classe": "Lutador",
+  "classe_avancada": "Berserk",
+  "rank": "S",
+  "nivel": 93,
+  "estilo_luta": "Proficiência em Combate Desarmado (Garras e Presas)",
+  "atributos": {
+    "forca": 94,
+    "resistencia": 76,
+    "velocidade": 72,
+    "sentidos": 88,
+    "inteligencia": 20,
+    "poder_magico": 40
+  },
+  "elemento": "Escuridão",
+  "habilidade_unica": "Fúria Corrompida — quanto menor seu HP, maior sua velocidade e força de ataque, entrando em um estado de fúria descontrolada abaixo de 30% de vida.",
+  "titulo": "A Fera de Olho Vermelho",
+  "equipamentos": {
+    "arma": "Garras e Presas Naturais",
+    "itens": "Pelagem Corrompida por Mana Negra"
+  },
+  "tecnicas": [
+    "Investida Sanguinária",
+    "Uivo da Corrupção",
+    "Mordida do Olho Vermelho"
+  ],
+  "formaFalar": "Fala com tom frio e calculista, frequentemente manipulando as palavras para obter vantagem. Suas frases são precisas e raramente revelam emoções verdadeiras.",
+  "localizacao": "Localização desconhecida — opera nas sombras",
+  "profissao": "Antagonista",
+  "objetivos": "Expandir seu poder e influência, eliminando qualquer ameaça aos seus planos.",
+  "valores": "O poder é o único caminho. A fraqueza é imperdoável. Os fins justificam os meios."
+}

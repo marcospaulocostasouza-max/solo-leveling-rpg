@@ -1,0 +1,178 @@
+{
+  "npcId": "hikari_ku",
+  "npcNome": "Hikari Ku",
+  "npcTitulo": "O Príncipe Exilado",
+  "totalMissoes": 10,
+  "missoes": [
+    {
+      "id": "hikari_ku_01",
+      "npcId": "hikari_ku",
+      "numero": 1,
+      "nome": "Capítulo 1: O Despertar de Hikari Ku",
+      "descricao": "Acompanhe os primeiros passos de Hikari Ku como Caçador(a). Herdeiro de uma das famílias fundadoras da Associação de Caçadores, Hikari foi afastado do posto de liderança quando seu irmão mais velho orquestrou um golpe interno, culpando-o por uma operação de re...",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Complete a introdução: converse com Hikari Ku e participe de sua primeira incursão",
+      "recompensas": {
+        "xp": 25650,
+        "won": 171000,
+        "item": "Armadura Tradicional Reforçada"
+      }
+    },
+    {
+      "id": "hikari_ku_02",
+      "npcId": "hikari_ku",
+      "numero": 2,
+      "nome": "Capítulo 2: A Trilha de O Príncipe Exilado",
+      "descricao": "Hikari Ku pede ajuda para investigar pistas ligadas ao seu passado, aprofundando o mistério por trás de seu título de 'O Príncipe Exilado'.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Ajude Hikari Ku a reunir 3 pistas em diferentes localizações",
+      "recompensas": {
+        "xp": 29700,
+        "won": 198000,
+        "item": "Selo Real Quebrado"
+      }
+    },
+    {
+      "id": "hikari_ku_03",
+      "npcId": "hikari_ku",
+      "numero": 3,
+      "nome": "Capítulo 3: O Confronto de Hikari Ku",
+      "descricao": "O passado de Hikari Ku finalmente alcança o presente. Enfrente ao lado dele(a) a ameaça central de sua história.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Vença o confronto decisivo ao lado de Hikari Ku",
+      "recompensas": {
+        "xp": 33750,
+        "won": 225000,
+        "item": "Réplica Reforçada de: Espada da Família Ku (Selada)"
+      }
+    },
+    {
+      "id": "hikari_ku_04",
+      "npcId": "hikari_ku",
+      "numero": 4,
+      "nome": "Capítulo 4: O Príncipe Exilado",
+      "descricao": "Com a ameaça derrotada, Hikari Ku consolida seu lugar no mundo dos caçadores, consagrando-se como O Príncipe Exilado.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Complete a missão final e testemunhe o desfecho da história de Hikari Ku",
+      "recompensas": {
+        "xp": 37800,
+        "won": 252000,
+        "item": "Réplica Reforçada de: Espada da Família Ku (Selada)"
+      }
+    },
+    {
+      "id": "hikari_ku_05",
+      "npcId": "hikari_ku",
+      "numero": 5,
+      "nome": "Reforço de Hikari Ku",
+      "descricao": "Hikari Ku pede que você adquira, em qualquer Loja de Itens da Associação, um equipamento de Rank S compatível com Espadas para reforçar seu arsenal de combate.",
+      "categoria": "secundaria",
+      "tipo": "loja",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Comprar 1 equipamento de Rank S (peça de armadura ou arma)",
+      "recompensas": {
+        "xp": 8100,
+        "won": 54000,
+        "item": "Réplica Reforçada de: Espada da Família Ku (Selada)"
+      }
+    },
+    {
+      "id": "hikari_ku_06",
+      "npcId": "hikari_ku",
+      "numero": 6,
+      "nome": "Provisões de Hikari Ku",
+      "descricao": "Antes da próxima incursão, Hikari Ku pede que você compre poções de recuperação e um acessório de afinidade elemental Fogo na loja mais próxima.",
+      "categoria": "secundaria",
+      "tipo": "loja",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Comprar 3 poções + 1 acessório elemental",
+      "recompensas": {
+        "xp": 7425,
+        "won": 49500,
+        "item": "Selo Real Quebrado"
+      }
+    },
+    {
+      "id": "hikari_ku_07",
+      "npcId": "hikari_ku",
+      "numero": 7,
+      "nome": "Receita de Hikari Ku",
+      "descricao": "Usando materiais coletados em dungeons de afinidade Fogo, produza o item indicado por Hikari Ku em uma bancada de criação da guilda.",
+      "categoria": "secundaria",
+      "tipo": "producao",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Produzir 1 item de afinidade Fogo (Rank S)",
+      "recompensas": {
+        "xp": 8775,
+        "won": 58500,
+        "item": "Fragmento de Mana (Fogo)"
+      }
+    },
+    {
+      "id": "hikari_ku_08",
+      "npcId": "hikari_ku",
+      "numero": 8,
+      "nome": "Suprimento Especial de Hikari Ku",
+      "descricao": "Hikari Ku ensina uma técnica pessoal de preparo; produza 3 unidades de um item de suporte (poção, munição ou material) ligado ao estilo de combate de Espadas.",
+      "categoria": "secundaria",
+      "tipo": "producao",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Produzir 3 itens de suporte",
+      "recompensas": {
+        "xp": 9450,
+        "won": 63000,
+        "item": "Fragmento de Mana (Fogo)"
+      }
+    },
+    {
+      "id": "hikari_ku_09",
+      "npcId": "hikari_ku",
+      "numero": 9,
+      "nome": "Treino de Combate com Hikari Ku",
+      "descricao": "Hikari Ku solicita ajuda para conter uma infestação: derrote elementais de fogo em dungeons de Rank S ou inferior.",
+      "categoria": "cacada",
+      "tipo": "caca",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Derrotar 40 Elementais de Fogo",
+      "recompensas": {
+        "xp": 10800,
+        "won": 72000,
+        "item": "Armadura Tradicional Reforçada"
+      }
+    },
+    {
+      "id": "hikari_ku_10",
+      "npcId": "hikari_ku",
+      "numero": 10,
+      "nome": "Caçada Recomendada por Hikari Ku",
+      "descricao": "Uma variante mais forte de elementais de fogo tem aparecido nas rondas de Hikari Ku; elimine essas ameaças antes que evoluam.",
+      "categoria": "cacada",
+      "tipo": "caca",
+      "rank": "S",
+      "nivelMinimo": 80,
+      "objetivo": "Derrotar 9 Elementais de Fogo (variante fortalecida)",
+      "recompensas": {
+        "xp": 13500,
+        "won": 90000,
+        "item": "Réplica Reforçada de: Espada da Família Ku (Selada)"
+      }
+    }
+  ]
+}

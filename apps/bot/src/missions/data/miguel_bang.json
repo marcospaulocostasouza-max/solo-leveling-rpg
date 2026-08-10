@@ -1,0 +1,178 @@
+{
+  "npcId": "miguel_bang",
+  "npcNome": "Miguel Bang",
+  "npcTitulo": "O Voluntário que Escondia um Predador",
+  "totalMissoes": 10,
+  "missoes": [
+    {
+      "id": "miguel_bang_01",
+      "npcId": "miguel_bang",
+      "numero": 1,
+      "nome": "Capítulo 1: Rumores sobre Miguel Bang",
+      "descricao": "Relatos alarmantes começam a circular entre guildas sobre Miguel Bang. Por trás de uma reputação impecável como voluntário, Miguel secretamente sequestra e assassina vítimas escolhidas com cuidado obsessivo....",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Investigue 3 relatos de testemunhas sobre Miguel Bang",
+      "recompensas": {
+        "xp": 17100,
+        "won": 114000,
+        "item": "Roupas Discretas Sem Marcas"
+      }
+    },
+    {
+      "id": "miguel_bang_02",
+      "npcId": "miguel_bang",
+      "numero": 2,
+      "nome": "Capítulo 2: Rastreando O Voluntário que Escondia um Predador",
+      "descricao": "Reúna evidências concretas da atividade de Miguel Bang antes que a Associação classifique o caso como perdido.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Reúna provas em 2 locais diferentes ligados a Miguel Bang",
+      "recompensas": {
+        "xp": 19800,
+        "won": 132000,
+        "item": "Roupas Discretas Sem Marcas"
+      }
+    },
+    {
+      "id": "miguel_bang_03",
+      "npcId": "miguel_bang",
+      "numero": 3,
+      "nome": "Capítulo 3: Confronto com Miguel Bang",
+      "descricao": "É hora de enfrentar Miguel Bang diretamente. Prepare-se: como O Voluntário que Escondia um Predador, este será um combate de Rank A.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Derrote Miguel Bang em combate direto",
+      "recompensas": {
+        "xp": 22500,
+        "won": 150000,
+        "item": "Réplica Reforçada de: Adaga Discreta de Aço Fosco"
+      }
+    },
+    {
+      "id": "miguel_bang_04",
+      "npcId": "miguel_bang",
+      "numero": 4,
+      "nome": "Capítulo 4: A Queda de O Voluntário que Escondia um Predador",
+      "descricao": "Com Miguel Bang neutralizado(a), reste apenas reportar o caso à Associação e lidar com as consequências reveladas.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Entregue o relatório final sobre Miguel Bang à Associação",
+      "recompensas": {
+        "xp": 25200,
+        "won": 168000,
+        "item": "Réplica Reforçada de: Adaga Discreta de Aço Fosco"
+      }
+    },
+    {
+      "id": "miguel_bang_05",
+      "npcId": "miguel_bang",
+      "numero": 5,
+      "nome": "Reforço de Miguel Bang",
+      "descricao": "Miguel Bang pede que você adquira, em qualquer Loja de Itens da Associação, um equipamento de Rank A compatível com Adagas para reforçar seu arsenal de combate.",
+      "categoria": "secundaria",
+      "tipo": "loja",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Comprar 1 equipamento de Rank A (peça de armadura ou arma)",
+      "recompensas": {
+        "xp": 5400,
+        "won": 36000,
+        "item": "Réplica Reforçada de: Adaga Discreta de Aço Fosco"
+      }
+    },
+    {
+      "id": "miguel_bang_06",
+      "npcId": "miguel_bang",
+      "numero": 6,
+      "nome": "Provisões de Miguel Bang",
+      "descricao": "Antes da próxima incursão, Miguel Bang pede que você compre poções de recuperação e um acessório de afinidade elemental Sombra na loja mais próxima.",
+      "categoria": "secundaria",
+      "tipo": "loja",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Comprar 3 poções + 1 acessório elemental",
+      "recompensas": {
+        "xp": 4950,
+        "won": 33000,
+        "item": "Lista de Vítimas Cuidadosamente Escolhidas"
+      }
+    },
+    {
+      "id": "miguel_bang_07",
+      "npcId": "miguel_bang",
+      "numero": 7,
+      "nome": "Receita de Miguel Bang",
+      "descricao": "Usando materiais coletados em dungeons de afinidade Sombra, produza o item indicado por Miguel Bang em uma bancada de criação da guilda.",
+      "categoria": "secundaria",
+      "tipo": "producao",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Produzir 1 item de afinidade Sombra (Rank A)",
+      "recompensas": {
+        "xp": 5850,
+        "won": 39000,
+        "item": "Fragmento de Mana (Sombra)"
+      }
+    },
+    {
+      "id": "miguel_bang_08",
+      "npcId": "miguel_bang",
+      "numero": 8,
+      "nome": "Suprimento Especial de Miguel Bang",
+      "descricao": "Miguel Bang ensina uma técnica pessoal de preparo; produza 3 unidades de um item de suporte (poção, munição ou material) ligado ao estilo de combate de Adagas.",
+      "categoria": "secundaria",
+      "tipo": "producao",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Produzir 3 itens de suporte",
+      "recompensas": {
+        "xp": 6300,
+        "won": 42000,
+        "item": "Fragmento de Mana (Sombra)"
+      }
+    },
+    {
+      "id": "miguel_bang_09",
+      "npcId": "miguel_bang",
+      "numero": 9,
+      "nome": "Treino de Combate com Miguel Bang",
+      "descricao": "Miguel Bang solicita ajuda para conter uma infestação: derrote sombras rastejantes em dungeons de Rank A ou inferior.",
+      "categoria": "cacada",
+      "tipo": "caca",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Derrotar 35 Sombras Rastejantes",
+      "recompensas": {
+        "xp": 7200,
+        "won": 48000,
+        "item": "Roupas Discretas Sem Marcas"
+      }
+    },
+    {
+      "id": "miguel_bang_10",
+      "npcId": "miguel_bang",
+      "numero": 10,
+      "nome": "Caçada Recomendada por Miguel Bang",
+      "descricao": "Uma variante mais forte de sombras rastejantes tem aparecido nas rondas de Miguel Bang; elimine essas ameaças antes que evoluam.",
+      "categoria": "cacada",
+      "tipo": "caca",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Derrotar 8 Sombras Rastejantes (variante fortalecida)",
+      "recompensas": {
+        "xp": 9000,
+        "won": 60000,
+        "item": "Réplica Reforçada de: Adaga Discreta de Aço Fosco"
+      }
+    }
+  ]
+}

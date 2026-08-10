@@ -1,0 +1,178 @@
+{
+  "npcId": "tanzy_woo",
+  "npcNome": "Tanzy Woo",
+  "npcTitulo": "A Empresária que Descarta Estrelas",
+  "totalMissoes": 10,
+  "missoes": [
+    {
+      "id": "tanzy_woo_01",
+      "npcId": "tanzy_woo",
+      "numero": 1,
+      "nome": "Capítulo 1: Rumores sobre Tanzy Woo",
+      "descricao": "Relatos alarmantes começam a circular entre guildas sobre Tanzy Woo. Empresária que constrói e destrói carreiras de jovens artistas conforme sua utilidade para uma agenda maior....",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Investigue 3 relatos de testemunhas sobre Tanzy Woo",
+      "recompensas": {
+        "xp": 13680,
+        "won": 91200,
+        "item": "Contratos em Branco"
+      }
+    },
+    {
+      "id": "tanzy_woo_02",
+      "npcId": "tanzy_woo",
+      "numero": 2,
+      "nome": "Capítulo 2: Rastreando A Empresária que Descarta Estrelas",
+      "descricao": "Reúna evidências concretas da atividade de Tanzy Woo antes que a Associação classifique o caso como perdido.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Reúna provas em 2 locais diferentes ligados a Tanzy Woo",
+      "recompensas": {
+        "xp": 15840,
+        "won": 105600,
+        "item": "Contratos em Branco"
+      }
+    },
+    {
+      "id": "tanzy_woo_03",
+      "npcId": "tanzy_woo",
+      "numero": 3,
+      "nome": "Capítulo 3: Confronto com Tanzy Woo",
+      "descricao": "É hora de enfrentar Tanzy Woo diretamente. Prepare-se: como A Empresária que Descarta Estrelas, este será um combate de Rank B.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Derrote Tanzy Woo em combate direto",
+      "recompensas": {
+        "xp": 18000,
+        "won": 120000,
+        "item": "Réplica Reforçada de: Par de Adagas Ornamentadas"
+      }
+    },
+    {
+      "id": "tanzy_woo_04",
+      "npcId": "tanzy_woo",
+      "numero": 4,
+      "nome": "Capítulo 4: A Queda de A Empresária que Descarta Estrelas",
+      "descricao": "Com Tanzy Woo neutralizado(a), reste apenas reportar o caso à Associação e lidar com as consequências reveladas.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Entregue o relatório final sobre Tanzy Woo à Associação",
+      "recompensas": {
+        "xp": 20160,
+        "won": 134400,
+        "item": "Réplica Reforçada de: Par de Adagas Ornamentadas"
+      }
+    },
+    {
+      "id": "tanzy_woo_05",
+      "npcId": "tanzy_woo",
+      "numero": 5,
+      "nome": "Reforço de Tanzy Woo",
+      "descricao": "Tanzy Woo pede que você adquira, em qualquer Loja de Itens da Associação, um equipamento de Rank B compatível com Adagas para reforçar seu arsenal de combate.",
+      "categoria": "secundaria",
+      "tipo": "loja",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Comprar 1 equipamento de Rank B (peça de armadura ou arma)",
+      "recompensas": {
+        "xp": 4320,
+        "won": 28800,
+        "item": "Réplica Reforçada de: Par de Adagas Ornamentadas"
+      }
+    },
+    {
+      "id": "tanzy_woo_06",
+      "npcId": "tanzy_woo",
+      "numero": 6,
+      "nome": "Provisões de Tanzy Woo",
+      "descricao": "Antes da próxima incursão, Tanzy Woo pede que você compre poções de recuperação e um acessório de afinidade elemental Cristal na loja mais próxima.",
+      "categoria": "secundaria",
+      "tipo": "loja",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Comprar 3 poções + 1 acessório elemental",
+      "recompensas": {
+        "xp": 3960,
+        "won": 26400,
+        "item": "Roupas de Produtora Elegante"
+      }
+    },
+    {
+      "id": "tanzy_woo_07",
+      "npcId": "tanzy_woo",
+      "numero": 7,
+      "nome": "Receita de Tanzy Woo",
+      "descricao": "Usando materiais coletados em dungeons de afinidade Cristal, produza o item indicado por Tanzy Woo em uma bancada de criação da guilda.",
+      "categoria": "secundaria",
+      "tipo": "producao",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Produzir 1 item de afinidade Cristal (Rank B)",
+      "recompensas": {
+        "xp": 4680,
+        "won": 31200,
+        "item": "Fragmento de Mana (Cristal)"
+      }
+    },
+    {
+      "id": "tanzy_woo_08",
+      "npcId": "tanzy_woo",
+      "numero": 8,
+      "nome": "Suprimento Especial de Tanzy Woo",
+      "descricao": "Tanzy Woo ensina uma técnica pessoal de preparo; produza 3 unidades de um item de suporte (poção, munição ou material) ligado ao estilo de combate de Adagas.",
+      "categoria": "secundaria",
+      "tipo": "producao",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Produzir 3 itens de suporte",
+      "recompensas": {
+        "xp": 5040,
+        "won": 33600,
+        "item": "Fragmento de Mana (Cristal)"
+      }
+    },
+    {
+      "id": "tanzy_woo_09",
+      "npcId": "tanzy_woo",
+      "numero": 9,
+      "nome": "Treino de Combate com Tanzy Woo",
+      "descricao": "Tanzy Woo solicita ajuda para conter uma infestação: derrote constructos de cristal em dungeons de Rank B ou inferior.",
+      "categoria": "cacada",
+      "tipo": "caca",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Derrotar 30 Constructos de Cristal",
+      "recompensas": {
+        "xp": 5760,
+        "won": 38400,
+        "item": "Contratos em Branco"
+      }
+    },
+    {
+      "id": "tanzy_woo_10",
+      "npcId": "tanzy_woo",
+      "numero": 10,
+      "nome": "Caçada Recomendada por Tanzy Woo",
+      "descricao": "Uma variante mais forte de constructos de cristal tem aparecido nas rondas de Tanzy Woo; elimine essas ameaças antes que evoluam.",
+      "categoria": "cacada",
+      "tipo": "caca",
+      "rank": "B",
+      "nivelMinimo": 40,
+      "objetivo": "Derrotar 7 Constructos de Cristal (variante fortalecida)",
+      "recompensas": {
+        "xp": 7200,
+        "won": 48000,
+        "item": "Réplica Reforçada de: Par de Adagas Ornamentadas"
+      }
+    }
+  ]
+}

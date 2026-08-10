@@ -1,0 +1,1745 @@
+{
+  "places": [
+    {
+      "id": "seoul",
+      "name": "Seul",
+      "type": "city",
+      "x": 35.4167,
+      "y": 20.5078,
+      "dangerLevel": "D",
+      "image": "/images/places/seoul.webp",
+      "description": "Cidade-base oficial dos jogadores. Todo personagem novo começa em Seul e só deixa a cidade por meio do sistema de viagem.",
+      "marketPrice": 0,
+      "weeklyIncome": 0,
+      "dominantGuild": {
+        "name": "Zona Neutra",
+        "territory": "Cidade-base dos jogadores",
+        "level": 0,
+        "note": "Seul é permanentemente neutra e protegida. Não pode ser comprada, conquistada ou dominada por guildas."
+      },
+      "players": [],
+      "npcs": [
+        {
+          "name": "Ophilia Clement",
+          "status": "Templos de Seul",
+          "reason": "Sua rotina espiritual e função de suporte tornam os templos e centros de auxílio o local mais coerente para encontrá-la."
+        }
+      ],
+      "tourism": [
+        "Palácios históricos",
+        "Myeongdong e Hongdae",
+        "N Seoul Tower",
+        "Han River"
+      ],
+      "specialLocations": [
+        "Guilda de Caçadores — ranking, missões e recrutamento.",
+        "Parque das Zelkova — área sobrenatural ligada à Dungeon Break Zelkova."
+      ],
+      "investments": [],
+      "marketBasis": "Seul não possui preço territorial: é uma zona neutra, protegida e fora do sistema de conquista.",
+      "purchasable": false,
+      "protected": true
+    },
+    {
+      "id": "incheon",
+      "name": "Incheon",
+      "type": "city",
+      "x": 22.6562,
+      "y": 21.582,
+      "dangerLevel": "D",
+      "image": "/images/places/incheon.webp",
+      "description": "Porta internacional da região metropolitana, porto e aeroporto estratégico.",
+      "marketPrice": 14000000,
+      "weeklyIncome": 1400000,
+      "dominantGuild": {
+        "name": "Nenhuma",
+        "territory": "Não conquistado",
+        "level": 0,
+        "note": "Local conquistável do novo mapa. No estado inicial não possui dono nem guilda dominante."
+      },
+      "players": [],
+      "npcs": [
+        {
+          "name": "Therion",
+          "status": "Zona portuária",
+          "reason": "O porto, o fluxo internacional e as rotas comerciais favorecem contatos discretos e seu perfil furtivo."
+        }
+      ],
+      "tourism": [
+        "Chinatown",
+        "Songdo",
+        "Ilhas costeiras",
+        "Aeroporto internacional"
+      ],
+      "specialLocations": [],
+      "investments": [
+        {
+          "name": "Posto avançado da Guilda",
+          "price": 2500000,
+          "effect": "Base local, armazenamento e suporte de membros."
+        },
+        {
+          "name": "Centro de Treinamento",
+          "price": 3100000,
+          "effect": "Estrutura para treinos, eventos e preparação de raids."
+        },
+        {
+          "name": "Centro Comercial",
+          "price": 3900000,
+          "effect": "Aumenta atividade econômica, lojas e renda territorial."
+        },
+        {
+          "name": "Terminal Portuário / Marina",
+          "price": 4200000,
+          "effect": "Melhora comércio marítimo, pesca e rotas para ilhas."
+        },
+        {
+          "name": "Complexo Turístico",
+          "price": 3350000,
+          "effect": "Explora pontos turísticos, hospedagem e eventos."
+        }
+      ],
+      "marketBasis": "Valor de RPG calibrado por escala urbana, infraestrutura, turismo, posição logística e diferenças relativas do mercado sul-coreano; não é uma avaliação imobiliária oficial.",
+      "purchasable": true,
+      "protected": false
+    },
+    {
+      "id": "suwon",
+      "name": "Suwon",
+      "type": "city",
+      "x": 33.3984,
+      "y": 27.5391,
+      "dangerLevel": "D",
+      "image": "/images/places/suwon.webp",
+      "description": "Centro urbano da região metropolitana com forte base tecnológica e histórica.",
+      "marketPrice": 9000000,
+      "weeklyIncome": 900000,
+      "dominantGuild": {
+        "name": "Nenhuma",
+        "territory": "Não conquistado",
+        "level": 0,
+        "note": "Local conquistável do novo mapa. No estado inicial não possui dono nem guilda dominante."
+      },
+      "players": [],
+      "npcs": [
+        {
+          "name": "Cyrus Albright",
+          "status": "Distrito acadêmico",
+          "reason": "Suwon concentra ambiente acadêmico e tecnológico, adequado a pesquisa, estudo e investigação."
+        }
+      ],
+      "tourism": [
+        "Fortaleza Hwaseong"
+      ],
+      "specialLocations": [],
+      "investments": [
+        {
+          "name": "Posto avançado da Guilda",
+          "price": 1600000,
+          "effect": "Base local, armazenamento e suporte de membros."
+        },
+        {
+          "name": "Centro de Treinamento",
+          "price": 2000000,
+          "effect": "Estrutura para treinos, eventos e preparação de raids."
+        },
+        {
+          "name": "Centro Comercial",
+          "price": 2500000,
+          "effect": "Aumenta atividade econômica, lojas e renda territorial."
+        },
+        {
+          "name": "Complexo Turístico",
+          "price": 2150000,
+          "effect": "Explora pontos turísticos, hospedagem e eventos."
+        }
+      ],
+      "marketBasis": "Valor de RPG calibrado por escala urbana, infraestrutura, turismo, posição logística e diferenças relativas do mercado sul-coreano; não é uma avaliação imobiliária oficial.",
+      "purchasable": true,
+      "protected": false
+    },
+    {
+      "id": "goyang",
+      "name": "Goyang",
+      "type": "city",
+      "x": 26.9531,
+      "y": 15.7227,
+      "dangerLevel": "C",
+      "image": "/images/places/goyang.webp",
+      "description": "Cidade metropolitana próxima de Seul, forte em serviços, eventos e residências.",
+      "marketPrice": 7500000,
+      "weeklyIncome": 750000,
+      "dominantGuild": {
+        "name": "Nenhuma",
+        "territory": "Não conquistado",
+        "level": 0,
+        "note": "Local conquistável do novo mapa. No estado inicial não possui dono nem guilda dominante."
+      },
+      "players": [],
+      "npcs": [
+        {
+          "name": "Associação dos Caçadores",
+          "status": "Sede metropolitana",
+          "reason": "Goyang fica próxima de Seul e permite acesso rápido à cidade-base sem colocar a sede administrativa dentro do território neutro da capital."
+        }
+      ],
+      "tourism": [],
+      "specialLocations": [
+        "Associação dos Caçadores — sede metropolitana próxima de Seul; rankings, missões, testes e recrutamento."
+      ],
+      "investments": [
+        {
+          "name": "Posto avançado da Guilda",
+          "price": 1350000,
+          "effect": "Base local, armazenamento e suporte de membros."
+        },
+        {
+          "name": "Centro de Treinamento",
+          "price": 1650000,
+          "effect": "Estrutura para treinos, eventos e preparação de raids."
+        },
+        {
+          "name": "Mercado Local",
+          "price": 1050000,
+          "effect": "Amplia comércio e renda semanal da região."
+        }
+      ],
+      "marketBasis": "Valor de RPG calibrado por escala urbana, infraestrutura, turismo, posição logística e diferenças relativas do mercado sul-coreano; não é uma avaliação imobiliária oficial.",
+      "purchasable": true,
+      "protected": false
+    },
+    {
+      "id": "uijeongbu",
+      "name": "Uijeongbu",
+      "type": "city",
+      "x": 35.8724,
+      "y": 12.9883,
+      "dangerLevel": "C",
+      "image": "/images/places/uijeongbu.webp",
+      "description": "Polo urbano ao norte da capital, com valor estratégico de acesso metropolitano.",
+      "marketPrice": 6000000,
+      "weeklyIncome": 600000,
+      "dominantGuild": {
+        "name": "Nenhuma",
+        "territory": "Não conquistado",
+        "level": 0,
+        "note": "Local conquistável do novo mapa. No estado inicial não possui dono nem guilda dominante."
+      },
+      "players": [],
+      "npcs": [],
+      "tourism": [],
+      "specialLocations": [],
+      "investments": [
+        {
+          "name": "Posto avançado da Guilda",
+          "price": 1100000,
+          "effect": "Base local, armazenamento e suporte de membros."
+        },
+        {
+          "name": "Centro de Treinamento",
+          "price": 1300000,
+          "effect": "Estrutura para treinos, eventos e preparação de raids."
+        },
+        {
+          "name": "Mercado Local",
+          "price": 850000,
+          "effect": "Amplia comércio e renda semanal da região."
+        }
+      ],
+      "marketBasis": "Valor de RPG calibrado por escala urbana, infraestrutura, turismo, posição logística e diferenças relativas do mercado sul-coreano; não é uma avaliação imobiliária oficial.",
+      "purchasable": true,
+      "protected": false
+    },
+    {
+      "id": "pocheon",
+      "name": "Pocheon",
+      "type": "city",
+      "x": 40.2344,
+      "y": 7.1289,
+      "dangerLevel": "C",
+      "image": "/images/places/pocheon.webp",
+      "description": "Região de montanhas, natureza e turismo rural, com menor densidade urbana.",
+      "marketPrice": 4200000,
+      "weeklyIncome": 400000,
+      "dominantGuild": {
+        "name": "Nenhuma",
+        "territory": "Não conquistado",
+        "level": 0,
+        "note": "Local conquistável do novo mapa. No estado inicial não possui dono nem guilda dominante."
+      },
+      "players": [],
+      "npcs": [
+        {
+          "name": "Ochette",
+          "status": "Região natural",
+          "reason": "A área montanhosa e rural favorece uma caçadora ligada a feras, trilhas e ambientes selvagens."
+        }
+      ],
+      "tourism": [],
+      "specialLocations": [],
+      "investments": [
+        {
+          "name": "Posto avançado da Guilda",
+          "price": 750000,
+          "effect": "Base local, armazenamento e suporte de membros."
+        },
+        {
+          "name": "Centro de Treinamento",
+          "price": 900000,
+          "effect": "Estrutura para treinos, eventos e preparação de raids."
+        },
+        {
+          "name": "Mercado Local",
+          "price": 600000,
+          "effect": "Amplia comércio e renda semanal da região."
+        },
+        {
+          "name": "Centro de Recursos",
+          "price": 700000,
+          "effect": "Apoia mineração, agricultura, pesca ou coleta regional."
+        }
+      ],
+      "marketBasis": "Valor de RPG calibrado por escala urbana, infraestrutura, turismo, posição logística e diferenças relativas do mercado sul-coreano; não é uma avaliação imobiliária oficial.",
+      "purchasable": true,
+      "protected": false
+    },
+    {
+      "id": "chuncheon",
+      "name": "Chuncheon",
+      "type": "city",
+      "x": 51.4323,
+      "y": 13.0859,
+      "dangerLevel": "C",
+      "image": "/images/places/chuncheon.webp",
+      "description": "Cidade de lagos e turismo, com boa posição para lazer e treinamento.",
+      "marketPrice": 5800000,
+      "weeklyIncome": 600000,
+      "dominantGuild": {
+        "name": "Nenhuma",
+        "territory": "Não conquistado",
+        "level": 0,
+        "note": "Local conquistável do novo mapa. No estado inicial não possui dono nem guilda dominante."
+      },
+      "players": [],
+      "npcs": [],
+      "tourism": [
+        "Lagos",
+        "Turismo de natureza"
+      ],
+      "specialLocations": [],
+      "investments": [
+        {
+          "name": "Posto avançado da Guilda",
+          "price": 1050000,
+          "effect": "Base local, armazenamento e suporte de membros."
+        },
+        {
+          "name": "Centro de Treinamento",
+          "price": 1300000,
+          "effect": "Estrutura para treinos, eventos e preparação de raids."
+        },
+        {
+          "name": "Mercado Local",
+          "price": 800000,
+          "effect": "Amplia comércio e renda semanal da região."
+        },
+        {
+          "name": "Complexo Turístico",
+          "price": 1400000,
+          "effect": "Explora pontos turísticos, hospedagem e eventos."
+        },
+        {
+          "name": "Centro de Recursos",
+          "price": 1000000,
+          "effect": "Apoia mineração, agricultura, pesca ou coleta regional."
+        }
+      ],
+      "marketBasis": "Valor de RPG calibrado por escala urbana, infraestrutura, turismo, posição logística e diferenças relativas do mercado sul-coreano; não é uma avaliação imobiliária oficial.",
+      "purchasable": true,
+      "protected": false
+    },
+    {
+      "id": "sokcho",
+      "name": "Sokcho",
+      "type": "city",
+      "x": 63.0859,
+      "y": 9.8633,
+      "dangerLevel": "C",
+      "image": "/images/places/sokcho.webp",
+      "description": "Destino costeiro turístico próximo às montanhas de Seoraksan.",
+      "marketPrice": 6200000,
+      "weeklyIncome": 600000,
+      "dominantGuild": {
+        "name": "Nenhuma",
+        "territory": "Não conquistado",
+        "level": 0,
+        "note": "Local conquistável do novo mapa. No estado inicial não possui dono nem guilda dominante."
+      },
+      "players": [],
+      "npcs": [],
+      "tourism": [
+        "Seoraksan",
+        "Costa leste"
+      ],
+      "specialLocations": [],
+      "investments": [
+        {
+          "name": "Posto avançado da Guilda",
+          "price": 1100000,
+          "effect": "Base local, armazenamento e suporte de membros."
+        },
+        {
+          "name": "Centro de Treinamento",
+          "price": 1350000,
+          "effect": "Estrutura para treinos, eventos e preparação de raids."
+        },
+        {
+          "name": "Mercado Local",
+          "price": 850000,
+          "effect": "Amplia comércio e renda semanal da região."
+        },
+        {
+          "name": "Terminal Portuário / Marina",
+          "price": 1850000,
+          "effect": "Melhora comércio marítimo, pesca e rotas para ilhas."
+        },
+        {
+          "name": "Complexo Turístico",
+          "price": 1500000,
+          "effect": "Explora pontos turísticos, hospedagem e eventos."
+        }
+      ],
+      "marketBasis": "Valor de RPG calibrado por escala urbana, infraestrutura, turismo, posição logística e diferenças relativas do mercado sul-coreano; não é uma avaliação imobiliária oficial.",
+      "purchasable": true,
+      "protected": false
+    },
+    {
+      "id": "gangneung",
+      "name": "Gangneung",
+      "type": "city",
+      "x": 65.3646,
+      "y": 17.4805,
+      "dangerLevel": "C",
+      "image": "/images/places/gangneung.webp",
+      "description": "Polo turístico da costa leste, praias, eventos e infraestrutura regional.",
+      "marketPrice": 7000000,
+      "weeklyIncome": 700000,
+      "dominantGuild": {
+        "name": "Nenhuma",
+        "territory": "Não conquistado",
+        "level": 0,
+        "note": "Local conquistável do novo mapa. No estado inicial não possui dono nem guilda dominante."
+      },
+      "players": [],
+      "npcs": [],
+      "tourism": [
+        "Praias",
+        "Cafés costeiros"
+      ],
+      "specialLocations": [],
+      "investments": [
+        {
+          "name": "Posto avançado da Guilda",
+          "price": 1250000,
+          "effect": "Base local, armazenamento e suporte de membros."
+        },
+        {
+          "name": "Centro de Treinamento",
+          "price": 1550000,
+          "effect": "Estrutura para treinos, eventos e preparação de raids."
+        },
+        {
+          "name": "Mercado Local",
+          "price": 1000000,
+          "effect": "Amplia comércio e renda semanal da região."
+        },
+        {
+          "name": "Terminal Portuário / Marina",
+          "price": 2100000,
+          "effect": "Melhora comércio marítimo, pesca e rotas para ilhas."
+        },
+        {
+          "name": "Complexo Turístico",
+          "price": 1700000,
+          "effect": "Explora pontos turísticos, hospedagem e eventos."
+        }
+      ],
+      "marketBasis": "Valor de RPG calibrado por escala urbana, infraestrutura, turismo, posição logística e diferenças relativas do mercado sul-coreano; não é uma avaliação imobiliária oficial.",
+      "purchasable": true,
+      "protected": false
+    },
+    {
+      "id": "wonju",
+      "name": "Wonju",
+      "type": "city",
+      "x": 53.3203,
+      "y": 25.8789,
+      "dangerLevel": "C",
+      "image": "/images/places/wonju.webp",
+      "description": "Centro regional interiorano com logística, saúde e conexões rodoviárias.",
+      "marketPrice": 6200000,
+      "weeklyIncome": 600000,
+      "dominantGuild": {
+        "name": "Nenhuma",
+        "territory": "Não conquistado",
+        "level": 0,
+        "note": "Local conquistável do novo mapa. No estado inicial não possui dono nem guilda dominante."
+      },
+      "players": [],
+      "npcs": [],
+      "tourism": [],
+      "specialLocations": [],
+      "investments": [
+        {
+          "name": "Posto avançado da Guilda",
+          "price": 1100000,
+          "effect": "Base local, armazenamento e suporte de membros."
+        },
+        {
+          "name": "Centro de Treinamento",
+          "price": 1350000,
+          "effect": "Estrutura para treinos, eventos e preparação de raids."
+        },
+        {
+          "name": "Mercado Local",
+          "price": 850000,
+          "effect": "Amplia comércio e renda semanal da região."
+        }
+      ],
+      "marketBasis": "Valor de RPG calibrado por escala urbana, infraestrutura, turismo, posição logística e diferenças relativas do mercado sul-coreano; não é uma avaliação imobiliária oficial.",
+      "purchasable": true,
+      "protected": false
+    },
+    {
+      "id": "donghae",
+      "name": "Donghae",
+      "type": "city",
+      "x": 70.9635,
+      "y": 26.3672,
+      "dangerLevel": "C",
+      "image": "/images/places/donghae.webp",
+      "description": "Cidade portuária na costa leste, adequada a comércio e logística marítima.",
+      "marketPrice": 5600000,
+      "weeklyIncome": 550000,
+      "dominantGuild": {
+        "name": "Nenhuma",
+        "territory": "Não conquistado",
+        "level": 0,
+        "note": "Local conquistável do novo mapa. No estado inicial não possui dono nem guilda dominante."
+      },
+      "players": [],
+      "npcs": [],
+      "tourism": [],
+      "specialLocations": [],
+      "investments": [
+        {
+          "name": "Posto avançado da Guilda",
+          "price": 1000000,
+          "effect": "Base local, armazenamento e suporte de membros."
+        },
+        {
+          "name": "Centro de Treinamento",
+          "price": 1250000,
+          "effect": "Estrutura para treinos, eventos e preparação de raids."
+        },
+        {
+          "name": "Mercado Local",
+          "price": 800000,
+          "effect": "Amplia comércio e renda semanal da região."
+        },
+        {
+          "name": "Terminal Portuário / Marina",
+          "price": 1700000,
+          "effect": "Melhora comércio marítimo, pesca e rotas para ilhas."
+        }
+      ],
+      "marketBasis": "Valor de RPG calibrado por escala urbana, infraestrutura, turismo, posição logística e diferenças relativas do mercado sul-coreano; não é uma avaliação imobiliária oficial.",
+      "purchasable": true,
+      "protected": false
+    },
+    {
+      "id": "samcheok",
+      "name": "Samcheok",
+      "type": "city",
+      "x": 76.1719,
+      "y": 33.5938,
+      "dangerLevel": "C",
+      "image": "/images/places/samcheok.webp",
+      "description": "Costa montanhosa com turismo natural e espaço para exploração de recursos.",
+      "marketPrice": 4600000,
+      "weeklyIncome": 450000,
+      "dominantGuild": {
+        "name": "Nenhuma",
+        "territory": "Não conquistado",
+        "level": 0,
+        "note": "Local conquistável do novo mapa. No estado inicial não possui dono nem guilda dominante."
+      },
+      "players": [],
+      "npcs": [],
+      "tourism": [],
+      "specialLocations": [],
+      "investments": [
+        {
+          "name": "Posto avançado da Guilda",
+          "price": 850000,
+          "effect": "Base local, armazenamento e suporte de membros."
+        },
+        {
+          "name": "Centro de Treinamento",
+          "price": 1000000,
+          "effect": "Estrutura para treinos, eventos e preparação de raids."
+        },
+        {
+          "name": "Mercado Local",
+          "price": 650000,
+          "effect": "Amplia comércio e renda semanal da região."
+        },
+        {
+          "name": "Terminal Portuário / Marina",
+          "price": 1400000,
+          "effect": "Melhora comércio marítimo, pesca e rotas para ilhas."
+        },
+        {
+          "name": "Centro de Recursos",
+          "price": 800000,
+          "effect": "Apoia mineração, agricultura, pesca ou coleta regional."
+        }
+      ],
+      "marketBasis": "Valor de RPG calibrado por escala urbana, infraestrutura, turismo, posição logística e diferenças relativas do mercado sul-coreano; não é uma avaliação imobiliária oficial.",
+      "purchasable": true,
+      "protected": false
+    },
+    {
+      "id": "cheonan",
+      "name": "Cheonan",
+      "type": "city",
+      "x": 37.1094,
+      "y": 34.7656,
+      "dangerLevel": "C",
+      "image": "/images/places/cheonan.webp",
+      "description": "Entrocamento logístico entre a capital e o centro do país.",
+      "marketPrice": 7200000,
+      "weeklyIncome": 700000,
+      "dominantGuild": {
+        "name": "Nenhuma",
+        "territory": "Não conquistado",
+        "level": 0,
+        "note": "Local conquistável do novo mapa. No estado inicial não possui dono nem guilda dominante."
+      },
+      "players": [],
+      "npcs": [],
+      "tourism": [],
+      "specialLocations": [],
+      "investments": [
+        {
+          "name": "Posto avançado da Guilda",
+          "price": 1300000,
+          "effect": "Base local, armazenamento e suporte de membros."
+        },
+        {
+          "name": "Centro de Treinamento",
+          "price": 1600000,
+          "effect": "Estrutura para treinos, eventos e preparação de raids."
+        },
+        {
+          "name": "Mercado Local",
+          "price": 1000000,
+          "effect": "Amplia comércio e renda semanal da região."
+        },
+        {
+          "name": "Parque Industrial / Oficina",
+          "price": 2300000,
+          "effect": "Produção de itens, manutenção e contratos industriais."
+        }
+      ],
+      "marketBasis": "Valor de RPG calibrado por escala urbana, infraestrutura, turismo, posição logística e diferenças relativas do mercado sul-coreano; não é uma avaliação imobiliária oficial.",
+      "purchasable": true,
+      "protected": false
+    },
+    {
+      "id": "cheongju",
+      "name": "Cheongju",
+      "type": "city",
+      "x": 48.9583,
+      "y": 34.668,
+      "dangerLevel": "C",
+      "image": "/images/places/cheongju.webp",
+      "description": "Centro administrativo e industrial com aeroporto e forte conectividade.",
+      "marketPrice": 7600000,
+      "weeklyIncome": 750000,
+      "dominantGuild": {
+        "name": "Nenhuma",
+        "territory": "Não conquistado",
+        "level": 0,
+        "note": "Local conquistável do novo mapa. No estado inicial não possui dono nem guilda dominante."
+      },
+      "players": [],
+      "npcs": [],
+      "tourism": [],
+      "specialLocations": [],
+      "investments": [
+        {
+          "name": "Posto avançado da Guilda",
+          "price": 1350000,
+          "effect": "Base local, armazenamento e suporte de membros."
+        },
+        {
+          "name": "Centro de Treinamento",
+          "price": 1650000,
+          "effect": "Estrutura para treinos, eventos e preparação de raids."
+        },
+        {
+          "name": "Mercado Local",
+          "price": 1050000,
+          "effect": "Amplia comércio e renda semanal da região."
+        },
+        {
+          "name": "Parque Industrial / Oficina",
+          "price": 2450000,
+          "effect": "Produção de itens, manutenção e contratos industriais."
+        }
+      ],
+      "marketBasis": "Valor de RPG calibrado por escala urbana, infraestrutura, turismo, posição logística e diferenças relativas do mercado sul-coreano; não é uma avaliação imobiliária oficial.",
+      "purchasable": true,
+      "protected": false
+    },
+    {
+      "id": "asan",
+      "name": "Asan",
+      "type": "city",
+      "x": 29.0365,
+      "y": 37.5977,
+      "dangerLevel": "C",
+      "image": "/images/places/asan.webp",
+      "description": "Polo industrial e termal, próximo a grandes corredores de produção.",
+      "marketPrice": 6200000,
+      "weeklyIncome": 600000,
+      "dominantGuild": {
+        "name": "Nenhuma",
+        "territory": "Não conquistado",
+        "level": 0,
+        "note": "Local conquistável do novo mapa. No estado inicial não possui dono nem guilda dominante."
+      },
+      "players": [],
+      "npcs": [],
+      "tourism": [],
+      "specialLocations": [],
+      "investments": [
+        {
+          "name": "Posto avançado da Guilda",
+          "price": 1100000,
+          "effect": "Base local, armazenamento e suporte de membros."
+        },
+        {
+          "name": "Centro de Treinamento",
+          "price": 1350000,
+          "effect": "Estrutura para treinos, eventos e preparação de raids."
+        },
+        {
+          "name": "Mercado Local",
+          "price": 850000,
+          "effect": "Amplia comércio e renda semanal da região."
+        },
+        {
+          "name": "Parque Industrial / Oficina",
+          "price": 2000000,
+          "effect": "Produção de itens, manutenção e contratos industriais."
+        }
+      ],
+      "marketBasis": "Valor de RPG calibrado por escala urbana, infraestrutura, turismo, posição logística e diferenças relativas do mercado sul-coreano; não é uma avaliação imobiliária oficial.",
+      "purchasable": true,
+      "protected": false
+    },
+    {
+      "id": "daejeon",
+      "name": "Daejeon",
+      "type": "city",
+      "x": 42.9036,
+      "y": 44.2383,
+      "dangerLevel": "D",
+      "image": "/images/places/daejeon.webp",
+      "description": "Centro científico, tecnológico e logístico no coração da Coreia do Sul.",
+      "marketPrice": 9000000,
+      "weeklyIncome": 900000,
+      "dominantGuild": {
+        "name": "Nenhuma",
+        "territory": "Não conquistado",
+        "level": 0,
+        "note": "Local conquistável do novo mapa. No estado inicial não possui dono nem guilda dominante."
+      },
+      "players": [],
+      "npcs": [],
+      "tourism": [],
+      "specialLocations": [],
+      "investments": [
+        {
+          "name": "Posto avançado da Guilda",
+          "price": 1600000,
+          "effect": "Base local, armazenamento e suporte de membros."
+        },
+        {
+          "name": "Centro de Treinamento",
+          "price": 2000000,
+          "effect": "Estrutura para treinos, eventos e preparação de raids."
+        },
+        {
+          "name": "Centro Comercial",
+          "price": 2500000,
+          "effect": "Aumenta atividade econômica, lojas e renda territorial."
+        },
+        {
+          "name": "Parque Industrial / Oficina",
+          "price": 2900000,
+          "effect": "Produção de itens, manutenção e contratos industriais."
+        }
+      ],
+      "marketBasis": "Valor de RPG calibrado por escala urbana, infraestrutura, turismo, posição logística e diferenças relativas do mercado sul-coreano; não é uma avaliação imobiliária oficial.",
+      "purchasable": true,
+      "protected": false
+    },
+    {
+      "id": "gunsan",
+      "name": "Gunsan",
+      "type": "city",
+      "x": 29.2318,
+      "y": 49.6094,
+      "dangerLevel": "C",
+      "image": "/images/places/gunsan.webp",
+      "description": "Cidade portuária do Mar Amarelo, com indústria, comércio e agricultura regional.",
+      "marketPrice": 5000000,
+      "weeklyIncome": 500000,
+      "dominantGuild": {
+        "name": "Nenhuma",
+        "territory": "Não conquistado",
+        "level": 0,
+        "note": "Local conquistável do novo mapa. No estado inicial não possui dono nem guilda dominante."
+      },
+      "players": [],
+      "npcs": [],
+      "tourism": [],
+      "specialLocations": [],
+      "investments": [
+        {
+          "name": "Posto avançado da Guilda",
+          "price": 900000,
+          "effect": "Base local, armazenamento e suporte de membros."
+        },
+        {
+          "name": "Centro de Treinamento",
+          "price": 1100000,
+          "effect": "Estrutura para treinos, eventos e preparação de raids."
+        },
+        {
+          "name": "Mercado Local",
+          "price": 700000,
+          "effect": "Amplia comércio e renda semanal da região."
+        },
+        {
+          "name": "Terminal Portuário / Marina",
+          "price": 1500000,
+          "effect": "Melhora comércio marítimo, pesca e rotas para ilhas."
+        }
+      ],
+      "marketBasis": "Valor de RPG calibrado por escala urbana, infraestrutura, turismo, posição logística e diferenças relativas do mercado sul-coreano; não é uma avaliação imobiliária oficial.",
+      "purchasable": true,
+      "protected": false
+    },
+    {
+      "id": "jeonju",
+      "name": "Jeonju",
+      "type": "city",
+      "x": 36.5234,
+      "y": 55.5664,
+      "dangerLevel": "C",
+      "image": "/images/places/jeonju.webp",
+      "description": "Forte apelo cultural e gastronômico, conhecida por patrimônio tradicional.",
+      "marketPrice": 6500000,
+      "weeklyIncome": 650000,
+      "dominantGuild": {
+        "name": "Nenhuma",
+        "territory": "Não conquistado",
+        "level": 0,
+        "note": "Local conquistável do novo mapa. No estado inicial não possui dono nem guilda dominante."
+      },
+      "players": [],
+      "npcs": [],
+      "tourism": [
+        "Hanok Village",
+        "Gastronomia tradicional"
+      ],
+      "specialLocations": [],
+      "investments": [
+        {
+          "name": "Posto avançado da Guilda",
+          "price": 1150000,
+          "effect": "Base local, armazenamento e suporte de membros."
+        },
+        {
+          "name": "Centro de Treinamento",
+          "price": 1450000,
+          "effect": "Estrutura para treinos, eventos e preparação de raids."
+        },
+        {
+          "name": "Mercado Local",
+          "price": 900000,
+          "effect": "Amplia comércio e renda semanal da região."
+        },
+        {
+          "name": "Complexo Turístico",
+          "price": 1550000,
+          "effect": "Explora pontos turísticos, hospedagem e eventos."
+        }
+      ],
+      "marketBasis": "Valor de RPG calibrado por escala urbana, infraestrutura, turismo, posição logística e diferenças relativas do mercado sul-coreano; não é uma avaliação imobiliária oficial.",
+      "purchasable": true,
+      "protected": false
+    },
+    {
+      "id": "gimcheon",
+      "name": "Gimcheon",
+      "type": "city",
+      "x": 49.0885,
+      "y": 53.125,
+      "dangerLevel": "C",
+      "image": "/images/places/gimcheon.webp",
+      "description": "Cidade interiorana bem conectada por transporte e com custos moderados.",
+      "marketPrice": 4700000,
+      "weeklyIncome": 450000,
+      "dominantGuild": {
+        "name": "Nenhuma",
+        "territory": "Não conquistado",
+        "level": 0,
+        "note": "Local conquistável do novo mapa. No estado inicial não possui dono nem guilda dominante."
+      },
+      "players": [],
+      "npcs": [],
+      "tourism": [],
+      "specialLocations": [],
+      "investments": [
+        {
+          "name": "Posto avançado da Guilda",
+          "price": 850000,
+          "effect": "Base local, armazenamento e suporte de membros."
+        },
+        {
+          "name": "Centro de Treinamento",
+          "price": 1050000,
+          "effect": "Estrutura para treinos, eventos e preparação de raids."
+        },
+        {
+          "name": "Mercado Local",
+          "price": 650000,
+          "effect": "Amplia comércio e renda semanal da região."
+        },
+        {
+          "name": "Centro de Recursos",
+          "price": 800000,
+          "effect": "Apoia mineração, agricultura, pesca ou coleta regional."
+        }
+      ],
+      "marketBasis": "Valor de RPG calibrado por escala urbana, infraestrutura, turismo, posição logística e diferenças relativas do mercado sul-coreano; não é uma avaliação imobiliária oficial.",
+      "purchasable": true,
+      "protected": false
+    },
+    {
+      "id": "daegu",
+      "name": "Daegu",
+      "type": "city",
+      "x": 65.1042,
+      "y": 51.7578,
+      "dangerLevel": "D",
+      "image": "/images/places/daegu.webp",
+      "description": "Grande metrópole regional com indústria, comércio, saúde e serviços.",
+      "marketPrice": 10500000,
+      "weeklyIncome": 1050000,
+      "dominantGuild": {
+        "name": "Nenhuma",
+        "territory": "Não conquistado",
+        "level": 0,
+        "note": "Local conquistável do novo mapa. No estado inicial não possui dono nem guilda dominante."
+      },
+      "players": [],
+      "npcs": [],
+      "tourism": [],
+      "specialLocations": [],
+      "investments": [
+        {
+          "name": "Posto avançado da Guilda",
+          "price": 1900000,
+          "effect": "Base local, armazenamento e suporte de membros."
+        },
+        {
+          "name": "Centro de Treinamento",
+          "price": 2300000,
+          "effect": "Estrutura para treinos, eventos e preparação de raids."
+        },
+        {
+          "name": "Centro Comercial",
+          "price": 2950000,
+          "effect": "Aumenta atividade econômica, lojas e renda territorial."
+        },
+        {
+          "name": "Parque Industrial / Oficina",
+          "price": 3350000,
+          "effect": "Produção de itens, manutenção e contratos industriais."
+        }
+      ],
+      "marketBasis": "Valor de RPG calibrado por escala urbana, infraestrutura, turismo, posição logística e diferenças relativas do mercado sul-coreano; não é uma avaliação imobiliária oficial.",
+      "purchasable": true,
+      "protected": false
+    },
+    {
+      "id": "jinju",
+      "name": "Jinju",
+      "type": "city",
+      "x": 52.9948,
+      "y": 62.793,
+      "dangerLevel": "C",
+      "image": "/images/places/jinju.webp",
+      "description": "Centro histórico e educacional no sul, com base industrial regional.",
+      "marketPrice": 5200000,
+      "weeklyIncome": 500000,
+      "dominantGuild": {
+        "name": "Nenhuma",
+        "territory": "Não conquistado",
+        "level": 0,
+        "note": "Local conquistável do novo mapa. No estado inicial não possui dono nem guilda dominante."
+      },
+      "players": [],
+      "npcs": [],
+      "tourism": [],
+      "specialLocations": [],
+      "investments": [
+        {
+          "name": "Posto avançado da Guilda",
+          "price": 950000,
+          "effect": "Base local, armazenamento e suporte de membros."
+        },
+        {
+          "name": "Centro de Treinamento",
+          "price": 1150000,
+          "effect": "Estrutura para treinos, eventos e preparação de raids."
+        },
+        {
+          "name": "Mercado Local",
+          "price": 750000,
+          "effect": "Amplia comércio e renda semanal da região."
+        },
+        {
+          "name": "Centro de Recursos",
+          "price": 900000,
+          "effect": "Apoia mineração, agricultura, pesca ou coleta regional."
+        }
+      ],
+      "marketBasis": "Valor de RPG calibrado por escala urbana, infraestrutura, turismo, posição logística e diferenças relativas do mercado sul-coreano; não é uma avaliação imobiliária oficial.",
+      "purchasable": true,
+      "protected": false
+    },
+    {
+      "id": "changwon",
+      "name": "Changwon",
+      "type": "city",
+      "x": 64.974,
+      "y": 60.2539,
+      "dangerLevel": "D",
+      "image": "/images/places/changwon.webp",
+      "description": "Grande polo industrial e administrativo próximo a Busan.",
+      "marketPrice": 8500000,
+      "weeklyIncome": 850000,
+      "dominantGuild": {
+        "name": "Nenhuma",
+        "territory": "Não conquistado",
+        "level": 0,
+        "note": "Local conquistável do novo mapa. No estado inicial não possui dono nem guilda dominante."
+      },
+      "players": [],
+      "npcs": [],
+      "tourism": [],
+      "specialLocations": [],
+      "investments": [
+        {
+          "name": "Posto avançado da Guilda",
+          "price": 1550000,
+          "effect": "Base local, armazenamento e suporte de membros."
+        },
+        {
+          "name": "Centro de Treinamento",
+          "price": 1850000,
+          "effect": "Estrutura para treinos, eventos e preparação de raids."
+        },
+        {
+          "name": "Centro Comercial",
+          "price": 2400000,
+          "effect": "Aumenta atividade econômica, lojas e renda territorial."
+        },
+        {
+          "name": "Parque Industrial / Oficina",
+          "price": 2700000,
+          "effect": "Produção de itens, manutenção e contratos industriais."
+        }
+      ],
+      "marketBasis": "Valor de RPG calibrado por escala urbana, infraestrutura, turismo, posição logística e diferenças relativas do mercado sul-coreano; não é uma avaliação imobiliária oficial.",
+      "purchasable": true,
+      "protected": false
+    },
+    {
+      "id": "busan",
+      "name": "Busan",
+      "type": "city",
+      "x": 75.1953,
+      "y": 66.4062,
+      "dangerLevel": "D",
+      "image": "/images/places/busan.webp",
+      "description": "Segunda maior metrópole, grande porto, praias e turismo internacional.",
+      "marketPrice": 15500000,
+      "weeklyIncome": 1550000,
+      "dominantGuild": {
+        "name": "Nenhuma",
+        "territory": "Não conquistado",
+        "level": 0,
+        "note": "Local conquistável do novo mapa. No estado inicial não possui dono nem guilda dominante."
+      },
+      "players": [],
+      "npcs": [
+        {
+          "name": "Primrose Azelhart",
+          "status": "Distrito de entretenimento",
+          "reason": "A vida noturna, os espetáculos e o fluxo costeiro de Busan combinam com sua atuação social e investigativa."
+        }
+      ],
+      "tourism": [
+        "Haeundae",
+        "Gamcheon Culture Village",
+        "Jagalchi",
+        "Templos costeiros"
+      ],
+      "specialLocations": [],
+      "investments": [
+        {
+          "name": "Posto avançado da Guilda",
+          "price": 2800000,
+          "effect": "Base local, armazenamento e suporte de membros."
+        },
+        {
+          "name": "Centro de Treinamento",
+          "price": 3400000,
+          "effect": "Estrutura para treinos, eventos e preparação de raids."
+        },
+        {
+          "name": "Centro Comercial",
+          "price": 4350000,
+          "effect": "Aumenta atividade econômica, lojas e renda territorial."
+        },
+        {
+          "name": "Terminal Portuário / Marina",
+          "price": 4650000,
+          "effect": "Melhora comércio marítimo, pesca e rotas para ilhas."
+        },
+        {
+          "name": "Complexo Turístico",
+          "price": 3700000,
+          "effect": "Explora pontos turísticos, hospedagem e eventos."
+        }
+      ],
+      "marketBasis": "Valor de RPG calibrado por escala urbana, infraestrutura, turismo, posição logística e diferenças relativas do mercado sul-coreano; não é uma avaliação imobiliária oficial.",
+      "purchasable": true,
+      "protected": false
+    },
+    {
+      "id": "pohang",
+      "name": "Pohang",
+      "type": "city",
+      "x": 78.6458,
+      "y": 46.1914,
+      "dangerLevel": "C",
+      "image": "/images/places/pohang.webp",
+      "description": "Polo industrial siderúrgico e portuário na costa leste.",
+      "marketPrice": 7800000,
+      "weeklyIncome": 800000,
+      "dominantGuild": {
+        "name": "Nenhuma",
+        "territory": "Não conquistado",
+        "level": 0,
+        "note": "Local conquistável do novo mapa. No estado inicial não possui dono nem guilda dominante."
+      },
+      "players": [],
+      "npcs": [],
+      "tourism": [],
+      "specialLocations": [],
+      "investments": [
+        {
+          "name": "Posto avançado da Guilda",
+          "price": 1400000,
+          "effect": "Base local, armazenamento e suporte de membros."
+        },
+        {
+          "name": "Centro de Treinamento",
+          "price": 1700000,
+          "effect": "Estrutura para treinos, eventos e preparação de raids."
+        },
+        {
+          "name": "Mercado Local",
+          "price": 1100000,
+          "effect": "Amplia comércio e renda semanal da região."
+        },
+        {
+          "name": "Terminal Portuário / Marina",
+          "price": 2350000,
+          "effect": "Melhora comércio marítimo, pesca e rotas para ilhas."
+        },
+        {
+          "name": "Parque Industrial / Oficina",
+          "price": 2500000,
+          "effect": "Produção de itens, manutenção e contratos industriais."
+        }
+      ],
+      "marketBasis": "Valor de RPG calibrado por escala urbana, infraestrutura, turismo, posição logística e diferenças relativas do mercado sul-coreano; não é uma avaliação imobiliária oficial.",
+      "purchasable": true,
+      "protected": false
+    },
+    {
+      "id": "ulsan",
+      "name": "Ulsan",
+      "type": "city",
+      "x": 78.8411,
+      "y": 56.4453,
+      "dangerLevel": "D",
+      "image": "/images/places/ulsan.webp",
+      "description": "Centro industrial de alto valor, ligado a automóveis, navios e energia.",
+      "marketPrice": 9000000,
+      "weeklyIncome": 900000,
+      "dominantGuild": {
+        "name": "Nenhuma",
+        "territory": "Não conquistado",
+        "level": 0,
+        "note": "Local conquistável do novo mapa. No estado inicial não possui dono nem guilda dominante."
+      },
+      "players": [],
+      "npcs": [],
+      "tourism": [],
+      "specialLocations": [],
+      "investments": [
+        {
+          "name": "Posto avançado da Guilda",
+          "price": 1600000,
+          "effect": "Base local, armazenamento e suporte de membros."
+        },
+        {
+          "name": "Centro de Treinamento",
+          "price": 2000000,
+          "effect": "Estrutura para treinos, eventos e preparação de raids."
+        },
+        {
+          "name": "Centro Comercial",
+          "price": 2500000,
+          "effect": "Aumenta atividade econômica, lojas e renda territorial."
+        },
+        {
+          "name": "Terminal Portuário / Marina",
+          "price": 2700000,
+          "effect": "Melhora comércio marítimo, pesca e rotas para ilhas."
+        },
+        {
+          "name": "Parque Industrial / Oficina",
+          "price": 2900000,
+          "effect": "Produção de itens, manutenção e contratos industriais."
+        }
+      ],
+      "marketBasis": "Valor de RPG calibrado por escala urbana, infraestrutura, turismo, posição logística e diferenças relativas do mercado sul-coreano; não é uma avaliação imobiliária oficial.",
+      "purchasable": true,
+      "protected": false
+    },
+    {
+      "id": "gwangju",
+      "name": "Gwangju",
+      "type": "city",
+      "x": 26.9531,
+      "y": 62.3047,
+      "dangerLevel": "D",
+      "image": "/images/places/gwangju.webp",
+      "description": "Grande centro cultural, administrativo e comercial do sudoeste.",
+      "marketPrice": 8500000,
+      "weeklyIncome": 850000,
+      "dominantGuild": {
+        "name": "Nenhuma",
+        "territory": "Não conquistado",
+        "level": 0,
+        "note": "Local conquistável do novo mapa. No estado inicial não possui dono nem guilda dominante."
+      },
+      "players": [],
+      "npcs": [],
+      "tourism": [],
+      "specialLocations": [],
+      "investments": [
+        {
+          "name": "Posto avançado da Guilda",
+          "price": 1550000,
+          "effect": "Base local, armazenamento e suporte de membros."
+        },
+        {
+          "name": "Centro de Treinamento",
+          "price": 1850000,
+          "effect": "Estrutura para treinos, eventos e preparação de raids."
+        },
+        {
+          "name": "Centro Comercial",
+          "price": 2400000,
+          "effect": "Aumenta atividade econômica, lojas e renda territorial."
+        },
+        {
+          "name": "Parque Industrial / Oficina",
+          "price": 2700000,
+          "effect": "Produção de itens, manutenção e contratos industriais."
+        }
+      ],
+      "marketBasis": "Valor de RPG calibrado por escala urbana, infraestrutura, turismo, posição logística e diferenças relativas do mercado sul-coreano; não é uma avaliação imobiliária oficial.",
+      "purchasable": true,
+      "protected": false
+    },
+    {
+      "id": "yeosu",
+      "name": "Yeosu",
+      "type": "city",
+      "x": 43.8151,
+      "y": 70.9961,
+      "dangerLevel": "C",
+      "image": "/images/places/yeosu.webp",
+      "description": "Cidade costeira turística e industrial, com arquipélagos e infraestrutura marítima.",
+      "marketPrice": 7600000,
+      "weeklyIncome": 750000,
+      "dominantGuild": {
+        "name": "Nenhuma",
+        "territory": "Não conquistado",
+        "level": 0,
+        "note": "Local conquistável do novo mapa. No estado inicial não possui dono nem guilda dominante."
+      },
+      "players": [],
+      "npcs": [],
+      "tourism": [
+        "Arquipélago",
+        "Teleférico costeiro"
+      ],
+      "specialLocations": [],
+      "investments": [
+        {
+          "name": "Posto avançado da Guilda",
+          "price": 1350000,
+          "effect": "Base local, armazenamento e suporte de membros."
+        },
+        {
+          "name": "Centro de Treinamento",
+          "price": 1650000,
+          "effect": "Estrutura para treinos, eventos e preparação de raids."
+        },
+        {
+          "name": "Mercado Local",
+          "price": 1050000,
+          "effect": "Amplia comércio e renda semanal da região."
+        },
+        {
+          "name": "Terminal Portuário / Marina",
+          "price": 2300000,
+          "effect": "Melhora comércio marítimo, pesca e rotas para ilhas."
+        },
+        {
+          "name": "Complexo Turístico",
+          "price": 1800000,
+          "effect": "Explora pontos turísticos, hospedagem e eventos."
+        }
+      ],
+      "marketBasis": "Valor de RPG calibrado por escala urbana, infraestrutura, turismo, posição logística e diferenças relativas do mercado sul-coreano; não é uma avaliação imobiliária oficial.",
+      "purchasable": true,
+      "protected": false
+    },
+    {
+      "id": "mokpo",
+      "name": "Mokpo",
+      "type": "city",
+      "x": 22.5911,
+      "y": 69.6289,
+      "dangerLevel": "C",
+      "image": "/images/places/mokpo.webp",
+      "description": "Porto do sudoeste e acesso estratégico a numerosas ilhas.",
+      "marketPrice": 5600000,
+      "weeklyIncome": 550000,
+      "dominantGuild": {
+        "name": "Nenhuma",
+        "territory": "Não conquistado",
+        "level": 0,
+        "note": "Local conquistável do novo mapa. No estado inicial não possui dono nem guilda dominante."
+      },
+      "players": [],
+      "npcs": [],
+      "tourism": [
+        "Porto histórico",
+        "Ilhas do sudoeste"
+      ],
+      "specialLocations": [
+        "Acesso regional para rotas às ilhas do Mar Amarelo."
+      ],
+      "investments": [
+        {
+          "name": "Posto avançado da Guilda",
+          "price": 1000000,
+          "effect": "Base local, armazenamento e suporte de membros."
+        },
+        {
+          "name": "Centro de Treinamento",
+          "price": 1250000,
+          "effect": "Estrutura para treinos, eventos e preparação de raids."
+        },
+        {
+          "name": "Mercado Local",
+          "price": 800000,
+          "effect": "Amplia comércio e renda semanal da região."
+        },
+        {
+          "name": "Terminal Portuário / Marina",
+          "price": 1700000,
+          "effect": "Melhora comércio marítimo, pesca e rotas para ilhas."
+        },
+        {
+          "name": "Complexo Turístico",
+          "price": 1350000,
+          "effect": "Explora pontos turísticos, hospedagem e eventos."
+        }
+      ],
+      "marketBasis": "Valor de RPG calibrado por escala urbana, infraestrutura, turismo, posição logística e diferenças relativas do mercado sul-coreano; não é uma avaliação imobiliária oficial.",
+      "purchasable": true,
+      "protected": false
+    },
+    {
+      "id": "tongyeong",
+      "name": "Tongyeong",
+      "type": "city",
+      "x": 61.5885,
+      "y": 69.4336,
+      "dangerLevel": "C",
+      "image": "/images/places/tongyeong.webp",
+      "description": "Cidade costeira cercada por ilhas, forte em turismo, pesca e navegação.",
+      "marketPrice": 6500000,
+      "weeklyIncome": 650000,
+      "dominantGuild": {
+        "name": "Nenhuma",
+        "territory": "Não conquistado",
+        "level": 0,
+        "note": "Local conquistável do novo mapa. No estado inicial não possui dono nem guilda dominante."
+      },
+      "players": [],
+      "npcs": [],
+      "tourism": [
+        "Ilhas",
+        "Marinas e mirantes"
+      ],
+      "specialLocations": [],
+      "investments": [
+        {
+          "name": "Posto avançado da Guilda",
+          "price": 1150000,
+          "effect": "Base local, armazenamento e suporte de membros."
+        },
+        {
+          "name": "Centro de Treinamento",
+          "price": 1450000,
+          "effect": "Estrutura para treinos, eventos e preparação de raids."
+        },
+        {
+          "name": "Mercado Local",
+          "price": 900000,
+          "effect": "Amplia comércio e renda semanal da região."
+        },
+        {
+          "name": "Terminal Portuário / Marina",
+          "price": 1950000,
+          "effect": "Melhora comércio marítimo, pesca e rotas para ilhas."
+        },
+        {
+          "name": "Complexo Turístico",
+          "price": 1550000,
+          "effect": "Explora pontos turísticos, hospedagem e eventos."
+        }
+      ],
+      "marketBasis": "Valor de RPG calibrado por escala urbana, infraestrutura, turismo, posição logística e diferenças relativas do mercado sul-coreano; não é uma avaliação imobiliária oficial.",
+      "purchasable": true,
+      "protected": false
+    },
+    {
+      "id": "jeju",
+      "name": "Jeju",
+      "type": "island",
+      "x": 42.0573,
+      "y": 88.8672,
+      "dangerLevel": "B",
+      "image": "/images/places/jeju.webp",
+      "description": "Ilha turística de alto valor, com Hallasan, natureza e rotas aéreas.",
+      "marketPrice": 12000000,
+      "weeklyIncome": 1200000,
+      "dominantGuild": {
+        "name": "Nenhuma",
+        "territory": "Não conquistado",
+        "level": 0,
+        "note": "Local conquistável do novo mapa. No estado inicial não possui dono nem guilda dominante."
+      },
+      "players": [],
+      "npcs": [],
+      "tourism": [
+        "Hallasan",
+        "Cachoeiras",
+        "Túneis de lava",
+        "Costa vulcânica"
+      ],
+      "specialLocations": [
+        "Hallasan — treinamento extremo com bônus de quests e condições letais."
+      ],
+      "investments": [
+        {
+          "name": "Posto avançado da Guilda",
+          "price": 2150000,
+          "effect": "Base local, armazenamento e suporte de membros."
+        },
+        {
+          "name": "Centro de Treinamento",
+          "price": 2650000,
+          "effect": "Estrutura para treinos, eventos e preparação de raids."
+        },
+        {
+          "name": "Centro Comercial",
+          "price": 3350000,
+          "effect": "Aumenta atividade econômica, lojas e renda territorial."
+        },
+        {
+          "name": "Terminal Portuário / Marina",
+          "price": 3600000,
+          "effect": "Melhora comércio marítimo, pesca e rotas para ilhas."
+        },
+        {
+          "name": "Complexo Turístico",
+          "price": 2900000,
+          "effect": "Explora pontos turísticos, hospedagem e eventos."
+        }
+      ],
+      "marketBasis": "Valor de RPG calibrado por escala urbana, infraestrutura, turismo, posição logística e diferenças relativas do mercado sul-coreano; não é uma avaliação imobiliária oficial.",
+      "purchasable": true,
+      "protected": false
+    },
+    {
+      "id": "ulleungdo",
+      "name": "Ulleungdo",
+      "type": "island",
+      "x": 75.651,
+      "y": 7.6172,
+      "dangerLevel": "C",
+      "image": "/images/places/ulleungdo.webp",
+      "description": "Ilha vulcânica remota no Mar do Japão, valiosa por turismo e posição marítima.",
+      "marketPrice": 5000000,
+      "weeklyIncome": 500000,
+      "dominantGuild": {
+        "name": "Nenhuma",
+        "territory": "Não conquistado",
+        "level": 0,
+        "note": "Local conquistável do novo mapa. No estado inicial não possui dono nem guilda dominante."
+      },
+      "players": [],
+      "npcs": [],
+      "tourism": [
+        "Falésias vulcânicas",
+        "Trilhas insulares"
+      ],
+      "specialLocations": [],
+      "investments": [
+        {
+          "name": "Posto avançado da Guilda",
+          "price": 900000,
+          "effect": "Base local, armazenamento e suporte de membros."
+        },
+        {
+          "name": "Centro de Treinamento",
+          "price": 1100000,
+          "effect": "Estrutura para treinos, eventos e preparação de raids."
+        },
+        {
+          "name": "Mercado Local",
+          "price": 700000,
+          "effect": "Amplia comércio e renda semanal da região."
+        },
+        {
+          "name": "Terminal Portuário / Marina",
+          "price": 1500000,
+          "effect": "Melhora comércio marítimo, pesca e rotas para ilhas."
+        },
+        {
+          "name": "Complexo Turístico",
+          "price": 1200000,
+          "effect": "Explora pontos turísticos, hospedagem e eventos."
+        }
+      ],
+      "marketBasis": "Valor de RPG calibrado por escala urbana, infraestrutura, turismo, posição logística e diferenças relativas do mercado sul-coreano; não é uma avaliação imobiliária oficial.",
+      "purchasable": true,
+      "protected": false
+    },
+    {
+      "id": "dokdo",
+      "name": "Dokdo",
+      "type": "island",
+      "x": 78.6458,
+      "y": 23.7305,
+      "dangerLevel": "C",
+      "image": "/images/places/dokdo.webp",
+      "description": "Pequeno conjunto rochoso remoto, com valor estratégico e acesso restrito.",
+      "marketPrice": 1800000,
+      "weeklyIncome": 200000,
+      "dominantGuild": {
+        "name": "Nenhuma",
+        "territory": "Não conquistado",
+        "level": 0,
+        "note": "Local conquistável do novo mapa. No estado inicial não possui dono nem guilda dominante."
+      },
+      "players": [],
+      "npcs": [],
+      "tourism": [
+        "Paisagem rochosa remota"
+      ],
+      "specialLocations": [],
+      "investments": [
+        {
+          "name": "Posto avançado da Guilda",
+          "price": 300000,
+          "effect": "Base local, armazenamento e suporte de membros."
+        },
+        {
+          "name": "Centro de Treinamento",
+          "price": 400000,
+          "effect": "Estrutura para treinos, eventos e preparação de raids."
+        },
+        {
+          "name": "Mercado Local",
+          "price": 250000,
+          "effect": "Amplia comércio e renda semanal da região."
+        },
+        {
+          "name": "Terminal Portuário / Marina",
+          "price": 550000,
+          "effect": "Melhora comércio marítimo, pesca e rotas para ilhas."
+        },
+        {
+          "name": "Complexo Turístico",
+          "price": 450000,
+          "effect": "Explora pontos turísticos, hospedagem e eventos."
+        }
+      ],
+      "marketBasis": "Valor de RPG calibrado por escala urbana, infraestrutura, turismo, posição logística e diferenças relativas do mercado sul-coreano; não é uma avaliação imobiliária oficial.",
+      "purchasable": true,
+      "protected": false
+    },
+    {
+      "id": "heuksando",
+      "name": "Heuksando",
+      "type": "island",
+      "x": 20.638,
+      "y": 83.5938,
+      "dangerLevel": "C",
+      "image": "/images/places/heuksando.webp",
+      "description": "Ilha do sudoeste com natureza preservada, pesca e turismo marítimo.",
+      "marketPrice": 3200000,
+      "weeklyIncome": 300000,
+      "dominantGuild": {
+        "name": "Nenhuma",
+        "territory": "Não conquistado",
+        "level": 0,
+        "note": "Local conquistável do novo mapa. No estado inicial não possui dono nem guilda dominante."
+      },
+      "players": [],
+      "npcs": [],
+      "tourism": [
+        "Parque marítimo",
+        "Trilhas e pesca"
+      ],
+      "specialLocations": [],
+      "investments": [
+        {
+          "name": "Posto avançado da Guilda",
+          "price": 600000,
+          "effect": "Base local, armazenamento e suporte de membros."
+        },
+        {
+          "name": "Centro de Treinamento",
+          "price": 700000,
+          "effect": "Estrutura para treinos, eventos e preparação de raids."
+        },
+        {
+          "name": "Mercado Local",
+          "price": 450000,
+          "effect": "Amplia comércio e renda semanal da região."
+        },
+        {
+          "name": "Terminal Portuário / Marina",
+          "price": 950000,
+          "effect": "Melhora comércio marítimo, pesca e rotas para ilhas."
+        },
+        {
+          "name": "Complexo Turístico",
+          "price": 750000,
+          "effect": "Explora pontos turísticos, hospedagem e eventos."
+        }
+      ],
+      "marketBasis": "Valor de RPG calibrado por escala urbana, infraestrutura, turismo, posição logística e diferenças relativas do mercado sul-coreano; não é uma avaliação imobiliária oficial.",
+      "purchasable": true,
+      "protected": false
+    },
+    {
+      "id": "geomundo",
+      "name": "Geomundo",
+      "type": "island",
+      "x": 72.6562,
+      "y": 81.6406,
+      "dangerLevel": "C",
+      "image": "/images/places/geomundo.webp",
+      "description": "Ilha meridional estratégica para pesca, navegação e turismo costeiro.",
+      "marketPrice": 3000000,
+      "weeklyIncome": 300000,
+      "dominantGuild": {
+        "name": "Nenhuma",
+        "territory": "Não conquistado",
+        "level": 0,
+        "note": "Local conquistável do novo mapa. No estado inicial não possui dono nem guilda dominante."
+      },
+      "players": [],
+      "npcs": [],
+      "tourism": [
+        "Farol",
+        "Costa insular"
+      ],
+      "specialLocations": [],
+      "investments": [
+        {
+          "name": "Posto avançado da Guilda",
+          "price": 550000,
+          "effect": "Base local, armazenamento e suporte de membros."
+        },
+        {
+          "name": "Centro de Treinamento",
+          "price": 650000,
+          "effect": "Estrutura para treinos, eventos e preparação de raids."
+        },
+        {
+          "name": "Mercado Local",
+          "price": 400000,
+          "effect": "Amplia comércio e renda semanal da região."
+        },
+        {
+          "name": "Terminal Portuário / Marina",
+          "price": 900000,
+          "effect": "Melhora comércio marítimo, pesca e rotas para ilhas."
+        },
+        {
+          "name": "Complexo Turístico",
+          "price": 700000,
+          "effect": "Explora pontos turísticos, hospedagem e eventos."
+        }
+      ],
+      "marketBasis": "Valor de RPG calibrado por escala urbana, infraestrutura, turismo, posição logística e diferenças relativas do mercado sul-coreano; não é uma avaliação imobiliária oficial.",
+      "purchasable": true,
+      "protected": false
+    }
+  ]
+}

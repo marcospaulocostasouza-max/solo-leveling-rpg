@@ -1,0 +1,19 @@
+{
+  "id": "tongyeong",
+  "name": "Tongyeong",
+  "image": "/images/cities/tongyeong.webp",
+  "description": "Cidade portuária histórica",
+  "population": "140 mil",
+  "dangerLevel": "C",
+  "guilds": [],
+  "npcs": [],
+  "players": [],
+  "portals": [],
+  "dungeons": [],
+  "bosses": [],
+  "shops": [],
+  "quests": [],
+  "events": [],
+  "resources": [],
+  "notes": ""
+}

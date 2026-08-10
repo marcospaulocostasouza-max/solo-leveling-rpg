@@ -1,0 +1,42 @@
+{
+  "id": "arcanette",
+  "papel": "Vilã",
+  "base_em": "Arcanette (Ordem da Meia-Noite — ligada a Temenos)",
+  "nome": "Arcanette",
+  "idade": "Aparenta 29 anos (idade real desconhecida)",
+  "nacionalidade": "Origem desconhecida, associada a rituais anteriores à Associação",
+  "aparencia": "Beleza etérea e perturbadora, cabelos prateados longos, veste trajes cerimoniais adornados com símbolos de um culto extinto.",
+  "altura_peso": "1,68m / desconhecido",
+  "personalidade": "Manipuladora nível mestre, capaz de identificar e explorar traumas alheios com precisão cirúrgica.",
+  "historia": "Agente de altíssimo nível de uma organização oculta, Arcanette especializou-se em manipular figuras de autoridade dentro da Associação.",
+  "classe": "Mago de Maldição",
+  "classe_avancada": "Bokor",
+  "rank": "S",
+  "nivel": 95,
+  "estilo_luta": "Proficiência em Cajados e Orbes",
+  "atributos": {
+    "forca": 38,
+    "resistencia": 55,
+    "velocidade": 52,
+    "sentidos": 78,
+    "inteligencia": 88,
+    "poder_magico": 93
+  },
+  "elemento": "Escuridão",
+  "habilidade_unica": "Manipulação do Trauma — força um inimigo aleatório a atacar seu próprio aliado mais próximo por um turno, explorando traumas ocultos revelados durante o combate.",
+  "titulo": "A Manipuladora por Trás da Vendeta",
+  "equipamentos": {
+    "arma": "Cajado Cerimonial de Rituais Proibidos",
+    "itens": "Trajes de Culto Extinto, Registros de Traumas Alheios, Máscara Cerimonial"
+  },
+  "tecnicas": [
+    "Sussurro da Vingança",
+    "Ritual da Manipulação",
+    "Colapso do Trauma Revelado"
+  ],
+  "formaFalar": "Fala com tom frio e calculista, frequentemente manipulando as palavras para obter vantagem. Suas frases são precisas e raramente revelam emoções verdadeiras.",
+  "localizacao": "Localização desconhecida — opera nas sombras",
+  "profissao": "Antagonista",
+  "objetivos": "Expandir seu poder e influência, eliminando qualquer ameaça aos seus planos.",
+  "valores": "O poder é o único caminho. A fraqueza é imperdoável. Os fins justificam os meios."
+}

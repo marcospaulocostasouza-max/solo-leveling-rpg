@@ -1,0 +1,42 @@
+{
+  "id": "ori_choi",
+  "papel": "Vilão",
+  "base_em": "Ori (Ordem da Meia-Noite — ligado a Partitio)",
+  "nome": "Ori Choi",
+  "idade": "26",
+  "nacionalidade": "Sul-coreana, repórter infiltrada de aparência inofensiva",
+  "aparencia": "Aparência jovem e desajeitada de propósito, cabelos castanhos bagunçados, sempre carregando um bloco de notas.",
+  "altura_peso": "1,60m / 50kg",
+  "personalidade": "Extremamente convincente em seu disfarce de repórter desengonçada, escondendo uma frieza calculista completa.",
+  "historia": "Disfarçada como jornalista freelancer, Ori coleta informações estratégicas para uma organização oculta interessada em controlar rotas comerciais.",
+  "classe": "Assassino",
+  "classe_avancada": "Lâmina Sombria",
+  "rank": "B",
+  "nivel": 68,
+  "estilo_luta": "Proficiência em Adagas",
+  "atributos": {
+    "forca": 32,
+    "resistencia": 34,
+    "velocidade": 70,
+    "sentidos": 80,
+    "inteligencia": 68,
+    "poder_magico": 30
+  },
+  "elemento": "Vento",
+  "habilidade_unica": "Reportagem Comprometedora — revela um segredo do inimigo que reduz sua moral, causando dano contínuo leve enquanto o efeito de 'exposição' durar.",
+  "titulo": "A Jornalista que Nunca Foi Quem Dizia Ser",
+  "equipamentos": {
+    "arma": "Adagas Disfarçadas de Ferramentas de Reportagem",
+    "itens": "Bloco de Notas Codificado, Câmera Improvisada, Crachá de Jornalista Falso"
+  },
+  "tecnicas": [
+    "Corte da Exposição",
+    "Fuga do Disfarce",
+    "Golpe da Fonte Anônima"
+  ],
+  "formaFalar": "Fala com tom frio e calculista, frequentemente manipulando as palavras para obter vantagem. Suas frases são precisas e raramente revelam emoções verdadeiras.",
+  "localizacao": "Localização desconhecida — opera nas sombras",
+  "profissao": "Antagonista",
+  "objetivos": "Expandir seu poder e influência, eliminando qualquer ameaça aos seus planos.",
+  "valores": "O poder é o único caminho. A fraqueza é imperdoável. Os fins justificam os meios."
+}

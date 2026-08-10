@@ -1,0 +1,56 @@
+[
+  {
+    "id": 1,
+    "nome": "Bar & Restaurante",
+    "custo": 1500000,
+    "rendimento_semanal": 150000,
+    "descricao": "Locais apropriados para reuniões e lazer de caçadores.",
+    "buff": "Cenas casuais dão aos membros da Guilda 25% a mais em XP em cenas de interação.",
+    "max_por_territorio": 2
+  },
+  {
+    "id": 2,
+    "nome": "Academia & Centro Fitness",
+    "custo": 2000000,
+    "rendimento_semanal": 175000,
+    "descricao": "Amplifica a performance dos jogadores em treinos.",
+    "buff": "Quests diárias de treinamento dão +25% XP e +1 ponto em atributo se escolher 3 pontos como recompensa.",
+    "max_por_territorio": 2
+  },
+  {
+    "id": 3,
+    "nome": "Cabaré & Casas de Luxo",
+    "custo": 3000000,
+    "rendimento_semanal": 250000,
+    "descricao": "Locais de entretenimento e coleta de informações.",
+    "buff": "Adquire informações sobre Players, locais e etc. dentro do alcance.",
+    "max_por_territorio": 2
+  },
+  {
+    "id": 4,
+    "nome": "Gerência de Policiamento",
+    "custo": 2000000,
+    "rendimento_semanal": 150000,
+    "descricao": "Delegacia com caçadores de ranks baixos treinados.",
+    "buff": "Reduz estragos de quebras de portais em 25%.",
+    "max_por_territorio": 2
+  },
+  {
+    "id": 5,
+    "nome": "Shopping de Bairro",
+    "custo": 5000000,
+    "rendimento_semanal": 500000,
+    "descricao": "Centro comercial com lojas diversificadas.",
+    "buff": "15% de desconto em itens para membros da guilda (2 cenas comprando).",
+    "max_por_territorio": 2
+  },
+  {
+    "id": 6,
+    "nome": "Oficina Mágica",
+    "custo": 3000000,
+    "rendimento_semanal": 250000,
+    "descricao": "Espaço para encantamento, bigorna e fermentação.",
+    "buff": "Itens fabricados são de posse da GUILDA. Requer jogador de classe de craft.",
+    "max_por_territorio": 2
+  }
+]

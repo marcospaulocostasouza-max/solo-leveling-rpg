@@ -1,0 +1,42 @@
+{
+  "id": "kazan",
+  "papel": "Vilão",
+  "base_em": "Oboro / Kazan (Ordem da Meia-Noite — ligado a Hikari)",
+  "nome": "Kazan",
+  "idade": "34",
+  "nacionalidade": "Sul-coreano, ex-conselheiro de confiança tornado agente duplo",
+  "aparencia": "Postura calma e confiável, cabelos negros curtos, veste roupas discretas de conselheiro que escondem uma lâmina fina.",
+  "altura_peso": "1,77m / 68kg",
+  "personalidade": "Paciente, ressentido por décadas e convencido de que o mundo atual não merece continuar existindo.",
+  "historia": "Conselheiro de confiança de um importante líder de guilda, Kazan carrega o trauma de ter visto seu reino de origem ser conquistado e destruído.",
+  "classe": "Assassino",
+  "classe_avancada": "Shinobi",
+  "rank": "A",
+  "nivel": 89,
+  "estilo_luta": "Proficiência em Adagas",
+  "atributos": {
+    "forca": 55,
+    "resistencia": 46,
+    "velocidade": 78,
+    "sentidos": 82,
+    "inteligencia": 75,
+    "poder_magico": 40
+  },
+  "elemento": "Sombra",
+  "habilidade_unica": "Conselho Envenenado — manipula um aliado inimigo para revelar informações estratégicas do próprio grupo, reduzindo a defesa de toda a equipe adversária por 2 turnos.",
+  "titulo": "O Conselheiro que Odeia o Amanhã",
+  "equipamentos": {
+    "arma": "Lâmina Fina Escondida nas Vestes",
+    "itens": "Roupas Discretas de Conselheiro, Registro de Manipulações Passadas, Símbolo da Organização Oculta"
+  },
+  "tecnicas": [
+    "Corte da Traição Silenciosa",
+    "Sussurro Niilista",
+    "Golpe do Conselheiro Falso"
+  ],
+  "formaFalar": "Fala com tom frio e calculista, frequentemente manipulando as palavras para obter vantagem. Suas frases são precisas e raramente revelam emoções verdadeiras.",
+  "localizacao": "Localização desconhecida — opera nas sombras",
+  "profissao": "Antagonista",
+  "objetivos": "Expandir seu poder e influência, eliminando qualquer ameaça aos seus planos.",
+  "valores": "O poder é o único caminho. A fraqueza é imperdoável. Os fins justificam os meios."
+}

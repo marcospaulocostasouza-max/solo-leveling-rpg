@@ -1,0 +1,129 @@
+/**
+ * TESTE DA NOVA ARQUITETURA DE INTERPRETAÇÃO
+ */
+const { detectarCargaNecessaria } = require('./src/ia/cargaSobDemanda');
+const { interpretarConversa } = require('./src/ia/interpretadorConversa');
+
+let pass = 0;
+let fail = 0;
+
+function test(nome, condicao, detalhes) {
+    if (condicao) { pass++; console.log(`[PASS] ${nome}`); }
+    else { fail++; console.log(`[FAIL] ${nome} ${detalhes ? '- ' + detalhes : ''}`); }
+}
+
+// =============================================
+// TESTES CARGA SOB DEMANDA
+// =============================================
+console.log('=== TESTE CARGA SOB DEMANDA ===');
+
+test('Casual não carrega nada', detectarCargaNecessaria('Oi, tudo bem?')._dadosSolicitados.length === 0);
+test('História', detectarCargaNecessaria('Me conte sua história').historia === true);
+test('Objetivos', detectarCargaNecessaria('Qual seu objetivo?').objetivos === true);
+test('Missão', detectarCargaNecessaria('Tem missão para mim?').missao === true);
+test('Atributos', detectarCargaNecessaria('Quão forte você é?').atributos === true);
+test('Classe', detectarCargaNecessaria('Qual sua classe?').classe === true);
+test('Magia', detectarCargaNecessaria('Você usa magia?').magia === true);
+test('Técnicas', detectarCargaNecessaria('Como você luta?').tecnicas === true);
+test('Equipamentos', detectarCargaNecessaria('Qual sua arma?').equipamentos === true);
+test('Aparência', detectarCargaNecessaria('Como você se parece?').aparencia === true);
+test('Gostos', detectarCargaNecessaria('O que você gosta de fazer?').gostos === true);
+test('Traumas', detectarCargaNecessaria('Qual seu maior medo?').traumas === true);
+test('Relacionamentos NPC', detectarCargaNecessaria('Você conhece o Jin-Woo?').relacionamentos_npc === true);
+test('Organização', detectarCargaNecessaria('Qual guilda você pertence?').organizacao === true);
+test('Profissão', detectarCargaNecessaria('O que você faz da vida?').profissao === true);
+test('Regras', detectarCargaNecessaria('O que você faria nessa situação?').regras_interpretacao === true);
+test('Lacunas', detectarCargaNecessaria('Conte sobre sua infância').lacunas_narrativas === true);
+
+// =============================================
+// TESTES INTERPRETADOR DE CONVERSA
+// =============================================
+console.log('\n=== TESTE INTERPRETADOR DE CONVERSA ===');
+
+const interp1 = interpretarConversa('Oi, tudo bem?', { historico: [] });
+test('Casual: intenção', interp1.intencao.tipoIntencao === 'afirmacao' || interp1.intencao.tipoIntencao === 'pergunta');
+
+const interp2 = interpretarConversa('Você sente saudade de alguém?', { historico: [] });
+test('Emocional: assunto', interp2.intencao.assuntos.includes('emocional'));
+
+const interp3 = interpretarConversa('Você se lembra de mim?', { historico: [] });
+test('Memória: assunto', interp3.intencao.assuntos.includes('memoria'));
+
+const interp4 = interpretarConversa('Me ajude com essa missão', { historico: [] });
+test('Prático: assunto', interp4.intencao.assuntos.includes('pratico'));
+
+const interp5 = interpretarConversa('Somos amigos, certo?', { historico: [] });
+test('Relacional: assunto', interp5.intencao.assuntos.includes('relacional'));
+
+const interp6 = interpretarConversa('kkkk que engraçado!', { historico: [] });
+test('Tom brincalhão', interp6.tom.tomPredominante === 'brincalhao');
+
+const interp7 = interpretarConversa('ISSO É INACEITÁVEL!', { historico: [] });
+test('Tom irritado', interp7.tom.tomPredominante === 'irritado');
+
+const interp8 = interpretarConversa('Por favor, pode me ajudar?', { historico: [] });
+test('Pedido: intenção', interp8.intencao.tipoIntencao === 'pedido');
+
+const interp9 = interpretarConversa('Qual é o melhor caminho?', { historico: [] });
+test('Pergunta: intenção', interp9.intencao.ehPergunta === true);
+
+// Teste com histórico (estágio)
+const historico10 = Array(10).fill({ papel: 'jogador', conteudo: 'oi' });
+const interp10 = interpretarConversa('Oi', { historico: historico10 });
+test('Estágio desenvolvendo', interp10.estagio.estagio === 'desenvolvendo');
+
+// =============================================
+// TESTE PROMPT BUILDER + CONTEXT MANAGER
+// =============================================
+console.log('\n=== TESTE CONTEXT MANAGER + PROMPT BUILDER ===');
+
+try {
+    const { obterContexto } = require('./src/ia/contextManagerV2');
+    console.log('contextManagerV2: carregou OK');
+    
+    const { construirPrompt } = require('./src/ia/promptBuilderV2');
+    console.log('promptBuilderV2: carregou OK');
+    
+    const { conversarComNPC } = require('./src/ia/npcServiceV2');
+    console.log('npcServiceV2: carregou OK');
+    
+    test('Todos módulos carregam', true);
+} catch (e) {
+    test('Todos módulos carregam', false, e.message);
+    console.error(e.stack);
+}
+
+// =============================================
+// TESTE EXTRAÇÃO DE CAMPOS SOB DEMANDA
+// =============================================
+console.log('\n=== TESTE EXTRAÇÃO CAMPOS ===');
+const { extrairCamposSobDemanda } = require('./src/ia/cargaSobDemanda');
+
+const npcTeste = {
+    id: 'teste',
+    nome: 'Teste',
+    personalidade: 'Curioso e brilhante',
+    historia: 'Professora de história arcana antes de seu Despertar...',
+    objetivos: 'Catalogar dungeons anômalas',
+    atributos: { forca: 22, inteligencia: 95 },
+    classe: 'Mago Elemental',
+    aparencia: 'Veste roupas acadêmicas desgastadas'
+};
+
+// Pergunta sobre história → deve carregar historia
+const deteccaoHistoria = detectarCargaNecessaria('Me conte sua história');
+const camposHistoria = extrairCamposSobDemanda(npcTeste, deteccaoHistoria);
+test('História extraída', camposHistoria.historia !== undefined);
+test('Classe não extraída p/ história', camposHistoria.classe === undefined);
+
+// Pergunta sobre aspectos → deve carregar atributos + classe
+const deteccaoAtributos = detectarCargaNecessaria('Quão forte você é?');
+const camposAtributos = extrairCamposSobDemanda(npcTeste, deteccaoAtributos);
+test('Atributos extraídos', camposAtributos.atributos !== undefined);
+test('História não extraída p/ atributos', camposAtributos.historia === undefined);
+
+// =============================================
+// RESULTADO FINAL
+// =============================================
+console.log(`\n=== RESULTADO: ${pass} PASS, ${fail} FAIL ===`);
+process.exit(fail > 0 ? 1 : 0);

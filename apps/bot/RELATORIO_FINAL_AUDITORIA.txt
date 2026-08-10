@@ -1,0 +1,407 @@
+========================================
+RELATÓRIO FINAL DE AUDITORIA - NPC_LORA
+========================================
+
+Data: 2026-08-06T17:27:51.242Z
+
+--- RESUMO GERAL ---
+Total de NPCs: 72
+Total de datasets: 72
+Total de JSONs: 162
+Total de scripts: 51
+Total de arquivos analisados: 1520
+Total de erros encontrados: 334
+Total de erros corrigidos: 0
+
+--- NPCs COMPLETOS ---
+agnea_bristarni, alaune_yeong, alexia_song, alfyn_greengrass, arcanette, bargello_yeon, carinda_moon, castti_florenz, celsus_park, claude, cyrus_albright, darius_kwon, delitia_song, eltrix_noh, entidade_mae, esperre_jin, gaston_rho, gideon_ma, goodwin_cha, haanit, harvey_jeong, heidne_ahn, helgenish, hikari_ku, isla_gwon, kaldena_ryu, kazan, laurana_bae, lucia_yeom, ludo_wei, lyblac, macy_eun, mattias_cardoso, miguel_bang, mugen_ku, ochette, olberic_eisenberg, ophilia_clement, ori_choi, osvald_v_vanstein, partitio_yellowil, petrichor, phenn_doyoung, pius_kang, primrose_azelhart, redeye, reime_oh, richard_han, rondo_baek, rufus_deng, saoirse_ryu, sazantos_do, simeon_ha, solon_wi, stia_han, tanzy_woo, tatloch, temenos_mistral, therion, throne_anguis, tressa_colzione, trish_yamaguchi, trousseau, vanessa_hysel, viator_yoon, vide_o_corruptor, warden_davids, werner_choi, xerc_baek, yvon_baik
+
+--- NPCs INCOMPLETOS ---
+Nenhum
+
+--- ARQUIVOS VAZIOS ---
+elrica_edoras/17_dialog_examples.md
+galdera/17_dialog_examples.md
+galdera/18_scene_examples.md
+
+--- ARQUIVOS INEXISTENTES ---
+Nenhum
+
+--- PROBLEMAS DE ESTRUTURA ---
+Nenhum
+
+--- PROBLEMAS DE CODIFICAÇÃO ---
+Nenhum
+
+--- PROBLEMAS DE IMPORTAÇÃO ---
+auditoria_npcs.js: import relativo não encontrado: ../npc/npcManager
+gerar_npcs.js: import relativo não encontrado: ../npc/npcManager
+gerar_npcs_extra.js: import relativo não encontrado: ../npc/npcManager
+
+--- PROBLEMAS DE CONSISTÊNCIA ---
+Nenhum
+
+--- DUPLICAÇÕES ---
+alexia_song/09_dislikes.md é duplicado de agnea_bristarni/09_dislikes.md
+alexia_song/15_narrative_gaps.md é duplicado de agnea_bristarni/15_narrative_gaps.md
+alexia_song/16_absolute_rules.md é duplicado de agnea_bristarni/16_absolute_rules.md
+alfyn_greengrass/07_values.md é duplicado de agnea_bristarni/07_values.md
+alfyn_greengrass/09_dislikes.md é duplicado de agnea_bristarni/09_dislikes.md
+alfyn_greengrass/10_traumas.md é duplicado de alexia_song/10_traumas.md
+alfyn_greengrass/11_relationships.md é duplicado de alexia_song/11_relationships.md
+alfyn_greengrass/15_narrative_gaps.md é duplicado de agnea_bristarni/15_narrative_gaps.md
+alfyn_greengrass/16_absolute_rules.md é duplicado de agnea_bristarni/16_absolute_rules.md
+arcanette/09_dislikes.md é duplicado de alaune_yeong/09_dislikes.md
+arcanette/11_relationships.md é duplicado de alaune_yeong/11_relationships.md
+arcanette/15_narrative_gaps.md é duplicado de alaune_yeong/15_narrative_gaps.md
+bargello_yeon/10_traumas.md é duplicado de alaune_yeong/10_traumas.md
+bargello_yeon/11_relationships.md é duplicado de alaune_yeong/11_relationships.md
+bargello_yeon/15_narrative_gaps.md é duplicado de alaune_yeong/15_narrative_gaps.md
+carinda_moon/09_dislikes.md é duplicado de agnea_bristarni/09_dislikes.md
+carinda_moon/10_traumas.md é duplicado de alexia_song/10_traumas.md
+carinda_moon/11_relationships.md é duplicado de alexia_song/11_relationships.md
+carinda_moon/15_narrative_gaps.md é duplicado de agnea_bristarni/15_narrative_gaps.md
+carinda_moon/16_absolute_rules.md é duplicado de agnea_bristarni/16_absolute_rules.md
+castti_florenz/09_dislikes.md é duplicado de agnea_bristarni/09_dislikes.md
+castti_florenz/10_traumas.md é duplicado de alexia_song/10_traumas.md
+castti_florenz/11_relationships.md é duplicado de alexia_song/11_relationships.md
+castti_florenz/15_narrative_gaps.md é duplicado de agnea_bristarni/15_narrative_gaps.md
+castti_florenz/16_absolute_rules.md é duplicado de agnea_bristarni/16_absolute_rules.md
+celsus_park/09_dislikes.md é duplicado de agnea_bristarni/09_dislikes.md
+celsus_park/10_traumas.md é duplicado de alexia_song/10_traumas.md
+celsus_park/11_relationships.md é duplicado de alexia_song/11_relationships.md
+celsus_park/15_narrative_gaps.md é duplicado de agnea_bristarni/15_narrative_gaps.md
+celsus_park/16_absolute_rules.md é duplicado de agnea_bristarni/16_absolute_rules.md
+claude/09_dislikes.md é duplicado de alaune_yeong/09_dislikes.md
+claude/10_traumas.md é duplicado de arcanette/10_traumas.md
+claude/11_relationships.md é duplicado de alaune_yeong/11_relationships.md
+claude/15_narrative_gaps.md é duplicado de alaune_yeong/15_narrative_gaps.md
+cyrus_albright/07_values.md é duplicado de agnea_bristarni/07_values.md
+cyrus_albright/09_dislikes.md é duplicado de agnea_bristarni/09_dislikes.md
+cyrus_albright/10_traumas.md é duplicado de alexia_song/10_traumas.md
+cyrus_albright/11_relationships.md é duplicado de alexia_song/11_relationships.md
+cyrus_albright/15_narrative_gaps.md é duplicado de agnea_bristarni/15_narrative_gaps.md
+cyrus_albright/16_absolute_rules.md é duplicado de agnea_bristarni/16_absolute_rules.md
+darius_kwon/08_likes.md é duplicado de claude/08_likes.md
+darius_kwon/09_dislikes.md é duplicado de alaune_yeong/09_dislikes.md
+darius_kwon/10_traumas.md é duplicado de arcanette/10_traumas.md
+darius_kwon/11_relationships.md é duplicado de alaune_yeong/11_relationships.md
+darius_kwon/15_narrative_gaps.md é duplicado de alaune_yeong/15_narrative_gaps.md
+delitia_song/09_dislikes.md é duplicado de bargello_yeon/09_dislikes.md
+delitia_song/10_traumas.md é duplicado de alaune_yeong/10_traumas.md
+delitia_song/11_relationships.md é duplicado de alaune_yeong/11_relationships.md
+delitia_song/15_narrative_gaps.md é duplicado de alaune_yeong/15_narrative_gaps.md
+elrica_edoras/08_likes.md é duplicado de bargello_yeon/08_likes.md
+elrica_edoras/09_dislikes.md é duplicado de bargello_yeon/09_dislikes.md
+elrica_edoras/10_traumas.md é duplicado de alaune_yeong/10_traumas.md
+elrica_edoras/11_relationships.md é duplicado de alaune_yeong/11_relationships.md
+elrica_edoras/15_narrative_gaps.md é duplicado de alaune_yeong/15_narrative_gaps.md
+eltrix_noh/09_dislikes.md é duplicado de bargello_yeon/09_dislikes.md
+eltrix_noh/10_traumas.md é duplicado de alaune_yeong/10_traumas.md
+eltrix_noh/11_relationships.md é duplicado de alaune_yeong/11_relationships.md
+eltrix_noh/15_narrative_gaps.md é duplicado de alaune_yeong/15_narrative_gaps.md
+entidade_mae/08_likes.md é duplicado de arcanette/08_likes.md
+entidade_mae/09_dislikes.md é duplicado de alaune_yeong/09_dislikes.md
+entidade_mae/10_traumas.md é duplicado de arcanette/10_traumas.md
+entidade_mae/11_relationships.md é duplicado de alaune_yeong/11_relationships.md
+entidade_mae/15_narrative_gaps.md é duplicado de alaune_yeong/15_narrative_gaps.md
+esperre_jin/08_likes.md é duplicado de bargello_yeon/08_likes.md
+esperre_jin/09_dislikes.md é duplicado de bargello_yeon/09_dislikes.md
+esperre_jin/10_traumas.md é duplicado de alaune_yeong/10_traumas.md
+esperre_jin/11_relationships.md é duplicado de alaune_yeong/11_relationships.md
+esperre_jin/15_narrative_gaps.md é duplicado de alaune_yeong/15_narrative_gaps.md
+galdera/10_traumas.md é duplicado de alexia_song/10_traumas.md
+galdera/11_relationships.md é duplicado de alexia_song/11_relationships.md
+galdera/15_narrative_gaps.md é duplicado de agnea_bristarni/15_narrative_gaps.md
+galdera/16_absolute_rules.md é duplicado de agnea_bristarni/16_absolute_rules.md
+gaston_rho/08_likes.md é duplicado de bargello_yeon/08_likes.md
+gaston_rho/09_dislikes.md é duplicado de alaune_yeong/09_dislikes.md
+gaston_rho/10_traumas.md é duplicado de alaune_yeong/10_traumas.md
+gaston_rho/11_relationships.md é duplicado de alaune_yeong/11_relationships.md
+gaston_rho/15_narrative_gaps.md é duplicado de alaune_yeong/15_narrative_gaps.md
+gideon_ma/08_likes.md é duplicado de eltrix_noh/08_likes.md
+gideon_ma/09_dislikes.md é duplicado de alaune_yeong/09_dislikes.md
+gideon_ma/10_traumas.md é duplicado de alaune_yeong/10_traumas.md
+gideon_ma/11_relationships.md é duplicado de alaune_yeong/11_relationships.md
+gideon_ma/15_narrative_gaps.md é duplicado de alaune_yeong/15_narrative_gaps.md
+goodwin_cha/09_dislikes.md é duplicado de bargello_yeon/09_dislikes.md
+goodwin_cha/10_traumas.md é duplicado de alaune_yeong/10_traumas.md
+goodwin_cha/11_relationships.md é duplicado de alaune_yeong/11_relationships.md
+goodwin_cha/15_narrative_gaps.md é duplicado de alaune_yeong/15_narrative_gaps.md
+haanit/07_values.md é duplicado de agnea_bristarni/07_values.md
+haanit/09_dislikes.md é duplicado de agnea_bristarni/09_dislikes.md
+haanit/10_traumas.md é duplicado de alexia_song/10_traumas.md
+haanit/15_narrative_gaps.md é duplicado de agnea_bristarni/15_narrative_gaps.md
+haanit/16_absolute_rules.md é duplicado de agnea_bristarni/16_absolute_rules.md
+harvey_jeong/08_likes.md é duplicado de arcanette/08_likes.md
+harvey_jeong/09_dislikes.md é duplicado de alaune_yeong/09_dislikes.md
+harvey_jeong/10_traumas.md é duplicado de arcanette/10_traumas.md
+harvey_jeong/11_relationships.md é duplicado de alaune_yeong/11_relationships.md
+harvey_jeong/15_narrative_gaps.md é duplicado de alaune_yeong/15_narrative_gaps.md
+heidne_ahn/08_likes.md é duplicado de claude/08_likes.md
+heidne_ahn/09_dislikes.md é duplicado de bargello_yeon/09_dislikes.md
+heidne_ahn/10_traumas.md é duplicado de arcanette/10_traumas.md
+heidne_ahn/11_relationships.md é duplicado de alaune_yeong/11_relationships.md
+heidne_ahn/15_narrative_gaps.md é duplicado de alaune_yeong/15_narrative_gaps.md
+helgenish/08_likes.md é duplicado de bargello_yeon/08_likes.md
+helgenish/09_dislikes.md é duplicado de alaune_yeong/09_dislikes.md
+helgenish/10_traumas.md é duplicado de alaune_yeong/10_traumas.md
+helgenish/11_relationships.md é duplicado de alaune_yeong/11_relationships.md
+helgenish/15_narrative_gaps.md é duplicado de alaune_yeong/15_narrative_gaps.md
+hikari_ku/07_values.md é duplicado de agnea_bristarni/07_values.md
+hikari_ku/09_dislikes.md é duplicado de agnea_bristarni/09_dislikes.md
+hikari_ku/15_narrative_gaps.md é duplicado de agnea_bristarni/15_narrative_gaps.md
+hikari_ku/16_absolute_rules.md é duplicado de agnea_bristarni/16_absolute_rules.md
+isla_gwon/08_likes.md é duplicado de delitia_song/08_likes.md
+isla_gwon/09_dislikes.md é duplicado de bargello_yeon/09_dislikes.md
+isla_gwon/10_traumas.md é duplicado de alaune_yeong/10_traumas.md
+isla_gwon/11_relationships.md é duplicado de alaune_yeong/11_relationships.md
+isla_gwon/15_narrative_gaps.md é duplicado de alaune_yeong/15_narrative_gaps.md
+kaldena_ryu/08_likes.md é duplicado de arcanette/08_likes.md
+kaldena_ryu/09_dislikes.md é duplicado de alaune_yeong/09_dislikes.md
+kaldena_ryu/10_traumas.md é duplicado de arcanette/10_traumas.md
+kaldena_ryu/11_relationships.md é duplicado de alaune_yeong/11_relationships.md
+kaldena_ryu/15_narrative_gaps.md é duplicado de alaune_yeong/15_narrative_gaps.md
+kazan/08_likes.md é duplicado de claude/08_likes.md
+kazan/09_dislikes.md é duplicado de alaune_yeong/09_dislikes.md
+kazan/10_traumas.md é duplicado de arcanette/10_traumas.md
+kazan/11_relationships.md é duplicado de alaune_yeong/11_relationships.md
+kazan/15_narrative_gaps.md é duplicado de alaune_yeong/15_narrative_gaps.md
+laurana_bae/09_dislikes.md é duplicado de agnea_bristarni/09_dislikes.md
+laurana_bae/10_traumas.md é duplicado de alexia_song/10_traumas.md
+laurana_bae/15_narrative_gaps.md é duplicado de agnea_bristarni/15_narrative_gaps.md
+laurana_bae/16_absolute_rules.md é duplicado de agnea_bristarni/16_absolute_rules.md
+lucia_yeom/08_likes.md é duplicado de claude/08_likes.md
+lucia_yeom/09_dislikes.md é duplicado de alaune_yeong/09_dislikes.md
+lucia_yeom/10_traumas.md é duplicado de alaune_yeong/10_traumas.md
+lucia_yeom/11_relationships.md é duplicado de alaune_yeong/11_relationships.md
+lucia_yeom/15_narrative_gaps.md é duplicado de alaune_yeong/15_narrative_gaps.md
+ludo_wei/09_dislikes.md é duplicado de agnea_bristarni/09_dislikes.md
+ludo_wei/10_traumas.md é duplicado de alexia_song/10_traumas.md
+ludo_wei/11_relationships.md é duplicado de alexia_song/11_relationships.md
+ludo_wei/15_narrative_gaps.md é duplicado de agnea_bristarni/15_narrative_gaps.md
+ludo_wei/16_absolute_rules.md é duplicado de agnea_bristarni/16_absolute_rules.md
+lyblac/07_values.md é duplicado de galdera/07_values.md
+lyblac/09_dislikes.md é duplicado de galdera/09_dislikes.md
+lyblac/10_traumas.md é duplicado de alexia_song/10_traumas.md
+lyblac/12_goals.md é duplicado de galdera/12_goals.md
+lyblac/15_narrative_gaps.md é duplicado de agnea_bristarni/15_narrative_gaps.md
+lyblac/16_absolute_rules.md é duplicado de agnea_bristarni/16_absolute_rules.md
+macy_eun/09_dislikes.md é duplicado de agnea_bristarni/09_dislikes.md
+macy_eun/11_relationships.md é duplicado de alexia_song/11_relationships.md
+macy_eun/15_narrative_gaps.md é duplicado de agnea_bristarni/15_narrative_gaps.md
+macy_eun/16_absolute_rules.md é duplicado de agnea_bristarni/16_absolute_rules.md
+mattias_cardoso/08_likes.md é duplicado de arcanette/08_likes.md
+mattias_cardoso/09_dislikes.md é duplicado de alaune_yeong/09_dislikes.md
+mattias_cardoso/10_traumas.md é duplicado de alaune_yeong/10_traumas.md
+mattias_cardoso/11_relationships.md é duplicado de alaune_yeong/11_relationships.md
+mattias_cardoso/15_narrative_gaps.md é duplicado de alaune_yeong/15_narrative_gaps.md
+miguel_bang/08_likes.md é duplicado de claude/08_likes.md
+miguel_bang/09_dislikes.md é duplicado de alaune_yeong/09_dislikes.md
+miguel_bang/10_traumas.md é duplicado de arcanette/10_traumas.md
+miguel_bang/11_relationships.md é duplicado de alaune_yeong/11_relationships.md
+miguel_bang/15_narrative_gaps.md é duplicado de alaune_yeong/15_narrative_gaps.md
+mugen_ku/08_likes.md é duplicado de arcanette/08_likes.md
+mugen_ku/09_dislikes.md é duplicado de alaune_yeong/09_dislikes.md
+mugen_ku/10_traumas.md é duplicado de alaune_yeong/10_traumas.md
+mugen_ku/11_relationships.md é duplicado de alaune_yeong/11_relationships.md
+mugen_ku/15_narrative_gaps.md é duplicado de alaune_yeong/15_narrative_gaps.md
+ochette/09_dislikes.md é duplicado de agnea_bristarni/09_dislikes.md
+ochette/10_traumas.md é duplicado de alexia_song/10_traumas.md
+ochette/11_relationships.md é duplicado de alexia_song/11_relationships.md
+ochette/15_narrative_gaps.md é duplicado de agnea_bristarni/15_narrative_gaps.md
+ochette/16_absolute_rules.md é duplicado de agnea_bristarni/16_absolute_rules.md
+olberic_eisenberg/07_values.md é duplicado de agnea_bristarni/07_values.md
+olberic_eisenberg/09_dislikes.md é duplicado de agnea_bristarni/09_dislikes.md
+olberic_eisenberg/15_narrative_gaps.md é duplicado de agnea_bristarni/15_narrative_gaps.md
+olberic_eisenberg/16_absolute_rules.md é duplicado de agnea_bristarni/16_absolute_rules.md
+ophilia_clement/07_values.md é duplicado de agnea_bristarni/07_values.md
+ophilia_clement/09_dislikes.md é duplicado de agnea_bristarni/09_dislikes.md
+ophilia_clement/11_relationships.md é duplicado de alexia_song/11_relationships.md
+ophilia_clement/15_narrative_gaps.md é duplicado de agnea_bristarni/15_narrative_gaps.md
+ophilia_clement/16_absolute_rules.md é duplicado de agnea_bristarni/16_absolute_rules.md
+ori_choi/08_likes.md é duplicado de delitia_song/08_likes.md
+ori_choi/09_dislikes.md é duplicado de alaune_yeong/09_dislikes.md
+ori_choi/10_traumas.md é duplicado de alaune_yeong/10_traumas.md
+ori_choi/11_relationships.md é duplicado de alaune_yeong/11_relationships.md
+ori_choi/15_narrative_gaps.md é duplicado de alaune_yeong/15_narrative_gaps.md
+osvald_v_vanstein/07_values.md é duplicado de agnea_bristarni/07_values.md
+osvald_v_vanstein/09_dislikes.md é duplicado de agnea_bristarni/09_dislikes.md
+osvald_v_vanstein/11_relationships.md é duplicado de alexia_song/11_relationships.md
+osvald_v_vanstein/15_narrative_gaps.md é duplicado de agnea_bristarni/15_narrative_gaps.md
+osvald_v_vanstein/16_absolute_rules.md é duplicado de agnea_bristarni/16_absolute_rules.md
+partitio_yellowil/09_dislikes.md é duplicado de agnea_bristarni/09_dislikes.md
+partitio_yellowil/11_relationships.md é duplicado de alexia_song/11_relationships.md
+partitio_yellowil/15_narrative_gaps.md é duplicado de agnea_bristarni/15_narrative_gaps.md
+partitio_yellowil/16_absolute_rules.md é duplicado de agnea_bristarni/16_absolute_rules.md
+petrichor/08_likes.md é duplicado de arcanette/08_likes.md
+petrichor/09_dislikes.md é duplicado de alaune_yeong/09_dislikes.md
+petrichor/10_traumas.md é duplicado de alaune_yeong/10_traumas.md
+petrichor/11_relationships.md é duplicado de alaune_yeong/11_relationships.md
+petrichor/15_narrative_gaps.md é duplicado de alaune_yeong/15_narrative_gaps.md
+phenn_doyoung/09_dislikes.md é duplicado de agnea_bristarni/09_dislikes.md
+phenn_doyoung/15_narrative_gaps.md é duplicado de agnea_bristarni/15_narrative_gaps.md
+phenn_doyoung/16_absolute_rules.md é duplicado de agnea_bristarni/16_absolute_rules.md
+pius_kang/09_dislikes.md é duplicado de agnea_bristarni/09_dislikes.md
+pius_kang/15_narrative_gaps.md é duplicado de agnea_bristarni/15_narrative_gaps.md
+pius_kang/16_absolute_rules.md é duplicado de agnea_bristarni/16_absolute_rules.md
+primrose_azelhart/07_values.md é duplicado de agnea_bristarni/07_values.md
+primrose_azelhart/09_dislikes.md é duplicado de agnea_bristarni/09_dislikes.md
+primrose_azelhart/15_narrative_gaps.md é duplicado de agnea_bristarni/15_narrative_gaps.md
+primrose_azelhart/16_absolute_rules.md é duplicado de agnea_bristarni/16_absolute_rules.md
+redeye/08_likes.md é duplicado de arcanette/08_likes.md
+redeye/09_dislikes.md é duplicado de alaune_yeong/09_dislikes.md
+redeye/10_traumas.md é duplicado de alaune_yeong/10_traumas.md
+redeye/11_relationships.md é duplicado de alaune_yeong/11_relationships.md
+redeye/15_narrative_gaps.md é duplicado de alaune_yeong/15_narrative_gaps.md
+reime_oh/08_likes.md é duplicado de delitia_song/08_likes.md
+reime_oh/09_dislikes.md é duplicado de bargello_yeon/09_dislikes.md
+reime_oh/10_traumas.md é duplicado de alaune_yeong/10_traumas.md
+reime_oh/11_relationships.md é duplicado de alaune_yeong/11_relationships.md
+reime_oh/15_narrative_gaps.md é duplicado de alaune_yeong/15_narrative_gaps.md
+richard_han/08_likes.md é duplicado de eltrix_noh/08_likes.md
+richard_han/09_dislikes.md é duplicado de bargello_yeon/09_dislikes.md
+richard_han/10_traumas.md é duplicado de arcanette/10_traumas.md
+richard_han/11_relationships.md é duplicado de alaune_yeong/11_relationships.md
+richard_han/15_narrative_gaps.md é duplicado de alaune_yeong/15_narrative_gaps.md
+rondo_baek/09_dislikes.md é duplicado de bargello_yeon/09_dislikes.md
+rondo_baek/10_traumas.md é duplicado de alaune_yeong/10_traumas.md
+rondo_baek/11_relationships.md é duplicado de alaune_yeong/11_relationships.md
+rondo_baek/15_narrative_gaps.md é duplicado de alaune_yeong/15_narrative_gaps.md
+rufus_deng/08_likes.md é duplicado de bargello_yeon/08_likes.md
+rufus_deng/09_dislikes.md é duplicado de alaune_yeong/09_dislikes.md
+rufus_deng/10_traumas.md é duplicado de alaune_yeong/10_traumas.md
+rufus_deng/11_relationships.md é duplicado de alaune_yeong/11_relationships.md
+rufus_deng/15_narrative_gaps.md é duplicado de alaune_yeong/15_narrative_gaps.md
+saoirse_ryu/09_dislikes.md é duplicado de bargello_yeon/09_dislikes.md
+saoirse_ryu/10_traumas.md é duplicado de alaune_yeong/10_traumas.md
+saoirse_ryu/11_relationships.md é duplicado de alaune_yeong/11_relationships.md
+saoirse_ryu/15_narrative_gaps.md é duplicado de alaune_yeong/15_narrative_gaps.md
+sazantos_do/09_dislikes.md é duplicado de bargello_yeon/09_dislikes.md
+sazantos_do/10_traumas.md é duplicado de alaune_yeong/10_traumas.md
+sazantos_do/11_relationships.md é duplicado de alaune_yeong/11_relationships.md
+sazantos_do/15_narrative_gaps.md é duplicado de alaune_yeong/15_narrative_gaps.md
+simeon_ha/08_likes.md é duplicado de arcanette/08_likes.md
+simeon_ha/09_dislikes.md é duplicado de alaune_yeong/09_dislikes.md
+simeon_ha/10_traumas.md é duplicado de alaune_yeong/10_traumas.md
+simeon_ha/11_relationships.md é duplicado de alaune_yeong/11_relationships.md
+simeon_ha/15_narrative_gaps.md é duplicado de alaune_yeong/15_narrative_gaps.md
+solon_wi/08_likes.md é duplicado de goodwin_cha/08_likes.md
+solon_wi/09_dislikes.md é duplicado de bargello_yeon/09_dislikes.md
+solon_wi/10_traumas.md é duplicado de alaune_yeong/10_traumas.md
+solon_wi/11_relationships.md é duplicado de alaune_yeong/11_relationships.md
+solon_wi/15_narrative_gaps.md é duplicado de alaune_yeong/15_narrative_gaps.md
+stia_han/09_dislikes.md é duplicado de agnea_bristarni/09_dislikes.md
+stia_han/11_relationships.md é duplicado de alexia_song/11_relationships.md
+stia_han/15_narrative_gaps.md é duplicado de agnea_bristarni/15_narrative_gaps.md
+stia_han/16_absolute_rules.md é duplicado de agnea_bristarni/16_absolute_rules.md
+tanzy_woo/08_likes.md é duplicado de saoirse_ryu/08_likes.md
+tanzy_woo/09_dislikes.md é duplicado de alaune_yeong/09_dislikes.md
+tanzy_woo/10_traumas.md é duplicado de alaune_yeong/10_traumas.md
+tanzy_woo/11_relationships.md é duplicado de alaune_yeong/11_relationships.md
+tanzy_woo/15_narrative_gaps.md é duplicado de alaune_yeong/15_narrative_gaps.md
+tatloch/08_likes.md é duplicado de rondo_baek/08_likes.md
+tatloch/09_dislikes.md é duplicado de alaune_yeong/09_dislikes.md
+tatloch/10_traumas.md é duplicado de alaune_yeong/10_traumas.md
+tatloch/11_relationships.md é duplicado de alaune_yeong/11_relationships.md
+tatloch/15_narrative_gaps.md é duplicado de alaune_yeong/15_narrative_gaps.md
+temenos_mistral/09_dislikes.md é duplicado de agnea_bristarni/09_dislikes.md
+temenos_mistral/11_relationships.md é duplicado de alexia_song/11_relationships.md
+temenos_mistral/15_narrative_gaps.md é duplicado de agnea_bristarni/15_narrative_gaps.md
+temenos_mistral/16_absolute_rules.md é duplicado de agnea_bristarni/16_absolute_rules.md
+therion/07_values.md é duplicado de agnea_bristarni/07_values.md
+therion/09_dislikes.md é duplicado de agnea_bristarni/09_dislikes.md
+therion/11_relationships.md é duplicado de alexia_song/11_relationships.md
+therion/15_narrative_gaps.md é duplicado de agnea_bristarni/15_narrative_gaps.md
+therion/16_absolute_rules.md é duplicado de agnea_bristarni/16_absolute_rules.md
+throne_anguis/09_dislikes.md é duplicado de agnea_bristarni/09_dislikes.md
+throne_anguis/15_narrative_gaps.md é duplicado de agnea_bristarni/15_narrative_gaps.md
+throne_anguis/16_absolute_rules.md é duplicado de agnea_bristarni/16_absolute_rules.md
+tressa_colzione/07_values.md é duplicado de agnea_bristarni/07_values.md
+tressa_colzione/09_dislikes.md é duplicado de agnea_bristarni/09_dislikes.md
+tressa_colzione/10_traumas.md é duplicado de alexia_song/10_traumas.md
+tressa_colzione/11_relationships.md é duplicado de alexia_song/11_relationships.md
+tressa_colzione/15_narrative_gaps.md é duplicado de agnea_bristarni/15_narrative_gaps.md
+tressa_colzione/16_absolute_rules.md é duplicado de agnea_bristarni/16_absolute_rules.md
+trish_yamaguchi/07_values.md é duplicado de entidade_mae/07_values.md
+trish_yamaguchi/08_likes.md é duplicado de alaune_yeong/08_likes.md
+trish_yamaguchi/09_dislikes.md é duplicado de alaune_yeong/09_dislikes.md
+trish_yamaguchi/10_traumas.md é duplicado de arcanette/10_traumas.md
+trish_yamaguchi/11_relationships.md é duplicado de alaune_yeong/11_relationships.md
+trish_yamaguchi/15_narrative_gaps.md é duplicado de alaune_yeong/15_narrative_gaps.md
+trousseau/09_dislikes.md é duplicado de galdera/09_dislikes.md
+trousseau/12_goals.md é duplicado de galdera/12_goals.md
+trousseau/15_narrative_gaps.md é duplicado de agnea_bristarni/15_narrative_gaps.md
+trousseau/16_absolute_rules.md é duplicado de agnea_bristarni/16_absolute_rules.md
+vanessa_hysel/08_likes.md é duplicado de alaune_yeong/08_likes.md
+vanessa_hysel/09_dislikes.md é duplicado de alaune_yeong/09_dislikes.md
+vanessa_hysel/10_traumas.md é duplicado de alaune_yeong/10_traumas.md
+vanessa_hysel/11_relationships.md é duplicado de alaune_yeong/11_relationships.md
+vanessa_hysel/15_narrative_gaps.md é duplicado de alaune_yeong/15_narrative_gaps.md
+viator_yoon/09_dislikes.md é duplicado de agnea_bristarni/09_dislikes.md
+viator_yoon/11_relationships.md é duplicado de alexia_song/11_relationships.md
+viator_yoon/15_narrative_gaps.md é duplicado de agnea_bristarni/15_narrative_gaps.md
+viator_yoon/16_absolute_rules.md é duplicado de agnea_bristarni/16_absolute_rules.md
+vide_o_corruptor/07_values.md é duplicado de galdera/07_values.md
+vide_o_corruptor/09_dislikes.md é duplicado de galdera/09_dislikes.md
+vide_o_corruptor/10_traumas.md é duplicado de alexia_song/10_traumas.md
+vide_o_corruptor/11_relationships.md é duplicado de alexia_song/11_relationships.md
+vide_o_corruptor/12_goals.md é duplicado de galdera/12_goals.md
+vide_o_corruptor/15_narrative_gaps.md é duplicado de agnea_bristarni/15_narrative_gaps.md
+vide_o_corruptor/16_absolute_rules.md é duplicado de agnea_bristarni/16_absolute_rules.md
+warden_davids/08_likes.md é duplicado de eltrix_noh/08_likes.md
+warden_davids/09_dislikes.md é duplicado de alaune_yeong/09_dislikes.md
+warden_davids/10_traumas.md é duplicado de alaune_yeong/10_traumas.md
+warden_davids/11_relationships.md é duplicado de alaune_yeong/11_relationships.md
+warden_davids/15_narrative_gaps.md é duplicado de alaune_yeong/15_narrative_gaps.md
+werner_choi/08_likes.md é duplicado de eltrix_noh/08_likes.md
+werner_choi/09_dislikes.md é duplicado de alaune_yeong/09_dislikes.md
+werner_choi/10_traumas.md é duplicado de arcanette/10_traumas.md
+werner_choi/11_relationships.md é duplicado de alaune_yeong/11_relationships.md
+werner_choi/15_narrative_gaps.md é duplicado de alaune_yeong/15_narrative_gaps.md
+xerc_baek/09_dislikes.md é duplicado de bargello_yeon/09_dislikes.md
+xerc_baek/10_traumas.md é duplicado de alaune_yeong/10_traumas.md
+xerc_baek/11_relationships.md é duplicado de alaune_yeong/11_relationships.md
+xerc_baek/15_narrative_gaps.md é duplicado de alaune_yeong/15_narrative_gaps.md
+yvon_baik/08_likes.md é duplicado de arcanette/08_likes.md
+yvon_baik/09_dislikes.md é duplicado de alaune_yeong/09_dislikes.md
+yvon_baik/10_traumas.md é duplicado de arcanette/10_traumas.md
+yvon_baik/11_relationships.md é duplicado de alaune_yeong/11_relationships.md
+yvon_baik/15_narrative_gaps.md é duplicado de alaune_yeong/15_narrative_gaps.md
+
+--- BLOCOS DUPLICADOS ---
+Nenhum
+
+--- DIÁLOGOS DE OUTRO PERSONAGEM ---
+Nenhum
+
+--- CENAS DE NPC ERRADO ---
+Nenhum
+
+--- PROBLEMAS DE NOMENCLATURA ---
+Nenhum
+
+--- PASTAS ÓRFÃS ---
+Nenhum
+
+--- DATASETS SEM JSON ---
+Nenhum
+
+--- JSONs SEM DATASET ---
+npc_vysache.json (id: Vysache)
+vysache.json (id: vysache)
+
+--- LINKS QUEBRADOS ---
+Nenhum
+
+--- ERROS NÃO CORRIGIDOS ---
+Nenhum
+
+--- NOTA GERAL ---
+Projeto pronto para treinamento: NÃO
+
+O que impede o treinamento:
+- 3 arquivos vazios
+- 3 problemas de importação
+- 326 duplicações
+- 2 JSONs sem dataset

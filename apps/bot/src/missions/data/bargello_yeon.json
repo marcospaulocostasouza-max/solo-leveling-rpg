@@ -1,0 +1,178 @@
+{
+  "npcId": "bargello_yeon",
+  "npcNome": "Bargello Yeon",
+  "npcTitulo": "O Comandante que Caiu com sua Guilda",
+  "totalMissoes": 10,
+  "missoes": [
+    {
+      "id": "bargello_yeon_01",
+      "npcId": "bargello_yeon",
+      "numero": 1,
+      "nome": "Capítulo 1: O Despertar de Bargello Yeon",
+      "descricao": "Acompanhe os primeiros passos de Bargello Yeon como Caçador(a). Antigo líder de uma guilda respeitada, Bargello viu sua organização ruir após um ataque coordenado a um portal instável. Exilado, agora protege comunidades de ameaças....",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Complete a introdução: converse com Bargello Yeon e participe de sua primeira incursão",
+      "recompensas": {
+        "xp": 17100,
+        "won": 114000,
+        "item": "Armadura de Placas Escurecida"
+      }
+    },
+    {
+      "id": "bargello_yeon_02",
+      "npcId": "bargello_yeon",
+      "numero": 2,
+      "nome": "Capítulo 2: A Trilha de O Comandante que Caiu com sua Guilda",
+      "descricao": "Bargello Yeon pede ajuda para investigar pistas ligadas ao seu passado, aprofundando o mistério por trás de seu título de 'O Comandante que Caiu com sua Guilda'.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Ajude Bargello Yeon a reunir 3 pistas em diferentes localizações",
+      "recompensas": {
+        "xp": 19800,
+        "won": 132000,
+        "item": "Estandarte Guardado"
+      }
+    },
+    {
+      "id": "bargello_yeon_03",
+      "npcId": "bargello_yeon",
+      "numero": 3,
+      "nome": "Capítulo 3: O Confronto de Bargello Yeon",
+      "descricao": "O passado de Bargello Yeon finalmente alcança o presente. Enfrente ao lado dele(a) a ameaça central de sua história.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Vença o confronto decisivo ao lado de Bargello Yeon",
+      "recompensas": {
+        "xp": 22500,
+        "won": 150000,
+        "item": "Réplica Reforçada de: Espada Larga da Guilda Extinta"
+      }
+    },
+    {
+      "id": "bargello_yeon_04",
+      "npcId": "bargello_yeon",
+      "numero": 4,
+      "nome": "Capítulo 4: O Comandante que Caiu com sua Guilda",
+      "descricao": "Com a ameaça derrotada, Bargello Yeon consolida seu lugar no mundo dos caçadores, consagrando-se como O Comandante que Caiu com sua Guilda.",
+      "categoria": "principal",
+      "tipo": "historia",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Complete a missão final e testemunhe o desfecho da história de Bargello Yeon",
+      "recompensas": {
+        "xp": 25200,
+        "won": 168000,
+        "item": "Réplica Reforçada de: Espada Larga da Guilda Extinta"
+      }
+    },
+    {
+      "id": "bargello_yeon_05",
+      "npcId": "bargello_yeon",
+      "numero": 5,
+      "nome": "Reforço de Bargello Yeon",
+      "descricao": "Bargello Yeon pede que você adquira, em qualquer Loja de Itens da Associação, um equipamento de Rank A compatível com Espadas para reforçar seu arsenal de combate.",
+      "categoria": "secundaria",
+      "tipo": "loja",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Comprar 1 equipamento de Rank A (peça de armadura ou arma)",
+      "recompensas": {
+        "xp": 5400,
+        "won": 36000,
+        "item": "Réplica Reforçada de: Espada Larga da Guilda Extinta"
+      }
+    },
+    {
+      "id": "bargello_yeon_06",
+      "npcId": "bargello_yeon",
+      "numero": 6,
+      "nome": "Provisões de Bargello Yeon",
+      "descricao": "Antes da próxima incursão, Bargello Yeon pede que você compre poções de recuperação e um acessório de afinidade elemental Terra na loja mais próxima.",
+      "categoria": "secundaria",
+      "tipo": "loja",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Comprar 3 poções + 1 acessório elemental",
+      "recompensas": {
+        "xp": 4950,
+        "won": 33000,
+        "item": "Estandarte Guardado"
+      }
+    },
+    {
+      "id": "bargello_yeon_07",
+      "npcId": "bargello_yeon",
+      "numero": 7,
+      "nome": "Receita de Bargello Yeon",
+      "descricao": "Usando materiais coletados em dungeons de afinidade Terra, produza o item indicado por Bargello Yeon em uma bancada de criação da guilda.",
+      "categoria": "secundaria",
+      "tipo": "producao",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Produzir 1 item de afinidade Terra (Rank A)",
+      "recompensas": {
+        "xp": 5850,
+        "won": 39000,
+        "item": "Fragmento de Mana (Terra)"
+      }
+    },
+    {
+      "id": "bargello_yeon_08",
+      "npcId": "bargello_yeon",
+      "numero": 8,
+      "nome": "Suprimento Especial de Bargello Yeon",
+      "descricao": "Bargello Yeon ensina uma técnica pessoal de preparo; produza 3 unidades de um item de suporte (poção, munição ou material) ligado ao estilo de combate de Espadas.",
+      "categoria": "secundaria",
+      "tipo": "producao",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Produzir 3 itens de suporte",
+      "recompensas": {
+        "xp": 6300,
+        "won": 42000,
+        "item": "Fragmento de Mana (Terra)"
+      }
+    },
+    {
+      "id": "bargello_yeon_09",
+      "npcId": "bargello_yeon",
+      "numero": 9,
+      "nome": "Treino de Combate com Bargello Yeon",
+      "descricao": "Bargello Yeon solicita ajuda para conter uma infestação: derrote golens de pedra em dungeons de Rank A ou inferior.",
+      "categoria": "cacada",
+      "tipo": "caca",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Derrotar 35 Golens de Pedra",
+      "recompensas": {
+        "xp": 7200,
+        "won": 48000,
+        "item": "Armadura de Placas Escurecida"
+      }
+    },
+    {
+      "id": "bargello_yeon_10",
+      "npcId": "bargello_yeon",
+      "numero": 10,
+      "nome": "Caçada Recomendada por Bargello Yeon",
+      "descricao": "Uma variante mais forte de golens de pedra tem aparecido nas rondas de Bargello Yeon; elimine essas ameaças antes que evoluam.",
+      "categoria": "cacada",
+      "tipo": "caca",
+      "rank": "A",
+      "nivelMinimo": 60,
+      "objetivo": "Derrotar 8 Golens de Pedra (variante fortalecida)",
+      "recompensas": {
+        "xp": 9000,
+        "won": 60000,
+        "item": "Réplica Reforçada de: Espada Larga da Guilda Extinta"
+      }
+    }
+  ]
+}

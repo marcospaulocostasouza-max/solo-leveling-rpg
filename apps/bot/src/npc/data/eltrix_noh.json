@@ -1,0 +1,42 @@
+{
+  "id": "eltrix_noh",
+  "papel": "Herói",
+  "base_em": "Eltrix (Champions of the Continent)",
+  "nome": "Eltrix Noh",
+  "idade": "36",
+  "nacionalidade": "Sul-coreana, capitã de uma guarda de elite dissolvida",
+  "aparencia": "Postura militar rígida, cabelos negros curtos presos sob um capacete de campanha, veste armadura funcional de capitã com insígnias de uma guilda que não existe mais.",
+  "altura_peso": "1,78m / 70kg",
+  "personalidade": "Disciplinada, leal até o fim aos poucos sobreviventes de sua antiga unidade, e implacável contra qualquer ameaça.",
+  "historia": "Ex-capitã de uma guarda de elite responsável por proteger uma fortaleza, Eltrix viu sua unidade dizimada durante uma incursão maciça. Sobrevivente, reúne os remanescentes.",
+  "classe": "Ranger",
+  "classe_avancada": "Herói do Arco",
+  "rank": "A",
+  "nivel": 86,
+  "estilo_luta": "Proficiência em Arcos",
+  "atributos": {
+    "forca": 62,
+    "resistencia": 65,
+    "velocidade": 58,
+    "sentidos": 74,
+    "inteligencia": 55,
+    "poder_magico": 28
+  },
+  "elemento": "Metal",
+  "habilidade_unica": "Comando de Unidade — coordena ataques simultâneos entre até três aliados por um turno, aumentando drasticamente a chance de acerto crítico de cada um.",
+  "titulo": "A Capitã da Guarda Dissolvida",
+  "equipamentos": {
+    "arma": "Arco de Guerra e Lança Curta",
+    "itens": "Armadura Funcional de Capitã, Insígnia da Unidade Extinta, Registro dos Sobreviventes"
+  },
+  "tecnicas": [
+    "Flecha de Comando",
+    "Investida Coordenada",
+    "Postura da Última Guarda"
+  ],
+  "formaFalar": "Fala de forma prática e observadora, com um tom calmo e conectado à natureza.",
+  "localizacao": "Coreia do Sul",
+  "profissao": "Caçador(a) Ranger",
+  "objetivos": "Proteger os inocentes, evoluir como caçador e desvendar os mistérios dos portais.",
+  "valores": "A vida é preciosa. A coragem é essencial. A lealdade é inegociável."
+}

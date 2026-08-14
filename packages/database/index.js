@@ -174,6 +174,7 @@ async function equipItem(playerId, itemId) {
 
 async function shopCatalog() { await applyMigrations(); return listShopItems(); }
 async function purchaseItem(playerId, itemId, quantity = 1) {
+  if (!Number.isInteger(quantity) || quantity < 1 || quantity > 99) throw new Error("Quantidade invalida.");
   return transaction(async query => {
     let item = Number.isInteger(itemId) ? await query.get("SELECT * FROM itens WHERE id = ?", [itemId]) : null;
     const legacy = !item && typeof itemId === "string" ? findShopItem(itemId) : null;
@@ -183,15 +184,26 @@ async function purchaseItem(playerId, itemId, quantity = 1) {
     }
     const player = await query.get("SELECT id, won FROM jogadores WHERE id = ?", [playerId]);
     if (!item || !player) throw new Error("Item ou jogador não encontrado.");
-    const price = Number(item.preco || item.valor || 0) * quantity;
-    if (price < 0 || player.won < price) throw new Error("Won insuficiente.");
-    await query.run("UPDATE jogadores SET won = won - ? WHERE id = ? AND won >= ?", [price, playerId, price]);
-    const existing = await query.get("SELECT id FROM inventario_jogador WHERE jogador_id = ? AND item_id = ?", [playerId, itemId]);
+    // Um item legacy pode ja existir no banco por ter sido comprado no bot,
+    // mas sem preco/valor preenchidos. Nesse caso o catalogo continua sendo
+    // a fonte autoritativa do preco; nunca transforme a compra em gratuita.
+    const unitPrice = Number(legacy ? legacy.preco : (item.preco ?? item.valor ?? 0));
+    const currentWon = Number(player.won);
+    const price = unitPrice * quantity;
+    if (!Number.isSafeInteger(price) || price < 0) throw new Error("Preco invalido.");
+    if (!Number.isSafeInteger(currentWon) || currentWon < price) throw new Error("Won insuficiente.");
+    const debit = await query.run("UPDATE jogadores SET won = won - ? WHERE id = ? AND won >= ?", [price, playerId, price]);
+    if (debit.changes !== 1) throw new Error("Won insuficiente.");
+    // itemId pode ser o identificador textual legacy:*; o inventario sempre
+    // referencia o ID numerico do item que foi encontrado/materializado acima.
+    const inventoryItemId = Number(item.id);
+    if (!Number.isSafeInteger(inventoryItemId)) throw new Error("Item invalido para o inventario.");
+    const existing = await query.get("SELECT id FROM inventario_jogador WHERE jogador_id = ? AND item_id = ?", [playerId, inventoryItemId]);
     if (existing) await query.run("UPDATE inventario_jogador SET quantidade = quantidade + ? WHERE id = ?", [quantity, existing.id]);
-    else await query.run("INSERT INTO inventario_jogador (jogador_id, item_id, quantidade, equipado) VALUES (?, ?, ?, 0)", [playerId, itemId, quantity]);
+    else await query.run("INSERT INTO inventario_jogador (jogador_id, item_id, quantidade, equipado) VALUES (?, ?, ?, 0)", [playerId, inventoryItemId, quantity]);
     await query.run("INSERT INTO transacoes (jogador_id, valor, tipo, motivo, data) VALUES (?, ?, 'gasto', ?, datetime('now'))", [playerId, price, `Compra no site: ${item.nome}`]);
     await query.run("INSERT INTO compras (jogador_id, jogador_nome, item, preco, status, data, registrado_por) SELECT id, nome, ?, ?, 'Concluida', datetime('now'), 'site' FROM jogadores WHERE id = ?", [item.nome, price, playerId]);
-    return { item: item.nome, price, won: player.won - price };
+    return { item: item.nome, price, won: currentWon - price };
   });
 }
 

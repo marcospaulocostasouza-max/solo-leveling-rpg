@@ -98,8 +98,11 @@ _Cancele a compra atual antes de iniciar outra._
     }
     
     // Exibir detalhes e pedir confirmação
-    const saldoAtual = jogador.won || 0;
-    const saldoPos = saldoAtual - itemEncontrado.item.preco;
+    // O driver do PostgreSQL devolve BIGINT como string. Converter
+    // explicitamente evita comparacoes/formatacoes inconsistentes.
+    const saldoAtual = Number(jogador.won || 0);
+    const precoItem = Number(itemEncontrado.item.preco);
+    const saldoPos = saldoAtual - precoItem;
     
     // Verificar se tem saldo suficiente
     if (saldoPos < 0) {
@@ -214,7 +217,9 @@ async function confirmarCompra(msg, numero) {
         }
         
         // Verificar saldo
-        if (jogador.won < compra.item_preco) {
+        const saldoAtual = Number(jogador.won || 0);
+        const precoItem = Number(compra.item_preco);
+        if (!Number.isSafeInteger(saldoAtual) || !Number.isSafeInteger(precoItem) || precoItem < 0 || saldoAtual < precoItem) {
             await new Promise((resolve) => {
                 db.run("DELETE FROM compras_pendentes WHERE numero = ?", [numero], () => resolve());
             });
@@ -223,7 +228,7 @@ async function confirmarCompra(msg, numero) {
 
 Item: ${compra.item_nome}
 Preço: ${compra.item_preco.toLocaleString()} Won
-Seu saldo: ${jogador.won.toLocaleString()} Won
+Seu saldo: ${saldoAtual.toLocaleString()} Won
 
 _Compra cancelada automaticamente._
             ` });
@@ -232,10 +237,11 @@ _Compra cancelada automaticamente._
         // Descontar saldo
         await new Promise((resolve, reject) => {
             db.run(
-                "UPDATE jogadores SET won = won - ? WHERE id = ?",
-                [compra.item_preco, jogador.id],
+                "UPDATE jogadores SET won = won - ? WHERE id = ? AND won >= ?",
+                [precoItem, jogador.id, precoItem],
                 function(err) {
                     if (err) reject(err);
+                    else if (this.changes !== 1) reject(new Error("Saldo alterado durante a confirmacao da compra."));
                     else resolve();
                 }
             );
@@ -301,7 +307,7 @@ Categoria: ${compra.item_categoria}
 Rank: ${compra.item_rank}
 Bônus: ${compra.item_bonus}
 Valor pago: *${compra.item_preco.toLocaleString()} Won*
-Saldo restante: *${(jogador.won - compra.item_preco).toLocaleString()} Won*
+Saldo restante: *${(saldoAtual - precoItem).toLocaleString()} Won*
 
 *════ INVENTÁRIO ════*
 O item foi adicionado ao seu inventário.
@@ -341,10 +347,12 @@ function buscarOuCriarItem(compra) {
             // Criar novo item no banco
             db.run(
                 `INSERT INTO itens (nome, categoria, tier, descricao, consumivel, efeito, habilidade, item_unico)
-                 VALUES (?, ?, ?, ?, ?, ?, ?, 0)`,
+                 VALUES (?, ?, ?, ?, ?, ?, ?, 0)
+                 RETURNING id`,
                 [compra.item_nome, compra.item_categoria, compra.item_rank, compra.item_descricao, consumivel, efeito, compra.item_bonus],
                 function(err) {
                     if (err) return reject(err);
+                    if (!this.lastID) return reject(new Error("O banco nao retornou o ID do item criado."));
                     resolve(this.lastID);
                 }
             );

@@ -5,7 +5,7 @@
  */
 
 const elementos = require("../elementos/listaElementos");
-const classes = require("../database/classes");
+const { obterClasseCanonica } = require("./normalizarClasse");
 
 module.exports = {
     avaliar: function(ficha) {
@@ -28,7 +28,7 @@ module.exports = {
         if (!dados.historia) erros.push("• História não informada");
         
         // Validar classe
-        const classeValida = classes && classes[dados.classe.toLowerCase()];
+        const classeValida = obterClasseCanonica(dados.classe);
         if (!classeValida && dados.classe) {
             erros.push(`• Classe "${dados.classe}" não encontrada no sistema`);
         }

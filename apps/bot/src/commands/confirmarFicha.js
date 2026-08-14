@@ -16,6 +16,7 @@ const MessageService = require("../core/messageService");
 const db = require("../core/database");
 const { GROUP_CONFIG } = require("../core/groupConfig");
 const templates = require("../utils/templatesMensagens");
+const { obterClasseCanonica, listarClasses } = require("../utils/normalizarClasse");
 
 // =====================================
 // REGRAS DE VALIDAÇÃO
@@ -114,13 +115,11 @@ const VALIDACOES = {
         obrigatorio: true,
         validar: (v) => {
             if (!v) return "Classe não informada";
-            const classesValidas = [
-                "lutador", "assassino", "tanker", "ranger",
-                "curador", "mago elemental", "mago invocador",
-                "mago barreira", "mago maldição"
-            ];
-            if (!classesValidas.includes(v.toLowerCase().trim())) {
-                return `Classe "${v}" não reconhecida. Classes válidas: ${classesValidas.join(", ")}`;
+            if (String(v).trim().toLowerCase() === "ranger") {
+                return "Escolha Ranger Físico (+50% de Força) ou Ranger Mágico (+50% de Poder Mágico). Informe a variante completa no campo Classe desejada.";
+            }
+            if (!obterClasseCanonica(v)) {
+                return `Classe "${v}" não reconhecida. Classes válidas: ${listarClasses().join(", ")}`;
             }
             return null;
         }
@@ -128,7 +127,7 @@ const VALIDACOES = {
     estilo_luta: {
         obrigatorio: false,
         validar: (v) => {
-            if (v && v.trim().length > 50) return "Estilo de luta muito longo (máx 50 caracteres)";
+            if (v && v.trim().length > 100) return "Estilo de luta/proficiência muito longo (máx 100 caracteres)";
             return null;
         }
     },
@@ -241,6 +240,8 @@ module.exports = async (msg) => {
             console.log(`[FICHA] Ficha encontrada: ${JSON.stringify(ficha)}`);
             
             const dados = JSON.parse(ficha.dados || "{}");
+            const classeCanonica = obterClasseCanonica(dados.classe);
+            if (classeCanonica) dados.classe = classeCanonica;
             
             // ===================================================================
             // VALIDAÇÃO COMPLETA DA FICHA

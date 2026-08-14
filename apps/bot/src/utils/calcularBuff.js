@@ -1,4 +1,6 @@
 module.exports = function calcularBuff(classe, atributos){
+    const { obterClasseCanonica } = require("./normalizarClasse");
+    classe = obterClasseCanonica(classe) || classe;
 
 
     const buff = {
@@ -31,7 +33,7 @@ module.exports = function calcularBuff(classe, atributos){
 
 
 
-        case "Tank":
+        case "Tanker":
 
             buff.resistencia = Math.floor(atributos.resistencia * 0.5);
 
@@ -79,7 +81,7 @@ module.exports = function calcularBuff(classe, atributos){
 
 
 
-        case "Mago Barreira":
+        case "Mago de Barreira":
 
             buff.poder_magico = Math.floor(atributos.poder_magico * 0.5);
 
@@ -87,7 +89,7 @@ module.exports = function calcularBuff(classe, atributos){
 
 
 
-        case "Mago Maldição":
+        case "Mago de Maldicao":
 
             buff.poder_magico = Math.floor(atributos.poder_magico * 0.5);
 

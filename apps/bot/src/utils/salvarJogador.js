@@ -1,11 +1,11 @@
 const db = require("../core/database");
-const buffsClasses = require("./buffsClasses");
+const { obterClasseCanonica } = require("./normalizarClasse");
+const obterBuffsClasse = require("./obterBuffsClasse");
 
 
 module.exports = async function salvarJogador(dados) {
-
-
-    const buff = buffsClasses[dados.classe] || {};
+    dados.classe = obterClasseCanonica(dados.classe) || dados.classe;
+    const buff = obterBuffsClasse(dados.classe, dados);
 
 
 

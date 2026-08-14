@@ -1,0 +1,52 @@
+const test = require("node:test");
+const assert = require("node:assert/strict");
+
+const classes = require("../src/utils/classes");
+const buffs = require("../src/utils/buffsClasses");
+const { obterClasseCanonica } = require("../src/utils/normalizarClasse");
+const obterBuffsClasse = require("../src/utils/obterBuffsClasse");
+const { resolverConsultaClasse } = require("../src/commands/tecnicasClasse");
+
+test("reconhece todas as classes oficiais ignorando caixa e acentos", () => {
+    for (const nome of Object.keys(classes)) {
+        assert.equal(obterClasseCanonica(nome), nome);
+        assert.equal(obterClasseCanonica(nome.toUpperCase()), nome);
+        assert.ok(buffs[nome], `Buff ausente para ${nome}`);
+    }
+});
+
+test("resolve comandos de tecnicas sem confundir subclasses de mago", () => {
+    assert.deepEqual(resolverConsultaClasse("mago de barreira"), {
+        titulo: "Mago de Barreira",
+        nomes: ["Mago de Barreira", "Mago Barreira"],
+        padrao: "mago%barreira"
+    });
+    assert.deepEqual(resolverConsultaClasse("mago de maldicao").nomes, ["Mago de Maldição", "Mago Maldição"]);
+    assert.deepEqual(resolverConsultaClasse("mago de fogo").nomes, ["Mago Elemental"]);
+    assert.deepEqual(resolverConsultaClasse("ranger fisico").nomes, ["Ranger"]);
+});
+
+test("reconhece aliases dos magos de barreira e maldicao", () => {
+    assert.equal(obterClasseCanonica("Mago de Barreira"), "Mago de Barreira");
+    assert.equal(obterClasseCanonica("mago barreira"), "Mago de Barreira");
+    assert.equal(obterClasseCanonica("  MAGO DE BARREIRA  "), "Mago de Barreira");
+    assert.equal(obterClasseCanonica("mago de maldicao"), "Mago de Maldicao");
+    assert.equal(obterClasseCanonica("Mago Maldição"), "Mago de Maldicao");
+});
+
+test("nao aceita classe desconhecida por aproximacao", () => {
+    assert.equal(obterClasseCanonica("mago de barreir"), null);
+    assert.equal(obterClasseCanonica("arqueiro"), null);
+});
+
+test("diferencia Ranger Fisico de Ranger Magico", () => {
+    assert.equal(obterClasseCanonica("Ranger Físico"), "Ranger Físico");
+    assert.equal(obterClasseCanonica("ranger fisico"), "Ranger Físico");
+    assert.equal(obterClasseCanonica("Ranger Mágico"), "Ranger Mágico");
+    assert.notDeepEqual(buffs["Ranger Físico"], buffs["Ranger Mágico"]);
+    assert.equal(buffs["Ranger Físico"].forca_buff, 5);
+    assert.equal(buffs["Ranger Mágico"].poder_magico_buff, 5);
+    assert.equal(obterBuffsClasse("Ranger Físico", { forca: 8 }).forca_buff, 4);
+    assert.equal(obterBuffsClasse("Ranger Mágico", { poder_magico: 6 }).poder_magico_buff, 3);
+    assert.equal(obterBuffsClasse("Ranger Físico", { forca: 8 }).poder_magico_buff, 0);
+});

@@ -9,6 +9,7 @@ const MessageService = require("../core/messageService");
  */
 
 const db = require("../core/database");
+const fichasTemp = require("../utils/fichasTemp");
 
 module.exports = async (msg) => {
     const numero = msg.author || msg.from;
@@ -26,10 +27,21 @@ module.exports = async (msg) => {
             else resolve(row);
         });
     });
+
+    const fichaPendente = await new Promise((resolve, reject) => {
+        db.get("SELECT * FROM fichas_pendentes WHERE numero = ?", [numero], (err, row) => {
+            if (err) reject(err);
+            else resolve(row);
+        });
+    });
     
-    if (!jogador) {
+    if (!jogador && !fichaPendente) {
         return MessageService.send({ message: msg, text: "*✖ Você não possui um personagem criado.*\n_Use !ficha para criar um novo personagem._" });
     }
+
+    let dadosPendentes = {};
+    try { dadosPendentes = JSON.parse(fichaPendente?.dados || "{}"); } catch {}
+    const nomePersonagem = jogador?.nome || dadosPendentes.nome || "Ficha pendente";
     
     // Verificar se já está em processo de exclusão
     const processoExistente = await new Promise((resolve, reject) => {
@@ -58,7 +70,7 @@ _O processo expira em 5 minutos._` });
     await new Promise((resolve, reject) => {
         db.run(
             "INSERT INTO processos_exclusao (numero, jogador_nome, status, data_criacao, data_expiracao) VALUES (?, ?, 'aguardando', datetime('now'), ?)",
-            [numero, jogador.nome, dataExpiracao.toISOString()],
+            [numero, nomePersonagem, dataExpiracao.toISOString()],
             function(err) {
                 if (err) reject(err);
                 else resolve(this.lastID);
@@ -84,10 +96,10 @@ _O processo expira em 5 minutos._` });
     await MessageService.send({ message: msg, text: `*⚠ ATENÇÃO - EXCLUSÃO DE PERSONAGEM ⚠*
 ──────────────────────────
 
-Você está prestes a apagar permanentemente seu personagem:
-> *Nome:* ${jogador.nome}
-> *Classe:* ${jogador.classe || "Não definida"}
-> *Nível:* ${jogador.nivel || 1}
+Você está prestes a apagar permanentemente ${jogador ? "seu personagem" : "sua ficha ainda não aprovada"}:
+> *Nome:* ${nomePersonagem}
+> *Classe:* ${jogador?.classe || dadosPendentes.classe || "Não definida"}
+${jogador ? `> *Nível:* ${jogador.nivel || 1}` : "> *Status:* Aguardando aprovação"}
 
 *─── O Que Será Apagado ───*
 > ✓ Todos os atributos e pontos
@@ -129,7 +141,7 @@ async function executarExclusao(msg, numero) {
             });
         });
         
-        const nomeJogador = jogador ? jogador.nome : "Desconhecido";
+        const nomeJogador = jogador ? jogador.nome : processo.jogador_nome || "Ficha pendente";
         
         // Marcar processo como confirmado
         await new Promise((resolve, reject) => {
@@ -309,6 +321,16 @@ async function executarExclusao(msg, numero) {
                 });
             });
         }
+
+        // A ficha reconhecida existe antes da criação do jogador. Ela também
+        // deve ser removida quando a exclusão é confirmada.
+        await new Promise((resolve, reject) => {
+            db.run("DELETE FROM fichas_pendentes WHERE numero = ?", [numero], (err) => {
+                if (err) reject(err);
+                else resolve();
+            });
+        });
+        delete fichasTemp[numero];
         
         // Limpar processo de exclusão
         await new Promise((resolve, reject) => {

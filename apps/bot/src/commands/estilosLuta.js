@@ -52,9 +52,9 @@ module.exports = async (msg) => {
 
     mensagem += `
 ═
-*ESCOLHA DE ESTILO*
-> Para escolher seu estilo de luta: !escolher estilo numero
-_Exemplo: !escolher estilo 1_
+*PROFICIENCIA DEFINIDA PELA FICHA*
+> O estilo de luta nao e escolhido por comando.
+> A proficiencia informada no campo *Estilo de luta* da ficha e a que sera registrada.
 ═
 _Sistema de Combate_
 `;

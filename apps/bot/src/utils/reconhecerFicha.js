@@ -10,6 +10,7 @@ const MessageService = require("../core/messageService");
 
 const fichasTemp = require("./fichasTemp");
 const templates = require("./templatesMensagens");
+const { obterClasseCanonica } = require("./normalizarClasse");
 
 module.exports = async (msg) => {
     const texto = msg.body.trim();
@@ -275,6 +276,8 @@ Use *!confirmar item único* para finalizar a criação.
     if (camposEncontrados < 3) {
         return;
     }
+
+    ficha.classe = obterClasseCanonica(ficha.classe) || ficha.classe.trim();
     
     // Salvar na memória temporária E no banco de dados
     const numero = msg.author || msg.from;

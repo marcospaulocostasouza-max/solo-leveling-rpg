@@ -11,6 +11,8 @@ const db = require("../core/database");
 const adminCore = require("../core/adminCore");
 const elementos = require("../elementos/listaElementos");
 const templates = require("../utils/templatesMensagens");
+const { obterClasseCanonica } = require("../utils/normalizarClasse");
+const obterBuffsClasse = require("../utils/obterBuffsClasse");
 
 module.exports = async (msg) => {
     const numero = msg.author || msg.from;
@@ -117,6 +119,7 @@ module.exports = async (msg) => {
     }
     
     const dados = JSON.parse(ficha.dados || "{}");
+    dados.classe = obterClasseCanonica(dados.classe) || dados.classe;
     const nomeReal = dados.nome || nomeJogador;
     
     if (ehRecusa) {
@@ -180,14 +183,14 @@ module.exports = async (msg) => {
         }
         
         // Calcular atributos finais com buffs de classe
-        const buffClasse = require("../utils/buffsClasses")[dados.classe] || {};
+        const buffClasse = obterBuffsClasse(dados.classe, dados);
         
-        const forcaFinal = parseInt(dados.forca || 0) + (buffClasse.forca || 0);
-        const resistenciaFinal = parseInt(dados.resistencia || 0) + (buffClasse.resistencia || 0);
-        const velocidadeFinal = parseInt(dados.velocidade || 0) + (buffClasse.velocidade || 0);
-        const sentidosFinal = parseInt(dados.sentidos || 0) + (buffClasse.sentidos || 0);
-        const inteligenciaFinal = parseInt(dados.inteligencia || 0) + (buffClasse.inteligencia || 0);
-        const poderMagicoFinal = parseInt(dados.poder_magico || 0) + (buffClasse.poder_magico || 0);
+        const forcaFinal = parseInt(dados.forca || 0) + (buffClasse.forca_buff || 0);
+        const resistenciaFinal = parseInt(dados.resistencia || 0) + (buffClasse.resistencia_buff || 0);
+        const velocidadeFinal = parseInt(dados.velocidade || 0) + (buffClasse.velocidade_buff || 0);
+        const sentidosFinal = parseInt(dados.sentidos || 0) + (buffClasse.sentidos_buff || 0);
+        const inteligenciaFinal = parseInt(dados.inteligencia || 0) + (buffClasse.inteligencia_buff || 0);
+        const poderMagicoFinal = parseInt(dados.poder_magico || 0) + (buffClasse.poder_magico_buff || 0);
         
         // Calcular HP e Mana
         const hpMaximo = 100 + (resistenciaFinal * 10);
@@ -236,12 +239,12 @@ module.exports = async (msg) => {
                 dados.sentidos || 0,
                 dados.inteligencia || 0,
                 dados.poder_magico || 0,
-                buffClasse.forca || 0,
-                buffClasse.resistencia || 0,
-                buffClasse.velocidade || 0,
-                buffClasse.sentidos || 0,
-                buffClasse.inteligencia || 0,
-                buffClasse.poder_magico || 0,
+                buffClasse.forca_buff || 0,
+                buffClasse.resistencia_buff || 0,
+                buffClasse.velocidade_buff || 0,
+                buffClasse.sentidos_buff || 0,
+                buffClasse.inteligencia_buff || 0,
+                buffClasse.poder_magico_buff || 0,
                 forcaFinal,
                 resistenciaFinal,
                 velocidadeFinal,
@@ -333,12 +336,12 @@ module.exports = async (msg) => {
                 dados.sentidos || 0,
                 dados.inteligencia || 0,
                 dados.poder_magico || 0,
-                buffClasse.forca || 0,
-                buffClasse.resistencia || 0,
-                buffClasse.velocidade || 0,
-                buffClasse.sentidos || 0,
-                buffClasse.inteligencia || 0,
-                buffClasse.poder_magico || 0,
+                buffClasse.forca_buff || 0,
+                buffClasse.resistencia_buff || 0,
+                buffClasse.velocidade_buff || 0,
+                buffClasse.sentidos_buff || 0,
+                buffClasse.inteligencia_buff || 0,
+                buffClasse.poder_magico_buff || 0,
                 forcaFinal,
                 resistenciaFinal,
                 velocidadeFinal,

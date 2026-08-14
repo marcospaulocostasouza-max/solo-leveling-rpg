@@ -45,6 +45,26 @@ module.exports = {
         inteligencia_buff: 2,
         poder_magico_buff: 0
     },
+
+    // Ranger Fisico: especializacao ofensiva em Forca
+    "Ranger Físico": {
+        forca_buff: 5,
+        resistencia_buff: 1,
+        velocidade_buff: 4,
+        sentidos_buff: 4,
+        inteligencia_buff: 0,
+        poder_magico_buff: 0
+    },
+
+    // Ranger Magico: especializacao ofensiva em Poder Magico
+    "Ranger Mágico": {
+        forca_buff: 0,
+        resistencia_buff: 1,
+        velocidade_buff: 4,
+        sentidos_buff: 4,
+        inteligencia_buff: 2,
+        poder_magico_buff: 5
+    },
     
     // Curador
     "Curador": {
@@ -77,7 +97,7 @@ module.exports = {
     },
     
     // Mago Barreira
-    "Mago Barreira": {
+    "Mago de Barreira": {
         forca_buff: 1,
         resistencia_buff: 4,
         velocidade_buff: 1,
@@ -87,7 +107,7 @@ module.exports = {
     },
     
     // Mago Maldição
-    "Mago Maldição": {
+    "Mago de Maldicao": {
         forca_buff: 0,
         resistencia_buff: 2,
         velocidade_buff: 2,

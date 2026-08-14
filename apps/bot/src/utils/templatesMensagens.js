@@ -92,7 +92,9 @@ ${templates.campo("Aparencia", "_")}
 
 ${templates.secao("COMBATE")}
 ${templates.campo("Classe desejada", "_")}
-${templates.campo("Estilo de luta", "_")}
+> Ranger deve escolher: *Ranger Fisico* (+50% Forca) ou *Ranger Magico* (+50% Poder Magico).
+${templates.campo("Estilo de luta / Proficiencia", "_")}
+> Esta proficiencia sera definitiva; nao existe comando para troca-la.
 ${templates.campo("Arma inicial", "_")}
 ${templates.campo("Afinidade Elemental", "_")}
 

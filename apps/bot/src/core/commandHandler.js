@@ -50,7 +50,7 @@ function carregarComando(arquivo) {
 // Lista de comandos de classes que consultam o banco de dados
 const comandosClasses = [
     // Classes Iniciais
-    "!lutador", "!assassino", "!tanker", "!ranger", "!curador",
+    "!lutador", "!assassino", "!tanker", "!ranger fisico", "!ranger magico", "!ranger", "!curador",
     "!mago", "!mago elemental", "!mago elementar", "!mago do elemento",
     "!mago de agua", "!mago de fogo", "!mago de gelo", "!mago de terra", "!mago de vento", "!mago de raio",
     "!mago invocador", "!mago de barreira", "!mago de maldicao",
@@ -542,7 +542,9 @@ async function executarComando(msg, comando, comandosRegistrados) {
     // =====================================
     // COMANDOS DE CLASSES - consultam banco de dados
     // =====================================
-    for (const cmdClasse of comandosClasses) {
+    // Os nomes mais especificos precisam ser avaliados primeiro. Sem isso,
+    // "!mago de barreira" era capturado pelo prefixo curto "!mago".
+    for (const cmdClasse of [...comandosClasses].sort((a, b) => b.length - a.length)) {
         if (comandoLower === cmdClasse || comandoLower.startsWith(cmdClasse + " ")) {
             const nomeClasse = cmdClasse.replace("!", "");
             const tecnicasClasse = carregarComando("tecnicasClasse.js");

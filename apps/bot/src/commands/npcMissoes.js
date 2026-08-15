@@ -47,7 +47,7 @@ module.exports = async (msg) => {
             `Para ver detalhes de uma missão:\n` +
             `> *!missoes npc <id_do_npc> <numero>*\n\n` +
             `Para listar todos os NPCs:\n` +
-            `> *!npcs*`
+            `> *!listar npcs*`
          });
     }
     
@@ -57,7 +57,7 @@ module.exports = async (msg) => {
     // Buscar NPC
     const npc = NPCManager.carregarNPC(npcId);
     if (!npc) {
-        return MessageService.send({ message: msg, text: `*✖ NPC não encontrado:* ${npcId}\nUse *!npcs* para ver a lista de NPCs disponíveis.` });
+        return MessageService.send({ message: msg, text: `*✖ NPC não encontrado:* ${npcId}\nUse *!listar npcs* para ver a lista de NPCs disponíveis.` });
     }
     
     // Carregar missões do NPC

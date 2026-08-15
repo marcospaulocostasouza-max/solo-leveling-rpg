@@ -28,6 +28,24 @@ function registrarTodosComandos() {
             categoria: "Sistema Inicial"
         },
         {
+            nome: "!arquiteto",
+            funcao: "Exibe o indice principal de informacoes do RPG",
+            arquivo: "arquiteto.js",
+            descricao: "Apresenta as futuras areas Cacador, Ascensao, Associacoes, Biblioteca, Historia e Acervo",
+            dependencias: ["Nenhuma"],
+            ativo: true,
+            categoria: "Sistema Inicial"
+        },
+        {
+            nome: "!caçador / !cacador",
+            funcao: "Exibe o menu de informações do personagem",
+            arquivo: "cacador.js",
+            descricao: "Reúne os comandos de ficha, nível, atributos, afinidade, equipamentos, inventário, passivas, títulos, técnicas e HP",
+            dependencias: ["Nenhuma"],
+            ativo: true,
+            categoria: "Sistema Inicial"
+        },
+        {
             nome: "!ficha",
             funcao: "Exibe o modelo de ficha de personagem para preenchimento",
             arquivo: "ficha.js",
@@ -209,7 +227,7 @@ function registrarTodosComandos() {
             nome: "!jogador",
             funcao: "Exibe a ficha completa do jogador no banco de dados",
             arquivo: "jogador.js",
-            descricao: "Mostra status completo: atributos, classe, nível, mana, história",
+            descricao: "Mostra a ficha principal: atributos, classe, nível e mana",
             dependencias: ["../../core/database.js"],
             ativo: true,
             categoria: "Jogador"
@@ -458,10 +476,10 @@ function registrarTodosComandos() {
             categoria: "RPG"
         },
         {
-            nome: "!guilda [criar/entrar/sair/info]",
+            nome: "!guilda [lista/criar/entrar/info/membros/sair/transferir/dissolver]",
             funcao: "Sistema de guildas do jogo",
             arquivo: "guilda.js",
-            descricao: "Cria, gerencia guildas, membros e guerras",
+            descricao: "Explica guildas e gerencia criação, entrada, saída e liderança com custo, Rank e cooldown",
             dependencias: ["../../core/database.js", "../../systems/guildaSystem.js"],
             ativo: true,
             categoria: "RPG"
@@ -512,6 +530,24 @@ function registrarTodosComandos() {
             categoria: "Informação"
         },
         {
+            nome: "!meus titulos / !meus títulos",
+            funcao: "Exibe os titulos conquistados pelo jogador",
+            arquivo: "meusTitulos.js",
+            descricao: "Mostra detalhes, raridade, efeitos e como equipar os titulos conquistados",
+            dependencias: ["../../core/database.js", "../../database/data/titulos.json"],
+            ativo: true,
+            categoria: "Jogador"
+        },
+        {
+            nome: "!afinidades / !todas as afinidades",
+            funcao: "Exibe o catalogo completo de afinidades elementais",
+            arquivo: "afinidades.js",
+            descricao: "Mostra categoria, raridade, origem, bonus, vantagens e disponibilidade de todas as afinidades",
+            dependencias: ["../../elementos/listaElementos.js"],
+            ativo: true,
+            categoria: "Informação"
+        },
+        {
             nome: "!habilidades",
             funcao: "Exibe as habilidades do jogador",
             arquivo: "habilidades.js",
@@ -549,23 +585,13 @@ function registrarTodosComandos() {
         },
         {
             nome: "!maestria",
-            funcao: "Mostra a quantidade atual de Maestria (Força Interior)",
+            funcao: "Explica a Maestria e mostra o saldo atual do jogador",
             arquivo: "treinar.js",
-            descricao: "Exibe o Maestria atual e informações sobre treino",
+            descricao: "Explica como obter e usar Maestria, custos das técnicas, requisitos e comandos relacionados",
             dependencias: ["../../core/database.js"],
             ativo: true,
             categoria: "RPG"
         },
-        {
-            nome: "!ativar passiva [nome]",
-            funcao: "Ativa uma passiva para o jogador (acumulativa até 10x)",
-            arquivo: "ativarPassiva.js",
-            descricao: "Ativa passivas do sistema, podendo acumular até 10 vezes",
-            dependencias: ["../../core/database.js", "../../database/data/passivas.json"],
-            ativo: true,
-            categoria: "RPG"
-        },
-
         // =====================================
         // SISTEMAS DO MUNDO
         // =====================================
@@ -818,9 +844,9 @@ function registrarTodosComandos() {
         },
         {
             nome: "!portais",
-            funcao: "Sistema de portais e viagens",
+            funcao: "Abre o menu de Portais e Dungeons",
             arquivo: "portais.js",
-            descricao: "Navegação entre locais do mundo",
+            descricao: "Reúne incursões, ficha de Dungeon, progressão, conclusão, escolhas e mineração",
             dependencias: ["Nenhuma"],
             ativo: true,
             categoria: "Mundo"
@@ -992,6 +1018,105 @@ function registrarTodosComandos() {
             dependencias: ["../../ia/ollama.js"],
             ativo: true,
             categoria: "IA"
+        },
+        {
+            nome: "!npc",
+            funcao: "Explica o sistema narrativo de NPCs e como realizar cenas",
+            arquivo: "npc.js",
+            descricao: "Guia de memória, relacionamento, início, continuação e encerramento de interações com NPCs",
+            dependencias: ["../../npc/interactionManager.js", "../../npc/conversationManager.js"],
+            ativo: true,
+            categoria: "Mundo"
+        },
+        {
+            nome: "!peatz",
+            funcao: "Abre o menu comercial apresentado por Peatz",
+            arquivo: "peatz.js",
+            descricao: "Apresenta as seções Skills, Loja Virtual e Drops",
+            dependencias: [],
+            ativo: true,
+            categoria: "Economia"
+        },
+        {
+            nome: "!ascensão",
+            funcao: "Abre o menu de crescimento e evolução do jogador",
+            arquivo: "ascensao.js",
+            descricao: "Reúne progresso, penalidade, histórico, Classe Avançada, informações de rank e locais",
+            dependencias: [],
+            ativo: true,
+            categoria: "Jogador"
+        },
+        {
+            nome: "!associações",
+            funcao: "Abre o menu de associações e organizações do mundo",
+            arquivo: "associacoes.js",
+            descricao: "Reúne guildas, ranks, membros, cargos, investimentos, guerras, MVP, Submundo e territórios",
+            dependencias: [],
+            ativo: true,
+            categoria: "Mundo"
+        },
+        {
+            nome: "!biblioteca",
+            funcao: "Abre o menu de conhecimento e sistemas do RPG",
+            arquivo: "biblioteca.js",
+            descricao: "Reúne atributos, únicos, estilos de luta, passivas, títulos e Portais",
+            dependencias: [],
+            ativo: true,
+            categoria: "Informação"
+        },
+        {
+            nome: "!história",
+            funcao: "Abre o menu narrativo de história e acontecimentos",
+            arquivo: "historia.js",
+            descricao: "Reúne missões, fragmentos, Monarcas, Governantes e Sucessores",
+            dependencias: [],
+            ativo: true,
+            categoria: "Mundo"
+        },
+        {
+            nome: "!acervo",
+            funcao: "Abre o menu de personagens e relações do mundo",
+            arquivo: "acervo.js",
+            descricao: "Reúne amizade, missões de NPC, guia e listagem de NPCs, presentes e sistemas extras",
+            dependencias: [],
+            ativo: true,
+            categoria: "Mundo"
+        },
+        {
+            nome: "!skills",
+            funcao: "Abre o menu de habilidades e técnicas do jogador",
+            arquivo: "skills.js",
+            descricao: "Reúne Maestria, Técnicas e consulta de Técnicas por classe",
+            dependencias: [],
+            ativo: true,
+            categoria: "Poder"
+        },
+        {
+            nome: "!loja virtual",
+            funcao: "Abre o menu da loja virtual",
+            arquivo: "lojaVirtual.js",
+            descricao: "Reúne loja, itens, saldo, histórico de compras e indicação da futura DLC",
+            dependencias: [],
+            ativo: true,
+            categoria: "Economia"
+        },
+        {
+            nome: "!drops",
+            funcao: "Abre o menu de recursos obtidos em batalhas e Dungeons",
+            arquivo: "drops.js",
+            descricao: "Reúne Núcleos, Materiais, lojas de recursos e Caixas",
+            dependencias: [],
+            ativo: true,
+            categoria: "Economia"
+        },
+        {
+            nome: "!listar npcs",
+            funcao: "Lista todos os 75 NPCs carregados pelo sistema",
+            arquivo: "listarNpcs.js",
+            descricao: "Organiza os NPCs por categoria e apresenta nome, localização e comando individual",
+            dependencias: ["../../npc/npcManager.js"],
+            ativo: true,
+            categoria: "Mundo"
         }
     ];
 

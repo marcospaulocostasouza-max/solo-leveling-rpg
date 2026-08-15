@@ -19,6 +19,7 @@
  */
 
 const db = require("../core/database");
+const { provider } = require("../../../../packages/database/config");
 
 // =====================================
 // CRIAÇÃO DA TABELA
@@ -28,17 +29,18 @@ const db = require("../core/database");
  * Cria a tabela npc_memories se não existir
  */
 function criarTabela() {
+    const colunaId = provider === "postgres" ? "BIGSERIAL PRIMARY KEY" : "INTEGER PRIMARY KEY AUTOINCREMENT";
     db.run(`
         CREATE TABLE IF NOT EXISTS npc_memories (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            npcId TEXT NOT NULL,
-            jogadorId TEXT NOT NULL,
+            id ${colunaId},
+            "npcId" TEXT NOT NULL,
+            "jogadorId" TEXT NOT NULL,
             tipo TEXT DEFAULT 'geral',
             memoria TEXT NOT NULL,
             importancia INTEGER DEFAULT 5,
-            dataCriacao TEXT DEFAULT (datetime('now')),
-            ultimaLembranca TEXT,
-            quantidadeLembrancas INTEGER DEFAULT 0
+            "dataCriacao" TEXT DEFAULT (datetime('now')),
+            "ultimaLembranca" TEXT,
+            "quantidadeLembrancas" INTEGER DEFAULT 0
         )
     `);
 }
@@ -72,8 +74,8 @@ function salvarMemoria(npcId, jogadorId, memoria, tipo = "geral", importancia = 
         const imp = Math.max(1, Math.min(10, parseInt(importancia) || 5));
 
         db.run(
-            `INSERT INTO npc_memories (npcId, jogadorId, tipo, memoria, importancia, dataCriacao)
-             VALUES (?, ?, ?, ?, ?, datetime('now'))`,
+            `INSERT INTO npc_memories ("npcId", "jogadorId", tipo, memoria, importancia, "dataCriacao")
+             VALUES (?, ?, ?, ?, ?, datetime('now')) RETURNING id`,
             [npcId, jogadorId, tipo, memoria, imp],
             function (err) {
                 if (err) {
@@ -100,8 +102,8 @@ function buscarMemorias(npcId, jogadorId, limite = null) {
     return new Promise((resolve) => {
         let sql = `
             SELECT * FROM npc_memories
-            WHERE npcId = ? AND jogadorId = ?
-            ORDER BY importancia DESC, dataCriacao DESC
+            WHERE "npcId" = ? AND "jogadorId" = ?
+            ORDER BY importancia DESC, "dataCriacao" DESC
         `;
         const params = [npcId, jogadorId];
 
@@ -133,8 +135,8 @@ function buscarMemoriasImportantes(npcId, jogadorId, importanciaMinima = 7) {
     return new Promise((resolve) => {
         db.all(
             `SELECT * FROM npc_memories
-             WHERE npcId = ? AND jogadorId = ? AND importancia >= ?
-             ORDER BY importancia DESC, dataCriacao DESC`,
+             WHERE "npcId" = ? AND "jogadorId" = ? AND importancia >= ?
+             ORDER BY importancia DESC, "dataCriacao" DESC`,
             [npcId, jogadorId, importanciaMinima],
             (err, rows) => {
                 if (err) {
@@ -185,8 +187,8 @@ function registrarLembranca(memoriaId) {
     return new Promise((resolve) => {
         db.run(
             `UPDATE npc_memories
-             SET ultimaLembranca = datetime('now'),
-                 quantidadeLembrancas = quantidadeLembrancas + 1
+             SET "ultimaLembranca" = datetime('now'),
+                 "quantidadeLembrancas" = "quantidadeLembrancas" + 1
              WHERE id = ?`,
             [memoriaId],
             (err) => {
@@ -230,7 +232,7 @@ function removerMemoria(memoriaId) {
 function limparMemorias(npcId, jogadorId) {
     return new Promise((resolve) => {
         db.run(
-            `DELETE FROM npc_memories WHERE npcId = ? AND jogadorId = ?`,
+            `DELETE FROM npc_memories WHERE "npcId" = ? AND "jogadorId" = ?`,
             [npcId, jogadorId],
             (err) => {
                 if (err) {
@@ -255,8 +257,8 @@ function listarMemorias(npcId) {
     return new Promise((resolve) => {
         db.all(
             `SELECT * FROM npc_memories
-             WHERE npcId = ?
-             ORDER BY importancia DESC, dataCriacao DESC`,
+             WHERE "npcId" = ?
+             ORDER BY importancia DESC, "dataCriacao" DESC`,
             [npcId],
             (err, rows) => {
                 if (err) {

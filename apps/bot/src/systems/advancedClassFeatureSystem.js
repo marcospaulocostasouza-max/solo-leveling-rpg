@@ -6,6 +6,7 @@
  * existem nas descricoes das classes e cria registros para aprovacao do ADM.
  */
 const db = require("../core/database");
+const { provider } = require("../../../../packages/database/config");
 
 const ELEMENTOS_SOBERANOS = ["fogo", "agua", "terra", "eletricidade", "planta", "gelo", "vento"];
 const SENTIDOS_NAGUMO = { C: 20, B: 30, A: 50, S: 100 };
@@ -13,8 +14,17 @@ const SENTIDOS_NAGUMO = { C: 20, B: 30, A: 50, S: 100 };
 const normalizar = (valor = "") => String(valor)
     .normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim().toLowerCase();
 
+function adaptarSql(sql) {
+    if (provider !== "postgres") return sql;
+    return sql
+        .replace(/INTEGER PRIMARY KEY AUTOINCREMENT/gi, "BIGSERIAL PRIMARY KEY")
+        .replace(/TEXT DEFAULT \(datetime\('now'\)\)/gi, "TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP")
+        .replace(/datetime\('now'\)/gi, "CURRENT_TIMESTAMP")
+        .replace(/MIN\(cenas_confirmadas \+ 1, 7\)/gi, "LEAST(cenas_confirmadas + 1, 7)");
+}
+
 const executar = (sql, params = []) => new Promise((resolve, reject) => {
-    db.run(sql, params, function (erro) {
+    db.run(adaptarSql(sql), params, function (erro) {
         if (erro) reject(erro);
         else resolve({ id: this.lastID, alteracoes: this.changes });
     });
@@ -284,7 +294,11 @@ const AdvancedClassFeatureSystem = {
         const existente = await obter("SELECT id FROM oraculo_equipes WHERE oraculo_id = ?", [jogadorId]);
         const equipeId = existente ? existente.id : (await executar("INSERT INTO oraculo_equipes (oraculo_id, nome) VALUES (?, ?)", [jogadorId, nome])).id;
         await executar("DELETE FROM oraculo_equipe_membros WHERE equipe_id = ?", [equipeId]);
-        for (const membroId of [...new Set([jogadorId, ...membros].map(Number))]) await executar("INSERT OR IGNORE INTO oraculo_equipe_membros (equipe_id, jogador_id) VALUES (?, ?)", [equipeId, membroId]);
+        for (const membroId of [...new Set([jogadorId, ...membros].map(Number))]) await executar(
+            `INSERT INTO oraculo_equipe_membros (equipe_id, jogador_id) VALUES (?, ?)
+             ON CONFLICT(equipe_id, jogador_id) DO NOTHING`,
+            [equipeId, membroId]
+        );
         return equipeId;
     },
 

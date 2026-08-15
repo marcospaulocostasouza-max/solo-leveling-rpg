@@ -9,6 +9,7 @@ const MessageService = require("../core/messageService");
 
 const db = require("../core/database");
 const adminCore = require("../core/adminCore");
+const { provider } = require("../../../../packages/database/config");
 
 module.exports = async (msg) => {
     const numero = msg.author || msg.from;
@@ -23,9 +24,9 @@ module.exports = async (msg) => {
     const pendente = await new Promise((resolve) => {
         db.get(
             `SELECT * FROM habilidades_unicas_pendentes 
-             WHERE status = 'pendente' AND criado_por = ?
+             WHERE status = 'pendente'
              ORDER BY id DESC LIMIT 1`,
-            [numero],
+            [],
             (err, row) => resolve(row)
         );
     });
@@ -43,18 +44,21 @@ Não há habilidades únicas pendentes para confirmar.
     }
     
     const dados = JSON.parse(pendente.dados);
+    dados.rank = String(dados.rank || "E").trim().toUpperCase();
+    if (!["E", "D", "C", "B", "A", "S"].includes(dados.rank)) {
+        return MessageService.send({ message: msg, text: `*✖ Rank de técnica inválido:* ${dados.rank}. Use E, D, C, B, A ou S.` });
+    }
+    await new Promise((resolve, reject) => db.run(
+        provider === "postgres" ? "ALTER TABLE tecnicas ADD COLUMN IF NOT EXISTS rank TEXT DEFAULT 'E'" : "ALTER TABLE tecnicas ADD COLUMN rank TEXT DEFAULT 'E'",
+        [], err => {
+            if (err && provider !== "postgres" && /duplicate column/i.test(err.message)) return resolve();
+            return err ? reject(err) : resolve();
+        }
+    ));
     
     // Buscar o jogador pelo nome (Pertencente)
     const jogador = await new Promise((resolve) => {
-        db.get("SELECT * FROM jogadores WHERE LOWER(nome) = LOWER(?)", [dados.pertencente], (err, row) => {
-            if (!row) {
-                db.get("SELECT * FROM jogadores WHERE LOWER(nome) LIKE LOWER(?)", [`%${dados.pertencente}%`], (err, row2) => {
-                    resolve(row2);
-                });
-            } else {
-                resolve(row);
-            }
-        });
+        db.get("SELECT * FROM jogadores WHERE LOWER(TRIM(nome)) = LOWER(TRIM(?))", [dados.pertencente], (err, row) => resolve(err ? null : row || null));
     });
     
     if (!jogador) {
@@ -67,7 +71,7 @@ Verifique se o nome está correto ou se o jogador já possui ficha aprovada.
     // =====================================
     // CRIAR A TÉCNICA NO BANCO
     // =====================================
-    const nomeTecnica = `[Única] ${dados.nome}`;
+    const nomeTecnica = `[Personalizada] ${dados.nome}`;
     
     // Verificar se já existe técnica com este nome
     const tecnicaExistente = await new Promise((resolve) => {
@@ -83,8 +87,8 @@ Verifique se o nome está correto ou se o jogador já possui ficha aprovada.
     // Inserir a técnica na tabela de técnicas
     const tecnicaId = await new Promise((resolve, reject) => {
         db.run(
-            `INSERT INTO tecnicas (nome, classe, categoria, tipo, descricao, custo_mana, cooldown, nivel_desbloqueio, passiva)
-             VALUES (?, ?, ?, ?, ?, ?, ?, 1, ?)`,
+            `INSERT INTO tecnicas (nome, classe, categoria, tipo, descricao, custo_mana, cooldown, nivel_desbloqueio, rank, passiva)
+             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING id`,
             [
                 nomeTecnica,
                 dados.classe || "Geral",
@@ -93,7 +97,9 @@ Verifique se o nome está correto ou se o jogador já possui ficha aprovada.
                 dados.descricao || "Habilidade Única",
                 dados.custo_mana || 0,
                 dados.cooldown || 0,
-                dados.tipo === "Passiva" ? 1 : 0
+                dados.nivel_desbloqueio || 1,
+                dados.rank || "E",
+                String(dados.tipo).toLowerCase() === "passiva" ? 1 : 0
             ],
             function(err) {
                 if (err) reject(err);
@@ -119,14 +125,6 @@ Verifique se o nome está correto ou se o jogador já possui ficha aprovada.
     });
     
     // =====================================
-    // ATUALIZAR STATUS DA HABILIDADE ÚNICA DO JOGADOR
-    // =====================================
-    const habUnicaAtual = jogador.habilidade_unica || "Nenhuma";
-    if (habUnicaAtual === "Nenhuma" || habUnicaAtual === "") {
-        db.run("UPDATE jogadores SET habilidade_unica = ? WHERE id = ?", [dados.nome, jogador.id]);
-    }
-    
-    // =====================================
     // MARCAR COMO CONCLUÍDO
     // =====================================
     await new Promise((resolve) => {
@@ -147,10 +145,10 @@ Verifique se o nome está correto ou se o jogador já possui ficha aprovada.
     }
     
     await MessageService.send({ message: msg, text: `
-*═══ HABILIDADE ÚNICA CRIADA! ═══*
+*═══ TÉCNICA PERSONALIZADA INTEGRADA! ═══*
 ══════════════════════════
 
-*Habilidade:* ${dados.nome}
+*Técnica:* ${dados.nome}
 *Jogador:* ${jogador.nome}
 *Tipo:* ${dados.tipo}
 *Custo de Mana:* ${dados.custo_mana}

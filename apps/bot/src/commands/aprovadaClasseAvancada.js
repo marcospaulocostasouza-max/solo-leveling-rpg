@@ -6,14 +6,14 @@ const AdvancedClassSystem = require("../systems/advancedClassSystem");
 const grupoADM = "120363426252648069@g.us";
 
 function extrairNomeEClasse(mensagem) {
-    const prefixo = "!aprovada para classe avançada";
-    const corpo = mensagem.slice(prefixo.length).trim();
+    const corpo = mensagem.replace(/^!aprovada para classe avan(?:ç|c)ada\s*/i, "").trim();
     if (!corpo) return null;
 
     const todasClasses = AdvancedClassSystem.getTodosNomesDeClasses();
-    const corpoMinusculo = corpo.toLowerCase();
+    const normalizar = valor => String(valor || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+    const corpoMinusculo = normalizar(corpo);
 
-    const nomeClasseEncontrada = todasClasses.find(classe => corpoMinusculo.endsWith(classe.toLowerCase()));
+    const nomeClasseEncontrada = todasClasses.find(classe => corpoMinusculo.endsWith(normalizar(classe)));
     if (!nomeClasseEncontrada) return null;
 
     const nomeJogador = corpo.slice(0, corpo.length - nomeClasseEncontrada.length).trim();
@@ -49,6 +49,16 @@ module.exports = async (msg) => {
         return MessageService.send({ message: msg, text: `*═══ Não foi possível aprovar a classe avançada. ═══*\n${resultado.mensagem}` });
     }
 
+    await new Promise(resolve => {
+        db.run(
+            `UPDATE missoes SET status = 'concluida'
+             WHERE jogador_id = (SELECT id FROM jogadores WHERE LOWER(nome) = ?)
+               AND tipo = 'classe_avancada' AND status = 'ativa'`,
+            [dados.nomeJogador.toLowerCase()],
+            () => resolve()
+        );
+    });
+
     db.get("SELECT numero, nome FROM jogadores WHERE LOWER(nome) = ?", [dados.nomeJogador.toLowerCase()], async (err, jogador) => {
         if (jogador) {
             try {
@@ -68,3 +78,5 @@ Use !tecnicas para visualizar suas novas técnicas.` });
 > Jogador: ${dados.nomeJogador}
 > Classe aprovada: ${dados.nomeClasse}` });
 };
+
+module.exports.extrairNomeEClasse = extrairNomeEClasse;

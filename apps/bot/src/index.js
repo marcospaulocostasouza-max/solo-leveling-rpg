@@ -10,6 +10,10 @@ const database = require("./core/database");
 
 database.iniciarBanco(() => {
     console.log("[OK] Banco de dados inicializado com sucesso!");
+
+    // Inicia no boot a expiração persistente de cenas de NPC. O módulo
+    // executa uma limpeza imediata e mantém a verificação a cada 10 minutos.
+    require("./npc/interactionManager");
     
     const { registrarTodasTecnicas } = require("./core/registrarSistemas");
     registrarTodasTecnicas();

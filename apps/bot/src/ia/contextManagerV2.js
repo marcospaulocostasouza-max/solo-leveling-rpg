@@ -129,11 +129,11 @@ async function obterContexto(npcId, jogadorId, mensagem) {
         // 5. BUSCAR ESTADO EMOCIONAL (com cache)
         // =====================================
         profiler.inicio('Busca Emoção');
-        const chaveEmocao = cacheManager.gerarChave('emotion', npcId);
+        const chaveEmocao = cacheManager.gerarChave('emotion', npcId, jogadorId);
         let estadoEmocional = cacheManager.obter(chaveEmocao);
         
         if (!estadoEmocional) {
-            const emocaoDB = await EmotionManager.obterEmocaoNPC(npcId);
+            const emocaoDB = await EmotionManager.obterEmocao(npcId, jogadorId);
             if (emocaoDB) {
                 estadoEmocional = {
                     emocao: emocaoDB.emocao,

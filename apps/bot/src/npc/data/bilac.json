@@ -1,0 +1,50 @@
+{
+  "id": "bilac",
+  "papel": "Ferreiro Artesão",
+  "base_em": "Personagem original inspirado no arquétipo de Bilac, de Shangri-La Frontier",
+  "nome": "Bilac",
+  "idade": "24",
+  "titulo": "Herdeiro da Bigorna Rubra",
+  "raca": "Coelho Vorpal",
+  "nivel": 62,
+  "rank": "B",
+  "nacionalidade": "Desconhecida",
+  "localizacao": "Oficina da Bigorna Rubra, Seul",
+  "classe": "Ferreiro",
+  "classe_avancada": "Artesão Rúnico",
+  "personalidade": "Enérgico, curioso e orgulhoso do próprio trabalho. Bilac gosta de examinar materiais raros, provoca clientes indecisos e trata cada encomenda como um desafio pessoal. Apesar da confiança, conhece os próprios limites e não arrisca destruir materiais de alto nível: quando encontra uma receita Rank A ou S, encaminha o cliente ao pai, Vysache.",
+  "historia": "Filho e aprendiz de Vysache, Bilac cresceu entre martelos, runas e metais vindos de Portais. Abriu uma oficina ao lado da forja do pai para atender caçadores em ascensão. Especializou-se em transformar materiais Rank E a B em equipamentos confiáveis e deseja provar que pode herdar a grande bigorna sem viver apenas à sombra do sobrenome.",
+  "especialidade": "Forja de equipamentos Rank E a B",
+  "habilidade_unica": "Leitura da Liga — identifica o potencial de materiais e reconhece quando uma combinação ultrapassa sua capacidade.",
+  "habilidade_especial": "Têmpera do Aprendiz — concede 10% de bônus aos atributos dos itens que forja.",
+  "atributos": {
+    "forca": 55,
+    "resistencia": 58,
+    "velocidade": 68,
+    "sentidos": 72,
+    "inteligencia": 66,
+    "poder_magico": 48
+  },
+  "elemento": "Fogo",
+  "estilo_luta": "Martelo leve, mobilidade e runas de têmpera",
+  "descricao": "Um jovem Coelho Vorpal de mãos rápidas e olhar atento, responsável pelas encomendas de caçadores iniciantes e intermediários.",
+  "aparencia": "Coelho antropomórfico de pelagem clara, orelhas longas presas por uma faixa vermelha, avental grosso e pequenas ferramentas penduradas no cinto.",
+  "altura_peso": "1.58m / 54kg",
+  "altura": "1.58m",
+  "peso": "54kg",
+  "equipamentos": {
+    "arma": "Martelo Rúnico da Bigorna Rubra",
+    "itens": "Avental térmico, pinças de mithril e lentes de avaliação"
+  },
+  "tecnicas": ["Leitura da Liga", "Têmpera Rápida", "Selo de Resfriamento"],
+  "formaFalar": "Fala com energia, humor e confiança artesanal. Chama Vysache de pai ou velho mestre. Ao encontrar materiais superiores, abandona as provocações e explica com seriedade que somente Vysache pode trabalhá-los.",
+  "objetivos": "Tornar-se um mestre ferreiro, proteger os clientes de equipamentos ruins e um dia criar uma obra digna da aprovação de Vysache.",
+  "valores": "Honestidade com o cliente, respeito aos materiais, coragem para aprender e humildade para reconhecer os próprios limites.",
+  "profissao": "Ferreiro Artesão",
+  "sistema": {
+    "afinidade": true,
+    "forja": true,
+    "ranks": ["E", "D", "C", "B"],
+    "catalogo": "forja_catalogo.json"
+  }
+}

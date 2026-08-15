@@ -15,7 +15,7 @@ module.exports = async (msg) => {
 
         const nomeNPC = msg.body.replace(/^!amizade/i, "").trim();
         if (!nomeNPC) {
-            const relacoes = await consultar("SELECT * FROM npc_relationships WHERE jogadorId = ? ORDER BY vinculo DESC, hostilidade DESC", [jogador.numero], true);
+            const relacoes = await consultar('SELECT * FROM npc_relationships WHERE "jogadorId" = ? ORDER BY vinculo DESC, hostilidade DESC', [jogador.numero], true);
             if (!relacoes.length) return MessageService.send({ message: msg, text: "*AMIZADE*\n\nVocê ainda não concluiu uma cena com nenhum NPC." });
             const linhas = relacoes.map((relacao) => {
                 const npc = NPCManager.carregarNPC(relacao.npcId);
@@ -26,7 +26,7 @@ module.exports = async (msg) => {
 
         const npc = NPCManager.buscarPorNome(nomeNPC);
         if (!npc) return MessageService.send({ message: msg, text: "[!] NPC não encontrado." });
-        const relacao = await consultar("SELECT vinculo, hostilidade FROM npc_relationships WHERE npcId = ? AND jogadorId = ?", [npc.id, jogador.numero]);
+        const relacao = await consultar('SELECT vinculo, hostilidade FROM npc_relationships WHERE "npcId" = ? AND "jogadorId" = ?', [npc.id, jogador.numero]);
         const resumo = await consultar("SELECT resumo, atualizado_em FROM npc_resumos_cena WHERE npc_id = ? AND jogador_id = ?", [npc.id, jogador.numero]);
         const conhecidos = npc.descricao || npc.personalidade || "Nenhuma informação pública adicional disponível.";
         return MessageService.send({ message: msg, text: ["════════════════════════════════════", `*AMIZADE — ${npc.nome}*`, "════════════════════════════════════", "", `› Vínculo: *${relacao?.vinculo || 0}%*`, `› Hostilidade: *${relacao?.hostilidade || 0}%*`, "", "*Informações conhecidas*", `› ${conhecidos}`, "", "*Última cena*", `› ${resumo?.resumo || "Nenhuma cena encerrada com este NPC."}`, resumo?.atualizado_em ? `› Registrada em: ${resumo.atualizado_em}` : ""].filter(Boolean).join("\n") });

@@ -17,6 +17,7 @@ const MessageService = require("../core/messageService");
  */
 
 const db = require("../core/database");
+const { ensureMasteryHistoryTable } = require("../../../../packages/database");
 const adminCore = require("../core/adminCore");
 const JogadorCore = require("../core/jogadorCore");
 
@@ -69,7 +70,7 @@ _O sistema gera automaticamente a ficha de compra._` });
                     (err, rows) => resolve(rows || [])
                 );
             });
-            await new Promise((resolve) => db.run("CREATE TABLE IF NOT EXISTS historico_maestria (id INTEGER PRIMARY KEY AUTOINCREMENT, jogador_id INTEGER NOT NULL, descricao TEXT NOT NULL, valor INTEGER NOT NULL, data TEXT NOT NULL)", () => resolve()));
+            await ensureMasteryHistoryTable();
             const gastosMaestria = await new Promise((resolve) => {
                 db.all("SELECT descricao, valor, data FROM historico_maestria WHERE jogador_id = ? ORDER BY data DESC LIMIT 10", [jogador.id], (err, rows) => resolve(rows || []));
             });

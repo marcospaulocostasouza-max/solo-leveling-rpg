@@ -76,7 +76,9 @@ const RANK_BONUS = {
 class LevelSystem {
     
     static getXpNecessario(nivel) {
-        return XP_POR_NIVEL[nivel] || (nivel >= 100 ? 144000 : nivel * 1000);
+        const atual = Math.max(1, Number(nivel) || 1);
+        if (atual >= 100) return 0;
+        return XP_POR_NIVEL[atual + 1] || atual * 1000;
     }
     
     static getRequisitosRank(rank) {
@@ -110,11 +112,11 @@ class LevelSystem {
                 if (!jogador) return resolve(null);
                 
                 let subiuNivel = false;
-                let nivel = jogador.nivel;
-                let xp = jogador.experiencia;
+                let nivel = Number(jogador.nivel) || 1;
+                let xp = Number(jogador.experiencia) || 0;
                 
                 // Loop de progressão (pode subir múltiplos níveis de uma vez)
-                while (xp >= this.getXpNecessario(nivel)) {
+                while (nivel < 100 && xp >= this.getXpNecessario(nivel)) {
                     xp -= this.getXpNecessario(nivel);
                     nivel++;
                     subiuNivel = true;
@@ -125,7 +127,8 @@ class LevelSystem {
                     
                     // +3 pontos de atributo para distribuir por nível
                     const pontosGanhos = niveisGanhos * PONTOS_ATRIBUTO_POR_NIVEL;
-                    let pontosAtributo = (jogador.pontos_atributo || 0) + pontosGanhos;
+                    // BIGINT chega como string no PostgreSQL; converta antes de somar.
+                    let pontosAtributo = (Number(jogador.pontos_atributo) || 0) + pontosGanhos;
                     
                     // +1 em cada atributo base por nível
                     const bonusForca = niveisGanhos * PONTOS_FIXOS_POR_NIVEL;
@@ -155,7 +158,9 @@ class LevelSystem {
                         const requisito = RANK_REQUISITOS[rankTeste];
                         if (requisito && nivel >= requisito.nivel) {
                             novoRank = rankTeste;
-                            rankBonus = RANK_BONUS[rankTeste] || { pontos: 0, won: 0 };
+                            const bonusDoRank = RANK_BONUS[rankTeste] || { pontos: 0, won: 0 };
+                            rankBonus.pontos += bonusDoRank.pontos;
+                            rankBonus.won += bonusDoRank.won;
                             subiuRank = true;
                         } else {
                             break; // Para no primeiro que não atingir

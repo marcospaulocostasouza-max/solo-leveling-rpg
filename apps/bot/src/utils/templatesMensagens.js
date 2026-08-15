@@ -92,7 +92,6 @@ ${templates.campo("Aparencia", "_")}
 
 ${templates.secao("COMBATE")}
 ${templates.campo("Classe desejada", "_")}
-> Ranger deve escolher: *Ranger Fisico* (+50% Forca) ou *Ranger Magico* (+50% Poder Magico).
 ${templates.campo("Estilo de luta / Proficiencia", "_")}
 > Esta proficiencia sera definitiva; nao existe comando para troca-la.
 ${templates.campo("Arma inicial", "_")}
@@ -238,6 +237,26 @@ _Use *!confirmar ficha* para enviar para aprovacao._`,
         return msg;
     },
 
+    recadoPosAprovacao: (nomeJogador) => {
+        let msg = `${templates.titulo("O SISTEMA RECONHECEU VOCE")}`;
+        msg += `\n${templates.divisor()}`;
+        msg += `\n> ANALISE DA HISTORIA: CONCLUIDA`;
+        msg += `\n> REGISTRO DO JOGADOR: APROVADO`;
+        msg += `\n> DESPERTAR: CONFIRMADO`;
+        msg += `\n${templates.divisor()}`;
+        msg += `\n\n*${nomeJogador}... sua existencia foi aceita pelo Sistema.*`;
+        msg += `\n\nEu li sua historia. Observei suas escolhas, suas cicatrizes e o potencial oculto por tras delas.`;
+        msg += `\n\nComo prova de que o Sistema reconheceu o seu caminho, uma *Habilidade Unica* condizente com sua historia foi concedida a voce.`;
+        msg += `\n\nNao a desperdice. O poder que agora carrega podera ergue-lo acima dos demais... ou revelar que voce nunca foi digno dele.`;
+        msg += `\n\nA partir deste momento, voce nao e mais um simples observador.`;
+        msg += `\n*Voce e um Jogador.*`;
+        msg += `\n\nSeu progresso pode comecar. Atravesse o portal abaixo, entre na comunidade e envie *!jogador* para contemplar sua ficha e a Habilidade Unica que lhe foi concedida:`;
+        msg += `\nhttps://chat.whatsapp.com/IhaQVGW0beK3X4jrrfaWxo`;
+        msg += `\n\n${templates.divisor()}`;
+        msg += `\n> O SISTEMA ESTARA OBSERVANDO.`;
+        return msg;
+    },
+
     // =====================================
     // FICHA RECUSADA
     // =====================================
@@ -256,32 +275,22 @@ _Use *!confirmar ficha* para enviar para aprovacao._`,
     // BOAS-VINDAS
     // =====================================
     
-    boasVindas: () => `${templates.titulo("BEM-VINDO AO SOLO LEVELING RPG")}
+    boasVindas: () => `${templates.titulo("UMA NOVA PRESENÇA FOI DETECTADA")}
 ${templates.linha()}
 
-Use *!ficha* para criar seu personagem!
+_*「 ARQUITETO 」*_
+_— Então você atravessou os portões deste mundo, Jogador. A partir deste instante, cada escolha será registrada. Seu poder, sua classe e o caminho que seguirá ainda não foram definidos... mas o Sistema já reconheceu sua presença._
 
 ${templates.divisor()}
 
-*PASSO A PASSO*
-1. Use *!ficha* para ver o modelo
-2. Preencha todos os campos
-3. Envie a ficha no grupo
-4. Use *!confirmar ficha*
-5. Aguarde aprovacao do ADM
+*SEU PRIMEIRO COMANDO*
+> Digite *!Iniciar*
+
+_O Sistema apresentará as instruções necessárias para criar seu personagem, preencher sua ficha e dar o primeiro passo em direção à sua ascensão._
 
 ${templates.divisor()}
 
-*COMANDOS BASICOS*
-> *!ficha* - Ver modelo de ficha
-> *!jogador* - Ver sua ficha aprovada
-> *!regras* - Regras do RPG
-> *!classes* - Ver classes disponiveis
-> *!saldo* - Ver saldos (Yulls e Maestria)
-
-${templates.divisor()}
-
-_Boa sorte, Cacador!_`,
+_Levante-se, Jogador. Sua jornada começa quando o comando for executado._`,
 
     // =====================================
     // AVALIAÇÃO

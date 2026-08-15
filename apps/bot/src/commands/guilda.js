@@ -1,49 +1,7 @@
-const MessageService = require("../core/messageService");
-const db = require("../core/database");
-const GuildaSystem = require("../systems/guildaSystem");
-
-const buscarJogador = (numero) => new Promise((resolve, reject) => db.get("SELECT id, nome FROM jogadores WHERE numero = ?", [numero], (erro, linha) => erro ? reject(erro) : resolve(linha)));
-const enviar = (msg, linhas) => MessageService.send({ message: msg, text: linhas.join("\n") });
-
-module.exports = async (msg) => {
-    try {
-        const jogador = await buscarJogador(msg.author || msg.from);
-        if (!jogador) return enviar(msg, ["[!] Não foi possível encontrar sua ficha."]);
-
-        const entrada = msg.body.replace(/^!guilda/i, "").trim();
-        const [acao = "info", ...restante] = entrada.split(/\s+/);
-        const argumento = restante.join(" ").trim();
-
-        if (acao.toLowerCase() === "criar") {
-            if (!argumento) return enviar(msg, ["[!] Uso: !guilda criar <nome da guilda>"]);
-            const resultado = await GuildaSystem.criarGuilda(argumento, jogador.id, jogador.nome);
-            return enviar(msg, [resultado.erro ? `[!] ${resultado.erro}` : `[+] Guilda *${argumento}* criada. Você é o líder.`]);
-        }
-
-        if (acao.toLowerCase() === "entrar") {
-            if (!argumento) return enviar(msg, ["[!] Uso: !guilda entrar <nome da guilda>"]);
-            const guilda = await new Promise((resolve, reject) => db.get("SELECT id FROM guildas WHERE lower(nome) = lower(?)", [argumento], (erro, linha) => erro ? reject(erro) : resolve(linha)));
-            if (!guilda) return enviar(msg, ["[!] Guilda não encontrada."]);
-            const resultado = await GuildaSystem.entrarGuilda(jogador.id, guilda.id);
-            return enviar(msg, [resultado.erro ? `[!] ${resultado.erro}` : `[+] Você entrou na guilda *${resultado.guilda}*.`]);
-        }
-
-        if (acao.toLowerCase() === "sair") {
-            const resultado = await GuildaSystem.sairGuilda(jogador.id);
-            return enviar(msg, [resultado.erro ? `[!] ${resultado.erro}` : `[+] Você saiu da guilda *${resultado.guilda}*.`]);
-        }
-
-        const guilda = await new Promise((resolve, reject) => db.get("SELECT g.id, g.nome, g.nivel, g.membros, g.passivas, gm.cargo FROM guilda_membros gm JOIN guildas g ON g.id = gm.guilda_id WHERE gm.jogador_id = ?", [jogador.id], (erro, linha) => erro ? reject(erro) : resolve(linha)));
-        if (!guilda) return enviar(msg, ["════════════════════════════════════", "*GUILDAS*", "════════════════════════════════════", "", "› Você ainda não participa de uma guilda.", "› Criar: !guilda criar <nome>", "› Entrar: !guilda entrar <nome>"]);
-
-        if (acao.toLowerCase() === "membros") {
-            const membros = await new Promise((resolve, reject) => db.all("SELECT j.nome, gm.cargo FROM guilda_membros gm JOIN jogadores j ON j.id = gm.jogador_id WHERE gm.guilda_id = ? ORDER BY CASE gm.cargo WHEN 'Líder' THEN 0 ELSE 1 END, j.nome", [guilda.id], (erro, linhas) => erro ? reject(erro) : resolve(linhas || [])));
-            return enviar(msg, [`*MEMBROS — ${guilda.nome}*`, "", ...membros.map((membro) => `› ${membro.nome} — ${membro.cargo}`)]);
-        }
-
-        return enviar(msg, ["════════════════════════════════════", "*GUILDA*", "════════════════════════════════════", "", `› Nome: *${guilda.nome}*`, `› Nível: *${guilda.nivel}*`, `› Membros: *${guilda.membros}*`, `› Seu cargo: *${guilda.cargo}*`, `› Passivas: ${guilda.passivas || "Nenhuma"}`, "", "› !guilda membros", "› !guilda sair", "", "_A criação de grupos de WhatsApp exige uma ação externa explícita de um administrador da comunidade._"]);
-    } catch (erro) {
-        console.error("Erro no comando guilda:", erro);
-        return enviar(msg, ["[!] Não foi possível consultar a guilda agora."]);
-    }
-};
+"use strict";
+const MessageService=require("../core/messageService");
+const db=require("../../../../packages/database");
+const Guilda=require("../systems/guildaSystem");
+const send=(m,a)=>MessageService.send({message:m,text:a.join("\n")});
+const GUIA=["_*「 GUILDAS 」*_","_— Uma guilda é uma comunidade organizada de Caçadores, reunida sob um mesmo nome, liderança e objetivos. Ela permite formar uma identidade coletiva e participar dos sistemas de associação do RPG._","","_*REGRAS AUTOMATIZADAS*_","_• Criar exige Rank D+ e custa 200.000 Won._","_• Limite atual: 10 membros._","_• Ao sair, aguarde 7 dias para entrar em outra._","_• O líder precisa transferir a liderança ou dissolver a guilda._","","_*COMANDOS*_","_• !Guilda Lista — listar guildas_","_• !Guilda Criar <nome> — criar_","_• !Guilda Entrar <nome> — entrar_","_• !Guilda Info — consultar sua guilda_","_• !Guilda Membros — listar membros_","_• !Guilda Sair — sair_","_• !Guilda Transferir <nome completo> — trocar líder_","_• !Guilda Dissolver Confirmar — encerrar a guilda_","","_Territórios, fusões, filiais, bônus de grupo e evolução citados nas regras gerais ainda não são aplicados por este comando._"];
+module.exports=async msg=>{try{const j=await db.get("SELECT id,nome,rank,won FROM jogadores WHERE numero=?",[msg.author||msg.from]);if(!j)return send(msg,["[!] Ficha não encontrada."]);const e=String(msg.body||"").replace(/^!guilda/i,"").trim(),[a="ajuda",...r]=e.split(/\s+/),arg=r.join(" ").trim(),cmd=a.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();if(["ajuda","regras",""].includes(cmd))return send(msg,GUIA);if(cmd==="lista"){const gs=await Guilda.listarGuildas();return send(msg,gs.length?["_*「 GUILDAS DISPONÍVEIS 」*_","",...gs.map(g=>`_• ${g.nome} — Nível ${g.nivel} — ${g.membros}/10 — Líder: ${g.lider}_`)]:["_Nenhuma guilda criada._"])}if(cmd==="criar"){if(!arg)return send(msg,["Uso: !guilda criar <nome>"]);const x=await Guilda.criarGuilda(arg,j.id);return send(msg,[x.erro?`[!] ${x.erro}`:`[+] Guilda *${x.nome}* criada. Saldo: ${x.saldo.toLocaleString("pt-BR")} Won.`])}if(cmd==="entrar"){if(!arg)return send(msg,["Uso: !guilda entrar <nome>"]);const x=await Guilda.entrarGuilda(j.id,arg);return send(msg,[x.erro?`[!] ${x.erro}`:`[+] Você entrou em *${x.guilda}*.`])}if(cmd==="sair"){const x=await Guilda.sairGuilda(j.id);return send(msg,[x.erro?`[!] ${x.erro}`:`[+] Você saiu de *${x.guilda}*. O cooldown de 7 dias começou.`])}if(cmd==="transferir"){if(!arg)return send(msg,["Uso: !guilda transferir <nome completo>"]);const x=await Guilda.transferirLideranca(j.id,arg);return send(msg,[x.erro?`[!] ${x.erro}`:`[+] Novo líder: *${x.novoLider}*.`])}if(cmd==="dissolver"){if(arg.toLowerCase()!=="confirmar")return send(msg,["[!] Ação definitiva. Use !guilda dissolver confirmar"]);const x=await Guilda.dissolverGuilda(j.id);return send(msg,[x.erro?`[!] ${x.erro}`:`[+] Guilda *${x.guilda}* dissolvida.`])}const g=await db.get("SELECT g.*,gm.cargo FROM guilda_membros gm JOIN guildas g ON g.id=gm.guilda_id WHERE gm.jogador_id=?",[j.id]);if(!g)return send(msg,["[!] Você não pertence a uma guilda. Use !guilda lista."]);if(cmd==="membros"){const ms=await db.all("SELECT j.nome,gm.cargo FROM guilda_membros gm JOIN jogadores j ON j.id=gm.jogador_id WHERE gm.guilda_id=? ORDER BY CASE gm.cargo WHEN 'Líder' THEN 0 ELSE 1 END,j.nome",[g.id]);return send(msg,[`_*「 MEMBROS — ${g.nome} 」*_`,"",...ms.map(m=>`_• ${m.nome} — ${m.cargo}_`)])}if(cmd==="info")return send(msg,[`_*「 ${g.nome.toUpperCase()} 」*_`,`_• Líder: ${g.lider}_`,`_• Nível: ${g.nivel}/10_`,`_• Membros: ${g.membros}/10_`,`_• Seu cargo: ${g.cargo}_`,`_• Passivas: ${g.passivas||"Nenhuma"}_`]);return send(msg,["[!] Subcomando inválido. Use !guilda."])}catch(e){console.error("[GUILDA]",e.message);return send(msg,["[!] Não foi possível processar guildas agora."])}};

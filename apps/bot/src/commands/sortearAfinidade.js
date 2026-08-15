@@ -11,6 +11,7 @@ const MessageService = require("../core/messageService");
 const db = require("../core/database");
 const templates = require("../utils/templatesMensagens");
 const elementos = require("../elementos/listaElementos");
+const LIMITE_VARIANTE_ACIMA_DE_RARA = 1;
 
 module.exports = async (msg) => {
     try {
@@ -56,7 +57,17 @@ _Use !consultar afinidade para ver detalhes._
             ` });
         }
 
-        const elementosSorteaveis = elementos.filter(e => e.sorteavel === true);
+        const ocupacaoRara = await new Promise((resolve, reject) => db.all(
+            `SELECT LOWER(afinidade_elemental) AS elemento, COUNT(*) AS total
+             FROM jogadores
+             WHERE afinidade_elemental IS NOT NULL AND afinidade_elemental <> 'Nenhuma' AND numero <> ?
+             GROUP BY LOWER(afinidade_elemental)`, [numeroJogador],
+            (err, rows) => err ? reject(err) : resolve(new Map((rows || []).map(row => [row.elemento, Number(row.total)])))
+        ));
+        const acimaDeRara = new Set(["Muito Raro", "Lendário"]);
+        const elementosSorteaveis = elementos.filter(e => e.sorteavel === true && (
+            !acimaDeRara.has(e.raridade) || (ocupacaoRara.get(e.nome.toLowerCase()) || 0) < LIMITE_VARIANTE_ACIMA_DE_RARA
+        ));
 
         if (!elementosSorteaveis || elementosSorteaveis.length === 0) {
             return MessageService.send({ message: msg, text: templates.erro("Nenhum elemento disponível para sorteio.") });

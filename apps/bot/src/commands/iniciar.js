@@ -21,7 +21,6 @@ module.exports = async (msg) => {
     mensagem += `> *!sortear afinidade* - Descobrir seu elemento\n`;
     mensagem += `> *!estilos de luta* - Ver estilos de luta disponíveis\n`;
     mensagem += `> *!armas iniciais* - Ver armas para começar\n`;
-    mensagem += `> *!itens* - Ver itens básicos do sistema\n`;
     mensagem += `\n${templates.divisor()}\n\n`;
     
     mensagem += `*COMO COMEÇAR:*\n`;

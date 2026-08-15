@@ -24,7 +24,7 @@ function gerarMapaGrupos() {
         [GROUP_CONFIG.fichas]: [
             "!ficha", "!sortear afinidade", "!confirmar ficha",
             "!estilos de luta", "!armasiniciais", "!armas iniciais",
-            "!classes", "!regras"
+            "!classes", "!regras", "!afinidades"
         ],
         [GROUP_CONFIG.aprovacao]: [
             "!avaliar ficha", "!aprovar ficha", "!recusar ficha",
@@ -32,7 +32,7 @@ function gerarMapaGrupos() {
         ],
         [GROUP_CONFIG.dungeon]: ["!dungeon", "!dungeon auto"],
         [GROUP_CONFIG.loja]: [
-            "!abrir loja", "!comprar", "!confirmar compra", "!comprar tecnica", "!comprar técnica"
+            "!loja virtual", "!drops", "!abrir loja", "!comprar", "!confirmar compra", "!comprar tecnica", "!comprar técnica"
         ],
         [GROUP_CONFIG.on]: [
             "!missao", "!batalha"
@@ -48,7 +48,9 @@ function gerarMapaGrupos() {
             "!token", "!materiais", "!penalidade", "!membroa", "!cargosa",
             "!guerra", "!pontuacao", "!unicos", "!hp", "!mineracao", "!arena",
             "!fragmento", "!governante", "!submundo", "!nucleo", "!sucessor",
-            "!monarca", "!ativar passiva", "!equipar titulo", "!equipar título",
+            "!monarca", "!meus titulos", "!equipar titulo", "!equipar título",
+            "!npc", "!peatz", "!skills", "!loja virtual", "!drops", "!ascensão", "!ascensao", "!associações", "!associacoes", "!biblioteca", "!história", "!historia", "!acervo", "!listar npcs", "!amizade", "!fim de interação", "!fim de interacao",
+            "!olá bilac", "!ola bilac", "!olá vysache", "!ola vysache", "!preciso de um item", "!pode sim",
             "!comprar tecnica", "!comprar técnica", "!abrir dungeon", "!dado",
             "!armasiniciais", "!armas iniciais", "!itens", "!abrir loja", "!distribuir",
             "!arquitetura", "!dado", "!caixa", "!missao",

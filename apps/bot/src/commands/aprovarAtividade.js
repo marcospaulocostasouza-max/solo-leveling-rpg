@@ -5,7 +5,7 @@ const MessageService = require("../core/messageService");
  * 
  * Comandos para ADM conceder recompensas automaticamente:
  * - !quest diária finalizada <Nome>
- * - !treino de cultivo finalizado <Nome>
+ * - !treino de maestria finalizado <Nome> [1/7/15/30 dias]
  * - !treino conjunto finalizado <Nome1>/<Nome2>
  * - !interação finalizada <Nome1>/<Nome2>
  * - !one post finalizado <Nome1>/<Nome2>
@@ -15,7 +15,8 @@ const MessageService = require("../core/messageService");
 
 const db = require("../core/database");
 const adminCore = require("../core/adminCore");
-const { verificarBloqueio } = require("../utils/verificarBloqueio");
+const verificarBloqueio = require("../utils/verificarBloqueio");
+const JogadorCore = require("../core/jogadorCore");
 
 // =====================================
 // TABELA DE RECOMPENSAS POR RANK
@@ -28,8 +29,8 @@ const RECOMPENSAS = {
         pontos_atributo: 3,
         caixa_item: true
     },
-    treino_cultivo: {
-        nome: "Treino de Cultivo",
+    treino_maestria: {
+        nome: "Treino de Maestria",
         xp: { E: 50, D: 200, C: 500, B: 1000, A: 2000, S: 3500 },
         maestria: { "1_dia": 5, "7_dias": 20, "15_dias": 50, "30_dias": 100 }
     },
@@ -79,6 +80,7 @@ async function aplicarRecompensas(jogadorId, tipoAtividade, rank, quantidadeExtr
         await new Promise((resolve) => {
             db.run("UPDATE jogadores SET experiencia = experiencia + ? WHERE id = ?", [xpGanho, jogadorId], (err) => resolve());
         });
+        await JogadorCore.verificarEAtualizarNivel(jogadorId);
         
         recompensasAplicadas.push({ tipo: "XP", valor: xpGanho });
     }
@@ -105,15 +107,20 @@ async function aplicarRecompensas(jogadorId, tipoAtividade, rank, quantidadeExtr
     
     // Aplicar Caixa de Item (apenas Quest Diária)
     if (recompensa.caixa_item) {
-        await new Promise((resolve) => {
-            db.run(
-                `INSERT INTO inventario (jogador_id, nome, tipo, raridade, quantidade) 
-                 VALUES (?, ?, ?, ?, ?) 
-                 ON CONFLICT(jogador_id, nome) DO UPDATE SET quantidade = quantidade + ?`,
-                [jogadorId, "Caixa de Item", "consumivel", "comum", 1, 1],
-                (err) => resolve()
-            );
-        });
+        await new Promise((resolve, reject) => db.run(
+            `INSERT OR IGNORE INTO itens (nome, categoria, tier, descricao, consumivel, preco)
+             VALUES ('Caixa de Item', 'Item de Apoio', 'Comum', 'Caixa de recompensa de Quest Diária.', 1, 0)`,
+            [], err => err ? reject(err) : resolve()
+        ));
+        const caixa = await new Promise((resolve, reject) => db.get("SELECT id FROM itens WHERE nome = 'Caixa de Item'", [], (err, row) => err ? reject(err) : resolve(row)));
+        const existente = await new Promise((resolve, reject) => db.get(
+            "SELECT id FROM inventario_jogador WHERE jogador_id = ? AND item_id = ?", [jogadorId, caixa.id],
+            (err, row) => err ? reject(err) : resolve(row || null)
+        ));
+        await new Promise((resolve, reject) => db.run(
+            existente ? "UPDATE inventario_jogador SET quantidade = quantidade + 1 WHERE id = ?" : "INSERT INTO inventario_jogador (jogador_id, item_id, quantidade, equipado) VALUES (?, ?, 1, 0)",
+            existente ? [existente.id] : [jogadorId, caixa.id], err => err ? reject(err) : resolve()
+        ));
         
         recompensasAplicadas.push({ tipo: "Caixa de Item", valor: 1 });
     }
@@ -137,7 +144,7 @@ async function aplicarRecompensas(jogadorId, tipoAtividade, rank, quantidadeExtr
  */
 async function buscarJogadorPorNome(nome) {
     return await new Promise((resolve) => {
-        db.get("SELECT * FROM jogadores WHERE LOWER(nome) LIKE ?", [`%${nome.toLowerCase()}%`], (err, row) => {
+        db.get("SELECT * FROM jogadores WHERE LOWER(TRIM(nome)) = LOWER(TRIM(?))", [nome], (err, row) => {
             resolve(row);
         });
     });
@@ -210,13 +217,16 @@ module.exports = async (msg) => {
     }
     
     // =====================================
-    // !TREINO DE CULTIVO FINALIZADO
+    // !TREINO DE MAESTRIA FINALIZADO
     // =====================================
-    if (texto.startsWith("!treino de cultivo finalizado")) {
-        const nomeJogador = texto.replace("!treino de cultivo finalizado", "").trim();
+    if (texto.startsWith("!treino de maestria finalizado")) {
+        const restante = texto.replace("!treino de maestria finalizado", "").trim();
+        const duracaoMatch = restante.match(/\s+(1|7|15|30)\s*dias?$/i);
+        const dias = duracaoMatch ? Number(duracaoMatch[1]) : 7;
+        const nomeJogador = duracaoMatch ? restante.slice(0, duracaoMatch.index).trim() : restante;
         
         if (!nomeJogador) {
-            return MessageService.send({ message: msg, text: "*═══ USO INCORRETO ═══*\nUse: !treino de cultivo finalizado <Nome do Player>" });
+            return MessageService.send({ message: msg, text: "*═══ USO INCORRETO ═══*\nUse: !treino de maestria finalizado <Nome do Player> [1/7/15/30 dias]" });
         }
         
         const jogador = await buscarJogadorPorNome(nomeJogador);
@@ -230,15 +240,14 @@ module.exports = async (msg) => {
             return MessageService.send({ message: msg, text: bloqueio.mensagem });
         }
         
-        // Aplicar recompensas (padrão: 7 dias)
-        const resultado = await aplicarRecompensas(jogador.id, "treino_cultivo", jogador.rank, "7_dias");
+        const resultado = await aplicarRecompensas(jogador.id, "treino_maestria", jogador.rank, `${dias}_dias`);
         
         if (resultado.sucesso) {
             let mensagem = `*══════════════════════════*\n`;
             mensagem += `*✅ RECOMPENSA ENTREGUE ✅*\n`;
             mensagem += `*══════════════════════════*\n\n`;
             mensagem += `*Jogador:* ${jogador.nome}\n`;
-            mensagem += `*Atividade:* Treino de Cultivo (7 dias)\n\n`;
+            mensagem += `*Atividade:* Treino de Maestria (${dias} dia${dias === 1 ? "" : "s"})\n\n`;
             mensagem += `*Recompensas recebidas:*\n`;
             
             resultado.recompensas.forEach(rec => {
@@ -417,7 +426,7 @@ module.exports = async (msg) => {
 
 *Comandos disponíveis:*
 !quest diária finalizada <Nome> - Aprovar quest diária
-!treino de cultivo finalizado <Nome> - Aprovar treino de cultivo
+!treino de maestria finalizado <Nome> [1/7/15/30 dias] - Entrega XP e Maestria pela duração
 !treino conjunto finalizado <Nome1>/<Nome2> - Aprovar treino conjunto
 !interação finalizada <Nome1>/<Nome2> - Aprovar interação
 !one post finalizado <Nome1>/<Nome2> - Aprovar one post

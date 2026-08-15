@@ -13,11 +13,14 @@ module.exports = async (msg) => {
     const numero = msg.author || msg.from;
     
     // Buscar todas as fichas pendentes
-    db.all("SELECT * FROM fichas_pendentes WHERE status = 'avaliacao' ORDER BY data_envio ASC", [], async (err, fichas) => {
-        if (err) {
-            console.error("[FILA] Erro ao buscar fila:", err);
-            return MessageService.send({ message: msg, text: "*✖ Erro ao buscar fila de aprovação.*" });
-        }
+    const fichas = await new Promise((resolve, reject) => db.all(
+        "SELECT * FROM fichas_pendentes WHERE status IN ('aguardando', 'avaliacao', 'pendente') ORDER BY data_envio ASC", [],
+        (err, rows) => err ? reject(err) : resolve(rows || [])
+    )).catch(err => {
+        console.error("[FILA] Erro ao buscar fila:", err);
+        return null;
+    });
+    if (!fichas) return MessageService.send({ message: msg, text: "*✖ Erro ao buscar fila de aprovação.*" });
         
         if (!fichas || fichas.length === 0) {
             return MessageService.send({ message: msg, text: "*✓ FILA VAZIA*\n\n_Não há fichas pendentes para aprovação no momento._" });
@@ -44,6 +47,5 @@ module.exports = async (msg) => {
         mensagem += `_Use !aprovar ficha [nome] [habilidade] para aprovar_\n`;
         mensagem += `_Use !recusar ficha [nome] [motivo] para recusar_`;
         
-        await MessageService.send({ message: msg, text: mensagem });
-    });
+        return MessageService.send({ message: msg, text: mensagem });
 };

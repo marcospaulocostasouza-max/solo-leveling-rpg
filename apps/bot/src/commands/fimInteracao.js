@@ -61,30 +61,34 @@ module.exports = async (msg) => {
         const numeroJogador = msg.author || msg.from;
         const nomeNPC = extrairNomeNPC(msg.body || "");
 
-        if (!nomeNPC) {
-            return MessageService.send({
-                message: msg,
-                text: `${templates.titulo("USO INCORRETO")}
-${templates.divisor()}
-Use: *!fim de interação <nome do NPC>*
-_Exemplo: !fim de interação Kaldena Ryu_`
-            });
-        }
-
-        const npc = npcManager.buscarPorNome(nomeNPC);
-        if (!npc) {
-            return MessageService.send({
-                message: msg,
-                text: templates.erro(`NPC "${nomeNPC}" não encontrado.`)
-            });
-        }
-
         const jogador = await buscarJogadorPorNumero(numeroJogador);
         if (!jogador) {
             return MessageService.send({ message: msg, text: templates.jogadorNaoEncontrado() });
         }
 
         const jogadorId = jogador.numero;
+        const cenaAtiva = await interactionManager.obterCenaDoJogador(jogadorId);
+        let npc = nomeNPC
+            ? (npcManager.carregarNPC(nomeNPC.toLowerCase()) || npcManager.buscarPorNome(nomeNPC))
+            : (cenaAtiva ? npcManager.carregarNPC(cenaAtiva.npcId) : null);
+
+        if (!npc) {
+            return MessageService.send({
+                message: msg,
+                text: nomeNPC
+                    ? templates.erro(`NPC "${nomeNPC}" não encontrado.`)
+                    : templates.erro("Você não possui nenhuma interação ativa para encerrar.")
+            });
+        }
+
+        if (cenaAtiva && cenaAtiva.npcId !== npc.id) {
+            const npcAtivo = npcManager.carregarNPC(cenaAtiva.npcId);
+            return MessageService.send({
+                message: msg,
+                text: templates.erro(`Sua cena ativa é com ${npcAtivo?.nome || cenaAtiva.npcId}. Use apenas *!fim de interação* ou informe esse NPC.`)
+            });
+        }
+
         const npcId = npc.id;
 
         const encerramentoPermitido = await interactionManager.podeEncerrarCena(npcId, jogadorId);
@@ -98,6 +102,17 @@ _Exemplo: !fim de interação Kaldena Ryu_`
         const historico = conversationManager.obterHistorico(jogadorId, npcId);
 
         if (!historico || historico.length === 0) {
+            if (cenaAtiva && cenaAtiva.npcId === npcId) {
+                const encerramento = await interactionManager.encerrarCena(npcId, jogadorId);
+                return MessageService.send({
+                    message: msg,
+                    text: `${templates.titulo("FIM DE INTERAÇÃO")}
+${templates.divisor()}
+A cena ativa com *${npc.nome}* foi encerrada e você já pode conversar com outro NPC.
+_O histórico narrativo não estava mais disponível, então vínculo e hostilidade não foram alterados._
+_${npc.nome} estará disponível novamente em ${encerramento.cooldownHoras}h._`
+                });
+            }
             return MessageService.send({
                 message: msg,
                 text: `${templates.titulo("NENHUMA CENA ENCONTRADA")}
@@ -157,7 +172,10 @@ _Se aproxima mais dele! Construa uma cena de verdade — não basta uma troca r�
             () => resolve()
         ));
         await new Promise((resolve) => db.run(
-            "INSERT OR REPLACE INTO npc_resumos_cena (npc_id, jogador_id, resumo, atualizado_em) VALUES (?, ?, ?, datetime('now'))",
+            `INSERT INTO npc_resumos_cena (npc_id, jogador_id, resumo, atualizado_em)
+             VALUES (?, ?, ?, datetime('now'))
+             ON CONFLICT(npc_id, jogador_id) DO UPDATE
+             SET resumo = excluded.resumo, atualizado_em = excluded.atualizado_em`,
             [npcId, jogadorId, String(analise.motivo || "Cena encerrada sem resumo disponível.").slice(0, 500)],
             () => resolve()
         ));

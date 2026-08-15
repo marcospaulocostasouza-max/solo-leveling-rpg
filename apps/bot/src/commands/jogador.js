@@ -181,16 +181,11 @@ _Use *!ficha* para criar seu personagem._
         mensagem += `\n`;
         
         // História
-        if (jogador.historia) {
-            mensagem += `*─── História ───*\n`;
-            mensagem += `> ${jogador.historia}\n\n`;
-        }
-        
         // Comandos rápidos
         mensagem += `*─── Comandos Rápidos ───*\n`;
         mensagem += `> !distribuir | !inventario | !equipados\n`;
         mensagem += `> !equipar | !tecnicas | !passivas\n`;
-        mensagem += `> !titulos | !atividades | !atributos\n\n`;
+        mensagem += `> !meus titulos | !atividades | !atributos\n\n`;
         
         mensagem += `──────────────────────────\n`;
         mensagem += `_Sistema Online_`;

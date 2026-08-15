@@ -31,6 +31,7 @@
  */
 
 const db = require("../core/database");
+const { provider } = require("../../../../packages/database/config");
 
 // Quanto da subida de um lado "corrói" o outro lado (0 a 1).
 // Ex: 0.3 = 30% do ganho de vínculo é descontado da hostilidade.
@@ -51,7 +52,11 @@ const LIMIAR_HOSTILIDADE_ALERTA = 10;
 
 function colunaExiste(tabela, coluna) {
     return new Promise((resolve) => {
-        db.all(`PRAGMA table_info(${tabela})`, [], (err, rows) => {
+        const sql = provider === "postgres"
+            ? "SELECT column_name AS name FROM information_schema.columns WHERE table_schema = current_schema() AND table_name = ?"
+            : `PRAGMA table_info(${tabela})`;
+        const params = provider === "postgres" ? [tabela] : [];
+        db.all(sql, params, (err, rows) => {
             if (err || !rows) return resolve(false);
             resolve(rows.some((r) => r.name === coluna));
         });
@@ -62,7 +67,7 @@ async function garantirColuna(tabela, coluna, definicao) {
     const existe = await colunaExiste(tabela, coluna);
     if (!existe) {
         await new Promise((resolve) => {
-            db.run(`ALTER TABLE ${tabela} ADD COLUMN ${coluna} ${definicao}`, (err) => {
+            db.run(`ALTER TABLE ${tabela} ADD COLUMN "${coluna}" ${definicao}`, (err) => {
                 if (err) {
                     console.error(`[RELATIONSHIP] Erro ao adicionar coluna ${coluna}:`, err.message);
                 } else {
@@ -75,16 +80,17 @@ async function garantirColuna(tabela, coluna, definicao) {
 }
 
 function criarTabela() {
+    const colunaId = provider === "postgres" ? "BIGSERIAL PRIMARY KEY" : "INTEGER PRIMARY KEY AUTOINCREMENT";
     return new Promise((resolve) => db.run(
         `
         CREATE TABLE IF NOT EXISTS npc_relationships (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            npcId TEXT NOT NULL,
-            jogadorId TEXT NOT NULL,
+            id ${colunaId},
+            "npcId" TEXT NOT NULL,
+            "jogadorId" TEXT NOT NULL,
             vinculo INTEGER DEFAULT 0,
             hostilidade INTEGER DEFAULT 0,
-            missaoDesbloqueada INTEGER DEFAULT 0,
-            avisoIndiferencaSuperado INTEGER DEFAULT 0,
+            "missaoDesbloqueada" INTEGER DEFAULT 0,
+            "avisoIndiferencaSuperado" INTEGER DEFAULT 0,
             confianca INTEGER DEFAULT 0,
             respeito INTEGER DEFAULT 0,
             amizade INTEGER DEFAULT 0,
@@ -92,8 +98,8 @@ function criarTabela() {
             carinho INTEGER DEFAULT 0,
             desconfianca INTEGER DEFAULT 0,
             medo INTEGER DEFAULT 0,
-            ultimaAtualizacao TEXT DEFAULT (datetime('now')),
-            UNIQUE(npcId, jogadorId)
+            "ultimaAtualizacao" TEXT DEFAULT (datetime('now')),
+            UNIQUE("npcId", "jogadorId")
         )
         `,
         async (err) => {
@@ -140,7 +146,7 @@ function clamp(valor) {
 function obterRelacionamento(npcId, jogadorId) {
     return new Promise((resolve) => {
         db.get(
-            `SELECT * FROM npc_relationships WHERE npcId = ? AND jogadorId = ?`,
+            `SELECT * FROM npc_relationships WHERE "npcId" = ? AND "jogadorId" = ?`,
             [npcId, jogadorId],
             (err, row) => {
                 if (err) {
@@ -165,7 +171,7 @@ function criarRelacionamento(npcId, jogadorId) {
         }
 
         db.run(
-            `INSERT OR IGNORE INTO npc_relationships (npcId, jogadorId, vinculo, hostilidade, ultimaAtualizacao)
+            `INSERT OR IGNORE INTO npc_relationships ("npcId", "jogadorId", vinculo, hostilidade, "ultimaAtualizacao")
              VALUES (?, ?, 0, 0, datetime('now'))`,
             [npcId, jogadorId],
             async (err) => {
@@ -239,8 +245,8 @@ async function aplicarResultadoDeCena(npcId, jogadorId, deltaVinculo = 0, deltaH
     const relacionamento = await new Promise((resolve) => {
         db.run(
             `UPDATE npc_relationships
-             SET vinculo = ?, hostilidade = ?, ultimaAtualizacao = datetime('now')
-             WHERE npcId = ? AND jogadorId = ?`,
+             SET vinculo = ?, hostilidade = ?, "ultimaAtualizacao" = datetime('now')
+             WHERE "npcId" = ? AND "jogadorId" = ?`,
             [vinculoNovo, hostilidadeNova, npcId, jogadorId],
             async (err) => {
                 if (err) {
@@ -273,7 +279,7 @@ async function aplicarResultadoDeCena(npcId, jogadorId, deltaVinculo = 0, deltaH
 function marcarMissaoDesbloqueada(npcId, jogadorId) {
     return new Promise((resolve) => {
         db.run(
-            `UPDATE npc_relationships SET missaoDesbloqueada = 1 WHERE npcId = ? AND jogadorId = ?`,
+            `UPDATE npc_relationships SET "missaoDesbloqueada" = 1 WHERE "npcId" = ? AND "jogadorId" = ?`,
             [npcId, jogadorId],
             (err) => resolve(!err)
         );
@@ -287,9 +293,9 @@ function resetar(npcId, jogadorId) {
     return new Promise((resolve) => {
         db.run(
             `UPDATE npc_relationships
-             SET vinculo = 0, hostilidade = 0, missaoDesbloqueada = 0, avisoIndiferencaSuperado = 0,
-                 ultimaAtualizacao = datetime('now')
-             WHERE npcId = ? AND jogadorId = ?`,
+             SET vinculo = 0, hostilidade = 0, "missaoDesbloqueada" = 0, "avisoIndiferencaSuperado" = 0,
+                 "ultimaAtualizacao" = datetime('now')
+             WHERE "npcId" = ? AND "jogadorId" = ?`,
             [npcId, jogadorId],
             async (err) => {
                 if (err) {
@@ -309,7 +315,7 @@ function resetar(npcId, jogadorId) {
 function listar(npcId) {
     return new Promise((resolve) => {
         db.all(
-            `SELECT * FROM npc_relationships WHERE npcId = ? ORDER BY vinculo DESC`,
+            `SELECT * FROM npc_relationships WHERE "npcId" = ? ORDER BY vinculo DESC`,
             [npcId],
             (err, rows) => {
                 if (err) {

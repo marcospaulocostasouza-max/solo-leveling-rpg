@@ -13,6 +13,36 @@ const elementos = require("../elementos/listaElementos");
 const templates = require("../utils/templatesMensagens");
 const { obterClasseCanonica } = require("../utils/normalizarClasse");
 const obterBuffsClasse = require("../utils/obterBuffsClasse");
+const { normalizarDadosFicha } = require("../utils/normalizarDadosFicha");
+
+function adicionarArmaInicial(jogadorId, nomeArma, nomeJogador) {
+    if (!jogadorId || !nomeArma) return;
+    const armas = require("../database/itens.json").armas || [];
+    const arma = armas.find(item => item.nome.toLowerCase().trim() === nomeArma.toLowerCase().trim());
+    if (!arma) return;
+    db.run(`INSERT OR IGNORE INTO itens (nome, categoria, tier, descricao, arma, preco)
+            VALUES (?, 'Arma 1', 'Inicial', ?, 1, 0)`, [arma.nome, arma.descricao || "Arma inicial"], err => {
+        if (err) return console.error("[APROVACAO] Erro ao registrar arma inicial:", err.message);
+        db.get("SELECT id FROM itens WHERE LOWER(nome) = LOWER(?)", [arma.nome], (erro, item) => {
+            if (erro || !item) return console.error("[APROVACAO] Arma inicial não localizada após registro.");
+            db.run("INSERT OR IGNORE INTO inventario_jogador (jogador_id, item_id, quantidade, equipado, item_inicial) VALUES (?, ?, 1, 1, 1)", [jogadorId, item.id], falha => {
+                if (falha) console.error("[APROVACAO] Erro ao entregar arma inicial:", falha.message);
+                else console.log(`[APROVACAO] Arma "${arma.nome}" adicionada ao inventário de ${nomeJogador}`);
+            });
+        });
+    });
+}
+
+async function enviarRecadoPosAprovacao(numeroJogador, nomeJogador) {
+    const resultado = await MessageService.send({
+        chatId: numeroJogador,
+        text: templates.recadoPosAprovacao(nomeJogador)
+    });
+
+    if (!resultado.sucesso) {
+        console.error(`[APROVACAO] Nao foi possivel enviar o recado de boas-vindas para ${nomeJogador}: ${resultado.erro}`);
+    }
+}
 
 module.exports = async (msg) => {
     const numero = msg.author || msg.from;
@@ -118,7 +148,7 @@ module.exports = async (msg) => {
         return MessageService.send({ message: msg, text: `*✖ Nenhuma ficha pendente encontrada para: ${nomeJogador}*\n_Veja se o nome está correto. Use !ver fila para listar as fichas pendentes._` });
     }
     
-    const dados = JSON.parse(ficha.dados || "{}");
+    const dados = normalizarDadosFicha(JSON.parse(ficha.dados || "{}"));
     dados.classe = obterClasseCanonica(dados.classe) || dados.classe;
     const nomeReal = dados.nome || nomeJogador;
     
@@ -272,31 +302,10 @@ module.exports = async (msg) => {
                 
                 const mensagemAprovacao = templates.fichaAprovada(dados, habilidadeUnica, hpMaximo, manaMaxima);
                 MessageService.send({ message: msg, text: mensagemAprovacao });
+                enviarRecadoPosAprovacao(ficha.numero, nomeReal);
                 
                 // Adicionar arma inicial ao inventário do jogador
-                if (dados.arma) {
-                    try {
-                        const itens = require("../database/itens.json");
-                        const armaEncontrada = itens.armas.find(a => 
-                            a.nome.toLowerCase().trim() === dados.arma.toLowerCase().trim()
-                        );
-                        if (armaEncontrada) {
-                            // Buscar ou criar o item no banco
-                            db.get("SELECT id FROM itens WHERE LOWER(nome) = LOWER(?)", [armaEncontrada.nome], (err, item) => {
-                                if (item) {
-                                    // Adicionar ao inventário do jogador
-                                    db.run(
-                                        "INSERT OR IGNORE INTO inventario_jogador (jogador_id, item_id, quantidade, equipado) VALUES (?, ?, 1, 1)",
-                                        [jogadorExistente.id, item.id]
-                                    );
-                                    console.log(`[APROVACAO] Arma "${armaEncontrada.nome}" adicionada ao inventário de ${nomeReal}`);
-                                }
-                            });
-                        }
-                    } catch (e) {
-                        console.log("[APROVACAO] Erro ao adicionar arma inicial:", e.message);
-                    }
-                }
+                adicionarArmaInicial(jogadorExistente.id, dados.arma, nomeReal);
                 
                 console.log(`[APROVACAO] ${nomeReal} atualizado por ${numero}`);
             });
@@ -315,7 +324,7 @@ module.exports = async (msg) => {
                     inteligencia_total, poder_magico_total,
                     vida_maxima, vida_atual, mana_maxima, mana_atual,
                     habilidade_unica, ficha_aprovada, pontos_atributo, rank, nivel, experiencia, won
-                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1, 0, 'E', 1, 0, 10000)
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1, 0, 'E', 1, 0, 10000) RETURNING id
             `, [
                 ficha.numero,
                 nomeReal,
@@ -366,30 +375,10 @@ module.exports = async (msg) => {
                 
                 const mensagemAprovacao = templates.fichaAprovada(dados, habilidadeUnica, hpMaximo, manaMaxima);
                 MessageService.send({ message: msg, text: mensagemAprovacao });
+                enviarRecadoPosAprovacao(ficha.numero, nomeReal);
                 
                 // Adicionar arma inicial ao inventário do novo jogador
-                if (dados.arma) {
-                    try {
-                        const itens = require("../database/itens.json");
-                        const armaEncontrada = itens.armas.find(a => 
-                            a.nome.toLowerCase().trim() === dados.arma.toLowerCase().trim()
-                        );
-                        if (armaEncontrada) {
-                            const novoJogadorId = this.lastID;
-                            db.get("SELECT id FROM itens WHERE LOWER(nome) = LOWER(?)", [armaEncontrada.nome], (err, item) => {
-                                if (item) {
-                                    db.run(
-                                        "INSERT OR IGNORE INTO inventario_jogador (jogador_id, item_id, quantidade, equipado) VALUES (?, ?, 1, 1)",
-                                        [novoJogadorId, item.id]
-                                    );
-                                    console.log(`[APROVACAO] Arma "${armaEncontrada.nome}" adicionada ao inventário de ${nomeReal}`);
-                                }
-                            });
-                        }
-                    } catch (e) {
-                        console.log("[APROVACAO] Erro ao adicionar arma inicial (novo jogador):", e.message);
-                    }
-                }
+                adicionarArmaInicial(this.lastID, dados.arma, nomeReal);
                 
                 console.log(`[APROVACAO] ${nomeReal} criado por ${numero}`);
             });

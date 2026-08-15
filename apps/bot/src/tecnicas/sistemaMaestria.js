@@ -7,7 +7,14 @@ const SISTEMA_MAESTRIA = {
     MULTIPLICADOR: 2,
     calcularCusto(indice, categoria = "Classe") {
         const ordem = Math.max(1, Number(indice) || 1);
-        const base = categoria === "Avançada" ? this.CUSTO_BASE_AVANCADA : this.CUSTO_BASE_INICIAL;
+        const categoriaNormalizada = String(categoria || "")
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "")
+            .trim()
+            .toLowerCase();
+        const base = categoriaNormalizada.includes("avancada")
+            ? this.CUSTO_BASE_AVANCADA
+            : this.CUSTO_BASE_INICIAL;
         return base * (this.MULTIPLICADOR ** (ordem - 1));
     },
     getCustoFormatado(indice, categoria = "Classe") {

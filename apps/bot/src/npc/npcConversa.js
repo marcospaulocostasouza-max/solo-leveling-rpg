@@ -25,6 +25,14 @@ const QuestSystem = require("../systems/questSystem");
 const interactionManager = require("./interactionManager");
 const emotionManager = require("./emotionManager");
 
+function extrairConversaNPC(texto) {
+    const linhas = String(texto || "").replace(/\r\n/g, "\n").split("\n");
+    return {
+        comando: (linhas.shift() || "").trim().replace(/^!/, "").trim().toLowerCase(),
+        cena: linhas.join("\n").trim()
+    };
+}
+
 /**
  * Verifica se uma mensagem é uma conversa com NPC
  * Deve começar com "!" na primeira linha e o NPC deve existir
@@ -36,11 +44,7 @@ const emotionManager = require("./emotionManager");
 function isConversaNPC(texto) {
     if (!texto || !texto.startsWith("!")) return false;
 
-    const linhas = texto.split("\n");
-    if (linhas.length === 0) return false;
-
-    // Extrair comando da primeira linha (remover "!" e espaços)
-    const comando = linhas[0].trim().replace(/^!/, "").trim().toLowerCase();
+    const { comando } = extrairConversaNPC(texto);
 
     // Não processar se for vazio
     if (!comando) return false;
@@ -76,13 +80,9 @@ async function processarConversaNPC(msg) {
         return false;
     }
 
-    const linhas = texto.split("\n");
-
-    // Extrair nome/ID do NPC da primeira linha
-    const comandoNPC = linhas[0].trim().replace(/^!/, "").trim().toLowerCase();
-
-    // Extrair mensagem do jogador (todo o restante após a primeira linha)
-    const mensagemJogador = linhas.slice(1).join("\n").trim();
+    // Somente a primeira linha e o comando. Todo o restante, incluindo
+    // dialogos e paragrafos, e preservado como a cena enviada pelo jogador.
+    const { comando: comandoNPC, cena: mensagemJogador } = extrairConversaNPC(texto);
 
     // Buscar NPC por ID exato ou por nome
     const npc = NPCManager.carregarNPC(comandoNPC) || NPCManager.buscarPorNome(comandoNPC);
@@ -125,11 +125,11 @@ async function processarConversaNPC(msg) {
             resposta = await conversarNarrativaNova(npcId, jogadorId, mensagemJogador);
             // A pipeline nova retorna o texto cru sem cabeçalho — aplica o
             // cabeçalho único de formatação (com nome completo do NPC) aqui.
-            resposta = formatarMensagem(npc, resposta, await emotionManager.obterEmocaoNPC(npcId));
+            resposta = formatarMensagem(npc, resposta, await emotionManager.obterEmocao(npcId, jogadorId));
         } catch (erroPipelineNova) {
             console.error(`[NPC_CONVERSA] Pipeline narrativa nova falhou para "${npcId}" (${erroPipelineNova.message}). Usando fallback legado.`);
             resposta = await require("../ia/npcServiceV2").conversarComNPC(npcId, jogadorId, mensagemJogador);
-            resposta = formatarMensagem(npc, resposta, await emotionManager.obterEmocaoNPC(npcId));
+            resposta = formatarMensagem(npc, resposta, await emotionManager.obterEmocao(npcId, jogadorId));
         }
 
         if (!resposta) {
@@ -141,6 +141,22 @@ async function processarConversaNPC(msg) {
         // que preserva a integridade da narrativa mesmo em mensagens longas
         const jogador = await new Promise((resolve) => db.get("SELECT id FROM jogadores WHERE numero = ?", [jogadorId], (err, row) => resolve(row || null)));
         if (jogador) {
+            const pedidoForja = /\b(forj|fabric|criar|produz|martel|material|equipamento|arma|armadura)\w*/i.test(mensagemJogador);
+            if (npcId === "bilac" && pedidoForja) {
+                const ForjaSystem = require("../systems/forjaSystem");
+                let sessaoForja = await ForjaSystem.getSessao(jogador.id);
+                if (!sessaoForja) sessaoForja = await ForjaSystem.criarSessao(jogador.id, "Bilac");
+                if (sessaoForja?.npc_nome === "Bilac") {
+                    resposta += `\n\n∆ *Bilac aceita avaliar uma encomenda.*\n_Use *!preciso de um item* para apresentar os materiais à oficina._`;
+                }
+            }
+            if (npcId === "vysache") {
+                const ForjaSystem = require("../systems/forjaSystem");
+                const sessaoForja = await ForjaSystem.getSessao(jogador.id);
+                if (sessaoForja?.npc_nome === "Vysache" && sessaoForja.etapa === "encaminhado_vysache") {
+                    resposta += `\n\n∆ *A recomendação de Bilac e a receita superior estão registradas.*\n_Se aceitar o preço do mestre, use *!aceitar forja vysache*._`;
+                }
+            }
             const oferta = await QuestSystem.obterOfertaDeMissaoNPC(jogador.id, npcId);
             if (oferta) {
                 resposta += `\n\n∆ *${npc.nome} parece querer falar sobre "${oferta.nome}".*\n_Se quiser aceitar, use: !aceitar missão ${oferta.nome}_`;
@@ -166,5 +182,6 @@ async function processarConversaNPC(msg) {
 
 module.exports = {
     processarConversaNPC,
-    isConversaNPC
+    isConversaNPC,
+    extrairConversaNPC
 };

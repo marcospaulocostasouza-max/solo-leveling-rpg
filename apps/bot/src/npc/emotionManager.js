@@ -15,6 +15,7 @@
  */
 
 const db = require("../core/database");
+const { provider } = require("../../../../packages/database/config");
 const DURACAO_MINIMA_HORAS = 10;
 const normalizar = (valor = "") => String(valor).normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim().toLowerCase();
 
@@ -26,27 +27,28 @@ const normalizar = (valor = "") => String(valor).normalize("NFD").replace(/[\u03
  * Cria a tabela npc_emotions se não existir
  */
 function criarTabela() {
+    const colunaId = provider === "postgres" ? "BIGSERIAL PRIMARY KEY" : "INTEGER PRIMARY KEY AUTOINCREMENT";
     db.run(`
         CREATE TABLE IF NOT EXISTS npc_emotions (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            npcId TEXT NOT NULL,
-            jogadorId TEXT NOT NULL,
+            id ${colunaId},
+            "npcId" TEXT NOT NULL,
+            "jogadorId" TEXT NOT NULL,
             emocao TEXT NOT NULL,
             intensidade INTEGER DEFAULT 50,
             motivo TEXT,
-            ultimaAtualizacao TEXT DEFAULT (datetime('now')),
-            UNIQUE(npcId, jogadorId)
+            "ultimaAtualizacao" TEXT DEFAULT (datetime('now')),
+            UNIQUE("npcId", "jogadorId")
         )
     `);
     db.run(`
         CREATE TABLE IF NOT EXISTS npc_scene_emotions (
-            npcId TEXT PRIMARY KEY,
+            "npcId" TEXT PRIMARY KEY,
             emocao TEXT NOT NULL,
             intensidade INTEGER DEFAULT 50,
             motivo TEXT,
-            iniciadaEm TEXT DEFAULT (datetime('now')),
-            bloqueadaAte TEXT NOT NULL,
-            ultimaAtualizacao TEXT DEFAULT (datetime('now'))
+            "iniciadaEm" TEXT DEFAULT (datetime('now')),
+            "bloqueadaAte" TEXT NOT NULL,
+            "ultimaAtualizacao" TEXT DEFAULT (datetime('now'))
         )
     `);
 }
@@ -56,7 +58,7 @@ criarTabela();
 
 function obterEmocaoNPC(npcId) {
     return new Promise((resolve) => db.get(
-        "SELECT * FROM npc_scene_emotions WHERE npcId = ?", [npcId],
+        'SELECT * FROM npc_scene_emotions WHERE "npcId" = ?', [npcId],
         (err, row) => resolve(err ? null : row || null)
     ));
 }
@@ -65,18 +67,22 @@ async function definirEmocaoNPC(npcId, emocao) {
     if (!npcId || !emocao || !emocao.emocao) return null;
     const atual = await obterEmocaoNPC(npcId);
     const proxima = normalizar(emocao.emocao);
-    if (atual && Date.parse(`${atual.bloqueadaAte}Z`) > Date.now()) {
+    const bloqueadaAte = atual?.bloqueadaAte;
+    const bloqueadaTimestamp = bloqueadaAte ? Date.parse(/[zZ]$|[+-]\d\d:\d\d$/.test(bloqueadaAte) ? bloqueadaAte : `${bloqueadaAte}Z`) : 0;
+    if (atual && bloqueadaTimestamp > Date.now()) {
         // A emoção é estável por no mínimo dez horas. Uma análise nova pode
         // explicar o contexto, mas não substitui o estado antes desse prazo.
         return { ...atual, alterada: false, bloqueada: normalizar(atual.emocao) !== proxima };
     }
     const intensidade = Math.max(0, Math.min(100, parseInt(emocao.intensidade) || 50));
+    const agora = new Date();
+    const bloqueio = new Date(agora.getTime() + DURACAO_MINIMA_HORAS * 60 * 60 * 1000);
     await new Promise((resolve) => db.run(`INSERT INTO npc_scene_emotions
-        (npcId, emocao, intensidade, motivo, iniciadaEm, bloqueadaAte, ultimaAtualizacao)
-        VALUES (?, ?, ?, ?, datetime('now'), datetime('now', '+${DURACAO_MINIMA_HORAS} hours'), datetime('now'))
-        ON CONFLICT(npcId) DO UPDATE SET emocao = excluded.emocao, intensidade = excluded.intensidade,
-        motivo = excluded.motivo, iniciadaEm = excluded.iniciadaEm, bloqueadaAte = excluded.bloqueadaAte,
-        ultimaAtualizacao = excluded.ultimaAtualizacao`, [npcId, emocao.emocao, intensidade, emocao.motivo || ""], () => resolve()));
+        ("npcId", emocao, intensidade, motivo, "iniciadaEm", "bloqueadaAte", "ultimaAtualizacao")
+        VALUES (?, ?, ?, ?, ?, ?, ?)
+        ON CONFLICT("npcId") DO UPDATE SET emocao = excluded.emocao, intensidade = excluded.intensidade,
+        motivo = excluded.motivo, "iniciadaEm" = excluded."iniciadaEm", "bloqueadaAte" = excluded."bloqueadaAte",
+        "ultimaAtualizacao" = excluded."ultimaAtualizacao"`, [npcId, emocao.emocao, intensidade, emocao.motivo || "", agora.toISOString(), bloqueio.toISOString(), agora.toISOString()], () => resolve()));
     return obterEmocaoNPC(npcId);
 }
 
@@ -94,7 +100,7 @@ async function definirEmocaoNPC(npcId, emocao) {
 function obterEmocao(npcId, jogadorId) {
     return new Promise((resolve) => {
         db.get(
-            `SELECT * FROM npc_emotions WHERE npcId = ? AND jogadorId = ?`,
+            `SELECT * FROM npc_emotions WHERE "npcId" = ? AND "jogadorId" = ?`,
             [npcId, jogadorId],
             (err, row) => {
                 if (err) {
@@ -128,8 +134,9 @@ function salvarEmocao(npcId, jogadorId, emocao) {
         const motivo = emocao.motivo || "";
 
         db.run(
-            `INSERT OR REPLACE INTO npc_emotions (npcId, jogadorId, emocao, intensidade, motivo, ultimaAtualizacao)
-             VALUES (?, ?, ?, ?, ?, datetime('now'))`,
+            `INSERT INTO npc_emotions ("npcId", "jogadorId", emocao, intensidade, motivo, "ultimaAtualizacao")
+             VALUES (?, ?, ?, ?, ?, datetime('now'))
+             ON CONFLICT("npcId", "jogadorId") DO UPDATE SET emocao = excluded.emocao, intensidade = excluded.intensidade, motivo = excluded.motivo, "ultimaAtualizacao" = excluded."ultimaAtualizacao"`,
             [npcId, jogadorId, emocao.emocao, intensidade, motivo],
             async (err) => {
                 if (err) {
@@ -163,8 +170,8 @@ function atualizarEmocao(npcId, jogadorId, emocao) {
         const motivo = emocao.motivo || "";
 
         db.run(
-            `UPDATE npc_emotions SET emocao = ?, intensidade = ?, motivo = ?, ultimaAtualizacao = datetime('now')
-             WHERE npcId = ? AND jogadorId = ?`,
+            `UPDATE npc_emotions SET emocao = ?, intensidade = ?, motivo = ?, "ultimaAtualizacao" = datetime('now')
+             WHERE "npcId" = ? AND "jogadorId" = ?`,
             [emocao.emocao, intensidade, motivo, npcId, jogadorId],
             async (err) => {
                 if (err) {
@@ -189,8 +196,8 @@ function atualizarEmocao(npcId, jogadorId, emocao) {
 function resetarEmocao(npcId, jogadorId) {
     return new Promise((resolve) => {
         db.run(
-            `UPDATE npc_emotions SET emocao = 'calmo', intensidade = 50, motivo = 'Emoção resetada.', ultimaAtualizacao = datetime('now')
-             WHERE npcId = ? AND jogadorId = ?`,
+            `UPDATE npc_emotions SET emocao = 'calmo', intensidade = 50, motivo = 'Emoção resetada.', "ultimaAtualizacao" = datetime('now')
+             WHERE "npcId" = ? AND "jogadorId" = ?`,
             [npcId, jogadorId],
             async (err) => {
                 if (err) {
@@ -214,7 +221,7 @@ function resetarEmocao(npcId, jogadorId) {
 function listarEmocoes(npcId) {
     return new Promise((resolve) => {
         db.all(
-            `SELECT * FROM npc_emotions WHERE npcId = ? ORDER BY ultimaAtualizacao DESC`,
+            `SELECT * FROM npc_emotions WHERE "npcId" = ? ORDER BY "ultimaAtualizacao" DESC`,
             [npcId],
             (err, rows) => {
                 if (err) {

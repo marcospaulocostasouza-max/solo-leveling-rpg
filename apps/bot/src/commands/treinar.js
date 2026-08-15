@@ -91,15 +91,35 @@ Use !ficha para criar sua ficha primeiro.
                 }
                 
                 await MessageService.send({ message: msg, text: `
-*═══ MAESTRIA ═══*
-────────────────────────══
+_*「 MAESTRIA 」*_
+_— Poder bruto não basta, Jogador. Maestria representa o domínio que você conquistou sobre sua classe, suas armas, sua mana e suas técnicas. Ela é um recurso de aprendizado: não substitui XP, não aumenta seu nível e não é dinheiro._
 
-*Sua Maestria:* ${jogador.maestria || 0}
-*Nível:* ${jogador.nivel}
+*Seu registro atual*
+• Maestria disponível: *${jogador.maestria || 0}*
+• Nível: *${jogador.nivel}*
 
-────────────────────────══
-_Use !treinar para ganhar mais Maestria!_
-_Use !comprar técnica [nome] para gastar Maestria e aprender técnicas!_
+*Como conquistar Maestria?*
+Realize *Treinos de Maestria* pelo sistema de progresso e participe de atividades, eventos ou recompensas que concedam esse recurso. O ganho só entra no registro quando a atividade correspondente é validada pelo sistema ou pela administração.
+
+*Onde ela é usada?*
+A Maestria é gasta para aprender técnicas compatíveis com sua classe normal ou sua Classe Avançada. Cada compra exige:
+• classe correta;
+• nível mínimo da técnica;
+• Maestria suficiente;
+• não possuir a técnica anteriormente.
+
+*Custos progressivos*
+• Técnicas da classe normal: *10, 20, 40, 80...*
+• Técnicas da Classe Avançada: *200, 400, 800...*
+Cada nova técnica da mesma classe custa o dobro da anterior.
+
+*Como usar, passo a passo*
+1. Veja as opções: *!Técnicas*
+2. Consulte os detalhes: *!Técnica <nome>*
+3. Aprenda: *!Comprar Técnica <nome>*
+4. Confira as adquiridas: *!Minhas Técnicas*
+
+_A Maestria permanece guardada até ser utilizada. Em caso de falha na compra, nenhum ponto deve ser descontado._
                 ` });
             }
         );

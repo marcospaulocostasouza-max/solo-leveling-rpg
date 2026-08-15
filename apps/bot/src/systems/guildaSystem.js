@@ -1,78 +1,28 @@
-/*
- * SISTEMA DE GUILDAS
- * 
- * Gerencia criação, membros, guerras e evolução das guildas.
- */
-
-const db = require("../core/database");
-
-class GuildaSystem {
-    
-    static async criarGuilda(nome, liderId, liderNome) {
-        return new Promise((resolve) => {
-            db.get("SELECT id FROM guildas WHERE nome = ?", [nome], (err, existe) => {
-                if (existe) return resolve({ erro: "Já existe uma guilda com este nome." });
-                
-                db.run("INSERT INTO guildas (nome, lider, membros, criada) VALUES (?, ?, 1, 1)", [nome, liderNome], function(err) {
-                    if (err) return resolve({ erro: "Erro ao criar guilda." });
-                    
-                    db.run("INSERT INTO guilda_membros (guilda_id, jogador_id, cargo, data_entrada) VALUES (?, ?, 'Líder', datetime('now'))",
-                        [this.lastID, liderId]);
-                    
-                    resolve({ sucesso: true, guildaId: this.lastID });
-                });
-            });
-        });
-    }
-    
-    static async entrarGuilda(jogadorId, guildaId) {
-        return new Promise((resolve) => {
-            db.get("SELECT * FROM guilda_membros WHERE jogador_id = ?", [jogadorId], (err, membro) => {
-                if (membro) return resolve({ erro: "Você já pertence a uma guilda." });
-                
-                db.get("SELECT * FROM guildas WHERE id = ?", [guildaId], (err, guilda) => {
-                    if (!guilda) return resolve({ erro: "Guilda não encontrada." });
-                    
-                    db.run("INSERT INTO guilda_membros (guilda_id, jogador_id, cargo, data_entrada) VALUES (?, ?, 'Membro', datetime('now'))",
-                        [guildaId, jogadorId]);
-                    db.run("UPDATE guildas SET membros = membros + 1 WHERE id = ?", [guildaId]);
-                    
-                    resolve({ sucesso: true, guilda: guilda.nome });
-                });
-            });
-        });
-    }
-    
-    static async sairGuilda(jogadorId) {
-        return new Promise((resolve) => {
-            db.get("SELECT gm.*, g.nome, g.lider FROM guilda_membros gm JOIN guildas g ON gm.guilda_id = g.id WHERE gm.jogador_id = ?",
-                [jogadorId], (err, membro) => {
-                    if (!membro) return resolve({ erro: "Você não pertence a nenhuma guilda." });
-                    
-                    if (membro.cargo === "Líder") {
-                        return resolve({ erro: "Como líder, transfira o cargo ou dissolva a guilda." });
-                    }
-                    
-                    db.run("DELETE FROM guilda_membros WHERE jogador_id = ?", [jogadorId]);
-                    db.run("UPDATE guildas SET membros = membros - 1 WHERE id = ?", [membro.guilda_id]);
-                    
-                    resolve({ sucesso: true, guilda: membro.nome });
-                }
-            );
-        });
-    }
-    
-    static async infoGuilda(guildaId) {
-        return new Promise((resolve) => {
-            db.get("SELECT * FROM guildas WHERE id = ?", [guildaId], (err, guilda) => {
-                if (!guilda) return resolve(null);
-                
-                db.all("SELECT * FROM guilda_membros WHERE guilda_id = ? ORDER BY cargo ASC", [guildaId], (err, membros) => {
-                    resolve({ ...guilda, membrosLista: membros || [] });
-                });
-            });
-        });
-    }
+"use strict";
+const db = require("../../../../packages/database");
+const { provider } = require("../../../../packages/database/config");
+const REGRAS = { CUSTO_CRIACAO: 200000, LIMITE_MEMBROS: 10, DIAS_COOLDOWN_SAIDA: 7 };
+const ranks = ["E", "D", "C", "B", "A", "S", "NACIONAL"];
+const normalizarRank = r => String(r || "E").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toUpperCase().replace("NATION LEVEL", "NACIONAL");
+const podeCriarNoRank = r => ranks.indexOf(normalizarRank(r)) >= 1;
+function validarNome(n) { const v=String(n||"").replace(/\s+/g," ").trim(); return v.length>=3&&v.length<=40&&/^[\p{L}\p{N}][\p{L}\p{N} '\-]*$/u.test(v)?v:null; }
+let ready;
+async function garantirEstruturas(){
+ if(ready)return ready;
+ ready=(async()=>{
+  if(provider==="postgres"){
+   await db.run("CREATE TABLE IF NOT EXISTS guildas (id BIGSERIAL PRIMARY KEY,nome TEXT UNIQUE NOT NULL,lider TEXT NOT NULL,nivel INTEGER DEFAULT 1,valor BIGINT DEFAULT 100000,territorio INTEGER DEFAULT 0,membros INTEGER DEFAULT 1,passivas TEXT DEFAULT 'Nenhuma',criada INTEGER DEFAULT 1)");
+   await db.run("CREATE TABLE IF NOT EXISTS guilda_membros (id BIGSERIAL PRIMARY KEY,guilda_id BIGINT REFERENCES guildas(id) ON DELETE CASCADE,jogador_id BIGINT REFERENCES jogadores(id) ON DELETE CASCADE,cargo TEXT DEFAULT 'Membro',data_entrada TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP)");
+  }
+  await db.run(provider==="postgres"?"CREATE TABLE IF NOT EXISTS guilda_cooldowns (jogador_id BIGINT PRIMARY KEY REFERENCES jogadores(id) ON DELETE CASCADE,disponivel_em TIMESTAMPTZ NOT NULL)":"CREATE TABLE IF NOT EXISTS guilda_cooldowns (jogador_id INTEGER PRIMARY KEY,disponivel_em TEXT NOT NULL)");
+ })().catch(e=>{ready=null;throw e}); return ready;
 }
-
-module.exports = GuildaSystem;
+class GuildaSystem{
+ static async criarGuilda(nome,liderId){await garantirEstruturas();nome=validarNome(nome);if(!nome)return{erro:"O nome deve ter entre 3 e 40 caracteres e não pode conter símbolos especiais."};return db.transaction(async q=>{const j=await q.get("SELECT id,nome,rank,won FROM jogadores WHERE id=?",[liderId]);if(!j)return{erro:"Jogador não encontrado."};if(!podeCriarNoRank(j.rank))return{erro:`A criação exige Rank D ou superior. Seu Rank é ${j.rank||"E"}.`};if(await q.get("SELECT id FROM guilda_membros WHERE jogador_id=?",[liderId]))return{erro:"Você já pertence a uma guilda."};if(await q.get("SELECT id FROM guildas WHERE LOWER(nome)=LOWER(?)",[nome]))return{erro:"Já existe uma guilda com este nome."};const d=await q.run("UPDATE jogadores SET won=won-? WHERE id=? AND won>=?",[REGRAS.CUSTO_CRIACAO,liderId,REGRAS.CUSTO_CRIACAO]);if(d.changes!==1)return{erro:"Saldo insuficiente. Criar uma guilda custa 200.000 Won."};const r=await q.run(provider==="postgres"?"INSERT INTO guildas(nome,lider,membros,criada) VALUES(?,?,1,1) RETURNING id":"INSERT INTO guildas(nome,lider,membros,criada) VALUES(?,?,1,1)",[nome,j.nome]);await q.run("INSERT INTO guilda_membros(guilda_id,jogador_id,cargo,data_entrada) VALUES(?,?,'Líder',CURRENT_TIMESTAMP)",[r.lastID,liderId]);return{sucesso:true,nome,saldo:Number(j.won)-REGRAS.CUSTO_CRIACAO}})}
+ static async listarGuildas(){await garantirEstruturas();return db.all("SELECT id,nome,nivel,membros,lider FROM guildas ORDER BY nivel DESC,membros DESC,nome")}
+ static async entrarGuilda(id,nome){await garantirEstruturas();return db.transaction(async q=>{if(await q.get("SELECT id FROM guilda_membros WHERE jogador_id=?",[id]))return{erro:"Você já pertence a uma guilda."};const c=await q.get("SELECT disponivel_em FROM guilda_cooldowns WHERE jogador_id=?",[id]);if(c&&new Date(c.disponivel_em)>new Date())return{erro:`Você poderá entrar em outra guilda em ${new Date(c.disponivel_em).toLocaleString("pt-BR")}.`};const g=await q.get("SELECT id,nome,membros FROM guildas WHERE LOWER(nome)=LOWER(?)",[nome.trim()]);if(!g)return{erro:"Guilda não encontrada. Use !guilda lista."};if(+g.membros>=10)return{erro:"Esta guilda atingiu 10 membros."};await q.run("INSERT INTO guilda_membros(guilda_id,jogador_id,cargo,data_entrada) VALUES(?,?,'Membro',CURRENT_TIMESTAMP)",[g.id,id]);await q.run("UPDATE guildas SET membros=membros+1 WHERE id=?",[g.id]);await q.run("DELETE FROM guilda_cooldowns WHERE jogador_id=?",[id]);return{sucesso:true,guilda:g.nome}})}
+ static async sairGuilda(id){await garantirEstruturas();return db.transaction(async q=>{const m=await q.get("SELECT gm.guilda_id,gm.cargo,g.nome FROM guilda_membros gm JOIN guildas g ON g.id=gm.guilda_id WHERE gm.jogador_id=?",[id]);if(!m)return{erro:"Você não pertence a nenhuma guilda."};if(m.cargo==="Líder")return{erro:"Use !guilda transferir <nome completo> ou !guilda dissolver confirmar."};const data=new Date(Date.now()+7*864e5).toISOString();await q.run("DELETE FROM guilda_membros WHERE jogador_id=?",[id]);await q.run("UPDATE guildas SET membros=CASE WHEN membros>0 THEN membros-1 ELSE 0 END WHERE id=?",[m.guilda_id]);await q.run("INSERT INTO guilda_cooldowns(jogador_id,disponivel_em) VALUES(?,?) ON CONFLICT(jogador_id) DO UPDATE SET disponivel_em=excluded.disponivel_em",[id,data]);return{sucesso:true,guilda:m.nome}})}
+ static async transferirLideranca(id,nome){await garantirEstruturas();return db.transaction(async q=>{const l=await q.get("SELECT guilda_id,cargo FROM guilda_membros WHERE jogador_id=?",[id]);if(!l||l.cargo!=="Líder")return{erro:"Somente o líder pode transferir a liderança."};const n=await q.get("SELECT j.id,j.nome FROM guilda_membros gm JOIN jogadores j ON j.id=gm.jogador_id WHERE gm.guilda_id=? AND LOWER(j.nome)=LOWER(?)",[l.guilda_id,nome.trim()]);if(!n)return{erro:"Membro não encontrado; use o nome completo de !guilda membros."};if(n.id===id)return{erro:"Você já é o líder."};await q.run("UPDATE guilda_membros SET cargo='Membro' WHERE jogador_id=?",[id]);await q.run("UPDATE guilda_membros SET cargo='Líder' WHERE jogador_id=?",[n.id]);await q.run("UPDATE guildas SET lider=? WHERE id=?",[n.nome,l.guilda_id]);return{sucesso:true,novoLider:n.nome}})}
+ static async dissolverGuilda(id){await garantirEstruturas();return db.transaction(async q=>{const g=await q.get("SELECT g.id,g.nome,gm.cargo FROM guilda_membros gm JOIN guildas g ON g.id=gm.guilda_id WHERE gm.jogador_id=?",[id]);if(!g||g.cargo!=="Líder")return{erro:"Somente o líder pode dissolver a guilda."};await q.run("DELETE FROM guilda_membros WHERE guilda_id=?",[g.id]);await q.run("DELETE FROM guildas WHERE id=?",[g.id]);return{sucesso:true,guilda:g.nome}})}
+}
+GuildaSystem.regras=REGRAS;GuildaSystem.helpers={normalizarRank,podeCriarNoRank,validarNome};module.exports=GuildaSystem;

@@ -50,7 +50,7 @@ function atualizarEstadoBackground(context, playerId, message) {
       context.relationship, context.state.emotion, message
     ).then(async resultado => {
       if (resultado && resultado.emocao) {
-        await EmotionManager.definirEmocaoNPC(npcId, resultado);
+        await EmotionManager.salvarEmocao(npcId, playerId, resultado);
         console.log(`[NARRATIVE] Emoção atualizada: ${resultado.emocao}`);
       }
     }).catch(erro => console.error('[NARRATIVE] Erro EmotionEngine:', erro.message)),

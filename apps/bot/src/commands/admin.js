@@ -95,10 +95,10 @@ Use !adm para ver os comandos disponiveis.` });
 ═ *PAINEL ADMINISTRATIVO*
 ═
 
-*COMANDOS DE RECURSOS (SEM LIMITES):*
-*!*+xp NomeDoJogador Valor - Adicionar XP
-*!*+qi NomeDoJogador Valor - Adicionar QI
-*!*+yulls NomeDoJogador Valor - Adicionar Yulls (Won)
+*RECURSOS E PROGRESSÃO:*
+*!*+xp NomeCompleto Valor - adiciona XP e verifica nível/rank
+*!*+maestria NomeCompleto Valor - adiciona Maestria para técnicas
+*!*+won NomeCompleto Valor - adiciona Won
 *!*+for NomeDoJogador Valor - Adicionar Forca
 *!*+res NomeDoJogador Valor - Adicionar Resistencia
 *!*+agi NomeDoJogador Valor - Adicionar Agilidade
@@ -108,8 +108,8 @@ Use !adm para ver os comandos disponiveis.` });
 
 *PARA REMOVER:*
 *!*-xp NomeDoJogador Valor
-*!*-qi NomeDoJogador Valor
-*!*-yulls NomeDoJogador Valor
+*!*-maestria NomeCompleto Valor
+*!*-won NomeCompleto Valor
 (Use o mesmo formato para os demais atributos)
 
 *COMANDOS DE GERENCIAMENTO:*
@@ -130,16 +130,32 @@ Use !adm para ver os comandos disponiveis.` });
 *!*addboss NomeBoss @Nome - Marcar boss como derrotado
 *!*remboss NomeBoss @Nome - Desmarcar boss
 
+*APROVAÇÃO DE ATIVIDADES (SOMENTE ADM REGISTRADO):*
+*!*quest diária finalizada NomeCompleto - entrega XP, Won, atributos e caixa pelo rank
+*!*treino de maestria finalizado NomeCompleto [1/7/15/30 dias] - entrega XP e Maestria
+*!*treino conjunto finalizado Nome1/Nome2 - entrega XP e bônus de duo
+*!*interação finalizada Nome1/Nome2 - entrega XP da interação
+*!*one post finalizado Nome1/Nome2 - entrega XP e bônus de duo
+
+*FICHAS PERSONALIZADAS:*
+*!*FTécnica - envia o modelo de técnica com dono
+*!*add técnica - integra a última ficha, somente para ADM
+*!*FItem - envia o modelo de item com dono e slot
+*!*add item - integra o item e envia ao inventário, somente para ADM
+
 *COMANDOS DE CONSULTA:*
 *!*ver @Nome - Ver informacoes completas
 *!*logs - Ver ultimos logs
 *!*logs @Nome - Ver logs de um jogador
+*!*Pontuação - explica a pontuação usada nas avaliações de cenas
+*!*Minigame - abre a lista e as instruções dos minigames
+*!*Admin encerrar cenas npc - encerra todas as cenas e libera NPCs e jogadores
 
 ═
 _Formato simplificado: !+recurso NomeDoJogador Valor_
 _Exemplo: !+xp SungJinWoo 5000_
-_Exemplo: !+qi SungJinWoo 200_
-_Exemplo: !+yulls SungJinWoo 100000_
+_Exemplo: !+maestria Sung Jin Woo 200_
+_Exemplo: !+won Sung Jin Woo 100000_
 ═`;
             return MessageService.send({ message: msg, text: mensagem });
         }
@@ -162,7 +178,7 @@ _Exemplo: !+yulls SungJinWoo 100000_
 Use: ${prefixo}tipo NomeDoJogador Valor
 Exemplo: ${prefixo}xp SungJinWoo 5000
 
-Tipos validos: xp, qi, yulls, for, res, agi, sen, int, pm` });
+Tipos validos: xp, maestria, won, for, res, agi, sen, int, pm` });
             }
             
             const tipo = partes[0].toLowerCase();
@@ -229,7 +245,7 @@ Tipos validos: xp, qi, yulls, for, res, agi, sen, int, pm` });
             
             const attr = mapaAtributos[tipo];
             if (!attr) {
-                return MessageService.send({ message: msg, text: `═ Tipo "${tipo}" invalido. Tipos: xp, qi, yulls, for, res, agi, sen, int, pm` });
+                return MessageService.send({ message: msg, text: `═ Tipo "${tipo}" invalido. Tipos: xp, maestria, won, for, res, agi, sen, int, pm` });
             }
             
             const valorAntigo = Number(jogador[attr.coluna] || 0);

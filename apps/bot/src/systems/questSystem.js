@@ -10,6 +10,7 @@ const fs = require("fs");
 const path = require("path");
 const { missoesDisponiveis } = require("../missions/missionAvailability");
 const relationshipManager = require("../npc/relationshipManager");
+const { provider } = require("../../../../packages/database/config");
 
 const MISSOES_NPC_DIR = path.join(__dirname, "..", "missions", "data");
 
@@ -40,7 +41,9 @@ function garantirMetadadosMissoes() {
     if (metadadosProntos) return metadadosProntos;
 
     metadadosProntos = (async () => {
-        const colunas = await listar("PRAGMA table_info(missoes)");
+        const colunas = provider === "postgres"
+            ? await listar("SELECT column_name AS name FROM information_schema.columns WHERE table_schema = current_schema() AND table_name = ?", ["missoes"])
+            : await listar("PRAGMA table_info(missoes)");
         const existentes = new Set(colunas.map((coluna) => coluna.name));
         const novasColunas = {
             npc_id: "TEXT",
@@ -88,7 +91,7 @@ class QuestSystem {
         if (!jogador || !jogador.numero) return [];
 
         const relacionamentos = await listar(
-            "SELECT npcId, vinculo FROM npc_relationships WHERE jogadorId = ?",
+            'SELECT "npcId", vinculo FROM npc_relationships WHERE "jogadorId" = ?',
             [jogador.numero]
         );
         const adicionadas = [];
@@ -169,7 +172,7 @@ class QuestSystem {
             if (!jogador || !jogador.numero) return missoes;
 
             const relacionamentos = await listar(
-                "SELECT npcId, vinculo FROM npc_relationships WHERE jogadorId = ?",
+                'SELECT "npcId", vinculo FROM npc_relationships WHERE "jogadorId" = ?',
                 [jogador.numero]
             );
             const vinculos = new Map(relacionamentos.map((rel) => [rel.npcId, Number(rel.vinculo) || 0]));

@@ -11,8 +11,8 @@ module.exports = async (msg) => {
 
 *─── Habilidades Passivas ───*
 > Bônus permanentes para o personagem
-> Ative com !ativar passiva <nome>
-> Acumulam até 10 vezes
+> Sao sempre ativas e nao exigem ativacao manual
+> Consulte as suas com !minhas passivas
 
 ──────────────────────────
 _Use !habilidades <nome> para ver detalhes_

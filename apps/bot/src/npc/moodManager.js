@@ -18,6 +18,9 @@
  */
 
 const db = require("../core/database");
+const { provider } = require("../../../../packages/database/config");
+
+const colunaId = provider === "postgres" ? "BIGSERIAL PRIMARY KEY" : "INTEGER PRIMARY KEY AUTOINCREMENT";
 
 // =====================================
 // CRIAÇÃO DA TABELA
@@ -29,12 +32,12 @@ const db = require("../core/database");
 function criarTabela() {
     db.run(`
         CREATE TABLE IF NOT EXISTS npc_moods (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            npcId TEXT UNIQUE NOT NULL,
+            id ${colunaId},
+            "npcId" TEXT UNIQUE NOT NULL,
             mood TEXT NOT NULL,
             intensidade INTEGER DEFAULT 50,
             motivo TEXT,
-            ultimaAtualizacao TEXT DEFAULT (datetime('now'))
+            "ultimaAtualizacao" TEXT DEFAULT (datetime('now'))
         )
     `);
 }
@@ -57,12 +60,12 @@ function garantirTabela() {
         }
         db.run(`
             CREATE TABLE IF NOT EXISTS npc_moods (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                npcId TEXT UNIQUE NOT NULL,
+                id ${colunaId},
+                "npcId" TEXT UNIQUE NOT NULL,
                 mood TEXT NOT NULL,
                 intensidade INTEGER DEFAULT 50,
                 motivo TEXT,
-                ultimaAtualizacao TEXT DEFAULT (datetime('now'))
+                "ultimaAtualizacao" TEXT DEFAULT (datetime('now'))
             )
         `, () => {
             tabelaPronta = true;
@@ -85,7 +88,7 @@ async function obterMood(npcId) {
     await garantirTabela();
     return new Promise((resolve) => {
         db.get(
-            `SELECT * FROM npc_moods WHERE npcId = ?`,
+            `SELECT * FROM npc_moods WHERE "npcId" = ?`,
             [npcId],
             (err, row) => {
                 if (err) {
@@ -119,8 +122,9 @@ async function salvarMood(npcId, mood) {
         const motivo = mood.motivo || "";
 
         db.run(
-            `INSERT OR REPLACE INTO npc_moods (npcId, mood, intensidade, motivo, ultimaAtualizacao)
-             VALUES (?, ?, ?, ?, datetime('now'))`,
+            `INSERT INTO npc_moods ("npcId", mood, intensidade, motivo, "ultimaAtualizacao")
+             VALUES (?, ?, ?, ?, datetime('now'))
+             ON CONFLICT("npcId") DO UPDATE SET mood = excluded.mood, intensidade = excluded.intensidade, motivo = excluded.motivo, "ultimaAtualizacao" = excluded."ultimaAtualizacao"`,
             [npcId, mood.mood, intensidade, motivo],
             async (err) => {
                 if (err) {
@@ -154,8 +158,8 @@ async function atualizarMood(npcId, mood) {
         const motivo = mood.motivo || "";
 
         db.run(
-            `UPDATE npc_moods SET mood = ?, intensidade = ?, motivo = ?, ultimaAtualizacao = datetime('now')
-             WHERE npcId = ?`,
+            `UPDATE npc_moods SET mood = ?, intensidade = ?, motivo = ?, "ultimaAtualizacao" = datetime('now')
+             WHERE "npcId" = ?`,
             [mood.mood, intensidade, motivo, npcId],
             async (err) => {
                 if (err) {
@@ -180,8 +184,8 @@ async function resetarMood(npcId) {
     await garantirTabela();
     return new Promise((resolve) => {
         db.run(
-            `UPDATE npc_moods SET mood = 'sereno', intensidade = 50, motivo = 'Mood resetado.', ultimaAtualizacao = datetime('now')
-             WHERE npcId = ?`,
+            `UPDATE npc_moods SET mood = 'sereno', intensidade = 50, motivo = 'Mood resetado.', "ultimaAtualizacao" = datetime('now')
+             WHERE "npcId" = ?`,
             [npcId],
             async (err) => {
                 if (err) {
@@ -205,7 +209,7 @@ async function listarMoods() {
     await garantirTabela();
     return new Promise((resolve) => {
         db.all(
-            `SELECT * FROM npc_moods ORDER BY ultimaAtualizacao DESC`,
+            `SELECT * FROM npc_moods ORDER BY "ultimaAtualizacao" DESC`,
             [],
             (err, rows) => {
                 if (err) {
@@ -228,7 +232,7 @@ async function listarMoods() {
 async function existeMood(npcId) {
     await garantirTabela();
     return new Promise((resolve) => {
-        db.get(`SELECT id FROM npc_moods WHERE npcId = ?`, [npcId], (err, row) => {
+        db.get(`SELECT id FROM npc_moods WHERE "npcId" = ?`, [npcId], (err, row) => {
             if (err) {
                 console.error("[MOOD] Erro ao verificar mood:", err.message);
                 resolve(false);

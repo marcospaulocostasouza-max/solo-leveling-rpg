@@ -48,7 +48,20 @@ async function processarFichaMateriais(msg) {
 
     // Verificar se há sessão ativa do Vysache
     const sessoes = getSessoesVysache();
-    const sessao = sessoes[numero];
+    let sessao = sessoes[numero];
+
+    if (!sessao) {
+        const jogadorPersistido = await JogadorCore.buscarPorNumero(numero);
+        const sessaoBanco = jogadorPersistido ? await ForjaSystem.getSessao(jogadorPersistido.id) : null;
+        if (sessaoBanco) {
+            sessao = sessoes[numero] = {
+                sessaoId: sessaoBanco.id,
+                jogadorId: jogadorPersistido.id,
+                npcNome: sessaoBanco.npc_nome,
+                etapa: sessaoBanco.etapa
+            };
+        }
+    }
 
     if (!sessao || sessao.etapa !== "aguardando_materiais") {
         return false;
@@ -104,22 +117,39 @@ async function processarFichaMateriais(msg) {
     }
 
     // Calcular custo final com desconto de afinidade
-    const afinidadeInfo = await ForjaSystem.getAfinidade(jogador.id, "Vysache");
-    const custoFinal = ForjaSystem.calcularCustoFinal(combinacaoEscolhida.custo, afinidadeInfo.afinidade);
+    const npcNome = sessao.npcNome || "Bilac";
+    const afinidadeInfo = await ForjaSystem.getAfinidade(jogador.id, npcNome);
+    const rank = String(combinacaoEscolhida.rank || "E").toUpperCase();
+    const encaminharVysache = npcNome === "Bilac" && ["A", "S"].includes(rank);
+    const encaminharBilac = npcNome === "Vysache" && ["E", "D", "C", "B"].includes(rank);
+    const multiplicadorMestre = npcNome === "Vysache" ? 1.5 : 1;
+    const custoFinal = ForjaSystem.calcularCustoFinal(Math.floor(combinacaoEscolhida.custo * multiplicadorMestre), afinidadeInfo.afinidade);
 
     // Salvar combinação na sessão
-    await ForjaSystem.atualizarSessao(sessao.jogadorId, {
-        etapa: "aguardando_confirmacao",
+    await ForjaSystem.atualizarSessao(sessao.sessaoId, {
+        npc_nome: encaminharVysache ? "Vysache" : (encaminharBilac ? "Bilac" : npcNome),
+        etapa: encaminharVysache ? "encaminhado_vysache" : (encaminharBilac ? "encaminhado_bilac" : "aguardando_confirmacao"),
         materiais: JSON.stringify(analise.materiais_recebidos),
         combinacao_resultado: JSON.stringify(combinacaoEscolhida),
         custo: custoFinal
     });
 
     // Atualizar sessão em memória
-    sessoes[numero].etapa = "aguardando_confirmacao";
+    sessoes[numero].npcNome = encaminharVysache ? "Vysache" : (encaminharBilac ? "Bilac" : npcNome);
+    sessoes[numero].etapa = encaminharVysache ? "encaminhado_vysache" : (encaminharBilac ? "encaminhado_bilac" : "aguardando_confirmacao");
+
+    if (encaminharVysache) {
+        await MessageService.send({ message: msg, text: `*Bilac:* "Isto não é metal para aprendiz. A receita resultará em uma obra Rank ${rank}. Meu pai, Vysache, é o único que pode terminá-la."\n\n*A recomendação e a receita foram preservadas.*\nSe estiver em uma cena narrativa com Bilac, encerre-a usando *!fim de interação*. Depois converse com o mestre:\n\n*!vysache*\n*Entrego a recomendação de Bilac e apresento os materiais da forja.*\n\nDepois que ele responder, use *!aceitar forja vysache* para assumir o custo de mestre e prosseguir.` });
+        return true;
+    }
+
+    if (encaminharBilac) {
+        await MessageService.send({ message: msg, text: `*Vysache:* "Não desperdice minha chama com uma obra Rank ${rank}. Bilac já domina esse metal."\n\n*A receita foi preservada.*\nConverse com *!bilac* e depois use *!aceitar forja bilac*.` });
+        return true;
+    }
 
     // Construir mensagem de resposta do Vysache
-    let mensagem = `*Vysache:* "Hmmm, deixe-me ver..."\n\n`;
+    let mensagem = `*${npcNome}:* "Hmmm, deixe-me ver..."\n\n`;
     mensagem += `${templates.divisor()}\n`;
     mensagem += `*ANÁLISE DOS MATERIAIS*\n\n`;
     mensagem += `> *Materiais informados:*\n`;
@@ -146,7 +176,7 @@ async function processarFichaMateriais(msg) {
     // Se veio do catálogo, mostrar o item específico com atributos +30%
     if (combinacaoEscolhida.itemCatalogo) {
         const itemCat = combinacaoEscolhida.itemCatalogo;
-        const bonusVysache = 1.3;
+        const bonusVysache = npcNome === "Vysache" ? 1.3 : 1.1;
 
         mensagem += `> *Item:* ${itemCat.nome}\n`;
         mensagem += `> *Slot:* ${itemCat.slot}\n`;
@@ -159,7 +189,7 @@ async function processarFichaMateriais(msg) {
             mensagem += ` | ${itemCat.atributo2}: +${Math.floor(itemCat.valor2 * bonusVysache)}`;
         }
         mensagem += `\n`;
-        mensagem += `> _Bônus de +30% aplicado por Vysache_\n`;
+        mensagem += `> _Bônus de +${Math.round((bonusVysache - 1) * 100)}% aplicado por ${npcNome}_\n`;
     } else {
         mensagem += `> *Rank:* ${combinacaoEscolhida.rank}\n`;
         mensagem += `> *Categoria:* ${combinacaoEscolhida.categoria}\n`;
@@ -180,9 +210,9 @@ async function processarFichaMateriais(msg) {
     mensagem += `\n> *Seu saldo:* ${saldo} Wons\n`;
     mensagem += `> *Conferência:* os materiais serão validados e consumidos do seu inventário ao confirmar.\n`;
     mensagem += `${templates.divisor()}\n\n`;
-    mensagem += `*Vysache:* "Posso produzir este item para você. Posso prosseguir?"\n\n`;
+    mensagem += `*${npcNome}:* "Posso produzir este item para você. Posso prosseguir?"\n\n`;
     mensagem += `> Responda *!pode sim* para confirmar a forja.\n`;
-    mensagem += `> Use *!Olá Vysache* para cancelar e recomeçar.`;
+    mensagem += `> Use *!Olá ${npcNome}* para cancelar e recomeçar.`;
 
     await MessageService.send({ message: msg, text: mensagem });
     return true;

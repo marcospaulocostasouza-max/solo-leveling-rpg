@@ -17,6 +17,10 @@ const db = require("../core/database");
 const { GROUP_CONFIG } = require("../core/groupConfig");
 const templates = require("../utils/templatesMensagens");
 const { obterClasseCanonica, listarClasses } = require("../utils/normalizarClasse");
+const { normalizarDadosFicha } = require("../utils/normalizarDadosFicha");
+const { obterEstiloCanonico } = require("../utils/normalizarEstiloLuta");
+const elementos = require("../elementos/listaElementos");
+const normalizarTexto = valor => String(valor || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim().toLowerCase();
 
 // =====================================
 // REGRAS DE VALIDAÇÃO
@@ -86,7 +90,7 @@ const VALIDACOES = {
         obrigatorio: false,
         validar: (v) => {
             if (!v) return null;
-            const pesoStr = v.toString().replace(/[^0-9.]/g, "");
+            const pesoStr = v.toString().replace(",", ".").replace(/[^0-9.]/g, "");
             const peso = parseFloat(pesoStr);
             if (isNaN(peso)) return "Peso deve ser um número (ex: 70)";
             if (peso < 20) return "Peso mínimo é 20kg";
@@ -128,6 +132,7 @@ const VALIDACOES = {
         obrigatorio: false,
         validar: (v) => {
             if (v && v.trim().length > 100) return "Estilo de luta/proficiência muito longo (máx 100 caracteres)";
+            if (v && !obterEstiloCanonico(v)) return `Estilo "${v}" não reconhecido. Use !estilos de luta para consultar as opções.`;
             return null;
         }
     },
@@ -274,6 +279,11 @@ module.exports = async (msg) => {
             // VERIFICAR CONFLITO DE AFINIDADE ELEMENTAL E CONVERTER MAGO ELEMENTAL
             // ===================================================================
             const afinidadeFicha = dados.elemento || dados.afinidade || "";
+            if (afinidadeFicha) {
+                const elementoCanonico = elementos.find(elemento => normalizarTexto(elemento.nome) === normalizarTexto(afinidadeFicha));
+                if (!elementoCanonico) errosValidacao.push(`• *Elemento/Afinidade*: "${afinidadeFicha}" não existe no sistema.`);
+                else dados.elemento = elementoCanonico.nome;
+            }
             
             // Se o jogador escolheu "Mago Elemental", converter para o elemento da afinidade
             if (dados.classe && dados.classe.toLowerCase().includes("mago elemental")) {
@@ -352,6 +362,9 @@ module.exports = async (msg) => {
                 
                 return MessageService.send({ message: msg, text: mensagemErro });
             }
+
+            Object.assign(dados, normalizarDadosFicha(dados));
+            if (dados.estilo_luta) dados.estilo_luta = obterEstiloCanonico(dados.estilo_luta) || dados.estilo_luta;
             
             // ===================================================================
             // SE PASSAR NA VALIDAÇÃO, ENVIAR PARA APROVAÇÃO
@@ -359,7 +372,7 @@ module.exports = async (msg) => {
             console.log(`[FICHA] Dados validados com sucesso: ${JSON.stringify(dados)}`);
             
             // Atualizar status para "pendente" (pronto para aprovação)
-            db.run("UPDATE fichas_pendentes SET status = 'pendente', data_envio = datetime('now') WHERE numero = ?", [numero], (err) => {
+            db.run("UPDATE fichas_pendentes SET dados = ?, status = 'pendente', data_envio = datetime('now') WHERE numero = ?", [JSON.stringify(dados), numero], (err) => {
                 if (err) {
                     console.error("[FICHA] Erro ao atualizar status:", err);
                 }
@@ -419,3 +432,5 @@ function formatarNomeCampo(campo) {
     };
     return mapa[campo] || campo;
 }
+
+module.exports.VALIDACOES = VALIDACOES;

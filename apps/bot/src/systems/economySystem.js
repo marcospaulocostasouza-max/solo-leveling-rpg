@@ -5,6 +5,7 @@
  */
 
 const db = require("../core/database");
+const { transaction } = require("../../../../packages/database");
 
 class EconomySystem {
     
@@ -17,27 +18,31 @@ class EconomySystem {
     }
     
     static async adicionarWon(jogadorId, valor, motivo) {
-        return new Promise((resolve) => {
-            db.run("UPDATE jogadores SET won = won + ? WHERE id = ?", [valor, jogadorId]);
-            db.run("INSERT INTO transacoes (jogador_id, valor, tipo, motivo, data) VALUES (?, ?, 'ganho', ?, datetime('now'))",
-                [jogadorId, valor, motivo]);
-            resolve(true);
-        });
+        try {
+            await transaction(async query => {
+                const credito = await query.run("UPDATE jogadores SET won = won + ? WHERE id = ?", [valor, jogadorId]);
+                if (credito.changes !== 1) throw new Error("Jogador não encontrado.");
+                await query.run("INSERT INTO transacoes (jogador_id, valor, tipo, motivo, data) VALUES (?, ?, 'ganho', ?, datetime('now'))", [jogadorId, valor, motivo]);
+            });
+            return true;
+        } catch (error) {
+            console.error("[ECONOMIA] Falha ao creditar Wons:", error.message);
+            return false;
+        }
     }
     
     static async removerWon(jogadorId, valor, motivo) {
-        return new Promise((resolve) => {
-            db.get("SELECT won FROM jogadores WHERE id = ?", [jogadorId], (err, row) => {
-                if (!row || row.won < valor) {
-                    resolve(false);
-                    return;
-                }
-                db.run("UPDATE jogadores SET won = won - ? WHERE id = ?", [valor, jogadorId]);
-                db.run("INSERT INTO transacoes (jogador_id, valor, tipo, motivo, data) VALUES (?, ?, 'gasto', ?, datetime('now'))",
-                    [jogadorId, valor, motivo]);
-                resolve(true);
+        try {
+            await transaction(async query => {
+                const debito = await query.run("UPDATE jogadores SET won = won - ? WHERE id = ? AND won >= ?", [valor, jogadorId, valor]);
+                if (debito.changes !== 1) throw new Error("Saldo insuficiente.");
+                await query.run("INSERT INTO transacoes (jogador_id, valor, tipo, motivo, data) VALUES (?, ?, 'gasto', ?, datetime('now'))", [jogadorId, valor, motivo]);
             });
-        });
+            return true;
+        } catch (error) {
+            if (error.message !== "Saldo insuficiente.") console.error("[ECONOMIA] Falha ao debitar Wons:", error.message);
+            return false;
+        }
     }
     
     static async comprarItem(jogadorId, itemId, preco) {

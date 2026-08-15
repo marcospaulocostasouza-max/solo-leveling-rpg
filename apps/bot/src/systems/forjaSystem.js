@@ -14,6 +14,31 @@
 const db = require("../core/database");
 const EconomySystem = require("./economySystem");
 const InventorySystem = require("./inventorySystem");
+const sharedDatabase = require("../../../../packages/database");
+const { provider } = require("../../../../packages/database/config");
+
+const FERREIROS = Object.freeze({
+    Bilac: { ranks: ["E", "D", "C", "B"], bonus: 1.1, multiplicadorCusto: 1 },
+    Vysache: { ranks: ["A", "S"], bonus: 1.3, multiplicadorCusto: 1.5 }
+});
+
+let estruturasForjaPromise;
+
+async function garantirEstruturasForja() {
+    if (estruturasForjaPromise) return estruturasForjaPromise;
+    estruturasForjaPromise = (async () => {
+        const id = provider === "postgres" ? "BIGSERIAL PRIMARY KEY" : "INTEGER PRIMARY KEY AUTOINCREMENT";
+        const jogadorId = provider === "postgres" ? "BIGINT" : "INTEGER";
+        const data = provider === "postgres" ? "TIMESTAMPTZ" : "TEXT";
+        await sharedDatabase.run(`CREATE TABLE IF NOT EXISTS npc_afinidade (id ${id}, jogador_id ${jogadorId} NOT NULL, npc_nome TEXT NOT NULL, afinidade INTEGER DEFAULT 0, itens_forjados INTEGER DEFAULT 0, forja_nacional_disponivel INTEGER DEFAULT 0, data_ultima_forja ${data}, UNIQUE(jogador_id, npc_nome))`);
+        await sharedDatabase.run(`CREATE TABLE IF NOT EXISTS forja_sessoes (id ${id}, jogador_id ${jogadorId} NOT NULL, npc_nome TEXT NOT NULL, etapa TEXT DEFAULT 'aguardando_materiais', materiais TEXT, combinacao_resultado TEXT, custo INTEGER DEFAULT 0, item_resultado_id ${jogadorId}, data_criacao ${data}, data_atualizacao ${data})`);
+        await sharedDatabase.run(`CREATE TABLE IF NOT EXISTS forja_historico (id ${id}, jogador_id ${jogadorId} NOT NULL, npc_nome TEXT NOT NULL, materiais_usados TEXT, item_nome TEXT, item_categoria TEXT, item_rank TEXT, custo INTEGER DEFAULT 0, tipo_forja TEXT DEFAULT 'normal', data ${data})`);
+    })().catch(error => {
+        estruturasForjaPromise = null;
+        throw error;
+    });
+    return estruturasForjaPromise;
+}
 
 // =====================================
 // TABELA DE COMBINAÇÕES DE MATERIAIS
@@ -350,37 +375,27 @@ class ForjaSystem {
      * Obtém a afinidade de um jogador com o Vysache
      */
     static async getAfinidade(jogadorId, npcNome = "Vysache") {
-        return new Promise((resolve) => {
-            db.get(
-                "SELECT * FROM npc_afinidade WHERE jogador_id = ? AND npc_nome = ?",
-                [jogadorId, npcNome],
-                (err, row) => {
-                    if (err || !row) {
-                        resolve({ afinidade: 0, itens_forjados: 0, forja_nacional_disponivel: 0 });
-                    } else {
-                        resolve({
-                            afinidade: row.afinidade || 0,
-                            itens_forjados: row.itens_forjados || 0,
-                            forja_nacional_disponivel: row.forja_nacional_disponivel || 0
-                        });
-                    }
-                }
-            );
-        });
+        await garantirEstruturasForja();
+        const row = await sharedDatabase.get("SELECT * FROM npc_afinidade WHERE jogador_id = ? AND npc_nome = ?", [jogadorId, npcNome]);
+        return row ? {
+            afinidade: Number(row.afinidade || 0),
+            itens_forjados: Number(row.itens_forjados || 0),
+            forja_nacional_disponivel: Number(row.forja_nacional_disponivel || 0)
+        } : { afinidade: 0, itens_forjados: 0, forja_nacional_disponivel: 0 };
     }
 
     /**
      * Cria ou atualiza o registro de afinidade do jogador
      */
     static async setAfinidade(jogadorId, npcNome, afinidade, itensForjados, forjaNacionalDisp) {
-        return new Promise((resolve) => {
-            db.run(
-                `INSERT OR REPLACE INTO npc_afinidade (jogador_id, npc_nome, afinidade, itens_forjados, forja_nacional_disponivel, data_ultima_forja)
-                 VALUES (?, ?, ?, ?, ?, datetime('now'))`,
-                [jogadorId, npcNome, afinidade, itensForjados, forjaNacionalDisp],
-                (err) => resolve(!err)
-            );
-        });
+        await garantirEstruturasForja();
+        await sharedDatabase.run(
+            `INSERT INTO npc_afinidade (jogador_id, npc_nome, afinidade, itens_forjados, forja_nacional_disponivel, data_ultima_forja)
+             VALUES (?, ?, ?, ?, ?, datetime('now'))
+             ON CONFLICT(jogador_id, npc_nome) DO UPDATE SET afinidade = excluded.afinidade, itens_forjados = excluded.itens_forjados, forja_nacional_disponivel = excluded.forja_nacional_disponivel, data_ultima_forja = excluded.data_ultima_forja`,
+            [jogadorId, npcNome, afinidade, itensForjados, forjaNacionalDisp]
+        );
+        return true;
     }
 
     /**
@@ -394,7 +409,7 @@ class ForjaSystem {
         let forjaNacionalDisp = afinidadeAtual.forja_nacional_disponivel;
 
         // Ao atingir 100%, libera a forja nacional
-        if (novaAfinidade >= 100 && afinidadeAtual.afinidade < 100) {
+        if (npcNome === "Vysache" && novaAfinidade >= 100 && afinidadeAtual.afinidade < 100) {
             forjaNacionalDisp = 1;
         }
 
@@ -404,7 +419,7 @@ class ForjaSystem {
             afinidade: novaAfinidade,
             itens_forjados: novosItensForjados,
             forja_nacional_disponivel: forjaNacionalDisp,
-            atingiu_100: novaAfinidade >= 100 && afinidadeAtual.afinidade < 100
+            atingiu_100: npcNome === "Vysache" && novaAfinidade >= 100 && afinidadeAtual.afinidade < 100
         };
     }
 
@@ -416,22 +431,11 @@ class ForjaSystem {
      * Cria uma nova sessão de forja para o jogador
      */
     static async criarSessao(jogadorId, npcNome = "Vysache") {
-        return new Promise((resolve) => {
-            // Remove sessões anteriores ativas
-            db.run(
-                "DELETE FROM forja_sessoes WHERE jogador_id = ? AND etapa != 'concluida'",
-                [jogadorId],
-                () => {
-                    db.run(
-                        `INSERT INTO forja_sessoes (jogador_id, npc_nome, etapa, data_criacao, data_atualizacao)
-                         VALUES (?, ?, 'aguardando_materiais', datetime('now'), datetime('now'))`,
-                        [jogadorId, npcNome],
-                        function (err) {
-                            resolve(err ? null : this.lastID);
-                        }
-                    );
-                }
-            );
+        await garantirEstruturasForja();
+        return sharedDatabase.transaction(async query => {
+            await query.run("DELETE FROM forja_sessoes WHERE jogador_id = ? AND etapa != 'concluida'", [jogadorId]);
+            await query.run(`INSERT INTO forja_sessoes (jogador_id, npc_nome, etapa, data_criacao, data_atualizacao) VALUES (?, ?, 'aguardando_materiais', datetime('now'), datetime('now'))`, [jogadorId, npcNome]);
+            return query.get("SELECT * FROM forja_sessoes WHERE jogador_id = ? AND etapa != 'concluida' ORDER BY id DESC LIMIT 1", [jogadorId]);
         });
     }
 
@@ -439,35 +443,24 @@ class ForjaSystem {
      * Busca a sessão ativa do jogador
      */
     static async getSessao(jogadorId) {
-        return new Promise((resolve) => {
-            db.get(
-                "SELECT * FROM forja_sessoes WHERE jogador_id = ? AND etapa != 'concluida' ORDER BY id DESC LIMIT 1",
-                [jogadorId],
-                (err, row) => resolve(err ? null : row)
-            );
-        });
+        await garantirEstruturasForja();
+        return sharedDatabase.get("SELECT * FROM forja_sessoes WHERE jogador_id = ? AND etapa != 'concluida' ORDER BY id DESC LIMIT 1", [jogadorId]);
     }
 
     /**
      * Atualiza a etapa da sessão
      */
     static async atualizarSessao(sessaoId, dados) {
-        return new Promise((resolve) => {
-            const campos = [];
-            const valores = [];
-            for (const [chave, valor] of Object.entries(dados)) {
-                campos.push(`${chave} = ?`);
-                valores.push(valor);
-            }
-            campos.push("data_atualizacao = datetime('now')");
-            valores.push(sessaoId);
-
-            db.run(
-                `UPDATE forja_sessoes SET ${campos.join(", ")} WHERE id = ?`,
-                valores,
-                (err) => resolve(!err)
-            );
-        });
+        await garantirEstruturasForja();
+        const permitidos = new Set(["npc_nome", "etapa", "materiais", "combinacao_resultado", "custo", "item_resultado_id"]);
+        const entradas = Object.entries(dados || {}).filter(([chave]) => permitidos.has(chave));
+        if (!entradas.length) return false;
+        const campos = entradas.map(([chave]) => `${chave} = ?`);
+        const valores = entradas.map(([, valor]) => valor);
+        campos.push("data_atualizacao = datetime('now')");
+        valores.push(sessaoId);
+        const result = await sharedDatabase.run(`UPDATE forja_sessoes SET ${campos.join(", ")} WHERE id = ?`, valores);
+        return result.changes === 1;
     }
 
     /**
@@ -736,44 +729,22 @@ class ForjaSystem {
      */
     static async consumirMateriaisReservados(consumos) {
         if (!Array.isArray(consumos) || consumos.length === 0) return false;
-
-        return new Promise((resolve) => {
-            db.serialize(() => {
-                db.run("BEGIN IMMEDIATE", (erroInicio) => {
-                    if (erroInicio) return resolve(false);
-
-                    let indice = 0;
-                    let finalizado = false;
-                    const finalizar = (sucesso) => {
-                        if (finalizado) return;
-                        finalizado = true;
-                        db.run(sucesso ? "COMMIT" : "ROLLBACK", () => resolve(sucesso));
-                    };
-
-                    const consumirProximo = () => {
-                        if (indice >= consumos.length) return finalizar(true);
-                        const consumo = consumos[indice++];
-
-                        db.run(
-                            `UPDATE inventario_jogador
-                             SET quantidade = quantidade - ?
-                             WHERE id = ? AND quantidade >= ?`,
-                            [consumo.quantidade, consumo.inventarioId, consumo.quantidade],
-                            function (erro) {
-                                if (erro || this.changes !== 1) return finalizar(false);
-                                db.run(
-                                    "DELETE FROM inventario_jogador WHERE id = ? AND quantidade <= 0",
-                                    [consumo.inventarioId],
-                                    (erroDelete) => erroDelete ? finalizar(false) : consumirProximo()
-                                );
-                            }
-                        );
-                    };
-
-                    consumirProximo();
-                });
+        try {
+            await sharedDatabase.transaction(async query => {
+                for (const consumo of consumos) {
+                    const result = await query.run(
+                        "UPDATE inventario_jogador SET quantidade = quantidade - ? WHERE id = ? AND quantidade >= ?",
+                        [consumo.quantidade, consumo.inventarioId, consumo.quantidade]
+                    );
+                    if (result.changes !== 1) throw new Error("Material alterado durante a confirmação.");
+                    await query.run("DELETE FROM inventario_jogador WHERE id = ? AND quantidade <= 0", [consumo.inventarioId]);
+                }
             });
-        });
+            return true;
+        } catch (error) {
+            console.error("[FORJA] Falha ao consumir materiais:", error.message);
+            return false;
+        }
     }
 
     /** Restaura materiais se a criação do item falhar depois do consumo. */
@@ -945,7 +916,8 @@ class ForjaSystem {
     /**
      * Gera um item a partir do catálogo de forja com o bônus de +30% do Vysache
      */
-    static gerarItemDoCatalogo(itemCatalogo) {
+    static gerarItemDoCatalogo(itemCatalogo, npcNome = "Vysache") {
+        const multiplicador = FERREIROS[npcNome]?.bonus || BONUS_VYSACHE;
         const bonus = {
             forca: 0,
             resistencia: 0,
@@ -967,7 +939,7 @@ class ForjaSystem {
             };
             const chave = chaveMap[nomeAtributo];
             if (chave && valor) {
-                bonus[chave] = Math.floor(valor * BONUS_VYSACHE);
+                bonus[chave] = Math.floor(valor * multiplicador);
             }
         };
 
@@ -1003,7 +975,7 @@ class ForjaSystem {
             isAcessorio,
             isConsumivel,
             bonus,
-            efeito: "Item forjado por Vysache: Bônus de +30% nos atributos sobre o catálogo de forja.",
+            efeito: `Item forjado por ${npcNome}: bônus de ${Math.round((multiplicador - 1) * 100)}% nos atributos sobre o catálogo de forja.`,
             itemCatalogo: itemCatalogo
         };
     }
@@ -1023,12 +995,10 @@ class ForjaSystem {
             itemId = itemExistente.id;
         } else {
             // Criar novo item
-            itemId = await new Promise((resolve, reject) => {
-                db.run(
-                    `INSERT INTO itens (nome, categoria, tier, descricao, arma, armadura, escudo, acessorio, consumivel,
+            const sql = `INSERT INTO itens (nome, categoria, tier, descricao, arma, armadura, escudo, acessorio, consumivel,
                      forca_bonus, resistencia_bonus, velocidade_bonus, sentidos_bonus, inteligencia_bonus, poder_magico_bonus, efeito)
-                     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-                    [
+                     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+            const parametros = [
                         dadosItem.nome,
                         dadosItem.categoria,
                         dadosItem.rank,
@@ -1045,13 +1015,13 @@ class ForjaSystem {
                         dadosItem.bonus.inteligencia,
                         dadosItem.bonus.poder_magico,
                         dadosItem.efeito
-                    ],
-                    function (err) {
-                        if (err) reject(err);
-                        else resolve(this.lastID);
-                    }
-                );
-            });
+                    ];
+            if (provider === "postgres") {
+                const inserido = await sharedDatabase.get(`${sql} RETURNING id`, parametros);
+                itemId = inserido?.id;
+            } else {
+                itemId = (await sharedDatabase.run(sql, parametros)).lastID;
+            }
         }
 
         if (!itemId) return null;
@@ -1068,14 +1038,16 @@ class ForjaSystem {
      * Registra a forja no histórico
      */
     static async registrarHistorico(jogadorId, npcNome, materiaisUsados, itemNome, itemCategoria, itemRank, custo, tipoForja = "normal") {
-        return new Promise((resolve) => {
-            db.run(
-                `INSERT INTO forja_historico (jogador_id, npc_nome, materiais_usados, item_nome, item_categoria, item_rank, custo, tipo_forja, data)
+        await garantirEstruturasForja();
+        try {
+            await sharedDatabase.run(`INSERT INTO forja_historico (jogador_id, npc_nome, materiais_usados, item_nome, item_categoria, item_rank, custo, tipo_forja, data)
                  VALUES (?, ?, ?, ?, ?, ?, ?, ?, datetime('now'))`,
-                [jogadorId, npcNome, JSON.stringify(materiaisUsados), itemNome, itemCategoria, itemRank, custo, tipoForja],
-                (err) => resolve(!err)
-            );
-        });
+                [jogadorId, npcNome, JSON.stringify(materiaisUsados), itemNome, itemCategoria, itemRank, custo, tipoForja]);
+            return true;
+        } catch (error) {
+            console.error("[FORJA] Falha ao registrar histórico:", error.message);
+            return false;
+        }
     }
 
     // =====================================
@@ -1225,6 +1197,15 @@ class ForjaSystem {
             return { erro: "A combinação de materiais desta forja é inválida." };
         }
 
+        const rank = String(combinacao.rank || "E").toUpperCase();
+        const ferreiro = FERREIROS[npcNome];
+        if (!ferreiro) return { erro: "Ferreiro não reconhecido pelo Sistema." };
+        if (!ferreiro.ranks.includes(rank)) {
+            return npcNome === "Bilac" && ["A", "S"].includes(rank)
+                ? { encaminhar: "Vysache", rank, erro: `Estes materiais produzirão um item Rank ${rank}. Bilac não possui autorização para concluir uma obra desse nível; leve a recomendação ao pai dele, Vysache.` }
+                : { encaminhar: "Bilac", rank, erro: `Esta é uma forja Rank ${rank}. Vysache reserva sua bigorna para obras Rank A, S e Nacionais; procure Bilac para itens Rank E a B.` };
+        }
+
         // A ficha enviada na conversa serve para Vysache identificar a receita.
         // A disponibilidade e o consumo sempre usam o inventário real do jogador.
         const reservaMateriais = await this.prepararConsumoMateriais(jogadorId, combinacao.materiais_necessarios);
@@ -1237,7 +1218,8 @@ class ForjaSystem {
 
         // Verificar saldo
         const afinidadeInfo = await this.getAfinidade(jogadorId, npcNome);
-        const custoFinal = this.calcularCustoFinal(combinacao.custo, afinidadeInfo.afinidade);
+        const custoMestre = Math.floor(Number(combinacao.custo || 0) * ferreiro.multiplicadorCusto);
+        const custoFinal = this.calcularCustoFinal(custoMestre, afinidadeInfo.afinidade);
 
         const saldo = await EconomySystem.getSaldo(jogadorId);
         if (saldo < custoFinal) {
@@ -1252,9 +1234,10 @@ class ForjaSystem {
         // Se a combinação veio do catálogo de forja (com itemCatalogo), gerar item do catálogo com +30%
         let dadosItem;
         if (combinacao.itemCatalogo) {
-            dadosItem = this.gerarItemDoCatalogo(combinacao.itemCatalogo);
+            dadosItem = this.gerarItemDoCatalogo(combinacao.itemCatalogo, npcNome);
         } else {
             dadosItem = this.gerarItemForja(combinacao, jogador);
+            dadosItem.efeito = `${dadosItem.efeito} Forjado por ${npcNome}.`;
         }
 
         // Debitar o custo
@@ -1380,14 +1363,11 @@ class ForjaSystem {
     /**
      * Lista o histórico de forjas do jogador
      */
-    static async getHistorico(jogadorId, limite = 10) {
-        return new Promise((resolve) => {
-            db.all(
-                "SELECT * FROM forja_historico WHERE jogador_id = ? ORDER BY data DESC LIMIT ?",
-                [jogadorId, limite],
-                (err, rows) => resolve(err ? [] : (rows || []))
-            );
-        });
+    static async getHistorico(jogadorId, limite = 10, npcNome = null) {
+        await garantirEstruturasForja();
+        return npcNome
+            ? sharedDatabase.all("SELECT * FROM forja_historico WHERE jogador_id = ? AND npc_nome = ? ORDER BY data DESC LIMIT ?", [jogadorId, npcNome, limite])
+            : sharedDatabase.all("SELECT * FROM forja_historico WHERE jogador_id = ? ORDER BY data DESC LIMIT ?", [jogadorId, limite]);
     }
 
     /**
@@ -1522,6 +1502,7 @@ class ForjaSystem {
 }
 
 module.exports = ForjaSystem;
+module.exports.FERREIROS = FERREIROS;
 module.exports.COMBINACOES_MATERIAIS = COMBINACOES_MATERIAIS;
 module.exports.NOMES_ITENS = NOMES_ITENS;
 module.exports.SLOTS_FORJA_NACIONAL = SLOTS_FORJA_NACIONAL;

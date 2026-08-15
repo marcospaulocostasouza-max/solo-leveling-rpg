@@ -208,6 +208,27 @@ async function purchaseItem(playerId, itemId, quantity = 1) {
 }
 
 function normalizedClass(value) { return String(value || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim().toLowerCase(); }
+const TECHNIQUE_MASTERY_COST = Object.freeze({ base: 10, advanced: 200, multiplier: 2 });
+
+function isAdvancedTechnique(player, technique) {
+  const advancedClass = normalizedClass(player?.classe_avancada);
+  if (!advancedClass || advancedClass === "nenhuma" || advancedClass === "bloqueado") return false;
+  return normalizedClass(technique?.classe) === advancedClass;
+}
+
+function calculateTechniqueMasteryCost(ownedCount, advanced = false) {
+  const count = Math.max(0, Number(ownedCount) || 0);
+  const base = advanced ? TECHNIQUE_MASTERY_COST.advanced : TECHNIQUE_MASTERY_COST.base;
+  return base * (TECHNIQUE_MASTERY_COST.multiplier ** count);
+}
+
+async function ensureMasteryHistoryTable(query = { run }) {
+  const ddl = provider === "postgres"
+    ? "CREATE TABLE IF NOT EXISTS historico_maestria (id BIGSERIAL PRIMARY KEY, jogador_id BIGINT NOT NULL, descricao TEXT NOT NULL, valor INTEGER NOT NULL, data TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP)"
+    : "CREATE TABLE IF NOT EXISTS historico_maestria (id INTEGER PRIMARY KEY AUTOINCREMENT, jogador_id INTEGER NOT NULL, descricao TEXT NOT NULL, valor INTEGER NOT NULL, data TEXT NOT NULL DEFAULT (datetime('now')))";
+  await query.run(ddl);
+}
+
 async function purchaseTechnique(playerId, techniqueId) {
   return transaction(async query => {
     const [player, technique] = await Promise.all([query.get("SELECT * FROM jogadores WHERE id = ?", [playerId]), query.get("SELECT * FROM tecnicas WHERE id = ?", [techniqueId])]);
@@ -216,16 +237,24 @@ async function purchaseTechnique(playerId, techniqueId) {
     if (!allowed) throw new Error("Técnica incompatível com sua classe.");
     if (Number(player.nivel || 0) < Number(technique.nivel_desbloqueio || 1)) throw new Error("Nível insuficiente para esta técnica.");
     if (await query.get("SELECT id FROM jogador_tecnicas WHERE jogador_id = ? AND tecnica_id = ?", [playerId, techniqueId])) throw new Error("Você já possui esta técnica.");
-    const advanced = technique.categoria === "classe avançada" || technique.fonte === "Classe Avançada" || technique.classe === "classe avançada";
-    const count = advanced ? 0 : (await query.get("SELECT COUNT(*) AS total FROM jogador_tecnicas jt JOIN tecnicas t ON t.id = jt.tecnica_id WHERE jt.jogador_id = ? AND t.classe = ?", [playerId, technique.classe])).total;
-    const cost = advanced ? 500 : 10 * (2 ** Number(count));
+    const advanced = isAdvancedTechnique(player, technique);
+    const countRow = await query.get("SELECT COUNT(*) AS total FROM jogador_tecnicas jt JOIN tecnicas t ON t.id = jt.tecnica_id WHERE jt.jogador_id = ? AND LOWER(t.classe) = LOWER(?)", [playerId, technique.classe]);
+    const count = Number(countRow?.total || 0);
+    const cost = calculateTechniqueMasteryCost(count, advanced);
     const debit = await query.run("UPDATE jogadores SET maestria = maestria - ? WHERE id = ? AND maestria >= ?", [cost, playerId, cost]);
     if (debit.changes !== 1) throw new Error("Maestria insuficiente.");
     await query.run("INSERT INTO jogador_tecnicas (jogador_id, tecnica_id, nivel, experiencia) VALUES (?, ?, 1, 0)", [playerId, techniqueId]);
-    await query.run("CREATE TABLE IF NOT EXISTS historico_maestria (id INTEGER PRIMARY KEY AUTOINCREMENT, jogador_id INTEGER NOT NULL, descricao TEXT NOT NULL, valor INTEGER NOT NULL, data TEXT NOT NULL)");
+    await ensureMasteryHistoryTable(query);
     await query.run("INSERT INTO historico_maestria (jogador_id, descricao, valor, data) VALUES (?, ?, ?, datetime('now'))", [playerId, `Técnica: ${technique.nome}`, cost]);
-    return { technique: technique.nome, cost, maestria: Number(player.maestria || 0) - cost };
+    return {
+      technique: technique.nome,
+      techniqueData: technique,
+      cost,
+      maestria: Number(player.maestria || 0) - cost,
+      nextCost: calculateTechniqueMasteryCost(count + 1, advanced),
+      advanced
+    };
   });
 }
 
-module.exports = { DATABASE_PATH, getDatabase, applyMigrations, transaction, run, get, all, playerById, playerByPhone, inventory, playerSkills, playerTitles, playerGuild, playerLocation, isAdmin, canInteractWithNpc, itemSlot, slots, recalculateAttributes, equipItem, shopCatalog, purchaseItem, purchaseTechnique };
+module.exports = { DATABASE_PATH, getDatabase, applyMigrations, transaction, run, get, all, playerById, playerByPhone, inventory, playerSkills, playerTitles, playerGuild, playerLocation, isAdmin, canInteractWithNpc, itemSlot, slots, recalculateAttributes, equipItem, shopCatalog, purchaseItem, purchaseTechnique, isAdvancedTechnique, calculateTechniqueMasteryCost, TECHNIQUE_MASTERY_COST, ensureMasteryHistoryTable };

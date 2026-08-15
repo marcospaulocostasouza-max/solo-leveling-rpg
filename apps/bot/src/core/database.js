@@ -117,6 +117,7 @@ function criarTabelas() {
             custo_mana INTEGER DEFAULT 0,
             cooldown INTEGER DEFAULT 0,
             nivel_desbloqueio INTEGER DEFAULT 1,
+            rank TEXT DEFAULT 'E',
             passiva INTEGER DEFAULT 0
         );
     `);

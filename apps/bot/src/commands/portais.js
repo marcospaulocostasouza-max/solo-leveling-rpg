@@ -1,24 +1,17 @@
 const MessageService = require("../core/messageService");
 
-/**
- * COMANDO: !portais
- * Sistema de Portais/Gate para viagem entre países.
- */
 module.exports = async (msg) => {
-    await MessageService.send({ message: msg, text: `
-*─ Sistema de Portais ⛩️ ─*
+    const mensagem = `_*「 PORTAIS 」*_
+_— Além de cada Portal existe um território desconhecido, Jogador. Aqui encontrará tudo relacionado às Dungeons, incursões, mineração, exploração e demais atividades realizadas além dos Gates. Prepare-se antes de atravessar, pois depois que um Portal se fecha, talvez não exista caminho de volta._
 
-Devido à proliferação de portais que se manifestam pelo mundo, foi estabelecido um sistema de portais chamado "Gate" em cada capital de país. Estes portais, distintos daqueles que conduzem diretamente às Dungeons, proporcionam a capacidade de viajar para qualquer país previamente designado.
+_*Comandos:*_
+_• !Desejar_
+_• !Ficha de Dungeon_
+_• !Dungeon *(iniciar/progresso/sair)*_
+_• !Abrir Dungeon_
+_• !Concluir Dungeon_
+_• !Escolho a Opção_
+_• !Mineração_`;
 
-══════════════════════════
-
-*SISTEMA DE PORTAIS (GATE)*
-
-*REGRAS*
-- Requer permissao previa da Associacao de Cacadores
-- Cada portal e designado para conectar a capital de um pais especifico
-- Atravessar sem permissao resulta em caca e prisao
-- Portais sao monitorados para evitar abusos
-- Sistema visa facilitar viagens internacionais para cacadores
-    ` });
+    return MessageService.send({ message: msg, text: mensagem });
 };

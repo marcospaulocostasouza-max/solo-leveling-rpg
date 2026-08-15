@@ -12,7 +12,7 @@ async function build({ npcId, playerId, message }) {
   if (!loaded.profile) throw new Error(`NPC source not found: ${npcId}`);
   const id = loaded.profile.id;
   const [player, emotion, mood, relationship, memories] = await Promise.all([
-    JogadorCore.buscarPorNumero(playerId), EmotionManager.obterEmocaoNPC(id), MoodManager.obterMood(id),
+    JogadorCore.buscarPorNumero(playerId), EmotionManager.obterEmocao(id, playerId), MoodManager.obterMood(id),
     RelationshipManager.obterRelacionamento(id, playerId), Memory.retrieve(id, playerId, message)
   ]);
   const retrieved = retrieveNPC(loaded.profile, message, 5);

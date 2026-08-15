@@ -23,9 +23,9 @@ module.exports = async (msg) => {
     const pendente = await new Promise((resolve) => {
         db.get(
             `SELECT * FROM itens_unicos_pendentes 
-             WHERE status = 'pendente' AND criado_por = ?
+             WHERE status = 'pendente'
              ORDER BY id DESC LIMIT 1`,
-            [numero],
+            [],
             (err, row) => resolve(row)
         );
     });
@@ -43,18 +43,19 @@ Não há itens únicos pendentes para confirmar.
     }
     
     const dados = JSON.parse(pendente.dados);
+    const slotsValidos = ["Cabeça", "Corpo", "Acessórios", "Item de Apoio", "Pernas", "Pés", "Arma 1", "Arma 2"];
+    const normalizar = valor => String(valor || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim().toLowerCase();
+    const slotCanonico = slotsValidos.find(slot => normalizar(slot) === normalizar(dados.slot));
+    if (!slotCanonico) return MessageService.send({ message: msg, text: `*✖ Slot inválido:* ${dados.slot || "não informado"}. Use: ${slotsValidos.join(", ")}.` });
+    dados.slot = slotCanonico;
+    const tiersValidos = ["Comum", "Incomum", "Raro", "Épico", "Lendário", "Único"];
+    const tierCanonico = tiersValidos.find(tier => normalizar(tier) === normalizar(dados.tier));
+    if (!tierCanonico) return MessageService.send({ message: msg, text: `*✖ Rank/Tier inválido:* ${dados.tier}.` });
+    dados.tier = tierCanonico;
     
     // Buscar o jogador pelo nome (Pertencente)
     const jogador = await new Promise((resolve) => {
-        db.get("SELECT * FROM jogadores WHERE LOWER(nome) = LOWER(?)", [dados.pertencente], (err, row) => {
-            if (!row) {
-                db.get("SELECT * FROM jogadores WHERE LOWER(nome) LIKE LOWER(?)", [`%${dados.pertencente}%`], (err, row2) => {
-                    resolve(row2);
-                });
-            } else {
-                resolve(row);
-            }
-        });
+        db.get("SELECT * FROM jogadores WHERE LOWER(TRIM(nome)) = LOWER(TRIM(?))", [dados.pertencente], (err, row) => resolve(err ? null : row || null));
     });
     
     if (!jogador) {
@@ -67,7 +68,7 @@ Verifique se o nome está correto ou se o jogador já possui ficha aprovada.
     // =====================================
     // CRIAR O ITEM NO BANCO
     // =====================================
-    const nomeItem = `[Único] ${dados.nome}`;
+    const nomeItem = `[Personalizado] ${dados.nome}`;
     
     // Verificar se já existe item com este nome
     const itemExistente = await new Promise((resolve) => {
@@ -95,10 +96,10 @@ Verifique se o nome está correto ou se o jogador já possui ficha aprovada.
              arma, armadura, escudo, acessorio, consumivel,
              forca_bonus, resistencia_bonus, velocidade_bonus, sentidos_bonus, 
              inteligencia_bonus, poder_magico_bonus, efeito, item_unico)
-             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1)`,
+             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1) RETURNING id`,
             [
                 nomeItem,
-                dados.categoria || "Equipamento",
+                dados.slot || dados.categoria || "Equipamento",
                 dados.tier || "Único",
                 dados.descricao || "Item Único",
                 isArma, isArmadura, isEscudo, isAcessorio, isConsumivel,

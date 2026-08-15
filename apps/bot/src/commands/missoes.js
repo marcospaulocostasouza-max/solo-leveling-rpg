@@ -9,6 +9,8 @@ const MessageService = require("../core/messageService");
 const db = require("../core/database");
 const QuestSystem = require("../systems/questSystem");
 
+const GUIA_MISSOES = `\n*COMO CONSEGUIR MISSÕES*\n> Missões podem ser oferecidas por administradores, narrações próprias, eventos do RPG ou NPCs durante uma interação.\n> Quando uma missão for disponibilizada, use *!Aceitar Missão <nome>*.\n> Para ofertas de um personagem, use *!Missões NPC <id>*.\n> A aceitação só funciona para missões realmente liberadas ao seu personagem.\n`;
+
 module.exports = async (msg) => {
     const numero = msg.author || msg.from;
     const corpo = (msg.body || "").trim();
@@ -41,6 +43,7 @@ module.exports = async (msg) => {
 ────────────────────────══
 *═══ Jogador: ═══* ${jogador.nome}
 Nenhuma missão disponível no momento.
+${GUIA_MISSOES}
 ────────────────────────══
 _═ Sistema de Missões_
             ` });
@@ -85,6 +88,7 @@ ${m.npc_id ? `> NPC: ${m.npc_id} | Dificuldade: Rank ${m.rank || "?"}\n` : ""}${
         
         mensagem += `\n────────────────────────══\n_═ Complete missões para evoluir!_`;
         
+        mensagem += GUIA_MISSOES;
         await MessageService.send({ message: msg, text: mensagem });
     });
 };

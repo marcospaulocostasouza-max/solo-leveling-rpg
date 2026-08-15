@@ -27,6 +27,24 @@ const templates = require("../utils/templatesMensagens");
 // Armazenamento temporário de sessões de conversa (em memória)
 const sessoesVysache = {};
 
+function nomeFerreiroDoTexto(texto) {
+    return texto.includes("bilac") ? "Bilac" : "Vysache";
+}
+
+async function obterSessao(jogador, numero) {
+    if (sessoesVysache[numero]) return sessoesVysache[numero];
+    const persistida = await ForjaSystem.getSessao(jogador.id);
+    if (!persistida) return null;
+    sessoesVysache[numero] = {
+        sessaoId: persistida.id,
+        etapa: persistida.etapa,
+        jogadorId: jogador.id,
+        npcNome: persistida.npc_nome,
+        inicio: Date.now()
+    };
+    return sessoesVysache[numero];
+}
+
 module.exports = async (msg) => {
     const texto = msg.body.toLowerCase().trim();
     const numero = msg.author || msg.from;
@@ -46,38 +64,44 @@ module.exports = async (msg) => {
     // =====================================
     // !Olá Vysache - Início da conversa
     // =====================================
-    if (texto === "!olá vysache" || texto === "!ola vysache" || texto === "!olá visache" || texto === "!ola visache") {
+    if (["!olá vysache", "!ola vysache", "!olá visache", "!ola visache", "!olá bilac", "!ola bilac"].includes(texto)) {
+        const npcNome = nomeFerreiroDoTexto(texto);
         // Criar sessão de forja
-        await ForjaSystem.criarSessao(jogador.id, "Vysache");
+        const sessaoBanco = await ForjaSystem.criarSessao(jogador.id, npcNome);
+        if (!sessaoBanco) return MessageService.send({ message: msg, text: "*A forja não conseguiu abrir uma sessão agora. Tente novamente.*" });
 
         // Iniciar sessão de conversa em memória
         sessoesVysache[numero] = {
+            sessaoId: sessaoBanco.id,
             etapa: "saudacao",
             jogadorId: jogador.id,
+            npcNome,
             inicio: Date.now()
         };
 
         // Buscar afinidade atual
-        const afinidade = await ForjaSystem.getAfinidade(jogador.id, "Vysache");
+        const afinidade = await ForjaSystem.getAfinidade(jogador.id, npcNome);
 
-        let mensagem = `*═══ 🔨 VYSACHE ═══*\n`;
+        let mensagem = `*═══ 🔨 ${npcNome.toUpperCase()} ═══*\n`;
         mensagem += `${templates.divisor()}\n\n`;
-        mensagem += `*Vysache:* "Ah, você por aqui. O que você deseja?"\n\n`;
+        mensagem += npcNome === "Bilac"
+            ? `*Bilac:* "Ora, uma encomenda? Mostre o que trouxe. Se o metal for grande demais para minha bigorna, eu mesmo o mando falar com meu pai."\n\n`
+            : `*Vysache:* "Bilac o encaminhou ou você trouxe algo digno da minha bigorna? Fale."\n\n`;
         mensagem += `${templates.divisor()}\n`;
         mensagem += `> *Afinidade:* ${afinidade.afinidade}%\n`;
         mensagem += `> *Itens Forjados:* ${afinidade.itens_forjados}\n`;
 
-        if (afinidade.forja_nacional_disponivel) {
+        if (npcNome === "Vysache" && afinidade.forja_nacional_disponivel) {
             mensagem += `> *Forja Nacional:* ✅ DISPONÍVEL!\n`;
         }
 
         mensagem += `\n${templates.divisor()}\n`;
         mensagem += `*Comandos disponíveis:*\n`;
         mensagem += `> *!preciso de um item* - Solicitar forja\n`;
-        mensagem += `> *!vysache afinidade* - Ver afinidade\n`;
-        mensagem += `> *!vysache combinacoes* - Ver combinações\n`;
+        mensagem += `> *!${npcNome.toLowerCase()} afinidade* - Ver afinidade\n`;
+        mensagem += `> *!${npcNome.toLowerCase()} combinacoes* - Ver combinações\n`;
 
-        if (afinidade.forja_nacional_disponivel) {
+        if (npcNome === "Vysache" && afinidade.forja_nacional_disponivel) {
             mensagem += `> *!vysache forja nacional* - Forja Nacional\n`;
         }
 
@@ -90,18 +114,18 @@ module.exports = async (msg) => {
     // =====================================
     if (texto === "!preciso de um item" || texto === "!preciso de um item!") {
         // Verificar se há sessão ativa
-        const sessao = sessoesVysache[numero];
+        const sessao = await obterSessao(jogador, numero);
         if (!sessao) {
             return MessageService.send({ message: msg, text: 
-                `*Vysache:* "Hmmm... Não estávamos conversando. Use *!Olá Vysache* primeiro."`
+                `*A oficina não possui uma encomenda ativa em seu nome.*\n\nUse *!Olá Bilac* para itens Rank E a B ou *!Olá Vysache* para itens Rank A e S.`
              });
         }
 
         // Atualizar etapa da sessão
         sessoesVysache[numero].etapa = "aguardando_materiais";
-        await ForjaSystem.atualizarSessao(sessao.jogadorId, { etapa: "aguardando_materiais" });
+        await ForjaSystem.atualizarSessao(sessao.sessaoId, { etapa: "aguardando_materiais" });
 
-        let mensagem = `*Vysache:* "Quais materiais você trouxe?"\n\n`;
+        let mensagem = `*${sessao.npcNome}:* "Quais materiais você trouxe?"\n\n`;
         mensagem += `${templates.divisor()}\n`;
         mensagem += `*FICHA DE MATERIAIS*\n`;
         mensagem += `Preencha a ficha abaixo com os materiais e quantidades:\n\n`;
@@ -124,8 +148,26 @@ module.exports = async (msg) => {
     // =====================================
     // !pode sim - Confirmar forja
     // =====================================
+    if (texto === "!aceitar forja vysache" || texto === "!aceitar forja bilac") {
+        const sessao = await obterSessao(jogador, numero);
+        const destino = texto.endsWith("vysache") ? "Vysache" : "Bilac";
+        const etapaEsperada = destino === "Vysache" ? "encaminhado_vysache" : "encaminhado_bilac";
+        if (!sessao || sessao.etapa !== etapaEsperada || sessao.npcNome !== destino) {
+            return MessageService.send({ message: msg, text: `*${destino}:* "Não recebi nenhuma receita encaminhada em seu nome."` });
+        }
+        const sessaoBanco = await ForjaSystem.getSessao(jogador.id);
+        const combinacao = sessaoBanco?.combinacao_resultado ? JSON.parse(sessaoBanco.combinacao_resultado) : null;
+        if (!combinacao) return MessageService.send({ message: msg, text: "*A receita encaminhada não pôde ser recuperada.*" });
+        const afinidade = await ForjaSystem.getAfinidade(jogador.id, destino);
+        const multiplicador = destino === "Vysache" ? 1.5 : 1;
+        const custo = ForjaSystem.calcularCustoFinal(Math.floor(Number(combinacao.custo || 0) * multiplicador), afinidade.afinidade);
+        await ForjaSystem.atualizarSessao(sessao.sessaoId, { etapa: "aguardando_confirmacao", custo });
+        sessao.etapa = "aguardando_confirmacao";
+        return MessageService.send({ message: msg, text: `*${destino}:* "Aceito a encomenda. Uma obra Rank ${combinacao.rank} custará *${custo.toLocaleString("pt-BR")} Wons*. Os materiais serão conferidos novamente."\n\nSe concordar, use *!pode sim*.` });
+    }
+
     if (texto === "!pode sim" || texto === "!pode sim!") {
-        const sessao = sessoesVysache[numero];
+        const sessao = await obterSessao(jogador, numero);
         if (!sessao || sessao.etapa !== "aguardando_confirmacao") {
             return MessageService.send({ message: msg, text: 
                 `*Vysache:* "Confirmar o quê? Primeiro me traga materiais para analisar."`
@@ -135,16 +177,16 @@ module.exports = async (msg) => {
         // Buscar sessão no banco
         const sessaoBanco = await ForjaSystem.getSessao(jogador.id);
         if (!sessaoBanco || !sessaoBanco.combinacao_resultado) {
-            return MessageService.send({ message: msg, text: `*Vysache:* "Parece que perdi os dados da forja. Comece novamente com *!Olá Vysache*."` });
+            return MessageService.send({ message: msg, text: `*${sessao.npcNome}:* "Os dados desta forja estão incompletos. Comece novamente com *!Olá ${sessao.npcNome}*."` });
         }
 
         const combinacao = JSON.parse(sessaoBanco.combinacao_resultado);
 
         // Executar a forja
-        const resultado = await ForjaSystem.executarForja(jogador.id, combinacao, jogador, "Vysache");
+        const resultado = await ForjaSystem.executarForja(jogador.id, combinacao, jogador, sessao.npcNome);
 
         if (resultado.erro) {
-            return MessageService.send({ message: msg, text: `*Vysache:* "${resultado.erro}"` });
+            return MessageService.send({ message: msg, text: `*${sessao.npcNome}:* "${resultado.erro}"` });
         }
 
         // Encerrar sessão
@@ -155,7 +197,7 @@ module.exports = async (msg) => {
         const item = resultado.item;
         let mensagem = `*═══ 🔨 FORJA CONCLUÍDA! ═══*\n`;
         mensagem += `${templates.divisor()}\n\n`;
-        mensagem += `*Vysache:* "Pronto! Aqui está o que eu forjei para você."\n\n`;
+        mensagem += `*${sessao.npcNome}:* "Pronto! Aqui está o que eu forjei para você."\n\n`;
         mensagem += `${templates.divisor()}\n`;
         mensagem += `*ITEM FORJADO*\n`;
         mensagem += `> *Nome:* ${item.nome}\n`;
@@ -177,7 +219,7 @@ module.exports = async (msg) => {
         mensagem += `> *Afinidade:* ${resultado.afinidade.afinidade}% (+1%)\n`;
         mensagem += `> *Itens Forjados:* ${resultado.afinidade.itens_forjados}\n`;
 
-        if (resultado.afinidade.atingiu_100) {
+        if (sessao.npcNome === "Vysache" && resultado.afinidade.atingiu_100) {
             mensagem += `\n${templates.destaque("AFINIDADE MÁXIMA ALCANÇADA!")}\n`;
             mensagem += `*Vysache:* "Você... alcançou minha confiança total. Venha, posso forjar algo de nível nacional para você. Use *!vysache forja nacional* quando estiver pronto."\n`;
         }
@@ -193,10 +235,11 @@ module.exports = async (msg) => {
     // =====================================
     // !vysache afinidade - Ver afinidade
     // =====================================
-    if (texto === "!vysache afinidade" || texto === "!visache afinidade") {
-        const afinidade = await ForjaSystem.getAfinidade(jogador.id, "Vysache");
+    if (["!vysache afinidade", "!visache afinidade", "!bilac afinidade"].includes(texto)) {
+        const npcNome = nomeFerreiroDoTexto(texto);
+        const afinidade = await ForjaSystem.getAfinidade(jogador.id, npcNome);
 
-        let mensagem = `*═══ AFINIDADE COM VYSACHE ═══*\n`;
+        let mensagem = `*═══ AFINIDADE COM ${npcNome.toUpperCase()} ═══*\n`;
         mensagem += `${templates.divisor()}\n\n`;
         mensagem += `> *Afinidade:* ${afinidade.afinidade}%\n`;
         mensagem += `> *Itens Forjados:* ${afinidade.itens_forjados}\n`;
@@ -212,7 +255,7 @@ module.exports = async (msg) => {
             const restante = 100 - afinidade.afinidade;
             mensagem += `> Faltam *${restante}* forjas para atingir 100%\n`;
             mensagem += `> Cada item forjado aumenta 1% de afinidade\n`;
-        } else {
+        } else if (npcNome === "Vysache") {
             mensagem += `> *AFINIDADE MÁXIMA!* ✅\n`;
             if (afinidade.forja_nacional_disponivel) {
                 mensagem += `> *Forja Nacional DISPONÍVEL!* Use *!vysache forja nacional*\n`;
@@ -270,12 +313,14 @@ module.exports = async (msg) => {
     // =====================================
     // !vysache combinacoes - Lista materiais conhecidos do catálogo
     // =====================================
-    if (texto === "!vysache combinacoes" || texto === "!visache combinacoes") {
+    if (["!vysache combinacoes", "!visache combinacoes", "!bilac combinacoes"].includes(texto)) {
+        const npcNome = nomeFerreiroDoTexto(texto);
         const catalogo = ForjaSystem.carregarCatalogo();
 
-        let mensagem = `*═══ MATERIAIS CONHECIDOS POR VYSACHE ═══*\n`;
+        let mensagem = `*═══ MATERIAIS CONHECIDOS POR ${npcNome.toUpperCase()} ═══*\n`;
         mensagem += `${templates.divisor()}\n`;
-        mensagem += `*Vysache:* "Estes são os materiais que posso trabalhar. Combine 2 materiais para ver o que posso forjar."\n\n`;
+        mensagem += `*${npcNome}:* "Estes são os materiais que posso trabalhar. Combine 2 materiais para ver o que posso forjar."\n`;
+        mensagem += npcNome === "Bilac" ? `> Especialidade: itens Rank E a B.\n\n` : `> Especialidade: itens Rank A, S e Nacional.\n\n`;
 
         if (catalogo && catalogo.materiais) {
             // Agrupar por rank
@@ -285,7 +330,7 @@ module.exports = async (msg) => {
                 porRank[mat.rank].push(mat);
             }
 
-            const ordemRanks = ["E", "D", "C", "B", "A", "S"];
+            const ordemRanks = npcNome === "Bilac" ? ["E", "D", "C", "B"] : ["A", "S"];
 
             for (const rank of ordemRanks) {
                 if (!porRank[rank]) continue;
@@ -308,10 +353,10 @@ module.exports = async (msg) => {
         }
 
         mensagem += `${templates.divisor()}\n`;
-        mensagem += `_Envie os materiais na ficha para Vysache analisar a combinação._\n`;
-        mensagem += `_Converse com Vysache usando !preciso de um item para iniciar uma forja._\n`;
+        mensagem += `_Envie os materiais na ficha para ${npcNome} analisar a combinação._\n`;
+        mensagem += `_Converse com ${npcNome} e use !preciso de um item para iniciar uma forja._\n`;
         mensagem += `_Cada item forjado aumenta 1% de afinidade._\n`;
-        mensagem += `_Atingindo 100%, a Forja Nacional é liberada._`;
+        if (npcNome === "Vysache") mensagem += `_Atingindo 100%, a Forja Nacional é liberada._`;
 
         await MessageService.send({ message: msg, text: mensagem });
         return;
@@ -320,8 +365,9 @@ module.exports = async (msg) => {
     // =====================================
     // !vysache ficha - Exibe ficha do NPC
     // =====================================
-    if (texto === "!vysache ficha" || texto === "!visache ficha") {
-        const npc = require("../database/npc_vysache.json");
+    if (["!vysache ficha", "!visache ficha", "!bilac ficha"].includes(texto)) {
+        const npcNome = nomeFerreiroDoTexto(texto);
+        const npc = require(`../npc/data/${npcNome.toLowerCase()}.json`);
 
         let mensagem = `*═══ FICHA DE VYSACHE ═══*\n`;
         mensagem += `${templates.linha()}\n\n`;
@@ -363,14 +409,15 @@ module.exports = async (msg) => {
     // =====================================
     // !vysache historico - Histórico de forjas
     // =====================================
-    if (texto === "!vysache historico" || texto === "!visache historico") {
-        const historico = await ForjaSystem.getHistorico(jogador.id, 10);
+    if (["!vysache historico", "!visache historico", "!bilac historico"].includes(texto)) {
+        const npcNome = nomeFerreiroDoTexto(texto);
+        const historico = await ForjaSystem.getHistorico(jogador.id, 10, npcNome);
 
         if (historico.length === 0) {
             return MessageService.send({ message: msg, text: 
                 `*═══ HISTÓRICO DE FORJA ═══*\n${templates.divisor()}\n\n` +
-                `*Vysache:* "Você ainda não encomendou nenhuma forja. Que tal começarmos?"\n\n` +
-                `> Use *!Olá Vysache* para iniciar.`
+                `*${npcNome}:* "Você ainda não encomendou nenhuma forja. Que tal começarmos?"\n\n` +
+                `> Use *!Olá ${npcNome}* para iniciar.`
              });
         }
 

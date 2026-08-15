@@ -359,11 +359,11 @@ const advancedClasses = {
         requisitos: { poder_magico: 90 },
         bonusAtributos: { poder_magico: 40 }
     },
-    "Feiticeiros": {
+    "Feiticeiro": {
         categoria: "Magos Gerais",
         classeInicial: "Mago",
         bloqueada: false,
-        nome: "Feiticeiros",
+        nome: "Feiticeiro",
         descricao: "Controla Mana Negativa e aprimora atributos físicos enquanto usa menos técnicas mágicas.",
         requisitos: { poder_magico: 65, resistencia: 35 },
         bonusAtributos: { poder_magico: 25, resistencia: 15 }

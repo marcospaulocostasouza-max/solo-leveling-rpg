@@ -11,6 +11,7 @@ const MessageService = require("../core/messageService");
 const fichasTemp = require("./fichasTemp");
 const templates = require("./templatesMensagens");
 const { obterClasseCanonica } = require("./normalizarClasse");
+const { obterEstiloCanonico } = require("./normalizarEstiloLuta");
 
 module.exports = async (msg) => {
     const texto = msg.body.trim();
@@ -68,8 +69,9 @@ _Use *!concluir Dungeon* para finalizar._` });
     // =====================================
     // RECONHECER TEMPLATE DE HABILIDADE ÚNICA
     // =====================================
-    if (textoLower.includes("nome:") && textoLower.includes("pertencente:") && 
-        (textoLower.includes("custo de mana:") || textoLower.includes("descrição:") || textoLower.includes("descricao:"))) {
+    if (textoLower.includes("nome:") && textoLower.includes("pertencente:") &&
+        (textoLower.includes("custo de mana:") || textoLower.includes("cooldown:") || textoLower.includes("nível de desbloqueio:") || textoLower.includes("nivel de desbloqueio:")) &&
+        !textoLower.includes("tier:") && !textoLower.includes("slot:")) {
         
         const db = require("../core/database");
         
@@ -81,6 +83,8 @@ _Use *!concluir Dungeon* para finalizar._` });
             tipo: extrairCampo(msg.body, "TIPO") || "Ativa",
             categoria: extrairCampo(msg.body, "CATEGORIA") || "Geral",
             classe: extrairCampo(msg.body, "CLASSE") || "Geral",
+            rank: extrairCampo(msg.body, "RANK") || "E",
+            nivel_desbloqueio: parseInt(extrairCampo(msg.body, "NÍVEL DE DESBLOQUEIO") || extrairCampo(msg.body, "NIVEL DE DESBLOQUEIO")) || 1,
             pertencente: extrairCampo(msg.body, "PERTENCENTE")
         };
         
@@ -107,7 +111,7 @@ _Use *!concluir Dungeon* para finalizar._` });
 *Pertencente:* ${dados.pertencente}
 
 ══════════════════════════
-Use *!confirmar hab única* para finalizar a criação.
+Um ADM deve usar *!add técnica* para integrar e entregar ao dono.
             ` });
             return;
         }
@@ -125,6 +129,7 @@ Use *!confirmar hab única* para finalizar a criação.
             nome: extrairCampo(msg.body, "NOME"),
             descricao: extrairCampo(msg.body, "DESCRIÇÃO") || extrairCampo(msg.body, "DESCRICAO"),
             categoria: extrairCampo(msg.body, "CATEGORIA") || "Equipamento",
+            slot: extrairCampo(msg.body, "SLOT") || "",
             tier: extrairCampo(msg.body, "TIER") || "Único",
             forca_bonus: parseInt(extrairCampo(msg.body, "FORÇA")) || 0,
             resistencia_bonus: parseInt(extrairCampo(msg.body, "RESISTÊNCIA")) || 0,
@@ -159,7 +164,7 @@ Use *!confirmar hab única* para finalizar a criação.
 *Pertencente:* ${dados.pertencente}
 
 ══════════════════════════
-Use *!confirmar item único* para finalizar a criação.
+Um ADM deve usar *!add item* para integrar e entregar ao dono.
             ` });
             return;
         }
@@ -199,7 +204,7 @@ Use *!confirmar item único* para finalizar a criação.
         if (partes.length < 2) return;
         
         const chave = partes[0].replace(/[*_>\-]/g, "").trim().toLowerCase();
-        const valor = partes.slice(1).join(":").replace(/[*_]/g, "").trim();
+        const valor = partes.slice(1).join(":").replace(/[*_>]/g, "").trim();
         
         // Ignorar placeholders e valores vazios
         if (!valor || valor === "_" || valor.startsWith("(") || (valor.length < 2 && !/^\d+$/.test(valor.trim()))) {
@@ -229,6 +234,12 @@ Use *!confirmar item único* para finalizar a criação.
             "classe desejada": "classe",
             "classe": "classe",
             "estilo de luta": "estilo_luta",
+            "estilo de luta / proficiencia": "estilo_luta",
+            "estilo de luta / proficiência": "estilo_luta",
+            "estilo de luta/proficiencia": "estilo_luta",
+            "estilo de luta/proficiência": "estilo_luta",
+            "proficiencia": "estilo_luta",
+            "proficiência": "estilo_luta",
             "estilo": "estilo_luta",
             "arma inicial": "arma",
             "arma": "arma",
@@ -278,16 +289,25 @@ Use *!confirmar item único* para finalizar a criação.
     }
 
     ficha.classe = obterClasseCanonica(ficha.classe) || ficha.classe.trim();
+    if (ficha.estilo_luta) ficha.estilo_luta = obterEstiloCanonico(ficha.estilo_luta) || ficha.estilo_luta.trim();
     
     // Salvar na memória temporária E no banco de dados
     const numero = msg.author || msg.from;
     fichasTemp[numero] = ficha;
     
     const db = require("../core/database");
-    db.run(
-        "INSERT OR REPLACE INTO fichas_pendentes (numero, dados, status) VALUES (?, ?, 'aguardando')",
-        [numero, JSON.stringify(ficha)]
-    );
+    await new Promise((resolve, reject) => db.run(
+        `INSERT INTO fichas_pendentes (numero, dados, status, data_envio, aprovado_por, motivo)
+         VALUES (?, ?, 'aguardando', NULL, '', '')
+         ON CONFLICT(numero) DO UPDATE SET
+            dados = excluded.dados,
+            status = 'aguardando',
+            data_envio = NULL,
+            aprovado_por = '',
+            motivo = ''`,
+        [numero, JSON.stringify(ficha)],
+        err => err ? reject(err) : resolve()
+    ));
     
     // Responder ao jogador com todos os dados
     const resposta = templates.fichaReconhecida(ficha);
@@ -303,11 +323,14 @@ Use *!confirmar item único* para finalizar a criação.
 function extrairCampo(texto, campo) {
     const linhas = texto.split("\n");
     for (const linha of linhas) {
-        const linhaLower = linha.toLowerCase().trim();
+        const linhaLimpa = linha.replace(/^[\s>*_-]+/, "").replace(/[\s*_]+$/, "").trim();
+        const linhaLower = linhaLimpa.toLowerCase();
         const campoLower = campo.toLowerCase();
         if (linhaLower.startsWith(campoLower + ":")) {
-            return linha.substring(linha.indexOf(":") + 1).trim();
+            return linhaLimpa.substring(linhaLimpa.indexOf(":") + 1).replace(/[>*_]/g, "").trim();
         }
     }
     return "";
 }
+
+module.exports.extrairCampo = extrairCampo;

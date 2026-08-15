@@ -90,8 +90,8 @@ function executarEnginesBackground(contexto, mensagem, npcId, jogadorId) {
             npc, jogador, historico, memorias, relacionamento, estadoEmocional, mensagem
         ).then(async resultado => {
             if (resultado && resultado.emocao) {
-                await EmotionManager.definirEmocaoNPC(npcId, resultado);
-                cacheManager.remover(cacheManager.gerarChave('emotion', npcId));
+                await EmotionManager.salvarEmocao(npcId, jogadorId, resultado);
+                cacheManager.remover(cacheManager.gerarChave('emotion', npcId, jogadorId));
                 console.log(`[NPC_V2] Emoção atualizada: ${resultado.emocao}`);
             }
         }).catch(err => {

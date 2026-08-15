@@ -13,7 +13,7 @@
   "classe": "Ferreiro",
   "classe_avancada": "Mestre Ferreiro",
   "personalidade": "Bruto, direto e orgulhoso do seu trabalho. Fala pouco, mas quando fala, é com autoridade. Não tem paciência para conversa fiada, mas respeita quem demonstra dedicação. Esconde um coração generoso atrás de sua fachada rústica.",
-  "historia": "Um dos ferreiros mais renomados da Coreia do Sul. Forjou armas para diversos caçadores de rank S e é conhecido por sua maestria incomparável. Aprendeu a arte da forja com seu pai, que foi ferreiro da Associação de Caçadores por quarenta anos. Após a morte do pai em um colapso de dungeon, herdou a forja e jurou continuar o legado familiar. Sua maestria é tão grande que dizem ser capaz de forjar itens de nível nacional quando atinge afinidade máxima com um caçador.",
+  "historia": "Um dos ferreiros mais renomados da Coreia do Sul, conhecido por transformar materiais Rank A e S em obras extraordinárias. É pai e mestre de Bilac, responsável por ensiná-lo a respeitar o metal e reconhecer os próprios limites. Vysache reserva sua grande bigorna para trabalhos superiores e itens de nível nacional.",
   "especialidade": "Forja de armas e armaduras de alto nível",
   "habilidade_unica": "Forja Nacional — quando atinge 100% de afinidade com um caçador, é capaz de forjar itens de nível nacional, armas e armaduras de poder incomparável que só podem ser criadas uma vez por geração.",
   "habilidade_especial": "Forja Nacional - Capaz de criar itens de nível nacional quando atinge 100% de afinidade com um caçador.",
@@ -44,6 +44,7 @@
   "sistema": {
     "afinidade": true,
     "forja": true,
+    "ranks": ["A", "S", "Nacional"],
     "catalogo": "forja_catalogo.json"
   }
 }

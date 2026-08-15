@@ -18,10 +18,18 @@ module.exports = {
         
         // Salvar no banco como pendente
         const db = require("../core/database");
-        db.run(
-            "INSERT OR REPLACE INTO fichas_pendentes (numero, dados, status) VALUES (?, ?, 'aguardando')",
-            [numero, JSON.stringify(ficha)]
-        );
+        await new Promise((resolve, reject) => db.run(
+            `INSERT INTO fichas_pendentes (numero, dados, status, data_envio, aprovado_por, motivo)
+             VALUES (?, ?, 'aguardando', NULL, '', '')
+             ON CONFLICT(numero) DO UPDATE SET
+                dados = excluded.dados,
+                status = 'aguardando',
+                data_envio = NULL,
+                aprovado_por = '',
+                motivo = ''`,
+            [numero, JSON.stringify(ficha)],
+            err => err ? reject(err) : resolve()
+        ));
         
         const resultado = { sucesso: true, ficha };
         delete fichasTemp[numero];

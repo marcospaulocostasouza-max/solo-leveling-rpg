@@ -6,6 +6,22 @@ const advancedTechniques = require("../tecnicas/avancadas/techniques");
 const AdvancedClassFeatureSystem = require("./advancedClassFeatureSystem");
 
 class AdvancedClassSystem {
+    static normalizarNome(valor) {
+        return String(valor || "")
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "")
+            .trim()
+            .toLowerCase();
+    }
+
+    static familiaClasseInicial(valor) {
+        const classe = this.normalizarNome(valor);
+        if (classe.startsWith("ranger")) return "ranger";
+        if (classe.startsWith("mago")) return "mago";
+        if (classe === "curador" || classe === "healer") return "curador";
+        return classe;
+    }
+
     static getAtributosAtuais(jogador) {
         return {
             forca: Number(jogador.forca_base || 0) + Number(jogador.forca_buff || 0),
@@ -17,9 +33,33 @@ class AdvancedClassSystem {
         };
     }
 
+    static classeCompativelComJogador(classe, jogador) {
+        if (classe.categoria === "Geral") return true;
+        const familiaJogador = this.familiaClasseInicial(jogador.classe);
+        if (classe.classeInicial) {
+            return this.familiaClasseInicial(classe.classeInicial) === familiaJogador;
+        }
+        const categoriasPorFamilia = {
+            lutador: ["Lutador"],
+            assassino: ["Assassino"],
+            tanker: ["Tanker"],
+            ranger: ["Ranger"],
+            curador: ["Healer"],
+            mago: ["Magos Gerais", "Magos Exclusivos"]
+        };
+        return (categoriasPorFamilia[familiaJogador] || []).includes(classe.categoria);
+    }
+
+    static atendeRequisitos(classe, jogador) {
+        const atributos = this.getAtributosAtuais(jogador);
+        return Object.entries(classe.requisitos || {}).every(([atributo, valor]) =>
+            (atributos[atributo] || 0) >= valor
+        );
+    }
+
     static getClassesDisponiveis(jogador) {
         const atributos = this.getAtributosAtuais(jogador);
-        const classeInicialJogador = (jogador.classe || "").toLowerCase();
+        const classeInicialJogador = this.familiaClasseInicial(jogador.classe);
 
         // Mapeamento: classe inicial → categorias de classe avançada disponíveis
         const mapaClasseInicial = {
@@ -28,6 +68,7 @@ class AdvancedClassSystem {
             "tanker": ["Tanker"],
             "ranger": ["Ranger"],
             "curador": ["Healer"],
+            "mago": ["Magos Gerais", "Magos Exclusivos"],
             "mago elemental": ["Magos Gerais", "Magos Exclusivos"],
             "mago invocador": ["Magos Gerais", "Magos Exclusivos"],
             "mago barreira": ["Magos Gerais", "Magos Exclusivos"],
@@ -45,12 +86,12 @@ class AdvancedClassSystem {
             
             // Classes Gerais (Hrymir/Freyr) - disponíveis para todos
             if (classe.categoria === "Geral") {
-                return true;
+                return this.atendeRequisitos(classe, jogador);
             }
             
             // Filtrar por classe inicial (se definida)
             if (classe.classeInicial) {
-                const classeInicialDaAvancada = classe.classeInicial.toLowerCase();
+                const classeInicialDaAvancada = this.familiaClasseInicial(classe.classeInicial);
                 if (classeInicialDaAvancada !== classeInicialJogador) {
                     return false;
                 }
@@ -62,15 +103,13 @@ class AdvancedClassSystem {
             }
             
             // Verificar requisitos de atributos
-            const reqs = classe.requisitos || {};
-            return Object.entries(reqs).every(([atributo, valor]) => {
-                return (atributos[atributo] || 0) >= valor;
-            });
+            return this.atendeRequisitos(classe, jogador);
         });
     }
 
     static getClasseByName(nome) {
-        const chave = Object.keys(advancedClasses).find(c => c.toLowerCase() === nome.toLowerCase());
+        const nomeNormalizado = this.normalizarNome(nome);
+        const chave = Object.keys(advancedClasses).find(c => this.normalizarNome(c) === nomeNormalizado);
         return chave ? advancedClasses[chave] : null;
     }
 
@@ -130,6 +169,13 @@ class AdvancedClassSystem {
                     return resolve({ success: false, mensagem: `Classe avançada desconhecida: ${nomeClasse}` });
                 }
 
+                if (!this.classeCompativelComJogador(classe, jogador)) {
+                    return resolve({ success: false, mensagem: `A classe ${classe.nome} não é compatível com a classe inicial ${jogador.classe}.` });
+                }
+                if (!this.atendeRequisitos(classe, jogador)) {
+                    return resolve({ success: false, mensagem: `O jogador não atende aos requisitos de atributos da classe ${classe.nome}.` });
+                }
+
                 const bonus = classe.bonusAtributos || {};
                 const novaForcaBuff = Number(jogador.forca_buff || 0) + Number(bonus.forca || 0);
                 const novaResistenciaBuff = Number(jogador.resistencia_buff || 0) + Number(bonus.resistencia || 0);
@@ -140,7 +186,7 @@ class AdvancedClassSystem {
 
                 db.run(
                     `UPDATE jogadores SET classe_avancada = ?, classe_avancada_nivel = 1, forca_buff = ?, resistencia_buff = ?, velocidade_buff = ?, sentidos_buff = ?, inteligencia_buff = ?, poder_magico_buff = ? WHERE id = ?`,
-                    [nomeClasse, novaForcaBuff, novaResistenciaBuff, novaVelocidadeBuff, novosSentidosBuff, novaInteligenciaBuff, novoPoderMagicoBuff, jogador.id],
+                    [classe.nome, novaForcaBuff, novaResistenciaBuff, novaVelocidadeBuff, novosSentidosBuff, novaInteligenciaBuff, novoPoderMagicoBuff, jogador.id],
                     async (error) => {
                         if (error) {
                             return resolve({ success: false, mensagem: "Erro ao aplicar classe avançada." });

@@ -28,8 +28,8 @@ O Progresso do Personagem é a forma principal de evoluir no RPG, adquirindo XP,
 *— Missões narradas:* 
 > *[As missões narradas podem ser adquiridas na Associação dos Caçadores ou por intermédio da guilda do próprio jogador. Como alternativa, os jogadores podem obter XP e diversas recompensas ao caçar mobs ou explorar dungeons, atividades estas administradas diretamente pela Staff.]*
 
-*— O Treino de Cultivo* 
-> *[O Treino de Cultivo é dividido em diferentes modalidades, cada uma voltada para o aumento do Maestria do personagem. A Meditação de Maestria é o uso da concentração para conseguir o Maestria do céu e da terra, sendo mais eficiente em locais com alta concentração de Maestria. O Treino Físico Marcial fortalece a força, a constituição e a agilidade, podendo incluir katas, batalhas ou exercícios de resistência em terrenos hostis. O Cultivo de Energia refina o Maestria e o espírito, melhorando os atributos relacionados à manipulação de energia. O Treino de Técnicas Avançadas auxilia no controle e refinamento de energia. Já o Treino de Iluminação Mental amplia a percepção e a capacidade estratégica. Cada treino pode ser realizado de forma solo ou supervisionada. Os ganhos de Maestria aumentam conforme a duração do treinamento: um treino de 1 dia proporciona um pequeno aumento, treinos de 7 dias oferecem progresso moderado, treinos de 15 dias geram melhorias significativas e treinos de 30 dias resultam em ganhos mais expressivos de Maestria.]*
+*— Treino de Maestria*
+> *[O Treino de Maestria desenvolve o domínio das técnicas, armas e energia do personagem. Pode envolver prática técnica, controle de mana, repetição de movimentos, combate supervisionado, estudo tático ou meditação focada. Cada treino pode ser realizado de forma solo ou supervisionada. Os ganhos aumentam conforme a duração: 1 dia concede um pequeno avanço, 7 dias oferecem progresso moderado, 15 dias geram melhoria significativa e 30 dias resultam no maior ganho de Maestria.]*
 
 *Recompensas possíveis:*
 > ✓ XP (quantidade varia por Rank)
@@ -61,7 +61,7 @@ O Progresso do Personagem é a forma principal de evoluir no RPG, adquirindo XP,
 1. Complete a atividade no RPG
 2. Um ADM aprova usando os comandos:
    - !quest diária finalizada <Nome>
-   - !treino de cultivo finalizado <Nome>
+   - !treino de maestria finalizado <Nome> [1/7/15/30 dias]
    - !treino conjunto finalizado <Nome1>/<Nome2>
    - !interação finalizada <Nome1>/<Nome2>
    - !one post finalizado <Nome1>/<Nome2>

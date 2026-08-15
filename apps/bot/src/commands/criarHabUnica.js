@@ -29,22 +29,24 @@ module.exports = async (msg) => {
     // =====================================
     // !criar hab única - Envia template
     // =====================================
-    if (texto === "!criar hab única" || texto === "!criar hab unica" || texto === "!criar habilidade única" || texto === "!criar habilidade unica") {
+    if (["!ftécnica", "!ftecnica", "!criar hab única", "!criar hab unica", "!criar habilidade única", "!criar habilidade unica"].includes(texto)) {
         await MessageService.send({ message: msg, text: `
-*═══ CRIAÇÃO DE HABILIDADE ÚNICA ═══*
+*═══ FICHA DE TÉCNICA PERSONALIZADA ═══*
 ══════════════════════════
 
 Preencha o modelo abaixo e envie no grupo.
-Depois use *!confirmar hab única* para processar.
+Depois de enviar a ficha preenchida, um ADM usa *!add técnica* para integrar.
 
 ══════════════════════════
-*NOME:* [Nome da Habilidade]
+*NOME:* [Nome da Técnica]
 *DESCRIÇÃO:* [Descrição detalhada]
 *CUSTO DE MANA:* [Número]
 *COOLDOWN:* [Número em turnos]
 *TIPO:* [Ativa / Passiva]
 *CATEGORIA:* [Física / Mágica / Suporte]
 *CLASSE:* [Classe específica ou "Geral"]
+*RANK:* [E / D / C / B / A / S]
+*NÍVEL DE DESBLOQUEIO:* [Número]
 *PERTENCENTE:* [Nome do Jogador]
 ══════════════════════════
 
@@ -56,6 +58,8 @@ COOLDOWN: 3
 TIPO: Ativa
 CATEGORIA: Física
 CLASSE: Geral
+RANK: B
+NÍVEL DE DESBLOQUEIO: 1
 PERTENCENTE: Sung Jin Woo
         ` });
         return;

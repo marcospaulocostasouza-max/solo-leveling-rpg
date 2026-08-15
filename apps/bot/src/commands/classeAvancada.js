@@ -47,7 +47,7 @@ _Não é possível escolher outra classe avançada._` });
     
     // Buscar quest de classe avançada (se houver)
     const quest = await new Promise((resolve) => {
-        db.get("SELECT * FROM missoes WHERE jogador_id = ? AND nome LIKE '%classe avançada%' AND status = 'ativa'", [jogador.id], (err, row) => {
+        db.get("SELECT * FROM missoes WHERE jogador_id = ? AND tipo = 'classe_avancada' AND status = 'ativa' ORDER BY id DESC LIMIT 1", [jogador.id], (err, row) => {
             resolve(row);
         });
     });
@@ -67,26 +67,43 @@ _Não é possível escolher outra classe avançada._` });
         
         // Verificar se já tem quest ativa (só deve criar quando o player inicia)
         if (quest) {
-            // Limpar quest antiga e criar nova
+            // Limpar quests antigas duplicadas e criar uma unica quest ativa
             await new Promise((resolve) => {
-                db.run("DELETE FROM missoes WHERE id = ?", [quest.id], (err) => resolve());
+                db.run(
+                    "DELETE FROM missoes WHERE jogador_id = ? AND tipo = 'classe_avancada' AND status = 'ativa'",
+                    [jogador.id],
+                    () => resolve()
+                );
             });
         }
         
         // Criar quest SOMENTE agora (quando o jogador inicia)
         const dataAtual = new Date().toISOString();
-        await new Promise((resolve) => {
+        const questCriada = await new Promise((resolve) => {
             db.run(
                 `INSERT INTO missoes (jogador_id, nome, descricao, tipo, status, data) VALUES (?, ?, ?, ?, ?, ?)`,
                 [jogador.id, "Quest de Classe Avançada", "Escolher e evoluir para uma classe avançada", "classe_avancada", "ativa", dataAtual],
-                (err) => resolve()
+                (err) => resolve(!err)
             );
         });
+
+        if (!questCriada) {
+            return MessageService.send({ message: msg, text: "*✖ Não foi possível registrar a quest de classe avançada. Tente novamente ou avise um ADM.*" });
+        }
         
         // Marcar como bloqueado (aguardando escolha)
-        await new Promise((resolve) => {
-            db.run("UPDATE jogadores SET classe_avancada = ? WHERE id = ?", ["BLOQUEADO", jogador.id], (err) => resolve());
+        const jogadorBloqueado = await new Promise((resolve) => {
+            db.run("UPDATE jogadores SET classe_avancada = ? WHERE id = ?", ["BLOQUEADO", jogador.id], (err) => resolve(!err));
         });
+
+        if (!jogadorBloqueado) {
+            await new Promise(resolve => db.run(
+                "DELETE FROM missoes WHERE jogador_id = ? AND tipo = 'classe_avancada' AND status = 'ativa'",
+                [jogador.id],
+                () => resolve()
+            ));
+            return MessageService.send({ message: msg, text: "*✖ A quest foi criada, mas não foi possível bloquear o avanço do jogador. A operação foi desfeita; tente novamente.*" });
+        }
         
         return MessageService.send({ message: msg, text: `*═══ QUEST INICIADA ═══*
 ──────────────────────────
@@ -181,7 +198,7 @@ Consulte um administrador para solicitar esta classe.
         // Verificar se a classe é compatível com a classe inicial
         const classeInicialDaAvancada = classeEscolhida.classeInicial;
         if (classeInicialDaAvancada) {
-            if (classeInicialDaAvancada.toLowerCase() !== classeAtual.toLowerCase()) {
+            if (AdvancedClassSystem.familiaClasseInicial(classeInicialDaAvancada) !== AdvancedClassSystem.familiaClasseInicial(classeAtual)) {
                 return MessageService.send({ message: msg, text: `*✖ A classe ${classeEscolhida.nome} não é compatível com sua classe inicial ${classeAtual}.*` });
             }
         } else if (classeEscolhida.categoria !== "Geral") {
@@ -201,7 +218,11 @@ Consulte um administrador para solicitar esta classe.
         
         // Completar quest
         await new Promise((resolve) => {
-            db.run("UPDATE missoes SET status = 'concluida' WHERE id = ?", [quest.id], (err) => resolve());
+            db.run(
+                "UPDATE missoes SET status = 'concluida' WHERE jogador_id = ? AND tipo = 'classe_avancada' AND status = 'ativa'",
+                [jogador.id],
+                () => resolve()
+            );
         });
         
         // Recalcular atributos
@@ -232,7 +253,7 @@ ${JSON.stringify(classeEscolhida.bonusAtributos || {})}
 
 *Ver técnicas da classe:*
 > !${nomeClasseFormatado}
-> !tecnicasClasse ${classeEscolhida.nome}
+> !tecnicas ${classeEscolhida.nome}
 
 *Ver detalhes da classe:*
 > !classe avançada

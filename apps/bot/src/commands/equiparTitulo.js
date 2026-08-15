@@ -40,7 +40,7 @@ Exemplo: !equipar título Olho Último
 ═ *Título não encontrado!*
 
 Verifique se o nome está correto.
-Use !titulos para ver todos os títulos disponíveis.
+Use !meus títulos para consultar os títulos que você conquistou.
         ` });
         return;
     }
@@ -68,9 +68,16 @@ Use !ficha para criar sua ficha primeiro.
                 return;
             }
             
-            // Verificar se o jogador possui este título
-            // (Por enquanto, vamos permitir equipar qualquer título)
-            // Depois você pode adicionar uma tabela de títulos desbloqueados
+            const tituloConquistado = String(jogador.titulo || '').trim().toLowerCase();
+            if (!tituloConquistado || tituloConquistado === 'nenhum' || tituloConquistado !== titulo.nome.toLowerCase()) {
+                await MessageService.send({ message: msg, text: `
+═ *Título não conquistado!*
+
+Você só pode equipar títulos que já pertencem ao seu personagem.
+Use *!meus títulos* para consultar sua lista.
+                ` });
+                return;
+            }
             
             // Aplicar buffs do título
             const buffs = titulo.efeitos || [];
@@ -84,7 +91,7 @@ Use !ficha para criar sua ficha primeiro.
             
             // Atualizar título equipado no banco
             db.run(
-                'UPDATE jogadores SET titulo_equipado = ? WHERE numero = ?',
+                'UPDATE jogadores SET titulo = ? WHERE numero = ?',
                 [titulo.nome, numero],
                 async (err) => {
                     if (err) {

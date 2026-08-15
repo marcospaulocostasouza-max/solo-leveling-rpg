@@ -28,18 +28,19 @@ module.exports = async (msg) => {
     // =====================================
     // !criar item único - Envia template
     // =====================================
-    if (texto === "!criar item único" || texto === "!criar item unico" || texto === "!criar item") {
+    if (["!fitem", "!criar item único", "!criar item unico", "!criar item"].includes(texto)) {
         await MessageService.send({ message: msg, text: `
 *═══ CRIAÇÃO DE ITEM ÚNICO ═══*
 ══════════════════════════
 
 Preencha o modelo abaixo e envie no grupo.
-Depois use *!confirmar item único* para processar.
+Depois de enviar a ficha preenchida, um ADM usa *!add item* para integrar.
 
 ══════════════════════════
 *NOME:* [Nome do Item]
 *DESCRIÇÃO:* [Descrição detalhada]
 *CATEGORIA:* [Arma / Armadura / Escudo / Acessório / Consumível]
+*SLOT:* [Cabeça / Corpo / Acessórios / Item de Apoio / Pernas / Pés / Arma 1 / Arma 2]
 *TIER:* [Comum / Raro / Épico / Lendário / Único]
 *FORÇA:* [Bônus numérico]
 *RESISTÊNCIA:* [Bônus numérico]
@@ -55,6 +56,7 @@ Depois use *!confirmar item único* para processar.
 NOME: Espada do Dragão Negro
 DESCRIÇÃO: Uma espada imbuída com a essência de um dragão ancião.
 CATEGORIA: Arma
+SLOT: Arma 1
 TIER: Lendário
 FORÇA: 25
 RESISTÊNCIA: 10

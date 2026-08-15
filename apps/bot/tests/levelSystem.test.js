@@ -1,0 +1,1 @@
+"use strict";const assert=require("assert"),L=require("../src/systems/levelSystem");assert.equal(L.getXpNecessario(1),500);assert.equal(L.getXpNecessario(11),1000);assert.equal(L.getXpNecessario(47),46500);assert.equal(L.getXpNecessario(48),48000);assert.equal(L.getXpNecessario(99),144000);assert.equal(L.getXpNecessario(100),0);console.log("levelSystem.test.js: passou");

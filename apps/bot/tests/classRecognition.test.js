@@ -6,6 +6,8 @@ const buffs = require("../src/utils/buffsClasses");
 const { obterClasseCanonica } = require("../src/utils/normalizarClasse");
 const obterBuffsClasse = require("../src/utils/obterBuffsClasse");
 const { resolverConsultaClasse } = require("../src/commands/tecnicasClasse");
+const { normalizarDadosFicha } = require("../src/utils/normalizarDadosFicha");
+const { obterEstiloCanonico } = require("../src/utils/normalizarEstiloLuta");
 
 test("reconhece todas as classes oficiais ignorando caixa e acentos", () => {
     for (const nome of Object.keys(classes)) {
@@ -13,6 +15,13 @@ test("reconhece todas as classes oficiais ignorando caixa e acentos", () => {
         assert.equal(obterClasseCanonica(nome.toUpperCase()), nome);
         assert.ok(buffs[nome], `Buff ausente para ${nome}`);
     }
+});
+
+test("normaliza idade e atributos textuais antes do PostgreSQL", () => {
+    const dados = normalizarDadosFicha({ idade: "25 anos", forca: "5 pontos", resistencia: 3 });
+    assert.equal(dados.idade, 25);
+    assert.equal(dados.forca, 5);
+    assert.equal(dados.resistencia, 3);
 });
 
 test("resolve comandos de tecnicas sem confundir subclasses de mago", () => {
@@ -39,10 +48,27 @@ test("nao aceita classe desconhecida por aproximacao", () => {
     assert.equal(obterClasseCanonica("arqueiro"), null);
 });
 
+test("reconhece variacoes de Cajados e Orbes na ficha", () => {
+    const esperado = "Proficiência em Cajados e Orbes";
+    for (const valor of [
+        "Cajados e Orbe",
+        "Cajado e Orbe",
+        "Cajados e Orbes",
+        "Proficiência em Cajados e Orbes",
+        "Cajados/Orbe",
+        "Cajados & Orbes",
+        "> *Cajados e Orbe.*"
+    ]) {
+        assert.equal(obterEstiloCanonico(valor), esperado, valor);
+    }
+});
+
 test("diferencia Ranger Fisico de Ranger Magico", () => {
     assert.equal(obterClasseCanonica("Ranger Físico"), "Ranger Físico");
     assert.equal(obterClasseCanonica("ranger fisico"), "Ranger Físico");
     assert.equal(obterClasseCanonica("Ranger Mágico"), "Ranger Mágico");
+    assert.equal(obterClasseCanonica("> *Ranger Físico*"), "Ranger Físico");
+    assert.equal(obterClasseCanonica("> _Ranger Mágico_"), "Ranger Mágico");
     assert.notDeepEqual(buffs["Ranger Físico"], buffs["Ranger Mágico"]);
     assert.equal(buffs["Ranger Físico"].forca_buff, 5);
     assert.equal(buffs["Ranger Mágico"].poder_magico_buff, 5);

@@ -24,7 +24,7 @@ nome:"Assassino",
 
 descricao:`
 O Assassino e uma classe especializada em velocidade, precisao e eliminacao rapida.
-Diferente dos Lutadores, que enfrentam seus inimigos diretamente, o Assassino utiliza movimentacao, sentidos elevados e ataques precisos para encontrar brechas na defesa dos adversarios.
+O Assassino utiliza movimentacao veloz e ataques precisos para encontrar brechas na defesa dos adversarios.
 Sua maior vantagem esta na capacidade de identificar pontos vulneraveis e aplicar golpes criticos.
 Porem, essa classe nao possui a mesma resistencia de combatentes focados em defesa, tornando necessario utilizar estrategia e inteligencia durante os combates.
 Um Assassino experiente nao vence pela forca bruta, mas pela capacidade de atacar no momento perfeito.
@@ -32,11 +32,11 @@ Um Assassino experiente nao vence pela forca bruta, mas pela capacidade de ataca
 `,
 
 bonus:
-"+50% no atributo Sentidos",
+"+50% no atributo Velocidade",
 tecnica:
 "Nirvana",
 foco:
-"Sentidos e Forca"
+"Velocidade e Forca"
 
 },
 
@@ -97,17 +97,14 @@ foco:
 "Mago Elemental": {
 nome:"Mago Elemental",
 descricao:`
-O Mago Elemental e uma classe especializada no controle dos elementos da natureza.
-Seus usuarios utilizam mana para manipular forcas como fogo, agua, terra, vento, raio e planta.
-Ao iniciar sua jornada, o jogador deve escolher seu primeiro elemento, sendo esse seu maior dominio.
-Com sua evolucao podera aprender novos elementos, porem sua eficiencia sera menor comparada ao elemento principal.
-Elementos disponiveis:
-Fogo
-Agua
-Planta
-Terra
-Vento
-Raio
+Magos que focam os elementos da natureza possuem uma grande variedade entre si.
+Ao escolher Mago Elemental, o jogador recebe seu primeiro elemento, que sera sua afinidade base e o elemento de sua maestria.
+A potencia de cada dominio funciona assim:
+- Primeiro elemento: 100% do Poder Magico
+- Segundo elemento: 75% do Poder Magico
+- Terceiro elemento: 50% do Poder Magico
+As afinidades adicionais seguem uma progressao separada: no nivel 35, o jogador pode sortear sua segunda afinidade; no nivel 70, pode sortear sua terceira afinidade.
+Ao criar a ficha, a classe permanece registrada como Mago Elemental e a afinidade escolhida/sorteada sera registrada como seu elemento base.
 
 `,
 bonus:
@@ -119,10 +116,9 @@ foco:
 "Mago de Maldicao": {
 nome:"Mago de Maldicao",
 descricao:`
-O Mago de Maldicao e especializado em enfraquecer seus inimigos atraves de magia.
-Enquanto outros magos procuram causar dano direto, essa classe utiliza tecnicas capazes de reduzir capacidades, limitar movimentos e controlar o campo de batalha.
-Sao especialistas em estrategias, preparando o terreno para que seus aliados consigam derrotar inimigos mais fortes.
-Um usuario dessa classe nao precisa ser o mais poderoso, pois sua forca esta em controlar a batalha.
+Assim como existem aqueles que fortalecem seus aliados, existem os que causam enfraquecimentos.
+Esses sao os Magos de Maldicao: cacadores focados em magias de controle de campo, reducao de capacidades e efeitos negativos.
+Seu objetivo e enfraquecer o inimigo e limitar suas acoes para que seus aliados possam agir com vantagem.
 `,
 bonus:
 "+50% no atributo Poder Magico",

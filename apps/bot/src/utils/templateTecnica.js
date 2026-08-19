@@ -142,7 +142,7 @@ function exibirTecnica(tecnicas, jogador = null, tipoRecurso = "Maestria") {
         // =====================================
         mensagem += `${divisores.acao}\n`;
         mensagem += `> !comprar tecnica ${tecnica.nome.toLowerCase().replace(/ /g, '_')}\n`;
-        mensagem += `> Custo: ${tecnica.custo_qi_formatado || tecnica.custo_qi + " Qi" || "10 Qi"}\n\n`;
+        mensagem += `> Custo: ${tecnica.custo_maestria_formatado || `${custoMaestria} de Maestria`}\n\n`;
         
         mensagem += `${divisores.principal}\n\n`;
     });
@@ -171,7 +171,8 @@ function exibirListaTecnicas(tecnicas, categoria = null) {
 
     tecnicas.forEach((tecnica, index) => {
         mensagem += `*${index + 1}. ${tecnica.nome}*\n`;
-        mensagem += `> Custo: ${tecnica.custo_qi_formatado || tecnica.custo_qi + " Qi" || "10 Qi"} | ${tecnica.custo_mana || 0} MP\n`;
+        const custoMaestria = tecnica.custo_maestria ?? tecnica.custo_qi ?? 0;
+        mensagem += `> Custo: ${tecnica.custo_maestria_formatado || `${custoMaestria} de Maestria`} | ${tecnica.custo_mana || 0} MP\n`;
         const descLista = tecnica.descricao_completa || tecnica.descricao || "Sem descrição.";
         mensagem += `> ${descLista.substring(0, 100)}${descLista.length > 100 ? "..." : ""}\n\n`;
     });

@@ -54,7 +54,8 @@ function garantirMetadadosMissoes() {
             objetivo_texto: "TEXT",
             vinculo_necessario: "INTEGER",
             nivel_recomendado: "TEXT",
-            oferecida_em: "TEXT"
+            oferecida_em: "TEXT",
+            recompensa_item: "TEXT"
         };
 
         for (const [nome, definicao] of Object.entries(novasColunas)) {
@@ -152,7 +153,15 @@ class QuestSystem {
                     db.run("UPDATE missoes SET progresso = ?, status = 'completa' WHERE id = ?", [missao.objetivo, missaoId], async () => {
                         await LevelSystem.adicionarXp(jogadorId, missao.recompensa_xp, `Missão completa: ${missao.nome}`);
                         db.run("UPDATE jogadores SET won = won + ? WHERE id = ?", [missao.recompensa_won, jogadorId]);
-                        resolve({ completa: true, recompensa: { xp: missao.recompensa_xp, won: missao.recompensa_won } });
+                        if (missao.recompensa_item && String(missao.recompensa_item).toLowerCase() !== "nenhum") {
+                            const item = await buscar("SELECT id FROM itens WHERE LOWER(nome)=LOWER(?)", [missao.recompensa_item]);
+                            if (item) {
+                                const inv = await buscar("SELECT id FROM inventario_jogador WHERE jogador_id=? AND item_id=?", [jogadorId, item.id]);
+                                if (inv) await executar("UPDATE inventario_jogador SET quantidade=quantidade+1 WHERE id=?", [inv.id]);
+                                else await executar("INSERT INTO inventario_jogador(jogador_id,item_id,quantidade,equipado) VALUES(?,?,1,0)", [jogadorId,item.id]);
+                            }
+                        }
+                        resolve({ completa: true, recompensa: { xp: missao.recompensa_xp, won: missao.recompensa_won, item: missao.recompensa_item || null } });
                     });
                 } else {
                     db.run("UPDATE missoes SET progresso = ? WHERE id = ?", [novoProgresso, missaoId]);

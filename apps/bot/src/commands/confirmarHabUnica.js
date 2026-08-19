@@ -115,14 +115,19 @@ Verifique se o nome está correto ou se o jogador já possui ficha aprovada.
     // =====================================
     // ADICIONAR A TÉCNICA AO JOGADOR
     // =====================================
-    await new Promise((resolve) => {
+    await new Promise((resolve, reject) => {
         db.run(
             `INSERT OR IGNORE INTO jogador_tecnicas (jogador_id, tecnica_id, nivel, equipada)
              VALUES (?, ?, 1, 1)`,
             [jogador.id, tecnicaId],
-            (err) => resolve()
+            (err) => err ? reject(err) : resolve()
         );
     });
+    const vinculoCriado = await new Promise((resolve, reject) => db.get(
+        "SELECT id FROM jogador_tecnicas WHERE jogador_id = ? AND tecnica_id = ?",
+        [jogador.id, tecnicaId], (err, row) => err ? reject(err) : resolve(row)
+    ));
+    if (!vinculoCriado) throw new Error("A técnica foi criada, mas não foi vinculada ao jogador.");
     
     // =====================================
     // MARCAR COMO CONCLUÍDO

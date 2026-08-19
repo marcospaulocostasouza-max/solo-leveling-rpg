@@ -55,7 +55,7 @@ Use !ficha para criar sua ficha primeiro.
 *Seu treino foi intenso!*
 
 *Maestria obtida:* +${maestriaGanha}
-*Maestria total:* ${(jogador.maestria || 0) + maestriaGanha}
+*Maestria total:* ${(Number(jogador.maestria) || 0) + maestriaGanha}
 
 ────────────────────────══
 _Continue treinando para ganhar mais Maestria e aprender técnicas!_
@@ -99,7 +99,7 @@ _— Poder bruto não basta, Jogador. Maestria representa o domínio que você c
 • Nível: *${jogador.nivel}*
 
 *Como conquistar Maestria?*
-Realize *Treinos de Maestria* pelo sistema de progresso e participe de atividades, eventos ou recompensas que concedam esse recurso. O ganho só entra no registro quando a atividade correspondente é validada pelo sistema ou pela administração.
+Realize *Treinos de Maestria* pelo sistema de progresso e participe de atividades, eventos ou recompensas que concedam esse recurso. O ganho entra no registro quando a atividade correspondente é validada pelo Sistema.
 
 *Onde ela é usada?*
 A Maestria é gasta para aprender técnicas compatíveis com sua classe normal ou sua Classe Avançada. Cada compra exige:
@@ -109,9 +109,9 @@ A Maestria é gasta para aprender técnicas compatíveis com sua classe normal o
 • não possuir a técnica anteriormente.
 
 *Custos progressivos*
-• Técnicas da classe normal: *10, 20, 40, 80...*
-• Técnicas da Classe Avançada: *200, 400, 800...*
-Cada nova técnica da mesma classe custa o dobro da anterior.
+• Técnicas da classe normal: *10, 20, 40, 70, 110, 160, 230, 320, 450, 650...*
+• Técnicas da Classe Avançada: *200, 300, 450, 650, 900...*
+Cada nova técnica da mesma classe custa um pouco mais que a anterior, com progressão controlada.
 
 *Como usar, passo a passo*
 1. Veja as opções: *!Técnicas*

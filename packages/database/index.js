@@ -107,13 +107,14 @@ function itemSlot(item) {
 }
 function isConsumable(item) {
   const category = String(item.categoria || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
-  return Number(item.consumivel) === 1 || category.includes("consumivel") || category.includes("apoio");
+  const type = String(item.tipo || item.legacyCategory || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+  return Number(item.consumivel) === 1 || category.includes("consumivel") || type.includes("consumivel");
 }
 function itemBonus(item) {
   return Object.fromEntries(attributes.map(key => [key, Number(item[`${key}_bonus`] || 0)]));
 }
 function classBonus(player) {
-  const map = { Lutador: "forca", Assassino: "velocidade", Tanker: "resistencia", Ranger: "sentidos", Curador: "poder_magico", "Mago Elemental": "poder_magico", "Mago Invocador": "inteligencia", "Mago Barreira": "resistencia", "Mago Maldição": "poder_magico" };
+  const map = { Lutador: "forca", Assassino: "velocidade", Tanker: "resistencia", Ranger: "sentidos", Curador: "poder_magico", "Mago Elemental": "poder_magico", "Mago Invocador": "poder_magico", "Mago de Barreira": "poder_magico", "Mago Barreira": "poder_magico", "Mago de Maldicao": "poder_magico", "Mago de Maldição": "poder_magico", "Mago Maldição": "poder_magico" };
   const key = map[player.classe];
   return Object.fromEntries(attributes.map(attribute => [attribute, attribute === key ? Math.floor(Number(player[`${attribute}_base`] || 0) * .5) : 0]));
 }
@@ -229,23 +230,103 @@ async function ensureMasteryHistoryTable(query = { run }) {
   await query.run(ddl);
 }
 
+function techniqueMasteryCost(technique, ownedCount, advanced = false) {
+  const explicit = Number(technique?.custo_maestria ?? technique?.custo_qi ?? 0);
+  return explicit > 0 ? explicit : calculateTechniqueMasteryCost(ownedCount, advanced);
+}
+
+function normalizeProficiencyName(value) {
+  return String(value || "")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/^profici[a-z]*\s*(?:em|e|m)?\s*/, "")
+    .replace(/[&/+]/g, " e ")
+    .replace(/[^a-z0-9\s]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function resolveStyleForWeapon(techniqueClass) {
+  // Mapeia comandos de armas/estilos para os nomes canônicos dos estilos de luta
+  const aliases = {
+    "espadas": "espadas", "espada": "espadas", "espadão": "espadas", "espadao": "espadas",
+    "kanabo": "kanabo",
+    "katanas": "katanas", "katana": "katanas",
+    "adagas": "adagas", "adaga": "adagas", "faca": "adagas",
+    "lanças": "lanças", "lança": "lanças", "lancas": "lanças", "lanca": "lanças",
+    "cajados e orbes": "cajados e orbes", "cajado": "cajados e orbes", "orbe": "cajados e orbes", "orbes": "cajados e orbes", "grimório": "cajados e orbes", "grimorio": "cajados e orbes",
+    "arcos": "arcos", "arco": "arcos",
+    "armas de fogo": "armas de fogo", "arma de fogo": "armas de fogo", "pistola": "armas de fogo", "revolver": "armas de fogo", "rifle": "armas de fogo", "fuzil": "armas de fogo", "escopeta": "armas de fogo", "espingarda": "armas de fogo", "sniper": "armas de fogo",
+    "combate desarmado": "combate desarmado", "punhos": "combate desarmado", "punho": "combate desarmado", "artes marciais": "combate desarmado",
+    "escudos": "escudos", "escudo": "escudos",
+    "foices": "foices", "foice": "foices",
+    "correntes": "correntes", "corrente": "correntes",
+    "machados": "machados", "machado": "machados",
+    "martelos": "martelos", "martelo": "martelos",
+    "chicotes": "chicotes", "chicote": "chicotes",
+    "manoplas": "manoplas", "manopla": "manoplas",
+    "bestas": "bestas", "besta": "bestas",
+    "bumerangues": "bumerangues", "bumerangue": "bumerangues",
+    "arremesso": "arremesso",
+    "garras": "garras", "garra": "garras",
+    "sabres": "sabres", "sabre": "sabres",
+    "foices duplas": "foices duplas", "foices dupla": "foices duplas", "foice dupla": "foices duplas",
+    "tridentes": "tridentes", "tridente": "tridentes",
+    "clavas": "clavas", "clava": "clavas",
+    "floretes": "floretes", "florete": "floretes",
+    "chakrams": "chakrams", "chakram": "chakrams",
+    "luvas de combate": "luvas de combate", "luvas": "luvas de combate", "luva de combate": "luvas de combate",
+    "manguais": "manguais", "mangual": "manguais",
+    "alabardas": "alabardas", "alabarda": "alabardas",
+    "nunchakus": "nunchakus", "nunchaku": "nunchakus",
+    "tonfas": "tonfas", "tonfa": "tonfas",
+    "kamas": "kamas", "kama": "kamas",
+    "rapieiras": "rapieiras", "rapieira": "rapieiras",
+    "báculos": "báculos", "báculo": "báculos", "baculo": "báculos", "baculos": "báculos",
+    "cimitarras": "cimitarras", "cimitarra": "cimitarras",
+    "picaretas de guerra": "picaretas de guerra", "picareta": "picaretas de guerra", "picaretas": "picaretas de guerra",
+    "bastões": "bastões", "bastão": "bastões", "bastao": "bastões", "bastoes": "bastões",
+    "funda": "funda", "fundas": "funda",
+    "lâminas duplas": "lâminas duplas", "lâmina dupla": "lâminas duplas", "laminas duplas": "lâminas duplas", "lamina dupla": "lâminas duplas",
+    "correntes com foice": "correntes com foice", "kusarigama": "correntes com foice",
+    "leques de guerra": "leques de guerra", "leque de guerra": "leques de guerra", "leques": "leques de guerra", "leque": "leques de guerra",
+    "instrumentos musicais": "instrumentos musicais", "instrumento musical": "instrumentos musicais", "instrumentos": "instrumentos musicais", "instrumento": "instrumentos musicais"
+  };
+  return aliases[normalizeProficiencyName(techniqueClass)] || null;
+}
+
 async function purchaseTechnique(playerId, techniqueId) {
   return transaction(async query => {
     const [player, technique] = await Promise.all([query.get("SELECT * FROM jogadores WHERE id = ?", [playerId]), query.get("SELECT * FROM tecnicas WHERE id = ?", [techniqueId])]);
     if (!player || !technique) throw new Error("Jogador ou técnica não encontrada.");
     const allowed = [player.classe, player.classe_avancada].map(normalizedClass).includes(normalizedClass(technique.classe)) || normalizedClass(technique.classe) === "todas";
-    if (!allowed) throw new Error("Técnica incompatível com sua classe.");
+    if (!allowed) {
+      // Se não é da classe, verificar se é técnica de estilo de luta (proficiência)
+      // e se o jogador possui a proficiência no campo estilo_luta da ficha
+      const estiloProcurado = resolveStyleForWeapon(technique.classe);
+      if (estiloProcurado) {
+        const estiloJogador = normalizeProficiencyName(player.estilo_luta);
+        if (estiloJogador && estiloJogador === estiloProcurado) {
+          // Jogador tem o estilo de luta necessário - permitido
+        } else {
+          throw new Error(`Técnica incompatível com seu estilo de luta. Requer proficiência em ${technique.classe}.`);
+        }
+      } else {
+        throw new Error("Técnica incompatível com sua classe ou estilo de luta.");
+      }
+    }
     if (Number(player.nivel || 0) < Number(technique.nivel_desbloqueio || 1)) throw new Error("Nível insuficiente para esta técnica.");
     if (await query.get("SELECT id FROM jogador_tecnicas WHERE jogador_id = ? AND tecnica_id = ?", [playerId, techniqueId])) throw new Error("Você já possui esta técnica.");
     const advanced = isAdvancedTechnique(player, technique);
     const countRow = await query.get("SELECT COUNT(*) AS total FROM jogador_tecnicas jt JOIN tecnicas t ON t.id = jt.tecnica_id WHERE jt.jogador_id = ? AND LOWER(t.classe) = LOWER(?)", [playerId, technique.classe]);
     const count = Number(countRow?.total || 0);
-    const cost = calculateTechniqueMasteryCost(count, advanced);
+    const cost = techniqueMasteryCost(technique, count, advanced);
     const debit = await query.run("UPDATE jogadores SET maestria = maestria - ? WHERE id = ? AND maestria >= ?", [cost, playerId, cost]);
     if (debit.changes !== 1) throw new Error("Maestria insuficiente.");
     await query.run("INSERT INTO jogador_tecnicas (jogador_id, tecnica_id, nivel, experiencia) VALUES (?, ?, 1, 0)", [playerId, techniqueId]);
     await ensureMasteryHistoryTable(query);
-    await query.run("INSERT INTO historico_maestria (jogador_id, descricao, valor, data) VALUES (?, ?, ?, datetime('now'))", [playerId, `Técnica: ${technique.nome}`, cost]);
+    await query.run("INSERT INTO historico_maestria (jogador_id, descricao, valor, data) VALUES (?, ?, ?, CURRENT_TIMESTAMP)", [playerId, `Técnica: ${technique.nome}`, cost]);
     return {
       technique: technique.nome,
       techniqueData: technique,
@@ -257,4 +338,4 @@ async function purchaseTechnique(playerId, techniqueId) {
   });
 }
 
-module.exports = { DATABASE_PATH, getDatabase, applyMigrations, transaction, run, get, all, playerById, playerByPhone, inventory, playerSkills, playerTitles, playerGuild, playerLocation, isAdmin, canInteractWithNpc, itemSlot, slots, recalculateAttributes, equipItem, shopCatalog, purchaseItem, purchaseTechnique, isAdvancedTechnique, calculateTechniqueMasteryCost, TECHNIQUE_MASTERY_COST, ensureMasteryHistoryTable };
+module.exports = { DATABASE_PATH, getDatabase, applyMigrations, transaction, run, get, all, playerById, playerByPhone, inventory, playerSkills, playerTitles, playerGuild, playerLocation, isAdmin, canInteractWithNpc, itemSlot, slots, recalculateAttributes, equipItem, shopCatalog, purchaseItem, purchaseTechnique, isAdvancedTechnique, calculateTechniqueMasteryCost, techniqueMasteryCost, TECHNIQUE_MASTERY_COST, ensureMasteryHistoryTable, normalizeProficiencyName, resolveStyleForWeapon };

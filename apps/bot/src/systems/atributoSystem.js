@@ -25,8 +25,11 @@ const BONUS_CLASSE_INICIAL = {
     "Ranger": { atributo: "sentidos_base",     bonus: 0.5 },
     "Curador": { atributo: "poder_magico_base", bonus: 0.5 },
     "Mago Elemental": { atributo: "poder_magico_base", bonus: 0.5 },
-    "Mago Invocador": { atributo: "inteligencia_base", bonus: 0.5 },
-    "Mago Barreira": { atributo: "resistencia_base", bonus: 0.5 },
+    "Mago Invocador": { atributo: "poder_magico_base", bonus: 0.5 },
+    "Mago de Barreira": { atributo: "poder_magico_base", bonus: 0.5 },
+    "Mago Barreira": { atributo: "poder_magico_base", bonus: 0.5 },
+    "Mago de Maldicao": { atributo: "poder_magico_base", bonus: 0.5 },
+    "Mago de Maldição": { atributo: "poder_magico_base", bonus: 0.5 },
     "Mago Maldição": { atributo: "poder_magico_base", bonus: 0.5 }
 };
 

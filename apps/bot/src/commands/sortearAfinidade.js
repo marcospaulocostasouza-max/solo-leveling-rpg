@@ -1,129 +1,116 @@
 const MessageService = require("../core/messageService");
-
-/**
- * COMANDO: !sortear afinidade
- * 
- * Sorteia uma afinidade elemental para o jogador.
- * Salva permanentemente no banco de dados.
- * Só pode ser usado uma vez.
- */
-
 const db = require("../core/database");
 const templates = require("../utils/templatesMensagens");
 const elementos = require("../elementos/listaElementos");
+const AfinidadesAdicionais = require("../systems/afinidadesAdicionaisSystem");
+
 const LIMITE_VARIANTE_ACIMA_DE_RARA = 1;
+const get = (sql, params = []) => new Promise((resolve, reject) =>
+    db.get(sql, params, (erro, row) => erro ? reject(erro) : resolve(row))
+);
+const all = (sql, params = []) => new Promise((resolve, reject) =>
+    db.all(sql, params, (erro, rows) => erro ? reject(erro) : resolve(rows || []))
+);
+const run = (sql, params = []) => new Promise((resolve, reject) =>
+    db.run(sql, params, erro => erro ? reject(erro) : resolve())
+);
+const normalizar = valor => String(valor || "").normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
 
-module.exports = async (msg) => {
+function sortear(pool) {
+    const ponderado = [];
+    const pesos = { Comum: 70, Incomum: 20, Raro: 8, "Muito Raro": 2, "Lendário": 1 };
+    for (const elemento of pool) {
+        for (let i = 0; i < (pesos[elemento.raridade] || 0); i++) ponderado.push(elemento);
+    }
+    return ponderado[Math.floor(Math.random() * ponderado.length)];
+}
+
+function determinarSorteio(jogador, quantidadeAdicionais) {
+    const possuiPrimaria = jogador.afinidade_elemental && jogador.afinidade_elemental !== "Nenhuma";
+    if (!possuiPrimaria) return { permitido: true, slot: 1, nivelNecessario: 1 };
+    if (normalizar(jogador.classe) !== "mago elemental") return { permitido: false, motivo: "classe" };
+    const slot = Number(quantidadeAdicionais || 0) + 2;
+    const nivelNecessario = slot === 2 ? 35 : slot === 3 ? 70 : null;
+    if (!nivelNecessario) return { permitido: false, motivo: "limite" };
+    if (Number(jogador.nivel || 1) < nivelNecessario) return { permitido: false, motivo: "nivel", slot, nivelNecessario };
+    return { permitido: true, slot, nivelNecessario };
+}
+
+module.exports = async msg => {
     try {
-        const numeroJogador = msg.author || msg.from;
-        
-        // Verificar se o jogador já tem uma afinidade salva
-        let jogador = await new Promise((resolve, reject) => {
-            db.get("SELECT id, afinidade_elemental, afinidade_sorteada FROM jogadores WHERE numero = ?", [numeroJogador], (err, row) => {
-                if (err) reject(err);
-                else resolve(row);
-            });
-        });
-        
-        // Se o jogador não existe na tabela, criar um registro básico
+        const numero = msg.author || msg.from;
+        let jogador = await get(
+            "SELECT id, classe, nivel, afinidade_elemental, afinidade_sorteada FROM jogadores WHERE numero = ?",
+            [numero]
+        );
+
         if (!jogador) {
-            await new Promise((resolve, reject) => {
-                db.run(
-                    "INSERT OR IGNORE INTO jogadores (numero, afinidade_elemental, afinidade_sorteada) VALUES (?, 'Nenhuma', 0)",
-                    [numeroJogador],
-                    (err) => {
-                        if (err) reject(err);
-                        else resolve();
-                    }
-                );
-            });
-            // Buscar novamente
-            jogador = await new Promise((resolve, reject) => {
-                db.get("SELECT id, afinidade_elemental, afinidade_sorteada FROM jogadores WHERE numero = ?", [numeroJogador], (err, row) => {
-                    if (err) reject(err);
-                    else resolve(row);
-                });
-            });
-        }
-        
-        // Verificar se já possui afinidade OU já sorteou anteriormente
-        if (jogador && (jogador.afinidade_sorteada === 1 || (jogador.afinidade_elemental && jogador.afinidade_elemental !== "Nenhuma"))) {
-            return MessageService.send({ message: msg, text: `
-*═══ VOCÊ JÁ POSSUI UMA AFINIDADE! ═══*
-${templates.divisor()}
-Sua afinidade elemental é: *${jogador.afinidade_elemental}*
-${templates.divisor()}
-_Use !consultar afinidade para ver detalhes._
-            ` });
+            await run("INSERT OR IGNORE INTO jogadores (numero, afinidade_elemental, afinidade_sorteada) VALUES (?, 'Nenhuma', 0)", [numero]);
+            jogador = await get(
+                "SELECT id, classe, nivel, afinidade_elemental, afinidade_sorteada FROM jogadores WHERE numero = ?",
+                [numero]
+            );
         }
 
-        const ocupacaoRara = await new Promise((resolve, reject) => db.all(
+        const adicionais = await AfinidadesAdicionais.listar(jogador.id);
+        const permissao = determinarSorteio(jogador, adicionais.length);
+        let slot = permissao.slot || 1;
+
+        if (!permissao.permitido) {
+            if (permissao.motivo === "classe") {
+                return MessageService.send({ message: msg, text: `*═══ AFINIDADE JÁ DESPERTADA ═══*\n${templates.divisor()}\n> *Elemento:* ${jogador.afinidade_elemental}\n\n_Somente Magos Elementais podem despertar afinidades adicionais._` });
+            }
+            if (permissao.motivo === "limite") {
+                return MessageService.send({ message: msg, text: templates.aviso("Você já despertou as três afinidades permitidas para Mago Elemental.") });
+            }
+            if (permissao.motivo === "nivel") {
+                return MessageService.send({ message: msg, text: templates.aviso(
+                    `A ${slot === 2 ? "segunda" : "terceira"} afinidade é liberada no nível ${permissao.nivelNecessario}. Seu nível atual é ${jogador.nivel || 1}.`
+                ) });
+            }
+        }
+
+        const ocupacaoPrimaria = await all(
             `SELECT LOWER(afinidade_elemental) AS elemento, COUNT(*) AS total
              FROM jogadores
              WHERE afinidade_elemental IS NOT NULL AND afinidade_elemental <> 'Nenhuma' AND numero <> ?
-             GROUP BY LOWER(afinidade_elemental)`, [numeroJogador],
-            (err, rows) => err ? reject(err) : resolve(new Map((rows || []).map(row => [row.elemento, Number(row.total)])))
-        ));
-        const acimaDeRara = new Set(["Muito Raro", "Lendário"]);
-        const elementosSorteaveis = elementos.filter(e => e.sorteavel === true && (
-            !acimaDeRara.has(e.raridade) || (ocupacaoRara.get(e.nome.toLowerCase()) || 0) < LIMITE_VARIANTE_ACIMA_DE_RARA
-        ));
-
-        if (!elementosSorteaveis || elementosSorteaveis.length === 0) {
-            return MessageService.send({ message: msg, text: templates.erro("Nenhum elemento disponível para sorteio.") });
+             GROUP BY LOWER(afinidade_elemental)`,
+            [numero]
+        );
+        const ocupacaoAdicional = await AfinidadesAdicionais.ocupacaoExceto(jogador.id);
+        const ocupacao = new Map();
+        for (const row of [...ocupacaoPrimaria, ...ocupacaoAdicional]) {
+            ocupacao.set(row.elemento, (ocupacao.get(row.elemento) || 0) + Number(row.total));
         }
 
-        // Pool de sorteio baseado em raridade
-        let sorteados = [];
-        elementosSorteaveis.forEach(elemento => {
-            let chance = 0;
-            switch(elemento.raridade) {
-                case "Comum": chance = 70; break;
-                case "Incomum": chance = 20; break;
-                case "Raro": chance = 8; break;
-                case "Muito Raro": chance = 2; break;
-                case "Lendário": chance = 1; break;
-            }
-            for(let i = 0; i < chance; i++) sorteados.push(elemento);
-        });
+        const jaPossui = new Set([
+            jogador.afinidade_elemental,
+            ...adicionais.map(item => item.elemento)
+        ].filter(Boolean).map(normalizar));
+        const raridadesLimitadas = new Set(["Muito Raro", "Lendário"]);
+        const disponiveis = elementos.filter(elemento =>
+            elemento.sorteavel === true &&
+            !jaPossui.has(normalizar(elemento.nome)) &&
+            (!raridadesLimitadas.has(elemento.raridade) || (ocupacao.get(normalizar(elemento.nome)) || 0) < LIMITE_VARIANTE_ACIMA_DE_RARA)
+        );
+        const resultado = sortear(disponiveis);
+        if (!resultado) return MessageService.send({ message: msg, text: templates.erro("Nenhum elemento disponível para sorteio.") });
 
-        const resultado = sorteados[Math.floor(Math.random() * sorteados.length)];
-
-        if (!resultado) {
-            return MessageService.send({ message: msg, text: templates.erro("Não foi possível sortear a afinidade elemental.") });
+        if (slot === 1) {
+            await run("UPDATE jogadores SET afinidade_elemental = ?, afinidade_sorteada = 1 WHERE numero = ?", [resultado.nome, numero]);
+        } else {
+            const salvo = await AfinidadesAdicionais.adicionar(jogador.id, slot, resultado.nome);
+            if (!salvo) throw new Error(`Falha ao salvar afinidade no slot ${slot}`);
         }
 
-        // Salvar afinidade no banco de dados permanentemente
-        await new Promise((resolve, reject) => {
-            db.run(
-                "UPDATE jogadores SET afinidade_elemental = ?, afinidade_sorteada = 1 WHERE numero = ?",
-                [resultado.nome, numeroJogador],
-                (err) => {
-                    if (err) reject(err);
-                    else resolve();
-                }
-            );
-        });
-
-        await MessageService.send({ message: msg, text: `
-*═══ DESPERTAR ELEMENTAL ═══*
-${templates.divisor()}
-_A energia mágica começou a reagir..._
-*═══ Afinidade Elemental despertada: ═══*
-> *${resultado.nome}*
-
-> Categoria: ${resultado.categoria}
-> Raridade: ${resultado.raridade}
-> Bônus de Afinidade: +${resultado.bonusAfinidade}% Poder Mágico
-${templates.divisor()}
-_Sua afinidade foi salva permanentemente!_
-_Use !consultar afinidade para ver detalhes._
-        ` });
-
+        const posicao = slot === 1 ? "Elemento Primário" : slot === 2 ? "Segundo Elemento" : "Terceiro Elemento";
+        await MessageService.send({ message: msg, text: `*═══ DESPERTAR ELEMENTAL ═══*\n${templates.divisor()}\n_A energia mágica começou a reagir..._\n\n> *${resultado.nome}*\n> *Posição:* ${posicao}\n> *Categoria:* ${resultado.categoria}\n> *Raridade:* ${resultado.raridade}\n> *Bônus de Afinidade:* +${resultado.bonusAfinidade}% Poder Mágico\n${templates.divisor()}\n_Sua afinidade foi salva permanentemente!_\n_Use !consultar afinidade para ver detalhes._` });
         return resultado;
-
     } catch (erro) {
-        console.log("Erro no sorteio elemental:", erro);
+        console.error("[AFINIDADE] Erro no sorteio elemental:", erro.message);
         return MessageService.send({ message: msg, text: templates.erro("Erro ao realizar sorteio elemental.") });
     }
 };
+
+module.exports.determinarSorteio = determinarSorteio;

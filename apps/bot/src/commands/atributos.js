@@ -1,39 +1,35 @@
-const MessageService = require("../core/messageService");
+const MessageService=require("../core/messageService");
+module.exports=async msg=>MessageService.send({message:msg,text:`_*「 SISTEMA DE ATRIBUTOS 」*_
+_— Atributos representam capacidades mensuráveis do personagem. O valor base pertence à ficha; o valor total inclui bônus válidos._
 
-const mensagens = [
-`════════════════════════════════════
-*ATRIBUTOS FÍSICOS*
-════════════════════════════════════
+_*ATRIBUTOS FÍSICOS:*_
+_• Força — potência corporal, impacto, empurrões e capacidade de carga._
+_• Resistência — durabilidade, defesa física e base da Vida máxima._
+_• Velocidade — deslocamento, reflexos, iniciativa e execução de movimentos._
+_• Sentidos — percepção, precisão, rastreamento e leitura de ameaças._
 
-› *Força*: poder físico, impacto e capacidade de carga.
-› *Resistência*: vida, defesa física e tolerância a danos.
-› *Velocidade*: deslocamento, reflexos e capacidade de reagir.
-› *Sentidos*: percepção, mira e leitura de ameaças.
+_*ATRIBUTOS MÁGICOS:*_
+_• Inteligência — controle e eficiência da energia; participa do cálculo de Mana máxima._
+_• Poder Mágico — potência de feitiços, técnicas mágicas, barreiras e curas quando a técnica assim determinar._
 
-_Use !jogador para consultar seus valores finais._`,
-`════════════════════════════════════
-*ATRIBUTOS MÁGICOS*
-════════════════════════════════════
+_*COMO O TOTAL É FORMADO:*_
+_Atributo total = base + bônus da classe inicial + buffs registrados + equipamentos equipados._
 
-› *Inteligência*: controle, aprendizado e eficiência de mana.
-› *Poder mágico*: potência de feitiços, técnicas elementais e curas.
-› *Mana*: recurso gasto por técnicas; o total depende da ficha e dos efeitos ativos.
+_• A cada nível: +1 automático em cada atributo e +3 pontos livres._
+_• Pontos livres são aplicados com !Distribuir._
+_• A classe inicial concede +50% sobre seu atributo principal._
+_• Equipamentos só concedem bônus quando estão equipados._
+_• Passivas são sempre ativas, mas só alteram números quando o efeito estiver integrado ao cálculo._
 
-_Atributos mágicos não substituem os físicos: cada técnica informa a forma como usa seus valores._`,
-`════════════════════════════════════
-*ATRIBUTOS ADICIONAIS*
-════════════════════════════════════
+_*HP E MP:*_
+_• Vida máxima usa Resistência total e nível._
+_• Mana máxima usa Inteligência total e nível._
+_• Quest Diária, level-up e o ciclo natural de 48 horas recuperam HP/MP totalmente._
 
-› Os atributos finais incluem base, classe, rank, equipamentos, buffs e efeitos válidos.
-› Títulos, passivas e técnicas podem alterar a leitura de uma cena quando sua descrição indicar isso.
-› Distribua pontos disponíveis com !distribuir.
-› Consulte a escala atual em !faixa de atributos.
+_*CONSULTAS:*_
+_• !Jogador — ficha e valores atuais._
+_• !Distribuir — saldo e distribuição de pontos._
+_• !Faixa de Atributos — classificação dos valores finais._
+_• !FCombate — comparação entre personagens._
 
-_Nenhum valor é alterado por este comando._`
-];
-
-module.exports = async (msg) => {
-    for (const texto of mensagens) {
-        await MessageService.send({ message: msg, text: texto });
-    }
-};
+_Atributo alto não inventa efeitos: cada técnica, item ou regra informa como o valor é utilizado._`});

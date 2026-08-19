@@ -17,6 +17,7 @@ const db = require("../core/database");
 const adminCore = require("../core/adminCore");
 const verificarBloqueio = require("../utils/verificarBloqueio");
 const JogadorCore = require("../core/jogadorCore");
+const RecoverySystem = require("../systems/recoverySystem");
 
 // =====================================
 // TABELA DE RECOMPENSAS POR RANK
@@ -123,6 +124,10 @@ async function aplicarRecompensas(jogadorId, tipoAtividade, rank, quantidadeExtr
         ));
         
         recompensasAplicadas.push({ tipo: "Caixa de Item", valor: 1 });
+    }
+    if (tipoAtividade === "quest_diaria") {
+        await RecoverySystem.recuperar(jogadorId, "Quest Diária");
+        recompensasAplicadas.push({ tipo: "HP/MP", valor: "recuperados" });
     }
     
     // Aplicar Maestria (apenas Treino de Cultivo)

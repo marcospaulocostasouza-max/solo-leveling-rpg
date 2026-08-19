@@ -33,7 +33,8 @@ class InventorySystem {
 
     static isConsumivel(item) {
         const categoria = (item.categoria || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
-        return Number(item.consumivel) === 1 || categoria.includes("consumivel") || categoria.includes("apoio");
+        const tipo = (item.tipo || item.legacyCategory || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+        return Number(item.consumivel) === 1 || categoria.includes("consumivel") || tipo.includes("consumivel");
     }
 
     static normalizarEfeitoConsumivel(efeito) {
@@ -49,13 +50,13 @@ class InventorySystem {
     }
 
     static getSlotDoItem(item) {
-        const cat = (item.categoria || "").toLowerCase();
+        const cat = (item.categoria || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
         if (cat.includes("arma 1") || cat.includes("arma1")) return "Arma 1";
         if (cat.includes("arma 2") || cat.includes("arma2")) return "Arma 2";
         if (cat.includes("cabe")) return "Cabeça";
         if (cat.includes("corpo")) return "Corpo";
         if (cat.includes("perna")) return "Pernas";
-        if (cat.includes("pés") || cat.includes("pes") || cat.includes("calcad") || cat.includes("sapato") || cat.includes("bota")) return "Pés";
+        if (cat.includes("pes") || cat.includes("calcad") || cat.includes("sapato") || cat.includes("bota")) return "Pés";
         if (cat.includes("acess")) return "Acessórios";
         if (cat.includes("apoio") || cat.includes("consum")) return "Item de Apoio";
         if (item.arma) {
@@ -63,7 +64,7 @@ class InventorySystem {
             if (desc.includes("2-fp") || desc.includes("2 fp") || desc.includes("duas maos")) return "Arma 2";
             return "Arma 1";
         }
-        if (item.escudo) return "Pés";
+        if (item.escudo) return "Arma 1";
         if (item.armadura) return "Corpo";
         if (item.acessorio) return "Acessórios";
         if (item.consumivel) return "Item de Apoio";

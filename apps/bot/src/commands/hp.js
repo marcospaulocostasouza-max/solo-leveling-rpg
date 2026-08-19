@@ -14,6 +14,11 @@ Para uma luta mais interessante e mais fiel à obra de Solo Leveling, os NPCs en
 
 *MECANICA DE HP (NPCs e Bosses)*
 
+*RECUPERAÇÃO DO JOGADOR*
+- Ao concluir uma Quest Diária: HP e MP são restaurados por completo
+- Ao subir de nível: HP e MP são restaurados por completo
+- Após 48 horas desde a última recuperação: HP e MP são restaurados por completo quando o jogador volta a usar o Sistema
+
 *COMO REDUZIR HP*
 - Nocautear: reduzir minimo 85% do HP
 - Matar: reduzir a 0

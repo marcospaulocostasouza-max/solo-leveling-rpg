@@ -1,9 +1,12 @@
 const MessageService = require("../core/messageService");
-const { get, purchaseTechnique } = require("../../../../packages/database");
+const db = require("../core/database");
+const { comprarTecnica } = require("../systems/techniquePurchaseSystem");
+const get = (sql, params = []) => new Promise((resolve, reject) => db.get(sql, params, (err, row) => err ? reject(err) : resolve(row)));
 
 function friendlyPurchaseError(error, player, technique) {
     const message = String(error?.message || "");
-    if (message.includes("incompatível")) return `*═══ CLASSE INCOMPATÍVEL ═══*\n\nA técnica *${technique.nome}* pertence à classe *${technique.classe}*.\nSua classe atual é *${player.classe}*.`;
+    if (message.includes("Proficiência incompatível")) return `*═══ PROFICIÊNCIA INCOMPATÍVEL ═══*\n\nA técnica *${technique.nome}* exige *Proficiência em ${technique.classe}*.\nSeu Estilo de Luta atual é *${player.estilo_luta || "não definido"}*.`;
+    if (message.includes("Classe incompatível")) return `*═══ CLASSE INCOMPATÍVEL ═══*\n\nA técnica *${technique.nome}* pertence à classe *${technique.classe}*.\nSua classe atual é *${player.classe}*.`;
     if (message.includes("Nível insuficiente")) return `*═══ NÍVEL INSUFICIENTE ═══*\n\nTécnica: *${technique.nome}*\nNível necessário: *${technique.nivel_desbloqueio || 1}*\nSeu nível: *${player.nivel || 1}*`;
     if (message.includes("já possui")) return "*═══ VOCÊ JÁ POSSUI ESTA TÉCNICA! ═══*";
     if (message.includes("Maestria insuficiente")) return `*═══ MAESTRIA INSUFICIENTE ═══*\n\nSua Maestria: *${player.maestria || 0}*\nUse *!Maestria* para entender como obter e utilizar esse recurso.`;
@@ -36,7 +39,7 @@ module.exports = async (msg) => {
 
         let result;
         try {
-            result = await purchaseTechnique(player.id, technique.id);
+            result = await comprarTecnica(player, technique);
         } catch (error) {
             await MessageService.send({ message: msg, text: friendlyPurchaseError(error, player, technique) });
             return;

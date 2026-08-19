@@ -41,7 +41,7 @@ Depois de enviar a ficha preenchida, um ADM usa *!add item* para integrar.
 *DESCRIÇÃO:* [Descrição detalhada]
 *CATEGORIA:* [Arma / Armadura / Escudo / Acessório / Consumível]
 *SLOT:* [Cabeça / Corpo / Acessórios / Item de Apoio / Pernas / Pés / Arma 1 / Arma 2]
-*TIER:* [Comum / Raro / Épico / Lendário / Único]
+*TIER:* [E / D / C / B / A / S / Comum / Raro / Épico / Lendário / Único]
 *FORÇA:* [Bônus numérico]
 *RESISTÊNCIA:* [Bônus numérico]
 *VELOCIDADE:* [Bônus numérico]

@@ -48,7 +48,7 @@ Não há itens únicos pendentes para confirmar.
     const slotCanonico = slotsValidos.find(slot => normalizar(slot) === normalizar(dados.slot));
     if (!slotCanonico) return MessageService.send({ message: msg, text: `*✖ Slot inválido:* ${dados.slot || "não informado"}. Use: ${slotsValidos.join(", ")}.` });
     dados.slot = slotCanonico;
-    const tiersValidos = ["Comum", "Incomum", "Raro", "Épico", "Lendário", "Único"];
+    const tiersValidos = ["E", "D", "C", "B", "A", "S", "Comum", "Incomum", "Raro", "Épico", "Lendário", "Único"];
     const tierCanonico = tiersValidos.find(tier => normalizar(tier) === normalizar(dados.tier));
     if (!tierCanonico) return MessageService.send({ message: msg, text: `*✖ Rank/Tier inválido:* ${dados.tier}.` });
     dados.tier = tierCanonico;
@@ -125,14 +125,19 @@ Verifique se o nome está correto ou se o jogador já possui ficha aprovada.
     // =====================================
     // ADICIONAR O ITEM AO INVENTÁRIO DO JOGADOR
     // =====================================
-    await new Promise((resolve) => {
+    await new Promise((resolve, reject) => {
         db.run(
             `INSERT INTO inventario_jogador (jogador_id, item_id, quantidade, equipado)
              VALUES (?, ?, 1, 0)`,
             [jogador.id, itemId],
-            (err) => resolve()
+            (err) => err ? reject(err) : resolve()
         );
     });
+    const vinculoCriado = await new Promise((resolve, reject) => db.get(
+        "SELECT id FROM inventario_jogador WHERE jogador_id = ? AND item_id = ?",
+        [jogador.id, itemId], (err, row) => err ? reject(err) : resolve(row)
+    ));
+    if (!vinculoCriado) throw new Error("O item foi criado, mas não foi vinculado ao inventário.");
     
     // =====================================
     // MARCAR COMO CONCLUÍDO

@@ -5,6 +5,12 @@
  * Todas as mensagens seguem este padrão visual.
  */
 
+const ehMagoElemental = classe => String(classe || "")
+    .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase().trim() === "mago elemental";
+
+const elementoPrimario = dados => dados.elemento || dados.afinidade_elemental || dados.afinidade || "N/A";
+
 const templates = {
     // =====================================
     // ESTRUTURAS BASE
@@ -134,6 +140,7 @@ _Use *!confirmar ficha* para enviar para aprovacao._`,
         msg += `\n${templates.campo("Aparencia", dados.aparencia || "Em avaliacao")}`;
         msg += `\n${templates.divisor()}`;
         msg += `\n${templates.campo("Classe desejada", dados.classe)}`;
+        if (ehMagoElemental(dados.classe)) msg += `\n${templates.campo("Elemento Primário", elementoPrimario(dados))}`;
         msg += `\n${templates.campo("Estilo de luta", dados.estilo_luta || "N/A")}`;
         msg += `\n${templates.campo("Arma inicial", dados.arma || "N/A")}`;
         msg += `\n${templates.campo("Elemento/Afinidade", dados.elemento || "N/A")}`;
@@ -165,6 +172,7 @@ _Use *!confirmar ficha* para enviar para aprovacao._`,
         msg += `\n${templates.campo("Aparencia", dados.aparencia || "Em avaliacao")}`;
         msg += `\n${templates.divisor()}`;
         msg += `\n${templates.campo("Classe desejada", dados.classe)}`;
+        if (ehMagoElemental(dados.classe)) msg += `\n${templates.campo("Elemento Primário", elementoPrimario(dados))}`;
         msg += `\n${templates.campo("Estilo de luta", dados.estilo_luta || "N/A")}`;
         msg += `\n${templates.campo("Arma inicial", dados.arma || "N/A")}`;
         msg += `\n${templates.campo("Elemento/Afinidade", dados.elemento || "N/A")}`;
@@ -198,6 +206,7 @@ _Use *!confirmar ficha* para enviar para aprovacao._`,
         msg += `\n${templates.campo("Aparencia", dados.aparencia || "Em avaliacao")}`;
         msg += `\n${templates.divisor()}`;
         msg += `\n${templates.campo("Classe desejada", dados.classe)}`;
+        if (ehMagoElemental(dados.classe)) msg += `\n${templates.campo("Elemento Primário", elementoPrimario(dados))}`;
         msg += `\n${templates.campo("Estilo de luta", dados.estilo_luta || "N/A")}`;
         msg += `\n${templates.campo("Arma inicial", dados.arma || "N/A")}`;
         msg += `\n${templates.campo("Elemento/Afinidade", dados.elemento || "N/A")}`;

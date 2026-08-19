@@ -1,81 +1,28 @@
-const MessageService = require("../core/messageService");
+const MessageService=require("../core/messageService");
+module.exports=msg=>MessageService.send({message:msg,text:`_*「 PROGRESSO DO PERSONAGEM 」*_
+_— Evolua por meio de atividades narrativas. As recompensas são registradas na ficha quando a atividade é validada pelo Sistema._
 
-/**
- * COMANDO: !progresso
- * 
- * Mostra as atividades disponíveis e os tipos de recompensas possíveis.
- * NÃO mostra valores específicos - apenas os tipos de recompensa.
- * Os valores são revelados apenas quando o ADM aprova a atividade.
- */
+_*QUEST DIÁRIA:*_
+_Treino pessoal adaptado ao personagem, realizado uma vez ao dia e no máximo quatro vezes por semana._
+_Recompensas possíveis: XP, Won, 3 pontos de atributo, Caixa de Item e recuperação total de HP/MP._
 
-module.exports = async (msg) => {
-    const mensagem = `
-*— Progresso do Personagem 🔅*
+_*MISSÕES NARRADAS:*_
+_Podem surgir pela Associação, guildas, NPCs, eventos ou acontecimentos da história. Objetivos e recompensas variam por missão._
 
-O Progresso do Personagem é a forma principal de evoluir no RPG, adquirindo XP, pontos de atributos e Won. As recompensas podem ser obtidas através de atividades auto-narradas ou missões administradas pela staff.
+_*TREINO DE MAESTRIA:*_
+_Desenvolve técnicas, armas e controle de energia. Pode durar 1, 7, 15 ou 30 dias; períodos maiores concedem mais Maestria._
+_Recompensas possíveis: XP e Maestria._
 
-══════════════════════════
+_*TREINO CONJUNTO:*_
+_Atividade semanal em dupla ou grupo, com objetivo comum e participação narrativa de todos._
+_Recompensas possíveis: XP e bônus de duo._
 
-*— Quests Diárias:*
-> *[As Quests Diárias consistem em metas pessoais de treino que auxiliam na evolução constante do personagem. Elas podem ser realizadas uma vez ao dia, com limite máximo de quatro vezes por semana. O jogador tem total liberdade para adaptar o treino ao estilo do seu personagem, um exemplo clássico inclui realizar 100 flexões, 100 abdominais, 100 agachamentos e correr 10 km. Ao cumprir a meta, além de conseguir a recompensa base, o jogador pode escolher uma das três seguidas recompensas adicionais. Quanto maior o seu Rank, maior será a recompensa padrão.]*
+_*INTERAÇÃO:*_
+_Desenvolve relações e histórias compartilhadas. Cada participante deve contribuir de forma significativa._
+_Recompensa possível: XP._
 
-*Recompensas possíveis:*
-> ✓ XP (quantidade varia por Rank)
-> ✓ Won (quantidade varia por Rank)
-> ✓ 3 Pontos de Atributo
-> ✓ Caixa de Item Aleatório
+_*ONE-POST:*_
+_Lore própria para explorar memórias, cotidiano, conflitos internos ou acontecimentos pessoais. Pode tornar-se Duo Post._
+_Recompensas possíveis: XP e bônus de duo._
 
-*— Missões narradas:* 
-> *[As missões narradas podem ser adquiridas na Associação dos Caçadores ou por intermédio da guilda do próprio jogador. Como alternativa, os jogadores podem obter XP e diversas recompensas ao caçar mobs ou explorar dungeons, atividades estas administradas diretamente pela Staff.]*
-
-*— Treino de Maestria*
-> *[O Treino de Maestria desenvolve o domínio das técnicas, armas e energia do personagem. Pode envolver prática técnica, controle de mana, repetição de movimentos, combate supervisionado, estudo tático ou meditação focada. Cada treino pode ser realizado de forma solo ou supervisionada. Os ganhos aumentam conforme a duração: 1 dia concede um pequeno avanço, 7 dias oferecem progresso moderado, 15 dias geram melhoria significativa e 30 dias resultam no maior ganho de Maestria.]*
-
-*Recompensas possíveis:*
-> ✓ XP (quantidade varia por Rank)
-> ✓ Maestria (5 a 100, dependendo da duração)
-
-*— Treino Conjunto:* 
-> *[O Treino Conjunto é realizado em dupla ou em grupo, onde os participantes definem objetivos comuns de treinamento. Essa atividade pode ser realizada uma vez por semana. Cada participante deve contribuir com no mínimo 3 cenas para validar o treino. Os ganhos de XP variam conforme a qualidade da participação e o envolvimento coletivo.]*
-
-*Recompensas possíveis:*
-> ✓ XP (quantidade varia por Rank)
-> ✓ Bônus de +25% XP para Duo (2 participantes)
-
-*— Interação:* 
-> *[A Interação consiste em desenvolver relações, diálogos e histórias compartilhadas com outros jogadores. Essa atividade incentiva a comunicação social e o aprofundamento das conexões entre os personagens, contribuindo para a evolução geral do RPG. Ela pode ser realizada até duas vezes por semana. Para que a interação seja válida, cada participante deve estar com no mínimo 5 cenas de interação.]*
-
-*Recompensas possíveis:*
-> ✓ XP (quantidade varia por Rank)
-
-*— One-Post:* 
-> *[O One Post é uma atividade dedicada ao desenvolvimento profundo do personagem por meio de lore própria. Nele, o jogador pode explorar flashbacks, momentos internos, situações cotidianas ou eventos significativos. Essa atividade pode ser realizada uma vez por semana e permite expansão para Duo Post quando feito em parceria com outro jogador.]*
-
-*Recompensas possíveis:*
-> ✓ XP (quantidade varia por Rank)
-> ✓ Bônus de +25% XP para Duo Post (2 participantes)
-
-══════════════════════════
-
-*COMO FUNCIONA:*
-1. Complete a atividade no RPG
-2. Um ADM aprova usando os comandos:
-   - !quest diária finalizada <Nome>
-   - !treino de maestria finalizado <Nome> [1/7/15/30 dias]
-   - !treino conjunto finalizado <Nome1>/<Nome2>
-   - !interação finalizada <Nome1>/<Nome2>
-   - !one post finalizado <Nome1>/<Nome2>
-
-3. O bot calcula automaticamente as recompensas baseado no seu Rank
-4. As recompensas são enviadas diretamente para sua ficha
-
-*ATENÇÃO:*
-- Os valores exatos das recompensas são calculados automaticamente pelo sistema
-- Você só saberá o valor exato quando o ADM aprovar
-- Quanto maior o Rank, maiores as recompensas
-
-_Use !progresso para consultar as atividades disponíveis._
-    `;
-    
-    await MessageService.send({ message: msg, text: mensagem });
-};
+_Os valores variam conforme Rank, duração e atividade. Consulte !Nível, !Maestria e !Histórico para acompanhar sua evolução._`});

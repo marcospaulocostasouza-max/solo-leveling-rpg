@@ -13,7 +13,7 @@ const nomesGrupos = {
 };
 
 function gerarMapaGrupos() {
-    const comandosGlobais = ["!ficha", "!jogador", "!regras", "!classes", "!iniciar"];
+    const comandosGlobais = ["!ficha", "!jogador", "!regras", "!classes", "!iniciar", "!ler histÃ³ria"];
     
     const mapa = {};
     Object.values(GROUP_CONFIG).forEach(id => {
@@ -39,7 +39,7 @@ function gerarMapaGrupos() {
         ],
         [GROUP_CONFIG.minigames]: ["!minigame"],
         [GROUP_CONFIG.comandos]: [
-            "!iniciar", "!jogador", "!atributos", "!inventario", "!inv",
+            "!iniciar", "!ler histÃ³ria", "!jogador", "!atributos", "!inventario", "!inv", "!maestria", "!excluir item", "!dungeon semanal", "!consultar dungeon semanal",
             "!equipar", "!usar", "!tecnicas", "!técnicas", "!classes",
             "!classe avancada", "!classe avançada", "!passivas", "!titulos",
             "!minhas técnicas", "!minhas passivas", "!nivel", "!level", "!ranking", "!rank", "!mvp",

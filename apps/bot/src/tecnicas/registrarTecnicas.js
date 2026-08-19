@@ -1,11 +1,5 @@
 // Registro de todas as técnicas de classe inicial do sistema
 const assassino = require('./iniciais/assassino');
-const escopeta = require('./iniciais/escopeta');
-const pistola = require('./iniciais/pistola');
-const fuzil = require('./iniciais/fuzil');
-const katana = require('./iniciais/katana');
-const kusarigama = require('./iniciais/kusarigama');
-const foice = require('./iniciais/foice');
 const magoRaio = require('./iniciais/magoRaio');
 const ranger = require('./iniciais/ranger');
 const magoVento = require('./iniciais/magoVento');
@@ -20,15 +14,11 @@ const magoTerra = require('./iniciais/magoTerra');
 const magoInvocador = require('./iniciais/magoInvocador');
 const lutador = require('./iniciais/lutador');
 
+const { aplicarSistemaMaestria } = require('./sistemaMaestria');
+
 // Mapeamento de todas as classes de classe inicial
 const classesIniciais = {
     assassino,
-    escopeta,
-    pistola,
-    fuzil,
-    katana,
-    kusarigama,
-    foice,
     magoRaio,
     ranger,
     magoVento,
@@ -43,6 +33,8 @@ const classesIniciais = {
     magoInvocador,
     lutador
 };
+
+Object.values(classesIniciais).forEach(classe => aplicarSistemaMaestria(classe));
 
 // Função para obter todas as técnicas de uma classe
 function getTecnicasClasse(nomeClasse) {

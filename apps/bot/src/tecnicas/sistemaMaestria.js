@@ -1,36 +1,27 @@
-/** Regras de custo em Maestria. Os valores são os mesmos do sistema legado. */
+/** Curva de custo em Maestria usada por classes e proficiências. */
 const { formatarCustoMaestria } = require("../systems/maestriaSystem");
-
+const CURVA = [10, 20, 40, 70, 110, 160, 230, 320, 450, 650];
+const CURVA_AVANCADA = [200, 300, 450, 650, 900, 1200, 1550, 1950, 2400, 3000];
 const SISTEMA_MAESTRIA = {
-    CUSTO_BASE_INICIAL: 10,
-    CUSTO_BASE_AVANCADA: 200,
-    MULTIPLICADOR: 2,
     calcularCusto(indice, categoria = "Classe") {
         const ordem = Math.max(1, Number(indice) || 1);
-        const categoriaNormalizada = String(categoria || "")
-            .normalize("NFD")
-            .replace(/[\u0300-\u036f]/g, "")
-            .trim()
-            .toLowerCase();
-        const base = categoriaNormalizada.includes("avancada")
-            ? this.CUSTO_BASE_AVANCADA
-            : this.CUSTO_BASE_INICIAL;
-        return base * (this.MULTIPLICADOR ** (ordem - 1));
+        const cat = String(categoria || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+        const curva = cat.includes("avancada") ? CURVA_AVANCADA : CURVA;
+        if (ordem <= curva.length) return curva[ordem - 1];
+        const passo = cat.includes("avancada") ? 500 : 250;
+        return curva[curva.length - 1] + ((ordem - curva.length) * passo);
     },
-    getCustoFormatado(indice, categoria = "Classe") {
-        return formatarCustoMaestria(this.calcularCusto(indice, categoria));
-    }
+    getCustoFormatado(indice, categoria = "Classe") { return formatarCustoMaestria(this.calcularCusto(indice, categoria)); }
 };
-
 function aplicarSistemaMaestria(classeTecnicas) {
     const categoria = classeTecnicas.categoria || "Classe";
-    const aplicar = (tecnica, indice) => {
-        tecnica.custo_maestria = SISTEMA_MAESTRIA.calcularCusto(indice, categoria);
-        tecnica.custo_maestria_formatado = SISTEMA_MAESTRIA.getCustoFormatado(indice, categoria);
-    };
-    if (classeTecnicas.tecnicaInicial) aplicar(classeTecnicas.tecnicaInicial, 1);
-    (classeTecnicas.tecnicas || []).forEach((tecnica, indice) => aplicar(tecnica, indice + 2));
+    const todas = [classeTecnicas.tecnicaInicial, ...(classeTecnicas.tecnicas || [])].filter(Boolean);
+    todas.forEach((tecnica, i) => {
+        tecnica.custo_qi = SISTEMA_MAESTRIA.calcularCusto(i + 1, categoria);
+        tecnica.custo_qi_formatado = SISTEMA_MAESTRIA.getCustoFormatado(i + 1, categoria);
+        tecnica.custo_maestria = tecnica.custo_qi;
+        tecnica.custo_maestria_formatado = tecnica.custo_qi_formatado;
+    });
     return classeTecnicas;
 }
-
-module.exports = { SISTEMA_MAESTRIA, aplicarSistemaMaestria };
+module.exports = { SISTEMA_MAESTRIA, aplicarSistemaMaestria, CURVA, CURVA_AVANCADA };

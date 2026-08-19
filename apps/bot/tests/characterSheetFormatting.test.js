@@ -3,6 +3,7 @@ const { obterEstiloCanonico } = require("../src/utils/normalizarEstiloLuta");
 const reconhecerFicha = require("../src/utils/reconhecerFicha");
 const confirmarFicha = require("../src/commands/confirmarFicha");
 const estilos = require("../src/estilos/listaEstilos");
+const templates = require("../src/utils/templatesMensagens");
 
 assert.equal(obterEstiloCanonico("Proficiência em arco"), "Proficiência em Arcos");
 assert.equal(obterEstiloCanonico("> _Proficiência em Arcos_"), "Proficiência em Arcos");
@@ -13,4 +14,11 @@ assert.equal(confirmarFicha.VALIDACOES.peso.validar("70,5 kg"), null);
 assert.equal(confirmarFicha.VALIDACOES.peso.validar("500,0 kg"), null);
 assert.match(confirmarFicha.VALIDACOES.peso.validar("500,1 kg"), /máximo/i);
 for (const estilo of estilos) assert.equal(obterEstiloCanonico(estilo.nome), estilo.nome);
+const elementalReconhecido = templates.fichaReconhecida({
+    nome: "Teste", classe: "Mago Elemental", elemento: "Fogo"
+});
+assert.match(elementalReconhecido, /Classe desejada:\* Mago Elemental/);
+assert.match(elementalReconhecido, /Elemento Primário:\* Fogo/);
+assert.ok(elementalReconhecido.indexOf("Elemento Primário") > elementalReconhecido.indexOf("Classe desejada"));
+assert.ok(elementalReconhecido.indexOf("Elemento Primário") < elementalReconhecido.indexOf("Estilo de luta"));
 console.log("characterSheetFormatting.test.js: OK");

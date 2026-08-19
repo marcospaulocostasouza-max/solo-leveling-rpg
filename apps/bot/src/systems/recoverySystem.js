@@ -1,0 +1,8 @@
+"use strict";
+const db=require("../../../../packages/database");
+const {provider}=require("../../../../packages/database/config");
+let ready;
+async function ensure(){if(!ready)ready=db.run(provider==="postgres"?"CREATE TABLE IF NOT EXISTS player_recovery (jogador_id BIGINT PRIMARY KEY REFERENCES jogadores(id) ON DELETE CASCADE, ultima_recuperacao TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP)":"CREATE TABLE IF NOT EXISTS player_recovery (jogador_id INTEGER PRIMARY KEY, ultima_recuperacao TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP)");return ready}
+async function recuperar(jogadorId,motivo="recuperação"){await ensure();return db.transaction(async q=>{const r=await q.run("UPDATE jogadores SET vida_atual=vida_maxima,mana_atual=mana_maxima WHERE id=?",[jogadorId]);await q.run("INSERT INTO player_recovery(jogador_id,ultima_recuperacao) VALUES(?,CURRENT_TIMESTAMP) ON CONFLICT(jogador_id) DO UPDATE SET ultima_recuperacao=CURRENT_TIMESTAMP",[jogadorId]);return{recuperado:r.changes===1,motivo}})}
+async function verificar48h(numero){if(!numero)return{recuperado:false};await ensure();const j=await db.get("SELECT id FROM jogadores WHERE numero=?",[numero]);if(!j)return{recuperado:false};const r=await db.get("SELECT ultima_recuperacao FROM player_recovery WHERE jogador_id=?",[j.id]);if(!r){await db.run("INSERT INTO player_recovery(jogador_id,ultima_recuperacao) VALUES(?,CURRENT_TIMESTAMP) ON CONFLICT(jogador_id) DO NOTHING",[j.id]);return{recuperado:false}}if(Date.now()-new Date(r.ultima_recuperacao).getTime()<48*3600000)return{recuperado:false};return recuperar(j.id,"48 horas")}
+module.exports={recuperar,verificar48h};

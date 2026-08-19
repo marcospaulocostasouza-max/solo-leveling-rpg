@@ -27,14 +27,14 @@ O sistema de Classes define o estilo de combate, habilidades iniciais e crescime
     // Listar todas as classes iniciais
     const classesIniciais = [
         "Lutador", "Assassino", "Tanker", "Ranger", "Curador",
-        "Mago de Água", "Mago de Fogo", "Mago de Gelo", "Mago de Terra", "Mago de Vento",
-        "Mago de Raio", "Mago Invocador", "Mago de Barreira", "Mago de Maldição"
+        "Mago Elemental", "Mago Invocador", "Mago de Barreira", "Mago de Maldição"
     ];
 
     mensagem += `*━━━ CLASSES INICIAIS ━━━*\n\n`;
     
     classesIniciais.forEach(classe => {
-        const dados = classes[classe];
+        const chaveClasse = classe === "Mago de Maldição" ? "Mago de Maldicao" : classe;
+        const dados = classes[chaveClasse];
         if (dados) {
             mensagem += `*◆ ${classe}*\n`;
             mensagem += `${dados.descricao || 'Uma classe única.'}\n`;

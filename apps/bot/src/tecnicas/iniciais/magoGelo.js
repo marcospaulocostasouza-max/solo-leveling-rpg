@@ -270,7 +270,7 @@ const magoGelo = {
             passiva: false
         },
         {
-            nome: "Absolute Zero",
+            nome: "Absolute Zero: Niflheim",
             classe: "Mago de Gelo",
             categoria: "Inicial",
             tipo: "Mágica",

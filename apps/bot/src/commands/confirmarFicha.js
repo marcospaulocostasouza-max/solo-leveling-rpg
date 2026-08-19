@@ -285,44 +285,13 @@ module.exports = async (msg) => {
                 else dados.elemento = elementoCanonico.nome;
             }
             
-            // Se o jogador escolheu "Mago Elemental", converter para o elemento da afinidade
+            // Mago Elemental permanece como classe base. A afinidade e registrada
+            // separadamente como seu primeiro elemento e sua maestria elemental.
             if (dados.classe && dados.classe.toLowerCase().includes("mago elemental")) {
-                try {
-                    const jogador = await new Promise((resolve, reject) => {
-                        db.get("SELECT afinidade_elemental FROM jogadores WHERE numero = ?", [numero], (err, row) => {
-                            if (err) reject(err);
-                            else resolve(row);
-                        });
-                    });
-                    
-                    if (jogador && jogador.afinidade_elemental && jogador.afinidade_elemental !== "Nenhuma") {
-                        const elemento = jogador.afinidade_elemental;
-                        const classeConvertida = `Mago de ${elemento}`;
-                        
-                        console.log(`[FICHA] Convertendo Mago Elemental para ${classeConvertida} (afinidade: ${elemento})`);
-                        
-                        // Atualizar a classe na ficha
-                        dados.classe = classeConvertida;
-                        
-                        // Atualizar no banco de dados
-                        const fichaAtualizada = JSON.stringify(dados);
-                        db.run("UPDATE fichas_pendentes SET dados = ? WHERE numero = ?", [fichaAtualizada, numero], (err) => {
-                            if (err) {
-                                console.error("[FICHA] Erro ao atualizar classe:", err);
-                            } else {
-                                console.log(`[FICHA] Classe atualizada para ${classeConvertida}`);
-                            }
-                        });
-                        
-                        avisos.push(`⚡ *Conversão de Classe*: Mago Elemental → ${classeConvertida} (baseado na sua afinidade ${elemento})`);
-                    } else {
-                        errosValidacao.push(`• *Classe*: Você escolheu "Mago Elemental" mas não possui afinidade elemental sorteada. Use !sortear afinidade primeiro ou escolha outra classe.`);
-                    }
-                } catch (e) {
-                    console.log("[FICHA] Erro ao converter Mago Elemental:", e);
-                    errosValidacao.push(`• *Classe*: Erro ao verificar afinidade. Tente novamente.`);
-                }
-            } else if (afinidadeFicha) {
+                dados.classe = "Mago Elemental";
+            }
+
+            if (afinidadeFicha) {
                 // Verificar conflito de afinidade para outras classes
                 try {
                     const jogador = await new Promise((resolve, reject) => {

@@ -88,7 +88,7 @@ _Não é possível escolher outra classe avançada._` });
         });
 
         if (!questCriada) {
-            return MessageService.send({ message: msg, text: "*✖ Não foi possível registrar a quest de classe avançada. Tente novamente ou avise um ADM.*" });
+            return MessageService.send({ message: msg, text: "*✖ Não foi possível registrar a Quest de Classe Avançada. Tente novamente mais tarde.*" });
         }
         
         // Marcar como bloqueado (aguardando escolha)
@@ -136,7 +136,7 @@ _Seu avanço está trancado até concluir esta quest._` });
 > Classe atual: *${classeAtual}*
 
 Você não atende aos requisitos mínimos das classes avançadas da sua classe.
-Consulte um ADM para mais informações.` });
+Fortaleça seus atributos e consulte novamente para liberar novas opções.` });
         }
         
         let mensagem = `
@@ -151,7 +151,7 @@ Escolha uma das opções abaixo:
         classesDisponiveis.forEach((classe, index) => {
             mensagem += `${index + 1}. *${classe.nome}*\n`;
             mensagem += `   > ${classe.descricao || "Classe avançada"}\n`;
-            if (classe.requisitos) mensagem += `   > Requisitos: ${JSON.stringify(classe.requisitos)}\n`;
+            if (classe.requisitos) mensagem += `   > Requisitos: ${Object.entries(classe.requisitos).map(([atributo, valor]) => `${atributo.replace(/_/g, " ")}: ${valor}`).join(" | ")}\n`;
             if (classe.bloqueada) mensagem += `   > 🔒 Requer aprovação narrativa\n`;
             mensagem += `\n`;
         });
@@ -190,8 +190,8 @@ Use *!escolher classe avançada* para ver as opções.
             return MessageService.send({ message: msg, text: `
 *✖ Esta classe requer aprovação narrativa!*
 
-A classe *${classeEscolhida.nome}* necessita de uma história aprovada por um ADM.
-Consulte um administrador para solicitar esta classe.
+A classe *${classeEscolhida.nome}* exige validação narrativa especial dentro do RPG.
+Conclua os requisitos narrativos indicados para solicitar esta evolução.
             ` });
         }
         
@@ -243,7 +243,7 @@ Consulte um administrador para solicitar esta classe.
 ${classeEscolhida.descricao || "Uma classe avançada poderosa"}
 
 *Bônus concedidos:*
-${JSON.stringify(classeEscolhida.bonusAtributos || {})}
+${Object.entries(classeEscolhida.bonusAtributos || {}).map(([atributo, valor]) => `> ${atributo.replace(/_/g, " ")}: +${valor}`).join("\n") || "> Consulte a descriÃ§Ã£o da classe."}
 
 *Novas técnicas serão liberadas e novos itens únicos de sua classe podem ser adquiridos futuramente!*
 

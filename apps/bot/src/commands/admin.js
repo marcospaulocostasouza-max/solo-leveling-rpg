@@ -142,6 +142,10 @@ Use !adm para ver os comandos disponiveis.` });
 *!*add técnica - integra a última ficha, somente para ADM
 *!*FItem - envia o modelo de item com dono e slot
 *!*add item - integra o item e envia ao inventário, somente para ADM
+*!*FQuest - envia o modelo de Quest personalizada
+*!*Add Quest - integra a Quest e libera ao jogador
+*!*FDungeon - envia o modelo da Dungeon Semanal
+*!*Liberar Dungeon - publica a Dungeon Semanal preenchida
 
 *COMANDOS DE CONSULTA:*
 *!*ver @Nome - Ver informacoes completas

@@ -404,6 +404,15 @@ function registrarTodosComandos() {
             categoria: "RPG"
         },
         {
+            nome: "!desequipar [item]",
+            funcao: "Desequipa um item equipado",
+            arquivo: "desequipar.js",
+            descricao: "Remove um equipamento ativo sem alterar o inventario",
+            dependencias: ["../../core/database.js", "../../systems/atributoSystem.js"],
+            ativo: true,
+            categoria: "RPG"
+        },
+        {
             nome: "!usar [item]",
             funcao: "Usa um item consumível do inventário",
             arquivo: "usarItem.js",
@@ -1117,6 +1126,27 @@ function registrarTodosComandos() {
             dependencias: ["../../npc/npcManager.js"],
             ativo: true,
             categoria: "Mundo"
+        },
+        {
+            nome: "!ler história",
+            funcao: "Abre o canal da história oficial do RPG",
+            arquivo: "lerHistoria.js",
+            descricao: "Apresenta o canal oficial onde prólogos, episódios e acontecimentos são publicados",
+            dependencias: [], ativo: true, categoria: "Mundo"
+        },
+        {
+            nome: "!dungeon semanal / !consultar dungeon semanal",
+            funcao: "Consulta a Dungeon Semanal liberada",
+            arquivo: "consultarDungeonSemanal.js",
+            descricao: "Mostra tema, Rank, objetivos, regras, duração e recompensas da incursão semanal",
+            dependencias: ["../../systems/weeklyDungeonSystem.js"], ativo: true, categoria: "Dungeon"
+        },
+        {
+            nome: "!excluir item <nome> confirmar",
+            funcao: "Remove um item do inventário do próprio jogador",
+            arquivo: "excluirItem.js",
+            descricao: "Exige nome completo e confirmação explícita antes de remover o vínculo do inventário",
+            dependencias: [], ativo: true, categoria: "Jogador"
         }
     ];
 

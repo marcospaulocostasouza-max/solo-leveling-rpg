@@ -50,6 +50,6 @@ module.exports = async (msg) => {
     texto += `\n1. *!iniciar quest classe avancada*`;
     texto += `\n2. *!escolher classe avancada*`;
     texto += `\n3. *!quero <nome da classe>*`;
-    texto += `\n\n_Classes narrativas bloqueadas precisam de aprovacao de um ADM._`;
+    texto += `\n\n_Classes especiais podem exigir requisitos e validação narrativa antes da escolha._`;
     return MessageService.send({ message: msg, text: texto });
 };

@@ -10,6 +10,7 @@ const MessageService = require("../core/messageService");
 const db = require("../core/database");
 const templates = require("../utils/templatesMensagens");
 const elementos = require("../elementos/listaElementos");
+const AfinidadesAdicionais = require("../systems/afinidadesAdicionaisSystem");
 
 module.exports = async (msg) => {
     try {
@@ -51,7 +52,7 @@ _Use *!sortear afinidade* para descobrir seu elemento!_
         
         let mensagem = `*═══ SUA AFINIDADE ELEMENTAL ═══*
 ${templates.divisor()}
-> *${jogador.afinidade_elemental}*`;
+> *Elemento Primário:* ${jogador.afinidade_elemental}`;
         
         if (elemento) {
             mensagem += `\n> Categoria: ${elemento.categoria}`;
@@ -63,8 +64,16 @@ ${templates.divisor()}
             }
         }
         
+        const adicionais = await AfinidadesAdicionais.listar(jogador.id);
+        for (const afinidade of adicionais) {
+            mensagem += `\n> *${Number(afinidade.slot) === 2 ? "Segundo Elemento" : "Terceiro Elemento"}:* ${afinidade.elemento}`;
+        }
+
         mensagem += `\n${templates.divisor()}`;
-        mensagem += `\n_Afinidade salva permanentemente no sistema._`;
+        mensagem += `\n\n*Expressão visual e narrativa*`;
+        mensagem += `\nA afinidade fortalece técnicas do mesmo elemento conforme as regras delas. Você também pode aplicar características visuais do elemento às suas técnicas, independentemente da classe inicial.`;
+        mensagem += `\n\nExemplo: um Assassino com afinidade de Fogo pode narrar sua lâmina envolta em chamas. Isso é *somente visual e narrativo*: não muda o efeito, não acrescenta dano e não concede bônus extra.`;
+        mensagem += `\n${templates.divisor()}\n_Afinidade salva permanentemente no sistema._`;
         
         await MessageService.send({ message: msg, text: mensagem });
         

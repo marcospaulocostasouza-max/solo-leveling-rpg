@@ -5,6 +5,8 @@ module.exports = async (msg) => {
 _— Além de cada Portal existe um território desconhecido, Jogador. Aqui encontrará tudo relacionado às Dungeons, incursões, mineração, exploração e demais atividades realizadas além dos Gates. Prepare-se antes de atravessar, pois depois que um Portal se fecha, talvez não exista caminho de volta._
 
 _*Comandos:*_
+_• !Dungeon Semanal_
+_• !Consultar Dungeon Semanal_
 _• !Desejar_
 _• !Ficha de Dungeon_
 _• !Dungeon *(iniciar/progresso/sair)*_

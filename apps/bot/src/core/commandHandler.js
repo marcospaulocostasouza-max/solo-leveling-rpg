@@ -70,9 +70,24 @@ const comandosClasses = [
     // Classes Iniciais (alias)
     "!mago elemental agua", "!mago elemental fogo", "!mago elemental terra",
     "!mago elemental vento", "!mago elemental gelo", "!mago elemental raio"
+    , "!adaga", "!adagas", "!foice", "!foices", "!katana", "!katanas", "!kusarigama", "!pistola", "!pistolas", "!escopeta", "!escopetas", "!espingarda", "!fuzil", "!fuzis",
+    "!arco", "!arcos", "!faca", "!facas", "!sniper", "!espadao", "!espadão", "!espadoes", "!espadões", "!espadas pesadas", "!espadas pesadas duplas", "!espadoes duplos", "!espadões duplos", "!espada", "!espadas", "!manopla", "!manoplas", "!punhos", "!punho", "!kanabo",
+    "!lanca", "!lança", "!lanças", "!lancas", "!cajado", "!cajados", "!cajados e orbes", "!cajado e orbe", "!orbe", "!orbes", "!grimorio", "!grimório",
+    "!revolver", "!rifle", "!rifles", "!rifle de precisao", "!rifles de precisao", "!rifle de precisão", "!rifles de precisão", "!arma de fogo", "!armas de fogo", "!combate desarmado", "!artes marciais",
+    "!escudo", "!escudos", "!corrente", "!correntes", "!machado", "!machados", "!martelo", "!martelos",
+    "!chicote", "!chicotes", "!besta", "!bestas", "!bumerangue", "!bumerangues", "!arremesso",
+    "!garra", "!garras", "!sabre", "!sabres", "!foices duplas", "!foices dupla", "!tridente", "!tridentes",
+    "!clava", "!clavas", "!florete", "!floretes", "!chakram", "!chakrams", "!luvas", "!luvas de combate",
+    "!mangual", "!manguais", "!alabarda", "!alabardas", "!nunchaku", "!nunchakus", "!tonfa", "!tonfas",
+    "!kama", "!kamas", "!rapieira", "!rapieiras", "!baculo", "!báculo", "!báculos", "!baculos",
+    "!cimitarra", "!cimitarras", "!picareta", "!picaretas", "!picaretas de guerra", "!bastao", "!bastão", "!bastões", "!bastoes",
+    "!funda", "!fundas", "!laminas duplas", "!lâminas duplas", "!lamina dupla", "!lâmina dupla",
+    "!correntes com foice", "!leques", "!leques de guerra", "!leque", "!instrumentos", "!instrumentos musicais", "!instrumento"
 ];
 
 async function executarComando(msg, comando, comandosRegistrados) {
+    try { await require("../systems/recoverySystem").verificar48h(msg.author || msg.from); }
+    catch (erro) { console.error("[RECOVERY]", erro.message); }
     const msgBody = msg.body;
     // Normaliza acentos para que aliases com ou sem acento tenham o mesmo
     // roteamento, inclusive em arquivos legados com codificação antiga.
@@ -105,6 +120,13 @@ async function executarComando(msg, comando, comandosRegistrados) {
     // =====================================
     const mapaComandos = {
         "!iniciar": "iniciar.js",
+        "!maestria": "treinar.js",
+        "!qi": "treinar.js",
+        "!ler historia": "lerHistoria.js",
+        "!fquest": "fQuest.js",
+        "!fdungeon": "fDungeonSemanal.js",
+        "!dungeon semanal": "consultarDungeonSemanal.js",
+        "!consultar dungeon semanal": "consultarDungeonSemanal.js",
         "!arquiteto": "arquiteto.js",
         "!caçador": "cacador.js",
         "!cacador": "cacador.js",
@@ -307,6 +329,7 @@ async function executarComando(msg, comando, comandosRegistrados) {
         { prefixo: "!inv", arquivo: "inventario.js" },
         { prefixo: "!equipar titulo", arquivo: "equiparTitulo.js" },
         { prefixo: "!equipar título", arquivo: "equiparTitulo.js" },
+        { prefixo: "!desequipar", arquivo: "desequipar.js" },
         { prefixo: "!equipar", arquivo: "equipar.js" },
         { prefixo: "!usar ticket", arquivo: "usarTicket.js" },
         { prefixo: "!usar", arquivo: "usarItem.js" },
@@ -402,6 +425,9 @@ async function executarComando(msg, comando, comandosRegistrados) {
         { prefixo: "!cargosa", arquivo: "associacao.js" },
         { prefixo: "!guerra ", arquivo: "guerra.js" },
         { prefixo: "!pontuacao", arquivo: "pontuacao.js" },
+        { prefixo: "!add quest", arquivo: "addQuest.js" },
+        { prefixo: "!liberar dungeon", arquivo: "liberarDungeonSemanal.js" },
+        { prefixo: "!excluir item", arquivo: "excluirItem.js" },
         { prefixo: "!unicos", arquivo: "unicos.js" },
         { prefixo: "!hp", arquivo: "hp.js" },
         { prefixo: "!dado", arquivo: "dado.js" },

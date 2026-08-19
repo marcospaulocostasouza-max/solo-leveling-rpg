@@ -19,6 +19,9 @@ _*「 BIBLIOTECA 」*_ — Conhecimento também é poder, Jogador. Aqui encontra
 _*「 HISTÓRIA 」*_ — Toda jornada deixa sua marca, Jogador. Aqui encontrará missões, acontecimentos e caminhos que conduzem a história deste mundo.
 *Use: !História*
 
+_*「 DUNGEON SEMANAL 」*_ — Consulte a incursão especial liberada, seus objetivos, regras e recompensas.
+*Use: !Consultar Dungeon Semanal*
+
 _*「 ACERVO 」*_ — Nem todos são apenas parte do cenário, Jogador. Aqui encontrará informações, interações, missões e tudo relacionado àqueles que habitam este mundo.
 *Use: !Acervo*`;
 

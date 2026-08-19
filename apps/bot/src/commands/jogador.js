@@ -11,6 +11,7 @@ const MessageService = require("../core/messageService");
 const db = require("../core/database");
 const AtributoSystem = require("../systems/atributoSystem");
 const InventorySystem = require("../systems/inventorySystem");
+const AfinidadesAdicionais = require("../systems/afinidadesAdicionaisSystem");
 
 module.exports = async (msg) => {
     try {
@@ -47,6 +48,7 @@ _Use *!ficha* para criar seu personagem._
         
         // Buscar bônus de equipamentos para exibir separadamente
         const bonusEquip = await InventorySystem.calcularBonusEquipados(jogador.id);
+        const afinidadesAdicionais = await AfinidadesAdicionais.listar(jogador.id);
         
         // Atributos totais (agora atualizados pelo recalcularAtributos)
         const forcaTotal = Number(jogador.forca_total || 0);
@@ -82,6 +84,9 @@ _Use *!ficha* para criar seu personagem._
         // Combate
         mensagem += `*─── Combate ───*\n`;
         mensagem += `> *Classe:* ${jogador.classe || "Não definida"}\n`;
+        if (String(jogador.classe || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim() === "mago elemental") {
+            mensagem += `> *Elemento Primário:* ${jogador.afinidade_elemental || "Não definido"}\n`;
+        }
         mensagem += `> *Classe Avançada:* ${jogador.classe_avancada || "Nenhuma"}\n`;
         mensagem += `> *Estilo de Luta:* ${jogador.estilo_luta || "Nenhum"}\n`;
         mensagem += `> *Arma Inicial:* ${jogador.arma_inicial || "Nenhuma"}\n`;
@@ -101,6 +106,9 @@ _Use *!ficha* para criar seu personagem._
         // Afinidades
         mensagem += `*─── Afinidades ───*\n`;
         mensagem += `> *Elemento:* ${jogador.afinidade_elemental || "Nenhuma"}\n`;
+        for (const afinidade of afinidadesAdicionais) {
+            mensagem += `> *${Number(afinidade.slot) === 2 ? "Segundo Elemento" : "Terceiro Elemento"}:* ${afinidade.elemento}\n`;
+        }
         mensagem += `> *Habilidade Única:* ${jogador.habilidade_unica || "Nenhuma"}\n`;
         mensagem += `> *Título:* ${jogador.titulo || "Nenhum"}\n\n`;
         

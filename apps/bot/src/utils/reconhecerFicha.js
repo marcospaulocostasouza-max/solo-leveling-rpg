@@ -293,9 +293,22 @@ Um ADM deve usar *!add item* para integrar e entregar ao dono.
     
     // Salvar na memória temporária E no banco de dados
     const numero = msg.author || msg.from;
-    fichasTemp[numero] = ficha;
-    
     const db = require("../core/database");
+
+    // A afinidade sorteada e a fonte oficial do primeiro elemento do Mago
+    // Elemental. Ela e recuperada automaticamente, sem exigir outro campo.
+    if (ficha.classe === "Mago Elemental") {
+        const jogadorAfinidade = await new Promise(resolve => {
+            db.get("SELECT afinidade_elemental FROM jogadores WHERE numero = ?", [numero], (erro, row) => {
+                resolve(erro ? null : row);
+            });
+        });
+        if (jogadorAfinidade?.afinidade_elemental && jogadorAfinidade.afinidade_elemental !== "Nenhuma") {
+            ficha.elemento = jogadorAfinidade.afinidade_elemental;
+        }
+    }
+
+    fichasTemp[numero] = ficha;
     await new Promise((resolve, reject) => db.run(
         `INSERT INTO fichas_pendentes (numero, dados, status, data_envio, aprovado_por, motivo)
          VALUES (?, ?, 'aguardando', NULL, '', '')

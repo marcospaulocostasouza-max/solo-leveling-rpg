@@ -76,3 +76,27 @@ test("diferencia Ranger Fisico de Ranger Magico", () => {
     assert.equal(obterBuffsClasse("Ranger Mágico", { poder_magico: 6 }).poder_magico_buff, 3);
     assert.equal(obterBuffsClasse("Ranger Físico", { forca: 8 }).poder_magico_buff, 0);
 });
+
+test("integra Mago Elemental e Mago de Maldicao como classes iniciais", () => {
+    const AtributoSystem = require("../src/systems/atributoSystem");
+    assert.equal(obterClasseCanonica("Mago Elemental"), "Mago Elemental");
+    assert.equal(obterClasseCanonica("> *Mago de Maldição*"), "Mago de Maldicao");
+    assert.deepEqual(resolverConsultaClasse("mago elemental").nomes, ["Mago Elemental"]);
+    assert.match(resolverConsultaClasse("mago de maldicao").padrao, /maldi/);
+    for (const classe of ["Mago Elemental", "Mago Invocador", "Mago de Barreira", "Mago de Maldicao"]) {
+        assert.deepEqual(AtributoSystem.getBonusClasseInicial(classe), {
+            atributo: "poder_magico_base", bonus: 0.5
+        }, classe);
+    }
+});
+
+test("Mago de Maldicao consta entre as classes iniciais e possui comando", () => {
+    const fs = require("node:fs");
+    const path = require("node:path");
+    const classesCommand = fs.readFileSync(path.join(__dirname, "../src/commands/classes.js"), "utf8");
+    const commandHandler = fs.readFileSync(path.join(__dirname, "../src/core/commandHandler.js"), "utf8");
+    assert.match(classesCommand, /"Mago de Maldição"/);
+    assert.match(classesCommand, /"Mago de Maldicao"/);
+    assert.match(commandHandler, /"!mago de maldicao"/);
+    assert.equal(obterClasseCanonica("mago de maldição"), "Mago de Maldicao");
+});

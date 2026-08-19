@@ -22,6 +22,7 @@
 const db = require("../core/database");
 const AdvancedClassSystem = require("./advancedClassSystem");
 const AtributoSystem = require("./atributoSystem");
+const RecoverySystem = require("./recoverySystem");
 
 // Tabela de experiência necessária por nível (até nível 100)
 const XP_POR_NIVEL = {
@@ -205,6 +206,7 @@ class LevelSystem {
                             
                             // Recalcular totais dos atributos (novo sistema central)
                             await AtributoSystem.recalcularAtributos(jogadorId);
+                            await RecoverySystem.recuperar(jogadorId, "Level Up");
                             
                             resolve({
                                 subiuNivel: true,

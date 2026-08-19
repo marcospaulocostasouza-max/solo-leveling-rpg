@@ -56,13 +56,104 @@ module.exports = async (msg) => {
             const classeCmd = classeJogador.toLowerCase().replace(/ /g, '_');
             mensagem += `> !${classeCmd} - Ver técnicas de ${classeJogador}\n`;
             
-            // Comandos específicos por classe
-            if (classeJogador.includes("Lutador") || classeJogador === "Lutador") {
-                mensagem += `> !punhos / !manopla / !kanabo / !espadão - Ver técnicas do estilo\n`;
-            } else if (classeJogador.includes("Assassino")) {
-                mensagem += `> !foice / !kusarigama / !adaga / !katana - Ver técnicas do estilo\n`;
-            } else if (classeJogador.includes("Ranger")) {
-                mensagem += `> !arco / !faca / !pistola / !espingarda / !fuzil / !sniper - Ver técnicas da arma\n`;
+            // Comandos específicos por estilo de luta da ficha
+            const estiloLuta = jogador.estilo_luta || "";
+            const estiloNormalizado = String(estiloLuta).normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+            
+            if (estiloNormalizado.includes("adaga")) {
+                mensagem += `> !adaga - Ver técnicas de ${estiloLuta}\n`;
+            } else if (estiloNormalizado.includes("faca")) {
+                mensagem += `> !faca - Ver técnicas de ${estiloLuta}\n`;
+            } else if (estiloNormalizado.includes("espadas pesadas duplas")) {
+                mensagem += `> !espadas pesadas duplas - Ver técnicas de ${estiloLuta}\n`;
+            } else if (estiloNormalizado.includes("espadas pesadas") || estiloNormalizado.includes("espadao") || estiloNormalizado.includes("espadão")) {
+                mensagem += `> !espadas pesadas - Ver técnicas de ${estiloLuta}\n`;
+            } else if (estiloNormalizado.includes("espada")) {
+                mensagem += `> !espadas - Ver técnicas de ${estiloLuta}\n`;
+            } else if (estiloNormalizado.includes("kanabo")) {
+                mensagem += `> !kanabo - Ver técnicas de ${estiloLuta}\n`;
+            } else if (estiloNormalizado.includes("katana")) {
+                mensagem += `> !katana - Ver técnicas de ${estiloLuta}\n`;
+            } else if (estiloNormalizado.includes("lanca")) {
+                mensagem += `> !lança - Ver técnicas de ${estiloLuta}\n`;
+            } else if (estiloNormalizado.includes("cajado") || estiloNormalizado.includes("orbe") || estiloNormalizado.includes("grimorio")) {
+                mensagem += `> !cajado - Ver técnicas de ${estiloLuta}\n`;
+            } else if (estiloNormalizado.includes("arco")) {
+                mensagem += `> !arco - Ver técnicas de ${estiloLuta}\n`;
+            } else if (estiloNormalizado.includes("pistola")) {
+                mensagem += `> !pistola - Ver técnicas de ${estiloLuta}\n`;
+            } else if (estiloNormalizado.includes("escopeta") || estiloNormalizado.includes("espingarda")) {
+                mensagem += `> !escopeta - Ver técnicas de ${estiloLuta}\n`;
+            } else if (estiloNormalizado.includes("fuzil")) {
+                mensagem += `> !fuzil - Ver técnicas de ${estiloLuta}\n`;
+            } else if (estiloNormalizado.includes("rifle") || estiloNormalizado.includes("sniper")) {
+                mensagem += `> !rifle de precisao - Ver técnicas de ${estiloLuta}\n`;
+            } else if (estiloNormalizado.includes("desarmado") || estiloNormalizado.includes("punho") || estiloNormalizado.includes("marcia")) {
+                mensagem += `> !punhos - Ver técnicas de ${estiloLuta}\n`;
+            } else if (estiloNormalizado.includes("escudo")) {
+                mensagem += `> !escudo - Ver técnicas de ${estiloLuta}\n`;
+            } else if (estiloNormalizado.includes("foice")) {
+                mensagem += `> !foice - Ver técnicas de ${estiloLuta}\n`;
+            } else if (estiloNormalizado.includes("corrente")) {
+                mensagem += `> !correntes - Ver técnicas de ${estiloLuta}\n`;
+            } else if (estiloNormalizado.includes("machado")) {
+                mensagem += `> !machado - Ver técnicas de ${estiloLuta}\n`;
+            } else if (estiloNormalizado.includes("martelo")) {
+                mensagem += `> !martelo - Ver técnicas de ${estiloLuta}\n`;
+            } else if (estiloNormalizado.includes("chicote")) {
+                mensagem += `> !chicote - Ver técnicas de ${estiloLuta}\n`;
+            } else if (estiloNormalizado.includes("manopla")) {
+                mensagem += `> !manopla - Ver técnicas de ${estiloLuta}\n`;
+            } else if (estiloNormalizado.includes("besta")) {
+                mensagem += `> !besta - Ver técnicas de ${estiloLuta}\n`;
+            } else if (estiloNormalizado.includes("bumerangue")) {
+                mensagem += `> !bumerangue - Ver técnicas de ${estiloLuta}\n`;
+            } else if (estiloNormalizado.includes("arremesso")) {
+                mensagem += `> !faca - Ver técnicas de ${estiloLuta}\n`;
+            } else if (estiloNormalizado.includes("garra")) {
+                mensagem += `> !garras - Ver técnicas de ${estiloLuta}\n`;
+            } else if (estiloNormalizado.includes("sabre")) {
+                mensagem += `> !sabre - Ver técnicas de ${estiloLuta}\n`;
+            } else if (estiloNormalizado.includes("tridente")) {
+                mensagem += `> !tridente - Ver técnicas de ${estiloLuta}\n`;
+            } else if (estiloNormalizado.includes("clava")) {
+                mensagem += `> !clava - Ver técnicas de ${estiloLuta}\n`;
+            } else if (estiloNormalizado.includes("florete")) {
+                mensagem += `> !florete - Ver técnicas de ${estiloLuta}\n`;
+            } else if (estiloNormalizado.includes("chakram")) {
+                mensagem += `> !chakram - Ver técnicas de ${estiloLuta}\n`;
+            } else if (estiloNormalizado.includes("luva")) {
+                mensagem += `> !luvas - Ver técnicas de ${estiloLuta}\n`;
+            } else if (estiloNormalizado.includes("mangual")) {
+                mensagem += `> !mangual - Ver técnicas de ${estiloLuta}\n`;
+            } else if (estiloNormalizado.includes("alabarda")) {
+                mensagem += `> !alabarda - Ver técnicas de ${estiloLuta}\n`;
+            } else if (estiloNormalizado.includes("nunchaku")) {
+                mensagem += `> !nunchaku - Ver técnicas de ${estiloLuta}\n`;
+            } else if (estiloNormalizado.includes("tonfa")) {
+                mensagem += `> !tonfa - Ver técnicas de ${estiloLuta}\n`;
+            } else if (estiloNormalizado.includes("kama")) {
+                mensagem += `> !kama - Ver técnicas de ${estiloLuta}\n`;
+            } else if (estiloNormalizado.includes("rapieira")) {
+                mensagem += `> !rapieira - Ver técnicas de ${estiloLuta}\n`;
+            } else if (estiloNormalizado.includes("baculo")) {
+                mensagem += `> !báculo - Ver técnicas de ${estiloLuta}\n`;
+            } else if (estiloNormalizado.includes("cimitarra")) {
+                mensagem += `> !cimitarra - Ver técnicas de ${estiloLuta}\n`;
+            } else if (estiloNormalizado.includes("picareta")) {
+                mensagem += `> !picareta - Ver técnicas de ${estiloLuta}\n`;
+            } else if (estiloNormalizado.includes("bastao") || estiloNormalizado.includes("bastão")) {
+                mensagem += `> !bastão - Ver técnicas de ${estiloLuta}\n`;
+            } else if (estiloNormalizado.includes("funda")) {
+                mensagem += `> !funda - Ver técnicas de ${estiloLuta}\n`;
+            } else if (estiloNormalizado.includes("lamina") || estiloNormalizado.includes("lâmina")) {
+                mensagem += `> !lâminas duplas - Ver técnicas de ${estiloLuta}\n`;
+            } else if (estiloNormalizado.includes("kusarigama") || estiloNormalizado.includes("corrente") && estiloNormalizado.includes("foice")) {
+                mensagem += `> !kusarigama - Ver técnicas de ${estiloLuta}\n`;
+            } else if (estiloNormalizado.includes("leque")) {
+                mensagem += `> !leques - Ver técnicas de ${estiloLuta}\n`;
+            } else if (estiloNormalizado.includes("instrumento")) {
+                mensagem += `> !instrumentos - Ver técnicas de ${estiloLuta}\n`;
             }
             
             mensagem += `> !comprar tecnica <nome> - Comprar técnica\n\n`;

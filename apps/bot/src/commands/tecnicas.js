@@ -17,6 +17,8 @@ const db = require("../core/database");
 const { getTodasTecnicasDetalhadas, listarClasses, classesIniciais } = require("../tecnicas/registrarTecnicas");
 const advancedTechniques = require("../tecnicas/avancadas/techniques");
 const { normalizarTecnica } = require("../systems/maestriaSystem");
+const consultarTecnicasClasse = require("./tecnicasClasse");
+const get = (sql, params = []) => new Promise((resolve, reject) => db.get(sql, params, (err, row) => err ? reject(err) : resolve(row)));
 
 // Categorias de técnicas
 const CATEGORIAS = {
@@ -194,7 +196,7 @@ Escolha uma categoria abaixo:
 > Use: *!técnicas iniciais*
 
 *2. ⚔️ Técnicas de Classe*
-> Todas as técnicas das classes iniciais
+> Técnicas da sua classe atual
 > Use: *!técnicas de classe*
 
 *3. 🔰 Técnicas de Proficiência*
@@ -219,6 +221,24 @@ Escolha uma categoria abaixo:
 _Para ver a ficha de uma técnica:_
 _!técnica nome da técnica_
 `;
+}
+
+function normalizarTexto(valor) {
+    return String(valor || "")
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .trim()
+        .toLowerCase();
+}
+
+async function resolverClasseDoJogador(numero) {
+    const jogador = await get("SELECT classe, classe_avancada FROM jogadores WHERE numero = ?", [numero]);
+    if (!jogador) return null;
+    const classeAvancada = normalizarTexto(jogador.classe_avancada);
+    if (classeAvancada && classeAvancada !== "nenhuma" && classeAvancada !== "bloqueado") {
+        return jogador.classe_avancada;
+    }
+    return jogador.classe || null;
 }
 
 /**
@@ -398,8 +418,11 @@ module.exports = async (msg) => {
         
         // !técnicas de classe
         if (subcomando === "de classe" || subcomando === "classe" || subcomando === "classes") {
-            const tecnicas = getTecnicasDeClasse();
-            return MessageService.send({ message: msg, text: exibirListaCategoria(tecnicas, "Técnicas de Classe", "⚔️") });
+            const classeJogador = await resolverClasseDoJogador(msg.author || msg.from);
+            if (!classeJogador) {
+                return MessageService.send({ message: msg, text: "*✖ Você precisa ter uma ficha aprovada para consultar suas técnicas de classe.*" });
+            }
+            return consultarTecnicasClasse(msg, classeJogador);
         }
         
         // !técnicas de proficiência

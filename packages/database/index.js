@@ -90,18 +90,28 @@ async function transaction(work) {
 
 const attributes = ["forca", "resistencia", "velocidade", "sentidos", "inteligencia", "poder_magico"];
 const slots = { "Cabeça": 1, "Corpo": 1, "Acessórios": 4, "Item de Apoio": 1, "Pernas": 2, "Pés": 1, "Arma 1": 2, "Arma 2": 1 };
+
+function normalizeText(value) {
+  return String(value || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
+}
+
+function itemDescription(item) {
+  return normalizeText(item.descricao || item.habilidade || item.efeito);
+}
+
 function itemSlot(item) {
-  const category = String(item.categoria || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
-  if (category.includes("arma 1") || category.includes("arma1")) return "Arma 1";
+  const category = normalizeText(item.slot || item.categoria || item.tipo || item.legacyCategory);
+  const description = itemDescription(item);
   if (category.includes("arma 2") || category.includes("arma2")) return "Arma 2";
-  if (category.includes("cabec")) return "Cabeça";
-  if (category.includes("corpo")) return "Corpo";
-  if (category.includes("perna")) return "Pernas";
+  if (category.includes("arma 1") || category.includes("arma1")) return "Arma 1";
+  if (category.includes("cabec") || category.includes("capacete") || category.includes("elmo") || category.includes("tiara") || category.includes("coroa") || category.includes("diadema") || category.includes("mascara") || category.includes("capuz") || category.includes("veu")) return "Cabeça";
+  if (category.includes("corpo") || category.includes("armadur") || category.includes("peitoral") || category.includes("coura") || category.includes("casaco") || category.includes("robe") || category.includes("tunic") || category.includes("manto") || category.includes("sobretudo") || category.includes("vestiment")) return "Corpo";
+  if (category.includes("perna") || category.includes("greva") || category.includes("calca") || category.includes("saia") || category.includes("legging")) return "Pernas";
   if (category.includes("pes") || category.includes("calcad") || category.includes("sapato") || category.includes("bota")) return "Pés";
   if (category.includes("acess")) return "Acessórios";
   if (category.includes("apoio") || category.includes("consum")) return "Item de Apoio";
-  if (item.arma) return /2[- ]?fp|duas maos/i.test(item.descricao || "") ? "Arma 2" : "Arma 1";
-  if (item.escudo) return "Pés"; // compatibilidade com a regra ativa do bot
+  if (item.arma) return /2[- ]?fp|duas maos|duas m�os/i.test(description) ? "Arma 2" : "Arma 1";
+  if (item.escudo || category.includes("escud")) return "Arma 1";
   if (item.armadura) return "Corpo";
   return "Acessórios";
 }
@@ -111,7 +121,20 @@ function isConsumable(item) {
   return Number(item.consumivel) === 1 || category.includes("consumivel") || type.includes("consumivel");
 }
 function itemBonus(item) {
-  return Object.fromEntries(attributes.map(key => [key, Number(item[`${key}_bonus`] || 0)]));
+  const bonus = Object.fromEntries(attributes.map(key => [key, Number(item[`${key}_bonus`] || 0)]));
+
+  // Itens legados podem ter o bônus registrado somente em `efeito` ou
+  // `habilidade`. Assim, o cálculo da API segue a mesma regra do bot.
+  if (Object.values(bonus).some(Boolean)) return bonus;
+  const aliases = { forca: "forca", resistencia: "resistencia", velocidade: "velocidade", agilidade: "velocidade", sentidos: "sentidos", inteligencia: "inteligencia", "poder magico": "poder_magico", poder: "poder_magico" };
+  const text = String(item.efeito || item.habilidade || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+  const pattern = /([a-z\s]+):\s*\+?(\d+)/g;
+  let match;
+  while ((match = pattern.exec(text)) !== null) {
+    const attribute = aliases[match[1].trim().replace(/\s+/g, " ")];
+    if (attribute) bonus[attribute] += Number(match[2]);
+  }
+  return bonus;
 }
 function classBonus(player) {
   const map = { Lutador: "forca", Assassino: "velocidade", Tanker: "resistencia", Ranger: "sentidos", Curador: "poder_magico", "Mago Elemental": "poder_magico", "Mago Invocador": "poder_magico", "Mago de Barreira": "poder_magico", "Mago Barreira": "poder_magico", "Mago de Maldicao": "poder_magico", "Mago de Maldição": "poder_magico", "Mago Maldição": "poder_magico" };
@@ -338,4 +361,5 @@ async function purchaseTechnique(playerId, techniqueId) {
   });
 }
 
-module.exports = { DATABASE_PATH, getDatabase, applyMigrations, transaction, run, get, all, playerById, playerByPhone, inventory, playerSkills, playerTitles, playerGuild, playerLocation, isAdmin, canInteractWithNpc, itemSlot, slots, recalculateAttributes, equipItem, shopCatalog, purchaseItem, purchaseTechnique, isAdvancedTechnique, calculateTechniqueMasteryCost, techniqueMasteryCost, TECHNIQUE_MASTERY_COST, ensureMasteryHistoryTable, normalizeProficiencyName, resolveStyleForWeapon };
+module.exports = { DATABASE_PATH, getDatabase, applyMigrations, transaction, run, get, all, playerById, playerByPhone, inventory, playerSkills, playerTitles, playerGuild, playerLocation, isAdmin, canInteractWithNpc, itemSlot, itemBonus, slots, recalculateAttributes, equipItem, shopCatalog, purchaseItem, purchaseTechnique, isAdvancedTechnique, calculateTechniqueMasteryCost, techniqueMasteryCost, TECHNIQUE_MASTERY_COST, ensureMasteryHistoryTable, normalizeProficiencyName, resolveStyleForWeapon };
+

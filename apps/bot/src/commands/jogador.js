@@ -12,6 +12,22 @@ const db = require("../core/database");
 const AtributoSystem = require("../systems/atributoSystem");
 const InventorySystem = require("../systems/inventorySystem");
 const AfinidadesAdicionais = require("../systems/afinidadesAdicionaisSystem");
+const get = (sql, params = []) => new Promise((resolve, reject) => {
+    db.get(sql, params, (err, row) => {
+        if (err) reject(err);
+        else resolve(row);
+    });
+});
+const all = (sql, params = []) => new Promise((resolve, reject) => {
+    db.all(sql, params, (err, rows) => {
+        if (err) reject(err);
+        else resolve(rows || []);
+    });
+});
+
+function normalizar(valor) {
+    return String(valor || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim().toLowerCase();
+}
 
 module.exports = async (msg) => {
     try {
@@ -144,6 +160,34 @@ _Use *!ficha* para criar seu personagem._
         mensagem += `> *Sentidos:* +${bonusEquip.sentidos || 0}\n`;
         mensagem += `> *Inteligência:* +${bonusEquip.inteligencia || 0}\n`;
         mensagem += `> *Poder Mágico:* +${bonusEquip.poderMagico || 0}\n\n`;
+
+        const tecnicas = await all(
+            "SELECT t.nome, t.classe, t.categoria FROM jogador_tecnicas jt JOIN tecnicas t ON t.id = jt.tecnica_id WHERE jt.jogador_id = ? ORDER BY t.classe, t.nome",
+            [jogador.id]
+        );
+        const gruposTecnicas = { "Classe": [], "Classe Avançada": [], "Estilo de Luta": [], "Outras": [] };
+        for (const tecnica of tecnicas) {
+            const classeTecnica = normalizar(tecnica.classe);
+            const classeBase = normalizar(jogador.classe);
+            const classeAvancada = normalizar(jogador.classe_avancada);
+            if (classeTecnica && classeTecnica === classeBase) gruposTecnicas["Classe"].push(tecnica.nome);
+            else if (classeTecnica && classeTecnica === classeAvancada) gruposTecnicas["Classe Avançada"].push(tecnica.nome);
+            else if (normalizar(tecnica.categoria).includes("proficiencia")) gruposTecnicas["Estilo de Luta"].push(tecnica.nome);
+            else gruposTecnicas.Outras.push(tecnica.nome);
+        }
+
+        mensagem += `*─── Técnicas Aprendidas ───*\n`;
+        mensagem += `> *Total:* ${tecnicas.length}\n`;
+        if (tecnicas.length === 0) {
+            mensagem += `> Nenhuma técnica aprendida ainda.\n`;
+        } else {
+            for (const [titulo, lista] of Object.entries(gruposTecnicas)) {
+                if (lista.length === 0) continue;
+                const preview = lista.slice(0, 4).join(" • ");
+                mensagem += `> *${titulo}:* ${preview}${lista.length > 4 ? ` • +${lista.length - 4}` : ""}\n`;
+            }
+        }
+        mensagem += `> Use *!minhas técnicas* para ver a lista completa.\n\n`;
         
         // Atributos Totais
         mensagem += `*─── Atributos Totais ───*\n`;

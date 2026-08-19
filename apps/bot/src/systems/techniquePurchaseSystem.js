@@ -5,6 +5,7 @@ const get = (sql, params=[]) => new Promise((resolve,reject)=>db.get(sql,params,
 const all = (sql, params=[]) => new Promise((resolve,reject)=>db.all(sql,params,(e,r)=>e?reject(e):resolve(r||[])));
 const run = (sql, params=[]) => new Promise((resolve,reject)=>db.run(sql,params,function(e){e?reject(e):resolve(this)}));
 const normalizar = v => String(v||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/^proficiencia em\s+/,"").trim();
+const normalizarClasse = v => String(v || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim().toLowerCase();
 
 // Mapa de compatibilidade legado: nomes antigos de proficiência que foram
 // reformulados na nova arquitetura. Usado para preservar personagens antigos.
@@ -40,14 +41,20 @@ function compativel(jogador, tecnica) {
         }
         return false;
     }
-    if (categoria.includes("avancada")) return true; // validações avançadas permanecem no sistema próprio
+    if (categoria.includes("avancada")) {
+        const classeJogador = normalizarClasse(jogador.classe_avancada);
+        const classeExigida = normalizarClasse(tecnica.classe);
+        return Boolean(classeJogador) && classeJogador === classeExigida;
+    }
     const classe = normalizar(jogador.classe);
     const exigida = normalizar(tecnica.classe);
     return classe === exigida || classe.includes(exigida) || exigida.includes(classe);
 }
 async function comprarTecnica(jogador, tecnica) {
     if (!compativel(jogador, tecnica)) {
-        const e = new Error(normalizar(tecnica.categoria)==='proficiencia' ? 'Proficiência incompatível' : 'Classe incompatível'); throw e;
+        const categoria = normalizar(tecnica.categoria);
+        const e = new Error(categoria === 'proficiencia' ? 'Proficiência incompatível' : categoria.includes('avancada') ? 'Classe avançada incompatível' : 'Classe incompatível');
+        throw e;
     }
     if (Number(jogador.nivel||1) < Number(tecnica.nivel_desbloqueio||1)) throw new Error('Nível insuficiente');
     const existe = await get('SELECT 1 FROM jogador_tecnicas WHERE jogador_id=? AND tecnica_id=?',[jogador.id,tecnica.id]);

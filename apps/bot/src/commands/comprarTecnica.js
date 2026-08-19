@@ -6,6 +6,7 @@ const get = (sql, params = []) => new Promise((resolve, reject) => db.get(sql, p
 function friendlyPurchaseError(error, player, technique) {
     const message = String(error?.message || "");
     if (message.includes("Proficiência incompatível")) return `*═══ PROFICIÊNCIA INCOMPATÍVEL ═══*\n\nA técnica *${technique.nome}* exige *Proficiência em ${technique.classe}*.\nSeu Estilo de Luta atual é *${player.estilo_luta || "não definido"}*.`;
+    if (message.includes("Classe avançada incompatível")) return `*═══ CLASSE AVANÇADA INCOMPATÍVEL ═══*\n\nA técnica *${technique.nome}* pertence à classe avançada *${technique.classe}*.\nSua classe avançada atual é *${player.classe_avancada || "não definida"}*.`;
     if (message.includes("Classe incompatível")) return `*═══ CLASSE INCOMPATÍVEL ═══*\n\nA técnica *${technique.nome}* pertence à classe *${technique.classe}*.\nSua classe atual é *${player.classe}*.`;
     if (message.includes("Nível insuficiente")) return `*═══ NÍVEL INSUFICIENTE ═══*\n\nTécnica: *${technique.nome}*\nNível necessário: *${technique.nivel_desbloqueio || 1}*\nSeu nível: *${player.nivel || 1}*`;
     if (message.includes("já possui")) return "*═══ VOCÊ JÁ POSSUI ESTA TÉCNICA! ═══*";

@@ -29,11 +29,23 @@ const SLOT_CAPACIDADE = {
     "Arma 2": 1
 };
 
+function normalizarTexto(valor) {
+    return String(valor || "")
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .toLowerCase()
+        .trim();
+}
+
+function descricaoNormalizada(item) {
+    return normalizarTexto(item.descricao || item.habilidade || item.efeito);
+}
+
 class InventorySystem {
 
     static isConsumivel(item) {
-        const categoria = (item.categoria || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
-        const tipo = (item.tipo || item.legacyCategory || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+        const categoria = normalizarTexto(item.categoria || item.slot);
+        const tipo = normalizarTexto(item.tipo || item.legacyCategory);
         return Number(item.consumivel) === 1 || categoria.includes("consumivel") || tipo.includes("consumivel");
     }
 
@@ -50,21 +62,22 @@ class InventorySystem {
     }
 
     static getSlotDoItem(item) {
-        const cat = (item.categoria || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
-        if (cat.includes("arma 1") || cat.includes("arma1")) return "Arma 1";
+        const cat = normalizarTexto(item.slot || item.categoria || item.tipo || item.legacyCategory);
+        const desc = descricaoNormalizada(item);
+
         if (cat.includes("arma 2") || cat.includes("arma2")) return "Arma 2";
-        if (cat.includes("cabe")) return "Cabeça";
-        if (cat.includes("corpo")) return "Corpo";
-        if (cat.includes("perna")) return "Pernas";
+        if (cat.includes("arma 1") || cat.includes("arma1")) return "Arma 1";
+        if (cat.includes("cabe") || cat.includes("capacete") || cat.includes("elmo") || cat.includes("tiara") || cat.includes("coroa") || cat.includes("diadema") || cat.includes("mascara") || cat.includes("capuz") || cat.includes("veu")) return "Cabeça";
+        if (cat.includes("corpo") || cat.includes("armadur") || cat.includes("peitoral") || cat.includes("coura") || cat.includes("casaco") || cat.includes("robe") || cat.includes("tunic") || cat.includes("manto") || cat.includes("sobretudo") || cat.includes("vestiment")) return "Corpo";
+        if (cat.includes("perna") || cat.includes("greva") || cat.includes("calca") || cat.includes("saia") || cat.includes("legging")) return "Pernas";
         if (cat.includes("pes") || cat.includes("calcad") || cat.includes("sapato") || cat.includes("bota")) return "Pés";
-        if (cat.includes("acess")) return "Acessórios";
+        if (cat.includes("acessor")) return "Acessórios";
         if (cat.includes("apoio") || cat.includes("consum")) return "Item de Apoio";
         if (item.arma) {
-            const desc = (item.descricao || "").toLowerCase();
-            if (desc.includes("2-fp") || desc.includes("2 fp") || desc.includes("duas maos")) return "Arma 2";
+            if (desc.includes("2-fp") || desc.includes("2 fp") || desc.includes("duas maos") || desc.includes("duas mãos")) return "Arma 2";
             return "Arma 1";
         }
-        if (item.escudo) return "Arma 1";
+        if (item.escudo || cat.includes("escud")) return "Arma 1";
         if (item.armadura) return "Corpo";
         if (item.acessorio) return "Acessórios";
         if (item.consumivel) return "Item de Apoio";

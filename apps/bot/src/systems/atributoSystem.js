@@ -13,7 +13,9 @@
  */
 
 const db = require("../core/database");
-const InventorySystem = require("./inventorySystem");
+function getInventorySystem() {
+    return require("./inventorySystem");
+}
 
 // =====================================
 // BÔNUS DE CLASSE INICIAL (50% sobre atributo específico)
@@ -106,7 +108,7 @@ class AtributoSystem {
                 };
 
                 // ---------- 4. BÔNUS DE EQUIPAMENTOS EQUIPADOS ----------
-                const bonusEquip = await InventorySystem.calcularBonusEquipados(jogadorId);
+                const bonusEquip = await getInventorySystem().calcularBonusEquipados(jogadorId);
 
                 // ---------- 5. SOMA TOTAL ----------
                 const total = {
@@ -147,7 +149,7 @@ class AtributoSystem {
      * Retorna apenas os bônus de atributos dos itens equipados
      */
     static async calcularBonusAtual(jogadorId) {
-        return await InventorySystem.calcularBonusEquipados(jogadorId);
+        return await getInventorySystem().calcularBonusEquipados(jogadorId);
     }
 
     /**
@@ -171,10 +173,11 @@ class AtributoSystem {
      * Determina o slot de um item (delega para InventorySystem)
      */
     static getSlotDoItem(item) {
-        return InventorySystem.getSlotDoItem(item);
+        return getInventorySystem().getSlotDoItem(item);
     }
 }
 
 module.exports = AtributoSystem;
 module.exports.BONUS_CLASSE_INICIAL = BONUS_CLASSE_INICIAL;
 module.exports.NOME_ATRIBUTO = NOME_ATRIBUTO;
+

@@ -14,7 +14,7 @@ function LoginForm() {
       const response = await fetch('/api/auth/consume', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ token }) });
       const result = await response.json();
       if (!response.ok) throw new Error(result.error || 'Token inválido.');
-      window.location.assign('/personagem');
+      window.location.assign('/');
     } catch (cause) {
       setError(cause instanceof Error ? cause.message : 'Não foi possível validar o token.');
     } finally { setLoading(false); }

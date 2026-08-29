@@ -1,0 +1,791 @@
+.shell {
+  --map-cyan: #75e7ff;
+  --map-blue: #4b7bff;
+  --map-violet: #8a5cff;
+  --map-panel: rgba(4, 8, 20, 0.76);
+  --map-border: rgba(120, 209, 255, 0.25);
+  position: fixed;
+  inset: 0;
+  width: 100dvw;
+  height: 100dvh;
+  overflow: hidden;
+  background: #02040b;
+  color: #edf9ff;
+  isolation: isolate;
+  overscroll-behavior: none;
+  touch-action: none;
+  user-select: none;
+}
+
+.mapBackdrop {
+  position: absolute;
+  inset: 0;
+  z-index: -3;
+  background:
+    radial-gradient(circle at 50% 42%, rgba(46, 103, 255, 0.13), transparent 43%),
+    radial-gradient(circle at 20% 75%, rgba(102, 52, 255, 0.12), transparent 35%),
+    linear-gradient(180deg, #050817 0%, #01030a 100%);
+}
+
+.mapBackdrop::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.25;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(87, 180, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(87, 180, 255, 0.04) 1px, transparent 1px);
+  background-size: 54px 54px;
+  mask-image: radial-gradient(circle at center, black, transparent 82%);
+}
+
+.viewport {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  overflow: hidden !important;
+  cursor: grab;
+  touch-action: none !important;
+}
+
+.viewport:active { cursor: grabbing; }
+
+.transformContent {
+  transform-origin: 0 0 !important;
+  will-change: transform;
+}
+
+.world {
+  position: relative;
+  flex: 0 0 auto;
+  overflow: visible;
+  background: #061024;
+  box-shadow:
+    0 0 100px rgba(20, 72, 255, 0.28),
+    0 0 0 1px rgba(116, 215, 255, 0.16);
+}
+
+.mapImage {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: fill;
+  pointer-events: none;
+  -webkit-user-drag: none;
+  user-select: none;
+}
+
+.atmosphere,
+.grid {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.atmosphere {
+  z-index: 2;
+  mix-blend-mode: multiply;
+  transition: background 700ms ease, opacity 700ms ease;
+}
+
+.phase_day .atmosphere {
+  opacity: 0.04;
+  background: linear-gradient(rgba(80, 145, 255, 0.1), rgba(0, 30, 70, 0.1));
+}
+
+.phase_dawn .atmosphere {
+  opacity: 0.32;
+  background: linear-gradient(145deg, rgba(214, 107, 83, 0.18), rgba(10, 26, 78, 0.34));
+}
+
+.phase_dusk .atmosphere {
+  opacity: 0.46;
+  background: linear-gradient(145deg, rgba(86, 44, 132, 0.32), rgba(4, 9, 34, 0.42));
+}
+
+.phase_night .atmosphere {
+  opacity: 0.58;
+  background:
+    radial-gradient(circle at 55% 45%, rgba(32, 67, 116, 0.08), rgba(0, 3, 18, 0.68)),
+    linear-gradient(rgba(4, 9, 26, 0.12), rgba(0, 2, 12, 0.48));
+}
+
+.grid {
+  z-index: 3;
+  opacity: 0.12;
+  background-image:
+    linear-gradient(rgba(127, 220, 255, 0.2) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(127, 220, 255, 0.2) 1px, transparent 1px);
+  background-size: 160px 160px;
+  mask-image: radial-gradient(circle at center, black, transparent 91%);
+}
+
+.marker {
+  position: absolute;
+  z-index: 10;
+  width: 54px;
+  height: 54px;
+  transform: translate(-50%, -50%);
+  border: 0;
+  padding: 0;
+  margin: 0;
+  color: #eafaff;
+  background: transparent;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.marker::after {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+}
+
+.markerCore {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 4;
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  transform: translate(-50%, -50%) rotate(45deg);
+  border: 1px solid rgba(150, 232, 255, 0.82);
+  background: linear-gradient(145deg, rgba(23, 99, 188, 0.94), rgba(4, 20, 53, 0.96));
+  box-shadow:
+    0 0 0 3px rgba(65, 176, 255, 0.1),
+    0 0 17px rgba(77, 201, 255, 0.72),
+    inset 0 0 10px rgba(130, 230, 255, 0.2);
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.markerCore svg {
+  width: 15px;
+  height: 15px;
+  transform: rotate(-45deg);
+  stroke-width: 1.8;
+}
+
+.marker:hover .markerCore,
+.marker:focus-visible .markerCore {
+  transform: translate(-50%, -50%) rotate(45deg) scale(1.17);
+  box-shadow:
+    0 0 0 6px rgba(65, 176, 255, 0.12),
+    0 0 26px rgba(77, 201, 255, 0.92),
+    inset 0 0 12px rgba(130, 230, 255, 0.28);
+}
+
+.markerPulse {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 42px;
+  height: 42px;
+  transform: translate(-50%, -50%) rotate(45deg);
+  border: 1px solid rgba(90, 198, 255, 0.34);
+  animation: cityPulse 2.8s ease-out infinite;
+}
+
+@keyframes cityPulse {
+  0% { opacity: 0.8; transform: translate(-50%, -50%) rotate(45deg) scale(0.75); }
+  70%, 100% { opacity: 0; transform: translate(-50%, -50%) rotate(45deg) scale(1.55); }
+}
+
+.protectedMarker .markerCore {
+  border-color: rgba(144, 241, 255, 0.95);
+  background: linear-gradient(145deg, rgba(24, 154, 196, 0.95), rgba(5, 31, 66, 0.98));
+}
+
+.islandMarker .markerCore {
+  border-radius: 50%;
+  transform: translate(-50%, -50%) rotate(0deg);
+}
+
+.islandMarker .markerCore svg { transform: none; }
+.islandMarker:hover .markerCore,
+.islandMarker:focus-visible .markerCore { transform: translate(-50%, -50%) scale(1.17); }
+
+.currentMarker {
+  z-index: 22;
+}
+
+.currentMarker .markerCore {
+  width: 36px;
+  height: 36px;
+  border-color: #ddfaff;
+  background: linear-gradient(145deg, #4fc5ff, #2749ca 62%, #0c1c5f);
+  box-shadow:
+    0 0 0 5px rgba(102, 213, 255, 0.15),
+    0 0 30px rgba(99, 211, 255, 0.95),
+    0 0 55px rgba(87, 103, 255, 0.75);
+}
+
+.currentMarker .markerPulse {
+  width: 58px;
+  height: 58px;
+  border-color: rgba(150, 237, 255, 0.62);
+  animation-duration: 1.8s;
+}
+
+.markerLabel {
+  position: absolute;
+  left: 50%;
+  top: calc(50% + 27px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 130px;
+  max-width: 220px;
+  transform: translateX(-50%) translateY(5px);
+  opacity: 0;
+  pointer-events: none;
+  filter: drop-shadow(0 2px 5px #000);
+  transition: opacity 140ms ease, transform 140ms ease;
+}
+
+.markerLabelVisible,
+.marker:hover .markerLabel,
+.marker:focus-visible .markerLabel {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.markerLabel small {
+  margin-bottom: 2px;
+  color: #84ddff;
+  font-size: 8px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.markerLabel b {
+  padding: 4px 7px;
+  border: 1px solid rgba(112, 208, 255, 0.17);
+  border-radius: 4px;
+  color: #f2fbff;
+  background: rgba(2, 7, 19, 0.72);
+  backdrop-filter: blur(6px);
+  font-size: 10px;
+  font-weight: 750;
+  line-height: 1.15;
+  white-space: nowrap;
+  text-shadow: 0 1px 5px #000;
+}
+
+.majorLabel b { font-size: 11px; }
+
+.specialMarker .markerCore {
+  border-radius: 50%;
+  border-color: rgba(197, 147, 255, 0.88);
+  background: radial-gradient(circle, rgba(143, 93, 255, 0.94), rgba(41, 16, 88, 0.98));
+  box-shadow: 0 0 22px rgba(155, 92, 255, 0.95), inset 0 0 11px rgba(240, 214, 255, 0.25);
+  transform: translate(-50%, -50%);
+}
+
+.specialMarker .markerCore svg { transform: none; }
+.specialMarker:hover .markerCore,
+.specialMarker:focus-visible .markerCore { transform: translate(-50%, -50%) scale(1.18); }
+
+.specialGlow {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 46px;
+  height: 46px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 1px solid rgba(194, 128, 255, 0.44);
+  box-shadow: 0 0 24px rgba(155, 78, 255, 0.36);
+  animation: specialPulse 2.2s ease-in-out infinite;
+}
+
+@keyframes specialPulse {
+  0%, 100% { opacity: 0.45; transform: translate(-50%, -50%) scale(0.9); }
+  50% { opacity: 1; transform: translate(-50%, -50%) scale(1.18); }
+}
+
+.dungeonMarker {
+  width: 70px;
+  height: 70px;
+  z-index: 18;
+}
+
+.gateOuter,
+.gateInner {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.gateOuter {
+  width: 50px;
+  height: 50px;
+  border: 2px solid rgba(119, 87, 255, 0.84);
+  box-shadow: 0 0 22px rgba(93, 78, 255, 0.86), inset 0 0 20px rgba(77, 52, 255, 0.28);
+  animation: gateSpin 5s linear infinite;
+}
+
+.gateOuter::before,
+.gateOuter::after {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  border-radius: 50%;
+  border-top: 2px solid rgba(176, 225, 255, 0.9);
+  border-bottom: 2px solid rgba(156, 102, 255, 0.68);
+}
+
+.gateOuter::after { inset: 10px; animation: gateSpinReverse 2.8s linear infinite; }
+
+.gateInner {
+  width: 28px;
+  height: 28px;
+  background: radial-gradient(circle, rgba(180, 164, 255, 0.9) 0 5%, rgba(92, 57, 255, 0.76) 20%, rgba(14, 4, 44, 0.92) 66%, transparent 70%);
+  box-shadow: 0 0 17px rgba(121, 89, 255, 0.95);
+}
+
+.gateRank {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 5;
+  transform: translate(-50%, -50%);
+  font-size: 10px;
+  font-weight: 900;
+  text-shadow: 0 0 7px #000;
+}
+
+.redDungeon .gateOuter {
+  border-color: rgba(255, 74, 95, 0.92);
+  box-shadow: 0 0 26px rgba(255, 41, 82, 0.9), inset 0 0 20px rgba(255, 41, 82, 0.28);
+}
+
+.redDungeon .gateInner {
+  background: radial-gradient(circle, rgba(255, 190, 193, 0.9) 0 5%, rgba(255, 47, 76, 0.8) 24%, rgba(74, 3, 14, 0.95) 67%, transparent 71%);
+  box-shadow: 0 0 18px rgba(255, 48, 82, 0.95);
+}
+
+@keyframes gateSpin { to { transform: translate(-50%, -50%) rotate(360deg); } }
+@keyframes gateSpinReverse { to { transform: rotate(-360deg); } }
+
+.topHud {
+  position: absolute;
+  left: max(12px, env(safe-area-inset-left));
+  right: max(12px, env(safe-area-inset-right));
+  top: max(12px, env(safe-area-inset-top));
+  z-index: 80;
+  height: 62px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  pointer-events: none;
+}
+
+.backButton,
+.namesToggle,
+.zoomControls button {
+  pointer-events: auto;
+  border: 1px solid var(--map-border);
+  color: #dff8ff;
+  background: linear-gradient(145deg, rgba(9, 21, 48, 0.9), rgba(3, 8, 21, 0.9));
+  box-shadow: inset 0 0 15px rgba(80, 155, 255, 0.06), 0 7px 25px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(14px);
+}
+
+.backButton {
+  width: 48px;
+  height: 48px;
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+}
+
+.backButton:hover { border-color: rgba(119, 222, 255, 0.5); }
+.backButton svg { width: 22px; height: 22px; }
+
+.titleBlock {
+  height: 50px;
+  min-width: 230px;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 0 15px;
+  border: 1px solid var(--map-border);
+  border-radius: 10px;
+  background: linear-gradient(90deg, rgba(5, 11, 29, 0.84), rgba(5, 11, 29, 0.54));
+  backdrop-filter: blur(14px);
+  clip-path: polygon(0 0, calc(100% - 13px) 0, 100% 13px, 100% 100%, 0 100%);
+}
+
+.titleBlock > svg { width: 22px; height: 22px; color: var(--map-cyan); }
+.titleBlock div { display: flex; flex-direction: column; line-height: 1.05; }
+.titleBlock small { color: #76cdf7; font-size: 9px; font-weight: 800; letter-spacing: 0.18em; }
+.titleBlock strong { margin-top: 4px; font-size: 16px; letter-spacing: 0.08em; }
+
+.clock {
+  margin-left: auto;
+  height: 50px;
+  min-width: 132px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: 0 13px;
+  border: 1px solid var(--map-border);
+  border-radius: 10px;
+  background: rgba(4, 10, 24, 0.75);
+  backdrop-filter: blur(14px);
+}
+
+.clock > svg { width: 17px; color: #78dcff; }
+.clock div { display: flex; flex-direction: column; }
+.clock b { font-size: 14px; }
+.clock span { margin-top: 2px; color: #7da8c8; font-size: 8px; font-weight: 800; letter-spacing: 0.14em; }
+
+.locationHud {
+  position: absolute;
+  left: max(16px, env(safe-area-inset-left));
+  bottom: max(18px, env(safe-area-inset-bottom));
+  z-index: 70;
+  min-width: 215px;
+  height: 62px;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 9px 15px 9px 10px;
+  border: 1px solid rgba(95, 200, 255, 0.28);
+  border-radius: 12px;
+  background: linear-gradient(90deg, rgba(3, 10, 27, 0.91), rgba(6, 13, 33, 0.72));
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.34), inset 0 0 20px rgba(50, 130, 255, 0.08);
+  backdrop-filter: blur(16px);
+  pointer-events: none;
+}
+
+.locationIcon {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(102, 218, 255, 0.36);
+  border-radius: 9px;
+  color: #99edff;
+  background: rgba(38, 121, 211, 0.14);
+  box-shadow: inset 0 0 15px rgba(80, 200, 255, 0.1);
+}
+
+.locationIcon svg { width: 20px; }
+.locationHud div { display: flex; flex-direction: column; }
+.locationHud small { color: #75a9c6; font-size: 8px; font-weight: 850; letter-spacing: 0.14em; }
+.locationHud strong { margin-top: 4px; font-size: 15px; letter-spacing: 0.04em; }
+
+.namesToggle {
+  position: absolute;
+  right: max(16px, env(safe-area-inset-right));
+  bottom: max(19px, env(safe-area-inset-bottom));
+  z-index: 72;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 13px;
+  border-radius: 9px;
+  font: inherit;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+}
+
+.namesToggle svg { width: 16px; }
+
+.zoomControls {
+  position: absolute;
+  right: max(16px, env(safe-area-inset-right));
+  top: 50%;
+  z-index: 73;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  transform: translateY(-50%);
+}
+
+.zoomControls button {
+  width: 43px;
+  height: 43px;
+  display: grid;
+  place-items: center;
+  border-radius: 9px;
+  cursor: pointer;
+}
+
+.zoomControls button:hover { border-color: rgba(116, 226, 255, 0.55); background: rgba(14, 34, 70, 0.91); }
+.zoomControls svg { width: 17px; height: 17px; }
+
+.gestureHint {
+  position: absolute;
+  left: 50%;
+  bottom: max(18px, env(safe-area-inset-bottom));
+  z-index: 60;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  transform: translateX(-50%);
+  padding: 0 13px;
+  border: 1px solid rgba(101, 192, 255, 0.16);
+  border-radius: 9px;
+  color: #a9c6d8;
+  background: rgba(2, 7, 18, 0.62);
+  backdrop-filter: blur(12px);
+  pointer-events: none;
+}
+
+.gestureHint svg { width: 15px; color: #71ccf5; }
+.gestureHint div { display: flex; flex-direction: column; }
+.gestureHint b { color: #cdefff; font-size: 8px; letter-spacing: 0.1em; }
+.gestureHint span { margin-top: 2px; font-size: 9px; white-space: nowrap; }
+
+.legend {
+  position: absolute;
+  left: 50%;
+  top: max(20px, env(safe-area-inset-top));
+  z-index: 55;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  transform: translateX(-50%);
+  padding: 0 12px;
+  border: 1px solid rgba(105, 192, 255, 0.13);
+  border-radius: 8px;
+  color: #8ca9bd;
+  background: rgba(2, 7, 18, 0.57);
+  backdrop-filter: blur(10px);
+  font-size: 9px;
+  font-weight: 750;
+  pointer-events: none;
+}
+
+.legend span { display: inline-flex; align-items: center; gap: 5px; white-space: nowrap; }
+.legend i { width: 7px; height: 7px; display: inline-block; border-radius: 50%; box-shadow: 0 0 8px currentColor; }
+.cityDot { color: #66d8ff; background: currentColor; }
+.specialDot { color: #a879ff; background: currentColor; }
+.gateDot { color: #7867ff; background: currentColor; }
+.redGateDot { color: #ff4964; background: currentColor; }
+
+.dangerSignal {
+  position: absolute;
+  left: 50%;
+  top: 92px;
+  z-index: 76;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  transform: translateX(-50%);
+  padding: 8px 12px;
+  border: 1px solid rgba(255, 61, 84, 0.45);
+  border-radius: 7px;
+  color: #ffc0c8;
+  background: rgba(67, 4, 15, 0.78);
+  box-shadow: 0 0 24px rgba(255, 40, 72, 0.18);
+  font-size: 9px;
+  font-weight: 850;
+  letter-spacing: 0.12em;
+  pointer-events: none;
+}
+
+.dangerSignal svg { width: 14px; }
+
+/* Painéis existentes: desktop vira painel lateral; mobile vira bottom sheet. */
+.shell :global(.place-overlay) {
+  z-index: 89 !important;
+  background: rgba(0, 2, 10, 0.34) !important;
+  backdrop-filter: blur(2px);
+}
+
+.shell :global(.place-panel) {
+  z-index: 90 !important;
+  top: 12px !important;
+  right: 12px !important;
+  bottom: 12px !important;
+  width: min(430px, calc(100vw - 24px)) !important;
+  max-height: none !important;
+  border: 1px solid rgba(111, 211, 255, 0.28) !important;
+  border-radius: 16px !important;
+  background: rgba(4, 9, 23, 0.94) !important;
+  box-shadow: -18px 0 55px rgba(0, 0, 0, 0.44), inset 0 0 28px rgba(42, 102, 225, 0.06) !important;
+  backdrop-filter: blur(20px) !important;
+}
+
+.shell :global(.place-close) {
+  z-index: 10 !important;
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 10px !important;
+}
+
+@media (max-width: 900px) {
+  .legend { display: none; }
+  .gestureHint { bottom: 88px; }
+}
+
+@media (max-width: 700px) {
+  .shell {
+    width: 100vw;
+    height: 100dvh;
+  }
+
+  .topHud {
+    left: max(8px, env(safe-area-inset-left));
+    right: max(8px, env(safe-area-inset-right));
+    top: max(8px, env(safe-area-inset-top));
+    height: 48px;
+    gap: 7px;
+  }
+
+  .backButton { width: 42px; height: 42px; border-radius: 9px; }
+  .titleBlock { height: 42px; min-width: 0; flex: 1; max-width: 205px; padding: 0 11px; gap: 8px; }
+  .titleBlock > svg { width: 18px; }
+  .titleBlock small { font-size: 7px; }
+  .titleBlock strong { font-size: 12px; }
+
+  .clock { min-width: 84px; height: 42px; padding: 0 8px; gap: 6px; }
+  .clock > svg { display: none; }
+  .clock b { font-size: 12px; }
+  .clock span { font-size: 6px; }
+
+  .zoomControls {
+    right: max(9px, env(safe-area-inset-right));
+    top: 46%;
+    gap: 5px;
+  }
+
+  .zoomControls button { width: 39px; height: 39px; border-radius: 8px; }
+
+  .locationHud {
+    left: max(9px, env(safe-area-inset-left));
+    bottom: max(9px, env(safe-area-inset-bottom));
+    min-width: 0;
+    width: min(204px, calc(100vw - 128px));
+    height: 53px;
+    gap: 8px;
+    padding: 7px 10px 7px 7px;
+    border-radius: 10px;
+  }
+
+  .locationIcon { width: 37px; height: 37px; }
+  .locationIcon svg { width: 17px; }
+  .locationHud small { font-size: 6.5px; }
+  .locationHud strong { font-size: 13px; }
+
+  .namesToggle {
+    right: max(9px, env(safe-area-inset-right));
+    bottom: max(13px, env(safe-area-inset-bottom));
+    width: 105px;
+    height: 44px;
+    justify-content: center;
+    padding: 0 9px;
+    font-size: 7px;
+    border-radius: 9px;
+  }
+
+  .namesToggle svg { width: 15px; }
+  .gestureHint { display: none; }
+
+  .marker {
+    width: 62px;
+    height: 62px;
+  }
+
+  .markerCore { width: 32px; height: 32px; }
+  .currentMarker .markerCore { width: 38px; height: 38px; }
+  .markerLabel { top: calc(50% + 28px); }
+  .markerLabel b { font-size: 9px; }
+
+  .dungeonMarker { width: 76px; height: 76px; }
+  .gateOuter { width: 52px; height: 52px; }
+
+  .dangerSignal {
+    top: calc(max(8px, env(safe-area-inset-top)) + 56px);
+    font-size: 7px;
+  }
+
+  .shell :global(.place-overlay) {
+    background: rgba(0, 2, 10, 0.42) !important;
+  }
+
+  .shell :global(.place-panel) {
+    top: auto !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100% !important;
+    max-width: none !important;
+    height: min(72dvh, 680px) !important;
+    max-height: 72dvh !important;
+    border-width: 1px 0 0 !important;
+    border-radius: 22px 22px 0 0 !important;
+    box-shadow: 0 -20px 60px rgba(0, 0, 0, 0.52) !important;
+    animation: mapSheetIn 220ms cubic-bezier(.2,.75,.25,1) both;
+  }
+
+  .shell :global(.place-panel)::before {
+    content: '';
+    position: sticky;
+    z-index: 20;
+    top: 8px;
+    display: block;
+    width: 42px;
+    height: 4px;
+    margin: 8px auto -10px;
+    border-radius: 99px;
+    background: rgba(167, 216, 239, 0.4);
+  }
+
+  .shell :global(.place-hero),
+  .shell :global(.dungeon-hero),
+  .shell :global(.special-hero) {
+    min-height: 145px !important;
+  }
+}
+
+@keyframes mapSheetIn {
+  from { transform: translateY(28px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@media (max-width: 420px) {
+  .titleBlock { max-width: 172px; }
+  .titleBlock strong { font-size: 10px; }
+  .clock { min-width: 70px; }
+  .clock b { font-size: 10px; }
+  .namesToggle span { display: none; }
+  .namesToggle { width: 44px; padding: 0; }
+  .locationHud { width: min(210px, calc(100vw - 72px)); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .markerPulse,
+  .specialGlow,
+  .gateOuter,
+  .gateOuter::after {
+    animation: none !important;
+  }
+
+  .markerCore,
+  .markerLabel {
+    transition: none !important;
+  }
+}

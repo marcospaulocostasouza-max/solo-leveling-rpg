@@ -268,11 +268,11 @@ export default function MapViewer() {
           centerOnInit={false}
           centerZoomedOut={false}
           limitToBounds
-          wheel={{ step: 0.09, smooth: true }}
+          wheel={{ step: 0.09, smooth: true } as unknown as React.ComponentProps<typeof TransformWrapper>['wheel']}
           pinch={{ step: 5 }}
           doubleClick={{ disabled: true }}
           panning={{ velocityDisabled: false, excluded: ['world-map-action'] }}
-          onTransformed={(_, state) => setZoomRatio(state.scale / Math.max(coverScale, 0.001))}
+          onTransform={(_, state) => setZoomRatio(state.scale / Math.max(coverScale, 0.001))}
         >
           <TransformComponent wrapperClass={styles.viewport} contentClass={styles.transformContent}>
             <div

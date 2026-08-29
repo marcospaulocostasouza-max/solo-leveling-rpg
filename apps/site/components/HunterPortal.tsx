@@ -9,15 +9,15 @@ import {
   Swords, Trophy, Upload, UserRound, Users, X, Zap, MapPin, Bell, Settings,
   HeartPulse, WandSparkles, BookMarked, type LucideIcon
 } from 'lucide-react';
-import MapViewer from './MapViewer';
 import ArchitectSystems from './ArchitectSystems';
 import GuildHub from './GuildHub';
 import GachaHub from './GachaHub';
 
-type Section='inicio'|'personagem'|'inventario'|'equipamentos'|'habilidades'|'missoes'|'mapa'|'dungeons'|'guilda'|'loja'|'npcs'|'titulos'|'sistemas'|'gacha';
+type Section='inicio'|'personagem'|'inventario'|'equipamentos'|'habilidades'|'missoes'|'dungeons'|'guilda'|'loja'|'npcs'|'titulos'|'sistemas'|'gacha';
+type NavId=Section|'mapa';
 type LivePayload={player:any;inventory:any[];skills:any[];guild:any;location:any;titles:string[];passives:any[];slots:Record<string,number>};
 
-const nav:[Section,string,LucideIcon,string][]=[
+const nav:[NavId,string,LucideIcon,string][]=[
  ['inicio','Início',Home,'/'],['sistemas','Sistemas do Arquiteto',BookMarked,'/sistemas'],['personagem','Meu Personagem',UserRound,'/personagem'],['inventario','Inventário',Backpack,'/inventario'],
  ['equipamentos','Equipamentos',Shield,'/equipamentos'],['habilidades','Habilidades',Zap,'/habilidades'],['missoes','Missões',ScrollText,'/missoes'],
  ['mapa','Mapa',Map,'/mapa'],['dungeons','Dungeons',Swords,'/dungeons'],['guilda','Guilda',Crown,'/guilda'],['gacha','Gacha',Gem,'/gacha'],['loja','Loja',ShoppingBag,'/loja'],
@@ -44,7 +44,7 @@ function Shell({section,data,children}:{section:Section,data:LivePayload,childre
   {open&&<button className="nav-scrim" aria-label="Fechar menu" onClick={()=>setOpen(false)}/>} 
   <section className="hunter-main">
    <header className="hunter-topbar"><button className="hamb" onClick={()=>setOpen(true)}><Menu/></button><div className="page-title"><small>SISTEMA DO CAÇADOR</small><b>{current?.[1]}</b></div><div className="top-location"><MapPin/><div><small>LOCALIZAÇÃO</small><b>{data.location?.city_id||'seoul'}</b></div></div><div className="top-wallet"><Gem/><b>{fmt(p.maestria)}</b><CircleDollarSign/><b>{fmt(p.won)}</b></div><button className="bell"><Bell/></button></header>
-   <div className={`hunter-content ${section==='mapa'?'map-page-content':''}`}>{children}</div>
+   <div className="hunter-content">{children}</div>
    <nav className="mobile-bottom">{nav.filter(n=>['inicio','personagem','mapa','inventario'].includes(n[0])).map(([id,label,Icon,href])=><Link key={id} href={href} className={section===id?'active':''}><Icon/><span>{label}</span></Link>)}<button onClick={()=>setOpen(true)}><Menu/><span>Mais</span></button></nav>
   </section>
  </main>
@@ -70,4 +70,4 @@ function GenericListPage({section,data}:{section:Section,data:LivePayload}){cons
 
 function ShopPage({data}:{data:LivePayload}){const[shop,setShop]=useState<any[]>([]);const[busy,setBusy]=useState<any>(null);const[msg,setMsg]=useState('');useEffect(()=>{fetch('/api/shop').then(r=>r.json()).then(d=>setShop(d.items||[])).catch(()=>{})},[]);const buy=async(item:any)=>{setBusy(item.id);setMsg('');try{const r=await fetch('/api/shop',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({itemId:item.id})});const d=await r.json();if(!r.ok)throw new Error(d.error);setMsg(`${item.nome} adquirido.`)}catch(e){setMsg(e instanceof Error?e.message:'Compra falhou.')}finally{setBusy(null)}};return <div className="system-page"><div className="section-heading"><div><small>MERCADO DA ASSOCIAÇÃO</small><h1>Loja</h1></div><div className="wallet-pill"><CircleDollarSign/> ₩ {fmt(data.player.won)}</div></div>{msg&&<div className="system-message">{msg}</div>}<div className="shop-grid">{shop.map(item=><article className="sys-panel shop-card" key={item.id}><div className="shop-icon"><Gem/></div><small>{item.tier||item.categoria}</small><h3>{item.nome}</h3><p>{item.descricao||'Item registrado no catálogo.'}</p><footer><b>₩ {fmt(item.preco||item.valor)}</b><button disabled={busy===item.id} onClick={()=>buy(item)}>{busy===item.id?'...':'COMPRAR'}</button></footer></article>)}</div></div>}
 
-export default function HunterPortal({section}:{section:Section}){const[data,setData]=useState<LivePayload|null>(null);const[error,setError]=useState('');const refresh=async()=>{const r=await fetch('/api/me',{cache:'no-store'});const next=await readJson(r);if(!r.ok)throw new Error(next.error||'Não foi possível sincronizar o personagem.');setData(next)};useEffect(()=>{refresh().catch(e=>setError(e.message))},[]);if(!data)return <div className="system-loading"><div className="loading-rune"/><small>SYSTEM INITIALIZING</small><h1>{error||'Sincronizando dados do Caçador...'}</h1></div>;let page:React.ReactNode;if(section==='inicio')page=<Dashboard data={data}/>;else if(section==='personagem')page=<CharacterPage data={data}/>;else if(section==='inventario')page=<InventoryPage data={data}/>;else if(section==='equipamentos')page=<EquipmentPage data={data} onRefresh={refresh}/>;else if(section==='habilidades')page=<SkillsPage data={data}/>;else if(section==='mapa')page=<MapViewer/>;else if(section==='sistemas')page=<ArchitectSystems/>;else if(section==='guilda')page=<GuildHub onCharacterRefresh={refresh}/>;else if(section==='gacha')page=<GachaHub onRefresh={refresh}/>;else if(section==='loja')page=<ShopPage data={data}/>;else page=<GenericListPage section={section} data={data}/>;return <Shell section={section} data={data}>{page}</Shell>}
+export default function HunterPortal({section}:{section:Section}){const[data,setData]=useState<LivePayload|null>(null);const[error,setError]=useState('');const refresh=async()=>{const r=await fetch('/api/me',{cache:'no-store'});const next=await readJson(r);if(!r.ok)throw new Error(next.error||'Não foi possível sincronizar o personagem.');setData(next)};useEffect(()=>{refresh().catch(e=>setError(e.message))},[]);if(!data)return <div className="system-loading"><div className="loading-rune"/><small>SYSTEM INITIALIZING</small><h1>{error||'Sincronizando dados do Caçador...'}</h1></div>;let page:React.ReactNode;if(section==='inicio')page=<Dashboard data={data}/>;else if(section==='personagem')page=<CharacterPage data={data}/>;else if(section==='inventario')page=<InventoryPage data={data}/>;else if(section==='equipamentos')page=<EquipmentPage data={data} onRefresh={refresh}/>;else if(section==='habilidades')page=<SkillsPage data={data}/>;else if(section==='sistemas')page=<ArchitectSystems/>;else if(section==='guilda')page=<GuildHub onCharacterRefresh={refresh}/>;else if(section==='gacha')page=<GachaHub onRefresh={refresh}/>;else if(section==='loja')page=<ShopPage data={data}/>;else page=<GenericListPage section={section} data={data}/>;return <Shell section={section} data={data}>{page}</Shell>}

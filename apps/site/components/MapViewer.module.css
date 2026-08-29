@@ -789,3 +789,11 @@
     transition: none !important;
   }
 }
+
+/* V8 camera: the world always covers the viewport; no backdrop should become visible at legal pan/zoom bounds. */
+.world { background: #020812; }
+.mapImage {
+  image-rendering: auto;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}

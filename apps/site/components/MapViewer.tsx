@@ -67,8 +67,8 @@ type Special = {
 
 type ViewportSize = { width: number; height: number };
 
-const WORLD_WIDTH = 1920;
-const WORLD_HEIGHT = 1280;
+const WORLD_WIDTH = 8192;
+const WORLD_HEIGHT = 5460;
 const WORLD_ASPECT = WORLD_WIDTH / WORLD_HEIGHT;
 const MAJOR_CITIES = new Set(['seoul', 'busan', 'daegu', 'incheon', 'daejeon', 'gwangju', 'ulsan', 'jeju']);
 
@@ -106,8 +106,8 @@ async function readJson(response: Response) {
   }
 }
 
-function MapControls({ currentLocationId, fitScale }: { currentLocationId: string; fitScale: number }) {
-  const { zoomIn, zoomOut, resetTransform, zoomToElement } = useControls();
+function MapControls({ currentLocationId, coverScale }: { currentLocationId: string; coverScale: number }) {
+  const { zoomIn, zoomOut, zoomToElement } = useControls();
 
   return (
     <div className={styles.zoomControls} aria-label="Controles do mapa">
@@ -119,16 +119,34 @@ function MapControls({ currentLocationId, fitScale }: { currentLocationId: strin
       </button>
       <button
         type="button"
-        onClick={() => zoomToElement(`map-city-${currentLocationId}`, Math.max(fitScale * 2.1, 0.75), 450)}
+        onClick={() => zoomToElement(`map-city-${currentLocationId}`, Math.min(coverScale * 1.35, coverScale * 4), 450)}
         aria-label="Centralizar na minha localização"
       >
         <LocateFixed />
       </button>
-      <button type="button" onClick={() => resetTransform(450)} aria-label="Mostrar mapa completo">
+      <button type="button" onClick={() => zoomToElement(`map-city-${currentLocationId}`, coverScale, 450)} aria-label="Voltar para minha localização">
         <RotateCcw />
       </button>
     </div>
   );
+}
+
+function CameraBootstrap({ currentLocationId, coverScale, ready }: { currentLocationId: string; coverScale: number; ready: boolean }) {
+  const { zoomToElement } = useControls();
+  const lastTarget = useRef('');
+
+  useEffect(() => {
+    if (!ready || !currentLocationId || !coverScale) return;
+    const target = `${currentLocationId}:${coverScale.toFixed(6)}`;
+    if (lastTarget.current === target) return;
+    lastTarget.current = target;
+    const frame = window.requestAnimationFrame(() => {
+      zoomToElement(`map-city-${currentLocationId}`, coverScale, 0);
+    });
+    return () => window.cancelAnimationFrame(frame);
+  }, [currentLocationId, coverScale, ready, zoomToElement]);
+
+  return null;
 }
 
 export default function MapViewer() {
@@ -182,13 +200,15 @@ export default function MapViewer() {
 
   const current = useMemo(() => places.find((place) => place.id === location), [places, location]);
 
-  const fitScale = useMemo(() => {
-    if (!viewport.width || !viewport.height) return 0.4;
-    return Math.min(viewport.width / WORLD_WIDTH, viewport.height / WORLD_HEIGHT);
+  // Fullscreen camera: the world always covers the viewport. The image itself is never cropped;
+  // the viewport is simply a window over a larger draggable world.
+  const coverScale = useMemo(() => {
+    if (!viewport.width || !viewport.height) return 0.2;
+    return Math.max(viewport.width / WORLD_WIDTH, viewport.height / WORLD_HEIGHT);
   }, [viewport]);
 
-  const minScale = Math.max(0.08, fitScale * 0.94);
-  const maxScale = Math.max(4.2, fitScale * 8.5);
+  const minScale = coverScale;
+  const maxScale = coverScale * 4;
   const wrapperKey = `${Math.round(viewport.width)}x${Math.round(viewport.height)}`;
 
   const travel = async (id: string) => {
@@ -242,17 +262,17 @@ export default function MapViewer() {
       {viewport.width > 0 && viewport.height > 0 && (
         <TransformWrapper
           key={wrapperKey}
-          initialScale={fitScale}
+          initialScale={coverScale}
           minScale={minScale}
           maxScale={maxScale}
-          centerOnInit
-          centerZoomedOut
+          centerOnInit={false}
+          centerZoomedOut={false}
           limitToBounds
           wheel={{ step: 0.09, smooth: true }}
           pinch={{ step: 5 }}
           doubleClick={{ disabled: true }}
           panning={{ velocityDisabled: false, excluded: ['world-map-action'] }}
-          onTransformed={(_, state) => setZoomRatio(state.scale / Math.max(fitScale, 0.001))}
+          onTransformed={(_, state) => setZoomRatio(state.scale / Math.max(coverScale, 0.001))}
         >
           <TransformComponent wrapperClass={styles.viewport} contentClass={styles.transformContent}>
             <div
@@ -262,7 +282,7 @@ export default function MapViewer() {
             >
               <img
                 className={styles.mapImage}
-                src="/mapa-coreia.png"
+                src="/mapa-coreia-8k.jpg"
                 alt="Mapa completo da Coreia do Sul"
                 draggable={false}
                 decoding="async"
@@ -353,7 +373,8 @@ export default function MapViewer() {
             </div>
           </TransformComponent>
 
-          <MapControls currentLocationId={location} fitScale={fitScale} />
+          <CameraBootstrap currentLocationId={location} coverScale={coverScale} ready={places.length > 0} />
+          <MapControls currentLocationId={location} coverScale={coverScale} />
         </TransformWrapper>
       )}
 

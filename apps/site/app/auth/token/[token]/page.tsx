@@ -9,7 +9,7 @@ export default function TokenLogin({ params }: { params: Promise<{ token: string
       try {
         const response = await fetch("/api/auth/consume", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ token }) });
         if (!response.ok) { const body = await response.json().catch(() => ({})); throw new Error(body.error || "Link invalido."); }
-        window.location.replace("/personagem");
+        window.location.replace("/");
       } catch (error) { setMessage(error instanceof Error ? error.message : "Link invalido."); }
     });
   }, [params]);

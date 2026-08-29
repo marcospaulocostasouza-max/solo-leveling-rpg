@@ -1,4 +1,3 @@
-const path = require("path");
 const database = require("../../../../packages/database");
 const { provider } = require("../../../../packages/database/config");
 
@@ -9,8 +8,8 @@ const TIPOS_RECOMPENSA = Object.freeze([
 ]);
 const TIPOS_NUMERICOS = new Set(["MAESTRIA", "XP", "WON", "CRISTAIS", "TOKEN", "FRAGMENTOS"]);
 const TIPOS_ITEM = new Set(["ITEM", "EQUIPAMENTO", "ARMA", "ACESSORIO", "MATERIAL", "CONSUMIVEL", "CAIXA", "ITEM_ESPECIAL_BANNER"]);
-const passivas = require(path.resolve(__dirname, "../database/data/passivas.json"));
-const titulos = require(path.resolve(__dirname, "../database/data/titulos.json"));
+const passivas = require("../database/data/passivas.json");
+const titulos = require("../database/data/titulos.json");
 
 function inteiroPositivo(valor, campo) {
     const numero = Number(valor);

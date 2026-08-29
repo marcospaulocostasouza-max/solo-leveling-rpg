@@ -1,13 +1,12 @@
 "use strict";
 
-const path = require("path");
 const database = require("../../../../packages/database");
 const { provider } = require("../../../../packages/database/config");
 const bannerService = require("./gachaBannerService");
 const LevelSystem = require("./levelSystem");
 
-const passivas = require(path.resolve(__dirname, "../database/data/passivas.json"));
-const titulos = require(path.resolve(__dirname, "../database/data/titulos.json"));
+const passivas = require("../database/data/passivas.json");
+const titulos = require("../database/data/titulos.json");
 const CUSTOS = Object.freeze({ 1: 100, 10: 1000 });
 const RANKS = new Set(["E", "D", "C", "B", "A", "S"]);
 const TIPOS_ITEM = new Set(["ITEM", "EQUIPAMENTO", "ARMA", "ACESSORIO", "MATERIAL", "CONSUMIVEL", "CAIXA", "ITEM_ESPECIAL_BANNER"]);

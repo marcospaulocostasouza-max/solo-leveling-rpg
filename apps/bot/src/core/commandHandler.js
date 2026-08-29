@@ -73,7 +73,7 @@ const comandosClasses = [
     , "!adaga", "!adagas", "!foice", "!foices", "!katana", "!katanas", "!kusarigama", "!pistola", "!pistolas", "!escopeta", "!escopetas", "!espingarda", "!fuzil", "!fuzis",
     "!arco", "!arcos", "!faca", "!facas", "!sniper", "!espadao", "!espadão", "!espadoes", "!espadões", "!espadas pesadas", "!espadas pesadas duplas", "!espadoes duplos", "!espadões duplos", "!espada", "!espadas", "!manopla", "!manoplas", "!punhos", "!punho", "!kanabo",
     "!lanca", "!lança", "!lanças", "!lancas", "!cajado", "!cajados", "!cajados e orbes", "!cajado e orbe", "!orbe", "!orbes", "!grimorio", "!grimório",
-    "!revolver", "!rifle", "!rifles", "!rifle de precisao", "!rifles de precisao", "!rifle de precisão", "!rifles de precisão", "!arma de fogo", "!armas de fogo", "!combate desarmado", "!artes marciais",
+    "!revolver", "!rifle", "!rifles", "!rifle de precisao", "!rifles de precisao", "!rifle de precisão", "!rifles de precisão", "!combate desarmado", "!artes marciais",
     "!escudo", "!escudos", "!corrente", "!correntes", "!machado", "!machados", "!martelo", "!martelos",
     "!chicote", "!chicotes", "!besta", "!bestas", "!bumerangue", "!bumerangues", "!arremesso",
     "!garra", "!garras", "!sabre", "!sabres", "!foices duplas", "!foices dupla", "!tridente", "!tridentes",
@@ -119,6 +119,8 @@ async function executarComando(msg, comando, comandosRegistrados) {
     // MAPEAMENTO DE COMANDOS
     // =====================================
     const mapaComandos = {
+        "!gacha": "gacha.js",
+        "!gachaadm": "gachaAdm.js",
         "!iniciar": "iniciar.js",
         "!maestria": "treinar.js",
         "!qi": "treinar.js",
@@ -318,6 +320,8 @@ async function executarComando(msg, comando, comandosRegistrados) {
 
     // Comandos com prefixo (startsWith)
     const comandosPrefixo = [
+        { prefixo: "!gachaadm", arquivo: "gachaAdm.js" },
+        { prefixo: "!gacha", arquivo: "gacha.js" },
         { prefixo: "!atributos", arquivo: "atributos.js" },
         { prefixo: "!avaliar ficha", arquivo: "avaliarFicha.js" },
         { prefixo: "!avaliar ia", arquivo: "avaliarIA.js" },
@@ -337,7 +341,15 @@ async function executarComando(msg, comando, comandosRegistrados) {
         { prefixo: "!comprar técnica", arquivo: "comprarTecnica.js" },
         { prefixo: "!confirmar compra", arquivo: "comprar.js" },
         { prefixo: "!comprar", arquivo: "comprar.js" },
+        // Consultas específicas devem vir antes do prefixo genérico !tecnicas.
+        { prefixo: "!tecnicas proficiencia", arquivo: "tecnicasEstiloLuta.js" },
+        { prefixo: "!técnicas proficiência", arquivo: "tecnicasEstiloLuta.js" },
         { prefixo: "!tecnicas estilo de luta", arquivo: "tecnicasEstiloLuta.js" },
+        { prefixo: "!técnicas estilo de luta", arquivo: "tecnicasEstiloLuta.js" },
+        { prefixo: "!tecnica proficiencia", arquivo: "tecnicasEstiloLuta.js" },
+        { prefixo: "!técnica proficiência", arquivo: "tecnicasEstiloLuta.js" },
+        { prefixo: "!tecnica estilo de luta", arquivo: "tecnicasEstiloLuta.js" },
+        { prefixo: "!técnica estilo de luta", arquivo: "tecnicasEstiloLuta.js" },
         { prefixo: "!tÃ©cnicas estilo de luta", arquivo: "tecnicasEstiloLuta.js" },
         { prefixo: "!minhas tecnicas", arquivo: "minhasTecnicas.js" },
         { prefixo: "!minhas técnicas", arquivo: "minhasTecnicas.js" },
@@ -485,6 +497,7 @@ async function executarComando(msg, comando, comandosRegistrados) {
         { prefixo: "!vender", arquivo: "vender.js" },
         { prefixo: "!confirmar venda", arquivo: "confirmarVenda.js" },
         { prefixo: "!cancelar venda", arquivo: "cancelarVenda.js" },
+        { prefixo: "!paimon", arquivo: "sistema.js" },
         { prefixo: "!ia", arquivo: "ia.js" },
         // =====================================
         // COMANDOS DE NPCs (prefixo)

@@ -109,15 +109,16 @@ class AtributoSystem {
 
                 // ---------- 4. BÔNUS DE EQUIPAMENTOS EQUIPADOS ----------
                 const bonusEquip = await getInventorySystem().calcularBonusEquipados(jogadorId);
+                const bonusConjunto = await require("./equipmentSetService").calcularBonusConjuntos(jogadorId);
 
                 // ---------- 5. SOMA TOTAL ----------
                 const total = {
-                    forca:        base.forca        + bonusClasseMap.forca        + buffAvancada.forca        + (bonusEquip.forca || 0),
-                    resistencia:  base.resistencia  + bonusClasseMap.resistencia  + buffAvancada.resistencia  + (bonusEquip.resistencia || 0),
-                    velocidade:   base.velocidade   + bonusClasseMap.velocidade   + buffAvancada.velocidade   + (bonusEquip.velocidade || 0),
-                    sentidos:     base.sentidos     + bonusClasseMap.sentidos     + buffAvancada.sentidos     + (bonusEquip.sentidos || 0),
-                    inteligencia: base.inteligencia + bonusClasseMap.inteligencia + buffAvancada.inteligencia + (bonusEquip.inteligencia || 0),
-                    poderMagico:  base.poderMagico  + bonusClasseMap.poderMagico  + buffAvancada.poderMagico  + (bonusEquip.poderMagico || 0)
+                    forca:        base.forca        + bonusClasseMap.forca        + buffAvancada.forca        + (bonusEquip.forca || 0)        + (bonusConjunto.forca || 0),
+                    resistencia:  base.resistencia  + bonusClasseMap.resistencia  + buffAvancada.resistencia  + (bonusEquip.resistencia || 0)  + (bonusConjunto.resistencia || 0),
+                    velocidade:   base.velocidade   + bonusClasseMap.velocidade   + buffAvancada.velocidade   + (bonusEquip.velocidade || 0)   + (bonusConjunto.velocidade || 0),
+                    sentidos:     base.sentidos     + bonusClasseMap.sentidos     + buffAvancada.sentidos     + (bonusEquip.sentidos || 0)     + (bonusConjunto.sentidos || 0),
+                    inteligencia: base.inteligencia + bonusClasseMap.inteligencia + buffAvancada.inteligencia + (bonusEquip.inteligencia || 0) + (bonusConjunto.inteligencia || 0),
+                    poderMagico:  base.poderMagico  + bonusClasseMap.poderMagico  + buffAvancada.poderMagico  + (bonusEquip.poderMagico || 0)  + (bonusConjunto.poder_magico || 0)
                 };
 
                 // ---------- 6. MANA E VIDA MÁXIMAS ----------

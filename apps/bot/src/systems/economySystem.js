@@ -5,7 +5,8 @@
  */
 
 const db = require("../core/database");
-const { transaction } = require("../../../../packages/database");
+const sharedDatabase = require("../../../../packages/database");
+const { transaction } = sharedDatabase;
 
 class EconomySystem {
     
@@ -15,6 +16,22 @@ class EconomySystem {
                 resolve(row ? row.won : 0);
             });
         });
+    }
+
+    static consultarCristais(jogadorId) {
+        return sharedDatabase.consultarCristais(jogadorId);
+    }
+
+    static adicionarCristais(jogadorId, quantidade, origem) {
+        return sharedDatabase.adicionarCristais(jogadorId, quantidade, origem);
+    }
+
+    static removerCristais(jogadorId, quantidade, origem) {
+        return sharedDatabase.removerCristais(jogadorId, quantidade, origem);
+    }
+
+    static possuiCristais(jogadorId, quantidade) {
+        return sharedDatabase.possuiCristais(jogadorId, quantidade);
     }
     
     static async adicionarWon(jogadorId, valor, motivo) {

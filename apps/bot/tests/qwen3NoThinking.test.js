@@ -9,7 +9,7 @@
  *
  * Requisitos:
  *   - Ollama rodando em http://localhost:11434
- *   - Modelo qwen3:4b-thinking-2507-q4_K_M carregado
+ *   - Modelo qwen3:4b-instruct-2507-q4_K_M carregado
  */
 
 const { ollamaService } = require('../src/ia/ollamaService');
@@ -34,7 +34,7 @@ function validarConfiguracao() {
   if (cfg.top_k !== 30) falhas.push(`top_k deve ser 30, mas é ${cfg.top_k}`);
   if (cfg.num_thread !== 8) falhas.push(`num_thread deve ser 8, mas é ${cfg.num_thread}`);
   if (cfg.num_ctx !== 16384) falhas.push(`num_ctx deve ser 16384, mas é ${cfg.num_ctx}`);
-  if (!cfg.model.includes('qwen3:4b-thinking-2507-q4_K_M')) falhas.push(`modelo deve ser qwen3:4b-thinking-2507-q4_K_M, mas é ${cfg.model}`);
+  if (!cfg.model.includes('qwen3:4b-instruct-2507-q4_K_M')) falhas.push(`modelo deve ser qwen3:4b-instruct-2507-q4_K_M, mas é ${cfg.model}`);
 
   return falhas;
 }
@@ -49,10 +49,9 @@ function validarPrompts() {
 
   const termosProibidos = [
     'FORMA DE PENSAR',
-    'Como este personagem responderia naturalmente',
     'MODO DE PENSAMENTO',
     'INTERPRETAÇÃO PRIMEIRO',
-    'Primeiro pense como este personagem responderia'
+    '<think>'
   ];
 
   for (const termo of termosProibidos) {
@@ -65,7 +64,7 @@ function validarPrompts() {
     falhas.push('Bloco Sistema deve conter REGRAS DE SAÍDA');
   }
 
-  if (!promptBuilder.includes('Não controle pensamentos, falas, ações ou decisões do jogador')) {
+  if (!promptBuilder.includes('controla apenas suas próprias ações')) {
     falhas.push('Bloco Sistema deve conter regra de não controlar o jogador');
   }
 

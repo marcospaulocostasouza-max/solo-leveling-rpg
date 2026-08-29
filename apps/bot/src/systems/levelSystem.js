@@ -289,34 +289,7 @@ class LevelSystem {
      * Recalcula atributos totais do jogador (soma base + buffs)
      */
     static async recalcularTotais(jogador) {
-        return new Promise((resolve) => {
-            const forca_total = Number(jogador.forca_base || 0) + Number(jogador.forca_buff || 0);
-            const resistencia_total = Number(jogador.resistencia_base || 0) + Number(jogador.resistencia_buff || 0);
-            const velocidade_total = Number(jogador.velocidade_base || 0) + Number(jogador.velocidade_buff || 0);
-            const sentidos_total = Number(jogador.sentidos_base || 0) + Number(jogador.sentidos_buff || 0);
-            const inteligencia_total = Number(jogador.inteligencia_base || 0) + Number(jogador.inteligencia_buff || 0);
-            const poder_magico_total = Number(jogador.poder_magico_base || 0) + Number(jogador.poder_magico_buff || 0);
-            
-            const manaMaxima = Math.max(100, (jogador.inteligencia_base || 0) * 100 + (jogador.nivel || 1) * 10);
-            const vidaMaxima = Math.max(100, (jogador.resistencia_base || 0) * 3 + (jogador.nivel || 1) * 20);
-            
-            db.run(
-                `UPDATE jogadores SET 
-                 forca_total = ?, resistencia_total = ?, velocidade_total = ?,
-                 sentidos_total = ?, inteligencia_total = ?, poder_magico_total = ?,
-                 mana_maxima = ?, vida_maxima = ?
-                 WHERE id = ?`,
-                [
-                    forca_total, resistencia_total, velocidade_total,
-                    sentidos_total, inteligencia_total, poder_magico_total,
-                    manaMaxima, vidaMaxima,
-                    jogador.id
-                ],
-                (error) => {
-                    resolve(!error);
-                }
-            );
-        });
+        return AtributoSystem.recalcularAtributos(jogador.id);
     }
     
     static async adicionarXp(jogadorId, quantidade, motivo) {

@@ -90,6 +90,7 @@ _Corrija a ficha e tente novamente._`;
 
         // Formatar mensagem de sucesso
         const premios = resultado.premios;
+        const cristaisEntregues = (premGeral.cristais || []).find(item => item.quantidade > 0)?.quantidade || 0;
         const participantes = resultado.participantes.map(p => p.nome).join(", ");
         
         let mensagem = `*═══ DUNGEON CONCLUÍDA! ═══*
@@ -104,6 +105,7 @@ ${resultado.participantes.map((p, i) => `${i + 1}. ${p.nome}`).join("\n")}
 *Premiação Geral (todos os participantes):*
 > XP: ${premios.xp}
 > Wons: ${premios.won}
+${cristaisEntregues > 0 ? `> 💎 Cristais: ${cristaisEntregues}` : ""}
 ${premios.atributos > 0 ? `> Atributos: ${premios.atributos}` : ""}
 ${premios.maestria > 0 ? `> Maestria: ${premios.maestria}` : ""}
 

@@ -42,6 +42,20 @@ test("slots aceitam categorias legadas e canonicas de equipamento", () => {
     assert.equal(itemSlot({ categoria: "Escudo", escudo: 1 }), "Arma 1");
 });
 
+test("slot declarado pelo item prevalece sobre a categoria legada", () => {
+    const InventorySystem = require("../src/systems/inventorySystem");
+    assert.equal(InventorySystem.getSlotDoItem({ slot: "Pés", categoria: "Equipamento" }), "Pés");
+    assert.equal(InventorySystem.getSlotDoItem({ slot: "Acessórios", categoria: "Equipamento" }), "Acessórios");
+});
+
+test("bônus em efeito complementa os campos estruturados sem duplicá-los", () => {
+    const InventorySystem = require("../src/systems/inventorySystem");
+    assert.deepEqual(
+        InventorySystem.parseBonus({ forca_bonus: 10, efeito: "Força: +10, Velocidade: +7, Poder Mágico: +3" }),
+        { forca: 10, resistencia: 0, velocidade: 7, sentidos: 0, inteligencia: 0, poderMagico: 3 }
+    );
+});
+
 test("equipar um item recalcule atributos sem quebrar o fluxo", async () => {
     const InventorySystem = require("../src/systems/inventorySystem");
     const db = require("../src/core/database");
@@ -103,6 +117,29 @@ test("comandos de armas sao resolvidos", () => {
     assert.equal(resolverConsultaClasse("pistola").estilo, "Pistolas");
     assert.equal(resolverConsultaClasse("arco").estilo, "Arcos");
     assert.equal(resolverConsultaClasse("espadão").estilo, "Espadas Pesadas");
+});
+
+test("todos os estilos registrados possuem uma consulta própria", () => {
+    const { listarEstilos } = require("../src/tecnicas/estilos");
+    const { resolverConsultaClasse } = require("../src/commands/tecnicasClasse");
+    const normalizar = valor => String(valor).normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+    for (const estilo of listarEstilos()) {
+        assert.equal(normalizar(resolverConsultaClasse(estilo.nome).estilo), normalizar(estilo.nome), estilo.nome);
+    }
+});
+
+test("consultas de proficiência extraem somente o estilo solicitado", () => {
+    const { extrairConsulta, nomeEstiloTecnico } = require("../src/commands/tecnicasEstiloLuta");
+    assert.equal(extrairConsulta("!Técnicas Estilo de Luta"), "");
+    assert.equal(extrairConsulta("!Técnica Estilo de Luta"), "");
+    assert.equal(extrairConsulta("!Técnicas Proficiência Rifles de Precisão"), "Rifles de Precisão");
+    assert.equal(nomeEstiloTecnico("Proficiência em Lanças"), "Lanças");
+});
+
+test("arma de fogo genérica não é uma proficiência válida", () => {
+    const { obterEstiloCanonico } = require("../src/utils/normalizarEstiloLuta");
+    assert.equal(obterEstiloCanonico("Proficiência em Arma de Fogo"), null);
+    assert.match(obterEstiloCanonico("Proficiência em Pistolas"), /Pistolas/i);
 });
 
 test("tecnicas avancadas exigem a classe avancada correta", () => {

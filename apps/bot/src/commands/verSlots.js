@@ -9,6 +9,13 @@ const MessageService = require("../core/messageService");
 
 const db = require("../core/database");
 const InventorySystem = require("../systems/inventorySystem");
+const EquipmentSetService = require("../systems/equipmentSetService");
+
+function formatarBonusConjunto(estagio) {
+    if (!estagio) return [];
+    const campos = [["forca", "Força"], ["resistencia", "Resistência"], ["velocidade", "Velocidade"], ["sentidos", "Sentidos"], ["inteligencia", "Inteligência"], ["poder_magico", "Poder Mágico"]];
+    return campos.filter(([chave]) => Number(estagio[chave]) > 0).map(([chave, nome]) => `+${estagio[chave]} ${nome}`);
+}
 
 // Capacidades dos slots (nome interno = nome do InventorySystem)
 const SLOTS = [
@@ -38,6 +45,9 @@ module.exports = async (msg) => {
 
     // Buscar itens equipados
     const equipados = await InventorySystem.getSlotsEquipados(jogador.id);
+    const progressoConjuntos = await EquipmentSetService.getProgressoConjuntos(jogador.id);
+    const conjuntoPorItem = new Map();
+    for (const conjunto of progressoConjuntos) for (const peca of conjunto.pecas) conjuntoPorItem.set(Number(peca.itemId), conjunto.nome);
 
     // Organizar itens por slot
     const slotsPreenchidos = {};
@@ -82,6 +92,7 @@ module.exports = async (msg) => {
                 if (bonus.poderMagico > 0) bonusTexto.push(`Poder Mágico: +${bonus.poderMagico}`);
                 
                 mensagem += `> ${idx + 1}. *${item.nome}*\n`;
+                if (conjuntoPorItem.has(Number(item.id))) mensagem += `   └ Conjunto: ${conjuntoPorItem.get(Number(item.id))}\n`;
                 mensagem += `   Bônus: ${bonusTexto.length > 0 ? bonusTexto.join(", ") : "Nenhum"}\n`;
             });
             // Mostrar slots vazios restantes
@@ -105,6 +116,22 @@ module.exports = async (msg) => {
     mensagem += `> *Sentidos:* +${bonusEquip.sentidos || 0}\n`;
     mensagem += `> *Inteligência:* +${bonusEquip.inteligencia || 0}\n`;
     mensagem += `> *Poder Mágico:* +${bonusEquip.poderMagico || 0}\n\n`;
+    mensagem += `*──────────────── CONJUNTOS ATIVOS ────────────────*\n`;
+    const relevantes = progressoConjuntos.filter(conjunto => conjunto.quantidadeEquipada > 0);
+    if (!relevantes.length) mensagem += `> Nenhuma peça de conjunto equipada.\n\n`;
+    for (const conjunto of relevantes) {
+        mensagem += `> *${conjunto.nome}* — Rank ${conjunto.rank}\n`;
+        mensagem += `> ${conjunto.quantidadeEquipada}/${conjunto.totalPecas} peças\n`;
+        if (conjunto.estagioAtivo) {
+            mensagem += `> Ativo: bônus de ${conjunto.estagioAtivo.required_pieces} peças\n`;
+            for (const linha of formatarBonusConjunto(conjunto.estagioAtivo)) mensagem += `> ${linha}\n`;
+        } else mensagem += `> Nenhum estágio ativo.\n`;
+        if (conjunto.proximoEstagio) {
+            mensagem += `> Próximo: ${conjunto.proximoEstagio.required_pieces} peças\n`;
+            for (const linha of formatarBonusConjunto(conjunto.proximoEstagio)) mensagem += `> ${linha}\n`;
+        }
+        mensagem += `\n`;
+    }
     mensagem += `──────────────────────────\n`;
     mensagem += `_Use !equipar <nome do item> para equipar._\n`;
     mensagem += `_Use !equipar <nome do item> novamente para desequipar._`;

@@ -170,7 +170,8 @@ module.exports = async (msg, nomeClasse) => {
         const estiloLower = String(consulta.estilo).toLowerCase();
         db.all(
             `SELECT * FROM tecnicas 
-             WHERE LOWER(classe) = ? 
+             WHERE LOWER(classe) = ?
+               AND LOWER(categoria) IN ('proficiencia', 'proficiência')
              ORDER BY nivel_desbloqueio ASC, nome ASC`,
             [estiloLower],
             async (err, tecnicas) => {

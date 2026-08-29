@@ -17,8 +17,8 @@ test("reconhece nomes populares, singular/plural e erros pequenos", () => {
         ["> _Cajdo e Orbe_", nome("Cajados e Orbes")],
         ["proficiência em espadda", nome("Espadas")],
         ["Artes marciais", nome("Combate Desarmado")],
-        ["Rifle", nome("Armas de Fogo")],
-        ["Faca", nome("Adagas")]
+        ["Rifle", nome("Fuzis")],
+        ["Faca", nome("Facas")]
     ];
     for (const [entrada, esperado] of casos) {
         assert.equal(obterEstiloCanonico(entrada), esperado, entrada);

@@ -29,12 +29,23 @@ const SLOT_CAPACIDADE = {
     "Arma 2": 1
 };
 
+const SLOT_POR_CHAVE = {
+    cabeca: "Cabeça", corpo: "Corpo", acessorios: "Acessórios",
+    itemdeapoio: "Item de Apoio", pernas: "Pernas", pes: "Pés",
+    arma1: "Arma 1", arma2: "Arma 2"
+};
+
 function normalizarTexto(valor) {
     return String(valor || "")
         .normalize("NFD")
         .replace(/[\u0300-\u036f]/g, "")
         .toLowerCase()
         .trim();
+}
+
+function slotCanonico(valor) {
+    const chave = normalizarTexto(valor).replace(/[^a-z0-9]/g, "");
+    return SLOT_POR_CHAVE[chave] || null;
 }
 
 function descricaoNormalizada(item) {
@@ -62,6 +73,10 @@ class InventorySystem {
     }
 
     static getSlotDoItem(item) {
+        // Itens novos podem declarar o slot oficial diretamente. Itens
+        // legados continuam usando as regras de compatibilidade abaixo.
+        const slotInformado = slotCanonico(item.slot);
+        if (slotInformado) return slotInformado;
         const cat = normalizarTexto(item.slot || item.categoria || item.tipo || item.legacyCategory);
         const desc = descricaoNormalizada(item);
 
@@ -93,15 +108,18 @@ class InventorySystem {
         bonus.inteligencia += Number(item.inteligencia_bonus || 0);
         bonus.poderMagico += Number(item.poder_magico_bonus || 0);
         const textoBonus = item.efeito || item.habilidade || "";
-        if (textoBonus && (bonus.forca === 0 && bonus.resistencia === 0 && bonus.velocidade === 0 && bonus.sentidos === 0 && bonus.inteligencia === 0 && bonus.poderMagico === 0)) {
-            const mapAtributo = { "forca": "forca", "força": "forca", "resistencia": "resistencia", "resistência": "resistencia", "velocidade": "velocidade", "agilidade": "velocidade", "sentidos": "sentidos", "inteligencia": "inteligencia", "inteligência": "inteligencia", "poder magico": "poderMagico", "poder mágico": "poderMagico", "poder": "poderMagico" };
-            const regex = /([a-záéíóúãõç\s]+):\s*\+?(\d+)/gi;
+        if (textoBonus) {
+            const mapAtributo = { forca: "forca", resistencia: "resistencia", velocidade: "velocidade", agilidade: "velocidade", sentidos: "sentidos", inteligencia: "inteligencia", "poder magico": "poderMagico", poder: "poderMagico" };
+            const regex = /([\p{L}\s]+):\s*\+?(\d+)/giu;
             let match;
             while ((match = regex.exec(textoBonus)) !== null) {
-                const nomeAtr = match[1].trim().toLowerCase();
+                const nomeAtr = normalizarTexto(match[1]).replace(/\s+/g, " ");
                 const valor = parseInt(match[2]);
                 const chave = mapAtributo[nomeAtr];
-                if (chave && valor > 0) bonus[chave] += valor;
+                const campoBonus = chave === "poderMagico" ? "poder_magico_bonus" : `${chave}_bonus`;
+                // O texto complementa colunas ausentes sem dobrar bônus que
+                // já foram persistidos nos campos estruturados.
+                if (chave && valor > 0 && Number(item[campoBonus] || 0) === 0) bonus[chave] += valor;
             }
         }
         return bonus;
@@ -137,7 +155,10 @@ class InventorySystem {
             db.get(`SELECT i.*, inv.equipado FROM inventario_jogador inv JOIN itens i ON inv.item_id = i.id WHERE inv.jogador_id = ? AND inv.item_id = ?`, [jogadorId, itemId], async (err, item) => {
                 if (!item) { resolve({ erro: "Item não encontrado no inventário." }); return; }
                 if (this.isConsumivel(item)) { resolve({ erro: "Itens consumíveis não podem ser equipados. Use !usar <item>." }); return; }
-                const novoEstado = item.equipado ? 0 : 1;
+                // SQLite retorna 0/1 numéricos, mas PostgreSQL pode retornar
+                // "0"/"1" como texto. "0" é truthy em JavaScript e fazia
+                // !equipar cair no ramo de desequipar sem alterar o registro.
+                const novoEstado = Number(item.equipado) === 1 ? 0 : 1;
                 const slotItem = this.getSlotDoItem(item);
                 if (novoEstado === 0) {
                     db.run("UPDATE inventario_jogador SET equipado = 0 WHERE jogador_id = ? AND item_id = ?", [jogadorId, itemId], (err) => {
@@ -167,8 +188,8 @@ class InventorySystem {
                     const capacidade = SLOT_CAPACIDADE[slotItem] || 1;
                     if ((contagemSlots[slotItem] || 0) >= capacidade) { resolve({ erro: `Slot de ${slotItem} está cheio (${capacidade} máximo). Desequipe um item primeiro.` }); return; }
                 }
-                db.run("UPDATE inventario_jogador SET equipado = 1 WHERE jogador_id = ? AND item_id = ?", [jogadorId, itemId], (err) => {
-                    if (err) { resolve({ erro: "Erro ao equipar item." }); return; }
+                db.run("UPDATE inventario_jogador SET equipado = 1 WHERE jogador_id = ? AND item_id = ?", [jogadorId, itemId], function (err) {
+                    if (err || this.changes !== 1) { resolve({ erro: "Não foi possível registrar o equipamento no inventário." }); return; }
                     require("./atributoSystem").recalcularAtributos(jogadorId).then(() => resolve({ sucesso: true, acao: "equipado", item: item.nome, slot: slotItem }));
                 });
             });

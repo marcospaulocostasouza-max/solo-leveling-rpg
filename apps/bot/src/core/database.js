@@ -1,10 +1,13 @@
 const { provider } = require("../../../../packages/database/config");
 if (provider === "postgres") {
     const { callbackDatabase } = require("../../../../packages/database/postgres-compat");
+    const sharedDatabase = require("../../../../packages/database");
     const postgresDatabase = callbackDatabase();
     postgresDatabase.iniciarBanco = callback => {
-        console.log("Banco utilizado: PostgreSQL");
-        if (callback) callback();
+        Promise.all([sharedDatabase.ensureGachaEngineSchema(), sharedDatabase.ensureEquipmentSetSchema()]).then(() => {
+            console.log("Banco utilizado: PostgreSQL");
+            if (callback) callback();
+        }).catch(error => console.error("[DATABASE] Falha ao preparar Cristais:", error.message));
     };
     module.exports = postgresDatabase;
     return;
@@ -41,6 +44,7 @@ function criarTabelas() {
             experiencia INTEGER DEFAULT 0,
             won INTEGER DEFAULT 10000,
             maestria INTEGER DEFAULT 0,
+            cristais INTEGER NOT NULL DEFAULT 0,
             rank TEXT DEFAULT "E",
             titulo TEXT DEFAULT "Nenhum",
             classe TEXT DEFAULT "Não definida",
@@ -420,6 +424,20 @@ function criarTabelas() {
             FOREIGN KEY(jogador_id) REFERENCES jogadores(id)
         );
     `);
+
+    db.run(`
+        CREATE TABLE IF NOT EXISTS historico_cristais (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            jogador_id INTEGER NOT NULL,
+            quantidade INTEGER NOT NULL CHECK (quantidade > 0),
+            tipo TEXT NOT NULL CHECK (tipo IN ('entrada', 'saida')),
+            saldo_resultante INTEGER NOT NULL CHECK (saldo_resultante >= 0),
+            origem TEXT NOT NULL,
+            criado_em TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+            FOREIGN KEY (jogador_id) REFERENCES jogadores(id)
+        )
+    `);
+    db.run("CREATE INDEX IF NOT EXISTS idx_historico_cristais_jogador ON historico_cristais(jogador_id, criado_em)");
 
     // EVENTOS
     db.run(`
@@ -868,6 +886,7 @@ function adicionarColunaSeNaoExistir(tabela, coluna, definicao) {
 }
 
 function ajustarEsquema() {
+    adicionarColunaSeNaoExistir("jogadores", "cristais", "INTEGER NOT NULL DEFAULT 0");
     adicionarColunaSeNaoExistir("jogadores", "classe_avancada", "TEXT DEFAULT \"Nenhuma\"");
     adicionarColunaSeNaoExistir("jogadores", "classe_avancada_nivel", "INTEGER DEFAULT 0");
     adicionarColunaSeNaoExistir("jogadores", "arena_vitorias", "INTEGER DEFAULT 0");

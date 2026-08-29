@@ -113,9 +113,12 @@ async function registrarTodasTecnicas() {
         "Pistola": "Pistolas", "Escopeta": "Escopetas", "Fuzil": "Fuzis",
         // A antiga "Proficiência em Arremessos" foi substituída por "Facas"
         "Arremesso": "Facas", "Arremessos": "Facas",
-        // "Armas de Fogo" genérico foi separado em categorias específicas
-        "Armas de Fogo": "Pistolas", "Arma de Fogo": "Pistolas"
+        // Armas de fogo são somente proficiências específicas: Pistolas,
+        // Escopetas, Fuzis e Rifles de Precisão.
     };
+    // Remove o estilo legado genérico antes de registrar os estilos oficiais.
+    await run("DELETE FROM tecnicas WHERE LOWER(classe) IN ('arma de fogo', 'armas de fogo')");
+    await run("DELETE FROM estilos_luta WHERE LOWER(nome) IN ('proficiência em arma de fogo', 'proficiência em armas de fogo', 'proficiencia em arma de fogo', 'proficiencia em armas de fogo')");
     for (const [classeAntiga, estiloNovo] of Object.entries(migracoesLegadas)) {
         await run(`UPDATE tecnicas SET classe = ?, categoria = 'Proficiencia' WHERE LOWER(classe) = LOWER(?)`, [estiloNovo, classeAntiga]);
     }

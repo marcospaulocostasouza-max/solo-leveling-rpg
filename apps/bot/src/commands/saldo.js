@@ -7,7 +7,7 @@ module.exports = async (msg) => {
         const numero = msg.author || msg.from;
         const jogador = await new Promise((resolve, reject) => {
             db.get(
-                "SELECT nome, won, maestria, nivel FROM jogadores WHERE numero = ?",
+                "SELECT nome, won, maestria, cristais, fragmentos_invocacao, nivel FROM jogadores WHERE numero = ?",
                 [numero],
                 (erro, linha) => erro ? reject(erro) : resolve(linha)
             );
@@ -32,6 +32,8 @@ module.exports = async (msg) => {
 
 › Yulls: *${Number(jogador.won || 0).toLocaleString("pt-BR")}*
 › Maestria: *${Number(jogador.maestria || 0).toLocaleString("pt-BR")}*
+› 💎 Cristais: *${Number(jogador.cristais || 0).toLocaleString("pt-BR")}*
+› Fragmentos de Invocação: *${Number(jogador.fragmentos_invocacao || 0).toLocaleString("pt-BR")}*
 
 _A Maestria é recebida por atividades, eventos e outras recompensas do RPG._`.trim()
             });

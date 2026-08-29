@@ -1,30 +1,76 @@
 const db = require("../core/database");
 const MessageService = require("../core/messageService");
+const { obterEstiloCanonico } = require("../utils/normalizarEstiloLuta");
 
-const all = (sql, params = []) => new Promise(resolve =>
-    db.all(sql, params, (erro, linhas) => resolve(erro ? [] : (linhas || [])))
+const get = (sql, params = []) => new Promise((resolve, reject) =>
+    db.get(sql, params, (erro, linha) => erro ? reject(erro) : resolve(linha || null))
+);
+const all = (sql, params = []) => new Promise((resolve, reject) =>
+    db.all(sql, params, (erro, linhas) => erro ? reject(erro) : resolve(linhas || []))
 );
 
-module.exports = async (msg) => {
-    const estilos = await all("SELECT nome FROM estilos_luta ORDER BY nome");
-    const contagens = await all(`
-        SELECT classe, COUNT(*) AS total
-        FROM tecnicas
-        WHERE LOWER(categoria) IN ('proficiencia', 'proficiência')
-        GROUP BY classe
-        ORDER BY classe
-    `);
-    const mapa = new Map(contagens.map(x => [String(x.classe || "").toLowerCase(), Number(x.total || 0)]));
+function normalizar(valor) {
+    return String(valor || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/\s+/g, " ").trim();
+}
 
-    let texto = "*════════════════════════════════════*\n*TÉCNICAS DE ESTILO DE LUTA*\n*════════════════════════════════════*\n";
-    for (const estilo of estilos) {
-        const nomeCurto = String(estilo.nome || "").replace(/^Proficiência em\s+/i, "");
-        const total = mapa.get(nomeCurto.toLowerCase()) || 0;
-        texto += `\n*${estilo.nome}*\n`;
-        texto += `› ${total} técnica(s) registrada(s)\n`;
-        texto += `_Use o comando da arma/estilo ou !técnicas de proficiência._\n`;
+function extrairConsulta(corpo) {
+    return String(corpo || "").replace(/^!t[eé]cnicas?\s+(?:estilo\s+de\s+luta|profici[êe]ncia)\s*/i, "").trim();
+}
+
+// A ficha usa “Proficiência em Lanças”, enquanto a coluna `classe` das
+// técnicas usa somente “Lanças”. Esta é a chave usada em todas as consultas.
+function nomeEstiloTecnico(estilo) {
+    return String(estilo || "").replace(/^profici[êe]ncia\s+(?:em|e|m)\s+/i, "").trim();
+}
+
+function montarResposta(estilo, tecnicas) {
+    let texto = `*TÉCNICAS DE PROFICIÊNCIA: ${estilo.toUpperCase()}*\n\n`;
+    if (!tecnicas.length) return `${texto}_Ainda não há técnicas registradas para esta proficiência._`;
+    tecnicas.forEach((tecnica, indice) => {
+        const passiva = tecnica.passiva === true || Number(tecnica.passiva) === 1 || String(tecnica.passiva).toLowerCase() === "true";
+        texto += `*${indice + 1}. ${tecnica.nome}*\n`;
+        texto += `> Tipo: ${passiva ? "Passiva" : tecnica.tipo || "Ativa"}\n`;
+        texto += `> Nível: ${tecnica.nivel_desbloqueio || 1} | Custo: ${tecnica.custo_mana || 0} MP\n`;
+        const descricao = tecnica.descricao || "Sem descrição.";
+        texto += `> ${descricao}\n`;
+        texto += "\n";
+    });
+    return `${texto}_Para comprar: !comprar técnica <nome>_`;
+}
+
+async function consultarEstilo(msg, consultaInformada = "") {
+    const jogador = await get("SELECT id, estilo_luta FROM jogadores WHERE numero = ?", [msg.author || msg.from]);
+    if (!jogador) return MessageService.send({ message: msg, text: "*Você precisa ter uma ficha aprovada primeiro.*" });
+
+    const estilo = obterEstiloCanonico(consultaInformada || jogador.estilo_luta);
+    if (!estilo) {
+        const origem = consultaInformada ? "A proficiência informada" : "Sua proficiência registrada";
+        return MessageService.send({ message: msg, text: `*${origem} não corresponde a um estilo específico.*\n\nUse *Pistolas*, *Escopetas*, *Fuzis* ou *Rifles de Precisão*. “Arma de Fogo” genérico não é mais válido.` });
     }
-    if (!estilos.length) texto += "\n› Nenhum estilo de luta registrado.";
-    texto += "\n\n_Consulta individual: !técnica <nome>_\n_Compra: !comprar técnica <nome>_";
-    return MessageService.send({ message: msg, text: texto });
+
+    const estiloTecnico = nomeEstiloTecnico(estilo);
+    const tecnicas = await all(
+        `SELECT nome, descricao, tipo, passiva, nivel_desbloqueio, custo_mana
+         FROM tecnicas
+         WHERE LOWER(categoria) IN ('proficiencia', 'proficiência') AND LOWER(classe) = ?
+         ORDER BY nivel_desbloqueio ASC, nome ASC`,
+        // A coluna no PostgreSQL preserva acentos ("Lanças", "Báculos").
+        // LOWER faz a comparação sem distinguir maiúsculas, mas não remove
+        // acentos; por isso não devemos normalizar este parâmetro para ASCII.
+        [String(estiloTecnico).toLocaleLowerCase("pt-BR")]
+    );
+    return MessageService.send({ message: msg, text: montarResposta(estiloTecnico, tecnicas) });
+}
+
+module.exports = async msg => {
+    try {
+        return await consultarEstilo(msg, extrairConsulta(msg.body));
+    } catch (erro) {
+        console.error("[TECNICAS-ESTILO]", erro.message);
+        return MessageService.send({ message: msg, text: "*Não foi possível consultar as técnicas de proficiência agora.*" });
+    }
 };
+
+module.exports.extrairConsulta = extrairConsulta;
+module.exports.montarResposta = montarResposta;
+module.exports.nomeEstiloTecnico = nomeEstiloTecnico;

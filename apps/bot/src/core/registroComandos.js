@@ -28,6 +28,24 @@ function registrarTodosComandos() {
             categoria: "Sistema Inicial"
         },
         {
+            nome: "!gacha",
+            funcao: "Lista Banners, mostra detalhes e realiza 1 ou 10 giros",
+            arquivo: "gacha.js",
+            descricao: "Use !gacha girar <id> ou !gacha girar10 <id>; custos de 100 e 1.000 Cristais",
+            dependencias: ["../../systems/gachaBannerService.js", "../../systems/gachaEngine.js"],
+            ativo: true,
+            categoria: "Gacha"
+        },
+        {
+            nome: "!gachaadm",
+            funcao: "Administra Banners, pools, pesos, Destaques e Grande Premio",
+            arquivo: "gachaAdm.js",
+            descricao: "Ferramenta restrita a administradores; use !gachaadm ajuda",
+            dependencias: ["../../systems/gachaAdminService.js"],
+            ativo: true,
+            categoria: "Gacha"
+        },
+        {
             nome: "!arquiteto",
             funcao: "Exibe o indice principal de informacoes do RPG",
             arquivo: "arquiteto.js",
@@ -1018,6 +1036,15 @@ function registrarTodosComandos() {
             dependencias: ["../../systems/forjaSystem.js"],
             ativo: true,
             categoria: "RPG"
+        },
+        {
+            nome: "!paimon [pergunta]",
+            funcao: "Envia uma dúvida ou continuação de conversa para a fada guia Paimon",
+            arquivo: "sistema.js",
+            descricao: "Assistente com pesquisa e memória persistente. Em cada mensagem, escreva !paimon e a dúvida ou continuação na linha seguinte.",
+            dependencias: ["../../systems/systemAssistantService.js", "../../ia/ollamaService.js"],
+            ativo: true,
+            categoria: "IA"
         },
         {
             nome: "!ia [texto]",

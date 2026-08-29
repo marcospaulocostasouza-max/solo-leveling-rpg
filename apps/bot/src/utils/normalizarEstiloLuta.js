@@ -13,6 +13,7 @@ function normalizarChave(valor) {
         .replace(/^profici[a-z]*\s*(?:em|e|m)?\s*/, "")
         .replace(/[&/+]/g, " e ")
         .replace(/[^a-z0-9\s]/g, " ")
+        .replace(/([a-z])\1+/g, "$1")
         .replace(/\s+/g, " ")
         .trim();
 }
@@ -171,7 +172,7 @@ function obterEstiloCanonico(valor) {
         .map(estilo => ({ estilo, distancia: distancia(alvo, chaveDoEstilo(estilo.nome)) }))
         .sort((a, b) => a.distancia - b.distancia);
     const [melhor, segundo] = avaliados;
-    const limite = alvo.length <= 5 ? 1 : alvo.length <= 12 ? 2 : 3;
+    const limite = alvo.length <= 5 ? 1 : 3;
     return melhor && melhor.distancia <= limite && (!segundo || segundo.distancia > melhor.distancia)
         ? melhor.estilo.nome
         : null;

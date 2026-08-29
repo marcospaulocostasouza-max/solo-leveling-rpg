@@ -72,7 +72,9 @@ _Use !inventario para ver seus itens._` });
         }
 
         const resultado = await InventorySystem.equiparItem(jogador.id, item.id);
-        if (resultado.erro) return MessageService.send({ message: msg, text: `*${resultado.erro}*` });
+        if (resultado.erro || !resultado.sucesso) {
+            return MessageService.send({ message: msg, text: `*${resultado.erro || "Não foi possível equipar o item."}*` });
+        }
 
         await AtributoSystem.recalcularAtributos(jogador.id);
         const jogadorAtual = await get("SELECT * FROM jogadores WHERE id = ?", [jogador.id]);

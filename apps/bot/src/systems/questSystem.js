@@ -11,6 +11,7 @@ const path = require("path");
 const { missoesDisponiveis } = require("../missions/missionAvailability");
 const relationshipManager = require("../npc/relationshipManager");
 const { provider } = require("../../../../packages/database/config");
+const CrystalRewardService = require("./crystalRewardService");
 
 const MISSOES_NPC_DIR = path.join(__dirname, "..", "missions", "data");
 
@@ -55,7 +56,8 @@ function garantirMetadadosMissoes() {
             vinculo_necessario: "INTEGER",
             nivel_recomendado: "TEXT",
             oferecida_em: "TEXT",
-            recompensa_item: "TEXT"
+            recompensa_item: "TEXT",
+            recompensa_cristais: "INTEGER NOT NULL DEFAULT 0"
         };
 
         for (const [nome, definicao] of Object.entries(novasColunas)) {
@@ -113,13 +115,13 @@ class QuestSystem {
                 await executar(
                     `INSERT INTO missoes (
                         jogador_id, nome, descricao, tipo, progresso, objetivo,
-                        recompensa_xp, recompensa_won, status, data, npc_id,
+                        recompensa_xp, recompensa_won, recompensa_cristais, status, data, npc_id,
                         origem_missao_id, numero_missao, categoria_missao, rank,
                         objetivo_texto, vinculo_necessario, nivel_recomendado
-                    ) VALUES (?, ?, ?, ?, 0, 1, ?, ?, 'disponivel', datetime('now'), ?, ?, ?, ?, ?, ?, ?, ?)`,
+                    ) VALUES (?, ?, ?, ?, 0, 1, ?, ?, ?, 'disponivel', datetime('now'), ?, ?, ?, ?, ?, ?, ?, ?)`,
                     [
                         jogadorId, missao.nome, missao.descricao, missao.classificacao,
-                        missao.recompensas?.xp || 0, missao.recompensas?.won || 0,
+                        missao.recompensas?.xp || 0, missao.recompensas?.won || 0, missao.recompensas?.cristais || 0,
                         relacionamento.npcId, missao.id, missao.numero, missao.categoria,
                         missao.rank || null, missao.objetivo || null,
                         missao.vinculoNecessario, missao.nivelRecomendado
@@ -132,11 +134,11 @@ class QuestSystem {
         return adicionadas;
     }
     
-    static async criarMissao(jogadorId, nome, descricao, tipo, objetivo, recompensaXp, recompensaWon) {
+    static async criarMissao(jogadorId, nome, descricao, tipo, objetivo, recompensaXp, recompensaWon, recompensaCristais = 0) {
         return new Promise((resolve) => {
             db.run(
-                "INSERT INTO missoes (jogador_id, nome, descricao, tipo, progresso, objetivo, recompensa_xp, recompensa_won, status, data) VALUES (?, ?, ?, ?, 0, ?, ?, ?, 'ativa', datetime('now'))",
-                [jogadorId, nome, descricao, tipo, objetivo, recompensaXp, recompensaWon],
+                "INSERT INTO missoes (jogador_id, nome, descricao, tipo, progresso, objetivo, recompensa_xp, recompensa_won, recompensa_cristais, status, data) VALUES (?, ?, ?, ?, 0, ?, ?, ?, ?, 'ativa', datetime('now'))",
+                [jogadorId, nome, descricao, tipo, objetivo, recompensaXp, recompensaWon, recompensaCristais],
                 (err) => resolve(!err)
             );
         });
@@ -146,6 +148,7 @@ class QuestSystem {
         return new Promise((resolve) => {
             db.get("SELECT * FROM missoes WHERE id = ? AND jogador_id = ?", [missaoId, jogadorId], (err, missao) => {
                 if (!missao) return resolve(null);
+                if (missao.status === "completa") return resolve({ completa: true, duplicada: true, recompensa: null });
                 
                 const novoProgresso = missao.progresso + progresso;
                 
@@ -161,7 +164,10 @@ class QuestSystem {
                                 else await executar("INSERT INTO inventario_jogador(jogador_id,item_id,quantidade,equipado) VALUES(?,?,1,0)", [jogadorId,item.id]);
                             }
                         }
-                        resolve({ completa: true, recompensa: { xp: missao.recompensa_xp, won: missao.recompensa_won, item: missao.recompensa_item || null } });
+                        const cristais = await CrystalRewardService.concederMissao(
+                            jogadorId, missao.id, Number(missao.recompensa_cristais || 0), JSON.stringify({ nome: missao.nome })
+                        );
+                        resolve({ completa: true, recompensa: { xp: missao.recompensa_xp, won: missao.recompensa_won, item: missao.recompensa_item || null, cristais: cristais.quantidade } });
                     });
                 } else {
                     db.run("UPDATE missoes SET progresso = ? WHERE id = ?", [novoProgresso, missaoId]);

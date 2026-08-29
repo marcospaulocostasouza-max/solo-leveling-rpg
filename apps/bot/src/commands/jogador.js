@@ -67,12 +67,15 @@ _Use *!ficha* para criar seu personagem._
         const afinidadesAdicionais = await AfinidadesAdicionais.listar(jogador.id);
         
         // Atributos totais (agora atualizados pelo recalcularAtributos)
-        const forcaTotal = Number(jogador.forca_total || 0);
-        const resistenciaTotal = Number(jogador.resistencia_total || 0);
-        const velocidadeTotal = Number(jogador.velocidade_total || 0);
-        const sentidosTotal = Number(jogador.sentidos_total || 0);
-        const inteligenciaTotal = Number(jogador.inteligencia_total || 0);
-        const poderMagicoTotal = Number(jogador.poder_magico_total || 0);
+        // O bonus de conjunto e efetivo nos campos *_total*, mas por regra de
+        // apresentacao nao aparece na ficha !jogador; ele e detalhado em !equipados.
+        const bonusConjuntoOculto = await require("../systems/equipmentSetService").calcularBonusConjuntos(jogador.id);
+        const forcaTotal = Number(jogador.forca_total || 0) - Number(bonusConjuntoOculto.forca || 0);
+        const resistenciaTotal = Number(jogador.resistencia_total || 0) - Number(bonusConjuntoOculto.resistencia || 0);
+        const velocidadeTotal = Number(jogador.velocidade_total || 0) - Number(bonusConjuntoOculto.velocidade || 0);
+        const sentidosTotal = Number(jogador.sentidos_total || 0) - Number(bonusConjuntoOculto.sentidos || 0);
+        const inteligenciaTotal = Number(jogador.inteligencia_total || 0) - Number(bonusConjuntoOculto.inteligencia || 0);
+        const poderMagicoTotal = Number(jogador.poder_magico_total || 0) - Number(bonusConjuntoOculto.poder_magico || 0);
         
         // Montar mensagem
         let mensagem = `*═══ FICHA DO PERSONAGEM ═══*\n\n`;
@@ -110,7 +113,9 @@ _Use *!ficha* para criar seu personagem._
         mensagem += `> *Nível:* ${jogador.nivel || 1}\n`;
         mensagem += `> *XP:* ${jogador.experiencia || 0}\n`;
         mensagem += `> *Maestria:* ${jogador.maestria || 0}\n`;
-        mensagem += `> *Won:* ${jogador.won || 0}\n\n`;
+        mensagem += `> *Won:* ${jogador.won || 0}\n`;
+        mensagem += `> *💎 Cristais:* ${Number(jogador.cristais || 0).toLocaleString("pt-BR")}\n`;
+        mensagem += `> *Fragmentos de Invocação:* ${Number(jogador.fragmentos_invocacao || 0).toLocaleString("pt-BR")}\n\n`;
         
         // Buscar cargo na Associação
         const membroAssociacao = await new Promise((resolve) => {

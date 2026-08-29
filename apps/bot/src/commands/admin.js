@@ -29,6 +29,8 @@ const MessageService = require("../core/messageService");
 const db = require("../core/database");
 const adminCore = require("../core/adminCore");
 const JogadorCore = require("../core/jogadorCore");
+const CrystalRewardService = require("../systems/crystalRewardService");
+const CrystalDatabase = require("../../../../packages/database");
 
 module.exports = async (msg) => {
     const texto = msg.body.toLowerCase().trim();
@@ -220,6 +222,16 @@ Tipos validos: xp, maestria, won, for, res, agi, sen, int, pm` });
                 return MessageService.send({ message: msg, text: `═ Jogador "${nomeJogador}" nao encontrado.` });
             }
             
+            if (["cristal", "cristais"].includes(tipo)) {
+                const saldoAntigo = await CrystalDatabase.consultarCristais(jogador.id);
+                const resultado = isAdicao
+                    ? await CrystalRewardService.concederAdmin(jogador.id, valor, `${numero}:${Date.now()}`, JSON.stringify({ admin: adminNome }))
+                    : await CrystalDatabase.removerCristais(jogador.id, valor, "ADMIN");
+                if (!resultado.sucesso) return MessageService.send({ message: msg, text: resultado.erro || "Nao foi possivel alterar os Cristais." });
+                adminCore.registrarLog(numero, adminNome, isAdicao ? "adicao_cristais" : "remocao_cristais", jogador.nome, "Cristais", saldoAntigo, resultado.saldo);
+                return MessageService.send({ message: msg, text: `*CRISTAIS ATUALIZADOS*\n\nJogador: *${jogador.nome}*\nSaldo anterior: ${saldoAntigo}\nSaldo atual: *${resultado.saldo}*\n\n_Registrado por: ${adminNome}_` });
+            }
+
             const operacao = isAdicao ? 'adicionado' : 'removido';
             const sinal = isAdicao ? '+' : '-';
             let valorFinal = isAdicao ? valor : -valor;

@@ -4,6 +4,7 @@ const LevelSystem = require("./levelSystem");
 const advancedClasses = require("../utils/advancedClasses");
 const advancedTechniques = require("../tecnicas/avancadas/techniques");
 const AdvancedClassFeatureSystem = require("./advancedClassFeatureSystem");
+const AtributoSystem = require("./atributoSystem");
 
 class AdvancedClassSystem {
     static normalizarNome(valor) {
@@ -114,26 +115,7 @@ class AdvancedClassSystem {
     }
 
     static async atualizarTotais(jogadorId) {
-        return new Promise((resolve) => {
-            db.get("SELECT * FROM jogadores WHERE id = ?", [jogadorId], (err, jogador) => {
-                if (err || !jogador) return resolve(false);
-
-                const forca_total = Number(jogador.forca_base || 0) + Number(jogador.forca_buff || 0);
-                const resistencia_total = Number(jogador.resistencia_base || 0) + Number(jogador.resistencia_buff || 0);
-                const velocidade_total = Number(jogador.velocidade_base || 0) + Number(jogador.velocidade_buff || 0);
-                const sentidos_total = Number(jogador.sentidos_base || 0) + Number(jogador.sentidos_buff || 0);
-                const inteligencia_total = Number(jogador.inteligencia_base || 0) + Number(jogador.inteligencia_buff || 0);
-                const poder_magico_total = Number(jogador.poder_magico_base || 0) + Number(jogador.poder_magico_buff || 0);
-
-                db.run(
-                    `UPDATE jogadores SET forca_total = ?, resistencia_total = ?, velocidade_total = ?, sentidos_total = ?, inteligencia_total = ?, poder_magico_total = ? WHERE id = ?`,
-                    [forca_total, resistencia_total, velocidade_total, sentidos_total, inteligencia_total, poder_magico_total, jogadorId],
-                    (error) => {
-                        resolve(!error);
-                    }
-                );
-            });
-        });
+        return AtributoSystem.recalcularAtributos(jogadorId);
     }
 
     static async criarQuestClasseAvancada(jogadorId) {

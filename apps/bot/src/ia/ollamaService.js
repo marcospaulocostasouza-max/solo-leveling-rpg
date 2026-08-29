@@ -187,7 +187,7 @@ class OllamaService {
         const thinkEfetivo = OLLAMA_THINKING ? (opcoes.thinking ?? OLLAMA_THINKING) : false;
 
         return {
-            model: CONFIG_MODELO.model,
+            model: opcoes.model ?? CONFIG_MODELO.model,
             prompt: prompt,
             stream: true,
             // Suporte ao modo thinking do Qwen3

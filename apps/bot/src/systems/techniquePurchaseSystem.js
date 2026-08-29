@@ -11,9 +11,7 @@ const normalizarClasse = v => String(v || "").normalize("NFD").replace(/[\u0300-
 // reformulados na nova arquitetura. Usado para preservar personagens antigos.
 const COMPAT_LEGADO = {
     "arremesso": "facas",
-    "arremessos": "facas",
-    "armas de fogo": "pistolas",
-    "arma de fogo": "pistolas"
+    "arremessos": "facas"
 };
 
 function normalizarEstilo(v) {

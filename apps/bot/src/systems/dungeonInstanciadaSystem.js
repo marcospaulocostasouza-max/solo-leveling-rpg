@@ -15,6 +15,7 @@ const LevelSystem = require("./levelSystem");
 const EconomySystem = require("./economySystem");
 const TicketSystem = require("./ticketSystem");
 const InventorySystem = require("./inventorySystem");
+const CrystalRewardService = require("./crystalRewardService");
 const { ITENS_LOJA } = require("../utils/lojaItens");
 
 // =====================================
@@ -911,10 +912,13 @@ _Depois use *!concluir Dungeon* para finalizar._`;
 
         const premios = PREMIACOES_RANK[ficha.dungeon_rank] || PREMIACOES_RANK["E"];
         const participantes = JSON.parse(ficha.participantes || "[]");
+        const cristais = [];
 
         for (const nomeParticipante of participantes) {
             const jogador = await JogadorCore.buscarPorNomeLike(nomeParticipante);
             if (!jogador) continue;
+
+            cristais.push({ jogadorId: jogador.id, ...(await CrystalRewardService.concederDungeonAutonarrada(jogador.id, ficha)) });
 
             // XP geral
             await LevelSystem.adicionarXp(jogador.id, premios.xp, "Premiação geral de Dungeon Instanciada");
@@ -923,7 +927,7 @@ _Depois use *!concluir Dungeon* para finalizar._`;
             await EconomySystem.adicionarWon(jogador.id, premios.won, "Premiação geral de Dungeon Instanciada");
         }
 
-        return { sucesso: true, premios: premios, participantes: participantes };
+        return { sucesso: true, premios: premios, participantes: participantes, cristais };
     }
 
     /**

@@ -4,6 +4,9 @@ import path from "path";
 import database from "@/lib/rpg";
 import { currentPlayerId } from "@/lib/session";
 export const runtime = "nodejs";
+type RelationshipRow = { npcId: string; vinculo: number | string | null; hostilidade: number | string | null };
+type SceneRow = { npcId: string; jogadorId: string };
+type LocationOverrideRow = { npc_id: string; base_location_id: string | null; temporary_location_id: string | null };
 export async function GET() {
   try {
     const playerId = await currentPlayerId();
@@ -18,9 +21,9 @@ export async function GET() {
       database.all('SELECT "npcId", "jogadorId" FROM npc_cenas_ativas'),
       database.all('SELECT npc_id, base_location_id, temporary_location_id FROM npc_location_overrides WHERE active = 1')
     ]);
-    const rel = new Map((relationships as any[]).filter(row => ids.has(row.npcId)).map(row => [row.npcId, row]));
-    const scene = new Map((scenes as any[]).filter(row => ids.has(row.npcId)).map(row => [row.npcId, row]));
-    const location = new Map((overrides as any[]).filter(row => ids.has(row.npc_id)).map(row => [row.npc_id, row]));
+    const rel = new Map((relationships as RelationshipRow[]).filter(row => ids.has(row.npcId)).map(row => [row.npcId, row]));
+    const scene = new Map((scenes as SceneRow[]).filter(row => ids.has(row.npcId)).map(row => [row.npcId, row]));
+    const location = new Map((overrides as LocationOverrideRow[]).filter(row => ids.has(row.npc_id)).map(row => [row.npc_id, row]));
     return NextResponse.json({ npcs: profiles.map(npc => { const currentScene = scene.get(npc.id); const relation = rel.get(npc.id); const override = location.get(npc.id); return { ...npc, localizacaoAtual: override?.temporary_location_id || override?.base_location_id || null, vinculo: Number(relation?.vinculo || 0), hostilidade: Number(relation?.hostilidade || 0), disponibilidade: !currentScene || currentScene.jogadorId === player.numero, emCenaComJogador: currentScene?.jogadorId === player.numero }; }) });
   } catch (error) {
     console.error("[NPC] Falha ao listar NPCs:", error instanceof Error ? error.message : "erro desconhecido");

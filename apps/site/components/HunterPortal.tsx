@@ -1,30 +1,31 @@
 'use client';
+/* eslint-disable @typescript-eslint/no-explicit-any, react-hooks/set-state-in-effect */
 
 import Link from 'next/link';
 import { useEffect, useMemo, useState } from 'react';
 import {
   Activity, Backpack, BookOpen, ChevronRight, CircleDollarSign, Crown, DoorOpen,
-  Gem, Home, Map, Menu, Package, ScrollText, Shield, ShoppingBag, Sparkles,
+  Gem, Home, Map, Menu, ScrollText, Shield, ShoppingBag, Sparkles,
   Swords, Trophy, Upload, UserRound, Users, X, Zap, MapPin, Bell, Settings,
-  HeartPulse, WandSparkles, Search
+  HeartPulse, WandSparkles, type LucideIcon
 } from 'lucide-react';
 import MapViewer from './MapViewer';
 
 type Section='inicio'|'personagem'|'inventario'|'equipamentos'|'habilidades'|'missoes'|'mapa'|'dungeons'|'guilda'|'loja'|'npcs'|'titulos';
 type LivePayload={player:any;inventory:any[];skills:any[];guild:any;location:any;titles:string[];passives:any[];slots:Record<string,number>};
 
-const nav:[Section,string,any,string][]=[
+const nav:[Section,string,LucideIcon,string][]=[
  ['inicio','Início',Home,'/'],['personagem','Meu Personagem',UserRound,'/personagem'],['inventario','Inventário',Backpack,'/inventario'],
  ['equipamentos','Equipamentos',Shield,'/equipamentos'],['habilidades','Habilidades',Zap,'/habilidades'],['missoes','Missões',ScrollText,'/missoes'],
  ['mapa','Mapa',Map,'/mapa'],['dungeons','Dungeons',Swords,'/dungeons'],['guilda','Guilda',Crown,'/guilda'],['loja','Loja',ShoppingBag,'/loja'],
  ['npcs','NPCs',Users,'/npcs'],['titulos','Títulos',Trophy,'/titulos']
 ];
 
-function fmt(n:any){return Number(n||0).toLocaleString('pt-BR')}
+function fmt(n:unknown){return Number(n||0).toLocaleString('pt-BR')}
 async function readJson(response:Response){const text=await response.text();if(!text.trim())throw new Error(response.ok?'O servidor respondeu sem dados.':`Falha no servidor (${response.status}).`);try{return JSON.parse(text)}catch{throw new Error(response.ok?'O servidor respondeu com dados invalidos.':`Falha no servidor (${response.status}).`)}}
 const fetch:typeof globalThis.fetch=async(...args)=>{const response=await globalThis.fetch(...args);const read=response.text.bind(response);response.json=async()=>{const text=await read();if(!text.trim())return {};try{return JSON.parse(text)}catch{throw new Error(response.ok?'O servidor respondeu com dados invalidos.':`Falha no servidor (${response.status}).`)}};return response};
 function Progress({value,max,label,tone='blue'}:{value:number,max:number,label:string,tone?:string}){const pct=Math.max(0,Math.min(100,max?value/max*100:0));return <div className={`sys-progress ${tone}`}><div><span>{label}</span><b>{fmt(value)} / {fmt(max)}</b></div><i><em style={{width:`${pct}%`}}/></i></div>}
-function useAvatar(playerName?:string){const[key,setKey]=useState('');const[avatar,setAvatar]=useState<string|null>(null);useEffect(()=>{if(!playerName)return;const k=`slrpg-avatar:${playerName}`;setKey(k);setAvatar(localStorage.getItem(k))},[playerName]);const save=(f?:File)=>{if(!f||!key)return;const r=new FileReader();r.onload=()=>{const v=String(r.result);localStorage.setItem(key,v);setAvatar(v)};r.readAsDataURL(f)};return{avatar,save}}
+function useAvatar(playerName?:string){const key=playerName?`slrpg-avatar:${playerName}`:'';const[avatar,setAvatar]=useState<string|null>(()=>key?localStorage.getItem(key):null);const save=(f?:File)=>{if(!f||!key)return;const r=new FileReader();r.onload=()=>{const v=String(r.result);localStorage.setItem(key,v);setAvatar(v)};r.readAsDataURL(f)};return{avatar,save}}
 
 function CharacterRender({avatar,name}:{avatar:string|null,name:string}){return <div className="character-render">{avatar?<img src={avatar} alt={`PNG de ${name}`}/>:<div className="character-placeholder"><UserRound/><b>SEU PERSONAGEM</b><span>Adicione um PNG para personalizar a interface.</span></div>}</div>}
 

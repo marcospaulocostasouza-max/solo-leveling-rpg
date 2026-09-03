@@ -1,0 +1,3 @@
+"use strict";
+function incremental(previous={},messages=[],context={}){const user=messages.filter(x=>x.role==="user").map(x=>x.content),latest=user.at(-1)||"";return{current_goal:context.current_goal||previous.current_goal||latest.slice(0,240),decisions:[...new Set([...(previous.decisions||[]),...(context.decisions||[])])].slice(-20),active_draft:context.active_draft||previous.active_draft||null,active_workflow:context.active_workflow||previous.active_workflow||null,active_task:context.active_task||previous.active_task||null,pending:[...new Set([...(previous.pending||[]),...(context.pending||[])])].slice(-20),last_topics:user.slice(-5).map(x=>x.slice(0,120))};}
+module.exports={incremental};

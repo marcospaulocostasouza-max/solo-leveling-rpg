@@ -32,7 +32,7 @@ module.exports = async (msg) => {
 
 › Yulls: *${Number(jogador.won || 0).toLocaleString("pt-BR")}*
 › Maestria: *${Number(jogador.maestria || 0).toLocaleString("pt-BR")}*
-› 💎 Cristais: *${Number(jogador.cristais || 0).toLocaleString("pt-BR")}*
+› Cristais: *${Number(jogador.cristais || 0).toLocaleString("pt-BR")}*
 › Fragmentos de Invocação: *${Number(jogador.fragmentos_invocacao || 0).toLocaleString("pt-BR")}*
 
 _A Maestria é recebida por atividades, eventos e outras recompensas do RPG._`.trim()

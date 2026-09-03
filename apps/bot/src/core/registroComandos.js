@@ -28,20 +28,38 @@ function registrarTodosComandos() {
             categoria: "Sistema Inicial"
         },
         {
-            nome: "!gacha",
-            funcao: "Lista Banners, mostra detalhes e realiza 1 ou 10 giros",
+            nome: "!Banners / !Banner <nome> / !Convergir [10]",
+            funcao: "Lista Banners, consulta um Banner pelo nome e realiza 1 ou 10 convergências",
             arquivo: "gacha.js",
-            descricao: "Use !gacha girar <id> ou !gacha girar10 <id>; custos de 100 e 1.000 Cristais",
+            descricao: "Use !Banners, !Banner <nome>, !Convergir ou !Convergir 10; custos de 100 e 1.000 Cristais",
             dependencias: ["../../systems/gachaBannerService.js", "../../systems/gachaEngine.js"],
             ativo: true,
             categoria: "Gacha"
         },
         {
-            nome: "!gachaadm",
-            funcao: "Administra Banners, pools, pesos, Destaques e Grande Premio",
+            nome: "!criar banner / !anexar imagem banner <nome> / !gachaadm",
+            funcao: "Cria e administra Banners, valida a ficha e anexa sua imagem",
             arquivo: "gachaAdm.js",
-            descricao: "Ferramenta restrita a administradores; use !gachaadm ajuda",
+            descricao: "Ferramenta restrita a administradores; use !criar banner para receber a ficha",
             dependencias: ["../../systems/gachaAdminService.js"],
+            ativo: true,
+            categoria: "Gacha"
+        },
+        {
+            nome: "!Conjuntos / !Conjunto <nome> / !Conjunto Criar",
+            funcao: "Lista, consulta e cria conjuntos de equipamentos",
+            arquivo: "conjunto.js",
+            descricao: "A lista e a criação são administrativas; a consulta detalhada pelo nome é pública",
+            dependencias: ["../../systems/equipmentSetService.js"],
+            ativo: true,
+            categoria: "Gacha"
+        },
+        {
+            nome: "!Ftitulo / !Fpassiva",
+            funcao: "Cria Títulos e Passivas raras para Banners",
+            arquivo: "criarTituloPassiva.js",
+            descricao: "Fichas administrativas próprias para registrar novos Títulos e Passivas",
+            dependencias: ["../../../../packages/database"],
             ativo: true,
             categoria: "Gacha"
         },

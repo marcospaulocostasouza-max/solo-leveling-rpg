@@ -34,6 +34,16 @@ Na raiz:
 npm run bot
 ```
 
+## Iniciar tudo de uma vez
+
+Para subir o runtime local do Cardinal, o bot WhatsApp e o site no mesmo terminal:
+
+```powershell
+npm run start:all
+```
+
+O comando só verifica o SearXNG em `127.0.0.1:8888`; ele não cria nem altera o container Docker. Use `Ctrl+C` para encerrar a sessão.
+
 ## Executar o site
 
 Na raiz:

@@ -1,0 +1,45 @@
+"use strict";
+
+const test = require("node:test");
+const assert = require("node:assert/strict");
+const fs = require("fs");
+const os = require("os");
+const path = require("path");
+const { CardinalForgeService, ForgeValidator, CODES, ForgeRegistry } = require("../forge");
+const { structuredEnvelope } = require("../forge/base-forge");
+
+const slots = { "Cabeça": 1, "Corpo": 1, "Acessórios": 4, "Item de Apoio": 1, "Pernas": 2, "Pés": 1, "Arma 1": 2, "Arma 2": 1 };
+class FakeRetriever {
+    async searchKnowledge(query, filters = {}) {
+        const q = String(query).toLowerCase();
+        if (filters.category === "locations") return q.includes("busan") ? [{ id: 2, file: "locais.js", category: "locations", system: "locations", entity: "Busan", type: "js", content: "Busan", metadata: {}, score: 10 }] : [];
+        if (q.trim() === "excalibur") return [{ id: 3, file: "database:itens", category: "weapons", system: "equipment", entity: "Excalibur", type: "database-row", content: "nome: Excalibur", metadata: {}, score: 12 }];
+        return [{ id: 1, file: "official.js", category: filters.category || "rules", system: "rules", entity: "Regras oficiais", type: "js", content: "Ranks E D C B A S. Slots Arma 1 e Arma 2.", metadata: {}, score: 5 }];
+    }
+}
+const contextBuilder = { build(results) { return { text: results.map(item => item.content).join("\n"), results, chars: 50, estimatedTokens: 13 }; } };
+const weapon = (overrides = {}) => ({ nome: "Lâmina Solar", categoria: "Arma", slot: "Arma 1", tier: "A", descricao: "Espada banhada em luz.", forca_bonus: 20, resistencia_bonus: 0, velocidade_bonus: 0, sentidos_bonus: 0, inteligencia_bonus: 0, poder_magico_bonus: 0, efeito: "Emite luz.", ...overrides });
+
+test("Cardinal Forge: geração, validação, versões e segurança", async t => {
+    const root = fs.mkdtempSync(path.join(os.tmpdir(), "cardinal-forge-"));
+    const retriever = new FakeRetriever();
+    const validator = new ForgeValidator({ retriever, rules: { attributeLimit: 20 }, slots });
+    const service = new CardinalForgeService({ client: { chat: async () => { throw new Error("LLM não deveria ser chamado neste teste"); } }, retriever, validator, contextBuilder, draftPath: path.join(root, "drafts.db") });
+    await t.test("arma válida dentro das regras", async () => { const output = await service.generate("Crie uma espada com 20 atributos", { type: "weapon", content: weapon(), author: "tester" }); assert.equal(output.draft.validation.valid, true); assert.equal(output.draft.status, "VALID"); });
+    await t.test("normaliza envelope JSON produzido pelo modelo", () => { assert.equal(structuredEnvelope({ version: 1, item: weapon() }, "weapon", 1).content.nome, "Lâmina Solar"); });
+    await t.test("campos fora do schema são recusados", async () => { const validation = await validator.validate("weapon", weapon({ campo_inventado: true })); assert.ok(validation.errors.some(error => error.field === "campo_inventado")); });
+    await t.test("plano explícito não aceita total diferente", async () => { const output = await service.generate("Crie uma espada com 20 atributos", { type: "weapon", content: weapon({ nome: "Incompleta", forca_bonus: 10 }), author: "tester" }); assert.ok(output.draft.validation.errors.some(error => error.code === CODES.CONSTRAINT_MISMATCH)); });
+    await t.test("arma acima de limite oficial", async () => { const output = await service.generate("Crie arma inválida", { type: "weapon", content: weapon({ forca_bonus: 21 }), author: "tester" }); assert.equal(output.draft.validation.valid, false); assert.ok(output.draft.validation.errors.some(error => error.code === CODES.ATTRIBUTE_LIMIT)); });
+    await t.test("limite é derivado das combinações oficiais de forja", async () => { const official = new ForgeValidator({ retriever, slots, forgeCombinations: { A_arma: { rank: "A", categoria: "Arma", bonusBase: 30 } } }); const validation = await official.validate("weapon", weapon({ forca_bonus: 900 })); assert.ok(validation.errors.some(error => error.code === CODES.ATTRIBUTE_LIMIT && error.details.limit === 30)); });
+    await t.test("slot inexistente falha", async () => { const output = await service.generate("Crie arma em slot impossível", { type: "weapon", content: weapon({ slot: "Terceira Mão" }), author: "tester" }); assert.ok(output.draft.validation.errors.some(error => error.code === CODES.INVALID_SLOT)); });
+    await t.test("duplicata gera warning", async () => { const output = await service.generate("Crie Excalibur", { type: "weapon", content: weapon({ nome: "Excalibur" }), author: "tester" }); assert.equal(output.draft.validation.valid, true); assert.ok(output.draft.validation.warnings.some(warning => warning.code === CODES.DUPLICATE_ENTITY)); });
+    await t.test("missão usa local e rank existentes", async () => { const content = { nome: "Ruptura em Busan", descricao: "Feche uma Dungeon.", tipo: "Dungeon", objetivo: 1, rank: "B", local: "Busan", recompensa_xp: 1000, recompensa_won: 5000, recompensa_itens: [], prerequisitos: [], tempo: null, repetivel: false }; const output = await service.generate("Crie uma missão Rank B em Busan", { type: "mission", content, author: "tester" }); assert.equal(output.draft.validation.valid, true); });
+    await t.test("banner respeita período e pool", async () => { const content = { nome: "Halloween", descricao: "Banner temático.", permanente: false, inicio_em: "2026-10-01T00:00:00Z", fim_em: "2026-11-01T00:00:00Z", pool: [{ nome: "Abóbora", peso: 10 }], custo_cristais: 100, hard_pity: 100 }; const output = await service.generate("Crie banner de Halloween", { type: "banner", content, author: "tester" }); assert.equal(output.draft.validation.valid, true); });
+    await t.test("dungeon respeita rank e recompensa", async () => { const content = { nome: "Gate de Busan", rank: "B", andar: 1, descricao: "Gate costeiro.", boss: "Kraken", gate_tipo: "vermelho", local: "Busan", recompensa_xp: 5000, recompensa_won: 20000 }; const output = await service.generate("Crie Dungeon Rank B em Busan", { type: "dungeon", content, author: "tester" }); assert.equal(output.draft.validation.valid, true); });
+    await t.test("regra de limite inexistente não é inventada", async () => { const noLimit = new ForgeValidator({ retriever, slots, forgeCombinations: {} }); const validation = await noLimit.validate("weapon", weapon()); assert.equal(validation.valid, true); assert.ok(validation.warnings.some(warning => warning.code === CODES.RULE_NOT_FOUND)); });
+    await t.test("edição cria versão e revalida", async () => { const initial = await service.generate("Crie uma arma editável", { type: "weapon", content: weapon({ nome: "Aurora" }), author: "tester" }); const edited = await service.edit(initial.draft.id, { forca_bonus: 12, velocidade_bonus: 8 }, { author: "tester" }); assert.equal(edited.draft.version, 2); assert.equal(edited.draft.content.velocidade_bonus, 8); assert.equal(edited.draft.validation.valid, true); const versions = await service.versions(initial.draft.id); assert.deepEqual(versions.map(item => item.version), [1, 2]); const comparison = await service.compare(initial.draft.id, 1, 2); assert.ok(comparison.changes.some(change => change.field === "velocidade_bonus")); });
+    await t.test("revisão conversacional altera somente o draft", async () => { const initial = await service.generate("Crie arma conversacional", { type: "weapon", content: weapon({ nome: "Diálogo" }), author: "tester" }); const revised = await service.revise(initial.draft.id, "Troque 5 de força por velocidade", { patch: { forca_bonus: 15, velocidade_bonus: 5 }, author: "tester" }); assert.equal(revised.draft.version, 2); assert.equal(revised.draft.content.forca_bonus, 15); assert.equal(revised.draft.content.velocidade_bonus, 5); });
+    await t.test("rollback restaura versão como nova versão", async () => { const initial = await service.generate("Crie arma para rollback", { type: "weapon", content: weapon({ nome: "Retorno", efeito: "v1" }), author: "tester" }); await service.edit(initial.draft.id, { efeito: "v2" }, { author: "tester" }); const rolled = await service.rollback(initial.draft.id, 1, { author: "tester" }); assert.equal(rolled.draft.version, 3); assert.equal(rolled.draft.content.efeito, "v1"); });
+    await t.test("publish permanece desabilitado", () => { assert.throws(() => service.publish("weapon"), error => error.code === CODES.PUBLISH_DISABLED); assert.equal(new ForgeRegistry({ client: {}, validator: {} }).types().length, 14); });
+    await service.close(); fs.rmSync(root, { recursive: true, force: true });
+});

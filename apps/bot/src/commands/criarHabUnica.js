@@ -30,38 +30,28 @@ module.exports = async (msg) => {
     // !criar hab única - Envia template
     // =====================================
     if (["!ftécnica", "!ftecnica", "!criar hab única", "!criar hab unica", "!criar habilidade única", "!criar habilidade unica"].includes(texto)) {
-        await MessageService.send({ message: msg, text: `
-*═══ FICHA DE TÉCNICA PERSONALIZADA ═══*
-══════════════════════════
+        await MessageService.send({ message: msg, text: `*═══ FICHA DE TÉCNICA PERSONALIZADA ═══*
+──────────────────────────
+_Preencha a ficha e envie no grupo. Depois, use *!add técnica* para integrar._
 
-Preencha o modelo abaixo e envie no grupo.
-Depois de enviar a ficha preenchida, um ADM usa *!add técnica* para integrar.
+*─── Identidade da Técnica ───*
+> NOME:
+> DESCRIÇÃO:
+> TIPO: [Ativa / Passiva]
+> CATEGORIA: [Física / Mágica / Suporte]
+> CLASSE: [Classe específica ou Geral]
+> RANK: [E / D / C / B / A / S]
 
-══════════════════════════
-*NOME:* [Nome da Técnica]
-*DESCRIÇÃO:* [Descrição detalhada]
-*CUSTO DE MANA:* [Número]
-*COOLDOWN:* [Número em turnos]
-*TIPO:* [Ativa / Passiva]
-*CATEGORIA:* [Física / Mágica / Suporte]
-*CLASSE:* [Classe específica ou "Geral"]
-*RANK:* [E / D / C / B / A / S]
-*NÍVEL DE DESBLOQUEIO:* [Número]
-*PERTENCENTE:* [Nome do Jogador]
-══════════════════════════
+*─── Funcionamento ───*
+> CUSTO DE MANA: 0
+> COOLDOWN: 0
+> NÍVEL DE DESBLOQUEIO: 1
 
-*Exemplo:*
-NOME: Lâmina Sombria
-DESCRIÇÃO: Invoca uma lâmina de sombra que causa dano sombrio.
-CUSTO DE MANA: 30
-COOLDOWN: 3
-TIPO: Ativa
-CATEGORIA: Física
-CLASSE: Geral
-RANK: B
-NÍVEL DE DESBLOQUEIO: 1
-PERTENCENTE: Sung Jin Woo
-        ` });
+*─── Vínculo ───*
+> PERTENCENTE: [Nome do Jogador]
+
+──────────────────────────
+_A descrição deve explicar ativação, alcance, duração e efeito sem deixar regras ambíguas._` });
         return;
     }
     

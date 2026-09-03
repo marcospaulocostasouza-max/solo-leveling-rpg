@@ -90,6 +90,7 @@ async function getItensDoConjunto(conjuntoId) {
 }
 
 async function validarReferencia(tipo, referenciaId) {
+    if (tipo === "PASSIVA" || tipo === "TITULO") await database.ensureEquipmentSetSchema();
     if (TIPOS_NUMERICOS.has(tipo)) return referenciaId == null || referenciaId === "" ? { valida: true } : { valida: false, erro: `${tipo} é uma recompensa numérica e não aceita referência.` };
     if (tipo === "PROJETO") return { valida: false, erro: "O projeto atual não possui catálogo estruturado de Projetos para referência segura." };
     const id = Number(referenciaId);
@@ -106,8 +107,14 @@ async function validarReferencia(tipo, referenciaId) {
         return { valida: true, entidade: item };
     }
     if (tipo === "TECNICA") { const entidade = await database.get("SELECT * FROM tecnicas WHERE id = ?", [id]); return { valida: Boolean(entidade), entidade, erro: "Técnica não existe no catálogo original." }; }
-    if (tipo === "PASSIVA") { const entidade = passivas.find(item => Number(item.id) === id); return { valida: Boolean(entidade), entidade, erro: "Passiva não existe no catálogo JSON original." }; }
-    if (tipo === "TITULO") { const entidade = titulos.find(item => Number(item.id) === id); return { valida: Boolean(entidade), entidade, erro: "Título não existe no catálogo JSON original." }; }
+    if (tipo === "PASSIVA") {
+        const rara = await database.get("SELECT i.*,bri.tipo FROM banner_rare_items bri JOIN itens i ON i.id=bri.item_id WHERE bri.item_id=? AND bri.tipo='PASSIVA'", [id]);
+        const entidade = rara || passivas.find(item => Number(item.id) === id); return { valida: Boolean(entidade), entidade, erro: "Passiva não existe no catálogo oficial nem no catálogo raro do Banner." };
+    }
+    if (tipo === "TITULO") {
+        const raro = await database.get("SELECT i.*,bri.tipo FROM banner_rare_items bri JOIN itens i ON i.id=bri.item_id WHERE bri.item_id=? AND bri.tipo='TITULO'", [id]);
+        const entidade = raro || titulos.find(item => Number(item.id) === id); return { valida: Boolean(entidade), entidade, erro: "Título não existe no catálogo oficial nem no catálogo raro do Banner." };
+    }
     if (tipo === "CONJUNTO_ITEM") return { valida: Boolean(await database.get("SELECT id FROM gacha_item_sets WHERE id = ?", [id])), erro: "Conjunto não existe." };
     return { valida: false, erro: `Tipo ${tipo} sem resolvedor de referência.` };
 }

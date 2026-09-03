@@ -1,0 +1,21 @@
+{
+  "provider": "local",
+  "runtime": "llama.cpp",
+  "model": "Qwen3.5-4B-Instruct-GGUF",
+  "huggingface_repo": "openresearchtools/Qwen3.5-4B-Instruct-GGUF:Q4_K_M",
+  "model_path": null,
+  "context_size": 8192,
+  "gpu_layers": 20,
+  "host": "127.0.0.1",
+  "port": 8088,
+  "timeout_ms": 120000,
+  "max_tokens": 512,
+  "temperature": 0.2,
+  "knowledge": {
+    "index_path": "cardinal/cache/knowledge.db",
+    "max_results": 8,
+    "max_context_chars": 12000,
+    "chunk_size": 2400,
+    "chunk_overlap": 240
+  }
+}

@@ -1,0 +1,4 @@
+"use strict";
+const fs = require("fs/promises"); const path = require("path"); const crypto = require("crypto");
+class DeveloperAudit { constructor(file) { this.file = file; } async record(event) { const clean = JSON.parse(JSON.stringify(event, (key, value) => /token|password|secret|credential/i.test(key) ? "[REDACTED]" : value)); const row = { timestamp: new Date().toISOString(), ...clean }; await fs.mkdir(path.dirname(this.file), { recursive: true }); await fs.appendFile(this.file, JSON.stringify(row) + "\n", "utf8"); return crypto.createHash("sha256").update(JSON.stringify(row)).digest("hex"); } async history() { try { return (await fs.readFile(this.file, "utf8")).trim().split(/\r?\n/).filter(Boolean).map(JSON.parse); } catch (e) { if (e.code === "ENOENT") return []; throw e; } } }
+module.exports = { DeveloperAudit };

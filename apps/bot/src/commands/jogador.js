@@ -114,7 +114,7 @@ _Use *!ficha* para criar seu personagem._
         mensagem += `> *XP:* ${jogador.experiencia || 0}\n`;
         mensagem += `> *Maestria:* ${jogador.maestria || 0}\n`;
         mensagem += `> *Won:* ${jogador.won || 0}\n`;
-        mensagem += `> *💎 Cristais:* ${Number(jogador.cristais || 0).toLocaleString("pt-BR")}\n`;
+        mensagem += `> *Cristais:* ${Number(jogador.cristais || 0).toLocaleString("pt-BR")}\n`;
         mensagem += `> *Fragmentos de Invocação:* ${Number(jogador.fragmentos_invocacao || 0).toLocaleString("pt-BR")}\n\n`;
         
         // Buscar cargo na Associação

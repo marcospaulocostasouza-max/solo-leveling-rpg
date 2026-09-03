@@ -1,0 +1,2 @@
+"use strict";
+module.exports = { ...require("./service"), ...require("./factory"), ...require("./planner"), ...require("./analyzer"), ...require("./config"), ...require("./protection"), ...require("./task-store"), ...require("./search"), ...require("./project-map"), ...require("./editor"), ...require("./git/manager"), ...require("./testing/runner"), ...require("./review/reviewer"), ...require("./tools") };

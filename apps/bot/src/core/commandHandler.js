@@ -119,6 +119,14 @@ async function executarComando(msg, comando, comandosRegistrados) {
     // MAPEAMENTO DE COMANDOS
     // =====================================
     const mapaComandos = {
+        "!banners": "gacha.js",
+        "!banner": "gacha.js",
+        "!convergir": "gacha.js",
+        "!conjuntos": "conjunto.js",
+        "!conjunto": "conjunto.js",
+        "!ftitulo": "criarTituloPassiva.js",
+        "!ftítulo": "criarTituloPassiva.js",
+        "!fpassiva": "criarTituloPassiva.js",
         "!gacha": "gacha.js",
         "!gachaadm": "gachaAdm.js",
         "!iniciar": "iniciar.js",
@@ -320,6 +328,20 @@ async function executarComando(msg, comando, comandosRegistrados) {
 
     // Comandos com prefixo (startsWith)
     const comandosPrefixo = [
+        { prefixo: ".#cardinal", arquivo: "cardinalAdmin.js" },
+        { prefixo: "!título criar", arquivo: "criarTituloPassiva.js" },
+        { prefixo: "!titulo criar", arquivo: "criarTituloPassiva.js" },
+        { prefixo: "!passiva criar", arquivo: "criarTituloPassiva.js" },
+        { prefixo: "!ftítulo", arquivo: "criarTituloPassiva.js" },
+        { prefixo: "!ftitulo", arquivo: "criarTituloPassiva.js" },
+        { prefixo: "!fpassiva", arquivo: "criarTituloPassiva.js" },
+        { prefixo: "!conjuntos", arquivo: "conjunto.js" },
+        { prefixo: "!conjunto", arquivo: "conjunto.js" },
+        { prefixo: "!anexar imagem banner", arquivo: "gachaAdm.js" },
+        { prefixo: "!criar banner", arquivo: "gachaAdm.js" },
+        { prefixo: "!convergir", arquivo: "gacha.js" },
+        { prefixo: "!banners", arquivo: "gacha.js" },
+        { prefixo: "!banner", arquivo: "gacha.js" },
         { prefixo: "!gachaadm", arquivo: "gachaAdm.js" },
         { prefixo: "!gacha", arquivo: "gacha.js" },
         { prefixo: "!atributos", arquivo: "atributos.js" },
@@ -587,7 +609,7 @@ async function executarComando(msg, comando, comandosRegistrados) {
     // =====================================
     // Mensagens no formato "!npc_id\nmensagem" são conversas com NPCs
     // Devem ser verificadas antes dos comandos normais
-    if (msgBody.startsWith("!") && msgBody.includes("\n")) {
+    if (msgBody.startsWith("!") && msgBody.includes("\n") && !/^!paimon\b/i.test(msgBody) && !/^!criar banner\b/i.test(msgBody) && !/^!conjunto\s+criar\b/i.test(msgBody) && !/^!(?:t[ií]tulo|passiva)\s+criar\b/i.test(msgBody)) {
         try {
             const { processarConversaNPC } = require("../npc/npcConversa");
             const processado = await processarConversaNPC(msg);
@@ -639,7 +661,12 @@ async function executarComando(msg, comando, comandosRegistrados) {
             const modulo = carregarComando(cmd.arquivo);
             if (modulo) {
                 console.log(`[CMD] Executando: ${cmd.arquivo}`);
-                await modulo(msg);
+                // O Cardinal usa um prefixo próprio. Os módulos internos continuam
+                // recebendo a forma canônica para não interferir nos demais comandos.
+                const cardinalMessage = cmd.arquivo === "cardinalAdmin.js"
+                    ? Object.assign(Object.create(Object.getPrototypeOf(msg)), msg, { body: String(msg.body || "").replace(/^\.\#cardinal/i, "!cardinal") })
+                    : msg;
+                await modulo(cardinalMessage);
                 console.log(`[CMD] Comando com prefixo executado com sucesso`);
                 return;
             } else {

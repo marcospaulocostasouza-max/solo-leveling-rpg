@@ -324,6 +324,16 @@ async function ensureEquipmentSetSchema() {
     )`);
     await run("CREATE INDEX IF NOT EXISTS idx_equipment_set_items_set ON equipment_set_items(set_id)");
     await run("CREATE INDEX IF NOT EXISTS idx_equipment_set_bonuses_set ON equipment_set_bonuses(set_id, required_pieces)");
+    await run(`CREATE TABLE IF NOT EXISTS banner_rare_items (
+      item_id ${integer} PRIMARY KEY, tipo TEXT NOT NULL DEFAULT 'ITEM', criado_por TEXT NOT NULL,
+      criado_em ${timestamp} NOT NULL DEFAULT CURRENT_TIMESTAMP,
+      FOREIGN KEY (item_id) REFERENCES itens(id) ON DELETE CASCADE
+    )`);
+    if (provider === "postgres") await run("ALTER TABLE banner_rare_items ADD COLUMN IF NOT EXISTS tipo TEXT NOT NULL DEFAULT 'ITEM'");
+    else {
+      const colunasRaros = await all("PRAGMA table_info(banner_rare_items)");
+      if (!colunasRaros.some(item => item.name === "tipo")) await run("ALTER TABLE banner_rare_items ADD COLUMN tipo TEXT NOT NULL DEFAULT 'ITEM'");
+    }
   })().catch(error => { equipmentSetSchemaPromise = null; throw error; });
   return equipmentSetSchemaPromise;
 }
@@ -610,13 +620,14 @@ async function recalculateAttributes(playerId, query = { get, all, run }) {
   }));
   const mana = Math.max(100, total.inteligencia * 100 + Number(player.nivel || 1) * 10);
   const health = Math.max(100, total.resistencia * 3 + Number(player.nivel || 1) * 20);
-  await query.run(`UPDATE jogadores SET ${attributes.map(key => `${key}_total = ?`).join(", ")}, mana_maxima = ?, vida_maxima = ?, mana_atual = MIN(mana_atual, ?), vida_atual = MIN(vida_atual, ?) WHERE id = ?`, [...attributes.map(key => total[key]), mana, health, mana, health, playerId]);
+  const clamp = provider === "postgres" ? "LEAST" : "MIN";
+  await query.run(`UPDATE jogadores SET ${attributes.map(key => `${key}_total = ?`).join(", ")}, mana_maxima = ?, vida_maxima = ?, mana_atual = ${clamp}(mana_atual, ?), vida_atual = ${clamp}(vida_atual, ?) WHERE id = ?`, [...attributes.map(key => total[key]), mana, health, mana, health, playerId]);
   return { base: Object.fromEntries(attributes.map(key => [key, Number(player[`${key}_base`] || 0)])), buffs: Object.fromEntries(attributes.map(key => [key, Number(player[`${key}_buff`] || 0) + classBuff[key]])), equipment: Object.fromEntries(attributes.map(key => [key, equipped.reduce((sum, item) => sum + itemBonus(item)[key], 0)])), equipmentSets: setLayer.bonus, total, manaMaxima: mana, vidaMaxima: health };
 }
 
 async function playerById(playerId) { await applyMigrations(); await ensureCrystalSchema(); return get("SELECT * FROM jogadores WHERE id = ?", [playerId]); }
 async function playerByPhone(phone) { await applyMigrations(); await ensureCrystalSchema(); return get("SELECT * FROM jogadores WHERE numero = ?", [phone]); }
-async function inventory(playerId) { await applyMigrations(); const rows = await all("SELECT i.*, inv.quantidade, inv.equipado, inv.item_inicial FROM inventario_jogador inv JOIN itens i ON i.id = inv.item_id WHERE inv.jogador_id = ? ORDER BY inv.equipado DESC, i.categoria, i.nome", [playerId]); return rows.map(item => ({ ...item, slot: itemSlot(item), consumivel: isConsumable(item), bonus: itemBonus(item) })); }
+async function inventory(playerId) { await applyMigrations(); const rows = await all("SELECT i.*, inv.quantidade, inv.equipado, inv.item_inicial FROM inventario_jogador inv JOIN itens i ON i.id = inv.item_id WHERE inv.jogador_id = ? ORDER BY inv.equipado DESC, i.categoria, i.nome", [playerId]); return rows.map(item => ({ ...item, equipado: Number(item.equipado) === 1, slot: itemSlot(item), consumivel: isConsumable(item), bonus: itemBonus(item) })); }
 async function playerSkills(playerId) { await applyMigrations(); return all("SELECT t.*, jt.nivel, jt.experiencia, jt.equipada, jt.usos, jt.cooldown_atual FROM jogador_tecnicas jt JOIN tecnicas t ON t.id = jt.tecnica_id WHERE jt.jogador_id = ? ORDER BY t.classe, t.nome", [playerId]); }
 async function playerTitles(playerId) { const player = await playerById(playerId); return player?.titulo ? [player.titulo] : []; }
 async function playerGuild(playerId) { await applyMigrations(); return get("SELECT g.*, gm.cargo FROM guilda_membros gm JOIN guildas g ON g.id = gm.guilda_id WHERE gm.jogador_id = ?", [playerId]); }
@@ -630,13 +641,19 @@ async function canInteractWithNpc(playerId, npcId) {
   return { allowed, reason: allowed ? "Jogador e NPC estão na mesma região permitida." : "Jogador e NPC não estão na mesma cidade/região permitida.", playerLocation: location, npcLocation };
 }
 
-async function equipItem(playerId, itemId) {
+async function equipItem(playerId, itemId, desiredEquipped) {
   return transaction(async query => {
     const item = await query.get("SELECT i.*, inv.equipado FROM inventario_jogador inv JOIN itens i ON i.id = inv.item_id WHERE inv.jogador_id = ? AND inv.item_id = ?", [playerId, itemId]);
     if (!item) throw new Error("Item não encontrado no inventário.");
     if (isConsumable(item)) throw new Error("Itens consumíveis não podem ser equipados.");
     const slot = itemSlot(item);
-    if (item.equipado) await query.run("UPDATE inventario_jogador SET equipado = 0 WHERE jogador_id = ? AND item_id = ?", [playerId, itemId]);
+    const currentlyEquipped = Number(item.equipado) === 1;
+    const shouldEquip = typeof desiredEquipped === "boolean" ? desiredEquipped : !currentlyEquipped;
+    if (shouldEquip === currentlyEquipped) {
+      const stats = await recalculateAttributes(playerId, query);
+      return { item: item.nome, slot, equipped: currentlyEquipped, attributes: stats };
+    }
+    if (!shouldEquip) await query.run("UPDATE inventario_jogador SET equipado = 0 WHERE jogador_id = ? AND item_id = ?", [playerId, itemId]);
     else {
       const equipped = await query.all("SELECT i.* FROM inventario_jogador inv JOIN itens i ON i.id = inv.item_id WHERE inv.jogador_id = ? AND inv.equipado = 1", [playerId]);
       const count = name => equipped.filter(row => itemSlot(row) === name).length;
@@ -650,7 +667,7 @@ async function equipItem(playerId, itemId) {
       await query.run("UPDATE inventario_jogador SET equipado = 1 WHERE jogador_id = ? AND item_id = ?", [playerId, itemId]);
     }
     const stats = await recalculateAttributes(playerId, query);
-    return { item: item.nome, slot, equipped: !item.equipado, attributes: stats };
+    return { item: item.nome, slot, equipped: shouldEquip, attributes: stats };
   });
 }
 

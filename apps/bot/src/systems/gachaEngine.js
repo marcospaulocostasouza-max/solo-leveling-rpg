@@ -46,12 +46,12 @@ async function resolverRecompensa(recompensa) {
         return { ...recompensa, entidade, nome: entidade.nome, rankRecompensa: normalizarRank(entidade.rank || entidade.tier) };
     }
     if (tipo === "PASSIVA") {
-        const entidade = passivas.find(item => Number(item.id) === referenciaId);
+        const entidade = await database.get("SELECT i.nome,i.descricao,i.efeito AS condicao,i.tier FROM banner_rare_items bri JOIN itens i ON i.id=bri.item_id WHERE bri.item_id=? AND bri.tipo='PASSIVA'", [referenciaId]) || passivas.find(item => Number(item.id) === referenciaId);
         if (!entidade) throw new Error(`Passiva da recompensa #${recompensa.id} nao existe.`);
         return { ...recompensa, entidade, nome: entidade.nome, rankRecompensa: normalizarRank(entidade.rank || entidade.tier) };
     }
     if (tipo === "TITULO") {
-        const entidade = titulos.find(item => Number(item.id) === referenciaId);
+        const entidade = await database.get("SELECT i.nome,i.descricao,i.efeito,i.tier FROM banner_rare_items bri JOIN itens i ON i.id=bri.item_id WHERE bri.item_id=? AND bri.tipo='TITULO'", [referenciaId]) || titulos.find(item => Number(item.id) === referenciaId);
         if (!entidade) throw new Error(`Titulo da recompensa #${recompensa.id} nao existe.`);
         return { ...recompensa, entidade, nome: entidade.nome, rankRecompensa: normalizarRank(entidade.rank || entidade.tier) };
     }

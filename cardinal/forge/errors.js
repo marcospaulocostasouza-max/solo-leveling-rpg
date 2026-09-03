@@ -1,0 +1,25 @@
+"use strict";
+
+const CODES = Object.freeze({
+    UNKNOWN_TYPE: "CARDINAL_FORGE_UNKNOWN_TYPE",
+    INVALID_SLOT: "CARDINAL_INVALID_SLOT",
+    INVALID_ATTRIBUTE: "CARDINAL_INVALID_ATTRIBUTE",
+    ATTRIBUTE_LIMIT: "CARDINAL_ATTRIBUTE_LIMIT",
+    UNKNOWN_RARITY: "CARDINAL_UNKNOWN_RARITY",
+    DUPLICATE_ENTITY: "CARDINAL_DUPLICATE_ENTITY",
+    RULE_NOT_FOUND: "CARDINAL_RULE_NOT_FOUND",
+    VALIDATION_FAILED: "CARDINAL_VALIDATION_FAILED",
+    CONSTRAINT_MISMATCH: "CARDINAL_REQUEST_CONSTRAINT_MISMATCH",
+    INVALID_OUTPUT: "CARDINAL_INVALID_STRUCTURED_OUTPUT",
+    DRAFT_NOT_FOUND: "CARDINAL_DRAFT_NOT_FOUND",
+    VERSION_NOT_FOUND: "CARDINAL_DRAFT_VERSION_NOT_FOUND",
+    PERMISSION_DENIED: "CARDINAL_PERMISSION_DENIED",
+    PUBLISH_DISABLED: "CARDINAL_PUBLISH_DISABLED"
+});
+
+class ForgeError extends Error {
+    constructor(code, message, details) { super(message); this.name = "ForgeError"; this.code = code; this.details = details; }
+}
+function issue(code, message, field, details) { return { code, message, ...(field ? { field } : {}), ...(details ? { details } : {}) }; }
+
+module.exports = { CODES, ForgeError, issue };

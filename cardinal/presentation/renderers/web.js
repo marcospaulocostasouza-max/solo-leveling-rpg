@@ -1,0 +1,2 @@
+"use strict";
+const {response}=require("../dto");const {printable}=require("../formatters");function render(input){const dto=response(input);return{...dto,sections:dto.sections.map(s=>({...s,fields:s.fields.map(f=>({...f,value:printable(f.value)})),lines:s.lines.map(printable)})),meta:{requestId:dto.meta.requestId,code:dto.meta.code,progress:dto.meta.progress,workflowId:dto.meta.workflowId,draftId:dto.meta.draftId,transactionId:dto.meta.transactionId}};}module.exports={render};

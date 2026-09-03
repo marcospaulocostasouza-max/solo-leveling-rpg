@@ -5,6 +5,7 @@ const path = require("path");
 const { PDFParse } = require("../apps/bot/node_modules/pdf-parse");
 const database = require("../packages/database");
 const Sets = require("../apps/bot/src/systems/equipmentSetService");
+const { nomeConjuntoUnico, nomeItemUnico } = require("./equipment-catalog-naming");
 
 const PDF_PADRAO = "C:/Users/Marcos/Downloads/catalogo_150_conjuntos_corrigido_atributos_rpg.pdf";
 const ATRIBUTOS = {
@@ -38,7 +39,7 @@ function parseCatalogo(textoOriginal) {
         const numeroCatalogo = Number(cabecalhos[i][1]);
         const rank = i < 50 ? "D" : i < 100 ? "C" : "B";
         const nomeBase = cabecalhos[i][2].trim();
-        const nome = `${nomeBase} — Rank ${rank}`;
+        const nome = nomeConjuntoUnico(nomeBase, rank, i % 50);
         const inicio = cabecalhos[i].index;
         const fim = cabecalhos[i + 1]?.index ?? texto.length;
         const bloco = texto.slice(inicio, fim);
@@ -51,7 +52,7 @@ function parseCatalogo(textoOriginal) {
             const slotOriginal = match[2];
             const atributos = parseAtributos(match[3]);
             const nomeItemBase = match[1].trim();
-            return { nome: `${nomeItemBase} — Rank ${rank}`, nomeBase: nomeItemBase, slot: SLOTS[slotOriginal], slotOriginal, atributos };
+            return { nome: nomeItemUnico(nomeItemBase, rank), nomeBase: nomeItemBase, slot: SLOTS[slotOriginal], slotOriginal, atributos };
         });
         const bonusBloco = (bloco.match(/Bônus do conjunto:\n([\s\S]*?)$/) || [])[1] || "";
         const estagios = [...bonusBloco.matchAll(/(\d+) peças:\s*([^\n]+)/g)].map(match => ({ requiredPieces: Number(match[1]), ...parseAtributos(match[2]) }));

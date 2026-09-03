@@ -164,7 +164,7 @@ Um ADM deve usar *!add técnica* para integrar e entregar ao dono.
 *Pertencente:* ${dados.pertencente}
 
 ══════════════════════════
-Um ADM deve usar *!add item* para integrar e entregar ao dono.
+Um ADM deve usar *!add item* para ${String(dados.pertencente).normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim() === "item raro" ? "registrar no catálogo exclusivo de Banners e Conjuntos" : "integrar e entregar ao dono"}.
             ` });
             return;
         }

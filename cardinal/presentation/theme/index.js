@@ -1,0 +1,3 @@
+"use strict";
+const theme=Object.freeze({name:"Cardinal RPG",colors:{background:"#03020a",panel:"#0a071b",panelAlt:"#0f0926",primary:"#8d43ff",secondary:"#62caff",text:"#f5f2ff",muted:"#978fb1",border:"rgba(143,83,255,.30)",success:"#62caff",warning:"#f1c56b",error:"#ff4267"},text:{header:"═══",section:"───",footer:"Sistema Cardinal",fieldPrefix:">"},status:{ONLINE:"ONLINE",READY:"PRONTO",OFFLINE:"OFFLINE",DEGRADED:"DEGRADADO",WAITING:"AGUARDANDO",FAILED:"FALHOU",SUCCESS:"CONCLUÍDO",VALID:"VÁLIDO",INVALID:"INVÁLIDO"},icons:{success:"✓",error:"×",warning:"!",waiting:"○",running:"◉",done:"✓"},limits:{whatsapp:3500,cli:10000}});
+module.exports={theme};

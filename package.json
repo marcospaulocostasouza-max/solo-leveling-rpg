@@ -5,6 +5,7 @@
   "scripts": {
     "install:all": "npm --prefix apps/bot install && npm --prefix apps/site install",
     "dev": "node scripts/dev.js",
+    "start:all": "node scripts/start-all.js",
     "db:audit": "node scripts/db-audit.js",
     "db:migrate": "node scripts/migrate-sqlite-to-postgres.js",
     "db:fix-identities": "node scripts/fix-postgres-identities.js",
@@ -19,7 +20,17 @@
     "bot": "node apps/bot/index.js",
     "site": "npm --prefix apps/site run dev",
     "site:build": "npm --prefix apps/site run build",
-    "site:start": "npm --prefix apps/site run start"
+    "site:start": "npm --prefix apps/site run start",
+    "cardinal:start": "powershell -ExecutionPolicy Bypass -File cardinal/runtime/start-cardinal-model.ps1",
+    "cardinal:test": "node --test cardinal/tests/*.test.js",
+    "cardinal:cli": "node cardinal/runtime/cardinal-cli.js",
+    "cardinal:index": "node cardinal/runtime/update-cardinal-knowledge.js",
+    "cardinal:reindex": "node cardinal/runtime/update-cardinal-knowledge.js --rebuild",
+    "cardinal:forge": "node cardinal/runtime/cardinal-cli.js",
+    "cardinal:admin": "node cardinal/runtime/cardinal-cli.js",
+    "cardinal:dev": "node cardinal/runtime/cardinal-developer-cli.js",
+    "cardinal:ops": "node cardinal/runtime/cardinal-operations-cli.js",
+    "cardinal:orchestrator": "node cardinal/runtime/cardinal-orchestrator-cli.js"
   },
   "dependencies": {
     "dotenv": "^16.6.1",

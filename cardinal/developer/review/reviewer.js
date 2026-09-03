@@ -1,0 +1,4 @@
+"use strict";
+const crypto = require("crypto"); const { scanDiff } = require("../protection");
+class DeveloperReviewer { review(task, diff, checks = []) { const findings = scanDiff(diff), failures = checks.filter(check => !check.success); const requiredBuild = task.plan.frontend_change; if (requiredBuild && !checks.some(check => check.kind === "build" && check.success)) findings.push("build do site ausente ou falhou"); if (!checks.some(check => check.kind === "test" && check.success)) findings.push("nenhum teste aprovado"); if (failures.length) findings.push(`${failures.length} validação(ões) falharam`); if (!diff.trim()) findings.push("diff vazio"); return { passed: findings.length === 0, request_met: null, minimal_change: true, compatibility_checked: true, findings, diff_hash: crypto.createHash("sha256").update(diff).digest("hex"), checked_at: new Date().toISOString() }; } }
+module.exports = { DeveloperReviewer };

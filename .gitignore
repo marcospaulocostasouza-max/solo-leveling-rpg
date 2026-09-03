@@ -13,3 +13,16 @@ node_modules/
 # Backups e bancos locais: nunca versionar
 backups/
 *.db
+
+# Cardinal: pesos e binários locais de IA não devem entrar no Git
+*.gguf
+cardinal/models/
+cardinal/runtime/llama.cpp/
+cardinal/runtime/*.zip
+cardinal/logs/
+cardinal/runtime/*.pid
+cardinal/cache/
+.cardinal-worktrees/
+
+*.db-wal
+*.db-shm

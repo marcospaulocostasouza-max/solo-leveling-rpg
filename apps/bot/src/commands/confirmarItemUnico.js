@@ -52,13 +52,15 @@ Não há itens únicos pendentes para confirmar.
     const tierCanonico = tiersValidos.find(tier => normalizar(tier) === normalizar(dados.tier));
     if (!tierCanonico) return MessageService.send({ message: msg, text: `*✖ Rank/Tier inválido:* ${dados.tier}.` });
     dados.tier = tierCanonico;
+    const itemRaro = normalizar(dados.pertencente) === "item raro";
+    const tipoRaro = normalizar(dados.categoria) === "titulo" ? "TITULO" : normalizar(dados.categoria) === "passiva" ? "PASSIVA" : "ITEM";
     
     // Buscar o jogador pelo nome (Pertencente)
-    const jogador = await new Promise((resolve) => {
+    const jogador = itemRaro ? null : await new Promise((resolve) => {
         db.get("SELECT * FROM jogadores WHERE LOWER(TRIM(nome)) = LOWER(TRIM(?))", [dados.pertencente], (err, row) => resolve(err ? null : row || null));
     });
     
-    if (!jogador) {
+    if (!itemRaro && !jogador) {
         return MessageService.send({ message: msg, text: `
 *✖ Jogador "${dados.pertencente}" não encontrado.*
 Verifique se o nome está correto ou se o jogador já possui ficha aprovada.
@@ -92,13 +94,14 @@ Verifique se o nome está correto ou se o jogador já possui ficha aprovada.
     // Inserir o item na tabela de itens
     const itemId = await new Promise((resolve, reject) => {
         db.run(
-            `INSERT INTO itens (nome, categoria, tier, descricao, 
+            `INSERT INTO itens (nome, categoria, slot, tier, descricao,
              arma, armadura, escudo, acessorio, consumivel,
              forca_bonus, resistencia_bonus, velocidade_bonus, sentidos_bonus, 
              inteligencia_bonus, poder_magico_bonus, efeito, item_unico)
-             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1) RETURNING id`,
+             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1) RETURNING id`,
             [
                 nomeItem,
+                categoria,
                 dados.slot || dados.categoria || "Equipamento",
                 dados.tier || "Único",
                 dados.descricao || "Item Único",
@@ -125,19 +128,14 @@ Verifique se o nome está correto ou se o jogador já possui ficha aprovada.
     // =====================================
     // ADICIONAR O ITEM AO INVENTÁRIO DO JOGADOR
     // =====================================
-    await new Promise((resolve, reject) => {
-        db.run(
-            `INSERT INTO inventario_jogador (jogador_id, item_id, quantidade, equipado)
-             VALUES (?, ?, 1, 0)`,
-            [jogador.id, itemId],
-            (err) => err ? reject(err) : resolve()
-        );
-    });
-    const vinculoCriado = await new Promise((resolve, reject) => db.get(
-        "SELECT id FROM inventario_jogador WHERE jogador_id = ? AND item_id = ?",
-        [jogador.id, itemId], (err, row) => err ? reject(err) : resolve(row)
-    ));
-    if (!vinculoCriado) throw new Error("O item foi criado, mas não foi vinculado ao inventário.");
+    if (itemRaro) {
+        await require("../../../../packages/database").ensureEquipmentSetSchema();
+        await new Promise((resolve, reject) => db.run("INSERT INTO banner_rare_items (item_id, tipo, criado_por) VALUES (?, ?, ?)", [itemId, tipoRaro, numero], err => err ? reject(err) : resolve()));
+    } else {
+        await new Promise((resolve, reject) => db.run(`INSERT INTO inventario_jogador (jogador_id, item_id, quantidade, equipado) VALUES (?, ?, 1, 0)`, [jogador.id, itemId], err => err ? reject(err) : resolve()));
+        const vinculoCriado = await new Promise((resolve, reject) => db.get("SELECT id FROM inventario_jogador WHERE jogador_id = ? AND item_id = ?", [jogador.id, itemId], (err, row) => err ? reject(err) : resolve(row)));
+        if (!vinculoCriado) throw new Error("O item foi criado, mas não foi vinculado ao inventário.");
+    }
     
     // =====================================
     // MARCAR COMO CONCLUÍDO
@@ -154,31 +152,26 @@ Verifique se o nome está correto ou se o jogador já possui ficha aprovada.
     if (adminCore.registrarLog) {
         adminCore.registrarLog(
             numero, admin.nome || "Admin",
-            "criar_item_unico", jogador.nome,
+            itemRaro ? "criar_item_raro_banner" : "criar_item_unico", itemRaro ? "Item Raro" : jogador.nome,
             `Item Único: ${dados.nome}`, "", nomeItem
         );
     }
     
-    await MessageService.send({ message: msg, text: `
-*═══ ITEM ÚNICO CRIADO! ═══*
-══════════════════════════
+    await MessageService.send({ message: msg, text: `_*「 ${itemRaro ? "REGISTRO RARO CONCLUÍDO" : "ITEM ÚNICO CRIADO"} 」*_
 
-*Item:* ${dados.nome}
-*Categoria:* ${dados.categoria || "Equipamento"}
-*Tier:* ${dados.tier || "Único"}
-*Jogador:* ${jogador.nome}
+_• Item:_ *${dados.nome}*
+_• Categoria: ${dados.categoria || "Equipamento"}_
+_• Tier: ${dados.tier || "Único"}_
+_• Destino: ${itemRaro ? `Catálogo Raro de Banners — ${tipoRaro}` : jogador.nome}_
 
-*Bônus:*
-> Força: +${dados.forca_bonus || 0}
-> Resistência: +${dados.resistencia_bonus || 0}
-> Velocidade: +${dados.velocidade_bonus || 0}
-> Sentidos: +${dados.sentidos_bonus || 0}
-> Inteligência: +${dados.inteligencia_bonus || 0}
-> Poder Mágico: +${dados.poder_magico_bonus || 0}
-
-${dados.efeito ? `*Efeito:* ${dados.efeito}\n` : ""}
-══════════════════════════
-*O item foi adicionado ao inventário do jogador!*
-*Use !inventario para visualizar os itens do personagem.*
-    ` });
+_*ATRIBUTOS DO ITEM*_
+_• Força: +${dados.forca_bonus || 0}_
+_• Resistência: +${dados.resistencia_bonus || 0}_
+_• Velocidade: +${dados.velocidade_bonus || 0}_
+_• Sentidos: +${dados.sentidos_bonus || 0}_
+_• Inteligência: +${dados.inteligencia_bonus || 0}_
+_• Poder Mágico: +${dados.poder_magico_bonus || 0}_
+${dados.efeito ? `\n_• Efeito: ${dados.efeito}_\n` : ""}
+_[+] ${itemRaro ? "Registro disponível para Banners e Conjuntos." : "Item adicionado ao inventário do jogador."}_
+${itemRaro ? "" : "_Use *!inventario* para consultar._"}` });
 };

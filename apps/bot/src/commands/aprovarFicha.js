@@ -12,7 +12,8 @@ const adminCore = require("../core/adminCore");
 const elementos = require("../elementos/listaElementos");
 const templates = require("../utils/templatesMensagens");
 const { obterClasseCanonica } = require("../utils/normalizarClasse");
-const obterBuffsClasse = require("../utils/obterBuffsClasse");
+const { obterEstiloCanonico } = require("../utils/normalizarEstiloLuta");
+const AtributoSystem = require("../systems/atributoSystem");
 const { normalizarDadosFicha } = require("../utils/normalizarDadosFicha");
 
 function adicionarArmaInicial(jogadorId, nomeArma, nomeJogador) {
@@ -151,6 +152,16 @@ module.exports = async (msg) => {
     const dados = normalizarDadosFicha(JSON.parse(ficha.dados || "{}"));
     dados.classe = obterClasseCanonica(dados.classe) || dados.classe;
     const nomeReal = dados.nome || nomeJogador;
+
+    // Fichas antigas também precisam obedecer à escolha obrigatória de estilo.
+    const estiloCanonico = obterEstiloCanonico(dados.estilo_luta);
+    if (ehAprovacao && !estiloCanonico) {
+        return MessageService.send({
+            message: msg,
+            text: `*FICHA NÃO APROVADA*\n\n*${nomeReal}* precisa escolher um *Estilo de Luta* válido antes da aprovação.\n> Peça ao jogador para reenviar a ficha com o campo *Estilo de luta* preenchido.\n> Use *!estilos de luta* para consultar as opções.`
+        });
+    }
+    if (estiloCanonico) dados.estilo_luta = estiloCanonico;
     
     if (ehRecusa) {
         // RECUSAR FICHA
@@ -212,15 +223,27 @@ module.exports = async (msg) => {
             return MessageService.send({ message: msg, text: `*✖ Especifique a Habilidade Única.*\nEx: !aprovar ficha ${nomeReal} Manipulação do tempo` });
         }
         
-        // Calcular atributos finais com buffs de classe
-        const buffClasse = obterBuffsClasse(dados.classe, dados);
-        
-        const forcaFinal = parseInt(dados.forca || 0) + (buffClasse.forca_buff || 0);
-        const resistenciaFinal = parseInt(dados.resistencia || 0) + (buffClasse.resistencia_buff || 0);
-        const velocidadeFinal = parseInt(dados.velocidade || 0) + (buffClasse.velocidade_buff || 0);
-        const sentidosFinal = parseInt(dados.sentidos || 0) + (buffClasse.sentidos_buff || 0);
-        const inteligenciaFinal = parseInt(dados.inteligencia || 0) + (buffClasse.inteligencia_buff || 0);
-        const poderMagicoFinal = parseInt(dados.poder_magico || 0) + (buffClasse.poder_magico_buff || 0);
+        // Os 10 pontos iniciais ficam apenas nos atributos base. O único bônus
+        // de classe inicial é 50% do atributo definido para aquela classe.
+        const baseInicial = {
+            forca: parseInt(dados.forca || 0),
+            resistencia: parseInt(dados.resistencia || 0),
+            velocidade: parseInt(dados.velocidade || 0),
+            sentidos: parseInt(dados.sentidos || 0),
+            inteligencia: parseInt(dados.inteligencia || 0),
+            poder_magico: parseInt(dados.poder_magico || 0)
+        };
+        const bonusClasseInicial = AtributoSystem.calcularBonusClasseInicial(dados.classe, baseInicial);
+        const buffClasse = {
+            forca_buff: 0, resistencia_buff: 0, velocidade_buff: 0,
+            sentidos_buff: 0, inteligencia_buff: 0, poder_magico_buff: 0
+        };
+        const forcaFinal = baseInicial.forca + bonusClasseInicial.forca;
+        const resistenciaFinal = baseInicial.resistencia + bonusClasseInicial.resistencia;
+        const velocidadeFinal = baseInicial.velocidade + bonusClasseInicial.velocidade;
+        const sentidosFinal = baseInicial.sentidos + bonusClasseInicial.sentidos;
+        const inteligenciaFinal = baseInicial.inteligencia + bonusClasseInicial.inteligencia;
+        const poderMagicoFinal = baseInicial.poder_magico + bonusClasseInicial.poder_magico;
         
         // Calcular HP e Mana
         const hpMaximo = 100 + (resistenciaFinal * 10);

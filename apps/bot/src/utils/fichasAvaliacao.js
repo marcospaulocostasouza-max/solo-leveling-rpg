@@ -57,7 +57,8 @@ module.exports = {
         if (dados.elemento && !elementos.some(elemento => normalizar(elemento.nome) === normalizar(dados.elemento))) {
             notas.push(`⚠ Elemento "${dados.elemento}" não encontrado (será sorteado)`);
         }
-        if (dados.estilo_luta && !obterEstiloCanonico(dados.estilo_luta)) erros.push(`• Estilo de luta "${dados.estilo_luta}" não encontrado no sistema`);
+        if (!dados.estilo_luta || !String(dados.estilo_luta).trim()) erros.push("• Estilo de luta não informado. Escolha um estilo em !estilos de luta.");
+        else if (!obterEstiloCanonico(dados.estilo_luta)) erros.push(`• Estilo de luta "${dados.estilo_luta}" não encontrado no sistema`);
         if (dados.peso) {
             const peso = Number.parseFloat(String(dados.peso).replace(/kg/ig, "").replace(",", ".").trim());
             if (!Number.isFinite(peso) || peso <= 0 || peso > 500) erros.push("• Peso inválido (aceito número com ponto/vírgula até 500 kg)");

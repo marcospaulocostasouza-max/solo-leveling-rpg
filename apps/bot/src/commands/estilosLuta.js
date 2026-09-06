@@ -27,8 +27,6 @@ module.exports = async (msg) => {
 
     estilos.forEach((estilo, index) => {
 
-        const requisitos = JSON.parse(estilo.requisitos || "[]");
-
         mensagem += `
 ═
 *${index + 1} - ${estilo.nome}*
@@ -36,17 +34,7 @@ module.exports = async (msg) => {
 > Descricao: ${estilo.descricao || "Sem descricao cadastrada."}
 > Tecnica: ${estilo.tecnica_nome || "Nenhuma tecnica definida."}
 > Custo de Mana: ${estilo.custo_mana || 0} MP
-
-*Requisitos:*
 `;
-
-        if (requisitos.length > 0) {
-            requisitos.forEach((req) => {
-                mensagem += `> ${req}\n`;
-            });
-        } else {
-            mensagem += `> Nenhum requisito cadastrado.\n`;
-        }
 
     });
 

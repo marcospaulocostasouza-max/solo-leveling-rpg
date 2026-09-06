@@ -1,16 +1,11 @@
 const db = require("../core/database");
 const { obterClasseCanonica } = require("./normalizarClasse");
-const obterBuffsClasse = require("./obterBuffsClasse");
 const { normalizarDadosFicha } = require("./normalizarDadosFicha");
 
 
 module.exports = async function salvarJogador(dados) {
     dados = normalizarDadosFicha(dados);
     dados.classe = obterClasseCanonica(dados.classe) || dados.classe;
-    const buff = obterBuffsClasse(dados.classe, dados);
-
-
-
     const jogador = {
 
 
@@ -55,19 +50,13 @@ module.exports = async function salvarJogador(dados) {
 
 
 
-        // buffs da classe
-
-        forca_buff: buff.forca_buff || 0,
-
-        resistencia_buff: buff.resistencia_buff || 0,
-
-        velocidade_buff: buff.velocidade_buff || 0,
-
-        sentidos_buff: buff.sentidos_buff || 0,
-
-        inteligencia_buff: buff.inteligencia_buff || 0,
-
-        poder_magico_buff: buff.poder_magico_buff || 0
+        // Classe inicial não grava buffs: o único bônus é calculado dinamicamente.
+        forca_buff: 0,
+        resistencia_buff: 0,
+        velocidade_buff: 0,
+        sentidos_buff: 0,
+        inteligencia_buff: 0,
+        poder_magico_buff: 0
 
     };
 

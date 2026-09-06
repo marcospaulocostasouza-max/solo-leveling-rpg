@@ -48,6 +48,7 @@ class ForgeValidator {
         const slot = Object.keys(this.slots).find(value => normalize(value) === normalize(content.slot));
         if (type !== "material" && !slot) errors.push(issue(CODES.INVALID_SLOT, `Slot inexistente: ${content.slot || "não informado"}.`, "slot", { allowed: Object.keys(this.slots) }));
         if (content.tier && !TIERS.some(value => normalize(value) === normalize(content.tier))) errors.push(issue(CODES.UNKNOWN_RARITY, `Rank/Tier desconhecido: ${content.tier}.`, "tier", { allowed: TIERS }));
+        this.validateItemQuality(content, errors, rules);
         const values = ATTRIBUTES.map(name => [`${name}_bonus`, content[`${name}_bonus`] ?? 0]);
         for (const [field, value] of values) if (!Number.isSafeInteger(value) || value < 0) errors.push(issue(CODES.INVALID_ATTRIBUTE, `Atributo ${field} deve ser inteiro não negativo.`, field));
         const total = values.reduce((sum, [, value]) => sum + (Number.isSafeInteger(value) ? value : 0), 0);
@@ -60,6 +61,18 @@ class ForgeValidator {
         if (expected && slot && !expected.includes(slot)) errors.push(issue(CODES.INVALID_SLOT, `O slot ${slot} não é compatível com o tipo ${type}.`, "slot", { allowed: expected }));
         if (content.classe_requerida && normalize(content.classe_requerida) !== "nenhuma") await this.requireKnownEntity(content.classe_requerida, "classes", "classe_requerida", errors, warnings, sources);
         if (content.estilo_requerido && normalize(content.estilo_requerido) !== "nenhum") await this.requireKnownEntity(content.estilo_requerido, null, "estilo_requerido", errors, warnings, sources);
+    }
+    validateItemQuality(content, errors, rules) {
+        rules.push("forge:item_quality_v1");
+        if (!content.tier) errors.push(issue(CODES.QUALITY_INCOMPLETE, "Falta definir o Rank/Tier do item.", "tier"));
+        if (!content.slot) errors.push(issue(CODES.QUALITY_INCOMPLETE, "Falta escolher um slot compatível.", "slot"));
+        const description = String(content.descricao || "").trim();
+        const sentences = description.split(/[.!?](?:\s|$)/).filter(Boolean);
+        if (description.length < 180 || sentences.length < 4) errors.push(issue(CODES.QUALITY_INCOMPLETE, "Descrição insuficiente: escreva ao menos 4 frases e 180 caracteres, cobrindo visual, material/forma, função e uso em combate.", "descricao", { minimum_characters: 180, minimum_sentences: 4 }));
+        if (/^(?:uma |um )?(?:espada|arma|item|equipamento) (?:poderos[oa]|forte|especial)[.! ]*$/i.test(description)) errors.push(issue(CODES.QUALITY_INCOMPLETE, "Descrição genérica: explique visual, função e efeito concreto em vez de usar apenas ‘poderosa’ ou ‘forte’.", "descricao"));
+        if (!String(content.efeito || "").trim() || normalize(content.efeito) === "nenhuma") errors.push(issue(CODES.QUALITY_INCOMPLETE, "Falta descrever um efeito claro do item.", "efeito"));
+        if (!String(content.nome || "").trim() || /^(?:arma|espada|item|equipamento)$/i.test(String(content.nome).trim())) errors.push(issue(CODES.QUALITY_INCOMPLETE, "Nome genérico: defina um nome próprio para o item.", "nome"));
+        if (Object.hasOwn(content, "agilidade_bonus")) errors.push(issue(CODES.INVALID_ATTRIBUTE, "Atributo ‘Agilidade’ não é válido neste bot; use Velocidade.", "agilidade_bonus"));
     }
     attributeLimit(type, content) {
         const category = { weapon: "arma", armor: "armadura", accessory: "acessorio", equipment: normalize(content.categoria), consumable: "consumivel", material: "material" }[type];

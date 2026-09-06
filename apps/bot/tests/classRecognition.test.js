@@ -2,9 +2,7 @@ const test = require("node:test");
 const assert = require("node:assert/strict");
 
 const classes = require("../src/utils/classes");
-const buffs = require("../src/utils/buffsClasses");
 const { obterClasseCanonica } = require("../src/utils/normalizarClasse");
-const obterBuffsClasse = require("../src/utils/obterBuffsClasse");
 const { resolverConsultaClasse } = require("../src/commands/tecnicasClasse");
 const { normalizarDadosFicha } = require("../src/utils/normalizarDadosFicha");
 const { obterEstiloCanonico } = require("../src/utils/normalizarEstiloLuta");
@@ -13,7 +11,6 @@ test("reconhece todas as classes oficiais ignorando caixa e acentos", () => {
     for (const nome of Object.keys(classes)) {
         assert.equal(obterClasseCanonica(nome), nome);
         assert.equal(obterClasseCanonica(nome.toUpperCase()), nome);
-        assert.ok(buffs[nome], `Buff ausente para ${nome}`);
     }
 });
 
@@ -69,12 +66,9 @@ test("diferencia Ranger Fisico de Ranger Magico", () => {
     assert.equal(obterClasseCanonica("Ranger Mágico"), "Ranger Mágico");
     assert.equal(obterClasseCanonica("> *Ranger Físico*"), "Ranger Físico");
     assert.equal(obterClasseCanonica("> _Ranger Mágico_"), "Ranger Mágico");
-    assert.notDeepEqual(buffs["Ranger Físico"], buffs["Ranger Mágico"]);
-    assert.equal(buffs["Ranger Físico"].forca_buff, 5);
-    assert.equal(buffs["Ranger Mágico"].poder_magico_buff, 5);
-    assert.equal(obterBuffsClasse("Ranger Físico", { forca: 8 }).forca_buff, 4);
-    assert.equal(obterBuffsClasse("Ranger Mágico", { poder_magico: 6 }).poder_magico_buff, 3);
-    assert.equal(obterBuffsClasse("Ranger Físico", { forca: 8 }).poder_magico_buff, 0);
+    const AtributoSystem = require("../src/systems/atributoSystem");
+    assert.equal(AtributoSystem.calcularBonusClasseInicial("Ranger Físico", { forca: 8 }).forca, 4);
+    assert.equal(AtributoSystem.calcularBonusClasseInicial("Ranger Mágico", { poder_magico: 6 }).poder_magico, 3);
 });
 
 test("integra Mago Elemental e Mago de Maldicao como classes iniciais", () => {

@@ -7,6 +7,7 @@ const path = require("path");
 const sqlite3 = require("sqlite3").verbose();
 const { CardinalAdminService, AdminToolRegistry, registerCoreTools, RISK, CODES } = require("../admin");
 const { DraftStore } = require("../forge/draft-store");
+const { planNatural } = require("../admin/planner");
 
 class TestDatabase {
     constructor(file) { this.db = new sqlite3.Database(file); }
@@ -20,6 +21,14 @@ class TestDatabase {
 const valid = { valid: true, errors: [], warnings: [], rules_checked: ["test"], sources: ["test"] };
 const item = name => ({ nome: name, categoria: "Arma", slot: "Arma 1", tier: "A", descricao: "Teste", forca_bonus: 20, resistencia_bonus: 0, velocidade_bonus: 0, sentidos_bonus: 0, inteligencia_bonus: 0, poder_magico_bonus: 0, efeito: "Luz", habilidade: "Nenhuma", classe_requerida: "Nenhuma", estilo_requerido: "Nenhum", preco: 0 });
 function plan(intent, parameters, key) { return { intent, parameters, risk: null, tools: [intent], original_message: `${intent} test`, operation_id: `op_${key}`, idempotency_key: key }; }
+
+test("Planner reconhece a concessão de item em português", () => {
+    const one = planNatural("Dê o item Coroa Real para Flins"), many = planNatural("Entregue 2 itens Poção para jogador Flins");
+    assert.deepEqual(one.parameters, { quantity: 1, item: "coroa real", player: "flins" });
+    assert.equal(one.intent, "give_item");
+    assert.deepEqual(many.parameters, { quantity: 2, item: "pocao", player: "flins" });
+    assert.equal(many.intent, "give_item");
+});
 
 test("Cardinal Administrator: publicação, transações e segurança", async t => {
     const root = fs.mkdtempSync(path.join(os.tmpdir(), "cardinal-admin-")), database = new TestDatabase(path.join(root, "rpg.db")), drafts = new DraftStore(path.join(root, "drafts.db")); await drafts.initialize();

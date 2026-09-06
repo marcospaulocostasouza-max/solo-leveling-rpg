@@ -42,6 +42,12 @@ class DraftStore {
         const row = await this.get("SELECT * FROM forge_draft_versions WHERE draft_id=? AND version=?", [id, wanted]); if (!row) throw new ForgeError(CODES.VERSION_NOT_FOUND, `Versão ${wanted} não encontrada no draft ${id}.`);
         return hydrate(draft, row);
     }
+    async latestByAuthor(author, { status = "VALID" } = {}) {
+        const row = status == null
+            ? await this.get("SELECT id FROM forge_drafts WHERE author=? ORDER BY updated_at DESC LIMIT 1", [author])
+            : await this.get("SELECT id FROM forge_drafts WHERE author=? AND status=? ORDER BY updated_at DESC LIMIT 1", [author, status]);
+        return row ? this.getDraft(row.id) : null;
+    }
     async versions(id) { await this.getDraft(id); return (await this.all("SELECT version,validation_json,change_note,created_at FROM forge_draft_versions WHERE draft_id=? ORDER BY version", [id])).map(row => ({ version: row.version, status: JSON.parse(row.validation_json).valid ? "VALID" : "INVALID", note: row.change_note, created_at: row.created_at })); }
     async findByName(name) { const rows = await this.all("SELECT d.id,d.current_version,v.content_json FROM forge_drafts d JOIN forge_draft_versions v ON v.draft_id=d.id AND v.version=d.current_version ORDER BY d.updated_at DESC"); const target = String(name || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim(); const matches = rows.filter(row => String(JSON.parse(row.content_json).nome || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim() === target); if (matches.length !== 1) return { matches: matches.map(row => row.id) }; return { id: matches[0].id }; }
     async compare(id, first, second) { const a = await this.getDraft(id, first), b = await this.getDraft(id, second); return { draft_id: id, from: a.version, to: b.version, changes: diff(a.content, b.content) }; }

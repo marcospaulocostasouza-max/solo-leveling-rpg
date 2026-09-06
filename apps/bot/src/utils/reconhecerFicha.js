@@ -12,16 +12,19 @@ const fichasTemp = require("./fichasTemp");
 const templates = require("./templatesMensagens");
 const { obterClasseCanonica } = require("./normalizarClasse");
 const { obterEstiloCanonico } = require("./normalizarEstiloLuta");
+const parseFichaCampos = require("./parseFichaCampos");
+const { normalizarChave, separarLinhaCampo } = parseFichaCampos;
 
 module.exports = async (msg) => {
     const texto = msg.body.trim();
     const textoLower = texto.toLowerCase();
+    const camposFormulario = parseFichaCampos(texto);
     
     // =====================================
     // RECONHECER FICHA DE MATERIAIS (VYSACHE)
     // =====================================
     // Verificar primeiro se é uma ficha de materiais do sistema de forja
-    if (textoLower.includes("material:") && textoLower.includes("quantidade:")) {
+    if (camposFormulario.material && camposFormulario.quantidade) {
         const { processarFichaMateriais } = require("./reconhecerMateriais");
         const processado = await processarFichaMateriais(msg);
         if (processado) return;
@@ -69,9 +72,9 @@ _Use *!concluir Dungeon* para finalizar._` });
     // =====================================
     // RECONHECER TEMPLATE DE HABILIDADE ÚNICA
     // =====================================
-    if (textoLower.includes("nome:") && textoLower.includes("pertencente:") &&
-        (textoLower.includes("custo de mana:") || textoLower.includes("cooldown:") || textoLower.includes("nível de desbloqueio:") || textoLower.includes("nivel de desbloqueio:")) &&
-        !textoLower.includes("tier:") && !textoLower.includes("slot:")) {
+    if (camposFormulario.nome && camposFormulario.pertencente &&
+        (camposFormulario["custo de mana"] || camposFormulario.cooldown || camposFormulario["nivel de desbloqueio"]) &&
+        !camposFormulario.tier && !camposFormulario.slot) {
         
         const db = require("../core/database");
         
@@ -120,8 +123,8 @@ Um ADM deve usar *!add técnica* para integrar e entregar ao dono.
     // =====================================
     // RECONHECER TEMPLATE DE ITEM ÚNICO
     // =====================================
-    if (textoLower.includes("nome:") && textoLower.includes("pertencente:") &&
-        (textoLower.includes("categoria:") || textoLower.includes("tier:"))) {
+    if (camposFormulario.nome && camposFormulario.pertencente &&
+        (camposFormulario.categoria || camposFormulario.tier)) {
         
         const db = require("../core/database");
         
@@ -177,10 +180,10 @@ Um ADM deve usar *!add item* para ${String(dados.pertencente).normalize("NFD").r
     const textoLower2 = texto.toLowerCase();
     
     // Verificar se tem campos básicos de ficha
-    const temNome = textoLower2.includes("nome:");
-    const temClasse = textoLower2.includes("classe");
-    const temHistoria = textoLower2.includes("historia") || textoLower2.includes("história");
-    const temAtributos = textoLower2.includes("força") || textoLower2.includes("forca") || textoLower2.includes("resistencia") || textoLower2.includes("forca:");
+    const temNome = Boolean(camposFormulario.nome);
+    const temClasse = Boolean(camposFormulario.classe || camposFormulario["classe desejada"]);
+    const temHistoria = Boolean(camposFormulario.historia);
+    const temAtributos = Boolean(camposFormulario.forca || camposFormulario.resistencia || camposFormulario.velocidade);
     
     // Verificar se tem múltiplas linhas (fichas têm várias linhas)
     const linhas = texto.split("\n").filter(l => l.trim().length > 0);
@@ -200,11 +203,10 @@ Um ADM deve usar *!add item* para ${String(dados.pertencente).normalize("NFD").r
     let camposEncontrados = 0;
     
     linhas.forEach(linha => {
-        const partes = linha.split(":");
-        if (partes.length < 2) return;
-        
-        const chave = partes[0].replace(/[*_>\-]/g, "").trim().toLowerCase();
-        const valor = partes.slice(1).join(":").replace(/[*_>]/g, "").trim();
+        const campoLido = separarLinhaCampo(linha);
+        if (!campoLido) return;
+        const chave = campoLido.chave;
+        const valor = campoLido.valor;
         
         // Ignorar placeholders e valores vazios
         if (!valor || valor === "_" || valor.startsWith("(") || (valor.length < 2 && !/^\d+$/.test(valor.trim()))) {
@@ -290,6 +292,7 @@ Um ADM deve usar *!add item* para ${String(dados.pertencente).normalize("NFD").r
 
     ficha.classe = obterClasseCanonica(ficha.classe) || ficha.classe.trim();
     if (ficha.estilo_luta) ficha.estilo_luta = obterEstiloCanonico(ficha.estilo_luta) || ficha.estilo_luta.trim();
+    ficha.conteudo_apos_historia = extrairConteudoAposHistoria(texto);
     
     // Salvar na memória temporária E no banco de dados
     const numero = msg.author || msg.from;
@@ -334,16 +337,25 @@ Um ADM deve usar *!add item* para ${String(dados.pertencente).normalize("NFD").r
 // FUNÇÃO AUXILIAR
 // =====================================
 function extrairCampo(texto, campo) {
-    const linhas = texto.split("\n");
-    for (const linha of linhas) {
-        const linhaLimpa = linha.replace(/^[\s>*_-]+/, "").replace(/[\s*_]+$/, "").trim();
-        const linhaLower = linhaLimpa.toLowerCase();
-        const campoLower = campo.toLowerCase();
-        if (linhaLower.startsWith(campoLower + ":")) {
-            return linhaLimpa.substring(linhaLimpa.indexOf(":") + 1).replace(/[>*_]/g, "").trim();
-        }
-    }
-    return "";
+    const chaveProcurada = normalizarChave(campo);
+    const campos = parseFichaCampos(texto);
+    return campos[chaveProcurada] || "";
+}
+
+/**
+ * O bloco posterior à História é material livre do jogador (referências,
+ * observações, links ou explicações). Ele não é interpretado como atributo da
+ * ficha, mas acompanha a pré-avaliação exatamente como foi enviado.
+ */
+function extrairConteudoAposHistoria(texto) {
+    const linhas = String(texto || "").split(/\r?\n/);
+    const indiceHistoria = linhas.findIndex(linha => {
+        const campo = separarLinhaCampo(linha);
+        if (campo?.chave === "historia") return true;
+        return normalizarChave(String(linha || "").replace(/[*_>#\-–—]/g, "")) === "historia";
+    });
+    return indiceHistoria < 0 ? "" : linhas.slice(indiceHistoria + 1).join("\n").trim();
 }
 
 module.exports.extrairCampo = extrairCampo;
+module.exports.extrairConteudoAposHistoria = extrairConteudoAposHistoria;

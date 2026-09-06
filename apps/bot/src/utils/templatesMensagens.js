@@ -99,7 +99,7 @@ ${templates.campo("Aparencia", "_")}
 ${templates.secao("COMBATE")}
 ${templates.campo("Classe desejada", "_")}
 ${templates.campo("Estilo de luta / Proficiencia", "_")}
-> Esta proficiencia sera definitiva; nao existe comando para troca-la.
+> Campo obrigatorio: escolha um estilo valido em !estilos de luta. Esta proficiencia sera definitiva; nao existe comando para troca-la.
 ${templates.campo("Arma inicial", "_")}
 ${templates.campo("Afinidade Elemental", "_")}
 
@@ -183,6 +183,11 @@ _Use *!confirmar ficha* para enviar para aprovacao._`,
         msg += `\n${templates.divisor()}`;
         msg += `\n${templates.campo("Historia", dados.historia || "Em avaliacao")}`;
         msg += `\n${templates.divisor()}`;
+        if (dados.conteudo_apos_historia) {
+            msg += `\n${templates.secao("CONTEUDO ADICIONAL DO JOGADOR")}`;
+            msg += `\n${dados.conteudo_apos_historia}`;
+            msg += `\n${templates.divisor()}`;
+        }
         msg += `\n> *Acoes:*`;
         msg += `\n> Use *!aprovar ficha ${dados.nome} [habilidade_unica]* para aprovar`;
         msg += `\n> Use *!recusar ficha ${dados.nome} [motivo]* para recusar`;

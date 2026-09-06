@@ -129,8 +129,9 @@ const VALIDACOES = {
         }
     },
     estilo_luta: {
-        obrigatorio: false,
+        obrigatorio: true,
         validar: (v) => {
+            if (!v || !String(v).trim()) return "Escolha um estilo em !estilos de luta e preencha o campo Estilo de luta";
             if (v && v.trim().length > 100) return "Estilo de luta/proficiência muito longo (máx 100 caracteres)";
             if (v && !obterEstiloCanonico(v)) return `Estilo "${v}" não reconhecido. Use !estilos de luta para consultar as opções.`;
             return null;

@@ -25,6 +25,8 @@ const BONUS_CLASSE_INICIAL = {
     "Assassino": { atributo: "velocidade_base", bonus: 0.5 },
     "Tanker": { atributo: "resistencia_base",  bonus: 0.5 },
     "Ranger": { atributo: "sentidos_base",     bonus: 0.5 },
+    "Ranger Físico": { atributo: "forca_base", bonus: 0.5 },
+    "Ranger Mágico": { atributo: "poder_magico_base", bonus: 0.5 },
     "Curador": { atributo: "poder_magico_base", bonus: 0.5 },
     "Mago Elemental": { atributo: "poder_magico_base", bonus: 0.5 },
     "Mago Invocador": { atributo: "poder_magico_base", bonus: 0.5 },
@@ -55,6 +57,25 @@ class AtributoSystem {
         return config;
     }
 
+    /** Calcula somente o bônus inicial oficial: 50% de um atributo base. */
+    static calcularBonusClasseInicial(classe, atributos = {}) {
+        const config = this.getBonusClasseInicial(classe);
+        const bonus = { forca: 0, resistencia: 0, velocidade: 0, sentidos: 0, inteligencia: 0, poder_magico: 0 };
+        if (!config) return bonus;
+
+        const campoParaChave = {
+            forca_base: "forca",
+            resistencia_base: "resistencia",
+            velocidade_base: "velocidade",
+            sentidos_base: "sentidos",
+            inteligencia_base: "inteligencia",
+            poder_magico_base: "poder_magico"
+        };
+        const chave = campoParaChave[config.atributo];
+        if (chave) bonus[chave] = Math.floor(Number(atributos[chave] || 0) * config.bonus);
+        return bonus;
+    }
+
     /**
      * Recalcula TODOS os atributos do jogador:
      * - Base + bônus de classe (50%)
@@ -77,25 +98,11 @@ class AtributoSystem {
                 };
 
                 // ---------- 2. BÔNUS DE CLASSE INICIAL (50% do base) ----------
-                const bonusClasse = this.getBonusClasseInicial(jogador.classe);
-                let bonusClasseMap = { forca: 0, resistencia: 0, velocidade: 0, sentidos: 0, inteligencia: 0, poderMagico: 0 };
-
-                if (bonusClasse) {
-                    const atr = bonusClasse.atributo;
-                    // Mapear nome do atributo → chave do objeto
-                    const mapChave = {
-                        forca_base: "forca",
-                        resistencia_base: "resistencia",
-                        velocidade_base: "velocidade",
-                        sentidos_base: "sentidos",
-                        inteligencia_base: "inteligencia",
-                        poder_magico_base: "poderMagico"
-                    };
-                    const chave = mapChave[atr];
-                    if (chave) {
-                        bonusClasseMap[chave] = Math.floor(base[chave] * bonusClasse.bonus);
-                    }
-                }
+                const bonusClasseCalculado = this.calcularBonusClasseInicial(jogador.classe, {
+                    forca: base.forca, resistencia: base.resistencia, velocidade: base.velocidade,
+                    sentidos: base.sentidos, inteligencia: base.inteligencia, poder_magico: base.poderMagico
+                });
+                let bonusClasseMap = { ...bonusClasseCalculado, poderMagico: bonusClasseCalculado.poder_magico };
 
                 // ---------- 3. BÔNUS DE CLASSE AVANÇADA (buffs existentes) ----------
                 const buffAvancada = {

@@ -11,6 +11,69 @@ const fs = require("fs");
 const path = require("path");
 const { verificarGrupo } = require("./groupConfig");
 
+function normalizarComando(valor) {
+    let texto = String(valor || "")
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .toLowerCase();
+
+    const cardinal = texto.match(/^\s*\.\s*#\s*cardinal\b\s*/i);
+    const comandoNormal = texto.match(/^\s*!+\s*/);
+    const prefixo = cardinal ? ".#cardinal" : comandoNormal ? "!" : "";
+    if (cardinal) texto = texto.slice(cardinal[0].length);
+    else if (comandoNormal) texto = texto.slice(comandoNormal[0].length);
+
+    texto = texto
+        .replace(/[“”"'`´]/g, " ")
+        .replace(/[.,:;!?()[\]{}*_~|]+/g, " ")
+        .replace(/[—–]/g, " ")
+        .replace(/\s+/g, " ")
+        .trim();
+    if (prefixo === ".#cardinal") return texto ? `${prefixo} ${texto}` : prefixo;
+    return `${prefixo}${texto}`;
+}
+
+function aliasesDePlural(chave) {
+    const palavras = String(chave || "").split(" ");
+    return palavras.flatMap((palavra, indice) => {
+        if (palavra.length < 4 || !palavra.endsWith("s")) return [];
+        const radical = palavra.endsWith("oes") ? `${palavra.slice(0, -3)}ao`
+            : palavra.endsWith("aes") ? `${palavra.slice(0, -3)}ao`
+                : palavra.endsWith("is") ? `${palavra.slice(0, -2)}l`
+                    : palavra.slice(0, -1);
+        const copia = [...palavras];
+        copia[indice] = radical;
+        return [copia.join(" ")];
+    });
+}
+
+function criarIndiceDeComandos(mapa) {
+    const indice = new Map();
+    for (const [nome, arquivo] of Object.entries(mapa)) {
+        const chave = normalizarComando(nome);
+        if (!indice.has(chave)) indice.set(chave, { arquivo, nome });
+        for (const alias of aliasesDePlural(chave)) {
+            if (!indice.has(alias)) indice.set(alias, { arquivo, nome });
+        }
+    }
+    return indice;
+}
+
+function normalizarMensagemParaHandler(msg, quantidadePalavras, prefixoCanonico) {
+    const corpoOriginal = String(msg.body || "");
+    if (prefixoCanonico === ".#cardinal") {
+        msg.body = corpoOriginal.replace(/^\s*\.\s*#\s*cardinal\b/i, prefixoCanonico);
+        return corpoOriginal;
+    }
+    const [primeiraLinha, ...restante] = corpoOriginal.split(/\r?\n/);
+    const palavras = primeiraLinha.trim().split(/\s+/);
+    if (!palavras.length || !palavras[0]) return corpoOriginal;
+    const restoDaLinha = palavras.slice(quantidadePalavras).join(" ");
+    const corpoNormalizado = `${prefixoCanonico}${restoDaLinha ? ` ${restoDaLinha}` : ""}`;
+    msg.body = [corpoNormalizado, ...restante].join("\n");
+    return corpoOriginal;
+}
+
 // Cache de comandos carregados
 const cacheComandos = {};
 
@@ -91,7 +154,7 @@ async function executarComando(msg, comando, comandosRegistrados) {
     const msgBody = msg.body;
     // Normaliza acentos para que aliases com ou sem acento tenham o mesmo
     // roteamento, inclusive em arquivos legados com codificação antiga.
-    const comandoLower = comando.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    const comandoLower = normalizarComando(comando);
     const grupoId = msg.from || msg.author;
     
     console.log(`[EXEC] ===== NOVA MENSAGEM RECEBIDA =====`);
@@ -102,7 +165,7 @@ async function executarComando(msg, comando, comandosRegistrados) {
     if (msgBody.startsWith("!")) {
         // Pegar o comando completo (primeira linha, todas as palavras)
         const primeiraLinha = msgBody.split("\n")[0].trim();
-        const comandoParaVerificar = primeiraLinha.toLowerCase();
+        const comandoParaVerificar = normalizarComando(primeiraLinha);
         const numeroAutor = msg.author || msg.from;
         console.log(`[GRUPO] Verificando acesso: "${comandoParaVerificar}" em ${grupoId} por ${numeroAutor}`);
         const grupoPermitido = verificarGrupo(comandoParaVerificar, grupoId, numeroAutor);
@@ -622,14 +685,22 @@ async function executarComando(msg, comando, comandosRegistrados) {
         }
     }
 
+    const indiceComandos = criarIndiceDeComandos(mapaComandos);
+
     // Verificar comando exato primeiro
     console.log(`[CMD] Buscando comando exato: "${comandoLower}"`);
-    if (mapaComandos[comandoLower]) {
-        console.log(`[CMD] Comando exato encontrado: ${mapaComandos[comandoLower]}`);
-        const modulo = carregarComando(mapaComandos[comandoLower]);
+    const comandoExato = indiceComandos.get(comandoLower);
+    if (comandoExato) {
+        console.log(`[CMD] Comando exato encontrado: ${comandoExato.arquivo}`);
+        const modulo = carregarComando(comandoExato.arquivo);
         if (modulo) {
-            console.log(`[CMD] Executando comando: ${mapaComandos[comandoLower]}`);
-            await modulo(msg);
+            console.log(`[CMD] Executando comando: ${comandoExato.arquivo}`);
+            const originalBody = normalizarMensagemParaHandler(msg, comandoExato.nome.trim().split(/\s+/).length, comandoExato.nome);
+            try {
+                await modulo(msg);
+            } finally {
+                msg.body = originalBody;
+            }
             console.log(`[CMD] Comando executado com sucesso`);
             return;
         } else {
@@ -643,7 +714,9 @@ async function executarComando(msg, comando, comandosRegistrados) {
     // Os nomes mais especificos precisam ser avaliados primeiro. Sem isso,
     // "!mago de barreira" era capturado pelo prefixo curto "!mago".
     for (const cmdClasse of [...comandosClasses].sort((a, b) => b.length - a.length)) {
-        if (comandoLower === cmdClasse || comandoLower.startsWith(cmdClasse + " ")) {
+        const classeCanonica = normalizarComando(cmdClasse);
+        const classesAceitas = [classeCanonica, ...aliasesDePlural(classeCanonica)];
+        if (classesAceitas.some(classe => comandoLower === classe || comandoLower.startsWith(classe + " "))) {
             const nomeClasse = cmdClasse.replace("!", "");
             const tecnicasClasse = carregarComando("tecnicasClasse.js");
             if (tecnicasClasse) {
@@ -654,19 +727,27 @@ async function executarComando(msg, comando, comandosRegistrados) {
     }
 
     // Verificar comandos com prefixo
-    console.log(`[CMD] Verificando ${comandosPrefixo.length} comandos com prefixo...`);
-    for (const cmd of comandosPrefixo) {
-        if (comandoLower.startsWith(cmd.prefixo)) {
+    const prefixosAceitos = comandosPrefixo.flatMap(cmd => {
+        const prefixo = normalizarComando(cmd.prefixo);
+        return [prefixo, ...aliasesDePlural(prefixo)].map(alias => ({ ...cmd, prefixoCanonico: alias }));
+    }).sort((a, b) => b.prefixoCanonico.length - a.prefixoCanonico.length);
+    console.log(`[CMD] Verificando ${prefixosAceitos.length} comandos com prefixo...`);
+    for (const cmd of prefixosAceitos) {
+        if (comandoLower === cmd.prefixoCanonico || comandoLower.startsWith(cmd.prefixoCanonico + " ")) {
             console.log(`[CMD] Prefixo encontrado: "${cmd.prefixo}" -> ${cmd.arquivo}`);
             const modulo = carregarComando(cmd.arquivo);
             if (modulo) {
                 console.log(`[CMD] Executando: ${cmd.arquivo}`);
                 // O Cardinal usa um prefixo próprio. Os módulos internos continuam
                 // recebendo a forma canônica para não interferir nos demais comandos.
-                const cardinalMessage = cmd.arquivo === "cardinalAdmin.js"
-                    ? Object.assign(Object.create(Object.getPrototypeOf(msg)), msg, { body: String(msg.body || "").replace(/^\.\#cardinal/i, "!cardinal") })
-                    : msg;
-                await modulo(cardinalMessage);
+                const quantidadePalavras = String(cmd.prefixo).trim().split(/\s+/).length;
+                const originalBody = normalizarMensagemParaHandler(msg, quantidadePalavras, cmd.prefixoCanonico);
+                if (cmd.arquivo === "cardinalAdmin.js") msg.body = String(msg.body || "").replace(/^\.\#cardinal/i, "!cardinal");
+                try {
+                    await modulo(msg);
+                } finally {
+                    msg.body = originalBody;
+                }
                 console.log(`[CMD] Comando com prefixo executado com sucesso`);
                 return;
             } else {
@@ -716,4 +797,9 @@ O comando *${msg.body}* nao existe no sistema.
     }
 }
 
-module.exports = { executarComando };
+module.exports = {
+    executarComando,
+    normalizarComando,
+    aliasesDePlural,
+    criarIndiceDeComandos
+};

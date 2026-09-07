@@ -3,6 +3,7 @@
 const path = require("path");
 const { ATTRIBUTES, RANKS, SET_RANKS, TIERS, schemaFor } = require("./schemas");
 const { CODES, issue } = require("./errors");
+const { limiteDeAtributosConjunto } = require(path.resolve(__dirname, "../../apps/bot/src/config/equipmentSetLimits"));
 
 function normalize(value) { return String(value || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim(); }
 function result(errors, warnings, rulesChecked, sources) { return { valid: errors.length === 0, errors, warnings, rules_checked: [...new Set(rulesChecked)], sources: [...new Set(sources)] }; }
@@ -52,9 +53,16 @@ class ForgeValidator {
         const values = ATTRIBUTES.map(name => [`${name}_bonus`, content[`${name}_bonus`] ?? 0]);
         for (const [field, value] of values) if (!Number.isSafeInteger(value) || value < 0) errors.push(issue(CODES.INVALID_ATTRIBUTE, `Atributo ${field} deve ser inteiro não negativo.`, field));
         const total = values.reduce((sum, [, value]) => sum + (Number.isSafeInteger(value) ? value : 0), 0);
-        const officialLimit = Number.isFinite(this.rules.attributeLimit) ? this.rules.attributeLimit : this.attributeLimit(type, content);
+        const setLimit = content.conjunto_item === true ? limiteDeAtributosConjunto(content.tier) : null;
+        const officialLimit = Number.isFinite(setLimit) ? setLimit : Number.isFinite(this.rules.attributeLimit) ? this.rules.attributeLimit : this.attributeLimit(type, content);
         if (Number.isFinite(officialLimit)) {
-            rules.push("forjaSystem:COMBINACOES_MATERIAIS.bonusBase"); sources.push("apps/bot/src/systems/forjaSystem.js");
+            if (Number.isFinite(setLimit)) {
+                rules.push("equipmentSetLimits:piece_attribute_total");
+                sources.push("apps/bot/src/config/equipmentSetLimits.js");
+            } else {
+                rules.push("forjaSystem:COMBINACOES_MATERIAIS.bonusBase");
+                sources.push("apps/bot/src/systems/forjaSystem.js");
+            }
             if (total > officialLimit) errors.push(issue(CODES.ATTRIBUTE_LIMIT, `Total de atributos ${total} excede o limite oficial ${officialLimit} para esta categoria e Rank.`, "attributes", { total, limit: officialLimit }));
         } else if (type !== "material" && type !== "consumable") warnings.push(issue(CODES.RULE_NOT_FOUND, "Não foi encontrado limite oficial geral para bônus desta combinação de categoria/Rank; apenas formato e valores não negativos foram validados.", "attributes"));
         const expected = { weapon: ["Arma 1", "Arma 2"], armor: ["Cabeça", "Corpo", "Pernas", "Pés"], accessory: ["Acessórios"], consumable: ["Item de Apoio"] }[type];

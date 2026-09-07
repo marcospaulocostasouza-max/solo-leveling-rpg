@@ -39,7 +39,7 @@ Use *!ficha* para criar seu personagem.
 
 ${dados.erro}
 
-_Use *!Desejar* para tentar obter uma Chave de Dungeon._
+_Use *${dados.proximoComando || "!Desejar"}* para continuar._
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━` });
         }

@@ -46,8 +46,26 @@ _Use *!ficha de Dungeon* para ver sua ficha._
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━` });
         }
 
-        // Reconhecer ficha de dungeon do texto enviado
-        const fichaReconhecida = await DungeonInstanciadaSystem.reconhecerFichaDungeon(texto, jogador);
+        // A ficha preenchida é reconhecida quando o jogador a envia e fica
+        // temporariamente associada a ele até usar este comando.
+        const fichasDungeonTemp = require("../utils/fichasDungeonTemp");
+        const fichaSalva = fichasDungeonTemp[numero];
+        const textoContemFicha = /ficha\s+de\s+dungeon|dungeon\s+instanciada/i.test(texto);
+
+        if (!fichaSalva && !textoContemFicha) {
+            return MessageService.send({ message: msg, text: `
+*═══ CONCLUIR DUNGEON ═══*
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+*Ficha de Dungeon não recebida.*
+
+Use *!ficha de Dungeon*, copie a ficha, informe os participantes e envie-a no grupo.
+Depois use *!concluir Dungeon* para registrar a conclusão e entregar as recompensas.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━` });
+        }
+
+        const fichaReconhecida = fichaSalva || await DungeonInstanciadaSystem.reconhecerFichaDungeon(texto, jogador);
         
         if (fichaReconhecida.participantes.length === 0) {
             return MessageService.send({ message: msg, text: `
@@ -85,6 +103,8 @@ _Corrija a ficha e tente novamente._`;
             return MessageService.send({ message: msg, text: mensagemErro });
         }
 
+        delete fichasDungeonTemp[numero];
+
         // Aplicar premiação geral (XP + Wons) para todos os participantes
         const premGeral = await DungeonInstanciadaSystem.aplicarPremiacaoGeral(resultado.ficha.id);
 
@@ -114,10 +134,10 @@ ${premios.maestria > 0 ? `> Maestria: ${premios.maestria}` : ""}
 ${resultado.chaveEsgotada ? "> ⚠️ *Chave esgotada!*" : ""}
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-*Agora escolha seus prêmios extras!*
+*Agora cada participante deve escolher um prêmio extra!*
 
-_Use *!Escolho a opção número X* para escolher._
-_Apenas participantes da dungeon podem escolher._`;
+_Use *!Escolho número X* para escolher. Cada player escolhe apenas uma opção._
+_A escolha é vinculada ao participante registrado na Dungeon._`;
 
         await MessageService.send({ message: msg, text: mensagem });
 

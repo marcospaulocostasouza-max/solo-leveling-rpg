@@ -36,7 +36,8 @@ ITENS DO CONJUNTO:
 - Nome exato do Item Raro 6
 
 ──────────────────────────
-_Cada estágio deve explicar seu efeito. Os seis itens precisam ter sido criados com *!Fitem* e registrados usando *PERTENCENTE: Item Raro*._`;
+_Cada estágio deve explicar seu efeito. Os seis itens precisam ter sido criados com *!Fitem* e registrados usando *PERTENCENTE: Item Raro*._
+_Cada peça respeita o total máximo de atributos do Rank do conjunto: D 40 • C 80 • B 160 • A 500 • S sem limite._`;
 
 function normalizar(valor) { return String(valor || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/^\s*\[personalizado\]\s*/i, "").replace(/[^a-z0-9]+/g, " ").trim(); }
 function campo(texto, nome) {

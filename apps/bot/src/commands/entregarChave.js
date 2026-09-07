@@ -172,6 +172,8 @@ _O jogador precisa esgotar a chave atual antes de receber uma nova._
             );
         });
 
+        await DungeonInstanciadaSystem.adicionarChaveAoInventario(jogador.id, rank);
+
         // Atualizar jogador com resultado do sorteio
         await new Promise((resolve) => {
             db.run(
@@ -202,16 +204,14 @@ _O jogador precisa esgotar a chave atual antes de receber uma nova._
 
 > *Jogador:* ${jogador.nome}
 > *Rank da Chave:* ${rank}
-> *Dungeon:* ${nomeDungeon}
-> *Tema:* ${tema}
 > *Usos:* 5/5
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 *Entregue por:* ${admin.nome}
 
-_O jogador pode usar *!ficha de Dungeon* para ver sua ficha._
-_O jogador pode usar *!concluir Dungeon* para iniciar._
+_O jogador deve usar *!abrir dungeon* para sortear a Dungeon do Rank da chave._
+_Depois poderá usar *!ficha de Dungeon* para consultar a Dungeon e montar o grupo._
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━` });
 

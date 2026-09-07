@@ -18,9 +18,10 @@ export async function getGachaState(playerId:number,bannerId?:number){
     try{const resolved=await banners.validarReferencia(item.reward_type,item.referencia_id);return {...item,nome:resolved?.entidade?.nome||item.reward_type};}
     catch{return {...item,nome:item.reward_type};}
   }));
+  const guaranteeSet=pool.some((item:any)=>Number(item.garantido_conjunto)===1);
   const pity=await database.consultarPityGacha(playerId,selected.id);
   const history=await database.getUltimosGiros(playerId,8);
-  return {banners:available,selected,pool,pity,history,wallet:player||{cristais:0,fragmentos_invocacao:0}};
+  return {banners:available,selected,pool,guaranteeSet,pity,history,wallet:player||{cristais:0,fragmentos_invocacao:0}};
 }
 
 export async function pullGacha(playerId:number,bannerId:number,count:number){

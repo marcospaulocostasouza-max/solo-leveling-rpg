@@ -2,6 +2,7 @@
 
 const database = require("../../../../packages/database");
 const { provider } = require("../../../../packages/database/config");
+const { limiteDeAtributosConjunto, totalDeAtributos } = require("../config/equipmentSetLimits");
 
 const ATRIBUTOS = Object.freeze(["forca", "resistencia", "velocidade", "sentidos", "inteligencia", "poder_magico"]);
 const RANKS = new Set(["D", "C", "B", "A", "S"]);
@@ -84,6 +85,16 @@ async function criarConjuntoCompleto(dados) {
     const marcadores = itemIds.map(() => "?").join(",");
     const raros = await database.all(`SELECT item_id FROM banner_rare_items WHERE tipo='ITEM' AND item_id IN (${marcadores})`, itemIds);
     if (raros.length !== itemIds.length) throw new Error("Todos os itens do conjunto precisam pertencer ao catálogo de Itens Raros.");
+    const itens = await database.all(`SELECT * FROM itens WHERE id IN (${marcadores})`, itemIds);
+    const limite = limiteDeAtributosConjunto(rank);
+    if (Number.isFinite(limite)) {
+        const acimaDoLimite = itens
+            .map(item => ({ nome: item.nome, total: totalDeAtributos(item) }))
+            .filter(item => item.total > limite);
+        if (acimaDoLimite.length) {
+            throw new Error(`Peças de conjunto Rank ${rank} aceitam no máximo ${limite} atributos no total. Corrija: ${acimaDoLimite.map(item => `${item.nome} (${item.total})`).join(", ")}.`);
+        }
+    }
     if (await database.get("SELECT id FROM equipment_sets WHERE LOWER(nome)=LOWER(?)", [nome])) throw new Error("Já existe um conjunto com esse nome.");
     const setId = await database.transaction(async query => {
         const sql = "INSERT INTO equipment_sets (nome,descricao,rank,ativo) VALUES (?,?,?,1)";

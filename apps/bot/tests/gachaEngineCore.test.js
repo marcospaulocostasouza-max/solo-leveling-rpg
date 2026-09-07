@@ -41,6 +41,16 @@ test("Nucleo 3 - giros, entrega, garantia e transacao", async t => {
             assert.equal(Gacha.sortearRecompensa(pool, () => 0).id, 1);
             assert.equal(Gacha.sortearRecompensa(pool, () => 0.99).id, 2);
         });
+        await t.test("giro 10x garante uma peça marcada de conjunto sem perder a garantia de Rank", () => {
+            const pool = [
+                { id: 1, reward_type: "ITEM", peso: 100, grande_premio: 0, rankRecompensa: "E", garantido_conjunto: 0 },
+                { id: 2, reward_type: "ITEM", peso: 0.0001, grande_premio: 0, rankRecompensa: "D", garantido_conjunto: 1 },
+                { id: 3, reward_type: "ITEM_ESPECIAL_BANNER", peso: 0.0001, grande_premio: 1, rankRecompensa: "B", garantido_conjunto: 0 }
+            ];
+            const resultado = Gacha.prepararSorteios(pool, 10, "E", 0, () => 0);
+            assert.ok(resultado.some(itemResultado => itemResultado.garantidoRank && itemResultado.rankRecompensa === "E"));
+            assert.ok(resultado.some(itemResultado => itemResultado.garantidoConjunto && itemResultado.id === 2));
+        });
         await t.test("giro unico debita e entrega no inventario", async () => {
             const resultado = await Gacha.realizarGiros(jogadorId, principal.id, 1, { rng: () => 0 });
             assert.equal(resultado.custo, 100);

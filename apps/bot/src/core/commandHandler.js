@@ -565,6 +565,7 @@ async function executarComando(msg, comando, comandosRegistrados) {
         { prefixo: "!concluir Dungeon", arquivo: "concluirDungeon.js" },
         { prefixo: "!escolho a opção", arquivo: "escolherPremio.js" },
         { prefixo: "!escolho a opcao", arquivo: "escolherPremio.js" },
+        { prefixo: "!escolho", arquivo: "escolherPremio.js" },
         { prefixo: "!abrir dungeon", arquivo: "abrirDungeon.js" },
         { prefixo: "!abrir Dungeon", arquivo: "abrirDungeon.js" },
         { prefixo: "!minha dungeon", arquivo: "minhaDungeon.js" },

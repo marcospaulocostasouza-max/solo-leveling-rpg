@@ -10,7 +10,7 @@ const itemProperties = {
     nome: { type: "string" }, categoria: { type: "string" }, slot: { type: "string" }, tier: { type: "string" }, descricao: { type: "string" },
     forca_bonus: { type: "integer", minimum: 0 }, resistencia_bonus: { type: "integer", minimum: 0 }, velocidade_bonus: { type: "integer", minimum: 0 },
     sentidos_bonus: { type: "integer", minimum: 0 }, inteligencia_bonus: { type: "integer", minimum: 0 }, poder_magico_bonus: { type: "integer", minimum: 0 },
-    efeito: { type: "string" }, habilidade: { type: "string" }, classe_requerida: { type: "string" }, estilo_requerido: { type: "string" }, preco: { type: "integer", minimum: 0 }
+    efeito: { type: "string" }, habilidade: { type: "string" }, classe_requerida: { type: "string" }, estilo_requerido: { type: "string" }, preco: { type: "integer", minimum: 0 }, conjunto_item: { type: "boolean" }
 };
 const SCHEMAS = Object.freeze({
     item: { version: 1, required: ["nome", "categoria", "slot", "tier", "descricao"], properties: itemProperties },

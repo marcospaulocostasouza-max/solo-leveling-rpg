@@ -30,7 +30,7 @@ class CardinalForgeService {
         const results = await this.retriever.searchKnowledge(`${plan.type} ${plan.required_rules.join(" ")} ${plan.request}`, { limit: 6 });
         const baseContext = this.contextBuilder.build(results); const external = renderExternalContext(options.context); const context = external ? { ...baseContext, text: `${baseContext.text}\n\n${external}`.slice(0, this.contextBuilder.maxChars || 12000) } : baseContext; const forge = this.registry.get(plan.type);
         try {
-            const generated = await forge.generate(plan, context, options); const content = prepareContent(plan.type, generated.content); const validation = validatePlan(plan, content, await forge.validate(content));
+            const generated = await forge.generate(plan, context, options); const content = prepareContent(plan.type, generated.content, plan); const validation = validatePlan(plan, content, await forge.validate(content));
             const sources = context.results.map(item => ({ id: item.id, file: item.file, category: item.category, entity: item.entity, score: item.score }));
             const savedDraft = await this.store.create({ type: plan.type, content, validation, author: options.author || "local-cli", request: plan.request, sources }); const draft = { ...savedDraft, auto_completed: autoCompletedFields(plan.type, generated.content, content) };
             if (this.memory) await this.memory.recordEntity(options.author || "local-cli", { entity_type: "DRAFT", entity_id: draft.id, label: content.nome || plan.type }, { session_id: options.session_id }).catch(() => {});
@@ -56,7 +56,7 @@ class CardinalForgeService {
     async close() { await this.ready; return this.store.close(); }
 }
 function merge(current, patch) { if (Array.isArray(patch) || patch == null || typeof patch !== "object") return patch; const output = { ...(current || {}) }; for (const [key, value] of Object.entries(patch)) { if (value === undefined) delete output[key]; else output[key] = value && typeof value === "object" && !Array.isArray(value) ? merge(output[key], value) : value; } return output; }
-function prepareContent(type, content) {
+function prepareContent(type, content, plan = null) {
     let prepared = { ...(content || {}) };
     if (["weapon", "armor", "accessory", "equipment", "consumable", "material"].includes(type)) {
         const category = { weapon: "Arma", armor: "Armadura", accessory: "Acessório", equipment: "Equipamento", consumable: "Consumível", material: "Material" }[type];
@@ -74,6 +74,7 @@ function prepareContent(type, content) {
             estilo_requerido: prepared.estilo_requerido || "Nenhum",
             preco: Number.isInteger(prepared.preco) && prepared.preco >= 0 ? prepared.preco : 0
         };
+        if (plan?.constraints?.equipment_set_piece) prepared.conjunto_item = true;
         if (!prepared.efeito && type !== "material") prepared.efeito = "Concede os bônus de atributos descritos enquanto estiver equipado.";
     }
     if (type !== "event" || !Array.isArray(prepared.referencias)) return prepared;

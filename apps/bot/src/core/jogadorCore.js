@@ -108,6 +108,19 @@ class JogadorCore {
             });
         });
     }
+
+    /**
+     * Busca jogador pela chave interna. Use este método quando a origem é uma
+     * tabela relacional (inventário, participação em dungeon, prêmios etc.).
+     */
+    static buscarPorId(jogadorId) {
+        return new Promise((resolve) => {
+            db.get("SELECT * FROM jogadores WHERE id = ?", [jogadorId], (err, jogador) => {
+                if (err) return resolve(null);
+                resolve(jogador || null);
+            });
+        });
+    }
     
     /**
      * Busca jogador por nome (exato)

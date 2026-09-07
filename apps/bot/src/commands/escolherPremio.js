@@ -31,7 +31,7 @@ Use *!ficha* para criar seu personagem.
         }
 
         // Extrair número da opção
-        const match = texto.match(/!escolho a op[çc][ãa]o n[uú]mero\s+(\d+)/i);
+        const match = texto.match(/!escolho(?:\s+(?:a\s+)?op[çc][ãa]o)?(?:\s+n[uú]mero)?\s+(\d+)/i);
         if (!match) {
             return MessageService.send({ message: msg, text: `
 *═══ ESCOLHER PRÊMIO ═══*
@@ -48,14 +48,7 @@ Exemplo: *!Escolho a opção número 1*
         const numeroOpcao = parseInt(match[1]);
 
         // Buscar ficha de dungeon ativa do jogador
-        const ficha = await new Promise((resolve) => {
-            const db = require("../core/database");
-            db.get(
-                "SELECT * FROM fichas_dungeon WHERE jogador_id = ? AND status = 'ativa'",
-                [jogador.id],
-                (err, row) => resolve(row || null)
-            );
-        });
+        const ficha = await DungeonInstanciadaSystem.getFichaAtivaParaPremio(jogador.id);
 
         if (!ficha) {
             return MessageService.send({ message: msg, text: `
@@ -71,8 +64,7 @@ _Use *!concluir Dungeon* para finalizar._
         }
 
         // Verificar se o jogador é participante da dungeon
-        const participantes = JSON.parse(ficha.participantes || "[]");
-        const ehParticipante = participantes.some(p => p.toLowerCase() === jogador.nome.toLowerCase());
+        const ehParticipante = await DungeonInstanciadaSystem.ehParticipanteDaFicha(ficha.id, jogador.id);
         
         if (!ehParticipante) {
             return MessageService.send({ message: msg, text: `

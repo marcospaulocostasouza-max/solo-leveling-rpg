@@ -48,22 +48,39 @@ module.exports = async (msg) => {
             const fichaReconhecida = await DungeonInstanciadaSystem.reconhecerFichaDungeon(texto, jogador);
             
             if (fichaReconhecida.participantes.length > 0) {
+                const validacao = await DungeonInstanciadaSystem.validarParticipantesReconhecidos(jogador, fichaReconhecida);
+                if (!validacao.valido) {
+                    await MessageService.send({ message: msg, text: `
+*═══ FICHA DE DUNGEON — CORREÇÃO NECESSÁRIA ═══*
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+*A ficha não foi registrada.*
+
+${validacao.erros.map(erro => `> ❌ ${erro}`).join("\n")}
+
+_Corrija os nomes, mantenha no máximo 5 participantes e envie a ficha novamente._` });
+                    return;
+                }
+
+                fichaReconhecida.participantes = validacao.participantes.map(participante => participante.nome);
+                fichaReconhecida.participantesIds = validacao.participantes.map(participante => participante.id);
+
                 // Salvar ficha reconhecida em memória para o comando !concluir Dungeon
                 const fichasDungeonTemp = require("./fichasDungeonTemp");
                 fichasDungeonTemp[numero] = fichaReconhecida;
                 
                 await MessageService.send({ message: msg, text: `
-*═══ FICHA DE DUNGEON RECONHECIDA! ═══*
+*═══ SISTEMA — PLAYERS RECONHECIDOS ═══*
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 *Dungeon:* ${fichaReconhecida.dungeonNome || "Não identificada"}
 *Rank:* ${fichaReconhecida.dungeonRank || "Não identificado"}
 
-*Participantes (${fichaReconhecida.participantes.length}):*
-${fichaReconhecida.participantes.map((p, i) => `${i + 1}. ${p}`).join("\n")}
+*Players reconhecidos (${fichaReconhecida.participantes.length}):*
+${fichaReconhecida.participantes.map((p, i) => `${i + 1}. ✅ ${p}`).join("\n")}
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-_Use *!concluir Dungeon* para finalizar._` });
+_Todos os players foram reconhecidos. Use *!concluir Dungeon* quando a incursão terminar._` });
                 return;
             }
         }

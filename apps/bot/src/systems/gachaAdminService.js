@@ -84,6 +84,7 @@ async function updateBanner(administrador, bannerId, dados) {
 
 async function addReward(administrador, bannerId, dados) {
     const actor = await autorizar(administrador); const banner = await bannerExistente(bannerId); exigirEditavel(banner);
+    if (dados?.garantidoConjunto) await database.ensureEquipmentSetSchema();
     const tipo = String(dados?.tipo || "").toUpperCase();
     const referencia = dados?.referenciaId == null ? null : String(dados.referenciaId);
     if (!Banners.TIPOS_RECOMPENSA.includes(tipo)) throw new Error("Tipo de recompensa nao suportado.");
@@ -100,10 +101,16 @@ async function addReward(administrador, bannerId, dados) {
         const existente = await query.get(`SELECT id FROM gacha_banner_rewards WHERE banner_id=? AND reward_type=?
             AND COALESCE(referencia_id, '')=COALESCE(?, '')`, [banner.id, tipo, referencia]);
         if (existente) throw new Error("Esta recompensa ja pertence ao pool; altere o peso do registro existente.");
-        const sql = `INSERT INTO gacha_banner_rewards (banner_id,reward_type,referencia_id,quantidade,peso,raridade,
-            destaque_ordem,grande_premio,exclusivo_banner,unica,duplicate_fragment_value,ativo) VALUES (?,?,?,?,?,?,NULL,0,?,?,?,1)`;
+    const garantiaConjunto = dados.garantidoConjunto ? 1 : 0;
+    if (garantiaConjunto) {
+        if (tipo !== "ITEM") throw new Error("A garantia de conjunto aceita somente recompensa do tipo ITEM.");
+        const parte = await query.get("SELECT 1 FROM equipment_set_items WHERE item_id=?", [Number(referencia)]);
+        if (!parte) throw new Error("A recompensa marcada para garantia deve ser uma peça de conjunto existente.");
+    }
+    const sql = `INSERT INTO gacha_banner_rewards (banner_id,reward_type,referencia_id,quantidade,peso,raridade,
+            destaque_ordem,grande_premio,exclusivo_banner,unica,duplicate_fragment_value,garantido_conjunto,ativo) VALUES (?,?,?,?,?,?,NULL,0,?,?,?,?,1)`;
         const criado = await query.run(provider === "postgres" ? `${sql} RETURNING id` : sql,
-            [banner.id, tipo, referencia, quantidade, peso, raridade, dados.exclusivoBanner ? 1 : 0, unica, duplicata]);
+            [banner.id, tipo, referencia, quantidade, peso, raridade, dados.exclusivoBanner ? 1 : 0, unica, duplicata, garantiaConjunto]);
         const recompensa = await query.get("SELECT * FROM gacha_banner_rewards WHERE id=?", [Number(criado.lastID)]);
         await auditar(query, actor, "ADD_REWARD", banner.id, null, recompensa);
         return recompensa;

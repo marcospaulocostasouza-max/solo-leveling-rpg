@@ -274,11 +274,9 @@ class DungeonInstanciadaSystem {
         });
 
         if (sorteio) {
-            // Sortear nome da dungeon baseado no rank
+            // !Desejar concede somente a chave. A dungeon real é sorteada
+            // exclusivamente quando o jogador usa !abrir dungeon.
             const rank = jogador.rank || "E";
-            const nomes = DUNGEON_NOMES[rank] || DUNGEON_NOMES["E"];
-            const nomeDungeon = nomes[Math.floor(Math.random() * nomes.length)];
-            const tema = (DUNGEON_TEMAS[rank] || DUNGEON_TEMAS["E"])[Math.floor(Math.random() * (DUNGEON_TEMAS[rank] || DUNGEON_TEMAS["E"]).length)];
 
             // Criar chave de dungeon
             await new Promise((resolve) => {
@@ -291,16 +289,18 @@ class DungeonInstanciadaSystem {
                 );
             });
 
+            const chaveNoInventario = await this.adicionarChaveAoInventario(jogador.id, rank);
+
             // Atualizar jogador com resultado
             await new Promise((resolve) => {
                 db.run(
                     "UPDATE jogadores SET ultimo_sorteio_desejar = ?, ultimo_resultado_desejar = ? WHERE id = ?",
-                    [agora, JSON.stringify({ sucesso: true, rank, nomeDungeon, tema }), jogador.id],
+                    [agora, JSON.stringify({ sucesso: true, rank }), jogador.id],
                     () => resolve()
                 );
             });
 
-            return { sucesso: true, rank, nomeDungeon, tema };
+            return { sucesso: true, rank, chaveNoInventario };
         } else {
             // Atualizar jogador com resultado
             await new Promise((resolve) => {
@@ -331,11 +331,54 @@ class DungeonInstanciadaSystem {
      * Busca a chave de dungeon do jogador
      */
     static async getChave(jogadorId) {
-        return new Promise((resolve) => {
+        const chave = await new Promise((resolve) => {
             db.get("SELECT * FROM chaves_dungeon WHERE jogador_id = ? AND ativa = 1", [jogadorId], (err, chave) => {
                 resolve(chave || null);
             });
         });
+        // Também repara chaves antigas, criadas antes de existir a exibição no inventário.
+        if (chave) await this.adicionarChaveAoInventario(jogadorId, chave.rank);
+        return chave;
+    }
+
+    /** Cria (uma única vez) a representação visível da chave no inventário. */
+    static async adicionarChaveAoInventario(jogadorId, rank) {
+        const nome = `Chave de Dungeon Rank ${rank}`;
+        const itemId = await new Promise((resolve) => {
+            db.get("SELECT id FROM itens WHERE nome = ?", [nome], (err, item) => {
+                if (item) return resolve(item.id);
+                db.run(
+                    `INSERT INTO itens (nome, categoria, tier, descricao, efeito, consumivel)
+                     VALUES (?, 'Chave de Dungeon', ?, ?, ?, 0)`,
+                    [
+                        nome,
+                        rank,
+                        `Uma chave dimensional de Rank ${rank}. Use !abrir dungeon para revelar a Dungeon vinculada.`,
+                        "Não pode ser equipada; a abertura é feita pelo comando !abrir dungeon."
+                    ],
+                    function (insertErr) { resolve(insertErr ? null : this.lastID); }
+                );
+            });
+        });
+
+        if (!itemId) return false;
+        const jaNoInventario = await new Promise((resolve) => {
+            db.get(
+                "SELECT 1 FROM inventario_jogador WHERE jogador_id = ? AND item_id = ?",
+                [jogadorId, itemId],
+                (err, item) => resolve(Boolean(item))
+            );
+        });
+        if (jaNoInventario) return true;
+        return InventorySystem.adicionarItem(jogadorId, itemId, 1);
+    }
+
+    static async removerChaveDoInventario(jogadorId, rank) {
+        const nome = `Chave de Dungeon Rank ${rank}`;
+        const item = await new Promise((resolve) => {
+            db.get("SELECT id FROM itens WHERE nome = ?", [nome], (err, row) => resolve(row || null));
+        });
+        return item ? InventorySystem.removerItem(jogadorId, item.id, 1) : false;
     }
 
     /**
@@ -372,8 +415,9 @@ class DungeonInstanciadaSystem {
                 
                 const novosUsos = chave.usos_restantes - quantidade;
                 if (novosUsos <= 0) {
-                    // Chave esgotada - remover
-                    db.run("UPDATE chaves_dungeon SET ativa = 0, usos_restantes = 0 WHERE id = ?", [chave.id], () => {
+                    // Chave esgotada: desativa o registro e remove o item visível.
+                    db.run("UPDATE chaves_dungeon SET ativa = 0, usos_restantes = 0 WHERE id = ?", [chave.id], async () => {
+                        await this.removerChaveDoInventario(jogadorId, chave.rank);
                         resolve({ sucesso: true, usosRestantes: 0, chaveEsgotada: true });
                     });
                 } else {
@@ -398,12 +442,23 @@ class DungeonInstanciadaSystem {
             return { erro: "Você não possui uma Chave de Dungeon. Use !Desejar para tentar obter uma." };
         }
 
-        // Buscar dados da dungeon sorteada
-        const resultado = JSON.parse(jogador.ultimo_resultado_desejar || "{}");
-        const nomeDungeon = resultado.nomeDungeon || "Dungeon Desconhecida";
-        const tema = resultado.tema || "Desconhecido";
-        const rank = chave.rank || "E";
-        const descricao = DUNGEON_DESCRICOES[rank] || DUNGEON_DESCRICOES["E"];
+        if (!Number(chave.dungeon_id)) {
+            return {
+                erro: "Sua chave ainda não foi aberta. Use !abrir dungeon para sortear uma Dungeon do mesmo Rank.",
+                proximoComando: "!abrir dungeon"
+            };
+        }
+
+        const DungeonDatabaseLoader = require("./dungeonDatabaseLoader");
+        const dungeon = DungeonDatabaseLoader.getDungeonPorId(Number(chave.dungeon_id));
+        if (!dungeon) {
+            return { erro: "A Dungeon vinculada à sua chave não foi encontrada. Use !abrir dungeon novamente ou avise a administração." };
+        }
+
+        const nomeDungeon = dungeon.nome;
+        const tema = dungeon.tema;
+        const rank = dungeon.rank || chave.rank || "E";
+        const descricao = dungeon.entrada || DUNGEON_DESCRICOES[rank] || DUNGEON_DESCRICOES["E"];
 
         // Buscar ficha existente
         const fichaExistente = await new Promise((resolve) => {
@@ -490,7 +545,8 @@ ${participantes.map((p, i) => `${i + 1}. ${p}`).join("\n")}
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 _Copie esta ficha, adicione os participantes e envie novamente._
-_Depois use *!concluir Dungeon* para finalizar._`;
+_Consulte *!Dungeon* para ver as regras do sistema antes da incursão._
+_Após concluir a Dungeon, use *!concluir Dungeon* para receber as recompensas._`;
 
         return mensagem;
     }
@@ -546,6 +602,40 @@ _Depois use *!concluir Dungeon* para finalizar._`;
     }
 
     /**
+     * Confere os nomes da ficha antes de permitir a conclusão. A busca é
+     * exata (sem LIKE) para impedir que um nome parcial selecione outra ficha.
+     */
+    static async validarParticipantesReconhecidos(jogador, fichaReconhecida) {
+        const nomes = fichaReconhecida.participantes || [];
+        const erros = [];
+        const participantes = [];
+        const ids = new Set();
+
+        if (nomes.length === 0) erros.push("Nenhum participante foi informado.");
+        if (nomes.length > 5) erros.push("O limite é de 5 participantes por Dungeon.");
+
+        for (const nome of nomes) {
+            const participante = await JogadorCore.buscarPorNome(nome);
+            if (!participante) {
+                erros.push(`Jogador não encontrado: ${nome}. Use o nome exato da ficha.`);
+                continue;
+            }
+            if (ids.has(participante.id)) {
+                erros.push(`Jogador repetido na lista: ${participante.nome}.`);
+                continue;
+            }
+            ids.add(participante.id);
+            participantes.push(participante);
+        }
+
+        if (!ids.has(jogador.id)) {
+            erros.push("O dono da chave deve constar entre os participantes.");
+        }
+
+        return { valido: erros.length === 0, erros, participantes };
+    }
+
+    /**
      * Conclui a dungeon - valida participantes e retorna premiações
      */
     static async concluirDungeon(jogador, fichaReconhecida) {
@@ -587,14 +677,21 @@ _Depois use *!concluir Dungeon* para finalizar._`;
         const participantesValidos = [];
         const semana = this.getSemanaAtual();
 
+        const participantesIds = new Set();
         for (const nomeParticipante of participantes) {
-            // Buscar jogador pelo nome
-            const participante = await JogadorCore.buscarPorNomeLike(nomeParticipante);
+            // Busca exata: não permite que texto parcial identifique outro jogador.
+            const participante = await JogadorCore.buscarPorNome(nomeParticipante);
             
             if (!participante) {
                 validacoes.push(`❌ *${nomeParticipante}* - Jogador não encontrado no sistema.`);
                 continue;
             }
+
+            if (participantesIds.has(participante.id)) {
+                validacoes.push(`❌ *${participante.nome}* - Jogador repetido na lista.`);
+                continue;
+            }
+            participantesIds.add(participante.id);
 
             // Verificar rank (players de rank maior que a dungeon não podem participar)
             const rankDungeon = ficha.dungeon_rank || "E";
@@ -701,8 +798,10 @@ _Depois use *!concluir Dungeon* para finalizar._`;
             );
         });
 
-        // Prêmios já escolhidos
-        const escolhidos = premios.map(p => p.premio_tipo);
+        // Cada participante escolhe somente um prêmio extra por conclusão.
+        if (premios.length > 0) return [];
+
+        const escolhidos = [];
 
         // Buscar ficha para rank
         const ficha = await new Promise((resolve) => {
@@ -755,10 +854,48 @@ _Depois use *!concluir Dungeon* para finalizar._`;
         return opcoes;
     }
 
+    /** Localiza a ficha do dono ou de um participante que tem prêmio pendente. */
+    static async getFichaAtivaParaPremio(jogadorId) {
+        return new Promise((resolve) => {
+            db.get(
+                `SELECT f.* FROM fichas_dungeon f
+                 WHERE f.status = 'ativa' AND (
+                    f.jogador_id = ? OR EXISTS (
+                        SELECT 1 FROM participacao_dungeon p
+                        WHERE p.ficha_dungeon_id = f.id AND p.jogador_id = ?
+                    )
+                 ) ORDER BY f.id DESC LIMIT 1`,
+                [jogadorId, jogadorId],
+                (err, ficha) => resolve(ficha || null)
+            );
+        });
+    }
+
+    static async ehParticipanteDaFicha(fichaDungeonId, jogadorId) {
+        return new Promise((resolve) => {
+            db.get(
+                "SELECT 1 FROM participacao_dungeon WHERE ficha_dungeon_id = ? AND jogador_id = ?",
+                [fichaDungeonId, jogadorId],
+                (err, row) => resolve(Boolean(row))
+            );
+        });
+    }
+
     /**
      * Escolhe um prêmio para o participante
      */
     static async escolherPremio(fichaDungeonId, jogadorId, numeroOpcao) {
+        const premioJaEscolhido = await new Promise((resolve) => {
+            db.get(
+                "SELECT premio_tipo FROM premios_dungeon WHERE ficha_dungeon_id = ? AND jogador_id = ? LIMIT 1",
+                [fichaDungeonId, jogadorId],
+                (err, premio) => resolve(premio || null)
+            );
+        });
+        if (premioJaEscolhido) {
+            return { erro: "Você já escolheu seu prêmio extra nesta conclusão." };
+        }
+
         const opcoes = await this.getOpcoesPremios(fichaDungeonId, jogadorId);
         const opcao = opcoes.find(o => o.numero === numeroOpcao);
 
@@ -776,7 +913,7 @@ _Depois use *!concluir Dungeon* para finalizar._`;
         });
 
         // Aplicar prêmio
-        const jogador = await JogadorCore.buscarPorNumero(jogadorId);
+        const jogador = await JogadorCore.buscarPorId(jogadorId);
         if (!jogador) return { erro: "Jogador não encontrado." };
 
         let mensagem = "";
@@ -911,12 +1048,23 @@ _Depois use *!concluir Dungeon* para finalizar._`;
         if (!ficha) return { erro: "Ficha não encontrada." };
 
         const premios = PREMIACOES_RANK[ficha.dungeon_rank] || PREMIACOES_RANK["E"];
-        const participantes = JSON.parse(ficha.participantes || "[]");
+        const participantesRegistrados = await new Promise((resolve) => {
+            db.all(
+                "SELECT jogador_id FROM participacao_dungeon WHERE ficha_dungeon_id = ?",
+                [fichaDungeonId],
+                (err, rows) => resolve(rows || [])
+            );
+        });
         const cristais = [];
+        const participantes = [];
 
-        for (const nomeParticipante of participantes) {
-            const jogador = await JogadorCore.buscarPorNomeLike(nomeParticipante);
+        // Os IDs são registrados durante a conclusão. Nunca usamos nomes para
+        // entregar recompensas, evitando que um nome parecido receba o prêmio.
+        for (const registro of participantesRegistrados) {
+            const jogador = await JogadorCore.buscarPorId(registro.jogador_id);
             if (!jogador) continue;
+
+            participantes.push(jogador.nome);
 
             cristais.push({ jogadorId: jogador.id, ...(await CrystalRewardService.concederDungeonAutonarrada(jogador.id, ficha)) });
 

@@ -9,6 +9,7 @@ const MessageService = require("../core/messageService");
 
 const db = require("../core/database");
 const adminCore = require("../core/adminCore");
+const { limiteDeAtributosConjunto, totalDeAtributos } = require("../config/equipmentSetLimits");
 
 module.exports = async (msg) => {
     const numero = msg.author || msg.from;
@@ -53,6 +54,13 @@ Não há itens únicos pendentes para confirmar.
     if (!tierCanonico) return MessageService.send({ message: msg, text: `*✖ Rank/Tier inválido:* ${dados.tier}.` });
     dados.tier = tierCanonico;
     const itemRaro = normalizar(dados.pertencente) === "item raro";
+    if (itemRaro) {
+        const limite = limiteDeAtributosConjunto(dados.tier);
+        const totalAtributos = totalDeAtributos(dados);
+        if (Number.isFinite(limite) && totalAtributos > limite) {
+            return MessageService.send({ message: msg, text: `*✖ Item Raro inválido:* ${totalAtributos} atributos no total excedem o máximo de ${limite} para Rank ${dados.tier}.` });
+        }
+    }
     const tipoRaro = normalizar(dados.categoria) === "titulo" ? "TITULO" : normalizar(dados.categoria) === "passiva" ? "PASSIVA" : "ITEM";
     
     // Buscar o jogador pelo nome (Pertencente)

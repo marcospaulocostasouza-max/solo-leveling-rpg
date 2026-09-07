@@ -179,9 +179,16 @@ Toda segunda-feira você tem direito a 1 sorteio para ganhar uma Chave de Dungeo
 *Como funciona:*
 > Use *!Desejar* para tentar obter uma chave
 > Chance de 1 em 5 (20%) de conseguir
-> A chave vem com 5 usos (0/5)
+> A chave vem com 5 usos (5/5)
 > Cada participante adicional consome 1 uso
 > Ao esgotar os 5 usos, o dono recebe um *Ticket Único*
+
+*Fluxo da chave:*
+> 1. Use *!Desejar* e obtenha a Chave no inventário
+> 2. Use *!abrir Dungeon* para sortear uma Dungeon do Rank da chave
+> 3. Use *!ficha de Dungeon*, complete os participantes e envie a ficha
+> 4. Após a incursão, use *!concluir Dungeon*
+> 5. Cada participante escolhe um prêmio com *!Escolho número X*
 
 *Ticket Único (50/50):*
 > Ao completar os 5 usos, o dono da chave recebe:
@@ -198,11 +205,11 @@ Toda segunda-feira você tem direito a 1 sorteio para ganhar uma Chave de Dungeo
 *📋 COMANDOS DE DUNGEON INSTANCIADA:*
 
 > *!Desejar* — Sorteio semanal de Chave de Dungeon
-> *!ficha de Dungeon* — Gera a ficha da sua Dungeon
 > *!abrir Dungeon* — Abre/visualiza uma Dungeon da database
+> *!ficha de Dungeon* — Mostra a descrição e a ficha da Dungeon aberta
 > *!minha Dungeon* — Ve sua Dungeon atual e usos restantes
 > *!concluir Dungeon* — Conclui a Dungeon (envie a ficha preenchida)
-> *!Escolho a opção número X* — Escolhe um prêmio extra
+> *!Escolho número X* — Escolhe um prêmio extra
 > *!usar ticket* — Usa um Ticket de Item/Técnica Única
 > *!meus tickets* — Ve seus tickets e posição na fila
 

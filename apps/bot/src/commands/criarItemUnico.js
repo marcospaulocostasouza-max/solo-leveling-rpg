@@ -53,7 +53,9 @@ _Preencha a ficha e envie no grupo. Depois, use *!add item* para integrar._
 > PERTENCENTE: [Nome do Jogador ou Item Raro]
 
 ──────────────────────────
-_Use *PERTENCENTE: Item Raro* para itens exclusivos de Banners e Conjuntos. Títulos e Passivas agora possuem as fichas próprias *!Ftitulo* e *!Fpassiva*._` });
+_Use *PERTENCENTE: Item Raro* para itens exclusivos de Banners e Conjuntos._
+_Limite total de atributos por peça de Conjunto: Rank D 40 • C 80 • B 160 • A 500 • S sem limite._
+_Títulos e Passivas agora possuem as fichas próprias *!Ftitulo* e *!Fpassiva*._` });
         return;
     }
 };

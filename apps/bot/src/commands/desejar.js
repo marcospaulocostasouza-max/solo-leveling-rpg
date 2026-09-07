@@ -40,8 +40,7 @@ Use *!ficha* para criar seu personagem.
                 if (resultado.sucesso) {
                     resultadoAnterior = `
 *Resultado do seu sorteio:*
-> ✅ Chave de Dungeon de Rank *${resultado.rank}* obtida!
-> Dungeon: *${resultado.nomeDungeon}*`;
+> ✅ Chave de Dungeon de Rank *${resultado.rank}* obtida!`;
                 } else {
                     resultadoAnterior = `
 *Resultado do seu sorteio:*
@@ -86,12 +85,11 @@ _A partir de segunda-feira às 00:01 você poderá sortear novamente._
 ${mensagem}
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-*Dungeon:* ${resultado.nomeDungeon}
-*Tema:* ${resultado.tema}
-*Usos:* 0/5
+*Item adicionado:* Chave de Dungeon Rank ${resultado.rank}
+*Usos da chave:* 5/5
 
-_Use *!ficha de Dungeon* para ver sua ficha._
-_Use *!inventario* para ver sua Chave de Dungeon._` });
+_Use *!abrir dungeon* para sortear a Dungeon do Rank da chave._
+_Depois use *!ficha de Dungeon* para consultar a descrição e montar o grupo._` });
         } else {
             // Escolher fala aleatória de falha
             const falas = DungeonInstanciadaSystem.FALAS_FALHA;

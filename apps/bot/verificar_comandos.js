@@ -161,6 +161,7 @@ const comandosPrefixo = [
     { prefixo: "!Entregar Chave", arquivo: "entregarChave.js" },
     { prefixo: "!escolho a opção", arquivo: "escolherPremio.js" },
     { prefixo: "!escolho a opcao", arquivo: "escolherPremio.js" },
+    { prefixo: "!escolho", arquivo: "escolherPremio.js" },
     { prefixo: "!ficha de dungeon", arquivo: "fichaDungeon.js" },
     { prefixo: "!ficha de Dungeon", arquivo: "fichaDungeon.js" },
     { prefixo: "!concluir dungeon", arquivo: "concluirDungeon.js" },

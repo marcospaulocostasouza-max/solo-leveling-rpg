@@ -202,10 +202,12 @@ async function ensureGachaBannerSchema() {
     if (provider === "postgres") {
       await run("ALTER TABLE gacha_banner_rewards ADD COLUMN IF NOT EXISTS unica INTEGER NOT NULL DEFAULT 0");
       await run("ALTER TABLE gacha_banner_rewards ADD COLUMN IF NOT EXISTS duplicate_fragment_value BIGINT");
+      await run("ALTER TABLE gacha_banner_rewards ADD COLUMN IF NOT EXISTS garantido_conjunto INTEGER NOT NULL DEFAULT 0");
     } else {
       const colunasReward = await all("PRAGMA table_info(gacha_banner_rewards)");
       if (!colunasReward.some(item => item.name === "unica")) await run("ALTER TABLE gacha_banner_rewards ADD COLUMN unica INTEGER NOT NULL DEFAULT 0");
       if (!colunasReward.some(item => item.name === "duplicate_fragment_value")) await run("ALTER TABLE gacha_banner_rewards ADD COLUMN duplicate_fragment_value INTEGER");
+      if (!colunasReward.some(item => item.name === "garantido_conjunto")) await run("ALTER TABLE gacha_banner_rewards ADD COLUMN garantido_conjunto INTEGER NOT NULL DEFAULT 0");
     }
     await run("CREATE UNIQUE INDEX IF NOT EXISTS uq_gacha_banner_destaque_ordem ON gacha_banner_rewards(banner_id, destaque_ordem) WHERE destaque_ordem IS NOT NULL");
     await run("CREATE UNIQUE INDEX IF NOT EXISTS uq_gacha_banner_grande_premio ON gacha_banner_rewards(banner_id) WHERE grande_premio = 1");
@@ -238,6 +240,7 @@ async function ensureGachaEngineSchema() {
     await adicionarColuna("jogadores", "fragmentos_invocacao", `${integer} NOT NULL DEFAULT 0`);
     await adicionarColuna("gacha_banner_rewards", "unica", "INTEGER NOT NULL DEFAULT 0");
     await adicionarColuna("gacha_banner_rewards", "duplicate_fragment_value", `${integer}`);
+    await adicionarColuna("gacha_banner_rewards", "garantido_conjunto", "INTEGER NOT NULL DEFAULT 0");
     await run(`CREATE TABLE IF NOT EXISTS gacha_operacoes (
       id ${serial}, jogador_id ${integer} NOT NULL, banner_id ${integer} NOT NULL,
       quantidade_giros INTEGER NOT NULL, custo_cristais ${integer} NOT NULL,
@@ -254,11 +257,13 @@ async function ensureGachaEngineSchema() {
       quantidade ${integer} NOT NULL, nome TEXT NOT NULL, raridade TEXT,
       destaque_ordem INTEGER, grande_premio INTEGER NOT NULL DEFAULT 0,
       garantido_rank INTEGER NOT NULL DEFAULT 0,
+      garantido_conjunto INTEGER NOT NULL DEFAULT 0,
       FOREIGN KEY (operacao_id) REFERENCES gacha_operacoes(id) ON DELETE CASCADE,
       FOREIGN KEY (reward_id) REFERENCES gacha_banner_rewards(id), UNIQUE (operacao_id, posicao)
     )`);
     for (const [coluna, definicao] of [
       ["rank_recompensa", "TEXT"], ["pity_antes", "INTEGER"], ["pity_depois", "INTEGER"],
+      ["garantido_conjunto", "INTEGER NOT NULL DEFAULT 0"],
       ["pity_forcado", "INTEGER NOT NULL DEFAULT 0"], ["duplicata", "INTEGER NOT NULL DEFAULT 0"],
       ["recompensa_entregue", "TEXT"], ["fragmentos_invocacao_recebidos", `${integer} NOT NULL DEFAULT 0`],
       ["custo_associado", `${integer} NOT NULL DEFAULT 100`]

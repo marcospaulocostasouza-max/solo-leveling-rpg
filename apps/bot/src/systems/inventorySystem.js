@@ -60,6 +60,10 @@ class InventorySystem {
         return Number(item.consumivel) === 1 || categoria.includes("consumivel") || tipo.includes("consumivel");
     }
 
+    static isChaveDungeon(item) {
+        return normalizarTexto(item.categoria || item.tipo).includes("chave de dungeon");
+    }
+
     static normalizarEfeitoConsumivel(efeito) {
         const texto = String(efeito || "").trim();
         if (!texto || texto.includes(":")) return texto;
@@ -154,6 +158,7 @@ class InventorySystem {
         return new Promise((resolve) => {
             db.get(`SELECT i.*, inv.equipado FROM inventario_jogador inv JOIN itens i ON inv.item_id = i.id WHERE inv.jogador_id = ? AND inv.item_id = ?`, [jogadorId, itemId], async (err, item) => {
                 if (!item) { resolve({ erro: "Item não encontrado no inventário." }); return; }
+                if (this.isChaveDungeon(item)) { resolve({ erro: "Chaves de Dungeon não são equipáveis. Use !abrir dungeon para abri-la." }); return; }
                 if (this.isConsumivel(item)) { resolve({ erro: "Itens consumíveis não podem ser equipados. Use !usar <item>." }); return; }
                 // SQLite retorna 0/1 numéricos, mas PostgreSQL pode retornar
                 // "0"/"1" como texto. "0" é truthy em JavaScript e fazia

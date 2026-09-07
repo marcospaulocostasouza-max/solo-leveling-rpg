@@ -1,28 +1,31 @@
-const MessageService=require("../core/messageService");
-module.exports=msg=>MessageService.send({message:msg,text:`_*「 PROGRESSO DO PERSONAGEM 」*_
-_— Evolua por meio de atividades narrativas. As recompensas são registradas na ficha quando a atividade é validada pelo Sistema._
+const MessageService = require("../core/messageService");
 
-_*QUEST DIÁRIA:*_
-_Treino pessoal adaptado ao personagem, realizado uma vez ao dia e no máximo quatro vezes por semana._
-_Recompensas possíveis: XP, Won, 3 pontos de atributo, Caixa de Item e recuperação total de HP/MP._
+module.exports = msg => MessageService.send({ message: msg, text: `*═══ PROGRESSO DO PERSONAGEM ═══*
+_Evolua com atividades narrativas. A recompensa só entra na ficha após validação do Sistema/ADM._
 
-_*MISSÕES NARRADAS:*_
-_Podem surgir pela Associação, guildas, NPCs, eventos ou acontecimentos da história. Objetivos e recompensas variam por missão._
+*─── Requisitos de narrativa ───*
+> *Quest diária:* de *50 a 100 palavras*. Uma por dia, até quatro por semana.
+> *One Post:* no mínimo *1.000 palavras*. Pode ser individual ou Duo Post.
+> *Treino de Maestria:* no mínimo *200 palavras* por treino aprovado.
+> *Treino conjunto:* no mínimo *200 palavras por participante*, com todos atuando na mesma cena.
+> *Interação:* no mínimo *150 palavras por participante*, com contribuição relevante de cada pessoa.
+> *Missão narrada:* no mínimo *300 palavras*, além dos objetivos definidos na missão.
+> *Dungeon:* no mínimo *300 palavras por participante*, descrevendo a progressão e a conclusão do grupo.
 
-_*TREINO DE MAESTRIA:*_
-_Desenvolve técnicas, armas e controle de energia. Pode durar 1, 7, 15 ou 30 dias; períodos maiores concedem mais Maestria._
-_Recompensas possíveis: XP e Maestria._
+*─── Atividades ───*
+*QUEST DIÁRIA*
+Treino pessoal curto e coerente com o personagem. Recompensas: XP, Won, 3 pontos de atributo, Caixa de Item e recuperação total de HP/MP.
 
-_*TREINO CONJUNTO:*_
-_Atividade semanal em dupla ou grupo, com objetivo comum e participação narrativa de todos._
-_Recompensas possíveis: XP e bônus de duo._
+*TREINO DE MAESTRIA*
+Desenvolve técnicas, armas e controle de energia. Pode durar 1, 7, 15 ou 30 dias; períodos maiores concedem mais Maestria e XP.
 
-_*INTERAÇÃO:*_
-_Desenvolve relações e histórias compartilhadas. Cada participante deve contribuir de forma significativa._
-_Recompensa possível: XP._
+*TREINO CONJUNTO E INTERAÇÃO*
+Atividades em dupla ou grupo. Todos devem participar da narrativa para receber XP; Duo Post pode aplicar o bônus de duo.
 
-_*ONE-POST:*_
-_Lore própria para explorar memórias, cotidiano, conflitos internos ou acontecimentos pessoais. Pode tornar-se Duo Post._
-_Recompensas possíveis: XP e bônus de duo._
+*ONE POST*
+Lore pessoal para explorar memórias, cotidiano, conflitos internos ou acontecimentos marcantes do personagem.
 
-_Os valores variam conforme Rank, duração e atividade. Consulte !Nível, !Maestria e !Histórico para acompanhar sua evolução._`});
+*MISSÕES E DUNGEONS*
+Objetivos definidos pela Associação, guildas, NPCs, eventos ou pelo sistema de Dungeon. As recompensas variam conforme Rank e dificuldade.
+
+_Textos abaixo do mínimo não devem ser aprovados. Consulte !Nível, !Maestria e !Histórico para acompanhar sua evolução._` });

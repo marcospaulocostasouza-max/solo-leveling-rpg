@@ -133,12 +133,19 @@ async function adicionarRecompensa(bannerId, dados) {
     if (dados.grandePremio && destaqueOrdem != null) throw new Error("O Grande Prêmio é separado dos quatro Destaques.");
     const referencia = await validarReferencia(tipo, dados.referenciaId);
     if (!referencia.valida) throw new Error(referencia.erro);
+    const garantidoConjunto = Boolean(dados.garantidoConjunto);
+    if (garantidoConjunto) {
+        await database.ensureEquipmentSetSchema();
+        if (tipo !== "ITEM") throw new Error("A garantia de conjunto aceita apenas uma peça de equipamento (tipo ITEM).");
+        const pertenceAoConjunto = await database.get("SELECT 1 FROM equipment_set_items WHERE item_id = ?", [Number(dados.referenciaId)]);
+        if (!pertenceAoConjunto) throw new Error("A recompensa marcada como garantia deve pertencer a um conjunto cadastrado.");
+    }
     const unica = Boolean(dados.unica);
     const valorDuplicata = dados.duplicateFragmentValue == null ? null : Number(dados.duplicateFragmentValue);
     if (valorDuplicata != null && (!Number.isSafeInteger(valorDuplicata) || valorDuplicata <= 0)) throw new Error("O valor de conversão de duplicata deve ser um inteiro positivo.");
     if (!unica && valorDuplicata != null) throw new Error("Somente recompensas únicas podem configurar conversão de duplicata.");
     const raridade = dados.raridade || referencia.entidade?.tier || referencia.entidade?.rank || referencia.entidade?.raridade || null;
-    const id = await inserirComId("INSERT INTO gacha_banner_rewards (banner_id, reward_type, referencia_id, quantidade, peso, raridade, destaque_ordem, grande_premio, exclusivo_banner, unica, duplicate_fragment_value) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", [idBanner, tipo, dados.referenciaId == null ? null : String(dados.referenciaId), quantidade, peso, raridade, destaqueOrdem, booleano(dados.grandePremio), booleano(dados.exclusivoBanner), booleano(unica), valorDuplicata]);
+    const id = await inserirComId("INSERT INTO gacha_banner_rewards (banner_id, reward_type, referencia_id, quantidade, peso, raridade, destaque_ordem, grande_premio, exclusivo_banner, unica, duplicate_fragment_value, garantido_conjunto) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", [idBanner, tipo, dados.referenciaId == null ? null : String(dados.referenciaId), quantidade, peso, raridade, destaqueOrdem, booleano(dados.grandePremio), booleano(dados.exclusivoBanner), booleano(unica), valorDuplicata, booleano(garantidoConjunto)]);
     return database.get("SELECT * FROM gacha_banner_rewards WHERE id = ?", [id]);
 }
 

@@ -26,6 +26,7 @@ function extractConstraints(request) {
         }
     }
     const rank = text.match(/rank[\s-]*([edcbas])\b/i); if (rank) constraints.rank = rank[1].toUpperCase();
+    constraints.equipment_set_piece = /(?:item|pe[cç]a|equipamento).{0,40}(?:conjunto|set)|(?:conjunto|set).{0,40}(?:item|pe[cç]a|equipamento)/i.test(text);
     const focus = text.match(/focad[oa]\s+em\s+([^,.]+)/i); if (focus) constraints.focus = focus[1].trim();
     return constraints;
 }

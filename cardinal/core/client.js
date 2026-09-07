@@ -20,7 +20,7 @@ class CardinalClient {
 
     async requisicao(caminho, opcoes = {}, timeoutMs = this.config.timeout_ms) {
         const controller = new AbortController();
-        const timer = setTimeout(() => controller.abort(), timeoutMs);
+        const timer = Number(timeoutMs) > 0 ? setTimeout(() => controller.abort(), timeoutMs) : null;
         const inicio = performance.now();
         try {
             return await this.fetch(`${this.config.base_url}${caminho}`, { ...opcoes, signal: controller.signal });
@@ -28,13 +28,13 @@ class CardinalClient {
             const code = error?.name === "AbortError" ? "TIMEOUT" : "MODEL_OFFLINE";
             this.logger.error("falha_conexao", { code, durationMs: Math.round(performance.now() - inicio) });
             throw new CardinalError(code === "TIMEOUT" ? "O modelo Cardinal excedeu o tempo limite." : "O modelo Cardinal está offline ou indisponível.", code, error);
-        } finally { clearTimeout(timer); }
+        } finally { if (timer) clearTimeout(timer); }
     }
 
     async healthCheck() {
         const inicio = performance.now();
         try {
-            const resposta = await this.requisicao("/health", { headers: { accept: "application/json" } }, Math.min(this.config.timeout_ms, 5000));
+            const resposta = await this.requisicao("/health", { headers: { accept: "application/json" } }, this.config.timeout_ms > 0 ? Math.min(this.config.timeout_ms, 5000) : 5000);
             const corpo = await resposta.json().catch(() => null);
             const ok = resposta.ok && corpo && (corpo.status === "ok" || corpo.status === "no slot available" || corpo.status === "ready");
             this.logger.info(ok ? "modelo_conectado" : "health_invalido", { status: resposta.status, durationMs: Math.round(performance.now() - inicio) });
@@ -58,7 +58,7 @@ class CardinalClient {
             stream: false
         };
         if (options.responseFormat) payload.response_format = options.responseFormat;
-        const resposta = await this.requisicao("/v1/chat/completions", { method: "POST", headers: { "content-type": "application/json", accept: "application/json" }, body: JSON.stringify(payload) });
+        const resposta = await this.requisicao("/v1/chat/completions", { method: "POST", headers: { "content-type": "application/json", accept: "application/json" }, body: JSON.stringify(payload) }, options.timeoutMs ?? this.config.timeout_ms);
         const corpo = await resposta.json().catch(() => null);
         if (!resposta.ok) {
             this.logger.error("erro_inferencia", { status: resposta.status, durationMs: Math.round(performance.now() - inicio) });

@@ -384,9 +384,7 @@ module.exports = async (msg) => {
                 hpMaximo,
                 manaMaxima,
                 manaMaxima,
-                habilidadeUnica,
-                1,  // ficha_aprovada = 1 (aprovado)
-                0   // pontos_atributo inicial
+                habilidadeUnica
             ], function(err) {
                 if (err) {
                     console.log("Erro ao criar ficha:", err);

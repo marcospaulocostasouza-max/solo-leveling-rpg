@@ -1,6 +1,6 @@
 param(
     [int]$GpuLayers = 20,
-    [int]$ContextSize = 8192,
+    [int]$ContextSize = 16384,
     [switch]$Background
 )
 

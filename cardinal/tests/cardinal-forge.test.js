@@ -26,6 +26,16 @@ test("Cardinal Forge: geração, validação, versões e segurança", async t =>
     const validator = new ForgeValidator({ retriever, rules: { attributeLimit: 20 }, slots });
     const service = new CardinalForgeService({ client: { chat: async () => { throw new Error("LLM não deveria ser chamado neste teste"); } }, retriever, validator, contextBuilder, draftPath: path.join(root, "drafts.db") });
     await t.test("arma válida dentro das regras", async () => { const output = await service.generate("Crie uma espada com 20 atributos", { type: "weapon", content: weapon(), author: "tester" }); assert.equal(output.draft.validation.valid, true); assert.equal(output.draft.status, "VALID"); });
+    await t.test("resposta incompleta do modelo vira uma ficha de arma completa", async () => {
+        const fallback = new CardinalForgeService({ client: { chat: async () => ({ text: "resposta sem JSON" }) }, retriever, validator, contextBuilder, draftPath: path.join(root, "fallback.db") });
+        const output = await fallback.generate("Crie uma espada Rank D com 10 de atributo em força", { type: "weapon", author: "tester" });
+        assert.equal(output.draft.validation.valid, true);
+        assert.equal(output.draft.content.tier, "D");
+        assert.equal(output.draft.content.forca_bonus, 10);
+        assert.equal(output.draft.content.slot, "Arma 1");
+        assert.ok(output.draft.content.descricao.length >= 180);
+        await fallback.close();
+    });
     await t.test("normaliza envelope JSON produzido pelo modelo", () => { assert.equal(structuredEnvelope({ version: 1, item: weapon() }, "weapon", 1).content.nome, "Lâmina Solar"); assert.equal(structuredEnvelope({ version: 1, ...weapon() }, "weapon", 1).content.version, undefined); });
     await t.test("restrições explícitas preservam rank e atributo pedido", () => { const constrained = applyExplicitConstraints(structuredEnvelope(weapon({ tier: "A", forca_bonus: 0, velocidade_bonus: 10 }), "weapon", 1), { constraints: { rank: "D", attribute_distribution: { forca: 10 } } }); assert.equal(constrained.content.tier, "D"); assert.equal(constrained.content.forca_bonus, 10); assert.equal(constrained.content.velocidade_bonus, 0); });
     await t.test("campos seguros completados ficam rastreáveis para o ADM", () => { const original = { nome: "Teste" }, completed = prepareContent("weapon", original); assert.ok(autoCompletedFields("weapon", original, completed).includes("Categoria")); assert.ok(autoCompletedFields("weapon", original, completed).includes("Habilidade")); });

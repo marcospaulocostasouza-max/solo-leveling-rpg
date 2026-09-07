@@ -23,7 +23,7 @@ function carregarConfiguracao(env = process.env) {
         port,
         context_size: inteiro(env.CARDINAL_CONTEXT_SIZE, arquivo.context_size, 512, 131072, "context_size"),
         gpu_layers: inteiro(env.CARDINAL_GPU_LAYERS, arquivo.gpu_layers, 0, 999, "gpu_layers"),
-        timeout_ms: inteiro(env.CARDINAL_TIMEOUT_MS, arquivo.timeout_ms, 1000, 900000, "timeout_ms"),
+        timeout_ms: inteiro(env.CARDINAL_TIMEOUT_MS, arquivo.timeout_ms, 0, 3600000, "timeout_ms"),
         max_tokens: inteiro(env.CARDINAL_MAX_TOKENS, arquivo.max_tokens, 1, 8192, "max_tokens"),
         model_path: env.CARDINAL_MODEL_PATH || arquivo.model_path || null
     };

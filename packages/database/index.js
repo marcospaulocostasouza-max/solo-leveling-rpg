@@ -16,6 +16,7 @@ let crystalSchemaPromise;
 let gachaBannerSchemaPromise;
 let gachaEngineSchemaPromise;
 let equipmentSetSchemaPromise;
+let playerHistorySchemaPromise;
 let sqliteTransactionTail = Promise.resolve();
 
 // Keep SQLite out of the Next/Vercel dependency graph. It is loaded only by a
@@ -97,6 +98,57 @@ async function transaction(work) {
   const atual = sqliteTransactionTail.then(executar, executar);
   sqliteTransactionTail = atual.catch(() => undefined);
   return atual;
+}
+
+// Ledger complementar da ficha. Ele não substitui os registros próprios de
+// cristais, economia, compras ou gacha; reúne eventos de origens diferentes em
+// uma linha consultável pelo jogador.
+async function ensurePlayerHistorySchema() {
+  if (playerHistorySchemaPromise) return playerHistorySchemaPromise;
+  playerHistorySchemaPromise = (async () => {
+    await applyMigrations();
+    const serial = provider === "postgres" ? "BIGSERIAL PRIMARY KEY" : "INTEGER PRIMARY KEY AUTOINCREMENT";
+    const integer = provider === "postgres" ? "BIGINT" : "INTEGER";
+    const timestamp = provider === "postgres" ? "TIMESTAMPTZ" : "TEXT";
+    await run(`CREATE TABLE IF NOT EXISTS historico_ficha (
+      id ${serial}, jogador_id ${integer} NOT NULL, tipo TEXT NOT NULL,
+      direcao TEXT NOT NULL DEFAULT 'entrada', recurso TEXT NOT NULL,
+      quantidade ${integer}, descricao TEXT NOT NULL, origem TEXT NOT NULL,
+      referencia TEXT, data ${timestamp} NOT NULL DEFAULT CURRENT_TIMESTAMP,
+      FOREIGN KEY (jogador_id) REFERENCES jogadores(id),
+      CHECK (direcao IN ('entrada', 'saida', 'informativo'))
+    )`);
+    await run("CREATE INDEX IF NOT EXISTS idx_historico_ficha_jogador ON historico_ficha(jogador_id, data)");
+  })().catch(error => { playerHistorySchemaPromise = null; throw error; });
+  return playerHistorySchemaPromise;
+}
+
+function validarEntradaHistoricoFicha(entrada) {
+  const jogadorId = Number(entrada?.jogadorId);
+  if (!Number.isSafeInteger(jogadorId) || jogadorId <= 0) throw new Error("Jogador inválido para o histórico da ficha.");
+  const texto = valor => String(valor || "").trim().slice(0, 1000);
+  const tipo = texto(entrada.tipo) || "Sistema";
+  const direcao = ["entrada", "saida", "informativo"].includes(entrada.direcao) ? entrada.direcao : "entrada";
+  const recurso = texto(entrada.recurso) || "Atualização da ficha";
+  const descricao = texto(entrada.descricao);
+  const origem = texto(entrada.origem) || "SISTEMA";
+  if (!descricao) throw new Error("Descrição obrigatória para o histórico da ficha.");
+  const quantidade = entrada.quantidade === undefined || entrada.quantidade === null ? null : Number(entrada.quantidade);
+  if (quantidade !== null && (!Number.isFinite(quantidade) || !Number.isSafeInteger(quantidade))) throw new Error("Quantidade inválida para o histórico da ficha.");
+  return { jogadorId, tipo, direcao, recurso, quantidade, descricao, origem, referencia: texto(entrada.referencia) || null };
+}
+
+async function registrarHistoricoFichaComQuery(query, entrada) {
+  const item = validarEntradaHistoricoFicha(entrada);
+  await query.run(
+    "INSERT INTO historico_ficha (jogador_id, tipo, direcao, recurso, quantidade, descricao, origem, referencia, data) VALUES (?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)",
+    [item.jogadorId, item.tipo, item.direcao, item.recurso, item.quantidade, item.descricao, item.origem, item.referencia]
+  );
+}
+
+async function registrarHistoricoFicha(entrada) {
+  await ensurePlayerHistorySchema();
+  return transaction(query => registrarHistoricoFichaComQuery(query, entrada));
 }
 
 async function ensureCrystalSchema() {
@@ -853,7 +905,7 @@ async function purchaseTechnique(playerId, techniqueId) {
   });
 }
 
-module.exports = { DATABASE_PATH, getDatabase, applyMigrations, transaction, run, get, all, ensureCrystalSchema, ensureGachaBannerSchema, ensureGachaEngineSchema, ensureEquipmentSetSchema, getEquipmentSetProgress, calculateEquipmentSetBonus, consultarCristais, adicionarCristais, adicionarCristaisComQuery, removerCristais, removerCristaisComQuery, possuiCristais, consultarFragmentosInvocacao, adicionarFragmentosInvocacao, adicionarFragmentosInvocacaoComQuery, removerFragmentosInvocacao, removerFragmentosInvocacaoComQuery, consultarPityGacha, getHistoricoGacha, getHistoricoBanner, getUltimosGiros, playerById, playerByPhone, inventory, playerSkills, playerTitles, playerGuild, playerLocation, isAdmin, canInteractWithNpc, itemSlot, itemBonus, slots, recalculateAttributes, equipItem, shopCatalog, purchaseItem, purchaseTechnique, isAdvancedTechnique, calculateTechniqueMasteryCost, techniqueMasteryCost, TECHNIQUE_MASTERY_COST, ensureMasteryHistoryTable, normalizeProficiencyName, resolveStyleForWeapon: resolveCanonicalStyle };
+module.exports = { DATABASE_PATH, getDatabase, applyMigrations, transaction, run, get, all, ensureCrystalSchema, ensurePlayerHistorySchema, registrarHistoricoFicha, registrarHistoricoFichaComQuery, ensureGachaBannerSchema, ensureGachaEngineSchema, ensureEquipmentSetSchema, getEquipmentSetProgress, calculateEquipmentSetBonus, consultarCristais, adicionarCristais, adicionarCristaisComQuery, removerCristais, removerCristaisComQuery, possuiCristais, consultarFragmentosInvocacao, adicionarFragmentosInvocacao, adicionarFragmentosInvocacaoComQuery, removerFragmentosInvocacao, removerFragmentosInvocacaoComQuery, consultarPityGacha, getHistoricoGacha, getHistoricoBanner, getUltimosGiros, playerById, playerByPhone, inventory, playerSkills, playerTitles, playerGuild, playerLocation, isAdmin, canInteractWithNpc, itemSlot, itemBonus, slots, recalculateAttributes, equipItem, shopCatalog, purchaseItem, purchaseTechnique, isAdvancedTechnique, calculateTechniqueMasteryCost, techniqueMasteryCost, TECHNIQUE_MASTERY_COST, ensureMasteryHistoryTable, normalizeProficiencyName, resolveStyleForWeapon: resolveCanonicalStyle };
 module.exports.adicionarCristaisIdempotente = adicionarCristaisIdempotente;
 module.exports.adicionarCristaisIdempotenteComQuery = adicionarCristaisIdempotenteComQuery;
 

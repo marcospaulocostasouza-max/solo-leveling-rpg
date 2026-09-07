@@ -17,6 +17,7 @@ const TicketSystem = require("./ticketSystem");
 const InventorySystem = require("./inventorySystem");
 const CrystalRewardService = require("./crystalRewardService");
 const { ITENS_LOJA } = require("../utils/lojaItens");
+const playerDatabase = require("../../../../packages/database");
 
 // =====================================
 // CONFIGURAÇÕES
@@ -418,10 +419,20 @@ class DungeonInstanciadaSystem {
                     // Chave esgotada: desativa o registro e remove o item visível.
                     db.run("UPDATE chaves_dungeon SET ativa = 0, usos_restantes = 0 WHERE id = ?", [chave.id], async () => {
                         await this.removerChaveDoInventario(jogadorId, chave.rank);
+                        await playerDatabase.registrarHistoricoFicha({
+                            jogadorId, tipo: "Dungeon", direcao: "saida", recurso: `Chave de Dungeon Rank ${chave.rank}`,
+                            quantidade, descricao: `${quantidade} uso(s) consumido(s); a chave foi esgotada.`,
+                            origem: "DUNGEON_CONCLUSAO", referencia: `chave:${chave.id}`
+                        }).catch(error => console.error("[DUNGEON] Falha ao registrar uso da chave:", error.message));
                         resolve({ sucesso: true, usosRestantes: 0, chaveEsgotada: true });
                     });
                 } else {
                     db.run("UPDATE chaves_dungeon SET usos_restantes = ? WHERE id = ?", [novosUsos, chave.id], () => {
+                        playerDatabase.registrarHistoricoFicha({
+                            jogadorId, tipo: "Dungeon", direcao: "saida", recurso: `Chave de Dungeon Rank ${chave.rank}`,
+                            quantidade, descricao: `${quantidade} uso(s) consumido(s); restam ${novosUsos}/${chave.usos_total} uso(s).`,
+                            origem: "DUNGEON_CONCLUSAO", referencia: `chave:${chave.id}`
+                        }).catch(error => console.error("[DUNGEON] Falha ao registrar uso da chave:", error.message));
                         resolve({ sucesso: true, usosRestantes: novosUsos, chaveEsgotada: false });
                     });
                 }
@@ -885,91 +896,84 @@ _Após concluir a Dungeon, use *!concluir Dungeon* para receber as recompensas._
      * Escolhe um prêmio para o participante
      */
     static async escolherPremio(fichaDungeonId, jogadorId, numeroOpcao) {
-        const premioJaEscolhido = await new Promise((resolve) => {
-            db.get(
+        const chaveProcessamento = `${fichaDungeonId}:${jogadorId}`;
+        this.premiosEmProcessamento ||= new Set();
+        if (this.premiosEmProcessamento.has(chaveProcessamento)) return { erro: "Sua escolha já está sendo processada. Aguarde a confirmação." };
+        this.premiosEmProcessamento.add(chaveProcessamento);
+        try {
+            const premioJaEscolhido = await new Promise(resolve => db.get(
                 "SELECT premio_tipo FROM premios_dungeon WHERE ficha_dungeon_id = ? AND jogador_id = ? LIMIT 1",
-                [fichaDungeonId, jogadorId],
-                (err, premio) => resolve(premio || null)
-            );
-        });
-        if (premioJaEscolhido) {
-            return { erro: "Você já escolheu seu prêmio extra nesta conclusão." };
-        }
+                [fichaDungeonId, jogadorId], (err, premio) => resolve(premio || null)
+            ));
+            if (premioJaEscolhido) return { erro: "Você já escolheu seu prêmio extra nesta conclusão." };
 
-        const opcoes = await this.getOpcoesPremios(fichaDungeonId, jogadorId);
-        const opcao = opcoes.find(o => o.numero === numeroOpcao);
+            const opcoes = await this.getOpcoesPremios(fichaDungeonId, jogadorId);
+            const opcao = opcoes.find(o => o.numero === numeroOpcao);
+            if (!opcao) return { erro: "Opção inválida. Use !Escolho a opção número X para escolher." };
 
-        if (!opcao) {
-            return { erro: "Opção inválida. Use !Escolho a opção número X para escolher." };
-        }
+            const jogador = await JogadorCore.buscarPorId(jogadorId);
+            if (!jogador) return { erro: "Jogador não encontrado." };
+            let mensagem = "";
+            let premioValor = String(opcao.valor);
 
-        // Registrar prêmio escolhido
-        await new Promise((resolve) => {
-            db.run(
-                "INSERT INTO premios_dungeon (ficha_dungeon_id, jogador_id, premio_tipo, premio_valor, data) VALUES (?, ?, ?, ?, ?)",
-                [fichaDungeonId, jogadorId, opcao.tipo, String(opcao.valor), new Date().toISOString()],
-                () => resolve()
-            );
-        });
-
-        // Aplicar prêmio
-        const jogador = await JogadorCore.buscarPorId(jogadorId);
-        if (!jogador) return { erro: "Jogador não encontrado." };
-
-        let mensagem = "";
-
-        switch (opcao.tipo) {
-            case "xp_extra":
-                await LevelSystem.adicionarXp(jogador.id, opcao.valor, "Prêmio extra de Dungeon Instanciada");
-                mensagem = `*${opcao.valor} XP* adicionados!`;
-                break;
-            case "won_extra":
-                await EconomySystem.adicionarWon(jogador.id, opcao.valor, "Prêmio extra de Dungeon Instanciada");
-                mensagem = `*${opcao.valor} Wons* adicionados!`;
-                break;
-            case "atributos":
-                await JogadorCore.adicionarValor(jogador.id, "pontos_atributo", opcao.valor);
-                mensagem = `*${opcao.valor} pontos de atributo* adicionados!`;
-                break;
-            case "maestria":
-                await JogadorCore.adicionarValor(jogador.id, "maestria", opcao.valor);
-                mensagem = `*${opcao.valor} de Maestria* adicionados!`;
-                break;
-            case "item_misterioso_1":
-            case "item_misterioso_2": {
-                // Sortear item da dungeon vinculada
-                const DungeonDatabaseLoader = require("./dungeonDatabaseLoader");
-                const chaveJogador = await this.getChave(jogador.id);
-                if (chaveJogador && chaveJogador.dungeon_id) {
-                    const itemSorteado = DungeonDatabaseLoader.sortearItemMisterioso(chaveJogador.dungeon_id);
-                    if (itemSorteado) {
-                        // Adicionar item ao inventário do jogador
-                        const InventorySystem = require("./inventorySystem");
-                        // Buscar ou criar item no banco
-                        const itemId = await this.criarOuBuscarItem(itemSorteado);
-                        if (itemId) {
-                            await InventorySystem.adicionarItem(jogador.id, itemId);
-                            mensagem = `*${itemSorteado.nome}* [Rank ${itemSorteado.rank}] adicionado ao inventário!\n\n${itemSorteado.descricao}\n\n*Atributos:* ${Object.entries(itemSorteado.atributos).map(([k, v]) => `${k}: +${v}`).join(" • ")}`;
-                        } else {
-                            mensagem = `*${itemSorteado.nome}* concedido! (Erro ao adicionar ao inventário)`;
-                        }
-                    } else {
-                        mensagem = `*Item Misterioso* concedido! (Nenhum drop disponível para esta dungeon)`;
-                    }
-                } else {
-                    mensagem = `*Item Misterioso* concedido! (Nenhuma dungeon vinculada)`;
+            switch (opcao.tipo) {
+                case "xp_extra":
+                    await LevelSystem.adicionarXp(jogador.id, opcao.valor, "Prêmio extra de Dungeon Instanciada");
+                    mensagem = `*${opcao.valor} XP* adicionados!`;
+                    break;
+                case "won_extra":
+                    await EconomySystem.adicionarWon(jogador.id, opcao.valor, "Prêmio extra de Dungeon Instanciada");
+                    mensagem = `*${opcao.valor} Wons* adicionados!`;
+                    break;
+                case "atributos":
+                    await JogadorCore.adicionarValor(jogador.id, "pontos_atributo", opcao.valor);
+                    mensagem = `*${opcao.valor} pontos de atributo* adicionados!`;
+                    break;
+                case "maestria":
+                    await JogadorCore.adicionarValor(jogador.id, "maestria", opcao.valor);
+                    mensagem = `*${opcao.valor} de Maestria* adicionados!`;
+                    break;
+                case "item_misterioso_1":
+                case "item_misterioso_2": {
+                    const ficha = await this.buscarFicha(fichaDungeonId);
+                    const chaveDono = ficha && await new Promise(resolve => db.get(
+                        "SELECT dungeon_id FROM chaves_dungeon WHERE jogador_id = ? AND dungeon_id > 0 ORDER BY id DESC LIMIT 1",
+                        [ficha.jogador_id], (err, row) => resolve(row || null)
+                    ));
+                    const dungeonId = Number(chaveDono?.dungeon_id);
+                    if (!dungeonId) return { erro: "Não foi possível identificar a Dungeon desta ficha. O prêmio não foi marcado como escolhido." };
+                    const itemSorteado = require("./dungeonDatabaseLoader").sortearItemMisterioso(dungeonId);
+                    if (!itemSorteado) return { erro: "Esta Dungeon não possui item misterioso disponível. O prêmio não foi marcado como escolhido." };
+                    const itemId = await this.criarOuBuscarItem(itemSorteado);
+                    if (!itemId) return { erro: `Não foi possível preparar ${itemSorteado.nome}. O prêmio não foi marcado como escolhido.` };
+                    if (!await InventorySystem.adicionarItem(jogador.id, itemId)) return { erro: `Não foi possível adicionar ${itemSorteado.nome} ao inventário. O prêmio não foi marcado como escolhido.` };
+                    premioValor = itemSorteado.nome;
+                    mensagem = `*${itemSorteado.nome}* [Rank ${itemSorteado.rank}] adicionado ao inventário!\n\n${itemSorteado.descricao}\n\n*Atributos:* ${Object.entries(itemSorteado.atributos || {}).map(([k, v]) => `${k}: +${v}`).join(" • ") || "Sem atributos adicionais."}`;
+                    break;
                 }
-                break;
+                default:
+                    mensagem = `Prêmio *${opcao.nome}* concedido!`;
             }
-            default:
-                mensagem = `Prêmio *${opcao.nome}* concedido!`;
-        }
 
-        return {
-            sucesso: true,
-            opcao: opcao,
-            mensagem: mensagem
-        };
+            const registrado = await new Promise(resolve => db.run(
+                "INSERT INTO premios_dungeon (ficha_dungeon_id, jogador_id, premio_tipo, premio_valor, data) VALUES (?, ?, ?, ?, ?)",
+                [fichaDungeonId, jogadorId, opcao.tipo, premioValor, new Date().toISOString()], err => resolve(!err)
+            ));
+            if (!registrado) return { erro: "O prêmio foi aplicado, mas não foi possível registrar sua escolha. Não tente novamente; avise a administração." };
+            // XP e Won já são gravados pelos sistemas de progresso/economia.
+            if (!['xp_extra', 'won_extra'].includes(opcao.tipo)) {
+                await playerDatabase.registrarHistoricoFicha({
+                    jogadorId: jogador.id, tipo: "Dungeon", direcao: "entrada",
+                    recurso: opcao.tipo.startsWith("item_") ? "Item de Dungeon" : opcao.nome,
+                    quantidade: opcao.tipo.startsWith("item_") ? 1 : Number(opcao.valor),
+                    descricao: `Prêmio escolhido (${opcao.numero}) na Dungeon: ${premioValor}.`,
+                    origem: "DUNGEON_PREMIO_ESCOLHIDO", referencia: `ficha_dungeon:${fichaDungeonId}`
+                }).catch(error => console.error("[DUNGEON] Falha ao registrar prêmio:", error.message));
+            }
+            return { sucesso: true, opcao, mensagem };
+        } finally {
+            this.premiosEmProcessamento.delete(chaveProcessamento);
+        }
     }
 
     /**
@@ -1073,6 +1077,10 @@ _Após concluir a Dungeon, use *!concluir Dungeon* para receber as recompensas._
             
             // Wons geral
             await EconomySystem.adicionarWon(jogador.id, premios.won, "Premiação geral de Dungeon Instanciada");
+
+            // XP e Won já possuem seus próprios históricos (experiencia_historico
+            // e transacoes), com o motivo da Dungeon. Não duplicamos a entrada
+            // no ledger unificado.
         }
 
         return { sucesso: true, premios: premios, participantes: participantes, cristais };

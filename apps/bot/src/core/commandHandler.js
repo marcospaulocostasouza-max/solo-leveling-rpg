@@ -460,6 +460,7 @@ async function executarComando(msg, comando, comandosRegistrados) {
         { prefixo: "!aprovada para classe avancada", arquivo: "aprovadaClasseAvancada.js" },
         { prefixo: "!aprovada para classe avançada", arquivo: "aprovadaClasseAvancada.js" },
         { prefixo: "!admin afinidade", arquivo: "adminAfinidade.js" },
+        { prefixo: "!premiar todos", arquivo: "premiarTodos.js" },
         { prefixo: "!admin", arquivo: "admin.js" },
         { prefixo: "!adm", arquivo: "admin.js" },
         { prefixo: "!+", arquivo: "admin.js" },

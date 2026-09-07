@@ -14,9 +14,9 @@ function servidor(handler) {
 }
 function config(port, extra = {}) { return { ...carregarConfiguracao({ CARDINAL_PORT: String(port) }), timeout_ms: 5000, ...extra, base_url: `http://127.0.0.1:${port}` }; }
 
-test("configuração usa somente host local e contexto 8192", () => {
+test("configuração usa somente host local e contexto ampliado", () => {
     const value = carregarConfiguracao({});
-    assert.equal(value.host, "127.0.0.1"); assert.equal(value.port, 8088); assert.equal(value.context_size, 8192);
+    assert.equal(value.host, "127.0.0.1"); assert.equal(value.port, 8088); assert.equal(value.context_size, 16384); assert.equal(value.timeout_ms, 0);
     assert.throws(() => carregarConfiguracao({ CARDINAL_HOST: "0.0.0.0" }), /máquina local/);
 });
 

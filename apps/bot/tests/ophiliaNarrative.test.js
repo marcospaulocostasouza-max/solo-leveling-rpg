@@ -26,7 +26,8 @@ for (const [name, message] of cases) {
     state: { emotion: { emocao: 'calma', intensidade: 50 }, mood: { mood: 'sereno', intensidade: 50 } },
     relationship: { confianca: 0, respeito: 0, amizade: 0, carinho: 0, desconfianca: 0, medo: 0 }
   });
-  assert(prompt.prompt.includes('PLAYER ACTION'), `${name}: missing player message`);
+  assert(prompt.prompt.includes('CENA ATUAL DO JOGADOR'), `${name}: missing structured scene`);
+  assert(prompt.prompt.includes(message), `${name}: missing player content`);
   assert(prompt.tokens <= prompt.limit, `${name}: context budget exceeded`);
   console.log(`${name}: input ~${prompt.tokens} tokens; retrieval ${retrieved.length}; sources ${retrieved.map(item => item.section).join(', ') || 'none'}`);
 }

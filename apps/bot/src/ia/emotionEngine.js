@@ -23,6 +23,7 @@
  */
 
 const { perguntarIA } = require("./ollama");
+const { analisarCena, formatarCenaParaPrompt } = require('../npc/sceneParser');
 
 // Emoções suportadas
 const EMOCOES_SUPORTADAS = [
@@ -41,7 +42,7 @@ function construirPromptEmocao(npc, jogador, historico, memorias, relacionamento
     if (historico && historico.length > 0) {
         for (const msg of historico) {
             if (msg.papel === "jogador") {
-                historicoTexto += `Jogador: ${msg.conteudo}\n`;
+                historicoTexto += `Jogador — cena estruturada:\n${formatarCenaParaPrompt(analisarCena(msg.conteudo))}\n`;
             } else if (msg.papel === "npc") {
                 historicoTexto += `${npc.nome}: ${msg.conteudo}\n`;
             }

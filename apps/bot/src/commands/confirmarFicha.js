@@ -102,7 +102,6 @@ const VALIDACOES = {
         obrigatorio: false,
         validar: (v) => {
             if (v && v.trim().length < 10) return "Personalidade muito curta (mínimo 10 caracteres)";
-            if (v && v.trim().length > 500) return "Personalidade muito longa (máx 500 caracteres)";
             return null;
         }
     },

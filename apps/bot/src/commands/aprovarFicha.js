@@ -14,7 +14,7 @@ const templates = require("../utils/templatesMensagens");
 const { obterClasseCanonica } = require("../utils/normalizarClasse");
 const { obterEstiloCanonico } = require("../utils/normalizarEstiloLuta");
 const AtributoSystem = require("../systems/atributoSystem");
-const { normalizarDadosFicha } = require("../utils/normalizarDadosFicha");
+const { normalizarDadosFicha, normalizarNomeJogador } = require("../utils/normalizarDadosFicha");
 
 function adicionarArmaInicial(jogadorId, nomeArma, nomeJogador) {
     if (!jogadorId || !nomeArma) return;
@@ -105,13 +105,13 @@ module.exports = async (msg) => {
                 if (err) return reject(err);
                 
                 // Procurar correspondência exata ignorando maiúsculas/minúsculas
-                const nomeBuscaLower = nomeBusca.toLowerCase().trim();
+                const nomeBuscaLower = normalizarNomeJogador(nomeBusca).toLowerCase();
                 
                 // 1. Tentar correspondência exata do nome
                 let fichaEncontrada = fichas.find(f => {
                     try {
                         const dados = JSON.parse(f.dados || "{}");
-                        const nomeFicha = (dados.nome || "").toLowerCase().trim();
+                        const nomeFicha = normalizarNomeJogador(dados.nome).toLowerCase();
                         return nomeFicha === nomeBuscaLower;
                     } catch { return false; }
                 });
@@ -121,7 +121,7 @@ module.exports = async (msg) => {
                     fichaEncontrada = fichas.find(f => {
                         try {
                             const dados = JSON.parse(f.dados || "{}");
-                            const nomeFicha = (dados.nome || "").toLowerCase().trim();
+                            const nomeFicha = normalizarNomeJogador(dados.nome).toLowerCase();
                             return nomeFicha.startsWith(nomeBuscaLower) || nomeBuscaLower.startsWith(nomeFicha);
                         } catch { return false; }
                     });
@@ -132,7 +132,7 @@ module.exports = async (msg) => {
                     fichaEncontrada = fichas.find(f => {
                         try {
                             const dados = JSON.parse(f.dados || "{}");
-                            const nomeFicha = (dados.nome || "").toLowerCase().trim();
+                            const nomeFicha = normalizarNomeJogador(dados.nome).toLowerCase();
                             return nomeFicha.includes(nomeBuscaLower) || nomeBuscaLower.includes(nomeFicha);
                         } catch { return false; }
                     });
@@ -151,7 +151,8 @@ module.exports = async (msg) => {
     
     const dados = normalizarDadosFicha(JSON.parse(ficha.dados || "{}"));
     dados.classe = obterClasseCanonica(dados.classe) || dados.classe;
-    const nomeReal = dados.nome || nomeJogador;
+    const nomeReal = normalizarNomeJogador(dados.nome || nomeJogador);
+    dados.nome = nomeReal;
 
     // Fichas antigas também precisam obedecer à escolha obrigatória de estilo.
     const estiloCanonico = obterEstiloCanonico(dados.estilo_luta);
@@ -320,8 +321,8 @@ module.exports = async (msg) => {
                     return MessageService.send({ message: msg, text: "*✖ Erro ao aprovar ficha. Tente novamente.*" });
                 }
                 
-                db.run("UPDATE fichas_pendentes SET status = 'aprovado', aprovado_por = ? WHERE id = ?", 
-                    [numero, ficha.id]);
+                db.run("UPDATE fichas_pendentes SET dados = ?, status = 'aprovado', aprovado_por = ? WHERE id = ?",
+                    [JSON.stringify(dados), numero, ficha.id]);
                 
                 const mensagemAprovacao = templates.fichaAprovada(dados, habilidadeUnica, hpMaximo, manaMaxima);
                 MessageService.send({ message: msg, text: mensagemAprovacao });
@@ -391,8 +392,8 @@ module.exports = async (msg) => {
                     return MessageService.send({ message: msg, text: "*✖ Erro ao aprovar ficha. Tente novamente.*" });
                 }
                 
-                db.run("UPDATE fichas_pendentes SET status = 'aprovado', aprovado_por = ? WHERE id = ?", 
-                    [numero, ficha.id]);
+                db.run("UPDATE fichas_pendentes SET dados = ?, status = 'aprovado', aprovado_por = ? WHERE id = ?",
+                    [JSON.stringify(dados), numero, ficha.id]);
                 
                 const mensagemAprovacao = templates.fichaAprovada(dados, habilidadeUnica, hpMaximo, manaMaxima);
                 MessageService.send({ message: msg, text: mensagemAprovacao });

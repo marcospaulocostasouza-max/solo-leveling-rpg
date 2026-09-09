@@ -33,6 +33,7 @@
  */
 
 const { perguntarIA } = require("./ollama");
+const { analisarCena, formatarCenaParaPrompt } = require('../npc/sceneParser');
 
 // Limite de variação por cena avaliada (pontos percentuais).
 // Uma interação comum deve variar pouco; eventos muito fortes
@@ -49,7 +50,7 @@ function formatarHistorico(npc, historico) {
     let texto = "";
     for (const msg of historico) {
         if (msg.papel === "jogador") {
-            texto += `Jogador: ${msg.conteudo}\n`;
+            texto += `Jogador — cena estruturada:\n${formatarCenaParaPrompt(analisarCena(msg.conteudo))}\n`;
         } else if (msg.papel === "npc") {
             texto += `${npc.nome}: ${msg.conteudo}\n`;
         }
@@ -90,6 +91,7 @@ como isso afetou dois valores, cada um de 0% a 100%:
   isso, ataques ou ameaças sem necessidade real.
 
 REGRAS IMPORTANTES:
+0. Ações entre _ são visíveis; falas entre * são audíveis; pensamentos após > são privados. Nunca avalie pensamento privado como se o NPC tivesse percebido ou ouvido isso.
 1. Avalie a cena inteira, não apenas a última mensagem.
 2. Mudanças normais ficam entre -3 e +3. Eventos fortes e raros podem chegar a ±${LIMITE_MAX}.
 3. Se o jogador tentou uma aproximação forte demais (romântica, física, íntima) sem vínculo

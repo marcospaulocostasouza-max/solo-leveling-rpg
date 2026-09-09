@@ -101,6 +101,9 @@ Use !adm para ver os comandos disponiveis.` });
 *!*+xp NomeCompleto Valor - adiciona XP e verifica nível/rank
 *!*+maestria NomeCompleto Valor - adiciona Maestria para técnicas
 *!*+won NomeCompleto Valor - adiciona Won
+*!atualizar habilidade única <nova habilidade> para <nome> - substitui a Habilidade Única
+*!atualizar estilo de luta <estilo> para <nome> - troca por um estilo válido
+*!atualizar classe <classe> para <nome> - troca a classe e recalcula os atributos
 *!*+for NomeDoJogador Valor - Adicionar Forca
 *!*+res NomeDoJogador Valor - Adicionar Resistencia
 *!*+agi NomeDoJogador Valor - Adicionar Agilidade

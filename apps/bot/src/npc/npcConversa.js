@@ -96,7 +96,7 @@ async function processarConversaNPC(msg) {
 
     // Caso o jogador envie apenas o comando sem mensagem
     if (!mensagemJogador) {
-        await MessageService.send({ message: msg, text: "Escreva uma mensagem abaixo do comando para conversar com " + npc.nome + "." });
+        await MessageService.send({ message: msg, text: `Escreva a cena abaixo do comando para conversar com ${npc.nome}.\n\n_ação visível_\n*fala audível*\n> pensamento privado\n\nO NPC vê ações, ouve falas e não conhece pensamentos.` });
         return true;
     }
 

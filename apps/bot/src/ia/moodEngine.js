@@ -36,6 +36,7 @@
  */
 
 const { perguntarIA } = require("./ollama");
+const { analisarCena, formatarCenaParaPrompt } = require('../npc/sceneParser');
 
 // Moods suportados
 const MOODS_SUPORTADOS = [
@@ -54,7 +55,7 @@ function construirPromptMood(npc, jogador, moodAtual, emocaoAtual, memorias, rel
     if (historico && historico.length > 0) {
         for (const msg of historico) {
             if (msg.papel === "jogador") {
-                historicoTexto += `Jogador: ${msg.conteudo}\n`;
+                historicoTexto += `Jogador — cena estruturada:\n${formatarCenaParaPrompt(analisarCena(msg.conteudo))}\n`;
             } else if (msg.papel === "npc") {
                 historicoTexto += `${npc.nome}: ${msg.conteudo}\n`;
             }

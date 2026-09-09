@@ -18,6 +18,8 @@ const adminCore = require("../core/adminCore");
 const verificarBloqueio = require("../utils/verificarBloqueio");
 const JogadorCore = require("../core/jogadorCore");
 const RecoverySystem = require("../systems/recoverySystem");
+const ActivityProgress = require("../systems/activityProgressService");
+const { normalizarNomeJogador } = require("../utils/normalizarDadosFicha");
 
 // =====================================
 // TABELA DE RECOMPENSAS POR RANK
@@ -149,8 +151,10 @@ async function aplicarRecompensas(jogadorId, tipoAtividade, rank, quantidadeExtr
  */
 async function buscarJogadorPorNome(nome) {
     return await new Promise((resolve) => {
-        db.get("SELECT * FROM jogadores WHERE LOWER(TRIM(nome)) = LOWER(TRIM(?))", [nome], (err, row) => {
-            resolve(row);
+        db.all("SELECT * FROM jogadores", [], (err, jogadores) => {
+            if (err) return resolve(null);
+            const nomeNormalizado = normalizarNomeJogador(nome).toLowerCase();
+            resolve((jogadores || []).find(jogador => normalizarNomeJogador(jogador.nome).toLowerCase() === nomeNormalizado) || null);
         });
     });
 }
@@ -174,6 +178,7 @@ module.exports = async (msg) => {
     if (!admin) {
         return MessageService.send({ message: msg, text: "*═══ ACESSO NEGADO ═══*\nVocê não tem permissão para usar este comando." });
     }
+    await ActivityProgress.ensureSchema();
     
     // =====================================
     // !QUEST DIÁRIA FINALIZADA
@@ -195,11 +200,14 @@ module.exports = async (msg) => {
         if (bloqueio.bloqueado) {
             return MessageService.send({ message: msg, text: bloqueio.mensagem });
         }
+        const limite = await ActivityProgress.validarQuestDiaria(jogador);
+        if (!limite.permitido) return MessageService.send({ message: msg, text: limite.mensagem });
         
         // Aplicar recompensas
         const resultado = await aplicarRecompensas(jogador.id, "quest_diaria", jogador.rank);
         
         if (resultado.sucesso) {
+            await ActivityProgress.registrarAtividade({ jogador, tipo: "quest_diaria", nomeAtividade: "Quest Diária", recompensas: resultado.recompensas, adminNumero: numero });
             let mensagem = `*══════════════════════════*\n`;
             mensagem += `*✅ RECOMPENSA ENTREGUE ✅*\n`;
             mensagem += `*══════════════════════════*\n\n`;
@@ -227,7 +235,12 @@ module.exports = async (msg) => {
     if (texto.startsWith("!treino de maestria finalizado")) {
         const restante = texto.replace("!treino de maestria finalizado", "").trim();
         const duracaoMatch = restante.match(/\s+(1|7|15|30)\s*dias?$/i);
-        const dias = duracaoMatch ? Number(duracaoMatch[1]) : 7;
+        const duracaoInformada = restante.match(/\s+(\d+)\s*dias?$/i);
+        if (!duracaoMatch) {
+            const detalhe = duracaoInformada ? `O período *${duracaoInformada[1]} dia(s)* não é válido.` : "Informe a duração do treino.";
+            return MessageService.send({ message: msg, text: `*DURAÇÃO DO TREINO NÃO IDENTIFICADA*\n\n${detalhe}\nUse: *!treino de maestria finalizado <nome> 1 dia*\nPeríodos aceitos: *1, 7, 15 ou 30 dias*.` });
+        }
+        const dias = Number(duracaoMatch[1]);
         const nomeJogador = duracaoMatch ? restante.slice(0, duracaoMatch.index).trim() : restante;
         
         if (!nomeJogador) {
@@ -244,10 +257,13 @@ module.exports = async (msg) => {
         if (bloqueio.bloqueado) {
             return MessageService.send({ message: msg, text: bloqueio.mensagem });
         }
+        const cooldown = await ActivityProgress.validarTreinoMaestria(jogador, dias);
+        if (!cooldown.permitido) return MessageService.send({ message: msg, text: cooldown.mensagem });
         
         const resultado = await aplicarRecompensas(jogador.id, "treino_maestria", jogador.rank, `${dias}_dias`);
         
         if (resultado.sucesso) {
+            await ActivityProgress.registrarAtividade({ jogador, tipo: "treino_maestria", nomeAtividade: "Treino de Maestria", recompensas: resultado.recompensas, adminNumero: numero, duracaoDias: dias });
             let mensagem = `*══════════════════════════*\n`;
             mensagem += `*✅ RECOMPENSA ENTREGUE ✅*\n`;
             mensagem += `*══════════════════════════*\n\n`;
@@ -295,11 +311,17 @@ module.exports = async (msg) => {
                 resultados.push(`*⚠ ${jogador.nome}: Bloqueado (classe avançada pendente)*`);
                 continue;
             }
+            const limite = await ActivityProgress.validarLimiteSemanal(jogador, "treino_conjunto", "Treino Conjunto");
+            if (!limite.permitido) {
+                resultados.push(`*⚠ ${jogador.nome}:* ${limite.mensagem.replace(/\n+/g, " ")}`);
+                continue;
+            }
             
             // Aplicar recompensas
             const resultado = await aplicarRecompensas(jogador.id, "treino_conjunto", jogador.rank, nomes.length);
             
             if (resultado.sucesso) {
+                await ActivityProgress.registrarAtividade({ jogador, tipo: "treino_conjunto", nomeAtividade: "Treino Conjunto", recompensas: resultado.recompensas, adminNumero: numero });
                 let msg = `*✅ ${jogador.nome}:* `;
                 resultado.recompensas.forEach(rec => {
                     msg += `+${rec.valor} ${rec.tipo} `;
@@ -347,11 +369,17 @@ module.exports = async (msg) => {
                 resultados.push(`*⚠ ${jogador.nome}: Bloqueado (classe avançada pendente)*`);
                 continue;
             }
+            const limite = await ActivityProgress.validarLimiteSemanal(jogador, "interacao", "Interação");
+            if (!limite.permitido) {
+                resultados.push(`*⚠ ${jogador.nome}:* ${limite.mensagem.replace(/\n+/g, " ")}`);
+                continue;
+            }
             
             // Aplicar recompensas
             const resultado = await aplicarRecompensas(jogador.id, "interacao", jogador.rank);
             
             if (resultado.sucesso) {
+                await ActivityProgress.registrarAtividade({ jogador, tipo: "interacao", nomeAtividade: "Interação", recompensas: resultado.recompensas, adminNumero: numero });
                 let msg = `*✅ ${jogador.nome}:* `;
                 resultado.recompensas.forEach(rec => {
                     msg += `+${rec.valor} ${rec.tipo} `;
@@ -399,11 +427,17 @@ module.exports = async (msg) => {
                 resultados.push(`*⚠ ${jogador.nome}: Bloqueado (classe avançada pendente)*`);
                 continue;
             }
+            const limite = await ActivityProgress.validarOnePost(jogador);
+            if (!limite.permitido) {
+                resultados.push(`*⚠ ${jogador.nome}:* ${limite.mensagem.replace(/\n+/g, " ")}`);
+                continue;
+            }
             
             // Aplicar recompensas
             const resultado = await aplicarRecompensas(jogador.id, "one_post", jogador.rank, nomes.length);
             
             if (resultado.sucesso) {
+                await ActivityProgress.registrarAtividade({ jogador, tipo: "one_post", nomeAtividade: "One Post", recompensas: resultado.recompensas, adminNumero: numero });
                 let msg = `*✅ ${jogador.nome}:* `;
                 resultado.recompensas.forEach(rec => {
                     msg += `+${rec.valor} ${rec.tipo} `;

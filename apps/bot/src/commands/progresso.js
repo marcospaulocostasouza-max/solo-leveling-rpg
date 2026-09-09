@@ -6,7 +6,7 @@ _Evolua com atividades narrativas. A recompensa só entra na ficha após valida�
 *─── Requisitos de narrativa ───*
 > *Quest diária:* de *50 a 100 palavras*. Uma por dia, até quatro por semana.
 > *One Post:* no mínimo *1.000 palavras*. Pode ser individual ou Duo Post. Limite: *1 One Post a cada 7 dias*.
-> *Treino de Maestria:* no mínimo *200 palavras* por treino aprovado.
+> *Treino de Maestria:* no mínimo *200 palavras* por treino aprovado. Informe *1, 7, 15 ou 30 dias*; o cooldown equivale à duração aprovada.
 > *Treino conjunto:* no mínimo *200 palavras por participante*, com todos atuando na mesma cena. Limite: *até 2 por semana*.
 > *Interação:* no mínimo *150 palavras por participante*, com contribuição relevante de cada pessoa. Limite: *até 2 por semana*.
 > *Missão narrada:* no mínimo *300 palavras*, além dos objetivos definidos na missão.
@@ -17,7 +17,7 @@ _Evolua com atividades narrativas. A recompensa só entra na ficha após valida�
 Treino pessoal curto e coerente com o personagem. Recompensas: XP, Won, 3 pontos de atributo, Caixa de Item e recuperação total de HP/MP.
 
 *TREINO DE MAESTRIA*
-Desenvolve técnicas, armas e controle de energia. Pode durar 1, 7, 15 ou 30 dias; períodos maiores concedem mais Maestria e XP.
+Desenvolve técnicas, armas e controle de energia. Pode durar 1, 7, 15 ou 30 dias; períodos maiores concedem mais Maestria e XP. Após aprovação, o próximo treino só fica disponível após a duração escolhida.
 
 *TREINO CONJUNTO E INTERAÇÃO*
 Atividades em dupla ou grupo. Todos devem participar da narrativa para receber XP; Duo Post pode aplicar o bônus de duo. Cada atividade pode ser realizada até *duas vezes por semana*.

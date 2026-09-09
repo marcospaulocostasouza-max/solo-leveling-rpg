@@ -37,6 +37,7 @@ const fs = require('fs');
 const path = require('path');
 const { aplicarTokenBudget, estimarTokens } = require('./tokenBudget');
 const { interpretarConversa } = require('./interpretadorConversa');
+const { analisarCena, formatarCenaParaPrompt } = require('../npc/sceneParser');
 const { MODEL_CONFIG } = require('./modelConfig');
 const { FORMATACAO_NARRATIVA } = require('../ai/narrativeFormatting');
 
@@ -636,9 +637,11 @@ function calcularNumPredict(mensagem, historico) {
  */
 function blocoMensagemAtual(npc, mensagem) {
     return `
-O jogador acabou de dizer:
+LEITURA ESTRUTURADA DA CENA ATUAL:
 
-"${mensagem}"
+${formatarCenaParaPrompt(analisarCena(mensagem))}
+
+REGRAS DE LEITURA: ações são visíveis, falas são audíveis e pensamentos após > são privados. Nunca trate uma ação como fala, nunca responda a um pensamento como se o NPC o conhecesse e nunca invente fala para texto fora do molde.
 
 Responda como ${npc?.nome || 'o personagem'}.
 
@@ -660,8 +663,8 @@ function blocoHistorico(historico, npc) {
     const ultimas = historico.slice(-6);
 
     return ultimas.map(msg => {
-        const autor = msg.papel === "npc" ? (npc?.nome || "NPC") : "Jogador";
-        return `${autor}: ${msg.conteudo}`;
+        if (msg.papel === 'npc') return `${npc?.nome || 'NPC'}: ${msg.conteudo}`;
+        return `Jogador — cena estruturada:\n${formatarCenaParaPrompt(analisarCena(msg.conteudo))}`;
     }).join("\n");
 }
 

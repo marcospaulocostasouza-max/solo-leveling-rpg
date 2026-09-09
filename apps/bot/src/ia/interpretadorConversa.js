@@ -43,6 +43,8 @@
 // ANÁLISE DE TOM E EMOÇÃO
 // ==========================================================
 
+const { analisarCena, textoObservavelParaAnalise } = require('../npc/sceneParser');
+
 const TONS = {
     formal: ['gostaria', 'poderia', 'senhor', 'senhora', 'por gentileza', 'se possível', 'se possivel', 'aguardo', 'atenciosamente', 'cumprimentos'],
     casual: ['cara', 'mano', 'véi', 'vei', 'e aí', 'e ai', 'tipo', 'meio', 'tá ligado', 'ta ligado', 'rolê', 'role', 'parceiro'],
@@ -285,23 +287,28 @@ function analisarEstagioConversa(historico = []) {
  */
 function interpretarConversa(mensagem, contexto = {}) {
     const inicio = Date.now();
+    // A estrutura vem antes de qualquer inferência: pensamentos privados não
+    // podem contaminar o tom, a intenção ou o conhecimento do NPC.
+    const cena = analisarCena(mensagem);
+    const textoInterpretavel = textoObservavelParaAnalise(cena);
 
     // 1. Analisar tom
-    const tom = analisarTom(mensagem);
+    const tom = analisarTom(textoInterpretavel);
 
     // 2. Analisar contexto
-    const contextoAnalise = analisarContexto(mensagem);
+    const contextoAnalise = analisarContexto(textoInterpretavel);
 
     // 3. Analisar intenção
-    const intencao = analisarIntencao(mensagem);
+    const intencao = analisarIntencao(textoInterpretavel);
 
     // 4. Analisar ritmo
-    const ritmo = analisarRitmo(mensagem);
+    const ritmo = analisarRitmo(textoInterpretavel);
 
     // 5. Analisar estágio da conversa
     const estagio = analisarEstagioConversa(contexto.historico || []);
 
     return {
+        cena: cena,
         // Tom
         tom: tom,
 

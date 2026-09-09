@@ -9,8 +9,17 @@ function extrairInteiro(valor) {
     return encontrado ? Number.parseInt(encontrado[0], 10) : valor;
 }
 
+// Nomes são identificadores exibidos e usados nos comandos da ADM. Espaços
+// repetidos nunca devem criar uma segunda variação do mesmo jogador.
+function normalizarNomeJogador(valor) {
+    return String(valor ?? "").replace(/\s+/g, " ").trim();
+}
+
 function normalizarDadosFicha(dados) {
     const normalizados = { ...dados };
+    if (normalizados.nome !== undefined && normalizados.nome !== null) {
+        normalizados.nome = normalizarNomeJogador(normalizados.nome);
+    }
     for (const campo of CAMPOS_INTEIROS) {
         if (normalizados[campo] !== undefined && normalizados[campo] !== null && normalizados[campo] !== "") {
             normalizados[campo] = extrairInteiro(normalizados[campo]);
@@ -19,4 +28,4 @@ function normalizarDadosFicha(dados) {
     return normalizados;
 }
 
-module.exports = { CAMPOS_INTEIROS, extrairInteiro, normalizarDadosFicha };
+module.exports = { CAMPOS_INTEIROS, extrairInteiro, normalizarNomeJogador, normalizarDadosFicha };

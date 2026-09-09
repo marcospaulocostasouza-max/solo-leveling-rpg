@@ -261,10 +261,10 @@ async function obterContexto(numero, ehAdmin = false, pergunta = "") {
 function responderOrientacaoCanonica(pergunta) {
     const texto = normalizar(pergunta);
     if (/\b(?:como .*upo|como .*upar|como .*ganho xp|como .*evoluo|como .*progrido)\b/.test(texto)) {
-        return "Para evoluir, faça atividades narrativas aprovadas pela ADM. Quest diária pede 50 a 100 palavras; One Post, no mínimo 1.000 e só 1 a cada 7 dias; treino de Maestria, 200; treino conjunto, 200 por participante, até 2 por semana; interação, 150 por participante, até 2 por semana; missão e Dungeon, 300 por participante. Consulte *!progresso* para ver o fluxo e use *!histórico* para acompanhar as recompensas recebidas.";
+        return "Para evoluir, faça atividades narrativas aprovadas pela ADM. Quest diária pede 50 a 100 palavras, uma por dia e até quatro na semana; One Post, no mínimo 1.000 e só 1 a cada 7 dias; treino de Maestria, 200 palavras e período de 1, 7, 15 ou 30 dias — o cooldown é igual à duração; treino conjunto, 200 por participante, até 2 por semana; interação, 150 por participante, até 2 por semana; missão e Dungeon, 300 por participante. Consulte *!progresso* para ver o fluxo e use *!histórico* para acompanhar as recompensas recebidas.";
     }
     if (/\b(?:requisito|requisitos).*(?:quest|one post|maestria|dungeon|missao|missão)\b/.test(texto)) {
-        return "Os mínimos são: Quest diária 50–100 palavras; One Post 1.000 palavras e 1 a cada 7 dias; treino de Maestria 200; treino conjunto 200 por participante, até 2 por semana; interação 150 por participante, até 2 por semana; missão e Dungeon 300 por participante. A recompensa só entra na ficha depois da validação da ADM.";
+        return "Os mínimos são: Quest diária 50–100 palavras, uma por dia e no máximo quatro por semana; One Post 1.000 palavras e 1 a cada 7 dias; treino de Maestria 200 palavras, com duração de 1, 7, 15 ou 30 dias e cooldown igual ao período; treino conjunto 200 por participante, até 2 por semana; interação 150 por participante, até 2 por semana; missão e Dungeon 300 por participante. A recompensa só entra na ficha depois da validação da ADM.";
     }
     if (/\b(?:como .*giro|como .*girar|como .*conver(?:gir|ge)|como .*banner|como .*gacha)\b/.test(texto)) {
         return "Use *!banners* para ver os banners ativos ou *!banner <nome>* para consultar um específico. Use *!convergir* para um giro e *!convergir 10* para dez giros. O custo em Cristais e cada prêmio recebido ficam registrados na sua ficha e no histórico.";

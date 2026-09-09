@@ -13,6 +13,7 @@ const templates = require("./templatesMensagens");
 const { obterClasseCanonica } = require("./normalizarClasse");
 const { obterEstiloCanonico } = require("./normalizarEstiloLuta");
 const parseFichaCampos = require("./parseFichaCampos");
+const { normalizarNomeJogador } = require("./normalizarDadosFicha");
 const { normalizarChave, separarLinhaCampo } = parseFichaCampos;
 
 module.exports = async (msg) => {
@@ -307,6 +308,7 @@ Um ADM deve usar *!add item* para ${String(dados.pertencente).normalize("NFD").r
         return;
     }
 
+    ficha.nome = normalizarNomeJogador(ficha.nome);
     ficha.classe = obterClasseCanonica(ficha.classe) || ficha.classe.trim();
     if (ficha.estilo_luta) ficha.estilo_luta = obterEstiloCanonico(ficha.estilo_luta) || ficha.estilo_luta.trim();
     ficha.conteudo_apos_historia = extrairConteudoAposHistoria(texto);

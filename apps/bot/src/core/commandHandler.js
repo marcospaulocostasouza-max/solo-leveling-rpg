@@ -478,6 +478,7 @@ async function executarComando(msg, comando, comandosRegistrados) {
         { prefixo: "!aprovada para classe avançada", arquivo: "aprovadaClasseAvancada.js" },
         { prefixo: "!admin afinidade", arquivo: "adminAfinidade.js" },
         { prefixo: "!premiar todos", arquivo: "premiarTodos.js" },
+        { prefixo: "!atualizar", arquivo: "atualizarJogador.js" },
         { prefixo: "!admin", arquivo: "admin.js" },
         { prefixo: "!adm", arquivo: "admin.js" },
         { prefixo: "!+", arquivo: "admin.js" },
@@ -753,7 +754,15 @@ async function executarComando(msg, comando, comandosRegistrados) {
     }).sort((a, b) => b.prefixoCanonico.length - a.prefixoCanonico.length);
     console.log(`[CMD] Verificando ${prefixosAceitos.length} comandos com prefixo...`);
     for (const cmd of prefixosAceitos) {
-        if (comandoLower === cmd.prefixoCanonico || comandoLower.startsWith(cmd.prefixoCanonico + " ")) {
+        // Os comandos administrativos usam o sinal junto ao recurso
+        // (ex.: !+won e !+xp), portanto não há espaço após !+ ou !-.
+        // Os demais prefixos continuam exigindo limite de palavra para evitar
+        // colisões entre comandos de nomes parecidos.
+        const prefixoDeRecurso = cmd.prefixoCanonico === "!+" || cmd.prefixoCanonico === "!-";
+        const correspondeAoPrefixo = prefixoDeRecurso
+            ? comandoLower.startsWith(cmd.prefixoCanonico)
+            : comandoLower === cmd.prefixoCanonico || comandoLower.startsWith(cmd.prefixoCanonico + " ");
+        if (correspondeAoPrefixo) {
             console.log(`[CMD] Prefixo encontrado: "${cmd.prefixo}" -> ${cmd.arquivo}`);
             const modulo = carregarComando(cmd.arquivo);
             if (modulo) {

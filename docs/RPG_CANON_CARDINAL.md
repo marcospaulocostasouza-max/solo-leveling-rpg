@@ -18,7 +18,7 @@ existentes no RPG; não autoriza o modelo a criar mecânicas novas.
 - Quest diária: entre 50 e 100 palavras; uma por dia, no máximo quatro por
   semana.
 - One Post: no mínimo 1.000 palavras; pode ser individual ou Duo Post; limite de um a cada 7 dias.
-- Treino de Maestria: no mínimo 200 palavras por treino aprovado.
+- Treino de Maestria: no mínimo 200 palavras por treino aprovado; deve informar 1, 7, 15 ou 30 dias e o cooldown equivale à duração aprovada.
 - Treino conjunto: no mínimo 200 palavras por participante; limite de duas atividades por semana.
 - Interação: no mínimo 150 palavras por participante com participação relevante; limite de duas atividades por semana.
 - Missão narrada: no mínimo 300 palavras, além dos objetivos da missão.

@@ -1,5 +1,6 @@
 /** Persistent memory + bounded temporary conversation context. */
 const MemoryManager = require('../npc/memoryManager');
+const { textoObservavelParaAnalise } = require('../npc/sceneParser');
 const recent = new Map();
 const MAX_RECENT = 6;
 function key(npcId, playerId) { return `${npcId}:${playerId}`; }
@@ -20,7 +21,7 @@ async function retrieve(npcId, playerId, message, limit = 4) {
 }
 // Saving is deterministic and opt-in: explicit promises, secrets, facts and requests to remember.
 async function captureExplicit(npcId, playerId, message) {
-  const text = String(message).trim();
+  const text = textoObservavelParaAnalise(message);
   const explicit = /\b(lembre|memorize|prometo|promessa|segredo|nunca conte|meu nome é|me chamo|eu sou)\b/i.test(text);
   if (!explicit || text.length < 12) return null;
   const type = /segredo|nunca conte/i.test(text) ? 'segredo' : /prometo|promessa/i.test(text) ? 'promessa' : 'fato';

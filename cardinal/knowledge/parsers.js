@@ -30,7 +30,7 @@ function parseFile(file, relative, content, options = {}) {
     return fragmentar(normalized, size, overlap).map((chunk, index) => ({
         sourceKey: `file:${relative}#${index + 1}`, source: "file", file: relative, category, system: category,
         entity: entidadeDoConteudo(chunk, path.basename(file, ext)), type: ext.slice(1) || "text", content: chunk,
-        metadata: { chunk: index + 1, extension: ext, authoritative: true }
+        metadata: { chunk: index + 1, extension: ext, authoritative: true, ...(relative.replace(/\\/g, "/") === "docs/RPG_CANON_CARDINAL.md" ? { priority: "canonical" } : {}) }
     }));
 }
 

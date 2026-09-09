@@ -19,8 +19,31 @@ function levelQuestion(text) {
   return String(text || "").match(/(?:qual(?:\s+[eé])?\s+o\s+)?n[ií]vel\s+(?:do|da)\s+(?:player|jogador)\s+(.+?)[?.!]*$/i)?.[1]?.trim() || null;
 }
 
+function playerDetailsQuestion(text) {
+  const value = String(text || "").trim();
+  const match = value.match(/(?:ficha|perfil|invent[aá]rio|saldo|atributos|t[eé]cnicas?)\s+(?:do|da)?\s*(?:player|jogador)\s+(.+?)[?.!]*$/i)
+    || value.match(/(?:mostre|consulte|veja)\s+(?:a\s+)?(?:ficha|perfil|invent[aá]rio|saldo|atributos|t[eé]cnicas?)\s+(?:de|do|da)\s+(.+?)[?.!]*$/i);
+  return match?.[1]?.trim() || null;
+}
+
+function cardinalText(body) {
+  return String(body || "")
+    .replace(/^\s*(?:!|\.\s*#)\s*cardinal\b\s*/i, "")
+    .trim();
+}
+
 async function playerLevel(name) {
   return database.get("SELECT nome,nivel,rank,experiencia,classe FROM jogadores WHERE LOWER(TRIM(nome))=LOWER(TRIM(?)) LIMIT 1", [name]);
+}
+
+async function playerDetails(name) {
+  const player = await database.get("SELECT id,nome,nivel,rank,experiencia,classe,estilo_luta,won,cristais,maestria,forca_total,resistencia_total,velocidade_total,sentidos_total,inteligencia_total,poder_magico_total FROM jogadores WHERE LOWER(TRIM(nome))=LOWER(TRIM(?)) LIMIT 1", [name]);
+  if (!player) return null;
+  const [inventory, techniques] = await Promise.all([
+    database.all("SELECT i.nome,i.tier,inv.quantidade,inv.equipado FROM inventario_jogador inv JOIN itens i ON i.id=inv.item_id WHERE inv.jogador_id=? ORDER BY inv.equipado DESC,i.nome LIMIT 20", [player.id]).catch(() => []),
+    database.all("SELECT t.nome,t.rank,jt.nivel,jt.equipada FROM jogador_tecnicas jt JOIN tecnicas t ON t.id=jt.tecnica_id WHERE jt.jogador_id=? ORDER BY t.nome LIMIT 20", [player.id]).catch(() => [])
+  ]);
+  return { player, inventory, techniques };
 }
 
 function forgeType(text) {
@@ -34,6 +57,7 @@ function forgeType(text) {
   if (/\b(?:conjunto|set)\b/.test(value)) return "set";
   if (/\bpassiva\b/.test(value)) return "passive";
   if (/\b(?:titulo|title)\b/.test(value)) return "title";
+  if (/\b(?:tecnica|técnica|feiti[cç]o|magia|habilidade|skill)\b/.test(value)) return "technique";
   if (/\b(?:missao|quest)\b/.test(value)) return "mission";
   if (/\b(?:dungeon|masmorra|gate)\b/.test(value)) return "dungeon";
   if (/\bbanner\b/.test(value)) return "banner";
@@ -147,7 +171,7 @@ async function correctLatestDraft(actor) {
 
 async function handler(msg) {
   const actor = msg.author || msg.from;
-  const text = String(msg.body || "").replace(/^!cardinal\s*/i, "").trim();
+  const text = cardinalText(msg.body);
   try {
     if (!await adminCore.isAdmin(actor)) return send(msg, templates.denied());
     const approval = approvalRequest(text);
@@ -158,7 +182,7 @@ async function handler(msg) {
         module: "FORGE + PUBLISHER",
         title: "CONTEÚDO PUBLICADO",
         summary: `${outcome.draft.content.nome || "O conteúdo"} foi publicado com sucesso.`,
-        sections: [{ title: "Publicação", fields: [{ label: "Draft", value: outcome.draft.id }, { label: "Tipo", value: outcome.draft.type }, { label: "Operação", value: outcome.result.operation_id }], lines: ["A ficha aprovada agora está disponível no sistema."] }],
+        sections: [{ title: "Publicação", fields: [{ label: "Tipo", value: outcome.draft.type }, { label: "Operação", value: outcome.result.operation_id }], lines: ["A ficha aprovada agora está disponível no sistema."] }],
         meta: { draftId: outcome.draft.id, transactionId: outcome.result.operation_id, code: "DRAFT_PUBLISHED" }
       }));
     }
@@ -171,6 +195,18 @@ async function handler(msg) {
       const player = await playerLevel(name);
       if (!player) return send(msg, templates.warning({ module: "JOGADOR", title: "NÃO ENCONTRADO", summary: `Não encontrei o jogador ${name}.`, meta: { code: "PLAYER_NOT_FOUND" } }));
       return send(msg, templates.info({ module: "JOGADOR", title: player.nome, summary: `Nível ${Number(player.nivel || 1)} • Rank ${player.rank || "—"}`, sections: [{ title: "Perfil", fields: [{ label: "Nível", value: Number(player.nivel || 1) }, { label: "Rank", value: player.rank || "—" }, { label: "Classe", value: player.classe || "Não definida" }, { label: "Experiência", value: Number(player.experiencia || 0) }], lines: [] }] }));
+    }
+    const detailsName = playerDetailsQuestion(text);
+    if (detailsName) {
+      const details = await playerDetails(detailsName);
+      if (!details) return send(msg, templates.warning({ module: "JOGADOR", title: "NÃO ENCONTRADO", summary: `Não encontrei o jogador ${detailsName}.`, meta: { code: "PLAYER_NOT_FOUND" } }));
+      const p = details.player;
+      return send(msg, templates.info({ module: "JOGADOR", title: p.nome, summary: `Nível ${Number(p.nivel || 1)} • Rank ${p.rank || "—"}`, sections: [
+        { title: "Perfil", fields: [{ label: "Classe", value: p.classe || "Não definida" }, { label: "Estilo", value: p.estilo_luta || "Nenhum" }, { label: "XP", value: Number(p.experiencia || 0) }, { label: "Won", value: Number(p.won || 0) }, { label: "Cristais", value: Number(p.cristais || 0) }, { label: "Maestria", value: Number(p.maestria || 0) }], lines: [] },
+        { title: "Atributos", fields: [{ label: "Força", value: Number(p.forca_total || 0) }, { label: "Resistência", value: Number(p.resistencia_total || 0) }, { label: "Velocidade", value: Number(p.velocidade_total || 0) }, { label: "Sentidos", value: Number(p.sentidos_total || 0) }, { label: "Inteligência", value: Number(p.inteligencia_total || 0) }, { label: "Poder Mágico", value: Number(p.poder_magico_total || 0) }], lines: [] },
+        { title: "Inventário", fields: [], lines: details.inventory.length ? details.inventory.map(item => `${Number(item.equipado) ? "• Equipado: " : "• "}${item.nome} x${item.quantidade || 0} (${item.tier || "sem rank"})`) : ["Nenhum item encontrado."] },
+        { title: "Técnicas", fields: [], lines: details.techniques.length ? details.techniques.map(item => `• ${item.nome} — Rank ${item.rank || "—"}, nv. ${item.nivel || 1}${Number(item.equipada) ? ", equipada" : ""}`) : ["Nenhuma técnica encontrada."] }
+      ] }));
     }
     if (externalCreationRequest(text)) return require("./cardinalWeb")(msg);
     const type = forgeType(text);
@@ -200,7 +236,10 @@ async function handler(msg) {
 
 module.exports = handler;
 module.exports.levelQuestion = levelQuestion;
+module.exports.playerDetailsQuestion = playerDetailsQuestion;
+module.exports.playerDetails = playerDetails;
 module.exports.forgeType = forgeType;
 module.exports.externalCreationRequest = externalCreationRequest;
 module.exports.approvalRequest = approvalRequest;
 module.exports.automaticCorrectionRequest = automaticCorrectionRequest;
+module.exports.cardinalText = cardinalText;

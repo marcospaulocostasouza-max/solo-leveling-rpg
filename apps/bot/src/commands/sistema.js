@@ -16,7 +16,9 @@ function formatarPaimon(texto) {
 }
 
 function pedeDadosDeOutroJogador(pergunta) {
-    return /\b(?:n[ií]vel|rank|ficha|perfil|classe|saldo|won|cristais|invent[aá]rio|t[eé]cnicas?|passivas?|t[ií]tulos?)\b[\s\S]{0,80}\b(?:do|da|de)\s+(?:player|jogador)\s+(?!meu\b|minha\b|eu\b)/i.test(String(pergunta || ""));
+    const texto = String(pergunta || "");
+    return /\b(?:n[ií]vel|rank|ficha|perfil|classe|saldo|won|cristais|invent[aá]rio|t[eé]cnicas?|passivas?|t[ií]tulos?)\b[\s\S]{0,80}\b(?:do|da|de)\s+(?:player|jogador)\s+(?!meu\b|minha\b|eu\b)/i.test(texto)
+        || /\b(?:ficha|perfil|invent[aá]rio|saldo|n[ií]vel|rank|t[eé]cnicas?)\s+(?:do|da)\s+(?!sistema\b|rpg\b|meu\b|minha\b)[\p{L}\p{N}_-]{2,}/iu.test(texto);
 }
 
 async function responder(msg, pergunta) {
@@ -34,7 +36,7 @@ async function responder(msg, pergunta) {
         return MessageService.send({ message: msg, text: formatarPaimon(resposta) });
     } catch (error) {
         console.error("[PAIMON]", error.message);
-        return MessageService.send({ message: msg, text: formatarPaimon("Tive um probleminha para consultar o Sistema agora. Tente novamente em alguns instantes.") });
+        return MessageService.send({ message: msg, text: formatarPaimon("Não consegui consultar essa informação agora. Sua ficha ou o serviço de IA pode estar indisponível; tente novamente em alguns instantes. Se a dúvida for sobre um comando, envie o nome dele junto da pergunta.") });
     }
 }
 

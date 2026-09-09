@@ -8,7 +8,7 @@ class BaseForge {
     schema() { return schemaFor(this.type); }
     async generate(plan, context, options = {}) {
         if (options.content) return structuredEnvelope(options.content, this.type, this.schema().version);
-        const prompt = `Você é o módulo Cardinal Forge. Gere somente a entidade como objeto JSON, sem markdown, sem repetir o schema e sem envelopes como item/content. Não publique nem afirme que publicou.\nTipo: ${this.type}\nSchema oficial v${this.schema().version}: ${JSON.stringify(this.schema())}\nPlano: ${JSON.stringify(plan)}\nAs constraints do Plano são obrigatórias: nunca troque um atributo solicitado por outro e respeite exatamente rank, slot e distribuição de atributos pedidos.\nRegras recuperadas:\n${context.text}\nUse apenas campos do schema. Não inclua version, schema_version, type, item ou content no resultado. Não invente valores definidos por regras ausentes. Não atribua classe, estilo, local, NPC ou entidade existente que não tenha sido solicitada ou confirmada nas fontes; use "Nenhuma" quando esse valor for aceito pelo schema. Campos puramente criativos podem ser preenchidos se não contradisserem as fontes.`;
+        const prompt = `Você é o módulo Cardinal Forge do RPG. Gere somente a entidade como objeto JSON, sem markdown, sem envelope e sem publicar.\nTipo: ${this.type}\nSchema oficial v${this.schema().version}: ${JSON.stringify(this.schema())}\nPedido do ADM: ${plan.request}\nConstraints obrigatórias: ${JSON.stringify(plan.constraints)}\nRegras recuperadas:\n${context.text}\n\nCRITÉRIO DE QUALIDADE: entregue uma ficha pronta para revisão. Para itens/equipamentos, a descrição deve ter pelo menos 4 frases concretas cobrindo aparência, material ou forma, função e uso; o efeito deve dizer exatamente quando ocorre e o que faz. Para técnicas, descrição_completa deve explicar manifestação, execução, custo/limite e resultado. Não use frases genéricas como "arma poderosa", não deixe campos criativos vazios e não troque atributo, Rank ou slot solicitados. Você pode inferir apenas detalhes criativos seguros e deve manter valores mecânicos não informados em zero/Nenhuma quando o schema permitir.\n\nUse apenas campos do schema. Não inclua version, schema_version, type, item ou content. Não invente regras, entidades existentes, classe, estilo, local ou NPC não confirmados.`;
         const response = await this.client.chat(prompt, { maxTokens: 8192, timeoutMs: 0, temperature: 0.15, responseFormat: { type: "json_object" } });
         let generated;
         try { generated = parseStructured(response.text); }
@@ -75,19 +75,10 @@ function completeItemContent(content, type, plan) {
     const category = { weapon: "Arma", armor: "Armadura", accessory: "Acessório", equipment: "Equipamento", consumable: "Consumível", material: "Material" }[type];
     const output = { ...(content || {}), categoria: category };
     output.nome = String(output.nome || "").trim();
-    if (!output.nome || /^(?:arma|espada|item|equipamento)$/i.test(output.nome)) output.nome = defaultName(type, request);
-    output.tier = String(output.tier || plan?.constraints?.rank || "D").toUpperCase();
+    output.tier = String(output.tier || plan?.constraints?.rank || "").toUpperCase();
     if (type !== "material" && (!output.slot || !slotCompativel(type, output.slot))) output.slot = defaultSlot(type, request);
-    const description = String(output.descricao || "").trim();
-    if (description.length < 180 || sentences(description).length < 4) {
-        const opening = type === "weapon"
-            ? `${output.nome} é uma arma de construção reforçada, com lâmina, empunhadura e guarda projetadas para manter firmeza em combate.`
-            : type === "armor"
-                ? `${output.nome} é uma peça de proteção reforçada, formada por camadas resistentes e detalhes visuais próprios para expedições em Gates.`
-                : `${output.nome} é um artefato de construção cuidadosa, com acabamento marcante e função definida para expedições perigosas.`;
-        output.descricao = `${opening} Seus materiais foram escolhidos para suportar uso contínuo sem perder a identidade visual do portador. A função do item é objetiva e seus bônus podem ser conferidos diretamente na ficha antes de ser equipado. Em combate, ele apoia uma decisão tática específica em vez de depender de uma promessa genérica de poder. O item foi adaptado ao Rank ${output.tier} e ao slot ${output.slot || "de apoio"}.`;
-    }
-    if (type !== "material" && (!String(output.efeito || "").trim() || /^nenhuma$/i.test(output.efeito))) output.efeito = "Enquanto estiver equipado, aplica somente os bônus de atributos descritos nesta ficha.";
+    // Não esconda uma geração incompleta atrás de uma descrição/e efeito
+    // genéricos. O validador deve reportar exatamente o campo pendente ao ADM.
     return output;
 }
 module.exports = { BaseForge, structuredEnvelope, applyExplicitConstraints, completeItemContent };

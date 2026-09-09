@@ -108,7 +108,7 @@ Use !adm para ver os comandos disponiveis.` });
 *!*+int NomeDoJogador Valor - Adicionar Inteligencia
 *!*+pm NomeDoJogador Valor - Adicionar Poder Magico
 *!*premiar todos <xp|maestria|won|cristais|pontos> <valor> - exibe a prévia de prêmio global
-_Finalize com `confirmar` para aplicar em todos os jogadores._
+_Finalize com *confirmar* para aplicar em todos os jogadores._
 
 *PARA REMOVER:*
 *!*-xp NomeDoJogador Valor

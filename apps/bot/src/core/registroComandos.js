@@ -40,10 +40,19 @@ function registrarTodosComandos() {
             nome: "!criar banner / !anexar imagem banner <nome> / !gachaadm",
             funcao: "Cria e administra Banners, valida a ficha e anexa sua imagem",
             arquivo: "gachaAdm.js",
-            descricao: "Ferramenta restrita a administradores; use !criar banner para receber a ficha",
+            descricao: "Ferramenta restrita a administradores; use !criar banner e responda às perguntas do Sistema antes de anexar a imagem",
             dependencias: ["../../systems/gachaAdminService.js"],
             ativo: true,
             categoria: "Gacha"
+        },
+        {
+            nome: "!criar dungeon semanal / !anexar imagem dungeon semanal <nome>",
+            funcao: "Cria uma Dungeon semanal por perguntas e publica sua imagem na consulta",
+            arquivo: "criarDungeonSemanalGuiada.js",
+            descricao: "Ferramenta administrativa guiada; responda às perguntas e anexe a imagem no final",
+            dependencias: ["../../systems/creationWizardService.js"],
+            ativo: true,
+            categoria: "Dungeons"
         },
         {
             nome: "!Conjuntos / !Conjunto <nome> / !Conjunto Criar",
@@ -646,15 +655,6 @@ function registrarTodosComandos() {
             arquivo: "territorios.js",
             descricao: "Mostra territórios com valores, lucros semanais e donos atuais",
             dependencias: ["../../database/data/territorios.json"],
-            ativo: true,
-            categoria: "Mundo"
-        },
-        {
-            nome: "!locais",
-            funcao: "Lista locais especiais da Coreia do Sul",
-            arquivo: "locais.js",
-            descricao: "Mostra locais como Hallasan, Ilha das Memórias, Templos, etc",
-            dependencias: ["../../database/data/locais.json"],
             ativo: true,
             categoria: "Mundo"
         },

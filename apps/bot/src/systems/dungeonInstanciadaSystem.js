@@ -18,6 +18,7 @@ const InventorySystem = require("./inventorySystem");
 const CrystalRewardService = require("./crystalRewardService");
 const { ITENS_LOJA } = require("../utils/lojaItens");
 const playerDatabase = require("../../../../packages/database");
+const { provider: databaseProvider } = require("../../../../packages/database/config");
 
 // =====================================
 // CONFIGURAÇÕES
@@ -328,6 +329,29 @@ class DungeonInstanciadaSystem {
         return `${ano}-W${semana}`;
     }
 
+    // A tabela foi criada originalmente pelo banco SQLite. Em PostgreSQL ela
+    // pode já existir sem a coluna adicionada depois para vincular a Dungeon.
+    // Mantemos a migração idempotente para que chaves já concedidas continuem
+    // abrindo normalmente após a troca de provider.
+    static async garantirSchemaChaveDungeon() {
+        if (this.schemaChaveDungeonPromise) return this.schemaChaveDungeonPromise;
+        this.schemaChaveDungeonPromise = new Promise((resolve, reject) => {
+            if (databaseProvider === "postgres") {
+                db.run("ALTER TABLE chaves_dungeon ADD COLUMN IF NOT EXISTS dungeon_id BIGINT NOT NULL DEFAULT 0", err => err ? reject(err) : resolve());
+                return;
+            }
+            db.all("PRAGMA table_info(chaves_dungeon)", (err, colunas) => {
+                if (err) return reject(err);
+                if ((colunas || []).some(coluna => coluna.name === "dungeon_id")) return resolve();
+                db.run("ALTER TABLE chaves_dungeon ADD COLUMN dungeon_id INTEGER NOT NULL DEFAULT 0", erro => erro ? reject(erro) : resolve());
+            });
+        }).catch(erro => {
+            this.schemaChaveDungeonPromise = null;
+            throw erro;
+        });
+        return this.schemaChaveDungeonPromise;
+    }
+
     /**
      * Busca a chave de dungeon do jogador
      */
@@ -386,11 +410,24 @@ class DungeonInstanciadaSystem {
      * Vincula uma dungeon da database à chave
      */
     static async vincularDungeon(chaveId, dungeonId) {
+        try {
+            await this.garantirSchemaChaveDungeon();
+        } catch (erro) {
+            console.error("[DUNGEON] Não foi possível preparar a coluna dungeon_id:", erro.message);
+            return false;
+        }
         return new Promise((resolve) => {
             db.run(
-                "UPDATE chaves_dungeon SET dungeon_id = ? WHERE id = ?",
+                "UPDATE chaves_dungeon SET dungeon_id = ? WHERE id = ? AND ativa = 1 AND (dungeon_id IS NULL OR dungeon_id = 0)",
                 [dungeonId, chaveId],
-                (err) => resolve(!err)
+                function(err) {
+                    if (err) {
+                        console.error("[DUNGEON] Erro ao vincular Dungeon à chave:", err.message);
+                        resolve(false);
+                        return;
+                    }
+                    resolve(Number(this.changes) === 1);
+                }
             );
         });
     }

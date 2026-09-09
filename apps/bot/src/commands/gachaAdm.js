@@ -4,6 +4,7 @@ const MessageService = require("../core/messageService");
 const Admin = require("../systems/gachaAdminService");
 const database = require("../../../../packages/database");
 const Banners = require("../systems/gachaBannerService");
+const Wizard = require("../systems/creationWizardService");
 
 const FICHA_BANNER = `*═══ FICHA DE CRIAÇÃO DE BANNER ═══*
 ──────────────────────────
@@ -134,7 +135,7 @@ async function executar(msg) {
     try {
         await Admin.autorizar(actor);
         const original = String(msg.body || "").trim();
-        if (/^!criar banner\s*$/i.test(original)) return MessageService.send({ message: msg, text: FICHA_BANNER });
+        if (/^!criar banner\s*$/i.test(original)) return MessageService.send({ message: msg, text: `_*「 CRIAÇÃO GUIADA DE BANNER 」*_\n\n${await Wizard.start(actor, "BANNER")}\n\n_Responda apenas à pergunta. Use !cancelar criação para interromper._` });
         if (/^!criar banner\b/i.test(original)) {
             const banner = await criarPelaFicha(actor, original);
             return MessageService.send({ message: msg, text: `_*「 FICHA DE BANNER VALIDADA 」*_\n\n_Todas as informações foram reconhecidas pelo Sistema._\n_• Banner:_ *${banner.nome}*\n_• Estado: Rascunho_\n\n_*PRÓXIMA ETAPA*_\n_Envie a imagem usando como legenda:_\n*!anexar imagem banner ${banner.nome}*` });
@@ -144,12 +145,18 @@ async function executar(msg) {
             if (!nome) throw new Error("Informe o nome do Banner após o comando.");
             if (!msg.hasMedia || typeof msg.downloadMedia !== "function") throw new Error("Envie a imagem anexada e use o comando na legenda.");
             const media = await msg.downloadMedia();
-            if (!media?.data || !/^image\//i.test(media.mimetype || "")) throw new Error("O anexo precisa ser uma imagem válida.");
-            const listaBanners = await Admin.listBannersAdmin(actor);
-            const banner = listaBanners.find(item => normalizar(item.nome) === normalizar(nome));
-            if (!banner) throw new Error(`Banner não encontrado: ${nome}.`);
-            await Admin.updateBanner(actor, banner.id, { imagem: `data:${media.mimetype};base64,${media.data}` });
-            return MessageService.send({ message: msg, text: `_*「 IMAGEM DO BANNER 」*_\n\n_[+] Imagem vinculada ao Banner *${banner.nome}*._` });
+            const sessao = await Wizard.get(actor);
+            let result;
+            if (sessao?.tipo === "BANNER" && sessao.status === "AGUARDANDO_IMAGEM") result = await Wizard.attachImage(actor, "BANNER", nome, media);
+            else {
+                if (!media?.data || !/^image\//i.test(media.mimetype || "")) throw new Error("O anexo precisa ser uma imagem válida.");
+                const listaBanners = await Admin.listBannersAdmin(actor);
+                const banner = listaBanners.find(item => normalizar(item.nome) === normalizar(nome));
+                if (!banner) throw new Error(`Banner não encontrado: ${nome}.`);
+                await Admin.updateBanner(actor, banner.id, { imagem: `data:${media.mimetype};base64,${media.data}` });
+                result = `Imagem vinculada ao Banner *${banner.nome}*.`;
+            }
+            return MessageService.send({ message: msg, text: `_*「 IMAGEM DO BANNER 」*_\n\n_[+] ${result}` });
         }
         const entrada = original.replace(/^!gachaadm\s*/i, "").trim();
         if (!entrada || entrada.toLowerCase() === "ajuda") return MessageService.send({ message: msg, text: ajuda });
@@ -200,3 +207,4 @@ module.exports = executar;
 module.exports.formatarView = formatarView;
 module.exports.lerFichaBanner = lerFichaBanner;
 module.exports.prepararFichaBanner = prepararFichaBanner;
+module.exports.criarPelaFicha = criarPelaFicha;

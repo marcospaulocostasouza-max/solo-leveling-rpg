@@ -245,11 +245,37 @@ async function obterContexto(numero, ehAdmin = false, pergunta = "") {
         } catch (error) {
             console.warn("[PAIMON] Técnicas do jogador indisponíveis nesta consulta:", error.message);
         }
+        try {
+            const inventario = await all("SELECT i.nome, i.categoria, i.tier, inv.quantidade, inv.equipado FROM inventario_jogador inv JOIN itens i ON i.id = inv.item_id WHERE inv.jogador_id = ? ORDER BY inv.equipado DESC, i.nome LIMIT 40", [jogador.id]);
+            contexto.push(`Inventário do jogador: ${inventario.length ? inventario.map(item => `${item.nome} (${item.categoria || "Item"}, ${item.tier || "sem rank"}, x${item.quantidade || 0}${Number(item.equipado) ? ", equipado" : ""})`).join("; ") : "vazio"}.`);
+        } catch (error) {
+            console.warn("[PAIMON] Inventário do jogador indisponível nesta consulta:", error.message);
+        }
     }
     const catalogo = await consultarCatalogo(expandirConsulta(pergunta));
     if (catalogo) contexto.push(`Resultados relevantes do banco:\n${catalogo}`);
     contexto.push(`Comandos relacionados:\n${obterGuiaComandos(ehAdmin, expandirConsulta(pergunta))}`);
     return contexto.join("\n");
+}
+
+function responderOrientacaoCanonica(pergunta) {
+    const texto = normalizar(pergunta);
+    if (/\b(?:como .*upo|como .*upar|como .*ganho xp|como .*evoluo|como .*progrido)\b/.test(texto)) {
+        return "Para evoluir, faça atividades narrativas aprovadas pela ADM. Quest diária pede 50 a 100 palavras; One Post, no mínimo 1.000 e só 1 a cada 7 dias; treino de Maestria, 200; treino conjunto, 200 por participante, até 2 por semana; interação, 150 por participante, até 2 por semana; missão e Dungeon, 300 por participante. Consulte *!progresso* para ver o fluxo e use *!histórico* para acompanhar as recompensas recebidas.";
+    }
+    if (/\b(?:requisito|requisitos).*(?:quest|one post|maestria|dungeon|missao|missão)\b/.test(texto)) {
+        return "Os mínimos são: Quest diária 50–100 palavras; One Post 1.000 palavras e 1 a cada 7 dias; treino de Maestria 200; treino conjunto 200 por participante, até 2 por semana; interação 150 por participante, até 2 por semana; missão e Dungeon 300 por participante. A recompensa só entra na ficha depois da validação da ADM.";
+    }
+    if (/\b(?:como .*giro|como .*girar|como .*conver(?:gir|ge)|como .*banner|como .*gacha)\b/.test(texto)) {
+        return "Use *!banners* para ver os banners ativos ou *!banner <nome>* para consultar um específico. Use *!convergir* para um giro e *!convergir 10* para dez giros. O custo em Cristais e cada prêmio recebido ficam registrados na sua ficha e no histórico.";
+    }
+    if (/\b(?:como .*dungeon|como .*abrir chave|chave .*dungeon|ficha .*dungeon)\b/.test(texto)) {
+        return "Depois de conseguir uma Chave de Dungeon, abra-a para receber uma Dungeon compatível com o Rank. Consulte *!ficha de dungeon* para ver a descrição e os próximos passos. Com o grupo reconhecido, use *!concluir dungeon*; cada participante escolhe apenas um prêmio com *!escolho <número>*.";
+    }
+    if (/\b(?:como .*equip|como .*desequip|meu .*inventario|meus .*itens)\b/.test(texto)) {
+        return "Use *!inventário* para conferir seus itens e o que está equipado. Para mudar equipamento, use os comandos de equipar ou desequipar indicados pelo inventário; se houver itens com o mesmo nome, escolha a instância exibida para não alterar o item errado.";
+    }
+    return null;
 }
 
 async function responderPergunta(numero, pergunta, ehAdmin = false) {
@@ -265,6 +291,12 @@ async function responderPergunta(numero, pergunta, ehAdmin = false) {
         await salvarMensagem(numero, "user", pergunta);
         await salvarMensagem(numero, "assistant", respostaDireta);
         return respostaDireta;
+    }
+    const orientacaoCanonica = responderOrientacaoCanonica(pergunta);
+    if (orientacaoCanonica) {
+        await salvarMensagem(numero, "user", pergunta);
+        await salvarMensagem(numero, "assistant", orientacaoCanonica);
+        return orientacaoCanonica;
     }
     const [historico, ultimaPergunta] = await Promise.all([
         obterHistorico(numero, pergunta),
@@ -306,4 +338,4 @@ function deveEncerrar(texto) {
     return /^(?:sair|encerrar|fechar|tchau|ate mais|até mais|obrigad[oa],? tchau|tchau paimon)[!. ]*$/i.test(String(texto || "").trim());
 }
 
-module.exports = { responderPergunta, obterContexto, obterGuiaComandos, responderComandosDiretamente, responderBasePaimonDiretamente, expandirConsulta, recuperarConhecimentoSistemas, recuperarBasePaimon, definirTamanhoResposta, identificarIntencao, orientacaoDaIntencao, limitarResposta, limparRespostaPaimon, formatarCatalogo, garantirTabelas, definirSessao, sessaoAtiva, salvarMensagem, obterHistorico, deveEncerrar, normalizar, pontuar, MODEL, DURACAO_SESSAO_MS };
+module.exports = { responderPergunta, obterContexto, obterGuiaComandos, responderComandosDiretamente, responderBasePaimonDiretamente, responderOrientacaoCanonica, expandirConsulta, recuperarConhecimentoSistemas, recuperarBasePaimon, definirTamanhoResposta, identificarIntencao, orientacaoDaIntencao, limitarResposta, limparRespostaPaimon, formatarCatalogo, garantirTabelas, definirSessao, sessaoAtiva, salvarMensagem, obterHistorico, deveEncerrar, normalizar, pontuar, MODEL, DURACAO_SESSAO_MS };

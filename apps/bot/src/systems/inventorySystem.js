@@ -64,6 +64,13 @@ class InventorySystem {
         return normalizarTexto(item.categoria || item.tipo).includes("chave de dungeon");
     }
 
+    static isEquipavel(item) {
+        if (this.isConsumivel(item) || this.isChaveDungeon(item)) return false;
+        const categoria = normalizarTexto(item.categoria || item.slot || item.tipo);
+        return Number(item.arma) === 1 || Number(item.armadura) === 1 || Number(item.escudo) === 1 || Number(item.acessorio) === 1
+            || /(arma|armadura|escudo|acessor|cabeca|capacete|elmo|coroa|corpo|perna|bota|calcado)/.test(categoria);
+    }
+
     static normalizarEfeitoConsumivel(efeito) {
         const texto = String(efeito || "").trim();
         if (!texto || texto.includes(":")) return texto;
@@ -130,12 +137,29 @@ class InventorySystem {
     }
 
     static async adicionarItem(jogadorId, itemId, quantidade = 1) {
+        const total = Number(quantidade);
+        if (!Number.isSafeInteger(total) || total <= 0) return false;
+        const item = await new Promise(resolve => db.get("SELECT * FROM itens WHERE id = ?", [itemId], (err, row) => resolve(row || null)));
+        if (!item) return false;
+        // Cada equipamento recebe uma linha por cópia. Consumíveis, chaves e
+        // materiais seguem empilhados, pois não precisam de identidade própria
+        // para os slots de equipamento.
+        if (this.isEquipavel(item)) {
+            for (let indice = 0; indice < total; indice += 1) {
+                const inserido = await new Promise(resolve => db.run(
+                    "INSERT INTO inventario_jogador (jogador_id, item_id, quantidade, equipado) VALUES (?, ?, 1, 0)",
+                    [jogadorId, itemId], err => resolve(!err)
+                ));
+                if (!inserido) return false;
+            }
+            return true;
+        }
         return new Promise((resolve) => {
             db.get("SELECT * FROM inventario_jogador WHERE jogador_id = ? AND item_id = ?", [jogadorId, itemId], (err, existe) => {
                 if (existe) {
-                    db.run("UPDATE inventario_jogador SET quantidade = quantidade + ? WHERE jogador_id = ? AND item_id = ?", [quantidade, jogadorId, itemId], (err) => resolve(!err));
+                    db.run("UPDATE inventario_jogador SET quantidade = quantidade + ? WHERE jogador_id = ? AND item_id = ?", [total, jogadorId, itemId], (err) => resolve(!err));
                 } else {
-                    db.run("INSERT INTO inventario_jogador (jogador_id, item_id, quantidade, equipado) VALUES (?, ?, ?, 0)", [jogadorId, itemId, quantidade], (err) => resolve(!err));
+                    db.run("INSERT INTO inventario_jogador (jogador_id, item_id, quantidade, equipado) VALUES (?, ?, ?, 0)", [jogadorId, itemId, total], (err) => resolve(!err));
                 }
             });
         });
@@ -154,9 +178,38 @@ class InventorySystem {
         });
     }
 
-    static async equiparItem(jogadorId, itemId) {
+    // Equipamentos não empilham: cada linha de inventário é uma cópia concreta
+    // identificada pelo próprio inv.id. Linhas legadas agrupadas são separadas
+    // antes de listar/equipar, preservando uma eventual cópia já equipada.
+    static async prepararInstanciasEquipaveis(jogadorId) {
+        const itens = await new Promise(resolve => db.all(
+            `SELECT inv.id AS inventario_id, inv.item_id, inv.quantidade, inv.equipado, i.*
+             FROM inventario_jogador inv JOIN itens i ON i.id = inv.item_id
+             WHERE inv.jogador_id = ? AND inv.quantidade > 1`,
+            [jogadorId], (err, rows) => resolve(rows || [])
+        ));
+        for (const item of itens) {
+            if (!this.isEquipavel(item)) continue;
+            const quantidade = Number(item.quantidade || 0);
+            if (quantidade < 2) continue;
+            await new Promise((resolve, reject) => db.run(
+                "UPDATE inventario_jogador SET quantidade = 1 WHERE id = ? AND jogador_id = ?",
+                [item.inventario_id, jogadorId], err => err ? reject(err) : resolve()
+            ));
+            for (let indice = 1; indice < quantidade; indice += 1) {
+                await new Promise((resolve, reject) => db.run(
+                    "INSERT INTO inventario_jogador (jogador_id, item_id, quantidade, equipado, item_inicial) VALUES (?, ?, 1, 0, 0)",
+                    [jogadorId, item.item_id], err => err ? reject(err) : resolve()
+                ));
+            }
+        }
+    }
+
+    static async equiparItem(jogadorId, itemId, inventarioId = null) {
         return new Promise((resolve) => {
-            db.get(`SELECT i.*, inv.equipado FROM inventario_jogador inv JOIN itens i ON inv.item_id = i.id WHERE inv.jogador_id = ? AND inv.item_id = ?`, [jogadorId, itemId], async (err, item) => {
+            const filtro = inventarioId ? "inv.id = ?" : "inv.item_id = ?";
+            const alvo = inventarioId || itemId;
+            db.get(`SELECT i.*, inv.id AS inventario_id, inv.equipado FROM inventario_jogador inv JOIN itens i ON inv.item_id = i.id WHERE inv.jogador_id = ? AND ${filtro}`, [jogadorId, alvo], async (err, item) => {
                 if (!item) { resolve({ erro: "Item não encontrado no inventário." }); return; }
                 if (this.isChaveDungeon(item)) { resolve({ erro: "Chaves de Dungeon não são equipáveis. Use !abrir dungeon para abri-la." }); return; }
                 if (this.isConsumivel(item)) { resolve({ erro: "Itens consumíveis não podem ser equipados. Use !usar <item>." }); return; }
@@ -166,14 +219,14 @@ class InventorySystem {
                 const novoEstado = Number(item.equipado) === 1 ? 0 : 1;
                 const slotItem = this.getSlotDoItem(item);
                 if (novoEstado === 0) {
-                    db.run("UPDATE inventario_jogador SET equipado = 0 WHERE jogador_id = ? AND item_id = ?", [jogadorId, itemId], (err) => {
+                    db.run("UPDATE inventario_jogador SET equipado = 0 WHERE id = ? AND jogador_id = ?", [item.inventario_id, jogadorId], (err) => {
                         if (err) { resolve({ erro: "Erro ao desequipar item." }); return; }
                         require("./atributoSystem").recalcularAtributos(jogadorId).then(() => resolve({ sucesso: true, acao: "desequipado", item: item.nome, slot: slotItem }));
                     });
                     return;
                 }
                 const equipados = await new Promise((resolveEq) => {
-                    db.all(`SELECT i.*, inv.equipado FROM inventario_jogador inv JOIN itens i ON inv.item_id = i.id WHERE inv.jogador_id = ? AND inv.equipado = 1`, [jogadorId], (err, rows) => resolveEq(rows || []));
+                    db.all(`SELECT i.*, inv.id AS inventario_id, inv.equipado FROM inventario_jogador inv JOIN itens i ON inv.item_id = i.id WHERE inv.jogador_id = ? AND inv.equipado = 1`, [jogadorId], (err, rows) => resolveEq(rows || []));
                 });
                 const contagemSlots = {};
                 equipados.forEach(eq => { const slot = this.getSlotDoItem(eq); contagemSlots[slot] = (contagemSlots[slot] || 0) + 1; });
@@ -181,7 +234,7 @@ class InventorySystem {
                     if ((contagemSlots["Arma 2"] || 0) >= SLOT_CAPACIDADE["Arma 2"]) { resolve({ erro: "Slot de Arma 2 (2FP) já está ocupado. Desequipe primeiro." }); return; }
                     for (const eq of equipados) {
                         if (this.getSlotDoItem(eq) === "Arma 1") {
-                            await new Promise((resolveDes) => { db.run("UPDATE inventario_jogador SET equipado = 0 WHERE jogador_id = ? AND item_id = ?", [jogadorId, eq.id], () => resolveDes()); });
+                            await new Promise((resolveDes) => { db.run("UPDATE inventario_jogador SET equipado = 0 WHERE id = ? AND jogador_id = ?", [eq.inventario_id, jogadorId], () => resolveDes()); });
                         }
                     }
                 }
@@ -193,7 +246,7 @@ class InventorySystem {
                     const capacidade = SLOT_CAPACIDADE[slotItem] || 1;
                     if ((contagemSlots[slotItem] || 0) >= capacidade) { resolve({ erro: `Slot de ${slotItem} está cheio (${capacidade} máximo). Desequipe um item primeiro.` }); return; }
                 }
-                db.run("UPDATE inventario_jogador SET equipado = 1 WHERE jogador_id = ? AND item_id = ?", [jogadorId, itemId], function (err) {
+                db.run("UPDATE inventario_jogador SET equipado = 1 WHERE id = ? AND jogador_id = ?", [item.inventario_id, jogadorId], function (err) {
                     if (err || this.changes !== 1) { resolve({ erro: "Não foi possível registrar o equipamento no inventário." }); return; }
                     require("./atributoSystem").recalcularAtributos(jogadorId).then(() => resolve({ sucesso: true, acao: "equipado", item: item.nome, slot: slotItem }));
                 });
@@ -238,8 +291,9 @@ class InventorySystem {
     }
 
     static async listarInventario(jogadorId) {
+        await this.prepararInstanciasEquipaveis(jogadorId);
         return new Promise((resolve) => {
-            db.all(`SELECT i.*, inv.quantidade, inv.equipado, inv.item_inicial FROM inventario_jogador inv JOIN itens i ON inv.item_id = i.id WHERE inv.jogador_id = ? ORDER BY inv.equipado DESC, i.categoria`, [jogadorId], (err, itens) => { resolve(itens || []); });
+            db.all(`SELECT i.*, inv.id AS inventario_id, inv.quantidade, inv.equipado, inv.item_inicial FROM inventario_jogador inv JOIN itens i ON inv.item_id = i.id WHERE inv.jogador_id = ? ORDER BY inv.equipado DESC, i.categoria, inv.id`, [jogadorId], (err, itens) => { resolve(itens || []); });
         });
     }
 

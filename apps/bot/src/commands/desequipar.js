@@ -1,6 +1,7 @@
 const MessageService = require("../core/messageService");
 const db = require("../core/database");
 const AtributoSystem = require("../systems/atributoSystem");
+const InventorySystem = require("../systems/inventorySystem");
 const { escolherItem } = require("./equipar");
 
 const get = (sql, params = []) => new Promise((resolve, reject) =>
@@ -15,10 +16,12 @@ const run = (sql, params = []) => new Promise((resolve, reject) =>
 
 module.exports = async msg => {
     try {
-        const nomeItem = String(msg.body || "").replace(/^!desequipar/i, "").trim();
+        const pedidoItem = String(msg.body || "").replace(/^!desequipar/i, "").trim();
+        const identificador = pedidoItem.match(/(?:^|\s)#(\d+)\s*$/);
+        const nomeItem = pedidoItem.replace(/(?:^|\s)#\d+\s*$/, "").trim();
         const numero = msg.author || msg.from;
 
-        if (!nomeItem) {
+        if (!pedidoItem) {
             return MessageService.send({ message: msg, text: `*SISTEMA DE EQUIPAMENTO*
 
 Informe o nome do item para desequipar.
@@ -31,6 +34,7 @@ _Use !equipar <item> para equipar._` });
         const jogador = await get("SELECT id FROM jogadores WHERE numero = ?", [numero]);
         if (!jogador) return MessageService.send({ message: msg, text: "*Voce precisa ter uma ficha aprovada.*" });
 
+        await InventorySystem.prepararInstanciasEquipaveis(jogador.id);
         const itens = await all(
             `SELECT i.*, inv.id as inv_id, inv.equipado
              FROM inventario_jogador inv
@@ -38,20 +42,22 @@ _Use !equipar <item> para equipar._` });
              WHERE inv.jogador_id = ?`,
             [jogador.id]
         );
-        const item = escolherItem(itens, nomeItem);
+        const item = identificador
+            ? itens.find(candidato => Number(candidato.inv_id) === Number(identificador[1])) || null
+            : escolherItem(itens.filter(candidato => Number(candidato.equipado) === 1), nomeItem);
         if (!item) return MessageService.send({ message: msg, text: "*Item nao encontrado no inventario.*" });
         if (Number(item.equipado) !== 1) {
             return MessageService.send({ message: msg, text: `*Este item nao esta equipado.*\n> ${item.nome}` });
         }
 
-        await run("UPDATE inventario_jogador SET equipado = 0 WHERE jogador_id = ? AND item_id = ?", [jogador.id, item.id]);
+        await run("UPDATE inventario_jogador SET equipado = 0 WHERE id = ? AND jogador_id = ?", [item.inv_id, jogador.id]);
         await AtributoSystem.recalcularAtributos(jogador.id);
         const jogadorAtual = await get("SELECT * FROM jogadores WHERE id = ?", [jogador.id]);
 
         return MessageService.send({ message: msg, text: `*SISTEMA DE EQUIPAMENTO*
 
 Item desequipado com sucesso!
-> ${item.nome}
+> ${item.nome} #${item.inv_id}
 
 DESEQUIPADO - atributos atualizados automaticamente.
 

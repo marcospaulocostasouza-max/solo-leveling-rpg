@@ -67,6 +67,18 @@ async function resolverRecompensa(recompensa) {
 }
 
 async function adicionarItem(query, jogadorId, itemId, quantidade) {
+    const item = await query.get("SELECT categoria, slot, arma, armadura, escudo, acessorio, consumivel FROM itens WHERE id = ?", [itemId]);
+    const categoria = String(item?.categoria || item?.slot || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+    const equipavel = item && Number(item.consumivel) !== 1 && (
+        Number(item.arma) === 1 || Number(item.armadura) === 1 || Number(item.escudo) === 1 || Number(item.acessorio) === 1
+        || /(arma|armadura|escudo|acessor|cabeca|capacete|elmo|coroa|corpo|perna|bota|calcado)/.test(categoria)
+    );
+    if (equipavel) {
+        for (let indice = 0; indice < Number(quantidade); indice += 1) {
+            await query.run("INSERT INTO inventario_jogador (jogador_id, item_id, quantidade, equipado) VALUES (?, ?, 1, 0)", [jogadorId, itemId]);
+        }
+        return;
+    }
     const existente = await query.get("SELECT id FROM inventario_jogador WHERE jogador_id = ? AND item_id = ?", [jogadorId, itemId]);
     if (existente) await query.run("UPDATE inventario_jogador SET quantidade = quantidade + ? WHERE id = ?", [quantidade, existente.id]);
     else await query.run("INSERT INTO inventario_jogador (jogador_id, item_id, quantidade, equipado) VALUES (?, ?, ?, 0)", [jogadorId, itemId, quantidade]);

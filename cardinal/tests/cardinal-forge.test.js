@@ -26,17 +26,22 @@ test("Cardinal Forge: geração, validação, versões e segurança", async t =>
     const validator = new ForgeValidator({ retriever, rules: { attributeLimit: 20 }, slots });
     const service = new CardinalForgeService({ client: { chat: async () => { throw new Error("LLM não deveria ser chamado neste teste"); } }, retriever, validator, contextBuilder, draftPath: path.join(root, "drafts.db") });
     await t.test("arma válida dentro das regras", async () => { const output = await service.generate("Crie uma espada com 20 atributos", { type: "weapon", content: weapon(), author: "tester" }); assert.equal(output.draft.validation.valid, true); assert.equal(output.draft.status, "VALID"); });
-    await t.test("resposta incompleta do modelo vira uma ficha de arma completa", async () => {
+    await t.test("resposta incompleta do modelo não é mascarada por ficha genérica", async () => {
         const fallback = new CardinalForgeService({ client: { chat: async () => ({ text: "resposta sem JSON" }) }, retriever, validator, contextBuilder, draftPath: path.join(root, "fallback.db") });
         const output = await fallback.generate("Crie uma espada Rank D com 10 de atributo em força", { type: "weapon", author: "tester" });
-        assert.equal(output.draft.validation.valid, true);
+        assert.equal(output.draft.validation.valid, false);
         assert.equal(output.draft.content.tier, "D");
         assert.equal(output.draft.content.forca_bonus, 10);
         assert.equal(output.draft.content.slot, "Arma 1");
-        assert.ok(output.draft.content.descricao.length >= 180);
+        assert.ok(output.draft.validation.errors.some(error => error.field === "descricao"));
         await fallback.close();
     });
     await t.test("normaliza envelope JSON produzido pelo modelo", () => { assert.equal(structuredEnvelope({ version: 1, item: weapon() }, "weapon", 1).content.nome, "Lâmina Solar"); assert.equal(structuredEnvelope({ version: 1, ...weapon() }, "weapon", 1).content.version, undefined); });
+    await t.test("técnica possui schema e validação próprios", async () => {
+        const content = { nome: "Corte de Mana", classe: "Nenhuma", categoria: "Ativa", tipo: "Mágica", descricao: "Concentra mana e dispara um corte curto.", descricao_completa: "O usuário concentra mana na palma antes de formar um arco luminoso. O golpe é lançado em linha curta e exige precisão para atingir o alvo. Cada uso consome mana definida na ficha e não ignora defesa por si só. O resultado é um dano mágico direto, limitado pelo Rank e pelas regras do combate.", custo_mana: 20, custo_qi: 0, custo_maestria: 0, cooldown: 2, nivel_desbloqueio: 1, rank: "D", passiva: 0 };
+        const output = await service.generate("Crie uma técnica mágica Rank D", { type: "technique", content, author: "tester" });
+        assert.equal(output.draft.validation.valid, true);
+    });
     await t.test("restrições explícitas preservam rank e atributo pedido", () => { const constrained = applyExplicitConstraints(structuredEnvelope(weapon({ tier: "A", forca_bonus: 0, velocidade_bonus: 10 }), "weapon", 1), { constraints: { rank: "D", attribute_distribution: { forca: 10 } } }); assert.equal(constrained.content.tier, "D"); assert.equal(constrained.content.forca_bonus, 10); assert.equal(constrained.content.velocidade_bonus, 0); });
     await t.test("campos seguros completados ficam rastreáveis para o ADM", () => { const original = { nome: "Teste" }, completed = prepareContent("weapon", original); assert.ok(autoCompletedFields("weapon", original, completed).includes("Categoria")); assert.ok(autoCompletedFields("weapon", original, completed).includes("Habilidade")); });
     await t.test("campos fora do schema são recusados", async () => { const validation = await validator.validate("weapon", weapon({ campo_inventado: true })); assert.ok(validation.errors.some(error => error.field === "campo_inventado")); });
@@ -55,6 +60,6 @@ test("Cardinal Forge: geração, validação, versões e segurança", async t =>
     await t.test("último draft válido permanece isolado por autor", async () => { const mine = await service.generate("Crie arma para aprovação", { type: "weapon", content: weapon({ nome: "Meu Draft" }), author: "admin-1" }); await service.generate("Crie arma de outro admin", { type: "weapon", content: weapon({ nome: "Outro Draft" }), author: "admin-2" }); const latest = await service.store.latestByAuthor("admin-1"); assert.equal(latest.id, mine.draft.id); });
     await t.test("revisão conversacional altera somente o draft", async () => { const initial = await service.generate("Crie arma conversacional", { type: "weapon", content: weapon({ nome: "Diálogo" }), author: "tester" }); const revised = await service.revise(initial.draft.id, "Troque 5 de força por velocidade", { patch: { forca_bonus: 15, velocidade_bonus: 5 }, author: "tester" }); assert.equal(revised.draft.version, 2); assert.equal(revised.draft.content.forca_bonus, 15); assert.equal(revised.draft.content.velocidade_bonus, 5); });
     await t.test("rollback restaura versão como nova versão", async () => { const initial = await service.generate("Crie arma para rollback", { type: "weapon", content: weapon({ nome: "Retorno", efeito: "v1" }), author: "tester" }); await service.edit(initial.draft.id, { efeito: "v2" }, { author: "tester" }); const rolled = await service.rollback(initial.draft.id, 1, { author: "tester" }); assert.equal(rolled.draft.version, 3); assert.equal(rolled.draft.content.efeito, "v1"); });
-    await t.test("publish permanece desabilitado", () => { assert.throws(() => service.publish("weapon"), error => error.code === CODES.PUBLISH_DISABLED); assert.equal(new ForgeRegistry({ client: {}, validator: {} }).types().length, 14); });
+    await t.test("publish permanece desabilitado", () => { assert.throws(() => service.publish("weapon"), error => error.code === CODES.PUBLISH_DISABLED); assert.equal(new ForgeRegistry({ client: {}, validator: {} }).types().length, 15); });
     await service.close(); fs.rmSync(root, { recursive: true, force: true });
 });

@@ -35,6 +35,7 @@ class ForgeValidator {
         checkSchema(content || {}, schema, errors, rules);
         if (type === "weapon" || type === "armor" || type === "accessory" || type === "equipment" || type === "consumable" || type === "material") await this.validateItem(type, content || {}, errors, warnings, rules, sources);
         if (type === "set") this.validateSet(content || {}, errors, warnings, rules);
+        if (type === "technique") await this.validateTechnique(content || {}, errors, warnings, rules, sources);
         if (type === "passive" || type === "title") this.validateRanked(content || {}, errors, rules);
         if (type === "mission") await this.validateMission(content || {}, errors, warnings, rules, sources);
         if (type === "banner") this.validateBanner(content || {}, errors, warnings, rules);
@@ -97,6 +98,17 @@ class ForgeValidator {
         if ((content.itens || []).some(item => !item.nome || !item.slot)) warnings.push(issue(CODES.RULE_NOT_FOUND, "Cada peça deve referenciar nome e slot válidos antes da futura publicação.", "itens"));
     }
     validateRanked(content, errors, rules) { rules.push("rank:E,D,C,B,A,S"); if (content.rank && !RANKS.includes(String(content.rank).toUpperCase())) errors.push(issue(CODES.UNKNOWN_RARITY, `Rank inválido: ${content.rank}.`, "rank")); }
+    async validateTechnique(content, errors, warnings, rules, sources) {
+        this.validateRanked(content, errors, rules); rules.push("database:tecnicas"); sources.push("apps/bot/src/core/database.js");
+        for (const field of ["custo_mana", "custo_qi", "custo_maestria", "cooldown", "nivel_desbloqueio"]) {
+            if (content[field] != null && (!Number.isSafeInteger(content[field]) || content[field] < (field === "nivel_desbloqueio" ? 1 : 0))) errors.push(issue(CODES.VALIDATION_FAILED, `${field} deve ser um inteiro válido.`, field));
+        }
+        const description = String(content.descricao_completa || "").trim();
+        if (description.length < 180 || description.split(/[.!?](?:\s|$)/).filter(Boolean).length < 4) errors.push(issue(CODES.QUALITY_INCOMPLETE, "Descrição completa insuficiente: informe visual/manifestação, função, execução, custo ou limite e resultado em ao menos 4 frases e 180 caracteres.", "descricao_completa"));
+        if (!String(content.descricao || "").trim()) errors.push(issue(CODES.QUALITY_INCOMPLETE, "Falta um resumo direto da técnica.", "descricao"));
+        if (!String(content.tipo || "").trim()) errors.push(issue(CODES.QUALITY_INCOMPLETE, "Falta definir o tipo da técnica, por exemplo Física, Mágica ou Suporte.", "tipo"));
+        if (content.classe && normalize(content.classe) !== "nenhuma") await this.requireKnownEntity(content.classe, "classes", "classe", errors, warnings, sources);
+    }
     async validateMission(content, errors, warnings, rules, sources) {
         this.validateRanked(content, errors, rules); rules.push("database:missoes"); sources.push("apps/bot/src/core/database.js");
         for (const field of ["objetivo", "recompensa_xp", "recompensa_won"]) if (content[field] != null && (!Number.isSafeInteger(content[field]) || content[field] < 0)) errors.push(issue(CODES.VALIDATION_FAILED, `${field} deve ser inteiro não negativo.`, field));

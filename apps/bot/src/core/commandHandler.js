@@ -65,6 +65,14 @@ function normalizarMensagemParaHandler(msg, quantidadePalavras, prefixoCanonico)
         msg.body = corpoOriginal.replace(/^\s*\.\s*#\s*cardinal\b/i, prefixoCanonico);
         return corpoOriginal;
     }
+    // !+xp e !-xp usam o sinal e o recurso no mesmo token. O tratamento
+    // genérico por palavras removia esse token inteiro e entregava só !+ ou
+    // !- ao módulo administrativo.
+    if (prefixoCanonico === "!+" || prefixoCanonico === "!-") {
+        const sinal = prefixoCanonico.slice(1).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+        msg.body = corpoOriginal.replace(new RegExp(`^\\s*!${sinal}`, "i"), prefixoCanonico);
+        return corpoOriginal;
+    }
     const [primeiraLinha, ...restante] = corpoOriginal.split(/\r?\n/);
     const palavras = primeiraLinha.trim().split(/\s+/);
     if (!palavras.length || !palavras[0]) return corpoOriginal;
@@ -160,6 +168,12 @@ async function executarComando(msg, comando, comandosRegistrados) {
     console.log(`[EXEC] ===== NOVA MENSAGEM RECEBIDA =====`);
     console.log(`[EXEC] Conteúdo: "${msgBody}"`);
     console.log(`[EXEC] Comando processado: "${comandoLower}"`);
+
+    // Sessões guiadas de criação aceitam a próxima resposta em texto comum.
+    // Elas são verificadas antes do roteamento para que a resposta não seja
+    // confundida com uma ficha ou conversa de NPC.
+    try { if (await require("../systems/creationWizardService").consumeMessage(msg)) return; }
+    catch (erro) { console.error("[WIZARD]", erro.message); }
     
     // Verificar se o comando está no grupo correto
     if (msgBody.startsWith("!")) {
@@ -272,6 +286,7 @@ async function executarComando(msg, comando, comandosRegistrados) {
         "!concluir Dungeon": "concluirDungeon.js",
         "!abrir dungeon": "abrirDungeon.js",
         "!abrir Dungeon": "abrirDungeon.js",
+        "!abrir chave": "abrirDungeon.js",
         "!minha dungeon": "minhaDungeon.js",
         "!minha Dungeon": "minhaDungeon.js",
         "!olá vysache": "vysache.js",
@@ -392,6 +407,8 @@ async function executarComando(msg, comando, comandosRegistrados) {
     // Comandos com prefixo (startsWith)
     const comandosPrefixo = [
         { prefixo: ".#cardinal", arquivo: "cardinalAdmin.js" },
+        { prefixo: "!anexar imagem dungeon semanal", arquivo: "criarDungeonSemanalGuiada.js" },
+        { prefixo: "!criar dungeon semanal", arquivo: "criarDungeonSemanalGuiada.js" },
         { prefixo: "!título criar", arquivo: "criarTituloPassiva.js" },
         { prefixo: "!titulo criar", arquivo: "criarTituloPassiva.js" },
         { prefixo: "!passiva criar", arquivo: "criarTituloPassiva.js" },
@@ -569,6 +586,7 @@ async function executarComando(msg, comando, comandosRegistrados) {
         { prefixo: "!escolho", arquivo: "escolherPremio.js" },
         { prefixo: "!abrir dungeon", arquivo: "abrirDungeon.js" },
         { prefixo: "!abrir Dungeon", arquivo: "abrirDungeon.js" },
+        { prefixo: "!abrir chave", arquivo: "abrirDungeon.js" },
         { prefixo: "!minha dungeon", arquivo: "minhaDungeon.js" },
         { prefixo: "!minha Dungeon", arquivo: "minhaDungeon.js" },
         { prefixo: "!usar ticket", arquivo: "usarTicket.js" },

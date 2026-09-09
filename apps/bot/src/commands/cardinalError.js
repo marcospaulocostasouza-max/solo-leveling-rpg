@@ -22,7 +22,13 @@ const FRIENDLY = Object.freeze({
 function cardinalError(error, module = "CARDINAL") {
   const code = error?.code || "CARDINAL_ADMIN_ERROR";
   const friendly = FRIENDLY[code] || { title: "ORDEM NÃO CONCLUÍDA", status: "REVISAR PEDIDO", summary: "O Cardinal não conseguiu concluir esta ordem com segurança.", next: "Confira a ordem, o alvo e as permissões. Se persistir, consulte o status do Cardinal." };
-  return templates.error({ module, title: friendly.title, status: friendly.status, summary: friendly.summary, sections: [{ title: "Próximo passo", fields: [], lines: [friendly.next] }], meta: { code: code.replace(/^CARDINAL_/, "") } });
+  const details = error?.details;
+  const problems = Array.isArray(details?.errors) ? details.errors : Array.isArray(details?.issues) ? details.issues : [];
+  const lines = [friendly.next];
+  if (error?.message && error.message !== friendly.summary) lines.unshift(`Motivo: ${error.message}`);
+  for (const problem of problems.slice(0, 8)) lines.push(`• ${problem.field ? `${problem.field}: ` : ""}${problem.message || problem}`);
+  if (details?.matches?.length) lines.push(`Correspondências: ${details.matches.map(item => item.nome || item.name || item.id).join(", ")}.`);
+  return templates.error({ module, title: friendly.title, status: friendly.status, summary: friendly.summary, sections: [{ title: problems.length ? "Problemas encontrados" : "Próximo passo", fields: [], lines }], meta: { code: code.replace(/^CARDINAL_/, "") } });
 }
 
 module.exports = { cardinalError, FRIENDLY };

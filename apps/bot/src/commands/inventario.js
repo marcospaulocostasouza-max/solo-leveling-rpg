@@ -1,6 +1,7 @@
 const MessageService = require("../core/messageService");
 
 const db = require("../core/database");
+const InventorySystem = require("../systems/inventorySystem");
 
 module.exports = async (msg) => {
     try {
@@ -25,23 +26,7 @@ _Use *!ficha* para criar seu personagem._
         }
         
         // Buscar itens do inventário
-        const itens = await new Promise((resolve, reject) => {
-            db.all(`
-                SELECT 
-                    i.nome,
-                    i.categoria,
-                    i.tier,
-                    ij.quantidade,
-                    ij.equipado
-                FROM inventario_jogador ij
-                JOIN itens i ON ij.item_id = i.id
-                WHERE ij.jogador_id = ?
-                ORDER BY i.categoria, i.tier
-            `, [jogador.id], (err, rows) => {
-                if (err) reject(err);
-                else resolve(rows || []);
-            });
-        });
+        const itens = await InventorySystem.listarInventario(jogador.id);
         
         // Buscar contadores
         const equipados = itens.filter(i => i.equipado === 1).length;
@@ -73,14 +58,15 @@ _Use *!ficha* para criar seu personagem._
                 mensagem += `*─── ${categoria} ───*\n`;
                 itensCategoria.forEach(item => {
                     const equipado = item.equipado === 1 ? ' ✓' : '';
-                    mensagem += `> *${item.nome}* (${item.tier || 'Comum'}) x${item.quantidade}${equipado}\n`;
+                    const identificador = Number(item.quantidade) === 1 && !InventorySystem.isConsumivel(item) ? ` #${item.inventario_id}` : '';
+                    mensagem += `> *${item.nome}*${identificador} (${item.tier || 'Comum'}) x${item.quantidade}${equipado}\n`;
                 });
                 mensagem += `\n`;
             });
         }
         
         mensagem += `──────────────────────────\n`;
-        mensagem += `_Comandos: !equipar <item> | !usar <item>_\n`;
+        mensagem += `_Comandos: !equipar <item> #ID | !desequipar #ID | !usar <item>_\n`;
         mensagem += `_Use !abrir loja para comprar mais itens._`;
         
         await MessageService.send({ message: msg, text: mensagem });

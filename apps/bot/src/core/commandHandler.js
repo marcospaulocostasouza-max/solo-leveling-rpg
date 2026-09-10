@@ -419,6 +419,7 @@ async function executarComando(msg, comando, comandosRegistrados) {
         { prefixo: "!conjunto", arquivo: "conjunto.js" },
         { prefixo: "!anexar imagem banner", arquivo: "gachaAdm.js" },
         { prefixo: "!criar banner", arquivo: "gachaAdm.js" },
+        { prefixo: "!excluir banner", arquivo: "gachaAdm.js" },
         { prefixo: "!convergir", arquivo: "gacha.js" },
         { prefixo: "!banners", arquivo: "gacha.js" },
         { prefixo: "!banner", arquivo: "gacha.js" },

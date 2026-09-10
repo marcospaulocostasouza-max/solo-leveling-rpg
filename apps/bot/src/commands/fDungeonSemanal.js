@@ -1,4 +1,11 @@
-const M=require("../core/messageService"),a=require("../core/adminCore");module.exports=async msg=>{if(!await a.isAdmin(msg.author||msg.from))return M.send({message:msg,text:a.msgAcessoNegado()});return M.send({message:msg,text:`_*「 FICHA DE DUNGEON SEMANAL 」*_
+"use strict";
+
+const MessageService = require("../core/messageService");
+const adminCore = require("../core/adminCore");
+
+module.exports = async msg => {
+    if (!await adminCore.isAdmin(msg.author || msg.from)) return MessageService.send({ message: msg, text: adminCore.msgAcessoNegado() });
+    return MessageService.send({ message: msg, text: `_*「 FICHA DE DUNGEON SEMANAL 」*_
 _Copie, preencha e envie mantendo !Liberar Dungeon na primeira linha._
 
 !Liberar Dungeon
@@ -13,4 +20,6 @@ XP: [Prêmio]
 WON: [Prêmio]
 ITENS: [Prêmios em itens ou Nenhum]
 REGRAS: [Regras específicas]
-DURAÇÃO: [Período disponível]`})};
+
+_A duração é automática: 7 dias a partir da publicação._` });
+};

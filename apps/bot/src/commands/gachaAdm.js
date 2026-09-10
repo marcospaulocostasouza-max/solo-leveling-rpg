@@ -17,19 +17,22 @@ _Preencha todos os campos mantendo o comando na primeira linha._
 
 *─── Conteúdo da Convergência ───*
 > *CONJUNTOS:*
-> *TÍTULO:*
-> *PASSIVAS:*
+> *TÍTULO:* (ou Não tem)
+> *PASSIVAS:* (ou Não tem)
 > *ITEM SECRETO:*
 
 *─── Período de Atividade ───*
-> *DATA INICIAL:* DD/MM/AAAA HH:mm
-> *DATA FINAL:* DD/MM/AAAA HH:mm
+> *INÍCIO:* automático no momento da criação
+> *TÉRMINO:* automático após 30 dias
 
 ──────────────────────────
 _Separe vários Conjuntos ou Passivas por vírgula. Todo conteúdo precisa existir no catálogo raro._`;
 
 function normalizar(valor) { return String(valor || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/^\s*\[personalizado\]\s*/i, "").replace(/[^a-z0-9]+/g, " ").trim(); }
 function lista(valor) { return String(valor || "").split(/[,;]+/).map(item => item.trim()).filter(Boolean); }
+function semRecompensa(valor) {
+    return ["nao tem", "nao possui", "nenhum", "nenhuma", "sem titulo", "sem passiva", "nao"].includes(normalizar(valor));
+}
 function dataDaFicha(valor, campo) {
     const texto = String(valor || "").trim();
     const br = texto.match(/^(\d{2})\/(\d{2})\/(\d{4})(?:\s+(\d{2}):(\d{2}))?$/);
@@ -55,12 +58,19 @@ function lerFichaBanner(texto) {
 
 async function prepararFichaBanner(texto) {
     const ficha = lerFichaBanner(texto); const erros = [];
-    for (const [campo, valor] of [["Nome do banner", ficha.nome], ["Descrição breve", ficha.descricao], ["Título", ficha.titulo], ["Item secreto", ficha.itemSecreto]]) if (!String(valor || "").trim()) erros.push(`${campo} não foi preenchido.`);
+    if (semRecompensa(ficha.titulo)) ficha.titulo = "";
+    if (ficha.passivas.length === 1 && semRecompensa(ficha.passivas[0])) ficha.passivas = [];
+    for (const [campo, valor] of [["Nome do banner", ficha.nome], ["Descrição breve", ficha.descricao], ["Item secreto", ficha.itemSecreto]]) if (!String(valor || "").trim()) erros.push(`${campo} não foi preenchido.`);
     if (!ficha.conjuntos.length) erros.push("Informe ao menos um conjunto.");
-    if (!ficha.passivas.length) erros.push("Informe ao menos uma passiva.");
     let inicioEm; let fimEm;
-    try { inicioEm = dataDaFicha(ficha.inicioEm, "Data inicial"); } catch (e) { erros.push(e.message); }
-    try { fimEm = dataDaFicha(ficha.fimEm, "Data final"); } catch (e) { erros.push(e.message); }
+    if (!String(ficha.inicioEm || "").trim() && !String(ficha.fimEm || "").trim()) {
+        const agora = new Date();
+        inicioEm = agora.toISOString();
+        fimEm = new Date(agora.getTime() + 30 * 24 * 60 * 60 * 1000).toISOString();
+    } else {
+        try { inicioEm = dataDaFicha(ficha.inicioEm, "Data inicial"); } catch (e) { erros.push(e.message); }
+        try { fimEm = dataDaFicha(ficha.fimEm, "Data final"); } catch (e) { erros.push(e.message); }
+    }
     if (inicioEm && fimEm && new Date(inicioEm) >= new Date(fimEm)) erros.push("A data final deve ser posterior à data inicial.");
     await Promise.all([Banners.garantirEstrutura(), database.ensureEquipmentSetSchema()]);
     const [conjuntosBanco, itensBanco, bannersBanco] = await Promise.all([database.all("SELECT id,nome,rank FROM equipment_sets ORDER BY nome"), database.all("SELECT * FROM itens ORDER BY nome"), Banners.listarBanners()]);
@@ -90,7 +100,7 @@ async function criarPelaFicha(actor, texto) {
     const view = await Admin.createBanner(actor, { nome: dados.ficha.nome, descricao: dados.ficha.descricao, permanente: false, inicioEm: dados.ficha.inicioEm, fimEm: dados.ficha.fimEm });
     const candidatas = [];
     for (const item of dados.itensConjuntos) candidatas.push(await Admin.addReward(actor, view.banner.id, { tipo: "ITEM", referenciaId: item.id, quantidade: 1, peso: 10 }));
-    candidatas.push(await Admin.addReward(actor, view.banner.id, { tipo: "TITULO", referenciaId: dados.titulo.id, quantidade: 1, peso: 5, unica: true, duplicateFragmentValue: 10 }));
+    if (dados.titulo) candidatas.push(await Admin.addReward(actor, view.banner.id, { tipo: "TITULO", referenciaId: dados.titulo.id, quantidade: 1, peso: 5, unica: true, duplicateFragmentValue: 10 }));
     for (const passiva of dados.passivas) candidatas.push(await Admin.addReward(actor, view.banner.id, { tipo: "PASSIVA", referenciaId: passiva.id, quantidade: 1, peso: 5, unica: true, duplicateFragmentValue: 10 }));
     const secreto = await Admin.addReward(actor, view.banner.id, { tipo: "ITEM_ESPECIAL_BANNER", referenciaId: dados.itemSecreto.id, quantidade: 1, peso: 1, unica: true, duplicateFragmentValue: 25, exclusivoBanner: true });
     if (candidatas.length >= 4) await Admin.setFeaturedRewards(actor, view.banner.id, candidatas.slice(0, 4).map(item => item.id));
@@ -109,6 +119,8 @@ const ajuda = `*GACHA ADM — NÚCLEO 6*
 !gachaadm banner ativar <id>
 !gachaadm banner desativar <id>
 !gachaadm banner arquivar <id>
+!gachaadm banner excluir <id>
+!excluir banner <id ou nome>
 
 !gachaadm pool adicionar <banner> <tipo> <referência|-> <quantidade> <peso> [unica] [fragmentos]
 !gachaadm pool remover <banner> <recompensa>
@@ -135,6 +147,17 @@ async function executar(msg) {
     try {
         await Admin.autorizar(actor);
         const original = String(msg.body || "").trim();
+        if (/^!excluir banner\b/i.test(original)) {
+            const alvo = original.replace(/^!excluir banner\b/i, "").trim();
+            if (!alvo) throw new Error("Informe o ID ou o nome exato do Banner a excluir.");
+            const banners = await Admin.listBannersAdmin(actor);
+            const banner = /^\d+$/.test(alvo)
+                ? banners.find(item => Number(item.id) === Number(alvo))
+                : banners.find(item => normalizar(item.nome) === normalizar(alvo));
+            if (!banner) throw new Error(`Banner não encontrado: ${alvo}.`);
+            await Admin.deleteUnusedBanner(actor, banner.id);
+            return MessageService.send({ message: msg, text: `_*「 BANNER EXCLUÍDO 」*_\n\n_${banner.nome}_ foi removido da disponibilidade e seu pool foi apagado.` });
+        }
         if (/^!criar banner\s*$/i.test(original)) return MessageService.send({ message: msg, text: `_*「 CRIAÇÃO GUIADA DE BANNER 」*_\n\n${await Wizard.start(actor, "BANNER")}\n\n_Responda apenas à pergunta. Use !cancelar criação para interromper._` });
         if (/^!criar banner\b/i.test(original)) {
             const banner = await criarPelaFicha(actor, original);
@@ -170,6 +193,7 @@ async function executar(msg) {
         else if (grupo === "banner" && acao === "ativar") resposta = `Banner #${(await Admin.activateBanner(actor, partes[2])).id} ativado.`;
         else if (grupo === "banner" && acao === "desativar") resposta = `Banner #${(await Admin.deactivateBanner(actor, partes[2])).id} desativado sem apagar pity ou histórico.`;
         else if (grupo === "banner" && acao === "arquivar") resposta = `Banner #${(await Admin.archiveBanner(actor, partes[2])).id} arquivado.`;
+        else if (grupo === "banner" && ["excluir", "deletar", "apagar"].includes(acao)) { await Admin.deleteUnusedBanner(actor, partes[2]); resposta = `Banner #${partes[2]} excluído da disponibilidade e com pool removido.`; }
         else if (grupo === "banner" && acao === "criar") {
             const campos = entrada.replace(/^banner\s+criar\s+/i, "").split("|").map(item => item.trim());
             const permanente = campos[2]?.toLowerCase() === "permanente";

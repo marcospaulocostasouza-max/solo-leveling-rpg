@@ -1,1 +1,22 @@
-const M=require("../core/messageService"),a=require("../core/adminCore"),S=require("../systems/weeklyDungeonSystem"),parse=require("../utils/parseFichaCampos");module.exports=async msg=>{try{if(!await a.isAdmin(msg.author||msg.from))return M.send({message:msg,text:a.msgAcessoNegado()});const d=parse(msg.body);if(!d.nome||!d.tema||!d.rank||!d.descricao||!d.objetivo)return M.send({message:msg,text:"[!] Ficha incompleta. Use !FDungeon."});await S.ensure();await S.db.transaction(async q=>{await q.run("UPDATE dungeons_semanais SET status='encerrada' WHERE status='liberada'");await q.run("INSERT INTO dungeons_semanais(dados,status,criado_por,data_criacao,data_liberacao) VALUES(?,'liberada',?,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP)",[JSON.stringify(d),msg.author||msg.from])});return M.send({message:msg,text:`[+] Dungeon semanal *${d.nome}* liberada para consulta.`})}catch(e){console.error("[DUNGEON-WEEKLY]",e.message);return M.send({message:msg,text:"[!] Não foi possível liberar a Dungeon semanal."})}};
+"use strict";
+
+const MessageService = require("../core/messageService");
+const adminCore = require("../core/adminCore");
+const WeeklyDungeon = require("../systems/weeklyDungeonSystem");
+const parseFichaCampos = require("../utils/parseFichaCampos");
+
+module.exports = async msg => {
+    try {
+        const actor = msg.author || msg.from;
+        if (!await adminCore.isAdmin(actor)) return MessageService.send({ message: msg, text: adminCore.msgAcessoNegado() });
+        const dungeon = parseFichaCampos(msg.body);
+        if (!dungeon.nome || !dungeon.tema || !dungeon.rank || !dungeon.descricao || !dungeon.objetivo) {
+            return MessageService.send({ message: msg, text: "[!] Ficha incompleta. Use !FDungeon." });
+        }
+        await WeeklyDungeon.liberar(actor, dungeon);
+        return MessageService.send({ message: msg, text: `[+] Dungeon semanal *${dungeon.nome}* liberada por 7 dias.` });
+    } catch (error) {
+        console.error("[DUNGEON-WEEKLY]", error.message);
+        return MessageService.send({ message: msg, text: "[!] Não foi possível liberar a Dungeon semanal." });
+    }
+};

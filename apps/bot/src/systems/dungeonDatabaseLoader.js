@@ -70,7 +70,9 @@ class DungeonDatabaseLoader {
      */
     static getDungeonPorId(id) {
         const dungeons = this.carregarDungeons();
-        return dungeons.find(d => d.id === id) || null;
+        const idNumerico = Number(id);
+        if (!Number.isSafeInteger(idNumerico)) return null;
+        return dungeons.find(d => Number(d.id) === idNumerico) || null;
     }
 
     /**

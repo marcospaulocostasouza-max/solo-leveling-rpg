@@ -20,6 +20,7 @@ const { obterClasseCanonica, listarClasses } = require("../utils/normalizarClass
 const { normalizarDadosFicha } = require("../utils/normalizarDadosFicha");
 const { obterEstiloCanonico } = require("../utils/normalizarEstiloLuta");
 const elementos = require("../elementos/listaElementos");
+const { resolverElementoMagicoBase } = require("../utils/elementoMagicoBase");
 const normalizarTexto = valor => String(valor || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim().toLowerCase();
 
 // =====================================
@@ -282,7 +283,14 @@ module.exports = async (msg) => {
             if (afinidadeFicha) {
                 const elementoCanonico = elementos.find(elemento => normalizarTexto(elemento.nome) === normalizarTexto(afinidadeFicha));
                 if (!elementoCanonico) errosValidacao.push(`• *Elemento/Afinidade*: "${afinidadeFicha}" não existe no sistema.`);
-                else dados.elemento = elementoCanonico.nome;
+                else {
+                    dados.elemento = elementoCanonico.nome;
+                    const base = resolverElementoMagicoBase(elementoCanonico.nome);
+                    if (base.corrigido && String(dados.classe || "").toLowerCase().includes("mago elemental")) {
+                        dados.elemento = base.base;
+                        avisos.push(`• *Elemento/Afinidade*: ${elementoCanonico.nome} não possui técnicas iniciais próprias. O Sistema registrou *${base.base}* como elemento-base deste variante.`);
+                    }
+                }
             }
             
             // Mago Elemental permanece como classe base. A afinidade e registrada
@@ -306,6 +314,13 @@ module.exports = async (msg) => {
                         if (afinidadeFicha.toLowerCase() !== afinidadeSorteada.toLowerCase()) {
                             errosValidacao.push(`• *Elemento/Afinidade*: conflito! Você colocou "${afinidadeFicha}" na ficha, mas sua afinidade sorteada é "${afinidadeSorteada}". Use a afinidade correta.`);
                         }
+                    }
+                    await new Promise(resolve => db.run("CREATE TABLE IF NOT EXISTS afinidades_pre_ficha (numero TEXT PRIMARY KEY, resultados TEXT NOT NULL DEFAULT '[]', atualizado_em TEXT DEFAULT CURRENT_TIMESTAMP)", () => resolve()));
+                    const preFicha = await new Promise(resolve => db.get("SELECT resultados FROM afinidades_pre_ficha WHERE numero = ?", [numero], (err, row) => resolve(err ? null : row)));
+                    let opcoesSorteadas = [];
+                    try { opcoesSorteadas = JSON.parse(preFicha?.resultados || "[]"); } catch { opcoesSorteadas = []; }
+                    if (opcoesSorteadas.length && !opcoesSorteadas.some(opcao => normalizarTexto(opcao) === normalizarTexto(afinidadeFicha))) {
+                        errosValidacao.push(`• *Elemento/Afinidade*: escolha um dos seus sorteios: ${opcoesSorteadas.join(" ou ")}.`);
                     }
                 } catch (e) {
                     console.log("[FICHA] Erro ao verificar afinidade:", e);

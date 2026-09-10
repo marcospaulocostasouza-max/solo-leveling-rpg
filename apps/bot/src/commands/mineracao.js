@@ -1,51 +1,26 @@
 const MessageService = require("../core/messageService");
 
-/**
- * COMANDO: !mineracao
- * 
- * Exibe o sistema de mineração para obtenção de cristais em dungeons.
- */
-
 module.exports = async (msg) => {
     const mensagem = `
-*─ Mineração ⛏️ ─*
+*═══ SISTEMA // MINERAÇÃO ═══*
+_Uma rota alternativa dentro das Dungeons._
 
-Este sistema corresponde aos jogadores que irão desempenhar a função de minerador dentro de dungeons. Os mineradores ganham apenas 20% de XP envolvido na conclusão da Dungeon, mas podem obter cristais valiosos.
+*─── Minerador ───*
+_O Minerador é um participante especial. Ele não ocupa uma das cinco vagas de combate, não escolhe prêmio extra e recebe 20% da XP geral da Dungeon. Em troca, pode encontrar cristais durante a conclusão._
 
-══════════════════════════
+*─── Entrada na Dungeon ───*
+_1. Tenha uma Picareta do Minerador no inventário._
+_2. O dono da chave deve informar seu nome no campo Minerador da ficha de Dungeon._
+_3. Ao concluir a Dungeon, a picareta é consumida e o sorteio é feito automaticamente._
 
-*SISTEMA DE MINERAÇÃO*
+*─── Sorteio de Cristais ───*
+_• Cristal Grande — 10% de chance • 100.000 Won por unidade._
+_• Cristal Médio — 20% de chance • 60.000 Won por unidade._
+_• Cristal Pequeno — 30% de chance • 20.000 Won por unidade._
+_• Nenhum cristal — 40% de chance._
 
-*COMO FUNCIONA?*
-O minerador é um participante especial que NÃO conta no limite de 5 participantes da dungeon. Ele coleta cristais e materiais que seriam perdidos após o uso da dungeon.
-
-*COMO PARTICIPAR COMO MINERADOR?*
-1. Compre uma *Picareta* na loja (categoria "Itens de Apoio" - 20.000 Wons)
-2. Adicione-se como minerador na ficha de dungeon
-3. Após a conclusão, o sistema realizará o sorteio automático dos cristais
-
-*PREMIAÇÃO DO MINERADOR*
-Cristais Grandes: 100.000 Wons (10% chance)
-Cristais Médios: 60.000 Wons (20% chance)
-Cristais Pequenos: 20.000 Wons (30% chance)
-Nada: 40% chance
-
-*SISTEMA DE SORTEIO*
-Após a conclusão da dungeon, o sistema realiza automaticamente:
-1. Define o tipo de cristal (baseado nas porcentagens)
-2. Sorteia a quantidade (1-5 cristais):
-   - 1 Cristal: 50% chance
-   - 2 Cristais: 25% chance
-   - 3 Cristais: 15% chance
-   - 4 Cristais: 5% chance
-   - 5 Cristais: 5% chance
-
-*REGRAS*
-- O minerador NÃO escolhe prêmios (apenas coleta cristais)
-- A picareta quebra após o uso (consumível)
-- Não há restrição de rank para mineradores
-- O minerador não conta no limite de 5 participantes
-    `;
-    
+_A quantidade sorteada varia de 1 a 5. O resultado e a entrega ficam registrados para o Minerador._
+*Sistema RPG • Mineração em Dungeons*
+`;
     await MessageService.send({ message: msg, text: mensagem });
 };

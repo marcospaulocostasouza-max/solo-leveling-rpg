@@ -1,6 +1,6 @@
 /** Persistent memory + bounded temporary conversation context. */
 const MemoryManager = require('../npc/memoryManager');
-const { textoObservavelParaAnalise } = require('../npc/sceneParser');
+const { analisarCena, textoObservavelParaAnalise } = require('../npc/sceneParser');
 const recent = new Map();
 const MAX_RECENT = 6;
 function key(npcId, playerId) { return `${npcId}:${playerId}`; }
@@ -27,4 +27,25 @@ async function captureExplicit(npcId, playerId, message) {
   const type = /segredo|nunca conte/i.test(text) ? 'segredo' : /prometo|promessa/i.test(text) ? 'promessa' : 'fato';
   return MemoryManager.salvarMemoria(npcId, playerId, text.slice(0, 900), type, type === 'segredo' || type === 'promessa' ? 9 : 7);
 }
-module.exports = { addRecent, getRecent, retrieve, captureExplicit };
+
+// Registra o que o NPC efetivamente percebeu ao fim da cena. Pensamentos
+// privados nunca entram nesta memoria nem influenciam encontros futuros.
+async function captureScene(npcId, playerId, historico) {
+  const eventos = (historico || [])
+    .filter(item => item && (item.papel === 'jogador' || item.role === 'player'))
+    .flatMap(item => {
+      const cena = analisarCena(item.conteudo || item.content);
+      const partes = [];
+      if (cena.acoes.length) partes.push(`acoes: ${cena.acoes.join(' | ')}`);
+      if (cena.falas.length) partes.push(`falas: ${cena.falas.join(' | ')}`);
+      return partes;
+    });
+
+  if (!eventos.length) return null;
+  const memoria = `Cena com o jogador: ${eventos.join(' — ')}`.slice(0, 900);
+  const existentes = await MemoryManager.buscarMemorias(npcId, playerId);
+  if (existentes.some(item => item.memoria === memoria)) return null;
+  return MemoryManager.salvarMemoria(npcId, playerId, memoria, 'interacao', 6);
+}
+
+module.exports = { addRecent, getRecent, retrieve, captureExplicit, captureScene };

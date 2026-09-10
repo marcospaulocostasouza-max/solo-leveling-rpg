@@ -264,6 +264,7 @@ module.exports = async (msg) => {
                 UPDATE jogadores SET
                     nome = ?, idade = ?, sexo = ?, nacionalidade = ?, altura = ?, peso = ?,
                     personalidade = ?, aparencia = ?, historia = ?, classe = ?,
+                    afinidade_elemental = COALESCE(NULLIF(?, ''), afinidade_elemental),
                     forca_base = ?, resistencia_base = ?, velocidade_base = ?, sentidos_base = ?,
                     inteligencia_base = ?, poder_magico_base = ?,
                     forca_buff = ?, resistencia_buff = ?, velocidade_buff = ?, sentidos_buff = ?,
@@ -287,6 +288,7 @@ module.exports = async (msg) => {
                 dados.aparencia || "?",
                 dados.historia || "Sem história",
                 dados.classe || "Sem classe",
+                dados.elemento || "",
                 dados.forca || 0,
                 dados.resistencia || 0,
                 dados.velocidade || 0,
@@ -338,7 +340,7 @@ module.exports = async (msg) => {
             db.run(`
                 INSERT INTO jogadores (
                     numero, nome, idade, sexo, nacionalidade, altura, peso,
-                    personalidade, aparencia, historia, classe,
+                    personalidade, aparencia, historia, classe, afinidade_elemental,
                     estilo_luta, arma_inicial,
                     forca_base, resistencia_base, velocidade_base, sentidos_base, 
                     inteligencia_base, poder_magico_base,
@@ -348,7 +350,7 @@ module.exports = async (msg) => {
                     inteligencia_total, poder_magico_total,
                     vida_maxima, vida_atual, mana_maxima, mana_atual,
                     habilidade_unica, ficha_aprovada, pontos_atributo, rank, nivel, experiencia, won
-                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1, 0, 'E', 1, 0, 10000) RETURNING id
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1, 0, 'E', 1, 0, 10000) RETURNING id
             `, [
                 ficha.numero,
                 nomeReal,
@@ -361,6 +363,7 @@ module.exports = async (msg) => {
                 dados.aparencia || "?",
                 dados.historia || "Sem história",
                 dados.classe || "Sem classe",
+                dados.elemento || "Nenhuma",
                 dados.estilo_luta || "Nenhum",
                 dados.arma || "Nenhuma",
                 dados.forca || 0,

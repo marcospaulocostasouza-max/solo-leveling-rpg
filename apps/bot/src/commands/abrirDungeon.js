@@ -46,7 +46,7 @@ _Use *!Desejar* para tentar obter uma chave semanal._
 
         // Verificar se já possui uma dungeon vinculada à chave
         if (chave.dungeon_id) {
-            const dungeon = DungeonDatabaseLoader.getDungeonPorId(chave.dungeon_id);
+            const dungeon = DungeonDatabaseLoader.getDungeonPorId(Number(chave.dungeon_id));
             if (dungeon) {
                 return MessageService.send({ message: msg, text: `
 *═══ ABRIR DUNGEON ═══*

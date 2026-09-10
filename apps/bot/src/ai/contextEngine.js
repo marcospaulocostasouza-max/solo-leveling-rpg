@@ -5,7 +5,19 @@ const JogadorCore = require('../core/jogadorCore');
 const EmotionManager = require('../npc/emotionManager');
 const MoodManager = require('../npc/moodManager');
 const RelationshipManager = require('../npc/relationshipManager');
+const ConversationManager = require('../npc/conversationManager');
 const { textoVisivelParaContexto } = require('../npc/sceneParser');
+
+function historicoCanonico(npcId, playerId) {
+  const conversa = ConversationManager.obterHistorico(playerId, npcId);
+  if (conversa.length) {
+    return conversa.map(item => ({
+      role: item.papel === 'jogador' ? 'player' : 'npc',
+      content: item.conteudo
+    }));
+  }
+  return Memory.getRecent(npcId, playerId);
+}
 
 async function build({ npcId, playerId, message }) {
   const started = Date.now();
@@ -19,7 +31,7 @@ async function build({ npcId, playerId, message }) {
   ]);
   const retrieved = retrieveNPC(loaded.profile, mensagemVisivel, 5);
   return {
-    npc: loaded.profile, player, message, messageVisible: mensagemVisivel, memories, retrieved, recent: Memory.getRecent(id, playerId),
+    npc: loaded.profile, player, message, messageVisible: mensagemVisivel, memories, retrieved, recent: historicoCanonico(id, playerId),
     state: { emotion: emotion || { emocao: 'calma', intensidade: 50 }, mood: mood || { mood: 'sereno', intensidade: 50 } },
     relationship: relationship || { vinculo: 0, hostilidade: 0 },
     metrics: { npcCache: loaded.cacheHit ? 'hit' : 'miss', contextMs: Date.now() - started, sourceFiles: loaded.profile.files.map(file => file.replace(process.cwd() + require('path').sep, '')) }

@@ -410,6 +410,8 @@ class DungeonInstanciadaSystem {
      * Vincula uma dungeon da database à chave
      */
     static async vincularDungeon(chaveId, dungeonId) {
+        const idDungeon = Number(dungeonId);
+        if (!Number.isSafeInteger(idDungeon) || idDungeon <= 0) return false;
         try {
             await this.garantirSchemaChaveDungeon();
         } catch (erro) {
@@ -419,14 +421,16 @@ class DungeonInstanciadaSystem {
         return new Promise((resolve) => {
             db.run(
                 "UPDATE chaves_dungeon SET dungeon_id = ? WHERE id = ? AND ativa = 1 AND (dungeon_id IS NULL OR dungeon_id = 0)",
-                [dungeonId, chaveId],
+                [idDungeon, chaveId],
                 function(err) {
                     if (err) {
                         console.error("[DUNGEON] Erro ao vincular Dungeon à chave:", err.message);
                         resolve(false);
                         return;
                     }
-                    resolve(Number(this.changes) === 1);
+                    db.get("SELECT dungeon_id FROM chaves_dungeon WHERE id = ? AND ativa = 1", [chaveId], (readErr, chave) => {
+                        resolve(!readErr && Number(chave?.dungeon_id) === idDungeon);
+                    });
                 }
             );
         });
@@ -607,6 +611,32 @@ _Após concluir a Dungeon, use *!concluir Dungeon* para receber as recompensas._
      * Reconhece a ficha de dungeon enviada pelo jogador
      * Extrai participantes e valida
      */
+    static normalizarNomeParticipante(nome) {
+        return String(nome || "")
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "")
+            .replace(/[^\p{L}\p{N}]+/gu, " ")
+            .replace(/\s+/g, " ")
+            .trim()
+            .toLowerCase();
+    }
+
+    // Compara o nome inteiro, mas desconsidera apenas variacoes de acento,
+    // pontuacao e espacos. Se houver colisao, nunca escolhe um jogador ao acaso.
+    static async buscarParticipantePorNome(nome) {
+        const procurado = this.normalizarNomeParticipante(nome);
+        if (!procurado) return { jogador: null, ambiguo: false };
+
+        const exato = await JogadorCore.buscarPorNome(String(nome || "").replace(/\s+/g, " ").trim());
+        if (exato) return { jogador: exato, ambiguo: false };
+
+        const candidatos = await new Promise(resolve => {
+            db.all("SELECT * FROM jogadores WHERE nome IS NOT NULL AND TRIM(nome) <> ''", [], (err, rows) => resolve(err ? [] : rows || []));
+        });
+        const encontrados = candidatos.filter(item => this.normalizarNomeParticipante(item.nome) === procurado);
+        return { jogador: encontrados.length === 1 ? encontrados[0] : null, ambiguo: encontrados.length > 1 };
+    }
+
     static async reconhecerFichaDungeon(texto, jogador) {
         const linhas = texto.split("\n");
         const participantes = [];
@@ -629,7 +659,7 @@ _Após concluir a Dungeon, use *!concluir Dungeon* para receber as recompensas._
             // Extrair participantes (linhas numeradas)
             const matchParticipante = linha.match(/^\d+\.\s+(.+)$/);
             if (matchParticipante) {
-                const nome = matchParticipante[1].replace(/[*_]/g, "").trim();
+                const nome = matchParticipante[1].replace(/[*_~`]/g, "").replace(/^\s*[✅☑️•-]+\s*/, "").trim();
                 if (nome && nome.length > 1) {
                     participantes.push(nome);
                 }
@@ -637,7 +667,7 @@ _Após concluir a Dungeon, use *!concluir Dungeon* para receber as recompensas._
         });
 
         // Verificar se o dono está na lista
-        const donoNaLista = participantes.some(p => p.toLowerCase() === jogador.nome.toLowerCase());
+        const donoNaLista = participantes.some(p => this.normalizarNomeParticipante(p) === this.normalizarNomeParticipante(jogador.nome));
         if (!donoNaLista) {
             participantes.unshift(jogador.nome);
         }
@@ -663,8 +693,11 @@ _Após concluir a Dungeon, use *!concluir Dungeon* para receber as recompensas._
         if (nomes.length > 5) erros.push("O limite é de 5 participantes por Dungeon.");
 
         for (const nome of nomes) {
-            const participante = await JogadorCore.buscarPorNome(nome);
+            const busca = await this.buscarParticipantePorNome(nome);
+            const participante = busca.jogador;
             if (!participante) {
+                if (busca.ambiguo) erros.push(`Nome ambíguo: ${nome}. Informe a pontuação completa da ficha.`);
+                else
                 erros.push(`Jogador não encontrado: ${nome}. Use o nome exato da ficha.`);
                 continue;
             }
@@ -715,7 +748,7 @@ _Após concluir a Dungeon, use *!concluir Dungeon* para receber as recompensas._
         }
 
         // Verificar se o dono está participando
-        const donoNaLista = participantes.some(p => p.toLowerCase() === jogador.nome.toLowerCase());
+        const donoNaLista = participantes.some(p => this.normalizarNomeParticipante(p) === this.normalizarNomeParticipante(jogador.nome));
         if (!donoNaLista) {
             return { erro: "O dono da chave deve estar na lista de participantes." };
         }
@@ -728,10 +761,13 @@ _Após concluir a Dungeon, use *!concluir Dungeon* para receber as recompensas._
         const participantesIds = new Set();
         for (const nomeParticipante of participantes) {
             // Busca exata: não permite que texto parcial identifique outro jogador.
-            const participante = await JogadorCore.buscarPorNome(nomeParticipante);
+            const busca = await this.buscarParticipantePorNome(nomeParticipante);
+            const participante = busca.jogador;
             
             if (!participante) {
-                validacoes.push(`❌ *${nomeParticipante}* - Jogador não encontrado no sistema.`);
+                validacoes.push(busca.ambiguo
+                    ? `❌ *${nomeParticipante}* - Nome ambíguo. Use a pontuação completa da ficha.`
+                    : `❌ *${nomeParticipante}* - Jogador não encontrado no sistema.`);
                 continue;
             }
 

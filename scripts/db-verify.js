@@ -1,5 +1,33 @@
 "use strict";
-const path=require("path"); require("dotenv").config({ path: path.resolve(__dirname, "../.env") }); const sqlite3 = require("sqlite3").verbose(); const { query, close }=require("../packages/database/postgres");
-const source=new sqlite3.Database(path.join(__dirname,"../apps/bot/src/database/rpg.db"),sqlite3.OPEN_READONLY); const all=(sql)=>new Promise((r,j)=>source.all(sql,[],(e,x)=>e?j(e):r(x)));
-if(!(process.env.DATABASE_URL_SERVERLESS||process.env.DATABASE_URL)) throw new Error("DATABASE_URL ausente; verificacao nao iniciada.");
-(async()=>{const names=await all("SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%' ORDER BY name"); const report=[]; for(const {name} of names){const s=(await all(`SELECT COUNT(*) count FROM "${name}"`))[0].count; const p=await query(`SELECT COUNT(*) count FROM "${name}"`); report.push({table:name,sqlite:s,postgres:Number(p.rows[0].count),status:s===Number(p.rows[0].count)?'OK':'DIVERGENTE'});} console.table(report); source.close(); await close(); if(report.some(r=>r.status!=='OK'))process.exitCode=1;})().catch(async e=>{console.error(e.message);source.close();await close();process.exitCode=1});
+
+// PostgreSQL é o banco canônico. SQLite é arquivo legado: contagens entre os
+// dois não são critério de falha nem indicam que o runtime está dessincronizado.
+const path = require("path");
+require("dotenv").config({ path: path.resolve(__dirname, "../.env") });
+const { provider } = require("../packages/database/config");
+const { query, close } = require("../packages/database/postgres");
+
+const REQUIRED = ["jogadores", "itens", "inventario_jogador", "fichas_dungeon", "chaves_dungeon", "participacao_dungeon", "atividades_registro", "npc_relationships", "gacha_banners", "gacha_banner_rewards"];
+
+async function main() {
+  if (provider !== "postgres") throw new Error("DATABASE_PROVIDER precisa ser postgres para o ambiente canônico.");
+  const tabelas = await query("SELECT table_name FROM information_schema.tables WHERE table_schema = current_schema()");
+  const existentes = new Set(tabelas.rows.map(row => row.table_name));
+  const faltantes = REQUIRED.filter(nome => !existentes.has(nome));
+  const [semNome, dungeonsOrfas, banners] = await Promise.all([
+    query("SELECT COUNT(*)::int AS total FROM jogadores WHERE nome IS NULL OR BTRIM(nome) = ''"),
+    query("SELECT COUNT(*)::int AS total FROM fichas_dungeon f LEFT JOIN jogadores j ON j.id = f.jogador_id WHERE j.id IS NULL"),
+    query("SELECT COUNT(*)::int AS total FROM gacha_banners")
+  ]);
+  console.log(JSON.stringify({
+    provider,
+    tabelasObrigatorias: REQUIRED.length,
+    faltantes,
+    jogadoresSemNome: semNome.rows[0].total,
+    dungeonsOrfas: dungeonsOrfas.rows[0].total,
+    banners: banners.rows[0].total
+  }, null, 2));
+  if (faltantes.length || Number(dungeonsOrfas.rows[0].total) > 0) process.exitCode = 1;
+}
+
+main().catch(error => { console.error(`Verificação falhou: ${error.message}`); process.exitCode = 1; }).finally(close);

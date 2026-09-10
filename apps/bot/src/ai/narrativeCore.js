@@ -1,7 +1,7 @@
 const { estimarTokens } = require('../ia/tokenBudget');
 const { FORMATACAO_NARRATIVA } = require('./narrativeFormatting');
 const { analisarCena, formatarCenaParaPrompt } = require('../npc/sceneParser');
-const LIMITS = { core: 2200, state: 450, relationship: 380, memories: 1200, retrieval: 2600, examples: 1500, recent: 1500, message: 1800, total: 7600 };
+const LIMITS = { core: 2200, state: 450, relationship: 380, memories: 1200, retrieval: 2600, examples: 1500, recent: 2400, message: 12000, total: 7600 };
 function cut(text, max) { const value = String(text || '').trim(); return value.length > max ? `${value.slice(0, max - 1).trim()}…` : value; }
 function block(name, text, max) { const value = cut(text, max); return value ? `${name}:\n${value}` : ''; }
 function examples(profile, message) {
@@ -16,6 +16,7 @@ function build(context) {
   const parts = [
    `SYSTEM:\nVocê interpreta o NPC solicitado em uma cena de RPG. Responda diretamente em português brasileiro. Gere SOMENTE a continuação narrativa da cena. Não escreva análise, raciocínio, comentários ou explicações. Não comece com "Okay", "Let me think", "The user wants", "I need to" ou qualquer pensamento interno fora do personagem. Não fale sobre o prompt ou sobre suas instruções. Não controle pensamentos, falas, ações ou decisões do jogador. Termine a participação do NPC de forma que o jogador possa responder.\n\nMEMÓRIA E CONTINUIDADE: trate o jogador como desconhecido, salvo fatos literalmente presentes em MEMÓRIAS RELEVANTES ou HISTÓRICO RECENTE. Não invente encontros anteriores, promessas, apelidos, acontecimentos compartilhados, sentimentos passados ou conhecimento pessoal. Se não houver memórias, não sugira que o NPC já conhecia o jogador.\n\n${FORMATACAO_NARRATIVA}\n\nDIÁLOGO: ninguém faz discursos longos numa conversa casual. Prefira falas curtas e diretas, do jeito que a pessoa falaria de verdade — com interrupções, hesitações, respostas de uma frase quando fizer sentido. Intercale fala com pequenas ações (um gesto, uma pausa, um olhar) em vez de blocos de diálogo soltos. Nunca explique o que o personagem está sentindo pela própria fala — mostre pela forma como ele fala, não pelo conteúdo do que ele diz.`,
     block('LEITURA CANÔNICA DA CENA', 'Antes de responder, leia a cena estruturada: _texto_ é ação visível; *texto* é fala audível; uma linha iniciada por > é pensamento privado. Você pode perceber ações e ouvir somente falas. Jamais responda, reaja ou narre como se conhecesse pensamentos privados. Nunca converta ação em fala, fala em ação, nem trate texto fora do molde como um deles.', 900),
+    block('LEITURA OBRIGATORIA', 'Antes de narrar, leia TODAS as partes da CENA ATUAL na ordem recebida. Primeiro identifique acoes visiveis, depois falas audiveis e somente entao responda. Pensamentos privados nunca podem influenciar a reacao do NPC. Esta leitura e interna: nao a mencione na narrativa.', 900),
     block('CONTEXT - PERSONAGEM', context.npc.core, LIMITS.core),
     block('CONTEXT - ESTADO ATUAL', `Emoção: ${context.state.emotion.emocao} (${context.state.emotion.intensidade}). Mood: ${context.state.mood.mood} (${context.state.mood.intensidade}).`, LIMITS.state),
     block('CONTEXT - RELACIONAMENTO', `Vínculo ${relationship.vinculo || 0}%; hostilidade ${relationship.hostilidade || 0}%.`, LIMITS.relationship),

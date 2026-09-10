@@ -32,7 +32,8 @@ const SLOT_CAPACIDADE = {
 const SLOT_POR_CHAVE = {
     cabeca: "Cabeça", corpo: "Corpo", acessorios: "Acessórios",
     itemdeapoio: "Item de Apoio", pernas: "Pernas", pes: "Pés",
-    arma1: "Arma 1", arma2: "Arma 2"
+    arma1: "Arma 1", arma1fp: "Arma 1", arma1f: "Arma 1",
+    arma2: "Arma 2", arma2fp: "Arma 2", arma2f: "Arma 2"
 };
 
 function normalizarTexto(valor) {

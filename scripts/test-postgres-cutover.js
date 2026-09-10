@@ -1,5 +1,7 @@
 "use strict";
 
+const path = require("path");
+require("dotenv").config({ path: path.resolve(__dirname, "../.env") });
 const shared = require("../packages/database");
 const bot = require("../apps/bot/src/core/database");
 const botGet = (sql, values = []) => new Promise((resolve, reject) => bot.get(sql, values, (error, row) => error ? reject(error) : resolve(row)));

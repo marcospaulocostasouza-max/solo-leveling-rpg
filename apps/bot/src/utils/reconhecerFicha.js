@@ -14,6 +14,7 @@ const { obterClasseCanonica } = require("./normalizarClasse");
 const { obterEstiloCanonico } = require("./normalizarEstiloLuta");
 const parseFichaCampos = require("./parseFichaCampos");
 const { normalizarNomeJogador } = require("./normalizarDadosFicha");
+const { resolverElementoMagicoBase } = require("./elementoMagicoBase");
 const { normalizarChave, separarLinhaCampo } = parseFichaCampos;
 
 module.exports = async (msg) => {
@@ -327,6 +328,14 @@ Um ADM deve usar *!add item* para ${String(dados.pertencente).normalize("NFD").r
         });
         if (jogadorAfinidade?.afinidade_elemental && jogadorAfinidade.afinidade_elemental !== "Nenhuma") {
             ficha.elemento = jogadorAfinidade.afinidade_elemental;
+        }
+    }
+
+    if (ficha.classe === "Mago Elemental" && ficha.elemento) {
+        const base = resolverElementoMagicoBase(ficha.elemento);
+        if (base.corrigido) {
+            ficha.elemento_original = ficha.elemento;
+            ficha.elemento = base.base;
         }
     }
 

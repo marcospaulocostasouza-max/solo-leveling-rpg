@@ -25,16 +25,24 @@ module.exports = async (msg) => {
         
         // Se jogador não existe, criar registro básico
         if (!jogador) {
-            await new Promise((resolve, reject) => {
-                db.run(
-                    "INSERT OR IGNORE INTO jogadores (numero, afinidade_elemental, afinidade_sorteada) VALUES (?, 'Nenhuma', 0)",
-                    [numeroJogador],
-                    (err) => {
-                        if (err) reject(err);
-                        else resolve();
-                    }
-                );
-            });
+            await new Promise((resolve, reject) => db.run(
+                "INSERT OR IGNORE INTO jogadores (numero, afinidade_elemental, afinidade_sorteada) VALUES (?, 'Nenhuma', 0)",
+                [numeroJogador], erro => erro ? reject(erro) : resolve()
+            ));
+        }
+
+        await new Promise(resolve => db.run("CREATE TABLE IF NOT EXISTS afinidades_pre_ficha (numero TEXT PRIMARY KEY, resultados TEXT NOT NULL DEFAULT '[]', atualizado_em TEXT DEFAULT CURRENT_TIMESTAMP)", () => resolve()));
+        const preFicha = await new Promise(resolve => db.get("SELECT resultados FROM afinidades_pre_ficha WHERE numero = ?", [numeroJogador], (erro, row) => resolve(erro ? null : row)));
+        let opcoesIniciais = [];
+        try { opcoesIniciais = JSON.parse(preFicha?.resultados || "[]"); } catch { opcoesIniciais = []; }
+
+        if (opcoesIniciais.length) {
+            const detalhes = opcoesIniciais.map((nome, indice) => {
+                const elemento = elementos.find(item => item.nome === nome);
+                if (!elemento) return `*Opção ${indice + 1}:* ${nome}`;
+                return `*Opção ${indice + 1}: ${elemento.nome}*\n> Categoria: ${elemento.categoria}\n> Raridade: ${elemento.raridade}\n> Bônus: +${elemento.bonusAfinidade}% Poder Mágico${elemento.vantagens?.length ? `\n> Vantagens contra: ${elemento.vantagens.join(", ")}` : ""}`;
+            }).join(`\n\n${templates.divisor()}\n\n`);
+            return MessageService.send({ message: msg, text: `*═══ SUAS AFINIDADES SORTEADAS ═══*\n${templates.divisor()}\n\n${detalhes}\n\n${templates.divisor()}\n_Escolha uma dessas opções no campo Elemento/Afinidade da ficha. Ela será sua afinidade definitiva após !confirmar ficha._` });
         }
         
         if (!jogador || !jogador.afinidade_elemental || jogador.afinidade_elemental === "Nenhuma") {

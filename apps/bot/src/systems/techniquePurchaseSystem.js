@@ -23,13 +23,14 @@ function normalizarEstilo(v) {
 
 function compativel(jogador, tecnica) {
     const categoria = normalizar(tecnica.categoria);
-    if (categoria === "proficiencia" || categoria === "proficiência") {
-        const estilo = normalizarEstilo(jogador.estilo_luta);
+    if (categoria === "proficiencia" || categoria === "proficiência" || categoria.includes("estilo de luta")) {
         const exigido = normalizarEstilo(tecnica.classe);
         // Estilo vazio não pode comprar técnicas de proficiência
-        if (!estilo || !exigido) return false;
+        if (!exigido) return false;
         // Suporta múltiplas proficiências separadas por vírgula, " e ", "/" etc.
-        const estilosJogador = String(estilo).split(/[,;\/]|\s+e\s+/).map(s => s.trim()).filter(Boolean);
+        const estilosJogador = String(jogador.estilo_luta || "").split(/[,;\/]|\s+e\s+/)
+            .map(item => normalizarEstilo(item)).filter(Boolean);
+        if (!estilosJogador.length) return false;
         for (const e of estilosJogador) {
             if (!e) continue;
             // Correspondência exata após canonicalização

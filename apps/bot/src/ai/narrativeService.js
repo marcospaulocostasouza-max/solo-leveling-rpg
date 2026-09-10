@@ -14,6 +14,7 @@ const MoodEngine = require('../ia/moodEngine');
 const EmotionManager = require('../npc/emotionManager');
 const MoodManager = require('../npc/moodManager');
 const RelationshipManager = require('../npc/relationshipManager');
+const ConversationManager = require('../npc/conversationManager');
 
 // Os engines de estado esperam histórico no formato {papel, conteudo}
 // (jogador/npc). A pipeline nova guarda o histórico como {role, content}
@@ -80,6 +81,9 @@ async function converse(npcId, playerId, message) {
   const response = result.texto || 'Não consegui continuar a cena neste momento.';
   Memory.addRecent(context.npc.id, playerId, 'player', message);
   Memory.addRecent(context.npc.id, playerId, 'npc', response);
+  // Fonte canônica da cena: !fim de interação e a próxima resposta usam este histórico.
+  ConversationManager.adicionarMensagem(playerId, context.npc.id, 'jogador', message);
+  ConversationManager.adicionarMensagem(playerId, context.npc.id, 'npc', response);
   Memory.captureExplicit(context.npc.id, playerId, message).catch(error => console.error('[AI] Memory persistence:', error.message));
   atualizarEstadoBackground(context, playerId, message);
   Metrics.report({ npcId: context.npc.id, context, prompt, retrievalMs, promptMs, pipelineMs, qwenMs: result.metricas?.tempo || 0, totalMs: Date.now() - started, outputTokens: result.metricas?.tokens || 0, thinking: thinkingUsado });

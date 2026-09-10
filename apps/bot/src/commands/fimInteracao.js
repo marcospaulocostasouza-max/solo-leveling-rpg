@@ -30,6 +30,7 @@ const templates = require("../utils/templatesMensagens");
 const npcManager = require("../npc/npcManager");
 const conversationManager = require("../npc/conversationManager");
 const memoryManager = require("../npc/memoryManager");
+const narrativeMemory = require("../ai/memoryEngine");
 const relationshipManager = require("../npc/relationshipManager");
 const relationshipEngine = require("../ia/relationshipEngine");
 const QuestSystem = require("../systems/questSystem");
@@ -41,6 +42,18 @@ function extrairNomeNPC(bodyOriginal) {
     return bodyOriginal
         .replace(/^!fim de intera[çc][aã]o/i, "")
         .trim();
+}
+
+function obterHistoricoDaCena(jogadorId, npcId) {
+    const principal = conversationManager.obterHistorico(jogadorId, npcId);
+    if (principal.length) return principal;
+
+    // Compatibilidade com cenas abertas antes da unificacao: a pipeline nova
+    // gravava no memoryEngine, enquanto este comando lia outro historico.
+    return narrativeMemory.getRecent(npcId, jogadorId).map(item => ({
+        papel: item.role === "player" ? "jogador" : "npc",
+        conteudo: item.content
+    }));
 }
 
 async function buscarJogadorPorNumero(numero) {
@@ -99,7 +112,7 @@ module.exports = async (msg) => {
             });
         }
 
-        const historico = conversationManager.obterHistorico(jogadorId, npcId);
+        const historico = obterHistoricoDaCena(jogadorId, npcId);
 
         if (!historico || historico.length === 0) {
             if (cenaAtiva && cenaAtiva.npcId === npcId) {
@@ -124,6 +137,11 @@ _Converse com o NPC antes de usar este comando._`
 
         const relacionamentoAtual = await relationshipManager.obterOuCriar(npcId, jogadorId);
         const memorias = await memoryManager.buscarMemoriasImportantes(npcId, jogadorId, 6);
+
+        // Guarda a cena observavel antes da analise. Assim, uma falha
+        // temporaria da IA de relacionamento nao apaga o que o NPC viu/ouviu.
+        await narrativeMemory.captureScene(npcId, jogadorId, historico)
+            .catch(erro => console.error("[FIM_INTERACAO] Erro ao salvar memoria da cena:", erro.message));
 
         const analise = await relationshipEngine.analisarConversa(npc, jogador, historico, memorias, relacionamentoAtual);
 

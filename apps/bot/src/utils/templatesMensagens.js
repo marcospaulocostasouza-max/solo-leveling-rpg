@@ -141,6 +141,7 @@ _Use *!confirmar ficha* para enviar para aprovacao._`,
         msg += `\n${templates.divisor()}`;
         msg += `\n${templates.campo("Classe desejada", dados.classe)}`;
         if (ehMagoElemental(dados.classe)) msg += `\n${templates.campo("Elemento Primário", elementoPrimario(dados))}`;
+        if (dados.elemento_original) msg += `\n_Compatibilidade elemental: ${dados.elemento_original} foi convertido para ${dados.elemento}, a base com técnicas iniciais disponíveis._`;
         msg += `\n${templates.campo("Estilo de luta", dados.estilo_luta || "N/A")}`;
         msg += `\n${templates.campo("Arma inicial", dados.arma || "N/A")}`;
         msg += `\n${templates.campo("Elemento/Afinidade", dados.elemento || "N/A")}`;

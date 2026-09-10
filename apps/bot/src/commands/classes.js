@@ -1,70 +1,54 @@
 const MessageService = require("../core/messageService");
-
 const classes = require("../utils/classes");
 
+const classesIniciais = [
+    "Lutador",
+    "Assassino",
+    "Tanker",
+    "Ranger",
+    "Curador",
+    "Mago Elemental",
+    "Mago Invocador",
+    "Mago de Barreira",
+    "Mago de Maldição"
+];
+
+function bonusFormatado(bonus) {
+    return Array.isArray(bonus) ? bonus.join(" • ") : bonus;
+}
+
 module.exports = async (msg) => {
-    const db = require("../core/database");
-    
-    // Verificar se o jogador tem ficha aprovada
-    const numeroJogador = msg.author || msg.from;
-    
-let mensagem = `
-*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*
-*📚 Sistema de Classes 📚*
-*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*
+    let mensagem = `
+*═══ SISTEMA // CLASSES ═══*
+_O despertar define o caminho de cada Caçador._
 
-O sistema de Classes define o estilo de combate, habilidades iniciais e crescimento do seu personagem. Cada classe possui características únicas, bônus específicos e um caminho de evolução distinto. Escolha com cuidado, Caçador, pois sua classe determinará suas capacidades em batalha.
+*Escolha uma das classes abaixo ao preencher sua ficha.* A classe define seu foco de combate, o bônus inicial de 50% e as técnicas que poderão ser aprendidas. Escolha uma opção coerente com o seu personagem.
 
-══════════════════════════
-
-*COMO FUNCIONA*
-1. Escolha uma classe ao criar sua ficha
-2. Após aprovação, use *!avanco* para ver evoluções
-3. Use *!<nome da classe>* para ver técnicas (ex: !assassino)
-
+*─── Classes de Combate ───*
 `;
 
-    // Listar todas as classes iniciais
-    const classesIniciais = [
-        "Lutador", "Assassino", "Tanker", "Ranger", "Curador",
-        "Mago Elemental", "Mago Invocador", "Mago de Barreira", "Mago de Maldição"
-    ];
-
-    mensagem += `*━━━ CLASSES INICIAIS ━━━*\n\n`;
-    
-    classesIniciais.forEach(classe => {
+    classesIniciais.forEach((classe) => {
         const chaveClasse = classe === "Mago de Maldição" ? "Mago de Maldicao" : classe;
         const dados = classes[chaveClasse];
-        if (dados) {
-            mensagem += `*◆ ${classe}*\n`;
-            mensagem += `${dados.descricao || 'Uma classe única.'}\n`;
-            if (dados.bonus) mensagem += `> *Bônus:* ${dados.bonus}\n`;
-            if (dados.foco) mensagem += `> *Foco:* ${dados.foco}\n`;
-            mensagem += `\n`;
-        }
+        if (!dados) return;
+
+        mensagem += `
+*「 ${classe.toUpperCase()} 」*
+${String(dados.descricao || "Uma classe única.").trim()}
+> *Bônus inicial:* ${bonusFormatado(dados.bonus)}
+> *Foco:* ${dados.foco}
+`;
     });
 
     mensagem += `
-*━━━ COMO FUNCIONA ━━━*
-
-1. Escolha uma classe ao criar sua ficha
-2. Após aprovação, use *!avanco* para ver evoluções
-3. Use *!<nome da classe>* para ver técnicas (ex: !assassino)
-
-*Exemplos:*
-> !lutador - Ver técnicas do Lutador
-> !assassino - Ver técnicas do Assassino
-> !mago de fogo - Ver técnicas do Mago de Fogo
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-_Após escolher sua classe, coloque na ficha:_
-> Classe: Nome da classe escolhida
+*─── Registro da Ficha ───*
+_Ao criar sua ficha, informe somente uma classe da lista:_
+> *Classe:* Nome da classe escolhida
 
 _Exemplo:_
-> Classe: Lutador
+> *Classe:* Assassino
 
-_Sistema aguardando sua escolha..._
+*Sistema RPG • Escolha sua trilha de combate*
 `;
 
     await MessageService.send({ message: msg, text: mensagem });

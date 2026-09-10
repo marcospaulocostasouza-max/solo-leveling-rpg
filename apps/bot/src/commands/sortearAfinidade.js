@@ -17,6 +17,16 @@ const run = (sql, params = []) => new Promise((resolve, reject) =>
 const normalizar = valor => String(valor || "").normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
 
+async function obterSorteiosPreFicha(numero) {
+    await run("CREATE TABLE IF NOT EXISTS afinidades_pre_ficha (numero TEXT PRIMARY KEY, resultados TEXT NOT NULL DEFAULT '[]', atualizado_em TEXT DEFAULT CURRENT_TIMESTAMP)");
+    const registro = await get("SELECT resultados FROM afinidades_pre_ficha WHERE numero = ?", [numero]);
+    try { return Array.isArray(JSON.parse(registro?.resultados || "[]")) ? JSON.parse(registro?.resultados || "[]") : []; } catch { return []; }
+}
+
+async function salvarSorteiosPreFicha(numero, resultados) {
+    await run("INSERT INTO afinidades_pre_ficha (numero, resultados, atualizado_em) VALUES (?, ?, CURRENT_TIMESTAMP) ON CONFLICT(numero) DO UPDATE SET resultados = excluded.resultados, atualizado_em = CURRENT_TIMESTAMP", [numero, JSON.stringify(resultados)]);
+}
+
 function sortear(pool) {
     const ponderado = [];
     const pesos = { Comum: 70, Incomum: 20, Raro: 8, "Muito Raro": 2, "Lendário": 1 };
@@ -41,19 +51,25 @@ module.exports = async msg => {
     try {
         const numero = msg.author || msg.from;
         let jogador = await get(
-            "SELECT id, classe, nivel, afinidade_elemental, afinidade_sorteada FROM jogadores WHERE numero = ?",
+            "SELECT id, classe, nivel, afinidade_elemental, afinidade_sorteada, ficha_aprovada FROM jogadores WHERE numero = ?",
             [numero]
         );
 
         if (!jogador) {
             await run("INSERT OR IGNORE INTO jogadores (numero, afinidade_elemental, afinidade_sorteada) VALUES (?, 'Nenhuma', 0)", [numero]);
             jogador = await get(
-                "SELECT id, classe, nivel, afinidade_elemental, afinidade_sorteada FROM jogadores WHERE numero = ?",
+                "SELECT id, classe, nivel, afinidade_elemental, afinidade_sorteada, ficha_aprovada FROM jogadores WHERE numero = ?",
                 [numero]
             );
         }
 
-        const adicionais = await AfinidadesAdicionais.listar(jogador.id);
+        const preFicha = Number(jogador.ficha_aprovada || 0) !== 1;
+        const sorteiosPreFicha = preFicha ? await obterSorteiosPreFicha(numero) : [];
+        if (preFicha && sorteiosPreFicha.length >= 2) {
+            return MessageService.send({ message: msg, text: templates.aviso(`Você já realizou seus dois sorteios iniciais: *${sorteiosPreFicha.join(" e ")}*. Escolha um deles na ficha e use *!confirmar ficha*.`) });
+        }
+
+        const adicionais = preFicha ? [] : await AfinidadesAdicionais.listar(jogador.id);
         const permissao = determinarSorteio(jogador, adicionais.length);
         let slot = permissao.slot || 1;
 
@@ -86,6 +102,7 @@ module.exports = async msg => {
 
         const jaPossui = new Set([
             jogador.afinidade_elemental,
+            ...sorteiosPreFicha,
             ...adicionais.map(item => item.elemento)
         ].filter(Boolean).map(normalizar));
         const raridadesLimitadas = new Set(["Muito Raro", "Lendário"]);
@@ -96,6 +113,13 @@ module.exports = async msg => {
         );
         const resultado = sortear(disponiveis);
         if (!resultado) return MessageService.send({ message: msg, text: templates.erro("Nenhum elemento disponível para sorteio.") });
+
+        if (preFicha) {
+            const resultados = [...sorteiosPreFicha, resultado.nome];
+            await salvarSorteiosPreFicha(numero, resultados);
+            await MessageService.send({ message: msg, text: `*═══ SORTEIO DE AFINIDADE — ${resultados.length}/2 ═══*\n${templates.divisor()}\n\n> *${resultado.nome}*\n> *Categoria:* ${resultado.categoria}\n> *Raridade:* ${resultado.raridade}\n> *Bônus:* +${resultado.bonusAfinidade}% Poder Mágico\n\n${resultados.length < 2 ? "_Você pode usar *!sortear afinidade* mais uma vez._" : `_Seus resultados: *${resultados.join("* e *")}*. Na ficha, escolha somente um deles em Elemento/Afinidade e confirme a ficha._`}` });
+            return resultado;
+        }
 
         if (slot === 1) {
             await run("UPDATE jogadores SET afinidade_elemental = ?, afinidade_sorteada = 1 WHERE numero = ?", [resultado.nome, numero]);

@@ -9,11 +9,11 @@
       "npcId": "yvon_baik",
       "numero": 1,
       "nome": "Capítulo 1: Rumores sobre Yvon Baik",
-      "descricao": "Relatos alarmantes começam a circular entre guildas sobre Yvon Baik. Reitor de uma prestigiada academia, Yvon assassinou o reitor anterior ao descobrir que este guardava um grimório raro capaz de ampliar drasticamente o poder mágico....",
+      "descricao": "Yvon Baik, conhecido como O Reitor que Matou pelo Grimório, apresenta os acontecimentos que deram origem ao seu conflito atual. Converse com o NPC, investigue as informações que ele compartilhar e participe da incursão introdutória prevista no objetivo. A dificuldade é Rank A; registre as descobertas e preserve os fatos narrados antes de avançar ao próximo capítulo.",
       "categoria": "principal",
       "tipo": "historia",
       "rank": "A",
-      "nivelMinimo": 60,
+      "nivelMinimo": 80,
       "objetivo": "Investigue 3 relatos de testemunhas sobre Yvon Baik",
       "recompensas": {
         "xp": 17100,
@@ -30,7 +30,7 @@
       "categoria": "principal",
       "tipo": "historia",
       "rank": "A",
-      "nivelMinimo": 60,
+      "nivelMinimo": 80,
       "objetivo": "Reúna provas em 2 locais diferentes ligados a Yvon Baik",
       "recompensas": {
         "xp": 19800,
@@ -47,7 +47,7 @@
       "categoria": "principal",
       "tipo": "historia",
       "rank": "A",
-      "nivelMinimo": 60,
+      "nivelMinimo": 80,
       "objetivo": "Derrote Yvon Baik em combate direto",
       "recompensas": {
         "xp": 22500,
@@ -64,7 +64,7 @@
       "categoria": "principal",
       "tipo": "historia",
       "rank": "A",
-      "nivelMinimo": 60,
+      "nivelMinimo": 80,
       "objetivo": "Entregue o relatório final sobre Yvon Baik à Associação",
       "recompensas": {
         "xp": 25200,
@@ -77,17 +77,17 @@
       "npcId": "yvon_baik",
       "numero": 5,
       "nome": "Reforço de Yvon Baik",
-      "descricao": "Yvon Baik pede que você adquira, em qualquer Loja de Itens da Associação, um equipamento de Rank A compatível com Cajados e Orbes para reforçar seu arsenal de combate.",
+      "descricao": "Yvon Baik propõe uma tarefa de aproximação: escolher e comprar uma peça de armadura ou arma de Rank D na Loja de Itens da Associação. Compare o preço e a utilidade do equipamento, guarde o comprovante da compra e explique ao NPC sua escolha. A atividade acontece na cidade, sem incursão em Dungeon, combate contra chefes ou exigência de itens de rank superior.",
       "categoria": "secundaria",
       "tipo": "loja",
-      "rank": "A",
-      "nivelMinimo": 60,
-      "objetivo": "Comprar 1 equipamento de Rank A (peça de armadura ou arma)",
+      "rank": "D",
+      "nivelMinimo": 15,
+      "objetivo": "Comprar 1 equipamento de Rank D (arma ou peça de armadura) e apresentar a compra e sua utilidade a Yvon Baik.",
       "recompensas": {
-        "xp": 5400,
-        "won": 36000,
-        "item": "Réplica Reforçada de: Cajado Acadêmico Ornamentado"
-      }
+        "xp": 1000,
+        "won": 1000
+      },
+      "revisaoBalanceamento": 1
     },
     {
       "id": "yvon_baik_06",

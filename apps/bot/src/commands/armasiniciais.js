@@ -48,5 +48,5 @@ _Como escolher:_
 
 _Exemplo: Arma inicial: Espada Simples_`;
     
-    await MessageService.send({ message: msg, text: mensagem });
+    await require('../utils/messageSplitter').enviarMensagemCompleta(msg, mensagem);
 };

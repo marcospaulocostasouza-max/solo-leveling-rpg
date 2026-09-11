@@ -32,7 +32,7 @@ function classificarMissoes(missoes) {
                 ...missao,
                 classificacao: "arco",
                 vinculoNecessario: arco * 25,
-                nivelRecomendado: RECOMENDACOES_ARCO[arco] || null
+                nivelRecomendado: missao.nivelMinimo ? `${missao.nivelMinimo}+` : RECOMENDACOES_ARCO[arco] || null
             };
         }
 

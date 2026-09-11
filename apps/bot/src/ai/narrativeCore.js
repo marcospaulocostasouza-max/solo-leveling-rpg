@@ -20,6 +20,7 @@ function build(context) {
     block('CONTEXT - PERSONAGEM', context.npc.core, LIMITS.core),
     block('CONTEXT - ESTADO ATUAL', `Emoção: ${context.state.emotion.emocao} (${context.state.emotion.intensidade}). Mood: ${context.state.mood.mood} (${context.state.mood.intensidade}).`, LIMITS.state),
     block('CONTEXT - RELACIONAMENTO', `Vínculo ${relationship.vinculo || 0}%; hostilidade ${relationship.hostilidade || 0}%.`, LIMITS.relationship),
+    block('MISSÕES OFICIAIS DO JOGADOR', `Somente estas missões existem para esta interação. Não crie requisitos, não aceite nem conclua tarefas pelo diálogo. Respeite objetivos, rank e estado registrados. ${JSON.stringify(context.quests || [])}`, 2600),
     block('CONTEXT - MEMÓRIAS RELEVANTES', context.memories.map(item => `- [${item.tipo}] ${item.memoria}`).join('\n'), LIMITS.memories),
     block('CONTEXT - INFORMAÇÕES RECUPERADAS', context.retrieved.map(item => `- (${item.section}) ${item.text}`).join('\n'), LIMITS.retrieval),
     block('CONTEXT - EXEMPLOS DE ESTILO RELEVANTES', examples(context.npc, context.messageVisible || context.message), LIMITS.examples),

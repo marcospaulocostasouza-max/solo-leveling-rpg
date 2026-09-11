@@ -9,11 +9,11 @@
       "npcId": "gideon_ma",
       "numero": 1,
       "nome": "Capítulo 1: Rumores sobre Gideon Ma",
-      "descricao": "Relatos alarmantes começam a circular entre guildas sobre Gideon Ma. Magistrado responsável por arbitrar disputas comerciais, Gideon construiu um esquema de extorsão forçando comerciantes a pagar 'taxas de proteção'....",
+      "descricao": "Gideon Ma, conhecido como O Magistrado que Vendia Justiça, apresenta os acontecimentos que deram origem ao seu conflito atual. Converse com o NPC, investigue as informações que ele compartilhar e participe da incursão introdutória prevista no objetivo. A dificuldade é Rank B; registre as descobertas e preserve os fatos narrados antes de avançar ao próximo capítulo.",
       "categoria": "principal",
       "tipo": "historia",
       "rank": "B",
-      "nivelMinimo": 40,
+      "nivelMinimo": 60,
       "objetivo": "Investigue 3 relatos de testemunhas sobre Gideon Ma",
       "recompensas": {
         "xp": 13680,
@@ -30,7 +30,7 @@
       "categoria": "principal",
       "tipo": "historia",
       "rank": "B",
-      "nivelMinimo": 40,
+      "nivelMinimo": 60,
       "objetivo": "Reúna provas em 2 locais diferentes ligados a Gideon Ma",
       "recompensas": {
         "xp": 15840,
@@ -47,7 +47,7 @@
       "categoria": "principal",
       "tipo": "historia",
       "rank": "B",
-      "nivelMinimo": 40,
+      "nivelMinimo": 60,
       "objetivo": "Derrote Gideon Ma em combate direto",
       "recompensas": {
         "xp": 18000,
@@ -64,7 +64,7 @@
       "categoria": "principal",
       "tipo": "historia",
       "rank": "B",
-      "nivelMinimo": 40,
+      "nivelMinimo": 60,
       "objetivo": "Entregue o relatório final sobre Gideon Ma à Associação",
       "recompensas": {
         "xp": 20160,
@@ -77,17 +77,17 @@
       "npcId": "gideon_ma",
       "numero": 5,
       "nome": "Reforço de Gideon Ma",
-      "descricao": "Gideon Ma pede que você adquira, em qualquer Loja de Itens da Associação, um equipamento de Rank B compatível com Armas Ocultas (Bastão-Lâmina) para reforçar seu arsenal de combate.",
+      "descricao": "Gideon Ma propõe uma tarefa de aproximação: escolher e comprar uma peça de armadura ou arma de Rank D na Loja de Itens da Associação. Compare o preço e a utilidade do equipamento, guarde o comprovante da compra e explique ao NPC sua escolha. A atividade acontece na cidade, sem incursão em Dungeon, combate contra chefes ou exigência de itens de rank superior.",
       "categoria": "secundaria",
       "tipo": "loja",
-      "rank": "B",
-      "nivelMinimo": 40,
-      "objetivo": "Comprar 1 equipamento de Rank B (peça de armadura ou arma)",
+      "rank": "D",
+      "nivelMinimo": 15,
+      "objetivo": "Comprar 1 equipamento de Rank D (arma ou peça de armadura) e apresentar a compra e sua utilidade a Gideon Ma.",
       "recompensas": {
-        "xp": 4320,
-        "won": 28800,
-        "item": "Réplica Reforçada de: Bastão Cerimonial com Lâmina Oculta"
-      }
+        "xp": 1000,
+        "won": 1000
+      },
+      "revisaoBalanceamento": 1
     },
     {
       "id": "gideon_ma_06",

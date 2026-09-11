@@ -9,11 +9,11 @@
       "npcId": "macy_eun",
       "numero": 1,
       "nome": "Capítulo 1: O Despertar de Macy Eun",
-      "descricao": "Acompanhe os primeiros passos de Macy Eun como Caçador(a). Filha de uma família de curandeiros que perdeu a clínica quando um portal se abriu no centro de Emberglow, Macy passou a atender feridos em barracas improvisadas. Seu Despertar aconteceu ao tratar uma...",
+      "descricao": "Macy Eun, conhecido como A Curandeira das Ruínas, apresenta os acontecimentos que deram origem ao seu conflito atual. Converse com o NPC, investigue as informações que ele compartilhar e participe da incursão introdutória prevista no objetivo. A dificuldade é Rank C; registre as descobertas e preserve os fatos narrados antes de avançar ao próximo capítulo.",
       "categoria": "principal",
       "tipo": "historia",
       "rank": "C",
-      "nivelMinimo": 20,
+      "nivelMinimo": 30,
       "objetivo": "Complete a introdução: converse com Macy Eun e participe de sua primeira incursão",
       "recompensas": {
         "xp": 10260,
@@ -30,7 +30,7 @@
       "categoria": "principal",
       "tipo": "historia",
       "rank": "C",
-      "nivelMinimo": 20,
+      "nivelMinimo": 30,
       "objetivo": "Ajude Macy Eun a reunir 3 pistas em diferentes localizações",
       "recompensas": {
         "xp": 11880,
@@ -47,7 +47,7 @@
       "categoria": "principal",
       "tipo": "historia",
       "rank": "C",
-      "nivelMinimo": 20,
+      "nivelMinimo": 30,
       "objetivo": "Vença o confronto decisivo ao lado de Macy Eun",
       "recompensas": {
         "xp": 13500,
@@ -64,7 +64,7 @@
       "categoria": "principal",
       "tipo": "historia",
       "rank": "C",
-      "nivelMinimo": 20,
+      "nivelMinimo": 30,
       "objetivo": "Complete a missão final e testemunhe o desfecho da história de Macy Eun",
       "recompensas": {
         "xp": 15120,
@@ -77,17 +77,17 @@
       "npcId": "macy_eun",
       "numero": 5,
       "nome": "Reforço de Macy Eun",
-      "descricao": "Macy Eun pede que você adquira, em qualquer Loja de Itens da Associação, um equipamento de Rank C compatível com Machados para reforçar seu arsenal de combate.",
+      "descricao": "Macy Eun propõe uma tarefa de aproximação: escolher e comprar uma peça de armadura ou arma de Rank E na Loja de Itens da Associação. Compare o preço e a utilidade do equipamento, guarde o comprovante da compra e explique ao NPC sua escolha. A atividade acontece na cidade, sem incursão em Dungeon, combate contra chefes ou exigência de itens de rank superior.",
       "categoria": "secundaria",
       "tipo": "loja",
-      "rank": "C",
-      "nivelMinimo": 20,
-      "objetivo": "Comprar 1 equipamento de Rank C (peça de armadura ou arma)",
+      "rank": "E",
+      "nivelMinimo": 1,
+      "objetivo": "Comprar 1 equipamento de Rank E (arma ou peça de armadura) e apresentar a compra e sua utilidade a Macy Eun.",
       "recompensas": {
-        "xp": 3240,
-        "won": 21600,
-        "item": "Réplica Reforçada de: Machado de Colheita Simples"
-      }
+        "xp": 100,
+        "won": 500
+      },
+      "revisaoBalanceamento": 1
     },
     {
       "id": "macy_eun_06",

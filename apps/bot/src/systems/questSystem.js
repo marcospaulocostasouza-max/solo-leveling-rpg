@@ -5,6 +5,8 @@
  */
 
 const db = require("../core/database");
+const database = require("../../../../packages/database");
+const { canonicalId } = require("../ai/npcDatabase");
 const LevelSystem = require("./levelSystem");
 const fs = require("fs");
 const path = require("path");
@@ -57,7 +59,9 @@ function garantirMetadadosMissoes() {
             nivel_recomendado: "TEXT",
             oferecida_em: "TEXT",
             recompensa_item: "TEXT",
-            recompensa_cristais: "INTEGER NOT NULL DEFAULT 0"
+            recompensa_cristais: "INTEGER NOT NULL DEFAULT 0",
+            relato_entrega: "TEXT",
+            entregue_em: "TEXT"
         };
 
         for (const [nome, definicao] of Object.entries(novasColunas)) {
@@ -75,7 +79,7 @@ function garantirMetadadosMissoes() {
 }
 
 function carregarMissoesNPC(npcId) {
-    const arquivo = path.join(MISSOES_NPC_DIR, `${npcId}.json`);
+    const arquivo = path.join(MISSOES_NPC_DIR, `${canonicalId(npcId)}.json`);
     if (!fs.existsSync(arquivo)) return [];
     try {
         const dados = JSON.parse(fs.readFileSync(arquivo, "utf8"));
@@ -110,21 +114,31 @@ class QuestSystem {
                     "SELECT id FROM missoes WHERE jogador_id = ? AND origem_missao_id = ?",
                     [jogadorId, missao.id]
                 );
-                if (existente) continue;
+                if (existente) {
+                    // Atualize o catálogo sem resetar aceites, ofertas ou progresso.
+                    // Recompensas já concluídas são histórico, não são reescritas.
+                    await executar(`UPDATE missoes SET nome=?,descricao=?,rank=?,objetivo_texto=?,
+                        recompensa_xp=?,recompensa_won=?,recompensa_item=?,nivel_recomendado=?
+                        WHERE id=? AND status <> 'completa'`, [missao.nome, missao.descricao, missao.rank,
+                        missao.objetivo, missao.recompensas?.xp || 0, missao.recompensas?.won || 0,
+                        missao.recompensas?.item || null, missao.nivelRecomendado, existente.id]);
+                    continue;
+                }
 
                 await executar(
                     `INSERT INTO missoes (
                         jogador_id, nome, descricao, tipo, progresso, objetivo,
                         recompensa_xp, recompensa_won, recompensa_cristais, status, data, npc_id,
                         origem_missao_id, numero_missao, categoria_missao, rank,
-                        objetivo_texto, vinculo_necessario, nivel_recomendado
-                    ) VALUES (?, ?, ?, ?, 0, 1, ?, ?, ?, 'disponivel', datetime('now'), ?, ?, ?, ?, ?, ?, ?, ?)`,
+                        objetivo_texto, vinculo_necessario, nivel_recomendado, recompensa_item
+                    ) VALUES (?, ?, ?, ?, 0, 1, ?, ?, ?, 'disponivel', datetime('now'), ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                    ON CONFLICT DO NOTHING`,
                     [
                         jogadorId, missao.nome, missao.descricao, missao.classificacao,
                         missao.recompensas?.xp || 0, missao.recompensas?.won || 0, missao.recompensas?.cristais || 0,
                         relacionamento.npcId, missao.id, missao.numero, missao.categoria,
                         missao.rank || null, missao.objetivo || null,
-                        missao.vinculoNecessario, missao.nivelRecomendado
+                        missao.vinculoNecessario, missao.nivelRecomendado, missao.recompensas?.item || null
                     ]
                 );
                 adicionadas.push(missao.id);
@@ -145,38 +159,33 @@ class QuestSystem {
     }
     
     static async atualizarProgresso(jogadorId, missaoId, progresso = 1) {
-        return new Promise((resolve) => {
-            db.get("SELECT * FROM missoes WHERE id = ? AND jogador_id = ?", [missaoId, jogadorId], (err, missao) => {
-                if (!missao) return resolve(null);
-                if (missao.status === "completa") return resolve({ completa: true, duplicada: true, recompensa: null });
-                
-                const novoProgresso = missao.progresso + progresso;
-                
-                if (novoProgresso >= missao.objetivo) {
-                    db.run("UPDATE missoes SET progresso = ?, status = 'completa' WHERE id = ?", [missao.objetivo, missaoId], async () => {
-                        await LevelSystem.adicionarXp(jogadorId, missao.recompensa_xp, `Missão completa: ${missao.nome}`);
-                        db.run("UPDATE jogadores SET won = won + ? WHERE id = ?", [missao.recompensa_won, jogadorId]);
-                        if (missao.recompensa_item && String(missao.recompensa_item).toLowerCase() !== "nenhum") {
-                            const item = await buscar("SELECT id FROM itens WHERE LOWER(nome)=LOWER(?)", [missao.recompensa_item]);
-                            if (item) {
-                                const inv = await buscar("SELECT id FROM inventario_jogador WHERE jogador_id=? AND item_id=?", [jogadorId, item.id]);
-                                if (inv) await executar("UPDATE inventario_jogador SET quantidade=quantidade+1 WHERE id=?", [inv.id]);
-                                else await executar("INSERT INTO inventario_jogador(jogador_id,item_id,quantidade,equipado) VALUES(?,?,1,0)", [jogadorId,item.id]);
-                            }
-                        }
-                        const cristais = await CrystalRewardService.concederMissao(
-                            jogadorId, missao.id, Number(missao.recompensa_cristais || 0), JSON.stringify({ nome: missao.nome })
-                        );
-                        resolve({ completa: true, recompensa: { xp: missao.recompensa_xp, won: missao.recompensa_won, item: missao.recompensa_item || null, cristais: cristais.quantidade } });
-                    });
-                } else {
-                    db.run("UPDATE missoes SET progresso = ? WHERE id = ?", [novoProgresso, missaoId]);
-                    resolve({ completa: false, progresso: novoProgresso, objetivo: missao.objetivo });
-                }
-            });
-        });
+        // Missões de NPC passam por relato e aprovação humana. Esta API continua
+        // atendendo missões legadas, que não possuem uma origem de catálogo.
+        const missao = await buscar("SELECT * FROM missoes WHERE id=? AND jogador_id=?", [missaoId, jogadorId]);
+        if (!missao) return null;
+        if (missao.origem_missao_id) throw new Error("Esta missão de NPC deve ser entregue com !entregar missão antes da aprovação da ADM.");
+        if (missao.status === "completa") return { completa: true, duplicada: true, recompensa: null };
+        const novoProgresso = Number(missao.progresso || 0) + Math.max(0, Number(progresso) || 0);
+        if (novoProgresso < Number(missao.objetivo || 1)) {
+            await executar("UPDATE missoes SET progresso=? WHERE id=? AND jogador_id=?", [novoProgresso, missaoId, jogadorId]);
+            return { completa: false, progresso: novoProgresso, objetivo: missao.objetivo };
+        }
+        await executar("UPDATE missoes SET progresso=objetivo,status='completa' WHERE id=? AND jogador_id=? AND status <> 'completa'", [missaoId, jogadorId]);
+        await LevelSystem.adicionarXp(jogadorId, Number(missao.recompensa_xp || 0), `Missão completa: ${missao.nome}`);
+        await executar("UPDATE jogadores SET won=won+? WHERE id=?", [Number(missao.recompensa_won || 0), jogadorId]);
+        let item = null;
+        if (missao.recompensa_item && String(missao.recompensa_item).toLowerCase() !== "nenhum") {
+            item = await buscar("SELECT id FROM itens WHERE LOWER(nome)=LOWER(?)", [missao.recompensa_item]);
+            if (item) {
+                const inv = await buscar("SELECT id FROM inventario_jogador WHERE jogador_id=? AND item_id=?", [jogadorId, item.id]);
+                if (inv) await executar("UPDATE inventario_jogador SET quantidade=quantidade+1 WHERE id=?", [inv.id]);
+                else await executar("INSERT INTO inventario_jogador(jogador_id,item_id,quantidade,equipado) VALUES(?,?,1,0)", [jogadorId, item.id]);
+            }
+        }
+        const cristais = await CrystalRewardService.concederMissao(jogadorId, missao.id, Number(missao.recompensa_cristais || 0), JSON.stringify({ nome: missao.nome }));
+        return { completa: true, recompensa: { xp: Number(missao.recompensa_xp || 0), won: Number(missao.recompensa_won || 0), item: item ? missao.recompensa_item : null, cristais: cristais.quantidade } };
     }
-    
+
     static async listarMissoes(jogadorId) {
         try {
             await this.sincronizarMissoesPorVinculo(jogadorId);
@@ -193,37 +202,47 @@ class QuestSystem {
             const vinculos = new Map(relacionamentos.map((rel) => [rel.npcId, Number(rel.vinculo) || 0]));
 
             return missoes.filter((missao) => {
-                if (!["ativa", "disponivel"].includes(missao.status) || !missao.origem_missao_id) return true;
+                if (missao.status !== "disponivel" || !missao.origem_missao_id) return true;
                 return (vinculos.get(missao.npc_id) || 0) >= (Number(missao.vinculo_necessario) || 0);
             });
         } catch (erro) {
             console.error("[QUEST] Erro ao listar/sincronizar missões de vínculo:", erro.message);
-            return listar("SELECT * FROM missoes WHERE jogador_id = ? ORDER BY status ASC, data DESC", [jogadorId]).catch(() => []);
+            throw erro;
         }
     }
 
     static async buscarMissaoPorNome(jogadorId, nome) {
-        await this.sincronizarMissoesPorVinculo(jogadorId);
-        return buscar(`SELECT * FROM missoes WHERE jogador_id = ? AND lower(nome) = lower(?)`, [jogadorId, nome]);
+        const normalizar = valor => String(valor || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[*_`“”"]/g, '').replace(/\s+/g, ' ').trim().toLowerCase();
+        const alvo = normalizar(nome);
+        return (await this.listarMissoes(jogadorId)).find(m => normalizar(m.nome) === alvo || String(m.id) === alvo || m.origem_missao_id === alvo) || null;
     }
 
     static async aceitarMissao(jogadorId, nome) {
         const missao = await this.buscarMissaoPorNome(jogadorId, nome);
         if (!missao) return { erro: "Missão não encontrada entre as suas missões disponíveis." };
         if (missao.status === "completa") return { erro: "Essa missão já foi concluída." };
-        if (missao.status === "ativa") return { erro: "Essa missão já está ativa." };
-        await executar("UPDATE missoes SET status = 'ativa', oferecida_em = COALESCE(oferecida_em, datetime('now')) WHERE id = ?", [missao.id]);
+        if (missao.status === "ativa") return { sucesso: true, jaAtiva: true, missao };
+        if (missao.status !== "disponivel") return { erro: "Essa missão não está disponível para aceite." };
+        if (missao.categoria_missao === 'arco' && Number(missao.numero_missao) > 1) {
+            const anterior = await buscar("SELECT status FROM missoes WHERE jogador_id=? AND npc_id=? AND numero_missao=?", [jogadorId, missao.npc_id, Number(missao.numero_missao)-1]);
+            if (anterior?.status !== 'completa') return { erro: "Conclua o capítulo anterior antes de iniciar este arco." };
+        }
+        const result = await executar("UPDATE missoes SET status = 'ativa', oferecida_em = COALESCE(oferecida_em, datetime('now')) WHERE id = ? AND jogador_id=? AND status='disponivel'", [missao.id, jogadorId]);
+        if (result.changes !== 1) return { erro: "A missão mudou de estado. Consulte suas missões novamente." };
         return { sucesso: true, missao: { ...missao, status: "ativa" } };
     }
 
     static async obterOfertaDeMissaoNPC(jogadorId, npcId) {
-        await this.sincronizarMissoesPorVinculo(jogadorId);
-        const missao = await buscar(`SELECT * FROM missoes WHERE jogador_id = ? AND npc_id = ?
-            AND status = 'disponivel' AND oferecida_em IS NULL ORDER BY numero_missao ASC LIMIT 1`, [jogadorId, npcId]);
+        const missoes = await this.listarMissoes(jogadorId);
+        const missao = missoes.filter(m => canonicalId(m.npc_id) === canonicalId(npcId) && m.status === 'disponivel' && !m.oferecida_em)
+            .sort((a,b) => Number(a.numero_missao)-Number(b.numero_missao))
+            .find(m => m.categoria_missao !== 'arco' || Number(m.numero_missao) === 1 || missoes.some(p => canonicalId(p.npc_id) === canonicalId(m.npc_id) && Number(p.numero_missao) === Number(m.numero_missao)-1 && p.status === 'completa'));
         if (!missao) return null;
         await executar("UPDATE missoes SET oferecida_em = datetime('now') WHERE id = ?", [missao.id]);
         return missao;
     }
 }
 
+QuestSystem.carregarMissoesNPC = carregarMissoesNPC;
+QuestSystem.garantirMetadadosMissoes = garantirMetadadosMissoes;
 module.exports = QuestSystem;

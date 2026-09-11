@@ -16,22 +16,10 @@ const { obterEstiloCanonico } = require("../utils/normalizarEstiloLuta");
 const AtributoSystem = require("../systems/atributoSystem");
 const { normalizarDadosFicha, normalizarNomeJogador } = require("../utils/normalizarDadosFicha");
 
-function adicionarArmaInicial(jogadorId, nomeArma, nomeJogador) {
+async function adicionarArmaInicial(jogadorId, nomeArma, nomeJogador) {
     if (!jogadorId || !nomeArma) return;
-    const armas = require("../database/itens.json").armas || [];
-    const arma = armas.find(item => item.nome.toLowerCase().trim() === nomeArma.toLowerCase().trim());
-    if (!arma) return;
-    db.run(`INSERT OR IGNORE INTO itens (nome, categoria, tier, descricao, arma, preco)
-            VALUES (?, 'Arma 1', 'Inicial', ?, 1, 0)`, [arma.nome, arma.descricao || "Arma inicial"], err => {
-        if (err) return console.error("[APROVACAO] Erro ao registrar arma inicial:", err.message);
-        db.get("SELECT id FROM itens WHERE LOWER(nome) = LOWER(?)", [arma.nome], (erro, item) => {
-            if (erro || !item) return console.error("[APROVACAO] Arma inicial não localizada após registro.");
-            db.run("INSERT OR IGNORE INTO inventario_jogador (jogador_id, item_id, quantidade, equipado, item_inicial) VALUES (?, ?, 1, 1, 1)", [jogadorId, item.id], falha => {
-                if (falha) console.error("[APROVACAO] Erro ao entregar arma inicial:", falha.message);
-                else console.log(`[APROVACAO] Arma "${arma.nome}" adicionada ao inventário de ${nomeJogador}`);
-            });
-        });
-    });
+    try { return await require('../systems/starterWeaponService').grant(jogadorId, nomeArma); }
+    catch (error) { console.error('[APROVACAO] Falha na arma inicial:', nomeJogador, error.message); }
 }
 
 async function enviarRecadoPosAprovacao(numeroJogador, nomeJogador) {

@@ -15,17 +15,26 @@ module.exports = async (msg) => {
     const numero = msg.author || msg.from;
     const corpo = (msg.body || "").trim();
     
-    db.get("SELECT id, nome FROM jogadores WHERE numero = ?", [numero], async (err, jogador) => {
+    try {
+        const jogador = await new Promise((resolve, reject) => db.get("SELECT * FROM jogadores WHERE numero = ?", [numero], (err, row) => err ? reject(err) : resolve(row)));
         if (!jogador) return MessageService.send({ message: msg, text: "*═══ Você precisa ter uma ficha aprovada. ═══*" });
         
-        const aceitarPrefixo = /^!aceitar miss(?:a|ã)o\s+/i;
+        const aceitarPrefixo = /^!(?:aceitar|iniciar)\s+miss[aã]o(?:\s+|$)/i;
         if (aceitarPrefixo.test(corpo)) {
             const nomeMissao = corpo.replace(aceitarPrefixo, "").trim();
             const resultado = await QuestSystem.aceitarMissao(jogador.id, nomeMissao);
-            return MessageService.send({ message: msg, text: resultado.erro || `*MISSÃO ACEITA*\n*${resultado.missao.nome}* agora está ativa.` });
+            if (resultado.erro) return MessageService.send({ message: msg, text: resultado.erro });
+            const missao = resultado.missao;
+            await MessageService.send({ message: msg, text: `*${resultado.jaAtiva ? 'MISSÃO JÁ ATIVA' : 'MISSÃO ACEITA'}*\n*${missao.nome}*\n\n*Objetivo:* ${missao.objetivo_texto || missao.objetivo}\n\nRealize a tarefa e envie *!entregar missão ${missao.nome}* na primeira linha, seguido do relato de pelo menos 300 palavras. A ADM verifica o objetivo antes de liberar a recompensa.` });
+            if (!resultado.jaAtiva && missao.npc_id) {
+                const npc = require('../npc/npcManager').carregarNPC(missao.npc_id);
+                const dialogo = await require('../ia/missionDialogueEngine').gerarDialogoAceitar(npc, jogador, missao);
+                if (dialogo) await MessageService.send({ message: msg, text: dialogo });
+            }
+            return;
         }
 
-        const detalhePrefixo = /^!(?:miss(?:a|ã)o|consultar miss(?:a|õ)es)\s+/i;
+        const detalhePrefixo = /^!(?:miss[aã]o|consultar miss(?:[aã]o|[oõ]es))\s+/i;
         if (detalhePrefixo.test(corpo)) {
             const nomeMissao = corpo.replace(detalhePrefixo, "").trim();
             if (nomeMissao && !/^npc\b/i.test(nomeMissao)) {
@@ -59,6 +68,8 @@ _═ Sistema de Missões_
         const ativas = missoes.filter(m => m.status === "ativa");
         const disponiveis = missoes.filter(m => m.status === "disponivel");
         const completas = missoes.filter(m => m.status === "completa");
+        const pendentes = missoes.filter(m => m.status === 'em_avaliacao');
+        if (pendentes.length) mensagem += '*EM AVALIAÇÃO:*\n' + pendentes.map(m => `> ${m.nome}`).join('\n') + '\n\n';
 
         if (disponiveis.length > 0) {
             mensagem += `*═══ DISPONÍVEIS: ═══*\n`;
@@ -90,5 +101,8 @@ ${m.npc_id ? `> NPC: ${m.npc_id} | Dificuldade: Rank ${m.rank || "?"}\n` : ""}${
         
         mensagem += GUIA_MISSOES;
         await MessageService.send({ message: msg, text: mensagem });
-    });
+    } catch (error) {
+        console.error('[QUEST] Falha no comando:', error.message);
+        await MessageService.send({ message: msg, text: 'Não foi possível consultar a missão agora. Tente novamente; seu progresso foi preservado.' });
+    }
 };

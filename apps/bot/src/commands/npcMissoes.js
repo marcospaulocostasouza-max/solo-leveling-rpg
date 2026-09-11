@@ -15,6 +15,7 @@ const path = require("path");
 const NPCManager = require("../npc/npcManager");
 const MissionManager = require("../missions/missionManager");
 const QuestSystem = require("../systems/questSystem");
+const { canonicalId } = require("../ai/npcDatabase");
 const { classificarMissoes } = require("../missions/missionAvailability");
 const templates = require("../utils/templatesMensagens");
 
@@ -61,18 +62,18 @@ module.exports = async (msg) => {
     }
     
     // Carregar missões do NPC
-    const caminhoMissoes = path.join(MISSIONS_DIR, `${npcId}.json`);
-    if (!fs.existsSync(caminhoMissoes)) {
+    const catalogoMissoes = QuestSystem.carregarMissoesNPC(npcId);
+    if (!catalogoMissoes.length) {
         return MessageService.send({ message: msg, text: `*✖ ${npc.nome} não tem missões disponíveis no momento.*` });
     }
     
-    const dadosMissoes = JSON.parse(fs.readFileSync(caminhoMissoes, "utf8"));
+    const dadosMissoes = { missoes: catalogoMissoes };
     // A mesma sincronização de !missao impede que este catálogo revele
     // conteúdo acima do vínculo atual do jogador.
     const missoesRegistradas = await QuestSystem.listarMissoes(jogador.id);
     const idsDisponiveis = new Set(
         missoesRegistradas
-            .filter((missao) => missao.npc_id === npcId && missao.origem_missao_id)
+            .filter((missao) => canonicalId(missao.npc_id) === canonicalId(npcId) && missao.origem_missao_id)
             .map((missao) => missao.origem_missao_id)
     );
     const missoes = classificarMissoes(dadosMissoes.missoes || [])

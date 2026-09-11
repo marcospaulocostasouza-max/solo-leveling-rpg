@@ -74,6 +74,10 @@ Voce esta interpretando ${npc.nome} em um RPG.
 Situacao: ${situacao}
 Missao: ${missao.nome}
 Descricao: ${missao.descricao || "Nao especificada"}
+Objetivo oficial: ${missao.objetivo_texto || missao.objetivo || "Nao especificado"}
+Rank: ${missao.rank || "Nao especificado"}
+Estado registrado: ${missao.status || estado}
+Vínculo necessário: ${missao.vinculo_necessario ?? missao.vinculoNecessario ?? 0}%
 
 Personalidade: ${npc.personalidade || "Nao especificada"}
 Forma de falar: ${npc.formaFalar || "Natural"}
@@ -87,6 +91,9 @@ REGRAS:
 - Inclua uma breve narracao de suas acoes e expressoes.
 - O dialogo deve parecer natural e espontaneo.
 - Nao use frases prontas ou genericas.
+- Não invente outra missão, requisito, rank, item, recompensa ou conclusão.
+- Aceitar inicia a tarefa; somente a validação da ADM confirma a conclusão.
+- Não controle as ações, falas ou pensamentos do jogador.
 
 ${contextoExtra ? "Contexto adicional: " + contextoExtra : ""}
 

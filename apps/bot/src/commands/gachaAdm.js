@@ -167,7 +167,7 @@ async function executar(msg) {
             const nome = original.replace(/^!anexar imagem banner\b/i, "").trim();
             if (!nome) throw new Error("Informe o nome do Banner após o comando.");
             if (!msg.hasMedia || typeof msg.downloadMedia !== "function") throw new Error("Envie a imagem anexada e use o comando na legenda.");
-            const media = await msg.downloadMedia();
+            const media = await require("../utils/downloadCreationImage").downloadCreationImage(msg);
             const sessao = await Wizard.get(actor);
             let result;
             if (sessao?.tipo === "BANNER" && sessao.status === "AGUARDANDO_IMAGEM") result = await Wizard.attachImage(actor, "BANNER", nome, media);

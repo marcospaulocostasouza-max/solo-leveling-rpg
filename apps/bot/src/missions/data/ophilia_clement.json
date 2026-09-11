@@ -9,11 +9,11 @@
       "npcId": "ophilia_clement",
       "numero": 1,
       "nome": "Capítulo 1: O Despertar de Ophilia Clement",
-      "descricao": "Acompanhe os primeiros passos de Ophilia Clement como Caçador(a). Adotada ainda criança por um sacerdote dos Templos após perder a família em um colapso de dungeon, Ophilia cresceu servindo como curandeira voluntária da comunidade religiosa nas montanhas. Seu desper...",
+      "descricao": "Ophilia Clement, conhecido como A Sacerdotisa de Hallasan, apresenta os acontecimentos que deram origem ao seu conflito atual. Converse com o NPC, investigue as informações que ele compartilhar e participe da incursão introdutória prevista no objetivo. A dificuldade é Rank A; registre as descobertas e preserve os fatos narrados antes de avançar ao próximo capítulo.",
       "categoria": "principal",
       "tipo": "historia",
       "rank": "A",
-      "nivelMinimo": 60,
+      "nivelMinimo": 80,
       "objetivo": "Complete a introdução: converse com Ophilia Clement e participe de sua primeira incursão",
       "recompensas": {
         "xp": 17100,
@@ -30,7 +30,7 @@
       "categoria": "principal",
       "tipo": "historia",
       "rank": "A",
-      "nivelMinimo": 60,
+      "nivelMinimo": 80,
       "objetivo": "Ajude Ophilia Clement a reunir 3 pistas em diferentes localizações",
       "recompensas": {
         "xp": 19800,
@@ -47,7 +47,7 @@
       "categoria": "principal",
       "tipo": "historia",
       "rank": "A",
-      "nivelMinimo": 60,
+      "nivelMinimo": 80,
       "objetivo": "Vença o confronto decisivo ao lado de Ophilia Clement",
       "recompensas": {
         "xp": 22500,
@@ -64,7 +64,7 @@
       "categoria": "principal",
       "tipo": "historia",
       "rank": "A",
-      "nivelMinimo": 60,
+      "nivelMinimo": 80,
       "objetivo": "Complete a missão final e testemunhe o desfecho da história de Ophilia Clement",
       "recompensas": {
         "xp": 25200,
@@ -77,17 +77,17 @@
       "npcId": "ophilia_clement",
       "numero": 5,
       "nome": "Reforço de Ophilia Clement",
-      "descricao": "Ophilia Clement pede que você adquira, em qualquer Loja de Itens da Associação, um equipamento de Rank A compatível com Cajados e Orbes para reforçar seu arsenal de combate.",
+      "descricao": "Ophilia Clement propõe uma tarefa de aproximação: escolher e comprar uma peça de armadura ou arma de Rank D na Loja de Itens da Associação. Compare o preço e a utilidade do equipamento, guarde o comprovante da compra e explique ao NPC sua escolha. A atividade acontece na cidade, sem incursão em Dungeon, combate contra chefes ou exigência de itens de rank superior.",
       "categoria": "secundaria",
       "tipo": "loja",
-      "rank": "A",
-      "nivelMinimo": 60,
-      "objetivo": "Comprar 1 equipamento de Rank A (peça de armadura ou arma)",
+      "rank": "D",
+      "nivelMinimo": 15,
+      "objetivo": "Comprar 1 equipamento de Rank D (arma ou peça de armadura) e apresentar a compra e sua utilidade a Ophilia Clement.",
       "recompensas": {
-        "xp": 5400,
-        "won": 36000,
-        "item": "Réplica Reforçada de: Báculo Sagrado de Flandre"
-      }
+        "xp": 1000,
+        "won": 1000
+      },
+      "revisaoBalanceamento": 1
     },
     {
       "id": "ophilia_clement_06",

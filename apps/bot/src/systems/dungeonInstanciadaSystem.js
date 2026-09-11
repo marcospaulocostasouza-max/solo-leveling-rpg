@@ -20,6 +20,17 @@ const { ITENS_LOJA } = require("../utils/lojaItens");
 const playerDatabase = require("../../../../packages/database");
 const { provider: databaseProvider } = require("../../../../packages/database/config");
 
+let premioSchemaReady;
+async function garantirSchemaPremios() {
+    if (!premioSchemaReady) premioSchemaReady = (async () => {
+        // Um participante escolhe uma vez, e cada opção física da ficha só
+        // pode pertencer ao primeiro participante que a selecionar.
+        await playerDatabase.run("CREATE UNIQUE INDEX IF NOT EXISTS uq_premios_dungeon_participante ON premios_dungeon(ficha_dungeon_id,jogador_id)");
+        await playerDatabase.run("CREATE UNIQUE INDEX IF NOT EXISTS uq_premios_dungeon_opcao ON premios_dungeon(ficha_dungeon_id,premio_tipo)");
+    })().catch(error => { premioSchemaReady = null; throw error; });
+    return premioSchemaReady;
+}
+
 // =====================================
 // CONFIGURAÇÕES
 // =====================================
@@ -855,6 +866,13 @@ _Após concluir a Dungeon, use *!concluir Dungeon* para receber as recompensas._
             await this.atualizarLojaComDrops(ficha.dungeon_rank, chave.dungeon_id);
         }
 
+        // Reserva esta ficha para a entrega das recompensas gerais. Uma nova
+        // chamada não a encontrará como ativa e não repetirá XP/Won.
+        await new Promise(resolve => db.run(
+            "UPDATE fichas_dungeon SET status='concluindo' WHERE id=? AND status='ativa'",
+            [ficha.id], () => resolve()
+        ));
+
         return {
             sucesso: true,
             ficha: ficha,
@@ -874,6 +892,7 @@ _Após concluir a Dungeon, use *!concluir Dungeon* para receber as recompensas._
      * Retorna as opções de prêmio disponíveis para um participante
      */
     static async getOpcoesPremios(fichaDungeonId, jogadorId) {
+        await garantirSchemaPremios();
         const premios = await new Promise((resolve) => {
             db.all(
                 "SELECT * FROM premios_dungeon WHERE ficha_dungeon_id = ? AND jogador_id = ?",
@@ -885,7 +904,10 @@ _Após concluir a Dungeon, use *!concluir Dungeon* para receber as recompensas._
         // Cada participante escolhe somente um prêmio extra por conclusão.
         if (premios.length > 0) return [];
 
-        const escolhidos = [];
+        const escolhidos = (await new Promise(resolve => db.all(
+            "SELECT premio_tipo FROM premios_dungeon WHERE ficha_dungeon_id = ?",
+            [fichaDungeonId], (err, rows) => resolve((rows || []).map(row => row.premio_tipo))
+        )));
 
         // Buscar ficha para rank
         const ficha = await new Promise((resolve) => {
@@ -943,7 +965,7 @@ _Após concluir a Dungeon, use *!concluir Dungeon* para receber as recompensas._
         return new Promise((resolve) => {
             db.get(
                 `SELECT f.* FROM fichas_dungeon f
-                 WHERE f.status = 'ativa' AND (
+                 WHERE f.status IN ('ativa','premios_pendentes') AND (
                     f.jogador_id = ? OR EXISTS (
                         SELECT 1 FROM participacao_dungeon p
                         WHERE p.ficha_dungeon_id = f.id AND p.jogador_id = ?
@@ -969,11 +991,15 @@ _Após concluir a Dungeon, use *!concluir Dungeon* para receber as recompensas._
      * Escolhe um prêmio para o participante
      */
     static async escolherPremio(fichaDungeonId, jogadorId, numeroOpcao) {
-        const chaveProcessamento = `${fichaDungeonId}:${jogadorId}`;
+        // Serializa a seleção da ficha inteira no processo. Os índices únicos
+        // abaixo mantêm a mesma garantia se chegarem duas mensagens ao mesmo tempo.
+        const chaveProcessamento = `ficha:${fichaDungeonId}`;
         this.premiosEmProcessamento ||= new Set();
         if (this.premiosEmProcessamento.has(chaveProcessamento)) return { erro: "Sua escolha já está sendo processada. Aguarde a confirmação." };
         this.premiosEmProcessamento.add(chaveProcessamento);
         try {
+            await garantirSchemaPremios();
+            if (!await this.ehParticipanteDaFicha(fichaDungeonId, jogadorId)) return { erro: "Apenas participantes registrados podem escolher prêmio." };
             const premioJaEscolhido = await new Promise(resolve => db.get(
                 "SELECT premio_tipo FROM premios_dungeon WHERE ficha_dungeon_id = ? AND jogador_id = ? LIMIT 1",
                 [fichaDungeonId, jogadorId], (err, premio) => resolve(premio || null)
@@ -1032,7 +1058,7 @@ _Após concluir a Dungeon, use *!concluir Dungeon* para receber as recompensas._
                 "INSERT INTO premios_dungeon (ficha_dungeon_id, jogador_id, premio_tipo, premio_valor, data) VALUES (?, ?, ?, ?, ?)",
                 [fichaDungeonId, jogadorId, opcao.tipo, premioValor, new Date().toISOString()], err => resolve(!err)
             ));
-            if (!registrado) return { erro: "O prêmio foi aplicado, mas não foi possível registrar sua escolha. Não tente novamente; avise a administração." };
+            if (!registrado) return { erro: "Esta opção acabou de ser escolhida por outro participante. Escolha uma das opções restantes." };
             // XP e Won já são gravados pelos sistemas de progresso/economia.
             if (!['xp_extra', 'won_extra'].includes(opcao.tipo)) {
                 await playerDatabase.registrarHistoricoFicha({
@@ -1155,6 +1181,13 @@ _Após concluir a Dungeon, use *!concluir Dungeon* para receber as recompensas._
             // e transacoes), com o motivo da Dungeon. Não duplicamos a entrada
             // no ledger unificado.
         }
+
+        // Impede uma segunda conclusão da mesma ficha. A ficha continua
+        // acessível somente para as escolhas extras já liberadas.
+        await new Promise(resolve => db.run(
+            "UPDATE fichas_dungeon SET status='premios_pendentes' WHERE id=? AND status='concluindo'",
+            [fichaDungeonId], () => resolve()
+        ));
 
         return { sucesso: true, premios: premios, participantes: participantes, cristais };
     }

@@ -9,11 +9,11 @@
       "npcId": "haanit",
       "numero": 1,
       "nome": "Capítulo 1: O Despertar de H'aanit",
-      "descricao": "Acompanhe os primeiros passos de H'aanit como Caçador(a). Treinada desde criança por um caçador veterano em uma vila remota famosa por domar bestas de dungeon, H'aanit despertou seu poder ao vincular-se de forma incompleta a um raro felino-monstro durante um...",
+      "descricao": "H'aanit, conhecido como A Guardiã das Terras Geladas, apresenta os acontecimentos que deram origem ao seu conflito atual. Converse com o NPC, investigue as informações que ele compartilhar e participe da incursão introdutória prevista no objetivo. A dificuldade é Rank S; registre as descobertas e preserve os fatos narrados antes de avançar ao próximo capítulo.",
       "categoria": "principal",
       "tipo": "historia",
       "rank": "S",
-      "nivelMinimo": 80,
+      "nivelMinimo": 100,
       "objetivo": "Complete a introdução: converse com H'aanit e participe de sua primeira incursão",
       "recompensas": {
         "xp": 25650,
@@ -30,7 +30,7 @@
       "categoria": "principal",
       "tipo": "historia",
       "rank": "S",
-      "nivelMinimo": 80,
+      "nivelMinimo": 100,
       "objetivo": "Ajude H'aanit a reunir 3 pistas em diferentes localizações",
       "recompensas": {
         "xp": 29700,
@@ -47,7 +47,7 @@
       "categoria": "principal",
       "tipo": "historia",
       "rank": "S",
-      "nivelMinimo": 80,
+      "nivelMinimo": 100,
       "objetivo": "Vença o confronto decisivo ao lado de H'aanit",
       "recompensas": {
         "xp": 33750,
@@ -64,7 +64,7 @@
       "categoria": "principal",
       "tipo": "historia",
       "rank": "S",
-      "nivelMinimo": 80,
+      "nivelMinimo": 100,
       "objetivo": "Complete a missão final e testemunhe o desfecho da história de H'aanit",
       "recompensas": {
         "xp": 37800,
@@ -77,17 +77,17 @@
       "npcId": "haanit",
       "numero": 5,
       "nome": "Reforço de H'aanit",
-      "descricao": "H'aanit pede que você adquira, em qualquer Loja de Itens da Associação, um equipamento de Rank S compatível com Arcos para reforçar seu arsenal de combate.",
+      "descricao": "H'aanit propõe uma tarefa de aproximação: escolher e comprar uma peça de armadura ou arma de Rank C na Loja de Itens da Associação. Compare o preço e a utilidade do equipamento, guarde o comprovante da compra e explique ao NPC sua escolha. A atividade acontece na cidade, sem incursão em Dungeon, combate contra chefes ou exigência de itens de rank superior.",
       "categoria": "secundaria",
       "tipo": "loja",
-      "rank": "S",
-      "nivelMinimo": 80,
-      "objetivo": "Comprar 1 equipamento de Rank S (peça de armadura ou arma)",
+      "rank": "C",
+      "nivelMinimo": 30,
+      "objetivo": "Comprar 1 equipamento de Rank C (arma ou peça de armadura) e apresentar a compra e sua utilidade a H'aanit.",
       "recompensas": {
-        "xp": 8100,
-        "won": 54000,
-        "item": "Réplica Reforçada de: Arco Longo Entalhado à Mão"
-      }
+        "xp": 2500,
+        "won": 2000
+      },
+      "revisaoBalanceamento": 1
     },
     {
       "id": "haanit_06",

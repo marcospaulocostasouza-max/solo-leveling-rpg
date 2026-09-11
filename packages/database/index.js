@@ -866,7 +866,8 @@ function playerHasStyle(value, requiredStyle) {
 
 async function purchaseTechnique(playerId, techniqueId) {
   return transaction(async query => {
-    const [player, technique] = await Promise.all([query.get("SELECT * FROM jogadores WHERE id = ?", [playerId]), query.get("SELECT * FROM tecnicas WHERE id = ?", [techniqueId])]);
+    const player = await query.get(provider === "postgres" ? "SELECT * FROM jogadores WHERE id = ? FOR UPDATE" : "SELECT * FROM jogadores WHERE id = ?", [playerId]);
+    const technique = await query.get("SELECT * FROM tecnicas WHERE id = ?", [techniqueId]);
     if (!player || !technique) throw new Error("Jogador ou técnica não encontrada.");
     const allowed = [player.classe, player.classe_avancada].map(normalizedClass).includes(normalizedClass(technique.classe)) || normalizedClass(technique.classe) === "todas";
     if (!allowed) {

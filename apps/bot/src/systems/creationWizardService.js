@@ -46,5 +46,54 @@ async function answer(actor, text) {
   state.status = "AGUARDANDO_IMAGEM"; await save(actor, state); return { consumed: true, text: `_*「 DUNGEON SEMANAL VALIDADA 」*_\n\nEla ficará disponível por *7 dias* a partir da publicação. Agora envie a imagem com a legenda:\n*!anexar imagem dungeon semanal ${state.dados.nome}*` };
 }
 async function attachImage(actor, tipo, nome, media) { const state = await get(actor); if (!state || state.tipo !== tipo || state.status !== "AGUARDANDO_IMAGEM") throw new Error("Não há uma criação sua aguardando imagem."); if (String(tipo === "BANNER" ? state.dados.bannerNome : state.dados.nome).normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase() !== String(nome || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase()) throw new Error("O nome não corresponde à criação que aguarda imagem."); if (!media?.data || !/^image\//i.test(media.mimetype || "")) throw new Error("O anexo precisa ser uma imagem válida."); const image = `data:${media.mimetype};base64,${media.data}`; if (tipo === "BANNER") await require("./gachaAdminService").updateBanner(actor, state.dados.bannerId, { imagem: image }); else { const data = { ...state.dados, rank: String(state.dados.rank).toUpperCase(), participantes: Number(state.dados.participantes), xp: Number(state.dados.xp), won: Number(state.dados.won), imagem: image }; await weekly.liberar(actor, data); } await clear(actor); return tipo === "BANNER" ? "Imagem vinculada. O Banner está pronto para consulta e ativação pela ADM." : "Imagem vinculada. A Dungeon semanal foi liberada para consulta por 7 dias."; }
-async function consumeMessage(msg) { const actor = msg.author || msg.from, body = String(msg.body || "").trim(); const state = await get(actor); if (!state) return false; if (/^!cancelar cria[cç][aã]o$/i.test(body)) { await clear(actor); await MessageService.send({ message: msg, text: "Criação cancelada. Nenhum conteúdo foi publicado." }); return true; } if (state.status === "AGUARDANDO_IMAGEM" && msg.hasMedia && typeof msg.downloadMedia === "function") { try { const result = await attachImage(actor, state.tipo, state.tipo === "BANNER" ? state.dados.bannerNome : state.dados.nome, await msg.downloadMedia()); await MessageService.send({ message: msg, text: `_*「 IMAGEM VINCULADA 」*_\n\n_[+] ${result}` }); } catch (error) { await MessageService.send({ message: msg, text: `_*「 IMAGEM NÃO VINCULADA 」*_\n\n_[!] ${error.message}` }); } return true; } if (state.status === "AGUARDANDO_IMAGEM" && !body.startsWith("!")) { await MessageService.send({ message: msg, text: "Envie uma imagem válida neste chat para concluir a criação." }); return true; } if (body.startsWith("!")) return false; const result = await answer(actor, body); if (result?.consumed) { await MessageService.send({ message: msg, text: result.text }); return true; } return false; }
+async function publishWithoutImage(actor) {
+  const state = await get(actor);
+  if (!state || state.status !== "AGUARDANDO_IMAGEM") throw new Error("Não há uma criação aguardando imagem.");
+  if (state.tipo === "BANNER") {
+    await clear(actor);
+    return `Banner *${state.dados.bannerNome}* mantido como rascunho sem imagem. Use a ativação da ADM quando quiser publicá-lo.`;
+  }
+  const data = { ...state.dados, rank: String(state.dados.rank).toUpperCase(), participantes: Number(state.dados.participantes), xp: Number(state.dados.xp), won: Number(state.dados.won) };
+  await weekly.liberar(actor, data);
+  await clear(actor);
+  return `Dungeon semanal *${state.dados.nome}* liberada sem imagem por 7 dias.`;
+}
+async function consumeMessage(msg) {
+  const actor = msg.author || msg.from;
+  const body = String(msg.body || "").trim();
+  const state = await get(actor);
+  if (!state) return false;
+  if (/^!cancelar cria[cç][aã]o$/i.test(body)) {
+    await clear(actor);
+    await MessageService.send({ message: msg, text: "Criação cancelada." });
+    return true;
+  }
+  // Legendas explícitas precisam passar pelo handler do destino informado.
+  // Não vincule uma imagem de Banner à Dungeon que esteja aberta na sessão.
+  if (body.startsWith("!")) return false;
+  if (state.status === "AGUARDANDO_IMAGEM" && msg.hasMedia) {
+    let result;
+    try {
+      const media = await require("../utils/downloadCreationImage").downloadCreationImage(msg);
+      result = await attachImage(actor, state.tipo, state.tipo === "BANNER" ? state.dados.bannerNome : state.dados.nome, media);
+    } catch (error) {
+      console.error("[CREATION_IMAGE] Falha ao vincular:", { tipo: state.tipo, code: error?.code, message: error?.message });
+      await MessageService.send({ message: msg, text: "_*「 IMAGEM NÃO VINCULADA 」*_\n\n_[!] " + error.message });
+      return true;
+    }
+    // O vínculo já foi salvo. Falha na confirmação não desfaz a imagem.
+    await MessageService.send({ message: msg, text: "_*「 IMAGEM VINCULADA 」*_\n\n_[+] " + result });
+    return true;
+  }
+  if (state.status === "AGUARDANDO_IMAGEM") {
+    await MessageService.send({ message: msg, text: "Envie uma imagem válida neste chat para concluir a criação." });
+    return true;
+  }
+  const result = await answer(actor, body);
+  if (result?.consumed) {
+    await MessageService.send({ message: msg, text: result.text });
+    return true;
+  }
+  return false;
+}
 module.exports = { ensure, get, start, answer, attachImage, consumeMessage, clear, normalizeList };

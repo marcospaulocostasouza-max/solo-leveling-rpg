@@ -9,11 +9,11 @@
       "npcId": "carinda_moon",
       "numero": 1,
       "nome": "Capítulo 1: O Despertar de Carinda Moon",
-      "descricao": "Acompanhe os primeiros passos de Carinda Moon como Caçador(a). Comerciante experiente que dedicou a vida a organizar missões de alívio para vilas atingidas por colapsos de dungeon, Carinda despertou durante uma dessas missões ao proteger um comboio....",
+      "descricao": "Carinda Moon, conhecido como A Comerciante dos Comboios de Socorro, apresenta os acontecimentos que deram origem ao seu conflito atual. Converse com o NPC, investigue as informações que ele compartilhar e participe da incursão introdutória prevista no objetivo. A dificuldade é Rank C; registre as descobertas e preserve os fatos narrados antes de avançar ao próximo capítulo.",
       "categoria": "principal",
       "tipo": "historia",
       "rank": "C",
-      "nivelMinimo": 20,
+      "nivelMinimo": 30,
       "objetivo": "Complete a introdução: converse com Carinda Moon e participe de sua primeira incursão",
       "recompensas": {
         "xp": 10260,
@@ -30,7 +30,7 @@
       "categoria": "principal",
       "tipo": "historia",
       "rank": "C",
-      "nivelMinimo": 20,
+      "nivelMinimo": 30,
       "objetivo": "Ajude Carinda Moon a reunir 3 pistas em diferentes localizações",
       "recompensas": {
         "xp": 11880,
@@ -47,7 +47,7 @@
       "categoria": "principal",
       "tipo": "historia",
       "rank": "C",
-      "nivelMinimo": 20,
+      "nivelMinimo": 30,
       "objetivo": "Vença o confronto decisivo ao lado de Carinda Moon",
       "recompensas": {
         "xp": 13500,
@@ -64,7 +64,7 @@
       "categoria": "principal",
       "tipo": "historia",
       "rank": "C",
-      "nivelMinimo": 20,
+      "nivelMinimo": 30,
       "objetivo": "Complete a missão final e testemunhe o desfecho da história de Carinda Moon",
       "recompensas": {
         "xp": 15120,
@@ -77,17 +77,17 @@
       "npcId": "carinda_moon",
       "numero": 5,
       "nome": "Reforço de Carinda Moon",
-      "descricao": "Carinda Moon pede que você adquira, em qualquer Loja de Itens da Associação, um equipamento de Rank C compatível com Adagas para reforçar seu arsenal de combate.",
+      "descricao": "Carinda Moon propõe uma tarefa de aproximação: escolher e comprar uma peça de armadura ou arma de Rank E na Loja de Itens da Associação. Compare o preço e a utilidade do equipamento, guarde o comprovante da compra e explique ao NPC sua escolha. A atividade acontece na cidade, sem incursão em Dungeon, combate contra chefes ou exigência de itens de rank superior.",
       "categoria": "secundaria",
       "tipo": "loja",
-      "rank": "C",
-      "nivelMinimo": 20,
-      "objetivo": "Comprar 1 equipamento de Rank C (peça de armadura ou arma)",
+      "rank": "E",
+      "nivelMinimo": 1,
+      "objetivo": "Comprar 1 equipamento de Rank E (arma ou peça de armadura) e apresentar a compra e sua utilidade a Carinda Moon.",
       "recompensas": {
-        "xp": 3240,
-        "won": 21600,
-        "item": "Réplica Reforçada de: Par de Adagas Curtas"
-      }
+        "xp": 100,
+        "won": 500
+      },
+      "revisaoBalanceamento": 1
     },
     {
       "id": "carinda_moon_06",

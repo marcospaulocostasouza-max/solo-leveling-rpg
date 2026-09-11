@@ -9,11 +9,11 @@
       "npcId": "petrichor",
       "numero": 1,
       "nome": "Capítulo 1: Rumores sobre Petrichor",
-      "descricao": "Relatos alarmantes começam a circular entre guildas sobre Petrichor. Agente de uma organização oculta especializado em corromper deliberadamente a fauna de dungeon através de exposição controlada a mana negra....",
+      "descricao": "Petrichor, conhecido como O Caçador que Corrompe o Que Toca, apresenta os acontecimentos que deram origem ao seu conflito atual. Converse com o NPC, investigue as informações que ele compartilhar e participe da incursão introdutória prevista no objetivo. A dificuldade é Rank S; registre as descobertas e preserve os fatos narrados antes de avançar ao próximo capítulo.",
       "categoria": "principal",
       "tipo": "historia",
       "rank": "S",
-      "nivelMinimo": 80,
+      "nivelMinimo": 100,
       "objetivo": "Investigue 3 relatos de testemunhas sobre Petrichor",
       "recompensas": {
         "xp": 25650,
@@ -30,7 +30,7 @@
       "categoria": "principal",
       "tipo": "historia",
       "rank": "S",
-      "nivelMinimo": 80,
+      "nivelMinimo": 100,
       "objetivo": "Reúna provas em 2 locais diferentes ligados a Petrichor",
       "recompensas": {
         "xp": 29700,
@@ -47,7 +47,7 @@
       "categoria": "principal",
       "tipo": "historia",
       "rank": "S",
-      "nivelMinimo": 80,
+      "nivelMinimo": 100,
       "objetivo": "Derrote Petrichor em combate direto",
       "recompensas": {
         "xp": 33750,
@@ -64,7 +64,7 @@
       "categoria": "principal",
       "tipo": "historia",
       "rank": "S",
-      "nivelMinimo": 80,
+      "nivelMinimo": 100,
       "objetivo": "Entregue o relatório final sobre Petrichor à Associação",
       "recompensas": {
         "xp": 37800,
@@ -77,17 +77,17 @@
       "npcId": "petrichor",
       "numero": 5,
       "nome": "Reforço de Petrichor",
-      "descricao": "Petrichor pede que você adquira, em qualquer Loja de Itens da Associação, um equipamento de Rank S compatível com Lanças para reforçar seu arsenal de combate.",
+      "descricao": "Petrichor propõe uma tarefa de aproximação: escolher e comprar uma peça de armadura ou arma de Rank C na Loja de Itens da Associação. Compare o preço e a utilidade do equipamento, guarde o comprovante da compra e explique ao NPC sua escolha. A atividade acontece na cidade, sem incursão em Dungeon, combate contra chefes ou exigência de itens de rank superior.",
       "categoria": "secundaria",
       "tipo": "loja",
-      "rank": "S",
-      "nivelMinimo": 80,
-      "objetivo": "Comprar 1 equipamento de Rank S (peça de armadura ou arma)",
+      "rank": "C",
+      "nivelMinimo": 30,
+      "objetivo": "Comprar 1 equipamento de Rank C (arma ou peça de armadura) e apresentar a compra e sua utilidade a Petrichor.",
       "recompensas": {
-        "xp": 8100,
-        "won": 54000,
-        "item": "Réplica Reforçada de: Lança Ritualística de Caça"
-      }
+        "xp": 2500,
+        "won": 2000
+      },
+      "revisaoBalanceamento": 1
     },
     {
       "id": "petrichor_06",

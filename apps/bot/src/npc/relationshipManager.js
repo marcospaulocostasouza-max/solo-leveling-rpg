@@ -217,7 +217,10 @@ async function obterOuCriar(npcId, jogadorId) {
  * }|null>}
  */
 async function aplicarResultadoDeCena(npcId, jogadorId, deltaVinculo = 0, deltaHostilidade = 0) {
-    const relAtual = await obterOuCriar(npcId, jogadorId);
+    await garantirTabela();
+    await obterOuCriar(npcId, jogadorId);
+    return require('../../../../packages/database').transaction(async q => {
+    const relAtual = await q.get('SELECT * FROM npc_relationships WHERE "npcId"=? AND "jogadorId"=?' + (provider === 'postgres' ? ' FOR UPDATE' : ''), [npcId,jogadorId]);
     if (!relAtual) return null;
 
     const vinculoAntes = clamp(relAtual.vinculo);
@@ -242,22 +245,8 @@ async function aplicarResultadoDeCena(npcId, jogadorId, deltaVinculo = 0, deltaH
 
     const cruzouLimiarInicial = vinculoAntes < LIMIAR_VINCULO_INICIAL && vinculoNovo >= LIMIAR_VINCULO_INICIAL;
 
-    const relacionamento = await new Promise((resolve) => {
-        db.run(
-            `UPDATE npc_relationships
-             SET vinculo = ?, hostilidade = ?, "ultimaAtualizacao" = datetime('now')
-             WHERE "npcId" = ? AND "jogadorId" = ?`,
-            [vinculoNovo, hostilidadeNova, npcId, jogadorId],
-            async (err) => {
-                if (err) {
-                    console.error("[RELATIONSHIP] Erro ao aplicar resultado de cena:", err.message);
-                    resolve(relAtual);
-                } else {
-                    resolve(await obterRelacionamento(npcId, jogadorId));
-                }
-            }
-        );
-    });
+    await q.run('UPDATE npc_relationships SET vinculo=?,hostilidade=?,"ultimaAtualizacao"=CURRENT_TIMESTAMP WHERE "npcId"=? AND "jogadorId"=?', [vinculoNovo,hostilidadeNova,npcId,jogadorId]);
+    const relacionamento = await q.get('SELECT * FROM npc_relationships WHERE "npcId"=? AND "jogadorId"=?', [npcId,jogadorId]);
 
     return {
         relacionamento,
@@ -269,6 +258,7 @@ async function aplicarResultadoDeCena(npcId, jogadorId, deltaVinculo = 0, deltaH
         hostilidadeGanho: hostilidadeNova - hostilidadeAntes,
         cruzouLimiarInicial
     };
+    });
 }
 
 /**

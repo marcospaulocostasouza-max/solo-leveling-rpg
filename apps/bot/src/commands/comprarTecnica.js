@@ -42,6 +42,7 @@ module.exports = async (msg) => {
         try {
             result = await comprarTecnica(player, technique);
         } catch (error) {
+            console.error("[MAESTRIA] Compra recusada:", { jogadorId: player.id, tecnicaId: technique.id, code: error?.code, message: error?.message });
             await MessageService.send({ message: msg, text: friendlyPurchaseError(error, player, technique) });
             return;
         }
@@ -52,7 +53,12 @@ module.exports = async (msg) => {
         if (technique.cooldown) message += `Recarga: ${technique.cooldown} turno(s)\n`;
         message += `\n*— Maestria —*\nValor pago: ${result.cost}\nSaldo restante: ${result.maestria}\nPróxima técnica dessa classe: ${result.nextCost}\n\n`;
         message += `_Use *!Minhas Técnicas* para consultar tudo que aprendeu._`;
-        await MessageService.send({ message: msg, text: message });
+        try {
+            await MessageService.send({ message: msg, text: message });
+        } catch (error) {
+            // A compra já foi confirmada. Falha do WhatsApp não é rollback.
+            console.error("[MAESTRIA] Compra concluída, mas confirmação não enviada:", { jogadorId: player.id, tecnicaId: technique.id, message: error?.message });
+        }
     } catch (error) {
         console.error("[MAESTRIA] Erro ao comprar técnica:", error?.message || error);
         await MessageService.send({ message: msg, text: "*O Sistema não conseguiu concluir a compra. Nenhuma Maestria foi perdida; tente novamente.*" });

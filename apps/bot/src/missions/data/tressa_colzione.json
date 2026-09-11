@@ -9,11 +9,11 @@
       "npcId": "tressa_colzione",
       "numero": 1,
       "nome": "Capítulo 1: O Despertar de Tressa Colzione",
-      "descricao": "Acompanhe os primeiros passos de Tressa Colzione como Caçador(a). Filha de donos de uma pequena loja de itens para caçadores, Tressa cresceu ouvindo histórias de dungeons trazidas por clientes exaustos. Seu Despertar ocorreu aos 16 anos, quando negociou a própria so...",
+      "descricao": "Tressa Colzione, conhecido como A Mercadora Errante, apresenta os acontecimentos que deram origem ao seu conflito atual. Converse com o NPC, investigue as informações que ele compartilhar e participe da incursão introdutória prevista no objetivo. A dificuldade é Rank B; registre as descobertas e preserve os fatos narrados antes de avançar ao próximo capítulo.",
       "categoria": "principal",
       "tipo": "historia",
       "rank": "B",
-      "nivelMinimo": 40,
+      "nivelMinimo": 60,
       "objetivo": "Complete a introdução: converse com Tressa Colzione e participe de sua primeira incursão",
       "recompensas": {
         "xp": 13680,
@@ -30,7 +30,7 @@
       "categoria": "principal",
       "tipo": "historia",
       "rank": "B",
-      "nivelMinimo": 40,
+      "nivelMinimo": 60,
       "objetivo": "Ajude Tressa Colzione a reunir 3 pistas em diferentes localizações",
       "recompensas": {
         "xp": 15840,
@@ -47,7 +47,7 @@
       "categoria": "principal",
       "tipo": "historia",
       "rank": "B",
-      "nivelMinimo": 40,
+      "nivelMinimo": 60,
       "objetivo": "Vença o confronto decisivo ao lado de Tressa Colzione",
       "recompensas": {
         "xp": 18000,
@@ -64,7 +64,7 @@
       "categoria": "principal",
       "tipo": "historia",
       "rank": "B",
-      "nivelMinimo": 40,
+      "nivelMinimo": 60,
       "objetivo": "Complete a missão final e testemunhe o desfecho da história de Tressa Colzione",
       "recompensas": {
         "xp": 20160,
@@ -77,17 +77,17 @@
       "npcId": "tressa_colzione",
       "numero": 5,
       "nome": "Reforço de Tressa Colzione",
-      "descricao": "Tressa Colzione pede que você adquira, em qualquer Loja de Itens da Associação, um equipamento de Rank B compatível com Adagas para reforçar seu arsenal de combate.",
+      "descricao": "Tressa Colzione propõe uma tarefa de aproximação: escolher e comprar uma peça de armadura ou arma de Rank D na Loja de Itens da Associação. Compare o preço e a utilidade do equipamento, guarde o comprovante da compra e explique ao NPC sua escolha. A atividade acontece na cidade, sem incursão em Dungeon, combate contra chefes ou exigência de itens de rank superior.",
       "categoria": "secundaria",
       "tipo": "loja",
-      "rank": "B",
-      "nivelMinimo": 40,
-      "objetivo": "Comprar 1 equipamento de Rank B (peça de armadura ou arma)",
+      "rank": "D",
+      "nivelMinimo": 15,
+      "objetivo": "Comprar 1 equipamento de Rank D (arma ou peça de armadura) e apresentar a compra e sua utilidade a Tressa Colzione.",
       "recompensas": {
-        "xp": 4320,
-        "won": 28800,
-        "item": "Réplica Reforçada de: Par de Adagas Cravejadas de Moedas"
-      }
+        "xp": 1000,
+        "won": 1000
+      },
+      "revisaoBalanceamento": 1
     },
     {
       "id": "tressa_colzione_06",

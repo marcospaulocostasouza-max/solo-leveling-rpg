@@ -119,6 +119,195 @@
         {
             "nome": "Rifle Simples",
             "descricao": "Arma de fogo longa com grande precisão e alcance."
+        },
+        {
+            "nome": "Kanabo Simples",
+            "descricao": "Clava de madeira com pequenos rebites, própria para golpes de impacto.",
+            "proficiencia": "Proficiência em Kanabo",
+            "categoria": "Arma 1",
+            "tier": "Inicial"
+        },
+        {
+            "nome": "Chicote Simples",
+            "descricao": "Tira de couro trançado com cabo firme para treinar alcance e controle.",
+            "proficiencia": "Proficiência em Chicotes",
+            "categoria": "Arma 1",
+            "tier": "Inicial"
+        },
+        {
+            "nome": "Bumerangue Simples",
+            "descricao": "Peça curva de madeira para arremessos de treino.",
+            "proficiencia": "Proficiência em Bumerangues",
+            "categoria": "Arma 1",
+            "tier": "Inicial"
+        },
+        {
+            "nome": "Garras Simples",
+            "descricao": "Garras curtas de metal presas a suportes para as mãos.",
+            "proficiencia": "Proficiência em Garras",
+            "categoria": "Arma 1",
+            "tier": "Inicial"
+        },
+        {
+            "nome": "Sabre Simples",
+            "descricao": "Lâmina curva de aço comum com guarda simples.",
+            "proficiencia": "Proficiência em Sabres",
+            "categoria": "Arma 1",
+            "tier": "Inicial"
+        },
+        {
+            "nome": "Foices Duplas Simples",
+            "descricao": "Par de foices curtas de aço comum, sem efeitos especiais.",
+            "proficiencia": "Proficiência em Foices Duplas",
+            "categoria": "Arma 1",
+            "tier": "Inicial"
+        },
+        {
+            "nome": "Clava Simples",
+            "descricao": "Clava de madeira maciça, equilibrada para o combate próximo.",
+            "proficiencia": "Proficiência em Clavas",
+            "categoria": "Arma 1",
+            "tier": "Inicial"
+        },
+        {
+            "nome": "Florete Simples",
+            "descricao": "Lâmina fina com guarda leve para estocadas controladas.",
+            "proficiencia": "Proficiência em Floretes",
+            "categoria": "Arma 1",
+            "tier": "Inicial"
+        },
+        {
+            "nome": "Mangual Simples",
+            "descricao": "Cabo de madeira ligado por corrente curta a uma cabeça de metal.",
+            "proficiencia": "Proficiência em Manguais",
+            "categoria": "Arma 1",
+            "tier": "Inicial"
+        },
+        {
+            "nome": "Alabarda Simples",
+            "descricao": "Haste longa com ponta e lâmina lateral de aço comum.",
+            "proficiencia": "Proficiência em Alabardas",
+            "categoria": "Arma 2",
+            "tier": "Inicial"
+        },
+        {
+            "nome": "Tonfas Simples",
+            "descricao": "Par de bastões com empunhadura lateral para bloquear e golpear.",
+            "proficiencia": "Proficiência em Tonfas",
+            "categoria": "Arma 1",
+            "tier": "Inicial"
+        },
+        {
+            "nome": "Kamas Simples",
+            "descricao": "Par de pequenas lâminas curvas com cabos de madeira.",
+            "proficiencia": "Proficiência em Kamas",
+            "categoria": "Arma 1",
+            "tier": "Inicial"
+        },
+        {
+            "nome": "Rapieira Simples",
+            "descricao": "Espada estreita com guarda fechada para duelos e estocadas.",
+            "proficiencia": "Proficiência em Rapieiras",
+            "categoria": "Arma 1",
+            "tier": "Inicial"
+        },
+        {
+            "nome": "Báculo Simples",
+            "descricao": "Haste de madeira com foco comum para conduzir magia, sem bônus próprio.",
+            "proficiencia": "Proficiência em Báculos",
+            "categoria": "Arma 1",
+            "tier": "Inicial"
+        },
+        {
+            "nome": "Cimitarra Simples",
+            "descricao": "Espada de lâmina larga e curva, feita de aço comum.",
+            "proficiencia": "Proficiência em Cimitarras",
+            "categoria": "Arma 1",
+            "tier": "Inicial"
+        },
+        {
+            "nome": "Picareta de Guerra Simples",
+            "descricao": "Arma de combate com cabeça pontiaguda; não substitui a ferramenta de mineração.",
+            "proficiencia": "Proficiência em Picaretas de Guerra",
+            "categoria": "Arma 1",
+            "tier": "Inicial"
+        },
+        {
+            "nome": "Bastão Simples",
+            "descricao": "Haste lisa de madeira resistente para golpes e bloqueios.",
+            "proficiencia": "Proficiência em Bastões",
+            "categoria": "Arma 1",
+            "tier": "Inicial"
+        },
+        {
+            "nome": "Funda Simples",
+            "descricao": "Bolsa de couro presa a duas tiras para lançar pedras.",
+            "proficiencia": "Proficiência em Funda",
+            "categoria": "Arma 1",
+            "tier": "Inicial"
+        },
+        {
+            "nome": "Lâminas Duplas Simples",
+            "descricao": "Par de lâminas curtas equilibradas para ataques alternados.",
+            "proficiencia": "Proficiência em Lâminas Duplas",
+            "categoria": "Arma 1",
+            "tier": "Inicial"
+        },
+        {
+            "nome": "Leque de Guerra Simples",
+            "descricao": "Leque reforçado com varetas de metal, sem magia própria.",
+            "proficiencia": "Proficiência em Leques de Guerra",
+            "categoria": "Arma 1",
+            "tier": "Inicial"
+        },
+        {
+            "nome": "Instrumento Musical Simples",
+            "descricao": "Instrumento de cordas portátil para conduzir técnicas musicais aprendidas.",
+            "proficiencia": "Proficiência em Instrumentos Musicais",
+            "categoria": "Arma 1",
+            "tier": "Inicial"
+        },
+        {
+            "nome": "Escopeta Simples",
+            "descricao": "Arma de cano curto de fabricação comum, sem munição especial.",
+            "proficiencia": "Proficiência em Escopetas",
+            "categoria": "Arma 2",
+            "tier": "Inicial"
+        },
+        {
+            "nome": "Rifle de Precisão Simples",
+            "descricao": "Rifle comum com mira básica, sem propriedades especiais.",
+            "proficiencia": "Proficiência em Rifles de Precisão",
+            "categoria": "Arma 2",
+            "tier": "Inicial"
+        },
+        {
+            "nome": "Faca Simples",
+            "descricao": "Faca de combate de aço comum com cabo antiderrapante.",
+            "proficiencia": "Proficiência em Facas",
+            "categoria": "Arma 1",
+            "tier": "Inicial"
+        },
+        {
+            "nome": "Espada Pesada Simples",
+            "descricao": "Espada larga de duas mãos, sem encantamentos.",
+            "proficiencia": "Proficiência em Espadas Pesadas",
+            "categoria": "Arma 2",
+            "tier": "Inicial"
+        },
+        {
+            "nome": "Espadas Pesadas Duplas Simples",
+            "descricao": "Par de espadas pesadas de aço comum para a proficiência correspondente.",
+            "proficiencia": "Proficiência em Espadas Pesadas Duplas",
+            "categoria": "Arma 2",
+            "tier": "Inicial"
+        },
+        {
+            "nome": "Faixas de Combate Simples",
+            "descricao": "Faixas de tecido para proteger as mãos; preservam o combate desarmado, sem bônus.",
+            "proficiencia": "Proficiência em Combate Desarmado",
+            "categoria": "Arma 1",
+            "tier": "Inicial"
         }
     ]
 }

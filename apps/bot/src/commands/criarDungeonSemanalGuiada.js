@@ -3,6 +3,7 @@
 const MessageService = require("../core/messageService");
 const adminCore = require("../core/adminCore");
 const Wizard = require("../systems/creationWizardService");
+const { downloadCreationImage } = require("../utils/downloadCreationImage");
 
 module.exports = async msg => {
   const actor = msg.author || msg.from;
@@ -13,9 +14,10 @@ module.exports = async msg => {
     const name = body.replace(/^!anexar imagem dungeon semanal\b/i, "").trim();
     if (!name) throw new Error("Informe o nome da Dungeon após o comando.");
     if (!msg.hasMedia || typeof msg.downloadMedia !== "function") throw new Error("Envie a imagem anexada usando este comando como legenda.");
-    const result = await Wizard.attachImage(actor, "DUNGEON", name, await msg.downloadMedia());
+    const result = await Wizard.attachImage(actor, "DUNGEON", name, await downloadCreationImage(msg));
     return MessageService.send({ message: msg, text: `_*「 IMAGEM DA DUNGEON 」*_\n\n_[+] ${result}` });
   } catch (error) {
+    console.error("[DUNGEON_IMAGE] Falha na criação/anexo:", error?.code, error?.message);
     return MessageService.send({ message: msg, text: `_*「 DUNGEON SEMANAL 」*_\n\n_[!] ${error.message}` });
   }
 };

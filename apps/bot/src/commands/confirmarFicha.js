@@ -145,9 +145,7 @@ const VALIDACOES = {
             // Verificar se a arma existe no itens.json
             const itens = require("../database/itens.json");
             const armasDisponiveis = itens.armas || [];
-            const armaEncontrada = armasDisponiveis.some(a => 
-                a.nome.toLowerCase().trim() === v.toLowerCase().trim()
-            );
+            const armaEncontrada = require('../systems/starterWeaponService').findWeapon(v);
             if (!armaEncontrada) {
                 return `Arma "${v}" não encontrada. Use !armasiniciais para ver as armas disponíveis`;
             }

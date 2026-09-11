@@ -221,6 +221,8 @@ async function executarComando(msg, comando, comandosRegistrados) {
         "!sortear afinidade": "sortearAfinidade.js",
         "!confirmar ficha": "confirmarFicha.js",
         "!jogador": "jogador.js",
+        "!aparencias": "aparencias.js",
+        "!aparências": "aparencias.js",
         "!status": "jogador.js",
         "!regras": "regras.js",
         "!classes": "classes.js",

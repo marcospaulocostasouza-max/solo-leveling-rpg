@@ -2,8 +2,12 @@ const database = require("../../../../packages/database");
 const { provider } = require("../../../../packages/database/config");
 const { obterCustoMaestria } = require("./maestriaSystem");
 const { obterEstiloCanonico } = require("../utils/normalizarEstiloLuta");
+const { obterClasseCanonica } = require("../utils/normalizarClasse");
 const normalizar = v => String(v||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/^proficiencia em\s+/,"").trim();
-const normalizarClasse = v => String(v || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim().toLowerCase();
+const normalizarClasse = v => {
+    const canonica = obterClasseCanonica(v);
+    return String(canonica || v || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim().toLowerCase();
+};
 
 // Mapa de compatibilidade legado: nomes antigos de proficiência que foram
 // reformulados na nova arquitetura. Usado para preservar personagens antigos.
@@ -43,8 +47,8 @@ function compativel(jogador, tecnica) {
         const classeExigida = normalizarClasse(tecnica.classe);
         return Boolean(classeJogador) && classeJogador === classeExigida;
     }
-    const classe = normalizar(jogador.classe);
-    const exigida = normalizar(tecnica.classe);
+    const classe = normalizarClasse(jogador.classe);
+    const exigida = normalizarClasse(tecnica.classe);
     return classe === exigida || classe.includes(exigida) || exigida.includes(classe);
 }
 async function comprarTecnica(jogador, tecnica) {

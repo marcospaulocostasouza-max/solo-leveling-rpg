@@ -3,6 +3,9 @@
 const { templates } = require("../../../../cardinal/presentation");
 
 const FRIENDLY = Object.freeze({
+  MODEL_OFFLINE: { title: "MODELO INDISPONÍVEL", status: "TENTE NOVAMENTE", summary: "Não consegui conectar ao modelo local do Cardinal.", next: "Consulte !cardinal status para verificar o serviço. Sua ordem não foi executada." },
+  TIMEOUT: { title: "RESPOSTA DEMOROU DEMAIS", status: "TENTE NOVAMENTE", summary: "O modelo excedeu o tempo de resposta.", next: "Tente um pedido por vez. Nenhuma execução administrativa foi confirmada por esta resposta." },
+  INVALID_RESPONSE: { title: "RESPOSTA INVÁLIDA DO MODELO", status: "TENTE NOVAMENTE", summary: "O modelo não retornou uma resposta utilizável.", next: "Envie o pedido novamente. Para premiar, pode usar: !cardinal dê 100 XP para Nome Completo." },
   CARDINAL_PERMISSION_DENIED: { title: "ACESSO RESTRITO", status: "PERMISSÃO NECESSÁRIA", summary: "Sua conta não possui a permissão necessária para esta ordem.", next: "Use uma conta ADM com o cargo adequado ou peça ao responsável para revisar suas permissões." },
   CARDINAL_ENTITY_NOT_FOUND: { title: "NÃO ENCONTRADO", status: "DADO AUSENTE", summary: "O jogador, item ou registro citado não foi encontrado.", next: "Confira o nome completo e tente novamente." },
   CARDINAL_AMBIGUOUS_TARGET: { title: "NOME AMBÍGUO", status: "AÇÃO PAUSADA", summary: "Há mais de um registro compatível com o nome informado.", next: "Informe o nome completo do jogador ou da entidade." },
@@ -25,6 +28,9 @@ function cardinalError(error, module = "CARDINAL") {
   const details = error?.details;
   const problems = Array.isArray(details?.errors) ? details.errors : Array.isArray(details?.issues) ? details.issues : [];
   const lines = [friendly.next];
+  if (code === "CARDINAL_CONFIRMATION_REQUIRED" && /^confirm_[a-z0-9-]+$/i.test(details?.confirmation_id || "")) {
+    lines.unshift(`Para confirmar: !cardinal confirmar ${details.confirmation_id}`);
+  }
   if (error?.message && error.message !== friendly.summary) lines.unshift(`Motivo: ${error.message}`);
   for (const problem of problems.slice(0, 8)) lines.push(`• ${problem.field ? `${problem.field}: ` : ""}${problem.message || problem}`);
   if (details?.matches?.length) lines.push(`Correspondências: ${details.matches.map(item => item.nome || item.name || item.id).join(", ")}.`);

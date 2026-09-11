@@ -78,6 +78,16 @@ for (const tipo of ["BANNER", "DUNGEON"]) {
     });
 }
 
+for (const tipo of ["BANNER", "DUNGEON"]) {
+    test(`${tipo}: publicação sem imagem preserva a criação após falha de anexo`, async () => {
+        const w = wizard(tipo);
+        await w.service.consumeMessage({ from: "admin", body: "!continuar sem imagem" });
+        assert.equal(w.state(), null);
+        if (tipo === "DUNGEON") assert.equal(w.saved[0], undefined);
+        else assert.equal(w.saved.length, 0);
+    });
+}
+
 test("download vazio mantém criação pendente e orienta reenvio", async () => {
     const w = wizard("DUNGEON");
     let attempts = 0;

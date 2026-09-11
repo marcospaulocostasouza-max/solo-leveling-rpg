@@ -29,6 +29,7 @@ const TITULOS = {
 
 const EXTRAS = {
     1: [
+        { nome: "!aparencias", descricao: "Lista as aparências das fichas aprovadas, atualizada automaticamente." },
         { nome: "!biblioteca", descricao: "Abre o menu de regras, atributos, poderes, estilos e Portais." }
     ],
     2: [

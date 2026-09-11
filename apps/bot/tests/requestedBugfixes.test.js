@@ -161,3 +161,14 @@ test("tecnicas de proficiencia respeitam o estilo canonico", () => {
         true
     );
 });
+
+test("tecnicas de Mago Maldição aceitam a classe canônica Mago de Maldicao", () => {
+    const { compativel } = require("../src/systems/techniquePurchaseSystem");
+    assert.equal(
+        compativel(
+            { classe: "Mago de Maldicao", classe_avancada: "Nenhuma", estilo_luta: "Proficiência em Lanças" },
+            { categoria: "Inicial", classe: "Mago Maldição" }
+        ),
+        true
+    );
+});

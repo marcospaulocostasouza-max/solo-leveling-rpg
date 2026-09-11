@@ -7,10 +7,10 @@ function itemGrant(text) { const order = String(text || "").match(/^(?:de|adicio
 function planNatural(text) { const raw = String(text || "").trim(); const normalized = raw.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase(); let tool, parameters = {};
     let match;
     if ((parameters = itemGrant(normalized))) { tool = "give_item"; }
-    else if ((match = normalized.match(/(?:de|adicione)\s+(.+?)\s+won\s+(?:para|ao?)\s+(.+)$/))) { tool = "give_wons"; parameters = { amount: amount(match[1]), player: match[2] }; }
-    else if ((match = normalized.match(/(?:de|adicione)\s+(.+?)\s+cristais?\s+(?:para|ao?)\s+(.+)$/))) { tool = "give_crystals"; parameters = { amount: amount(match[1]), player: match[2] }; }
-    else if ((match = normalized.match(/(?:de|adicione|conceda)\s+(.+?)\s+(?:de\s+)?(?:xp|experiencia)\s+(?:para|ao?)\s+(?:jogador\s+)?(.+)$/))) { tool = "give_xp"; parameters = { amount: amount(match[1]), player: match[2] }; }
-    else if ((match = normalized.match(/(?:de|adicione)\s+(.+?)\s+(?:de\s+)?maestria\s+(?:para|ao?)\s+(?:jogador\s+)?(.+)$/))) { tool = "give_mastery"; parameters = { amount: amount(match[1]), player: match[2] }; }
+    else if ((match = normalized.match(/(?:de|adicione|conceda|entregue|dar|adicionar)\s+(.+?)\s+won\s+(?:para|ao?)\s+(.+)$/))) { tool = "give_wons"; parameters = { amount: amount(match[1]), player: match[2] }; }
+    else if ((match = normalized.match(/(?:de|adicione|conceda|entregue|dar|adicionar)\s+(.+?)\s+cristais?\s+(?:para|ao?)\s+(.+)$/))) { tool = "give_crystals"; parameters = { amount: amount(match[1]), player: match[2] }; }
+    else if ((match = normalized.match(/(?:de|adicione|conceda|entregue|dar|adicionar)\s+(.+?)\s+(?:de\s+)?(?:xp|experiencia)\s+(?:para|ao?)\s+(?:jogador\s+)?(.+)$/))) { tool = "give_xp"; parameters = { amount: amount(match[1]), player: match[2] }; }
+    else if ((match = normalized.match(/(?:de|adicione|conceda|entregue|dar|adicionar)\s+(.+?)\s+(?:de\s+)?maestria\s+(?:para|ao?)\s+(?:jogador\s+)?(.+)$/))) { tool = "give_mastery"; parameters = { amount: amount(match[1]), player: match[2] }; }
     else if ((match = normalized.match(/publique\s+(?:o\s+draft\s+)?(draft_[a-z0-9-]+)/))) { tool = "publish_draft"; parameters = { draft_id: match[1] }; }
     else if ((match = normalized.match(/publique\s+(?:a|o)?\s*([^,.]+?)(?:\s+que\s+acabamos.*)?$/))) { tool = "publish_draft"; parameters = { draft_name: match[1].trim() }; }
     else if ((match = normalized.match(/ative\s+(?:o\s+)?banner\s+(.+)$/))) { tool = "activate_banner"; parameters = { banner: match[1] }; }

@@ -39,6 +39,7 @@ function gerarMapaGrupos() {
         ],
         [GROUP_CONFIG.minigames]: ["!minigame"],
         [GROUP_CONFIG.comandos]: [
+            "!aparencias", "!aparências",
             "!iniciar", "!ler histÃ³ria", "!jogador", "!atributos", "!inventario", "!inv", "!maestria", "!excluir item", "!dungeon semanal", "!consultar dungeon semanal",
             "!equipar", "!usar", "!tecnicas", "!técnicas", "!classes",
             "!classe avancada", "!classe avançada", "!passivas", "!titulos",

@@ -12,7 +12,7 @@ class ContextBuilder {
         const selected = []; const blocks = [];
         for (const result of results.slice(0, this.maxResults)) {
             const citation = `FONTE ${result.id}`;
-            const header = `[${citation}] sistema=${result.system}; categoria=${result.category}; entidade=${result.entity}; arquivo=${result.file}`;
+            const header = `[${citation}] sistema=${result.system}; categoria=${result.category}; entidade=${result.entity}; arquivo=${result.file}; prioridade=${result.metadata?.priority === "canonical" ? "canônica" : "referência"}`;
             const separator = blocks.length ? 2 : 0;
             const used = blocks.join("\n\n").length;
             const available = this.maxChars - used - separator - header.length - 1; if (available < 160) break;

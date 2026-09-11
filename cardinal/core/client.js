@@ -18,12 +18,19 @@ class CardinalClient {
         this.logger.info("cliente_inicializado", { baseUrl: this.config.base_url, model: this.config.model });
     }
 
-    async requisicao(caminho, opcoes = {}, timeoutMs = this.config.timeout_ms) {
+    async requisicao(caminho, opcoes = {}, timeoutMs = this.config.timeout_ms, readBody = false) {
         const controller = new AbortController();
         const timer = Number(timeoutMs) > 0 ? setTimeout(() => controller.abort(), timeoutMs) : null;
         const inicio = performance.now();
         try {
-            return await this.fetch(`${this.config.base_url}${caminho}`, { ...opcoes, signal: controller.signal });
+            const response = await this.fetch(`${this.config.base_url}${caminho}`, { ...opcoes, signal: controller.signal });
+            if (readBody) {
+                const body = await response.text();
+                let data = null;
+                try { data = JSON.parse(body); } catch {}
+                return { response, data };
+            }
+            return response;
         } catch (error) {
             const code = error?.name === "AbortError" ? "TIMEOUT" : "MODEL_OFFLINE";
             this.logger.error("falha_conexao", { code, durationMs: Math.round(performance.now() - inicio) });
@@ -58,8 +65,7 @@ class CardinalClient {
             stream: false
         };
         if (options.responseFormat) payload.response_format = options.responseFormat;
-        const resposta = await this.requisicao("/v1/chat/completions", { method: "POST", headers: { "content-type": "application/json", accept: "application/json" }, body: JSON.stringify(payload) }, options.timeoutMs ?? this.config.timeout_ms);
-        const corpo = await resposta.json().catch(() => null);
+        const { response: resposta, data: corpo } = await this.requisicao("/v1/chat/completions", { method: "POST", headers: { "content-type": "application/json", accept: "application/json" }, body: JSON.stringify(payload) }, options.timeoutMs ?? (this.config.timeout_ms || 180000), true);
         if (!resposta.ok) {
             this.logger.error("erro_inferencia", { status: resposta.status, durationMs: Math.round(performance.now() - inicio) });
             throw new CardinalError(`Falha de inferência do Cardinal (HTTP ${resposta.status}).`, "INFERENCE_FAILED");

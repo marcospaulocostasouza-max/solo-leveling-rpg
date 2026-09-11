@@ -5,7 +5,7 @@ const crypto = require("crypto");
 
 const TABLES = [
     { table: "itens", category: "equipment", entity: "nome", fields: ["id", "nome", "categoria", "slot", "tier", "rank", "descricao", "efeito", "habilidade", "forca", "resistencia", "velocidade", "sentidos", "inteligencia", "poder_magico"] },
-    { table: "tecnicas", category: "skills", entity: "nome", fields: ["id", "nome", "classe", "tipo", "rank", "descricao", "efeito", "nivel_desbloqueio", "custo_mana", "dano"] },
+    { table: "tecnicas", category: "skills", entity: "nome", fields: ["id", "nome", "classe", "categoria", "tipo", "rank", "descricao", "descricao_completa", "efeito", "nivel_desbloqueio", "custo_mana", "custo_maestria", "custo_qi", "cooldown", "dano"] },
     { table: "dungeons", category: "dungeons", entity: "nome", fields: ["id", "nome", "rank", "descricao", "tipo", "requisitos", "recompensas"] },
     { table: "equipment_sets", category: "sets", entity: "nome", fields: ["id", "nome", "descricao", "rank", "ativo"] },
     { table: "equipment_set_bonuses", category: "sets", entity: "set_id", fields: ["set_id", "required_pieces", "forca", "resistencia", "velocidade", "sentidos", "inteligencia", "poder_magico", "efeito_futuro"] },

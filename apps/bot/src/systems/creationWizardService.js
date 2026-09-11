@@ -29,7 +29,26 @@ function bannerSheet(data) { return `!criar banner\nNOME DO BANNER: ${data.nome}
 function validateDungeon(data) { const errors = []; for (const key of ["nome", "tema", "rank", "descricao", "objetivo", "participantes", "xp", "won"]) if (!String(data[key] || "").trim()) errors.push(`${key} é obrigatório.`); if (data.rank && !["E", "D", "C", "B", "A", "S"].includes(String(data.rank).trim().toUpperCase())) errors.push("Rank deve ser E, D, C, B, A ou S."); for (const key of ["participantes", "xp", "won"]) if (data[key] != null && (!Number.isSafeInteger(Number(data[key])) || Number(data[key]) < 0)) errors.push(`${key} deve ser um número inteiro não negativo.`); return errors; }
 
 async function answer(actor, text) {
-  const state = await get(actor); if (!state || state.status !== "COLETANDO") return null;
+  const state = await get(actor); if (!state) return null;
+  if (state.status === "AGUARDANDO_ATIVACAO") {
+    const value = String(text || "").trim();
+    if (/^(sim|s)$/i.test(value)) {
+      if (state.tipo === "BANNER") {
+        await require("./gachaAdminService").activateBanner(actor, state.dados.bannerId);
+        await clear(actor);
+        return { consumed: true, text: `Banner *${state.dados.bannerNome}* ativado automaticamente.` };
+      }
+      const data = { ...state.dados, rank: String(state.dados.rank).toUpperCase(), participantes: Number(state.dados.participantes), xp: Number(state.dados.xp), won: Number(state.dados.won) };
+      await weekly.liberar(actor, data); await clear(actor);
+      return { consumed: true, text: `Dungeon semanal *${state.dados.nome}* liberada automaticamente por 7 dias.` };
+    }
+    if (/^(nao|n[aã]o|n)$/i.test(value)) {
+      state.status = "AGUARDANDO_IMAGEM"; await save(actor, state);
+      return { consumed: true, text: "Certo. Envie a imagem agora ou use *!continuar sem imagem* para publicar depois." };
+    }
+    return { consumed: true, text: "Responda *sim* para ativar agora ou *não* para manter como rascunho." };
+  }
+  if (state.status !== "COLETANDO") return null;
   const value = String(text || "").trim(); if (!value) return { consumed: true, text: "Envie uma resposta para a pergunta atual ou use *!cancelar criação*." };
   const [field] = questions(state.tipo)[state.etapa]; state.dados[field] = value; state.etapa += 1;
   if (state.etapa < questions(state.tipo).length) { await save(actor, state); return { consumed: true, text: questions(state.tipo)[state.etapa][1] }; }
@@ -38,12 +57,12 @@ async function answer(actor, text) {
       const inicio = new Date(); const fim = new Date(inicio.getTime() + 30 * 24 * 60 * 60 * 1000);
       state.dados.inicioEm = inicio.toISOString(); state.dados.fimEm = fim.toISOString();
       const banner = await require("../commands/gachaAdm").criarPelaFicha(actor, bannerSheet(state.dados));
-      state.status = "AGUARDANDO_IMAGEM"; state.dados.bannerId = banner.id; state.dados.bannerNome = banner.nome; await save(actor, state);
-      return { consumed: true, text: `_*「 BANNER VALIDADO 」*_\n\n*${banner.nome}* foi salvo como rascunho. Vigência automática: 30 dias.\n\n_*ÚLTIMA ETAPA — IMAGEM*_\nEnvie agora, neste mesmo chat, apenas a imagem que será exibida na consulta do Banner. Ela será vinculada automaticamente.` };
+      state.status = "AGUARDANDO_ATIVACAO"; state.dados.bannerId = banner.id; state.dados.bannerNome = banner.nome; await save(actor, state);
+      return { consumed: true, text: `Banner *${banner.nome}* validado. Deseja ativar agora? Responda *sim* ou *não*.` };
     } catch (error) { state.etapa = 0; await save(actor, state); return { consumed: true, text: `Não foi possível validar o Banner:\n• ${error.message}\n\nVamos reiniciar a criação. ${questions("BANNER")[0][1]}` }; }
   }
   const errors = validateDungeon(state.dados); if (errors.length) { state.etapa = 0; await save(actor, state); return { consumed: true, text: `A Dungeon possui problemas:\n${errors.map(item => `• ${item}`).join("\n")}\n\nVamos reiniciar. ${questions("DUNGEON")[0][1]}` }; }
-  state.status = "AGUARDANDO_IMAGEM"; await save(actor, state); return { consumed: true, text: `_*「 DUNGEON SEMANAL VALIDADA 」*_\n\nEla ficará disponível por *7 dias* a partir da publicação. Agora envie a imagem com a legenda:\n*!anexar imagem dungeon semanal ${state.dados.nome}*` };
+  state.status = "AGUARDANDO_ATIVACAO"; await save(actor, state); return { consumed: true, text: "Dungeon semanal validada. Deseja liberar agora? Responda *sim* ou *não*." };
 }
 async function attachImage(actor, tipo, nome, media) { const state = await get(actor); if (!state || state.tipo !== tipo || state.status !== "AGUARDANDO_IMAGEM") throw new Error("Não há uma criação sua aguardando imagem."); if (String(tipo === "BANNER" ? state.dados.bannerNome : state.dados.nome).normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase() !== String(nome || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase()) throw new Error("O nome não corresponde à criação que aguarda imagem."); if (!media?.data || !/^image\//i.test(media.mimetype || "")) throw new Error("O anexo precisa ser uma imagem válida."); const image = `data:${media.mimetype};base64,${media.data}`; if (tipo === "BANNER") await require("./gachaAdminService").updateBanner(actor, state.dados.bannerId, { imagem: image }); else { const data = { ...state.dados, rank: String(state.dados.rank).toUpperCase(), participantes: Number(state.dados.participantes), xp: Number(state.dados.xp), won: Number(state.dados.won), imagem: image }; await weekly.liberar(actor, data); } await clear(actor); return tipo === "BANNER" ? "Imagem vinculada. O Banner está pronto para consulta e ativação pela ADM." : "Imagem vinculada. A Dungeon semanal foi liberada para consulta por 7 dias."; }
 async function publishWithoutImage(actor) {
@@ -70,6 +89,11 @@ async function consumeMessage(msg) {
   }
   // Legendas explícitas precisam passar pelo handler do destino informado.
   // Não vincule uma imagem de Banner à Dungeon que esteja aberta na sessão.
+  if (state.status === "AGUARDANDO_IMAGEM" && /^!(?:continuar|publicar|liberar) sem imagem$/i.test(body)) {
+    const result = await publishWithoutImage(actor);
+    await MessageService.send({ message: msg, text: result });
+    return true;
+  }
   if (body.startsWith("!")) return false;
   if (state.status === "AGUARDANDO_IMAGEM" && msg.hasMedia) {
     let result;
@@ -96,4 +120,4 @@ async function consumeMessage(msg) {
   }
   return false;
 }
-module.exports = { ensure, get, start, answer, attachImage, consumeMessage, clear, normalizeList };
+module.exports = { ensure, get, start, answer, attachImage, publishWithoutImage, consumeMessage, clear, normalizeList };

@@ -309,6 +309,7 @@ Um ADM deve usar *!add item* para ${String(dados.pertencente).normalize("NFD").r
         return;
     }
 
+    ficha.aparencia = require("./extrairAparencia")(texto) || ficha.aparencia;
     ficha.nome = normalizarNomeJogador(ficha.nome);
     ficha.classe = obterClasseCanonica(ficha.classe) || ficha.classe.trim();
     if (ficha.estilo_luta) ficha.estilo_luta = obterEstiloCanonico(ficha.estilo_luta) || ficha.estilo_luta.trim();

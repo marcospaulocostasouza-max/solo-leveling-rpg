@@ -9,7 +9,8 @@ const { createAdminService } = require("../../../../cardinal/admin");
 const { renderAdmin } = require("../../../../cardinal/admin/renderer");
 const { templates, renderers } = require("../../../../cardinal/presentation");
 const { cardinalError } = require("./cardinalError");
-let service, forge, balance;
+let service, forge, balance, memory;
+const memoryInstance = () => memory ||= new (require("../../../../cardinal/memory").ContextManager)({ root: require("path").resolve(__dirname, "../../../..") });
 const instance = () => service ||= createAdminService();
 const forgeInstance = () => forge ||= new CardinalForgeService();
 const balanceInstance = () => balance ||= new BalanceEngine();
@@ -150,7 +151,7 @@ async function approveLatestDraft(actor, requestedDraftId) {
   return { draft, gate, published: true, result };
 }
 
-async function correctLatestDraft(actor) {
+async function correctLatestDraft(actor, request) {
   await forgeInstance().ready;
   const current = await forgeInstance().store.latestByAuthor(actor, { status: null });
   if (!current) {
@@ -163,7 +164,7 @@ async function correctLatestDraft(actor) {
     error.code = "DRAFT_NOT_APPROVABLE";
     throw error;
   }
-  const revision = await forgeInstance().revise(current.id, "Corrija automaticamente todos os problemas de schema, qualidade, Rank, slot e descrição indicados na validação. Preserve o conceito central pedido pelo ADM e não aumente atributos além do limite oficial.", { author: actor });
+  const revision = await forgeInstance().revise(current.id, request || "Corrija automaticamente todos os problemas de schema, qualidade, Rank, slot e descrição indicados na validação. Preserve o conceito central pedido pelo ADM e não aumente atributos além do limite oficial.", { author: actor });
   await balanceInstance().ready;
   const gate = await qualityGate({ engine: balanceInstance(), type: revision.draft.type, content: revision.draft.content });
   return { draft: revision.draft, gate };
@@ -174,6 +175,12 @@ async function handler(msg) {
   const text = cardinalText(msg.body);
   try {
     if (!await adminCore.isAdmin(actor)) return send(msg, templates.denied());
+    const confirmation = text.match(/^(?:confirmar|confirme)\s+(confirm_[a-z0-9-]+)$/i);
+    if (confirmation) {
+      await instance().ready;
+      const result = await instance().confirm(actor, confirmation[1]);
+      return MessageService.send({ message: msg, text: renderAdmin(result) });
+    }
     const approval = approvalRequest(text);
     if (approval) {
       const outcome = await approveLatestDraft(actor, approval.draftId);
@@ -188,6 +195,10 @@ async function handler(msg) {
     }
     if (automaticCorrectionRequest(text)) {
       const outcome = await correctLatestDraft(actor);
+      return send(msg, forgeDraftResponse(outcome.draft, outcome.gate));
+    }
+    if (/^(?:agora\s+)?(?:altere|mude|troque|ajuste|corrija|reescreva)\s+(?:o\s+|a\s+)?(?:rascunho|draft|ficha|descricao|descrição|nome|rank|slot|efeito|atributos)\b/i.test(text)) {
+      const outcome = await correctLatestDraft(actor, text);
       return send(msg, forgeDraftResponse(outcome.draft, outcome.gate));
     }
     const name = levelQuestion(text);
@@ -225,8 +236,14 @@ async function handler(msg) {
     if (/^dev(?:\s|$)/i.test(text)) return require("./cardinalDev")(msg);
     if (/^(?:ops(?:\s|$)|status$|health$|reinicie\s+(?:bot|site|qwen)|(?:bot|site|qwen).*(?:online|caiu))/i.test(text)) return require("./cardinalOps")(msg);
     if (/^(?:workflow|orquestrar)(?:\s|$)/i.test(text)) return require("./cardinalOrchestrator")(msg);
-    if (!text) return send(msg, templates.info({ module: "ADMIN", summary: "Envie uma ordem administrativa." }));
-    const result = await instance().executeNatural(actor, text, { dryRun: /\bsimule\b|\bdry[ -]?run\b/i.test(text) });
+    if (!text || /^(?:oi|olá|ola|ajuda|bom dia|boa tarde|boa noite)[!?.\s]*$/i.test(text)) return send(msg, templates.info({ module: "ADMIN", summary: "Posso consultar regras, criar e revisar conteúdo e executar ordens administrativas. Experimente: !cardinal como funciona a Maestria?; !cardinal crie uma espada Rank D; !cardinal dê 100 XP para Nome Completo." }));
+    if (/^(?:qual|quais|como|quanto|quantos|quantas|por que|porque|explique|me explique|o que|quem|onde|continue|e quanto|e como|e qual)\b/i.test(text)) {
+      const { CardinalAssistant } = require("../../../../cardinal/core/assistant");
+      const answer = await new CardinalAssistant({ memory: memoryInstance() }).ask(text, { actor, channel_id: msg.from });
+      return MessageService.send({ message: msg, text: answer.text });
+    }
+    await instance().ready;
+    const result = await instance().executeNatural(actor, text, { dryRun: /\bsimule\b|\bdry[ -]?run\b/i.test(text), requestId: msg.id?._serialized });
     if (result.dry_run) return send(msg, templates.warning({ module: "ADMIN", title: "SIMULAÇÃO — NADA FOI ALTERADO", status: "ESCRITAS DESATIVADAS", summary: "O Cardinal calculou a ordem, mas não atualizou o banco de dados.", sections: [{ title: "Para aplicar de verdade", fields: [], lines: ["No .env local, defina CARDINAL_ADMIN_WRITES_ENABLED=true e reinicie o bot.", "Depois envie a ordem novamente. Operações de maior risco continuarão exigindo confirmação."] }], meta: { code: "CARDINAL_DRY_RUN" } }));
     return MessageService.send({ message: msg, text: renderAdmin(result) });
   } catch (error) {

@@ -11,6 +11,7 @@ async function entregar(jogadorId, missaoId, relato) {
 }
 
 async function concluir(jogadorId, missaoId) {
+    await require('./questSystem').garantirMetadadosMissoes();
     const resultado = await database.transaction(async q => {
         const player = await q.get(provider === 'postgres' ? 'SELECT id FROM jogadores WHERE id=? FOR UPDATE' : 'SELECT id FROM jogadores WHERE id=?', [jogadorId]);
         if (!player) throw new Error('Jogador não encontrado.');
@@ -25,7 +26,14 @@ async function concluir(jogadorId, missaoId) {
         }
         const xp = Number(missao.recompensa_xp || 0), won = Number(missao.recompensa_won || 0);
         if (![xp,won].every(n => Number.isSafeInteger(n) && n >= 0)) throw new Error('Recompensa inválida.');
-        await q.run("UPDATE missoes SET status='completa',progresso=objetivo WHERE id=?", [missaoId]);
+        await q.run(
+            `UPDATE missoes
+             SET status='completa', progresso=objetivo,
+                 reacao_npc_pendente_em=CASE WHEN npc_id IS NOT NULL AND TRIM(npc_id) <> '' THEN CURRENT_TIMESTAMP ELSE reacao_npc_pendente_em END,
+                 reacao_npc_entregue_em=CASE WHEN npc_id IS NOT NULL AND TRIM(npc_id) <> '' THEN NULL ELSE reacao_npc_entregue_em END
+             WHERE id=?`,
+            [missaoId]
+        );
         await q.run('UPDATE jogadores SET experiencia=experiencia+?,won=won+? WHERE id=?', [xp,won,jogadorId]);
         await q.run("INSERT INTO transacoes(jogador_id,valor,tipo,motivo,data) VALUES(?,?,'ganho',?,CURRENT_TIMESTAMP)", [jogadorId,won,`Missão: ${missao.nome}`]);
         if (item) {

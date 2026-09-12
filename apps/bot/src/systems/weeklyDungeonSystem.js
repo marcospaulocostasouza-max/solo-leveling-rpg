@@ -64,31 +64,21 @@ function itensDaRecompensa(valor) {
     return String(valor).split(/[,;\n]/).map(item => item.trim()).filter(Boolean);
 }
 
-// Dungeon semanal é global: não há lista de participantes. O jogador apenas
-// envia a conclusão; a ADM aprova antes que qualquer recurso entre na ficha.
-async function solicitarConclusao(jogadorId) {
-    await ensure();
-    return db.transaction(async query => {
-        await encerrarExpiradas(query);
-        const dungeon = await query.get("SELECT * FROM dungeons_semanais WHERE status='liberada' ORDER BY id DESC LIMIT 1");
-        if (!dungeon) throw new Error("Não há Dungeon semanal ativa.");
-        const claimed = await query.run("INSERT INTO conclusoes_dungeon_semanal(dungeon_id,jogador_id,status) VALUES(?,?,'pendente') ON CONFLICT DO NOTHING", [dungeon.id, jogadorId]);
-        if (claimed.changes !== 1) return { duplicada: true, dungeonId: dungeon.id };
-        return { duplicada: false, dados: JSON.parse(dungeon.dados || "{}"), dungeonId: dungeon.id };
-    });
-}
-
+// A ADM registra a conclusao diretamente para a dungeon semanal ativa.
 async function aprovarConclusao(jogadorId, aprovadoPor) {
     await ensure();
     const resultado = await db.transaction(async query => {
-        const conclusao = await query.get(provider === "postgres" ? "SELECT * FROM conclusoes_dungeon_semanal WHERE jogador_id=? AND status='pendente' ORDER BY id DESC LIMIT 1 FOR UPDATE" : "SELECT * FROM conclusoes_dungeon_semanal WHERE jogador_id=? AND status='pendente' ORDER BY id DESC LIMIT 1", [jogadorId]);
-        if (!conclusao) throw new Error("Este jogador não possui conclusão semanal pendente.");
-        const dungeon = await query.get("SELECT * FROM dungeons_semanais WHERE id=?", [conclusao.dungeon_id]);
-        if (!dungeon) throw new Error("Dungeon semanal da conclusão não encontrada.");
+        const player = await query.get(provider === "postgres" ? "SELECT id FROM jogadores WHERE id=? FOR UPDATE" : "SELECT id FROM jogadores WHERE id=?", [jogadorId]);
+        if (!player) throw new Error("Jogador nao encontrado.");
+        await encerrarExpiradas(query);
+        const dungeon = await query.get("SELECT * FROM dungeons_semanais WHERE status='liberada' ORDER BY id DESC LIMIT 1");
+        if (!dungeon) throw new Error("Nao ha Dungeon semanal ativa para aprovar.");
+        await query.run("INSERT INTO conclusoes_dungeon_semanal(dungeon_id,jogador_id,status) VALUES(?,?,'pendente') ON CONFLICT DO NOTHING", [dungeon.id, jogadorId]);
+        const conclusao = await query.get("SELECT * FROM conclusoes_dungeon_semanal WHERE dungeon_id=? AND jogador_id=?", [dungeon.id, jogadorId]);
+        if (conclusao.status === "aprovada") throw new Error("Este jogador ja recebeu os premios desta Dungeon semanal.");
+        if (conclusao.status !== "pendente") throw new Error("O registro desta Dungeon semanal nao permite aprovacao.");
         const dados = JSON.parse(dungeon.dados || "{}");
         const xp = Math.max(0, Number(dados.xp) || 0), won = Math.max(0, Number(dados.won) || 0);
-        const player = await query.get("SELECT id FROM jogadores WHERE id=?", [jogadorId]);
-        if (!player) throw new Error("Jogador não encontrado.");
         await query.run("UPDATE jogadores SET experiencia=experiencia+?,won=won+? WHERE id=?", [xp, won, jogadorId]);
         await query.run("INSERT INTO experiencia_historico(jogador_id,quantidade,motivo,data) VALUES(?,?,?,CURRENT_TIMESTAMP)", [jogadorId, xp, `Dungeon semanal: ${dados.nome || dungeon.id}`]);
         await query.run("INSERT INTO transacoes(jogador_id,valor,tipo,motivo,data) VALUES(?,?,'ganho',?,CURRENT_TIMESTAMP)", [jogadorId, won, `Dungeon semanal: ${dados.nome || dungeon.id}`]);
@@ -118,4 +108,4 @@ async function concederCristaisConclusao(jogadorId, conclusaoId, rank, contexto 
     return CrystalRewardService.concederDungeonSemanal(jogadorId, conclusaoId, rank, contexto);
 }
 
-module.exports = { ensure, db, liberar, obterAtiva, encerrarExpiradas, solicitarConclusao, aprovarConclusao, concederCristaisConclusao, SETE_DIAS_MS };
+module.exports = { ensure, db, liberar, obterAtiva, encerrarExpiradas, aprovarConclusao, concederCristaisConclusao, SETE_DIAS_MS };

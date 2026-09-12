@@ -25,11 +25,6 @@ module.exports = async msg => {
         if (approval) {
             const result = await Progress.concluir(player.id,mission.id);
             await MessageService.send({ message: msg, text: result.duplicada ? 'Missão já concluída; nenhuma recompensa repetida.' : `*MISSÃO CONCLUÍDA*\n${mission.nome}\n${result.recompensa.xp} XP | ${result.recompensa.won} Won` });
-            if (!result.duplicada && mission.npc_id) {
-                const npc = require('../npc/npcManager').carregarNPC(mission.npc_id);
-                const text = await require('../ia/missionDialogueEngine').gerarDialogoConcluir(npc,player,{ ...mission,status:'completa' });
-                if (text) await MessageService.send({ message: msg,text });
-            }
         } else {
             await Progress.entregar(player.id,mission.id,lines.join('\n'));
             await MessageService.send({ message: msg,text: `*MISSÃO ENTREGUE*\n${mission.nome}\nSeu relato aguarda avaliação da ADM. As recompensas serão liberadas após a aprovação.` });

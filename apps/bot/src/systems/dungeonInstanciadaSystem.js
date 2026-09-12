@@ -548,9 +548,9 @@ class DungeonInstanciadaSystem {
         const fichaId = await new Promise((resolve) => {
             db.run(
                 `INSERT INTO fichas_dungeon 
-                 (jogador_id, dono_nome, dungeon_nome, dungeon_rank, descricao, tema, participantes, usos_consumidos, status, data_criacao) 
-                 VALUES (?, ?, ?, ?, ?, ?, ?, 0, 'ativa', ?)`,
-                [jogador.id, jogador.nome, nomeDungeon, rank, descricao, tema, JSON.stringify(participantes), dataCriacao],
+                 (jogador_id, dono_nome, dungeon_nome, dungeon_id, dungeon_rank, descricao, tema, participantes, usos_consumidos, status, data_criacao)
+                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, 0, 'ativa', ?)`,
+                [jogador.id, jogador.nome, nomeDungeon, dungeon.id, rank, descricao, tema, JSON.stringify(participantes), dataCriacao],
                 function(err) {
                     resolve(this.lastID);
                 }
@@ -1035,11 +1035,13 @@ _Após concluir a Dungeon, use *!concluir Dungeon* para receber as recompensas._
                 case "item_misterioso_1":
                 case "item_misterioso_2": {
                     const ficha = await this.buscarFicha(fichaDungeonId);
-                    const chaveDono = ficha && await new Promise(resolve => db.get(
-                        "SELECT dungeon_id FROM chaves_dungeon WHERE jogador_id = ? AND dungeon_id > 0 ORDER BY id DESC LIMIT 1",
-                        [ficha.jogador_id], (err, row) => resolve(row || null)
-                    ));
-                    const dungeonId = Number(chaveDono?.dungeon_id);
+                    let dungeonId = Number(ficha?.dungeon_id);
+                    // Compatibilidade com fichas anteriores à coluna dungeon_id.
+                    if (!dungeonId && ficha?.dungeon_nome) {
+                        const dungeon = require("./dungeonDatabaseLoader").carregarDungeons()
+                            .find(item => item.nome === ficha.dungeon_nome && item.rank === ficha.dungeon_rank);
+                        dungeonId = Number(dungeon?.id);
+                    }
                     if (!dungeonId) return { erro: "Não foi possível identificar a Dungeon desta ficha. O prêmio não foi marcado como escolhido." };
                     const itemSorteado = require("./dungeonDatabaseLoader").sortearItemMisterioso(dungeonId);
                     if (!itemSorteado) return { erro: "Esta Dungeon não possui item misterioso disponível. O prêmio não foi marcado como escolhido." };

@@ -19,7 +19,10 @@ module.exports = async (msg) => {
         const jogador = await new Promise((resolve, reject) => db.get("SELECT * FROM jogadores WHERE numero = ?", [numero], (err, row) => err ? reject(err) : resolve(row)));
         if (!jogador) return MessageService.send({ message: msg, text: "*═══ Você precisa ter uma ficha aprovada. ═══*" });
         
-        const aceitarPrefixo = /^!(?:aceitar|iniciar)\s+miss[aã]o(?:\s+|$)/i;
+        // Aceita tanto o formato completo quanto a confirmação curta logo após
+        // uma oferta do NPC: !aceitar, !aceitar <nome> e !confirmar missão.
+        // A escolha sem título só é automática quando existe uma única oferta.
+        const aceitarPrefixo = /^!(?:aceitar|iniciar|confirmar)(?:\s+miss[aã]o)?(?:\s+|$)/i;
         if (aceitarPrefixo.test(corpo)) {
             const nomeMissao = corpo.replace(aceitarPrefixo, "").trim();
             const resultado = await QuestSystem.aceitarMissao(jogador.id, nomeMissao);

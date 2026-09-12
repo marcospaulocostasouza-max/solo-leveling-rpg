@@ -28,10 +28,10 @@ function registrarTodosComandos() {
             categoria: "Sistema Inicial"
         },
         {
-            nome: "!Banners / !Banner <nome> / !Convergir [10]",
+            nome: "!Banners / !Banner <nome> / !Convergir <1 ou 10> <nome do banner>",
             funcao: "Lista Banners, consulta um Banner pelo nome e realiza 1 ou 10 convergências",
             arquivo: "gacha.js",
-            descricao: "Use !Banners, !Banner <nome>, !Convergir ou !Convergir 10; custos de 100 e 1.000 Cristais",
+            descricao: "Use !Banners, !Banner <nome>, !Convergir 1 <nome do banner> ou !Convergir 10 <nome do banner>; custos de 100 e 1.000 Cristais",
             dependencias: ["../../systems/gachaBannerService.js", "../../systems/gachaEngine.js"],
             ativo: true,
             categoria: "Gacha"

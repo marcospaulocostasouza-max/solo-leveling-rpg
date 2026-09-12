@@ -16,7 +16,8 @@ _• Rank: ${dungeon.rank}_
 _• Descrição: ${dungeon.descricao}_
 _• Objetivo: ${dungeon.objetivo}_
 _• Boss: ${dungeon.boss || "Nenhum"}_
-_• Limite: ${dungeon.participantes || "Não informado"}_
+_• Participação: aberta a todos os jogadores._
+_A ADM lê a participação e aprova os prêmios; não é necessário enviar comando de conclusão._
 
 _*PRÊMIOS:*_
 _• XP: ${dungeon.xp || 0}_

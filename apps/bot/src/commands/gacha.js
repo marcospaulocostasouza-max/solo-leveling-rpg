@@ -13,9 +13,12 @@ function formatarResultado(resultado, indice) {
     return `_${String(indice + 1).padStart(2, "0")} •_ *${resultado.nome}* _x${resultado.quantidade}${resultado.raridade ? ` — ${resultado.raridade}` : ""}${marcas.length ? ` — ${marcas.join(" / ")}` : ""}_${conversao}`;
 }
 function localizarBanner(nome, disponiveis) {
-    if (!nome) return disponiveis[0] || null;
+    if (!nome) return null;
     const busca = normalizar(nome);
-    return disponiveis.find(item => normalizar(item.nome) === busca) || disponiveis.find(item => normalizar(item.nome).includes(busca)) || null;
+    const exatos = disponiveis.filter(item => normalizar(item.nome) === busca);
+    const encontrados = exatos.length ? exatos : disponiveis.filter(item => normalizar(item.nome).includes(busca));
+    if (encontrados.length > 1) throw new Error("Nome ambíguo. Informe o nome completo de um dos banners: " + encontrados.map(item => item.nome).join(", "));
+    return encontrados[0] || null;
 }
 async function enviarBanner(msg, banner) {
     const jogador = await database.playerByPhone(msg.author || msg.from);
@@ -36,7 +39,7 @@ module.exports = async function gachaCommand(msg) {
         const disponiveis = await banners.getBannersDisponiveis();
         if (/^!banners\b/i.test(texto)) {
             const linhas = disponiveis.map(item => `_• ${item.nome}_`);
-            return MessageService.send({ message: msg, text: `_*「 BANNERS DISPONÍVEIS 」*_\n_— Convergências atualmente reconhecidas pelo Sistema._\n\n${linhas.length ? linhas.join("\n") : "_• Nenhum Banner disponível._"}\n\n_Use *!Banner nome do banner* para consultar._` });
+            return MessageService.send({ message: msg, text: `_*「 BANNERS DISPONÍVEIS 」*_\n_— Convergências atualmente reconhecidas pelo Sistema._\n\n${linhas.length ? linhas.join("\n") : "_• Nenhum Banner disponível._"}\n\n_Use *!Banner nome do banner* para consultar e *!Convergir 1 nome do banner* ou *!Convergir 10 nome do banner* para girar._` });
         }
         if (/^!banner\b/i.test(texto)) {
             const nome = texto.replace(/^!banner\b/i, "").trim();
@@ -47,17 +50,22 @@ module.exports = async function gachaCommand(msg) {
         }
         if (/^!convergir\b/i.test(texto)) {
             const argumento = texto.replace(/^!convergir\b/i, "").trim();
-            if (argumento && argumento !== "10") throw new Error("Use !Convergir ou !Convergir 10.");
-            const quantidade = argumento === "10" ? 10 : 1;
-            const banner = localizarBanner("", disponiveis);
-            if (!banner) throw new Error("Nenhum banner disponível no momento.");
+            const { quantidade, nome } = interpretarConvergencia(argumento);
+            const banner = localizarBanner(nome, disponiveis);
+            if (!banner) throw new Error('Banner não encontrado ou indisponível. Consulte !Banners.');
             const jogador = await database.playerByPhone(msg.author || msg.from);
             if (!jogador) throw new Error("Você precisa ter uma ficha aprovada.");
             const resultado = await engine.realizarGiros(jogador.id, banner.id, quantidade);
             return MessageService.send({ message: msg, text: `_*「 CONVERGÊNCIA CONCLUÍDA 」*_\n_— ${resultado.banner.nome}_\n\n_• Custo: ${resultado.custo} Cristais_\n_• Saldo: ${resultado.saldoAtual} Cristais_\n_• Grande Prêmio: ${resultado.pityDepois}/100_\n\n_*RESULTADOS*_\n${resultado.resultados.map(formatarResultado).join("\n")}` });
         }
-        throw new Error("Use !Banners, !Banner <nome>, !Convergir ou !Convergir 10.");
+        throw new Error("Use !Banners, !Banner <nome> ou !Convergir <1 ou 10> <nome do banner>.");
     } catch (erro) { return MessageService.send({ message: msg, text: `_*「 GACHA 」*_\n_[!] ${erro.message}_` }); }
 };
+function interpretarConvergencia(argumento) {
+    const match = String(argumento || "").trim().match(/^(1|10)\s+(.+)$/);
+    if (!match) throw new Error("Informe quantidade e banner: !Convergir 1 <nome do banner> ou !Convergir 10 <nome do banner>.");
+    return { quantidade: Number(match[1]), nome: match[2].trim() };
+}
+module.exports.interpretarConvergencia = interpretarConvergencia;
 module.exports.normalizar = normalizar;
 module.exports.localizarBanner = localizarBanner;

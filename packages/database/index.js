@@ -293,6 +293,7 @@ async function ensureGachaEngineSchema() {
     await adicionarColuna("gacha_banner_rewards", "unica", "INTEGER NOT NULL DEFAULT 0");
     await adicionarColuna("gacha_banner_rewards", "duplicate_fragment_value", `${integer}`);
     await adicionarColuna("gacha_banner_rewards", "garantido_conjunto", "INTEGER NOT NULL DEFAULT 0");
+    await adicionarColuna("gacha_banner_rewards", "estrelas", "INTEGER NOT NULL DEFAULT 3");
     await run(`CREATE TABLE IF NOT EXISTS gacha_operacoes (
       id ${serial}, jogador_id ${integer} NOT NULL, banner_id ${integer} NOT NULL,
       quantidade_giros INTEGER NOT NULL, custo_cristais ${integer} NOT NULL,
@@ -315,6 +316,7 @@ async function ensureGachaEngineSchema() {
     )`);
     for (const [coluna, definicao] of [
       ["rank_recompensa", "TEXT"], ["pity_antes", "INTEGER"], ["pity_depois", "INTEGER"],
+      ["estrelas", "INTEGER NOT NULL DEFAULT 3"],
       ["garantido_conjunto", "INTEGER NOT NULL DEFAULT 0"],
       ["pity_forcado", "INTEGER NOT NULL DEFAULT 0"], ["duplicata", "INTEGER NOT NULL DEFAULT 0"],
       ["recompensa_entregue", "TEXT"], ["fragmentos_invocacao_recebidos", `${integer} NOT NULL DEFAULT 0`],

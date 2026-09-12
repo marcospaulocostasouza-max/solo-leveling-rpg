@@ -35,13 +35,11 @@ module.exports = async (msg) => {
         });
     });
     
-    if (!jogador && !fichaPendente) {
-        return MessageService.send({ message: msg, text: "*✖ Você não possui um personagem criado.*\n_Use !ficha para criar um novo personagem._" });
-    }
-
     let dadosPendentes = {};
     try { dadosPendentes = JSON.parse(fichaPendente?.dados || "{}"); } catch {}
-    const nomePersonagem = jogador?.nome || dadosPendentes.nome || "Ficha pendente";
+    // O comando também limpa tentativas incompletas e dados residuais. Não
+    // exija ficha: o jogador pode querer recomeçar antes de criá-la.
+    const nomePersonagem = jogador?.nome || dadosPendentes.nome || "dados de cadastro";
     
     // Verificar se já está em processo de exclusão
     const processoExistente = await new Promise((resolve, reject) => {
@@ -96,10 +94,10 @@ _O processo expira em 5 minutos._` });
     await MessageService.send({ message: msg, text: `*⚠ ATENÇÃO - EXCLUSÃO DE PERSONAGEM ⚠*
 ──────────────────────────
 
-Você está prestes a apagar permanentemente ${jogador ? "seu personagem" : "sua ficha ainda não aprovada"}:
+Você está prestes a apagar permanentemente ${jogador ? "seu personagem" : fichaPendente ? "sua ficha ainda não aprovada" : "qualquer dado de cadastro associado ao seu número"}:
 > *Nome:* ${nomePersonagem}
 > *Classe:* ${jogador?.classe || dadosPendentes.classe || "Não definida"}
-${jogador ? `> *Nível:* ${jogador.nivel || 1}` : "> *Status:* Aguardando aprovação"}
+${jogador ? `> *Nível:* ${jogador.nivel || 1}` : fichaPendente ? "> *Status:* Aguardando aprovação" : "> *Status:* Nenhuma ficha criada"}
 
 *─── O Que Será Apagado ───*
 > ✓ Todos os atributos e pontos

@@ -742,6 +742,7 @@ function criarTabelas() {
             jogador_id INTEGER,
             dono_nome TEXT,
             dungeon_nome TEXT,
+            dungeon_id INTEGER,
             dungeon_rank TEXT,
             descricao TEXT,
             tema TEXT,

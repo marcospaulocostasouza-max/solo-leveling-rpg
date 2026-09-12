@@ -61,7 +61,9 @@ function garantirMetadadosMissoes() {
             recompensa_item: "TEXT",
             recompensa_cristais: "INTEGER NOT NULL DEFAULT 0",
             relato_entrega: "TEXT",
-            entregue_em: "TEXT"
+            entregue_em: "TEXT",
+            reacao_npc_pendente_em: "TEXT",
+            reacao_npc_entregue_em: "TEXT"
         };
 
         for (const [nome, definicao] of Object.entries(novasColunas)) {
@@ -186,7 +188,7 @@ class QuestSystem {
         return { completa: true, recompensa: { xp: Number(missao.recompensa_xp || 0), won: Number(missao.recompensa_won || 0), item: item ? missao.recompensa_item : null, cristais: cristais.quantidade } };
     }
 
-    static async listarMissoes(jogadorId) {
+    static async listarMissoes(jogadorId, { incluirNaoOferecidas = false } = {}) {
         try {
             await this.sincronizarMissoesPorVinculo(jogadorId);
             const [jogador, missoes] = await Promise.all([
@@ -203,7 +205,10 @@ class QuestSystem {
 
             return missoes.filter((missao) => {
                 if (missao.status !== "disponivel" || !missao.origem_missao_id) return true;
-                return (vinculos.get(missao.npc_id) || 0) >= (Number(missao.vinculo_necessario) || 0);
+                const vinculoSuficiente = (vinculos.get(missao.npc_id) || 0) >= (Number(missao.vinculo_necessario) || 0);
+                // Vínculo só habilita a oferta. O jogador só vê e aceita após
+                // o NPC oferecer a missão em uma cena.
+                return vinculoSuficiente && (incluirNaoOferecidas || Boolean(missao.oferecida_em));
             });
         } catch (erro) {
             console.error("[QUEST] Erro ao listar/sincronizar missões de vínculo:", erro.message);
@@ -218,11 +223,29 @@ class QuestSystem {
     }
 
     static async aceitarMissao(jogadorId, nome) {
-        const missao = await this.buscarMissaoPorNome(jogadorId, nome);
+        const nomeInformado = String(nome || '').trim();
+        let missao;
+        if (nomeInformado) {
+            missao = await this.buscarMissaoPorNome(jogadorId, nomeInformado);
+        } else {
+            const disponiveis = (await this.listarMissoes(jogadorId))
+                .filter(item => item.status === 'disponivel');
+            // Uma oferta feita pelo NPC tem prioridade. Assim, "!aceitar" aceita
+            // exatamente o que acabou de ser oferecido, sem adivinhações.
+            const oferecidas = disponiveis.filter(item => item.oferecida_em);
+            const candidatas = oferecidas.length ? oferecidas : disponiveis;
+            if (candidatas.length === 1) missao = candidatas[0];
+            else if (candidatas.length > 1) {
+                return { erro: `Há mais de uma missão disponível. Use *!aceitar missão <nome>*: ${candidatas.map(item => item.nome).join(', ')}.` };
+            }
+        }
         if (!missao) return { erro: "Missão não encontrada entre as suas missões disponíveis." };
         if (missao.status === "completa") return { erro: "Essa missão já foi concluída." };
         if (missao.status === "ativa") return { sucesso: true, jaAtiva: true, missao };
         if (missao.status !== "disponivel") return { erro: "Essa missão não está disponível para aceite." };
+        if (missao.origem_missao_id && !missao.oferecida_em) {
+            return { erro: "Converse primeiro com o NPC responsavel para que ele ofereca esta missao." };
+        }
         if (missao.categoria_missao === 'arco' && Number(missao.numero_missao) > 1) {
             const anterior = await buscar("SELECT status FROM missoes WHERE jogador_id=? AND npc_id=? AND numero_missao=?", [jogadorId, missao.npc_id, Number(missao.numero_missao)-1]);
             if (anterior?.status !== 'completa') return { erro: "Conclua o capítulo anterior antes de iniciar este arco." };
@@ -233,13 +256,51 @@ class QuestSystem {
     }
 
     static async obterOfertaDeMissaoNPC(jogadorId, npcId) {
-        const missoes = await this.listarMissoes(jogadorId);
+        // O NPC precisa enxergar as missões desbloqueadas para poder ofertá-las;
+        // as consultas públicas continuam ocultando as que ainda não foram oferecidas.
+        const missoes = await this.listarMissoes(jogadorId, { incluirNaoOferecidas: true });
         const missao = missoes.filter(m => canonicalId(m.npc_id) === canonicalId(npcId) && m.status === 'disponivel' && !m.oferecida_em)
             .sort((a,b) => Number(a.numero_missao)-Number(b.numero_missao))
             .find(m => m.categoria_missao !== 'arco' || Number(m.numero_missao) === 1 || missoes.some(p => canonicalId(p.npc_id) === canonicalId(m.npc_id) && Number(p.numero_missao) === Number(m.numero_missao)-1 && p.status === 'completa'));
         if (!missao) return null;
-        await executar("UPDATE missoes SET oferecida_em = datetime('now') WHERE id = ?", [missao.id]);
         return missao;
+    }
+
+    static async confirmarOfertaDeMissaoNPC(jogadorId, npcId, missaoId) {
+        await garantirMetadadosMissoes();
+        const result = await executar(
+            `UPDATE missoes SET oferecida_em=datetime('now')
+             WHERE id=? AND jogador_id=? AND LOWER(npc_id)=LOWER(?)
+               AND status='disponivel' AND oferecida_em IS NULL`,
+            [missaoId, jogadorId, npcId]
+        );
+        return result.changes === 1;
+    }
+
+    static async listarReacoesPendentesNPC(jogadorId, npcId) {
+        await garantirMetadadosMissoes();
+        return listar(
+            `SELECT * FROM missoes
+             WHERE jogador_id=? AND LOWER(npc_id)=LOWER(?) AND status='completa'
+               AND reacao_npc_pendente_em IS NOT NULL AND reacao_npc_entregue_em IS NULL
+             ORDER BY reacao_npc_pendente_em ASC, id ASC`,
+            [jogadorId, npcId]
+        );
+    }
+
+    static async confirmarEntregaReacoesNPC(jogadorId, npcId, ids) {
+        const validos = [...new Set((ids || []).map(Number).filter(Number.isSafeInteger))];
+        if (!validos.length) return 0;
+        await garantirMetadadosMissoes();
+        const marcadores = validos.map(() => "?").join(",");
+        const result = await executar(
+            `UPDATE missoes SET reacao_npc_entregue_em=datetime('now')
+             WHERE jogador_id=? AND LOWER(npc_id)=LOWER(?) AND status='completa'
+               AND reacao_npc_pendente_em IS NOT NULL AND reacao_npc_entregue_em IS NULL
+               AND id IN (${marcadores})`,
+            [jogadorId, npcId, ...validos]
+        );
+        return result.changes || 0;
     }
 }
 

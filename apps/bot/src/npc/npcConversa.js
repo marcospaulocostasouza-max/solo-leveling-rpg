@@ -140,6 +140,8 @@ async function processarConversaNPC(msg) {
         // Enviar resposta usando o sistema de divisão automática
         // que preserva a integridade da narrativa mesmo em mensagens longas
         const jogador = await new Promise((resolve) => db.get("SELECT id FROM jogadores WHERE numero = ?", [jogadorId], (err, row) => resolve(row || null)));
+        let reacoesPendentes = [];
+        let ofertaPendente = null;
         if (jogador) {
             const pedidoForja = /\b(forj|fabric|criar|produz|martel|material|equipamento|arma|armadura)\w*/i.test(mensagemJogador);
             if (npcId === "bilac" && pedidoForja) {
@@ -159,8 +161,30 @@ async function processarConversaNPC(msg) {
             }
             const oferta = await QuestSystem.obterOfertaDeMissaoNPC(jogador.id, npcId);
             if (oferta) {
-                resposta += `\n\n∆ *${npc.nome} parece querer falar sobre "${oferta.nome}".*\n_Se quiser aceitar, use: !aceitar missão ${oferta.nome}_`;
+                let falaOferta = await require("../ia/missionDialogueEngine").gerarDialogoOferecer(npc, jogador, oferta);
+                if (!falaOferta) {
+                    falaOferta = `*${npc.nome}* tem um pedido para voce: *${oferta.nome}*. ${oferta.objetivo_texto || oferta.descricao || ""}`;
+                }
+                resposta += `
+
+${falaOferta}
+
+> *Missao oferecida: ${oferta.nome}*
+_Se quiser aceitar, use: !aceitar missao ${oferta.nome}_`;
+                ofertaPendente = oferta;
             }
+            reacoesPendentes = await QuestSystem.listarReacoesPendentesNPC(jogador.id, npcId);
+            for (const missao of reacoesPendentes) {
+                let reacao = await require("../ia/missionDialogueEngine").gerarDialogoConcluir(npc, jogador, missao);
+                if (!reacao) {
+                    reacao = `*${npc.nome}* reconhece que voce cumpriu a missao *${missao.nome}* e reage de acordo com o que isso significou para ele.`;
+                }
+                resposta += `
+
+> *Reacao de ${npc.nome} pela conclusao de "${missao.nome}":*
+${reacao}`;
+            }
+
         }
 
         const resultado = await enviarMensagemCompleta(msg, resposta, {
@@ -170,6 +194,14 @@ async function processarConversaNPC(msg) {
 
         if (!resultado.sucesso) {
             console.error("[NPC_CONVERSA] Falha no envio da mensagem:", resultado.validacao.detalhes);
+        } else if (jogador) {
+            // Oferta e reacao so mudam de estado depois que esta cena chegou ao jogador.
+            if (ofertaPendente) {
+                await QuestSystem.confirmarOfertaDeMissaoNPC(jogador.id, npcId, ofertaPendente.id);
+            }
+            if (reacoesPendentes.length) {
+                await QuestSystem.confirmarEntregaReacoesNPC(jogador.id, npcId, reacoesPendentes.map(missao => missao.id));
+            }
         }
 
         return true;

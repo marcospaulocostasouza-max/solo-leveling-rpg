@@ -73,7 +73,8 @@ module.exports = async (msg) => {
     const missoesRegistradas = await QuestSystem.listarMissoes(jogador.id);
     const idsDisponiveis = new Set(
         missoesRegistradas
-            .filter((missao) => canonicalId(missao.npc_id) === canonicalId(npcId) && missao.origem_missao_id)
+            .filter((missao) => canonicalId(missao.npc_id) === canonicalId(npcId) && missao.origem_missao_id
+                && (missao.status !== 'disponivel' || missao.oferecida_em))
             .map((missao) => missao.origem_missao_id)
     );
     const missoes = classificarMissoes(dadosMissoes.missoes || [])

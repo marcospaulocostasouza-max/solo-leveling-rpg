@@ -267,7 +267,7 @@ function responderOrientacaoCanonica(pergunta) {
         return "Os mínimos são: Quest diária 50–100 palavras, uma por dia e no máximo quatro por semana; One Post 1.000 palavras e 1 a cada 7 dias; treino de Maestria 200 palavras, com duração de 1, 7, 15 ou 30 dias e cooldown igual ao período; treino conjunto 200 por participante, até 2 por semana; interação 150 por participante, até 2 por semana; missão e Dungeon 300 por participante. A recompensa só entra na ficha depois da validação da ADM.";
     }
     if (/\b(?:como .*giro|como .*girar|como .*conver(?:gir|ge)|como .*banner|como .*gacha)\b/.test(texto)) {
-        return "Use *!banners* para ver os banners ativos ou *!banner <nome>* para consultar um específico. Use *!convergir* para um giro e *!convergir 10* para dez giros. O custo em Cristais e cada prêmio recebido ficam registrados na sua ficha e no histórico.";
+        return "Use *!banners* para ver os banners ativos ou *!banner <nome>* para consultar um específico. Use *!convergir 1 <nome do banner>* para um giro e *!convergir 10 <nome do banner>* para dez giros. O custo em Cristais e cada prêmio recebido ficam registrados na sua ficha e no histórico.";
     }
     if (/\b(?:como .*dungeon|como .*abrir chave|chave .*dungeon|ficha .*dungeon)\b/.test(texto)) {
         return "Depois de conseguir uma Chave de Dungeon, abra-a para receber uma Dungeon compatível com o Rank. Consulte *!ficha de dungeon* para ver a descrição e os próximos passos. Com o grupo reconhecido, use *!concluir dungeon*; cada participante escolhe apenas um prêmio com *!escolho <número>*.";

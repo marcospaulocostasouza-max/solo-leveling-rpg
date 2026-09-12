@@ -188,6 +188,7 @@ class OllamaService {
 
         return {
             model: opcoes.model ?? CONFIG_MODELO.model,
+            ...(opcoes.system ? { system: opcoes.system } : {}),
             prompt: prompt,
             stream: true,
             // Suporte ao modo thinking do Qwen3
@@ -232,7 +233,8 @@ class OllamaService {
             exibirDebugPayload(payload, promptOtimizado);
 
             const response = await httpClient.post('/api/generate', payload, {
-                responseType: 'stream'
+                responseType: 'stream',
+                signal: opcoes.signal
             });
 
             const stream = response.data;

@@ -9,7 +9,8 @@ function limparComando(nome) {
 function ehAdministrativo(comando) {
     const categoria = String(comando.categoria || "").toLowerCase();
     const nome = String(comando.nome || "").toLowerCase();
-    return /administrativ/.test(categoria) || /^!(?:admin|aprovar|recusar|avaliar|liberar|entregar)\b/.test(nome) || /!gachaadm\b/.test(nome);
+    return /administrativ/.test(categoria) || /^!(?:admin|aprovar|recusar|avaliar|liberar|entregar)\b/.test(nome) || /!gachaadm\b/.test(nome)
+        || /^!(?:criar|ativar|desativar|apagar|excluir|anexar imagem)\s+(?:banner|dungeon)\b/.test(nome);
 }
 
 function respostaCanonica(comando) {

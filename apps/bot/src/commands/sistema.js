@@ -4,7 +4,7 @@ const adminCore = require("../core/adminCore");
 
 function formatarPaimon(texto) {
     const fala = String(texto || "").trim().replace(/^_([\s\S]*)_$/, "$1");
-    const linhas = fala.split(/\n+/).map(linha => linha.trim()).filter(Boolean).map(linha => /^[•▪◦\-]/.test(linha) ? linha : `> ${linha}`);
+    const linhas = fala.split(/\n/).map(linha => linha.trim()).map(linha => !linha || /^[•▪◦\-]/.test(linha) ? linha : `> ${linha}`);
     return [
         "*═══ PAIMON — GUIA DO SISTEMA ═══*",
         "",
@@ -18,7 +18,7 @@ function formatarPaimon(texto) {
 function pedeDadosDeOutroJogador(pergunta) {
     const texto = String(pergunta || "");
     return /\b(?:n[ií]vel|rank|ficha|perfil|classe|saldo|won|cristais|invent[aá]rio|t[eé]cnicas?|passivas?|t[ií]tulos?)\b[\s\S]{0,80}\b(?:do|da|de)\s+(?:player|jogador)\s+(?!meu\b|minha\b|eu\b)/i.test(texto)
-        || /\b(?:ficha|perfil|invent[aá]rio|saldo|n[ií]vel|rank|t[eé]cnicas?)\s+(?:do|da)\s+(?!sistema\b|rpg\b|meu\b|minha\b)[\p{L}\p{N}_-]{2,}/iu.test(texto);
+        || /\b(?:ficha|perfil|invent[aá]rio|saldo|n[ií]vel|rank|t[eé]cnicas?)\s+(?:do|da)\s+(?!(?:sistema|rpg|meu|minha|dungeon|miss[aã]o|guilda|arma|banner|t[eé]cnica|classe|npc|paimon)\b)[\p{L}\p{N}_-]{2,}/iu.test(texto);
 }
 
 async function responder(msg, pergunta) {
@@ -36,7 +36,7 @@ async function responder(msg, pergunta) {
         return MessageService.send({ message: msg, text: formatarPaimon(resposta) });
     } catch (error) {
         console.error("[PAIMON]", error.message);
-        return MessageService.send({ message: msg, text: formatarPaimon("Não consegui consultar essa informação agora. Sua ficha ou o serviço de IA pode estar indisponível; tente novamente em alguns instantes. Se a dúvida for sobre um comando, envie o nome dele junto da pergunta.") });
+        return MessageService.send({ message: msg, text: formatarPaimon("Não consegui preparar sua explicação agora. Tente me chamar novamente com a mesma dúvida em alguns instantes.") });
     }
 }
 

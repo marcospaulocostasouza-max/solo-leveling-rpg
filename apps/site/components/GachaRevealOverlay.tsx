@@ -1,7 +1,10 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { Gem, Sparkles, Star, Trophy } from 'lucide-react';
+import { gachaDebug } from '@/lib/gacha-debug';
+import { gachaRewardLabel } from '@/lib/gacha-reward-label';
 
 type Reward = {
   tipo?: string; nome?: string; quantidade?: number; raridade?: string | null;
@@ -37,7 +40,7 @@ export function GachaRewardCard({ reward, revealed, onReveal }: { reward: Reward
   return <button type="button" className={`gacha-reveal-card stars-${Math.min(5, Math.max(3, Number(reward.estrelas || 3)))} ${revealed ? 'is-revealed' : ''}`} onClick={onReveal} disabled={!onReveal || revealed} aria-label={revealed ? `Recompensa ${reward.nome}` : 'Revelar recompensa'}>
     <span className="gacha-card-veil" aria-hidden="true"><i /></span>
     <span className="gacha-reward-icon"><IconFor reward={reward} /></span>
-    <span className="gacha-card-content"><small>{reward.tipo || 'RECOMPENSA'} · {label}</small><b>{reward.nome || 'Recompensa do Sistema'}</b>{Number(reward.quantidade || 1) > 1 && <em>×{reward.quantidade}</em>}{reward.garantidoConjunto && <strong>PEÇA GARANTIDA</strong>}{reward.duplicata && <p>Duplicata → +{reward.fragmentosInvocacaoRecebidos || 0} fragmentos</p>}</span>
+    <span className="gacha-card-content"><small>{reward.tipo || 'RECOMPENSA'} · {label}</small><b>{gachaRewardLabel(reward)}</b>{reward.garantidoConjunto && <strong>PEÇA GARANTIDA</strong>}{reward.duplicata && <p>Duplicata → +{reward.fragmentosInvocacaoRecebidos || 0} fragmentos</p>}</span>
   </button>;
 }
 
@@ -51,6 +54,8 @@ function VerticalRift({ phase, visual }: { phase: Phase; visual: Visual }) {
 }
 
 export default function GachaRevealOverlay({ result, onContinue, audio }: { result: PullResult; onContinue: () => void; audio?: Partial<Record<'charge' | 'rupture' | 'impact' | 'rare', () => void>> }) {
+  const [mounted, setMounted] = useState(false);
+  const dialog = useRef<HTMLDivElement>(null);
   const rewards = useMemo(() => result.resultados || [], [result.resultados]);
   const isTen = rewards.length > 1;
   const visual = useMemo(() => visualFor(rewards), [rewards]);
@@ -59,10 +64,25 @@ export default function GachaRevealOverlay({ result, onContinue, audio }: { resu
   const allRevealed = revealed.every(Boolean);
 
   useEffect(() => {
-    document.body.classList.add('gacha-reveal-open');
-    return () => document.body.classList.remove('gacha-reveal-open');
+    const frame = window.requestAnimationFrame(() => {
+      setMounted(true);
+      gachaDebug('animation mounted');
+    });
+    return () => window.cancelAnimationFrame(frame);
   }, []);
   useEffect(() => {
+    if (!mounted) return;
+    const previousFocus = document.activeElement as HTMLElement | null;
+    document.body.classList.add('gacha-reveal-open');
+    dialog.current?.focus();
+    return () => {
+      document.body.classList.remove('gacha-reveal-open');
+      previousFocus?.focus({ preventScroll: true });
+    };
+  }, [mounted]);
+  useEffect(() => {
+    if (!mounted) return;
+    gachaDebug(`animation phase: ${phase}`);
     if (phase === 'finished' || phase === 'revealed' || phase === 'gridAppearing') return;
     const next: Record<Exclude<Phase, 'revealed' | 'gridAppearing' | 'finished'>, [Phase, number, (() => void) | undefined]> = {
       darkening: ['riftCharging', 350, audio?.charge],
@@ -73,14 +93,21 @@ export default function GachaRevealOverlay({ result, onContinue, audio }: { resu
     const [nextPhase, delay, sound] = next[phase];
     const timer = window.setTimeout(() => { sound?.(); setPhase(nextPhase); }, delay);
     return () => window.clearTimeout(timer);
-  }, [phase, isTen, visual.duration, rewards, audio]);
+  }, [mounted, phase, isTen, visual.duration, rewards, audio]);
 
   const skip = () => { setPhase(isTen ? 'gridAppearing' : 'revealed'); if (!isTen) setRevealed([true]); };
   const revealAll = () => setRevealed(rewards.map(() => true));
   const revealOne = (index: number) => setRevealed(current => current.map((value, itemIndex) => itemIndex === index || value));
   const ready = phase === 'revealed' || phase === 'gridAppearing';
 
-  return <div className={`gacha-reveal-overlay phase-${phase} ${visual.key}`} style={{ '--reveal-primary': visual.primary, '--reveal-secondary': visual.secondary, '--reveal-shake': `${visual.shake}px` } as React.CSSProperties} role="dialog" aria-modal="true" aria-label="Revelação da invocação">
+  if (!mounted) return null;
+  return createPortal(<div ref={dialog} tabIndex={-1} data-gacha-phase={phase} onKeyDown={event => {
+    if (event.key !== 'Tab') return;
+    const buttons = Array.from(dialog.current?.querySelectorAll<HTMLButtonElement>('button:not(:disabled)') || []);
+    const first = buttons[0], last = buttons.at(-1);
+    if (event.shiftKey && (document.activeElement === first || document.activeElement === dialog.current)) { event.preventDefault(); last?.focus(); }
+    else if (!event.shiftKey && (document.activeElement === last || document.activeElement === dialog.current)) { event.preventDefault(); first?.focus(); }
+  }} className={`gacha-reveal-overlay phase-${phase} ${visual.key}`} style={{ '--reveal-primary': visual.primary, '--reveal-secondary': visual.secondary, '--reveal-shake': `${visual.shake}px` } as React.CSSProperties} role="dialog" aria-modal="true" aria-label="Revelação da invocação">
     <div className="gacha-reveal-backdrop" />
     <VerticalRift phase={phase} visual={visual} />
     <div className="gacha-reveal-top"><small>SISTEMA · FENDA DE INVOCAÇÃO</small>{!ready && <button type="button" onClick={skip}>Pular</button>}</div>
@@ -89,5 +116,5 @@ export default function GachaRevealOverlay({ result, onContinue, audio }: { resu
       {!isTen && phase === 'revealed' && <div className="gacha-single-reward"><GachaRewardCard reward={rewards[0] || {}} revealed /><button type="button" className="gacha-continue" onClick={onContinue}>Continuar</button></div>}
       {isTen && phase === 'gridAppearing' && <section className="gacha-ten-reveal"><header><small>RECOMPENSAS RECEBIDAS</small><h2>{result.banner?.nome || 'Invocação ×10'}</h2><button type="button" onClick={revealAll}>Revelar tudo</button></header><div className="gacha-ten-grid">{rewards.map((reward, index) => <GachaRewardCard key={`${reward.nome}-${index}`} reward={reward} revealed={revealed[index]} onReveal={() => revealOne(index)} />)}</div>{allRevealed && <button type="button" className="gacha-continue" onClick={onContinue}>Continuar</button>}</section>}
     </main>
-  </div>;
+  </div>, document.body);
 }

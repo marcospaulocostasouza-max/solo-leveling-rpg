@@ -1,13 +1,21 @@
 import { NextResponse } from 'next/server';
 import { currentPlayerId } from '@/lib/session';
-import { getGachaState, pullGacha } from '@/lib/gacha-web';
+import { getGachaList, getGachaState, GachaReadError, pullGacha } from '@/lib/gacha-web';
 
 export const runtime='nodejs';
 export const dynamic='force-dynamic';
 
 export async function GET(request:Request){
-  try{const playerId=await currentPlayerId();if(!playerId)return NextResponse.json({error:'unauthorized'},{status:401});const id=Number(new URL(request.url).searchParams.get('bannerId')||0)||undefined;return NextResponse.json(await getGachaState(playerId,id));}
-  catch(error){console.error('[SITE GACHA GET]',error);return NextResponse.json({error:'Não foi possível carregar o Gacha.'},{status:500});}
+  try {
+    const playerId = await currentPlayerId();
+    if (!playerId) return NextResponse.json({ error: 'Entre novamente pelo link enviado no !site.' }, { status: 401 });
+    const id = new URL(request.url).searchParams.get('bannerId');
+    const data = id === null ? await getGachaList() : await getGachaState(Number(playerId), Number(id));
+    return NextResponse.json(data, { headers: { 'Cache-Control': 'private, no-store' } });
+  } catch(error) {
+    console.error('[SITE GACHA GET]', error);
+    return NextResponse.json({ error: error instanceof GachaReadError ? error.message : 'Não foi possível carregar o Gacha.' }, { status: error instanceof GachaReadError ? error.status : 500 });
+  }
 }
 
 export async function POST(request:Request){

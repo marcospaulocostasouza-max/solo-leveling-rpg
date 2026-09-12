@@ -4,10 +4,16 @@ import { currentPlayerId } from "@/lib/session";
 
 export const runtime = "nodejs";
 
-export async function GET() {
+export async function GET(request: Request) {
   try {
     const playerId = await currentPlayerId();
     if (!playerId) return NextResponse.json({ error: "unauthorized" }, { status: 401 });
+    if (new URL(request.url).searchParams.get('summary') === '1') {
+      const player = await database.get('SELECT id,nome,rank,nivel,maestria,won FROM jogadores WHERE id=?', [playerId]);
+      if (!player) return NextResponse.json({ error: 'Personagem não encontrado.' }, { status: 404 });
+      const location = await database.playerLocation(playerId);
+      return NextResponse.json({ player, location, inventory: [], skills: [], guild: null, titles: [], passives: [], slots: {} }, { headers: { 'Cache-Control': 'private, no-store' } });
+    }
     const player = await database.playerById(playerId);
     if (!player) return NextResponse.json({ error: "Personagem não encontrado." }, { status: 404 });
     const publicPlayer = Object.fromEntries(Object.entries(player).filter(([key]) => !["numero", "personalidade", "aparencia", "historia"].includes(key)));

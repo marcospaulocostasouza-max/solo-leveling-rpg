@@ -1,30 +1,117 @@
 'use client';
-
-import { useEffect, useMemo, useRef, useState } from 'react';
-import { ChevronLeft, ChevronRight, Gem, History, Sparkles, Star, Trophy } from 'lucide-react';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { Gem } from 'lucide-react';
 import GachaRevealOverlay from './GachaRevealOverlay';
-
-type GachaState={banners:any[];selected:any;pool:any[];guaranteeSet?:boolean;pity:number;history:any[];wallet:any};
-function fmt(n:unknown){return Number(n||0).toLocaleString('pt-BR')}
-async function json(response:Response){const text=await response.text();if(!text.trim())return{};try{return JSON.parse(text)}catch{return{error:'Resposta inválida do Sistema.'}}}
-
-export default function GachaHub({onRefresh}:{onRefresh:()=>Promise<void>}){
- const[state,setState]=useState<GachaState|null>(null);const[busy,setBusy]=useState(0);const[reveal,setReveal]=useState<any|null>(null);const[lastResult,setLastResult]=useState<any|null>(null);const[error,setError]=useState('');const pullLock=useRef(false);
- const load=async(id?:number)=>{const r=await fetch(`/api/gacha${id?`?bannerId=${id}`:''}`,{cache:'no-store'});const d=await json(r);if(!r.ok)throw new Error(d.error||'Falha ao carregar o Gacha.');setState(d)};
- useEffect(()=>{load().catch(e=>setError(e.message))},[]);
- const pull=async(count:number)=>{if(!state?.selected||busy||pullLock.current)return;pullLock.current=true;setBusy(count);setError('');try{const r=await fetch('/api/gacha',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({bannerId:state.selected.id,count})});const d=await json(r);if(!r.ok)throw new Error(d.error||'Giro nao concluido.');setLastResult(d);setReveal(d);void Promise.all([load(state.selected.id),onRefresh()]).catch(e=>setError(e instanceof Error?e.message:'A recompensa foi registrada, mas a carteira sera sincronizada em breve.'))}catch(e){setError(e instanceof Error?e.message:'Giro nao concluido.')}finally{pullLock.current=false;setBusy(0)}};
- const highlights=useMemo(()=>state?.pool.filter(x=>x.destaque_ordem!=null).sort((a,b)=>a.destaque_ordem-b.destaque_ordem)||[],[state]);const grand=useMemo(()=>state?.pool.find(x=>Number(x.grande_premio)===1),[state]);
- if(!state)return <div className="gacha-loading sys-panel"><Gem/><span>{error||'Sincronizando Banners...'}</span></div>;
- if(!state.selected)return <div className="gacha-empty sys-panel"><Gem/><h2>Nenhum Banner disponível.</h2><p>Quando um Banner for ativado pelo administrador, ele aparecerá aqui automaticamente.</p></div>;
- const idx=state.banners.findIndex(x=>Number(x.id)===Number(state.selected.id));const nav=(dir:number)=>{if(busy)return;const next=state.banners[(idx+dir+state.banners.length)%state.banners.length];if(next)load(next.id).catch(e=>setError(e.message))};
- return <div className="gacha-hub">
-  <section className="gacha-banner" style={state.selected.imagem?{backgroundImage:`linear-gradient(90deg,rgba(5,2,17,.98) 0%,rgba(5,2,17,.83) 43%,rgba(5,2,17,.28) 100%),url(${state.selected.imagem})`}:{}}><div className="gacha-banner-copy"><small>INVOCAÇÃO // BANNER #{state.selected.id}</small><h1>{state.selected.nome}</h1><p>{state.selected.descricao}</p><div className="gacha-featured-label"><Star/> 4 DESTAQUES + 1 GRANDE PRÊMIO</div></div>{state.banners.length>1&&<div className="gacha-banner-nav"><button onClick={()=>nav(-1)} disabled={!!busy}><ChevronLeft/></button><span>{idx+1}/{state.banners.length}</span><button onClick={()=>nav(1)} disabled={!!busy}><ChevronRight/></button></div>}</section>
-  <section className="gacha-wallet-row"><div><Gem/><span><small>CRISTAIS</small><b>{fmt(state.wallet?.cristais)}</b></span></div><div><Sparkles/><span><small>FRAGMENTOS DE INVOCAÇÃO</small><b>{fmt(state.wallet?.fragmentos_invocacao)}</b></span></div><div className="gacha-pity"><span><small>GRANDE PRÊMIO</small><b>{state.pity}/100</b></span><i><em style={{width:`${Math.min(100,state.pity)}%`}}/></i></div></section>
-  {error&&<div className="system-error">{error}</div>}
-  <section className="gacha-prizes"><article className="gacha-grand sys-panel"><Trophy/><small>ITEM ESPECIAL DO BANNER</small><h2>{grand?.nome||grand?.reward_type||'Grande Prêmio'}</h2><p>{grand?.raridade?`Raridade ${grand.raridade}`:'Garantido no Hard Pity 100.'}</p></article><div className="gacha-highlights">{highlights.map((x:any)=><article className="sys-panel" key={x.id}><span>0{x.destaque_ordem}</span><Star/><small>{x.reward_type}</small><h3>{x.nome||x.raridade||'Recompensa em Destaque'}</h3></article>)}</div></section>
-  <section className="gacha-actions"><button disabled={!!busy||Number(state.wallet?.cristais||0)<100} onClick={()=>pull(1)}><span>{busy===1?'INVOCANDO…':'INVOCAÇÃO ÚNICA'}</span><b><Gem/> 100</b></button><button className="ten" disabled={!!busy||Number(state.wallet?.cristais||0)<1000} onClick={()=>pull(10)}><span>{busy===10?'INVOCANDO…':'INVOCAÇÃO ×10'}</span><b><Gem/> 1.000</b><small>{state.guaranteeSet?'1 peça do conjunto garantida':'1 recompensa exatamente do seu Rank'}</small></button></section>
-  {lastResult&&<section className="gacha-result"><header><Sparkles/><div><small>ULTIMO RESULTADO REGISTRADO</small><h2>{lastResult.banner?.nome}</h2></div><b>Pity {lastResult.pityDepois}/100</b></header><div>{lastResult.resultados?.map((x:any,i:number)=><article className={`${x.grandePremio?'grand':''} ${x.duplicata?'duplicate':''}`} key={`${x.nome}-${i}`}><span>{String(i+1).padStart(2,'0')}</span><div><small>{x.tipo}{x.raridade?` | ${x.raridade}`:''}{x.garantidoConjunto?' | PECA GARANTIDA':''}</small><h3>{x.nome}{Number(x.quantidade||1)>1?` x${fmt(x.quantidade)}`:''}</h3>{x.duplicata&&<p>Duplicata +{x.fragmentosInvocacaoRecebidos} Fragmentos de Invocacao</p>}</div>{x.grandePremio?<Trophy/>:x.destaque?<Star/>:<Sparkles/>}</article>)}</div></section>}
-  <section className="gacha-history sys-panel"><header><History/><div><small>REGISTRO DO SISTEMA</small><h2>Últimas invocações</h2></div></header><div>{state.history?.map((x:any,i:number)=><span key={`${x.id||i}-${i}`}><b>{x.grande_premio?'★ ':''}{x.nome}</b><small>{x.banner_nome||`Banner #${x.banner_id}`}{x.duplicata?` • +${x.fragmentos_invocacao_recebidos} Fragmentos`:''}</small></span>)}{!state.history?.length&&<p>Nenhum giro registrado.</p>}</div></section>
-  {reveal&&<GachaRevealOverlay result={reveal} onContinue={()=>setReveal(null)} />}
- </div>
+import { gachaDebug } from '@/lib/gacha-debug';
+import { gachaRewardLabel } from '@/lib/gacha-reward-label';
+import type { BannerDetail, BannerList, BannerPreview, GachaPullResult } from '@/lib/gacha-types';
+const TTL = 30_000;
+const fmt = (n: number) => Number(n).toLocaleString('pt-BR');
+const labels = {active:'Ativo',ending:'Encerrando em breve',permanent:'Permanente',upcoming:'Em breve'};
+function available(b: BannerPreview) {return b.permanente || (Date.parse(b.inicioEm || '') <= Date.now() && Date.parse(b.fimEm || '') > Date.now());}
+async function read<T>(r: Response): Promise<T> {
+ const data = await r.json().catch(() => {throw new Error('Resposta inválida do Sistema.');});
+ if (!r.ok || data.error) throw new Error(data.error || 'Não foi possível carregar os dados.');
+ return data as T;
+}
+function Skeleton() {return <div className="gacha-selection-grid" aria-label="Carregando banners" aria-busy="true">{[1,2,3].map(id=><div key={id} className="gacha-preview gacha-skeleton"/>)}</div>;}
+function BannerArt({banner,detail=false}:{banner:BannerPreview;detail?:boolean}) {
+ const [failed,setFailed]=useState(false);
+ // Existing database art is resized on demand; remote art keeps its original URL.
+ // eslint-disable-next-line @next/next/no-img-element
+ return banner.imagem && !failed ? <img src={`${banner.imagem}&width=${detail?1440:640}`} alt="" loading={detail?'eager':'lazy'} decoding="async" onError={()=>setFailed(true)}/> : <span className="gacha-art-fallback" aria-hidden="true"><Gem/></span>;
+}
+export default function GachaHub({onRefresh}:{onRefresh:()=>Promise<void>}) {
+ const [list,setList]=useState<BannerList|null>(null);
+ const [selectedId,setSelectedId]=useState<number|null>(null);
+ const [detail,setDetail]=useState<BannerDetail|null>(null);
+ const [busy,setBusy]=useState(0);
+ const [refreshing,setRefreshing]=useState(false);
+ const [error,setError]=useState('');
+ const [reveal,setReveal]=useState<GachaPullResult|null>(null);
+ const [lastResult,setLastResult]=useState<GachaPullResult|null>(null);
+ const pullLock=useRef(false);
+ const currentId=useRef<number|null>(null);
+ // Private data is scoped to this mounted player view, never shared between sessions.
+ const cache=useRef(new Map<string,{expires:number;promise:Promise<unknown>}>());
+ const get=useCallback(<T,>(key:string,force=false):Promise<T>=>{
+  const hit=cache.current.get(key);
+  if(hit && !force && hit.expires>Date.now()) return hit.promise as Promise<T>;
+  const started=performance.now();
+  const entry={expires:Date.now()+TTL,promise:fetch(key,{cache:'no-store'}).then(read<T>)};
+  if(cache.current.size>=32)cache.current.delete(cache.current.keys().next().value!);
+  cache.current.set(key,entry);
+  entry.promise.then(()=>gachaDebug(key.includes('bannerId')?'banner detail loaded':'banner list loaded',started),()=>{if(cache.current.get(key)===entry)cache.current.delete(key);});
+  return entry.promise;
+ },[]);
+ const loadDetail=useCallback(async(id:number,force=false)=>{
+  const next=await get<BannerDetail>(`/api/gacha?bannerId=${id}`,force);
+  if(currentId.current===id && (!pullLock.current || force))setDetail(next);
+ },[get]);
+ useEffect(()=>{
+  let active=true;
+  const sync=async()=>{
+   if(pullLock.current || document.visibilityState==='hidden')return;
+   try {const next=await get<BannerList>('/api/gacha');if(!active)return;setList(next);if(currentId.current!==null)await loadDetail(currentId.current);}
+   catch(e){if(active)setError(e instanceof Error?e.message:'Falha ao atualizar banners.');}
+  };
+  void sync();const timer=window.setInterval(sync,TTL);window.addEventListener('focus',sync);
+  return()=>{active=false;window.clearInterval(timer);window.removeEventListener('focus',sync);};
+ },[get,loadDetail]);
+ const open=async(id:number)=>{
+  if(pullLock.current)return;
+  currentId.current=id;setSelectedId(id);setDetail(null);setError('');
+  try{await loadDetail(id);}catch(e){if(currentId.current===id)setError(e instanceof Error?e.message:'Falha ao abrir banner.');}
+ };
+ const pull=async(count:1|10)=>{
+  if(!detail || pullLock.current || !available(detail.selected))return;
+  pullLock.current=true;setBusy(count);setError('');const started=performance.now();
+  gachaDebug(count===1?'single pull click':'ten pull click');
+  try {
+   const result=await read<GachaPullResult>(await fetch('/api/gacha',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({bannerId:detail.selected.id,count})}));
+   gachaDebug('request finished',started);
+   if(result.sucesso!==true || !Array.isArray(result.resultados) || result.resultados.length!==count || result.resultados.some(x=>!x || typeof x.nome!=='string' || !Number.isFinite(Number(x.quantidade))) || Number(result.banner?.id)!==detail.selected.id || !Number.isFinite(Number(result.saldoAtual)))throw new Error('Resultado incompleto. Consulte o histórico antes de tentar outra invocação.');
+   setLastResult(result);setReveal(result);
+   for(const key of cache.current.keys())if(key.includes('bannerId='))cache.current.delete(key);
+   setDetail(previous=>previous?{...previous,pity:result.pityDepois,wallet:{...previous.wallet,cristais:result.saldoAtual}}:previous);
+   gachaDebug('set reveal state');
+  }catch(e){
+   pullLock.current=false;setError(`${e instanceof Error?e.message:'Invocação não concluída.'} Se houve perda de conexão, confira o histórico antes de tentar novamente.`);
+   for(const key of cache.current.keys())if(key.includes('bannerId='))cache.current.delete(key);
+   void loadDetail(detail.selected.id).catch(()=>undefined);
+  }finally{setBusy(0);}
+ };
+ const finish=async()=>{
+  if(!reveal || refreshing)return;
+  gachaDebug('animation finished');setReveal(null);setRefreshing(true);
+  try{await Promise.all([loadDetail(reveal.banner.id,true),onRefresh()]);}
+  catch(e){setError(e instanceof Error?e.message:'Prêmio salvo; não foi possível atualizar os dados.');}
+  finally{pullLock.current=false;setRefreshing(false);}
+ };
+ const retry=()=>{setError('');void(selectedId===null?get<BannerList>('/api/gacha',true).then(setList):loadDetail(selectedId,true)).catch(e=>setError(e.message));};
+ const locked=!!busy || !!reveal || refreshing;
+ const latest=lastResult?.banner.id===selectedId?lastResult:null;
+ return <div className="gacha-hub" data-gacha-version="selection-reveal-v2">
+  {selectedId===null?<>
+   <header className="gacha-selection-heading"><small>SISTEMA DE INVOCAÇÃO</small><h1>Escolha sua fenda</h1><p>Explore os banners e descubra suas recompensas.</p></header>
+   {!list && !error && <Skeleton/>}
+   {list && <div className="gacha-selection-grid">{list.banners.map(b=><button type="button" key={b.id} className="gacha-preview" onClick={()=>void open(b.id)} disabled={b.status==='upcoming'}><BannerArt key={b.imagem} banner={b}/><span className="gacha-preview-shade"/><span className={`gacha-status ${b.status}`}>{labels[b.status]}</span><span className="gacha-preview-copy"><h2>{b.nome}</h2><p>{b.descricao}</p>{!b.permanente && <small>{new Date(b.inicioEm!).toLocaleDateString('pt-BR')} — {new Date(b.fimEm!).toLocaleDateString('pt-BR')}</small>}<b>{b.status==='upcoming'?'Aguarde a abertura':'Explorar banner →'}</b></span></button>)}</div>}
+   {list && !list.banners.length && <p className="sys-panel">Nenhum banner disponível. Novos banners aparecerão aqui quando forem ativados.</p>}
+  </>:<>
+   <button type="button" className="gacha-back" disabled={locked} onClick={()=>{currentId.current=null;setSelectedId(null);setDetail(null);setError('');}}>← Voltar aos banners</button>
+   {!detail && !error && <Skeleton/>}
+   {detail && <>
+    <section className="gacha-banner gacha-detail-hero"><BannerArt key={detail.selected.imagem} banner={detail.selected} detail/><div className="gacha-banner-copy"><small>INVOCAÇÃO · BANNER #{detail.selected.id}</small><h1>{detail.selected.nome}</h1><p>{detail.selected.descricao}</p></div></section>
+    <section className="gacha-wallet-row"><div><Gem/><span><small>CRISTAIS</small><b>{fmt(detail.wallet.cristais)}</b></span></div><div><span><small>FRAGMENTOS</small><b>{fmt(detail.wallet.fragmentos_invocacao)}</b></span></div><div><span><small>PITY DO GRANDE PRÊMIO</small><b>{detail.pity}/100</b></span></div></section>
+    {!available(detail.selected) && <p role="status">Este banner está fora do período de invocação.</p>}
+    <section className="gacha-actions"><button type="button" disabled={locked || !available(detail.selected) || detail.wallet.cristais<100} onClick={()=>void pull(1)}><span>{busy===1?'Invocando…':'Invocação única'}</span><b><Gem/>100</b></button><button type="button" className="ten" disabled={locked || !available(detail.selected) || detail.wallet.cristais<1000} onClick={()=>void pull(10)}><span>{busy===10?'Invocando…':'Invocação ×10'}</span><b><Gem/>1.000</b><small>{detail.guaranteeSet?'1 peça do conjunto garantida':'1 recompensa exatamente do seu Rank'}</small></button></section>
+    {refreshing && <p role="status">Atualizando saldo e histórico…</p>}
+    {latest && <section className="gacha-result"><h2>Últimas recompensas recebidas</h2><div>{latest.resultados.map((x,i)=><article key={i}><span>{'★'.repeat(x.estrelas||3)}</span><div><small>{x.tipo}</small><h3>{gachaRewardLabel(x)}</h3>{x.duplicata && <p>Duplicata: +{x.fragmentosInvocacaoRecebidos} fragmentos</p>}</div></article>)}</div></section>}
+    <details className="sys-panel gacha-pool"><summary>Recompensas deste banner ({detail.pool.length})</summary><p>Chances base, antes das garantias e do pity.</p><div>{detail.pool.map(x=><p key={x.id}><span>{'★'.repeat(x.estrelas)} {x.nome}{x.grande_premio===1?' · Grande prêmio':x.destaque_ordem!==null?' · Destaque':''}</span><b>×{fmt(x.quantidade)} · {x.chance.toLocaleString('pt-BR',{maximumFractionDigits:3})}%</b></p>)}</div></details>
+    <section className="gacha-history sys-panel"><h2>Últimas invocações deste banner</h2><div>{detail.history.map((x,i)=><span key={`${x.id}-${i}`}><b>{gachaRewardLabel(x)}</b>{!!Number(x.duplicata) && <small>Duplicata: +{x.fragmentos_invocacao_recebidos} fragmentos</small>}</span>)}{!detail.history.length && <p>Nenhuma invocação registrada.</p>}</div></section>
+   </>}
+  </>}
+  {error && <div className="system-error" role="alert">{error} <button type="button" disabled={locked} onClick={retry}>Tentar novamente</button></div>}
+  {reveal && <GachaRevealOverlay key={reveal.operacaoId} result={reveal} onContinue={()=>void finish()}/>}
+ </div>;
 }

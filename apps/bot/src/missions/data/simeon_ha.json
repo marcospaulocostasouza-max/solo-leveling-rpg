@@ -18,7 +18,8 @@
       "recompensas": {
         "xp": 25650,
         "won": 171000,
-        "item": "Terno Impecável"
+        "item": "Terno Impecável",
+        "vinculo": 5
       }
     },
     {
@@ -35,7 +36,8 @@
       "recompensas": {
         "xp": 29700,
         "won": 198000,
-        "item": "Terno Impecável"
+        "item": "Terno Impecável",
+        "vinculo": 5
       }
     },
     {
@@ -52,7 +54,8 @@
       "recompensas": {
         "xp": 33750,
         "won": 225000,
-        "item": "Réplica Reforçada de: Adagas Ocultas de Contrabandista"
+        "item": "Réplica Reforçada de: Adagas Ocultas de Contrabandista",
+        "vinculo": 5
       }
     },
     {
@@ -69,7 +72,8 @@
       "recompensas": {
         "xp": 37800,
         "won": 252000,
-        "item": "Réplica Reforçada de: Adagas Ocultas de Contrabandista"
+        "item": "Réplica Reforçada de: Adagas Ocultas de Contrabandista",
+        "vinculo": 5
       }
     },
     {
@@ -85,7 +89,8 @@
       "objetivo": "Comprar 1 equipamento de Rank C (arma ou peça de armadura) e apresentar a compra e sua utilidade a Simeon Ha.",
       "recompensas": {
         "xp": 2500,
-        "won": 2000
+        "won": 2000,
+        "vinculo": 2
       },
       "revisaoBalanceamento": 1
     },
@@ -103,7 +108,8 @@
       "recompensas": {
         "xp": 7425,
         "won": 49500,
-        "item": "Rede de Contatos Criminosos"
+        "item": "Rede de Contatos Criminosos",
+        "vinculo": 2
       }
     },
     {
@@ -120,7 +126,8 @@
       "recompensas": {
         "xp": 8775,
         "won": 58500,
-        "item": "Fragmento de Mana (Escuridão)"
+        "item": "Fragmento de Mana (Escuridão)",
+        "vinculo": 2
       }
     },
     {
@@ -137,7 +144,8 @@
       "recompensas": {
         "xp": 9450,
         "won": 63000,
-        "item": "Fragmento de Mana (Escuridão)"
+        "item": "Fragmento de Mana (Escuridão)",
+        "vinculo": 2
       }
     },
     {
@@ -154,7 +162,8 @@
       "recompensas": {
         "xp": 10800,
         "won": 72000,
-        "item": "Terno Impecável"
+        "item": "Terno Impecável",
+        "vinculo": 2
       }
     },
     {
@@ -171,7 +180,8 @@
       "recompensas": {
         "xp": 13500,
         "won": 90000,
-        "item": "Réplica Reforçada de: Adagas Ocultas de Contrabandista"
+        "item": "Réplica Reforçada de: Adagas Ocultas de Contrabandista",
+        "vinculo": 2
       }
     }
   ]

@@ -18,6 +18,7 @@ const InventorySystem = require("./inventorySystem");
 const CrystalRewardService = require("./crystalRewardService");
 const { ITENS_LOJA } = require("../utils/lojaItens");
 const playerDatabase = require("../../../../packages/database");
+const DungeonMiningService = require('./dungeonMiningService');
 const { provider: databaseProvider } = require("../../../../packages/database/config");
 
 let premioSchemaReady;
@@ -606,6 +607,12 @@ ${dados.descricao}
 *Participantes (máx. 5):*
 ${participantes.map((p, i) => `${i + 1}. ${p}`).join("\n")}
 
+*Minerador (vaga extra opcional):*
+Minerador:
+_Informe o nome completo. Não ocupa as 5 vagas. Limite: 2 minerações por semana._
+_É necessária uma Picareta do Minerador, consumida na conclusão._
+_Recebe XP e o resultado automático da mineração; não escolhe prêmio extra._
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 _Copie esta ficha, adicione os participantes e envie novamente._
 _Consulte *!Dungeon* para ver as regras do sistema antes da incursão._
@@ -653,8 +660,30 @@ _Após concluir a Dungeon, use *!concluir Dungeon* para receber as recompensas._
         const participantes = [];
         let dungeonNome = "";
         let dungeonRank = "";
+        let minerador = null;
+        let secaoMinerador = false;
+        const errosMinerador = [];
 
         linhas.forEach(linha => {
+            const limpa = linha.replace(/[*_~`]/g, '').trim();
+            if (/^minerador\b/i.test(limpa)) {
+                secaoMinerador = true;
+                const nome = limpa.includes(':') ? limpa.slice(limpa.indexOf(':') + 1).trim() : '';
+                if (nome && !/^(nenhum|sem minerador|opcional|-|—)$/i.test(nome)) {
+                    if (minerador) errosMinerador.push('Informe apenas um minerador na vaga extra.');
+                    minerador = nome;
+                }
+                return;
+            }
+            if (/^participantes\b/i.test(limpa)) secaoMinerador = false;
+            if (secaoMinerador) {
+                const extra = limpa.match(/^\d+[.)]\s+(.+)$/);
+                if (extra) {
+                    if (minerador) errosMinerador.push('Informe apenas um minerador na vaga extra.');
+                    minerador = extra[1].trim();
+                }
+                return;
+            }
             const linhaLower = linha.toLowerCase().trim();
             
             // Extrair nome da dungeon
@@ -686,7 +715,7 @@ _Após concluir a Dungeon, use *!concluir Dungeon* para receber as recompensas._
         return {
             dungeonNome,
             dungeonRank,
-            participantes
+            participantes, minerador, errosMinerador
         };
     }
 
@@ -724,7 +753,15 @@ _Após concluir a Dungeon, use *!concluir Dungeon* para receber as recompensas._
             erros.push("O dono da chave deve constar entre os participantes.");
         }
 
-        return { valido: erros.length === 0, erros, participantes };
+        let minerador = null;
+        erros.push(...(fichaReconhecida.errosMinerador || []));
+        if (fichaReconhecida.minerador) {
+            const busca = await this.buscarParticipantePorNome(fichaReconhecida.minerador);
+            minerador = busca.jogador;
+            if (!minerador) erros.push(busca.ambiguo ? 'Nome do minerador ambíguo. Use o nome completo da ficha.' : 'Minerador não encontrado. Use o nome completo da ficha.');
+            else if (ids.has(minerador.id)) erros.push('O minerador não pode ocupar também uma das cinco vagas nesta mesma dungeon.');
+        }
+        return { valido: erros.length === 0, erros, participantes, minerador };
     }
 
     /**
@@ -765,6 +802,10 @@ _Após concluir a Dungeon, use *!concluir Dungeon* para receber as recompensas._
         }
 
         // Validar cada participante
+        const identidade = await this.validarParticipantesReconhecidos(jogador, fichaReconhecida);
+        if (!identidade.valido) return { erro: "Corrija os participantes e o minerador da ficha.", validacoes: identidade.erros };
+        await DungeonMiningService.garantirSchema();
+        const minerador = identidade.minerador;
         const validacoes = [];
         const participantesValidos = [];
         const semana = this.getSemanaAtual();
@@ -827,60 +868,53 @@ _Após concluir a Dungeon, use *!concluir Dungeon* para receber as recompensas._
 
         // Consumir usos da chave (1 por participante adicional além do dono)
         const usosConsumir = participantesValidos.length;
-        const resultadoUso = await this.consumirUso(jogador.id, usosConsumir);
-        
-        if (resultadoUso.erro) {
-            return { erro: resultadoUso.erro };
-        }
-
-        // Atualizar ficha com participantes
-        const participantesNomes = participantesValidos.map(p => p.nome);
-        await new Promise((resolve) => {
-            db.run(
-                "UPDATE fichas_dungeon SET participantes = ?, usos_consumidos = ? WHERE id = ?",
-                [JSON.stringify(participantesNomes), usosConsumir, ficha.id],
-                () => resolve()
-            );
-        });
-
-        // Registrar participação de todos
-        for (const participante of participantesValidos) {
-            await new Promise((resolve) => {
-                db.run(
-                    "INSERT INTO participacao_dungeon (jogador_id, ficha_dungeon_id, semana, data) VALUES (?, ?, ?, ?)",
-                    [participante.id, ficha.id, semana, new Date().toISOString()],
-                    () => resolve()
-                );
-            });
-        }
-
-        // Retornar premiações
         const premios = PREMIACOES_RANK[ficha.dungeon_rank] || PREMIACOES_RANK["E"];
-
-        // Se a chave esgotou (5 usos concluídos), sortear ticket 50/50
+        let registro;
+        try {
+            registro = await playerDatabase.transaction(async query => {
+                // Lock every affected player in the same order, including the extra slot.
+                const ids = [...participantesValidos.map(p => Number(p.id)), ...(minerador ? [Number(minerador.id)] : [])].sort((a,b) => a-b);
+                for (const id of ids) {
+                    const row = await query.get(`SELECT id FROM jogadores WHERE id=?${databaseProvider === 'postgres' ? ' FOR UPDATE' : ''}`, [id]);
+                    if (!row) throw new Error('Jogador nao encontrado. Reenvie a ficha.');
+                }
+                const atual = await query.get('SELECT status FROM fichas_dungeon WHERE id=?', [ficha.id]);
+                if (atual?.status !== 'ativa') throw new Error('Esta ficha ja foi concluida. Nao houve nova entrega.');
+                for (const p of participantesValidos) {
+                    const anterior = await query.get('SELECT jogador_id FROM participacao_dungeon WHERE jogador_id=? AND semana=?', [p.id, semana]);
+                    if (anterior) throw new Error(`${p.nome} ja participou de uma dungeon instanciada nesta semana.`);
+                }
+                const chaveAtual = await query.get('SELECT * FROM chaves_dungeon WHERE id=? AND ativa=1', [chave.id]);
+                if (!chaveAtual) throw new Error('A chave nao esta mais ativa.');
+                const usosRestantes = Math.max(0, Number(chaveAtual.usos_restantes) - usosConsumir);
+                const reserva = await query.run("UPDATE fichas_dungeon SET participantes=?, usos_consumidos=?, status='concluindo' WHERE id=? AND status='ativa'", [JSON.stringify(participantesValidos.map(p => p.nome)), usosConsumir, ficha.id]);
+                if (reserva.changes !== 1) throw new Error('Esta ficha ja esta sendo concluida.');
+                await query.run('UPDATE chaves_dungeon SET usos_restantes=?, ativa=? WHERE id=?', [usosRestantes, usosRestantes > 0 ? 1 : 0, chave.id]);
+                for (const p of participantesValidos) await query.run('INSERT INTO participacao_dungeon (jogador_id,ficha_dungeon_id,semana,data) VALUES (?,?,?,?)', [p.id, ficha.id, semana, new Date().toISOString()]);
+                const mineracao = minerador ? await DungeonMiningService.entregar(query, ficha, minerador, premios.xp, () => this.sortearCristais()) : null;
+                return { usosRestantes, chaveEsgotada: usosRestantes === 0, mineracao };
+            });
+        } catch (error) {
+            return { erro: error.message };
+        }
+        // Mining XP and reward are already committed exactly once. Progression uses
+        // the existing level system without adding XP a second time.
+        if (minerador) await LevelSystem.verificarProgressao(minerador.id).catch(error => console.error('[DUNGEON] XP salvo; falha na progressão do minerador:', error.message));
         let ticket = null;
-        if (resultadoUso.chaveEsgotada) {
+        if (registro.chaveEsgotada) {
+            await this.removerChaveDoInventario(jogador.id, chave.rank);
             ticket = await TicketSystem.sortearTicket(jogador.id);
-            
-            // Atualizar loja automaticamente com os itens misteriosos da dungeon
             await this.atualizarLojaComDrops(ficha.dungeon_rank, chave.dungeon_id);
         }
-
-        // Reserva esta ficha para a entrega das recompensas gerais. Uma nova
-        // chamada não a encontrará como ativa e não repetirá XP/Won.
-        await new Promise(resolve => db.run(
-            "UPDATE fichas_dungeon SET status='concluindo' WHERE id=? AND status='ativa'",
-            [ficha.id], () => resolve()
-        ));
-
+        await playerDatabase.registrarHistoricoFicha({
+            jogadorId: jogador.id, tipo: 'Dungeon', direcao: 'saida', recurso: `Chave de Dungeon Rank ${chave.rank}`,
+            quantidade: usosConsumir, descricao: `${usosConsumir} uso(s) consumido(s); restam ${registro.usosRestantes}/${chave.usos_total}.`,
+            origem: 'DUNGEON_CONCLUSAO', referencia: `ficha:${ficha.id}`
+        }).catch(error => console.error('[DUNGEON] Historico da chave:', error.message));
         return {
-            sucesso: true,
-            ficha: ficha,
-            participantes: participantesValidos,
-            premios: premios,
-            usosRestantes: resultadoUso.usosRestantes,
-            chaveEsgotada: resultadoUso.chaveEsgotada,
-            ticket: ticket
+            sucesso: true, ficha, participantes: participantesValidos, premios,
+            usosRestantes: registro.usosRestantes, chaveEsgotada: registro.chaveEsgotada,
+            mineracao: registro.mineracao, ticket
         };
     }
 
@@ -1508,7 +1542,7 @@ _Apenas participantes da dungeon podem escolher._`;
 *Valor unitário:* ${resultado.valorPorCristal.toLocaleString()} Wons
 *Valor total:* ${resultado.valorTotal.toLocaleString()} Wons
 
-*Os cristais foram adicionados ao seu saldo!*
+*O valor da mineração foi creditado automaticamente em Wons na sua ficha!*
 *A picareta foi consumida.*
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━`;

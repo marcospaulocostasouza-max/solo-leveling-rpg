@@ -28,7 +28,7 @@ module.exports = async (msg) => {
             const resultado = await QuestSystem.aceitarMissao(jogador.id, nomeMissao);
             if (resultado.erro) return MessageService.send({ message: msg, text: resultado.erro });
             const missao = resultado.missao;
-            await MessageService.send({ message: msg, text: `*${resultado.jaAtiva ? 'MISSÃO JÁ ATIVA' : 'MISSÃO ACEITA'}*\n*${missao.nome}*\n\n*Objetivo:* ${missao.objetivo_texto || missao.objetivo}\n\nRealize a tarefa e envie *!entregar missão ${missao.nome}* na primeira linha, seguido do relato de pelo menos 300 palavras. A ADM verifica o objetivo antes de liberar a recompensa.` });
+            await MessageService.send({ message: msg, text: `*${resultado.jaAtiva ? 'MISSÃO JÁ ATIVA' : 'MISSÃO ACEITA'}*\n*${missao.nome}*\n\n*Objetivo:* ${missao.objetivo_texto || missao.objetivo}\n\nRealize a tarefa e envie *!entregar missão ${missao.nome}* na primeira linha, seguido do relato, se desejar. A ADM pode aprovar diretamente ap\u00f3s revisar a cena e o objetivo.` });
             if (!resultado.jaAtiva && missao.npc_id) {
                 const npc = require('../npc/npcManager').carregarNPC(missao.npc_id);
                 const dialogo = await require('../ia/missionDialogueEngine').gerarDialogoAceitar(npc, jogador, missao);
@@ -43,7 +43,7 @@ module.exports = async (msg) => {
             if (nomeMissao && !/^npc\b/i.test(nomeMissao)) {
                 const missao = await QuestSystem.buscarMissaoPorNome(jogador.id, nomeMissao);
                 if (!missao) return MessageService.send({ message: msg, text: "Missão não encontrada entre os conteúdos disponíveis para você." });
-                return MessageService.send({ message: msg, text: `*${missao.nome}*\n\n${missao.descricao || "Sem descrição."}\n\n*NPC:* ${missao.npc_id || "—"}\n*Tipo:* ${missao.tipo}\n*Dificuldade:* Rank ${missao.rank || "—"}\n${missao.nivel_recomendado ? `*Nível recomendado:* ${missao.nivel_recomendado}\n` : ""}*Vínculo necessário:* ${missao.vinculo_necessario || 0}%\n*Objetivo:* ${missao.objetivo_texto || missao.objetivo}\n*Recompensas:* ${missao.recompensa_xp} XP | ${missao.recompensa_won} Won\n\n${missao.status === "disponivel" ? `Para aceitar: *!aceitar missão ${missao.nome}*` : `Status: *${missao.status}*`}` });
+                return MessageService.send({ message: msg, text: `*${missao.nome}*\n\n${missao.descricao || "Sem descrição."}\n\n*NPC:* ${missao.npc_id || "—"}\n*Tipo:* ${missao.tipo}\n*Dificuldade:* Rank ${missao.rank || "—"}\n${missao.nivel_recomendado ? `*Nível recomendado:* ${missao.nivel_recomendado}\n` : ""}*Vínculo necessário:* ${missao.vinculo_necessario || 0}%\n*Objetivo:* ${missao.objetivo_texto || missao.objetivo}\n*Recompensas:* ${missao.recompensa_xp} XP | ${missao.recompensa_won} Won\nItem: ${missao.recompensa_item || "Nenhum"}\nV\u00ednculo: +${missao.recompensa_vinculo || 0}%\nID: ${missao.id}\n\n${missao.status === "disponivel" ? `Para aceitar: *!aceitar missão ${missao.nome}*` : `Status: *${missao.status}*`}` });
             }
         }
 
@@ -77,7 +77,7 @@ _═ Sistema de Missões_
         if (disponiveis.length > 0) {
             mensagem += `*═══ DISPONÍVEIS: ═══*\n`;
             disponiveis.forEach(m => {
-                mensagem += `> *${m.nome}*\n> NPC: ${m.npc_id || "—"} | Dificuldade: Rank ${m.rank || "?"}\n> Use: !aceitar missão ${m.nome}\n`;
+                mensagem += `> *${m.nome}* (ID ${m.id})\n> NPC: ${m.npc_id || "—"} | Dificuldade: Rank ${m.rank || "?"}\n> Use: !aceitar missão ${m.nome}\n`;
             });
             mensagem += "\n";
         }
@@ -85,7 +85,7 @@ _═ Sistema de Missões_
         if (ativas.length > 0) {
             mensagem += `*═══ ATIVAS: ═══*\n`;
             ativas.forEach(m => {
-                mensagem += `> *${m.nome}* [${m.progresso}/${m.objetivo}]
+                mensagem += `> *${m.nome}* (ID ${m.id}) [${m.progresso}/${m.objetivo}]
 ${m.npc_id ? `> NPC: ${m.npc_id} | Dificuldade: Rank ${m.rank || "?"}\n` : ""}${m.objetivo_texto ? `> Objetivo: ${m.objetivo_texto}\n` : ""}${m.nivel_recomendado ? `> Nível recomendado: ${m.nivel_recomendado}\n` : ""}${m.npc_id ? `> Vínculo necessário: ${m.vinculo_necessario}%\n` : ""}
 > ═ ${m.descricao || "Sem descrição"}
 > ═ ${m.recompensa_xp} XP | ${m.recompensa_won} Won

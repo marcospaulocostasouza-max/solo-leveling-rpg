@@ -13,9 +13,8 @@ const MessageService = require("../core/messageService");
 const fs = require("fs");
 const path = require("path");
 const NPCManager = require("../npc/npcManager");
-const MissionManager = require("../missions/missionManager");
 const QuestSystem = require("../systems/questSystem");
-const { canonicalId } = require("../ai/npcDatabase");
+const { canonicalId } = require("../npc/npcIdentity");
 const { classificarMissoes } = require("../missions/missionAvailability");
 const templates = require("../utils/templatesMensagens");
 
@@ -78,7 +77,15 @@ module.exports = async (msg) => {
             .map((missao) => missao.origem_missao_id)
     );
     const missoes = classificarMissoes(dadosMissoes.missoes || [])
-        .filter((missao) => idsDisponiveis.has(missao.id));
+        .filter((missao) => idsDisponiveis.has(missao.id))
+        .map(missao => {
+            const registro = missoesRegistradas.find(m => m.origem_missao_id === missao.id);
+            return { ...missao, registroId: registro.id, status: registro.status,
+                nome: registro.nome, descricao: registro.descricao, rank: registro.rank,
+                objetivo: registro.objetivo_texto || registro.objetivo,
+                recompensas: { xp: Number(registro.recompensa_xp || 0), won: Number(registro.recompensa_won || 0),
+                    item: registro.recompensa_item, vinculo: Number(registro.recompensa_vinculo || 0) } };
+        });
     
     // Se pediu uma missão específica
     if (numeroMissao) {
@@ -90,6 +97,7 @@ module.exports = async (msg) => {
         let mensagem = `*═══ MISSÃO ${missao.numero} - ${npc.nome.toUpperCase()} ═══*\n`;
         mensagem += `──────────────────────────\n\n`;
         mensagem += `*${missao.nome}*\n\n`;
+        mensagem += `*ID:* ${missao.registroId} | *Status:* ${missao.status}\n`;
         mensagem += `*Tipo:* ${missao.tipo}\n`;
         mensagem += `*Categoria:* ${missao.categoria}\n`;
         mensagem += `*Rank:* ${missao.rank}\n`;
@@ -101,11 +109,12 @@ module.exports = async (msg) => {
         mensagem += `*Recompensas:*\n`;
         mensagem += `> XP: ${missao.recompensas.xp.toLocaleString()}\n`;
         mensagem += `> Won: ${missao.recompensas.won.toLocaleString()}\n`;
-        mensagem += `> Item: ${missao.recompensas.item}\n\n`;
+        mensagem += `> Item: ${missao.recompensas.item}\n> V\u00ednculo: +${missao.recompensas.vinculo || 0}%\n\n`;
         mensagem += `──────────────────────────\n`;
         mensagem += `Para iniciar esta missão, converse com ${npc.nome}:\n`;
         mensagem += `> !${npc.id}\n`;
         mensagem += `> Quero iniciar a missão ${missao.numero}`;
+        mensagem += `\n\nAceite direto: *!aceitar missao ${missao.registroId}*`;
         
         await MessageService.send({ message: msg, text: mensagem });
         return;

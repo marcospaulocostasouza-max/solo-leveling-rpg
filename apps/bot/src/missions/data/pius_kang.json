@@ -18,7 +18,8 @@
       "recompensas": {
         "xp": 10260,
         "won": 68400,
-        "item": "Manto Clerical Simples"
+        "item": "Manto Clerical Simples",
+        "vinculo": 5
       }
     },
     {
@@ -35,7 +36,8 @@
       "recompensas": {
         "xp": 11880,
         "won": 79200,
-        "item": "Incenso de Memória"
+        "item": "Incenso de Memória",
+        "vinculo": 5
       }
     },
     {
@@ -52,7 +54,8 @@
       "recompensas": {
         "xp": 13500,
         "won": 90000,
-        "item": "Réplica Reforçada de: Cajado com Relicário Materno"
+        "item": "Réplica Reforçada de: Cajado com Relicário Materno",
+        "vinculo": 5
       }
     },
     {
@@ -69,7 +72,8 @@
       "recompensas": {
         "xp": 15120,
         "won": 100800,
-        "item": "Réplica Reforçada de: Cajado com Relicário Materno"
+        "item": "Réplica Reforçada de: Cajado com Relicário Materno",
+        "vinculo": 5
       }
     },
     {
@@ -85,7 +89,8 @@
       "objetivo": "Comprar 1 equipamento de Rank E (arma ou peça de armadura) e apresentar a compra e sua utilidade a Pius Kang.",
       "recompensas": {
         "xp": 100,
-        "won": 500
+        "won": 500,
+        "vinculo": 2
       },
       "revisaoBalanceamento": 1
     },
@@ -103,7 +108,8 @@
       "recompensas": {
         "xp": 2970,
         "won": 19800,
-        "item": "Incenso de Memória"
+        "item": "Incenso de Memória",
+        "vinculo": 2
       }
     },
     {
@@ -120,7 +126,8 @@
       "recompensas": {
         "xp": 3510,
         "won": 23400,
-        "item": "Fragmento de Mana (Luz)"
+        "item": "Fragmento de Mana (Luz)",
+        "vinculo": 2
       }
     },
     {
@@ -137,7 +144,8 @@
       "recompensas": {
         "xp": 3780,
         "won": 25200,
-        "item": "Fragmento de Mana (Luz)"
+        "item": "Fragmento de Mana (Luz)",
+        "vinculo": 2
       }
     },
     {
@@ -154,7 +162,8 @@
       "recompensas": {
         "xp": 4320,
         "won": 28800,
-        "item": "Manto Clerical Simples"
+        "item": "Manto Clerical Simples",
+        "vinculo": 2
       }
     },
     {
@@ -171,7 +180,8 @@
       "recompensas": {
         "xp": 5400,
         "won": 36000,
-        "item": "Réplica Reforçada de: Cajado com Relicário Materno"
+        "item": "Réplica Reforçada de: Cajado com Relicário Materno",
+        "vinculo": 2
       }
     }
   ]

@@ -66,6 +66,7 @@ _Corrija os nomes, mantenha no máximo 5 participantes e envie a ficha novamente
 
                 fichaReconhecida.participantes = validacao.participantes.map(participante => participante.nome);
                 fichaReconhecida.participantesIds = validacao.participantes.map(participante => participante.id);
+                fichaReconhecida.minerador = validacao.minerador?.nome || null;
 
                 // Salvar ficha reconhecida em memória para o comando !concluir Dungeon
                 const fichasDungeonTemp = require("./fichasDungeonTemp");
@@ -80,6 +81,7 @@ _Corrija os nomes, mantenha no máximo 5 participantes e envie a ficha novamente
 
 *Players reconhecidos (${fichaReconhecida.participantes.length}):*
 ${fichaReconhecida.participantes.map((p, i) => `${i + 1}. ✅ ${p}`).join("\n")}
+${fichaReconhecida.minerador ? `\n*Minerador (vaga extra):* ${fichaReconhecida.minerador}\n_Recebe XP e mineração automaticamente, sem escolher prêmio._` : ""}
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 _Todos os players foram reconhecidos. Use *!concluir Dungeon* quando a incursão terminar._` });

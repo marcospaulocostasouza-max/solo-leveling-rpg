@@ -94,6 +94,8 @@ async function obterContexto(npcId, jogadorId) {
         // 5. MONTAR CONTEXTO COMPLETO
         // =====================================
         profiler.inicio('Montar Contexto');
+        const missoesOficiais = jogador ? (await require('../systems/questSystem').listarMissoes(jogador.id))
+            .filter(m => require('../ai/npcDatabase').canonicalId(m.npc_id) === require('../ai/npcDatabase').canonicalId(npcId)) : [];
         const contexto = {
             // NPC encontrado (ou null se não existir)
             npc: npc,
@@ -126,7 +128,13 @@ async function obterContexto(npcId, jogadorId) {
 
             // Missão atual do jogador com este NPC
             // TODO: Conectar com sistema de missões
-            missaoAtual: null,
+            missaoAtual: missoesOficiais.length ? {
+                nome: 'Missões oficiais deste jogador',
+                descricao: JSON.stringify(missoesOficiais.map(m => ({nome:m.nome, objetivo:m.objetivo_texto, status:m.status,
+                    aprovadaPorADM:Boolean(m.aprovada_em), cenaAprovada:m.cena_aprovada}))) +
+                    '\nRespeite estes registros. Missão completa foi aprovada pela ADM e os prêmios já foram entregues. Reaja à conclusão sem cobrar novamente. Aceite e aprovação são feitos pelos comandos oficiais.',
+                status: 'Consultar o estado individual de cada missão acima'
+            } : null,
 
             // Informações do mundo (local, horário, clima)
             // TODO: Conectar com sistema de mundo

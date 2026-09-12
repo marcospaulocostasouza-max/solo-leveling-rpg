@@ -35,7 +35,8 @@ async function build({ npcId, playerId, message }) {
     try {
       quests = (await require('../systems/questSystem').listarMissoes(player.id))
         .filter(m => NPCDatabase.canonicalId(m.npc_id) === id)
-        .map(m => ({ nome: m.nome, descricao: m.descricao, objetivo: m.objetivo_texto, rank: m.rank, status: m.status }));
+        .sort((a,b) => Number(Boolean(b.reacao_npc_pendente_em && !b.reacao_npc_entregue_em)) - Number(Boolean(a.reacao_npc_pendente_em && !a.reacao_npc_entregue_em)))
+        .map(m => ({ nome: m.nome, descricao: m.descricao, objetivo: m.objetivo_texto, rank: m.rank, status: m.status, aprovadaPorADM: Boolean(m.aprovada_em), cenaAprovada: m.cena_aprovada, reacaoPendente: Boolean(m.reacao_npc_pendente_em && !m.reacao_npc_entregue_em) }));
     } catch (error) {
       // Uma migração pendente não pode impedir uma conversa com o NPC.
       console.error('[QUEST] Contexto de missões indisponível:', error.message);

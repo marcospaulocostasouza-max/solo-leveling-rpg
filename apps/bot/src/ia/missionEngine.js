@@ -13,7 +13,8 @@
  * Ela nunca cria a missao.
  */
 
-const MissionManager = require("../missions/missionManager");
+// Compatibilidade dos auxiliares antigos sem inicializar o banco legado no fluxo NPC.
+const MissionManager = new Proxy({}, { get: (_, key) => (...args) => require('../missions/missionManager')[key](...args) });
 
 function verificarNivel(jogador, missao) {
     // nivelMinimo é legado informativo: nunca bloqueia uma missão.
@@ -82,54 +83,12 @@ function construirInstrucaoPrompt(npc, missao) {
         "Lembre-se: voce esta interpretando " + npc.nome + ". A missao deve surgir organicamente da conversa.";
 }
 
-async function avaliarMissoes(dados) {
-    const { npc, jogador, relacionamento, mood, emotion, memorias, historico, horario, local, rotinaAtual } = dados;
-    const npcId = npc ? npc.id : null;
-    const jogadorId = jogador ? (jogador.numero || jogador.id) : null;
-
-    const resultadoPadrao = {
-        oferecerMissao: false, missaoId: null, missaoNome: null,
-        motivo: "Nenhuma missao disponivel no momento.", instrucaoPrompt: null
-    };
-
-    if (!npcId || !jogadorId) return resultadoPadrao;
-
-    if (verificarPrimeiraConversa(historico)) {
-        return { ...resultadoPadrao, motivo: "Primeira conversa - deixe o jogador conhecer o NPC primeiro." };
-    }
-
-    if (!verificarDisponibilidadeNPC(mood, emotion, rotinaAtual)) {
-        return { ...resultadoPadrao, motivo: "NPC nao esta disponivel para oferecer missoes no momento." };
-    }
-
-    const temMissaoAtiva = await verificarTemMissaoAtivaNPC(jogadorId, npcId);
-    if (temMissaoAtiva) {
-        return { ...resultadoPadrao, motivo: "Jogador ja possui uma missao ativa com este NPC." };
-    }
-
-    const missoesNPC = await MissionManager.listarMissoesNPC(npcId);
-    if (missoesNPC.length === 0) return resultadoPadrao;
-
-    for (const missao of missoesNPC) {
-        if (!missao.ativo) continue;
-        const jaAtiva = await verificarMissaoAtiva(jogadorId, missao);
-        if (jaAtiva) continue;
-        const podeRepetir = await verificarRepetivel(jogadorId, missao);
-        if (!podeRepetir) continue;
-        if (!verificarNivel(jogador, missao)) continue;
-        const anteriorOk = await verificarMissaoAnterior(jogadorId, missao);
-        if (!anteriorOk) continue;
-        if (!verificarRelacionamento(relacionamento, missao)) continue;
-
-        return {
-            oferecerMissao: true, missaoId: missao.id, missaoNome: missao.nome,
-            missaoDescricao: missao.descricao, missaoRank: missao.rank, missaoCategoria: missao.categoria,
-            motivo: "O jogador atende a todos os requisitos.",
-            instrucaoPrompt: construirInstrucaoPrompt(npc, missao)
-        };
-    }
-
-    return resultadoPadrao;
+async function avaliarMissoes({npc,jogador}) {
+    const padrao = { oferecerMissao:false, missaoId:null, missaoNome:null, instrucaoPrompt:null };
+    if(!npc || !jogador?.id)return padrao;
+    const missao = await require('../systems/questSystem').obterOfertaDeMissaoNPC(jogador.id,npc.id);
+    if(!missao)return padrao;
+    return {...padrao,oferecerMissao:true,missaoId:missao.id,missaoNome:missao.nome,instrucaoPrompt:construirInstrucaoPrompt(npc,missao)};
 }
 
 module.exports = {

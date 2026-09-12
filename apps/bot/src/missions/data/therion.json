@@ -18,7 +18,8 @@
       "recompensas": {
         "xp": 25650,
         "won": 171000,
-        "item": "Kit de Arrombamento Encantado"
+        "item": "Kit de Arrombamento Encantado",
+        "vinculo": 5
       }
     },
     {
@@ -35,7 +36,8 @@
       "recompensas": {
         "xp": 29700,
         "won": 198000,
-        "item": "Capa de Camuflagem"
+        "item": "Capa de Camuflagem",
+        "vinculo": 5
       }
     },
     {
@@ -52,7 +54,8 @@
       "recompensas": {
         "xp": 33750,
         "won": 225000,
-        "item": "Réplica Reforçada de: Adaga Curva 'Silêncio'"
+        "item": "Réplica Reforçada de: Adaga Curva 'Silêncio'",
+        "vinculo": 5
       }
     },
     {
@@ -69,7 +72,8 @@
       "recompensas": {
         "xp": 37800,
         "won": 252000,
-        "item": "Réplica Reforçada de: Adaga Curva 'Silêncio'"
+        "item": "Réplica Reforçada de: Adaga Curva 'Silêncio'",
+        "vinculo": 5
       }
     },
     {
@@ -85,7 +89,8 @@
       "objetivo": "Comprar 1 equipamento de Rank C (arma ou peça de armadura) e apresentar a compra e sua utilidade a Therion.",
       "recompensas": {
         "xp": 2500,
-        "won": 2000
+        "won": 2000,
+        "vinculo": 2
       },
       "revisaoBalanceamento": 1
     },
@@ -103,7 +108,8 @@
       "recompensas": {
         "xp": 7425,
         "won": 49500,
-        "item": "Capa de Camuflagem"
+        "item": "Capa de Camuflagem",
+        "vinculo": 2
       }
     },
     {
@@ -120,7 +126,8 @@
       "recompensas": {
         "xp": 8775,
         "won": 58500,
-        "item": "Fragmento de Mana (Vento)"
+        "item": "Fragmento de Mana (Vento)",
+        "vinculo": 2
       }
     },
     {
@@ -137,7 +144,8 @@
       "recompensas": {
         "xp": 9450,
         "won": 63000,
-        "item": "Fragmento de Mana (Vento)"
+        "item": "Fragmento de Mana (Vento)",
+        "vinculo": 2
       }
     },
     {
@@ -154,7 +162,8 @@
       "recompensas": {
         "xp": 10800,
         "won": 72000,
-        "item": "Kit de Arrombamento Encantado"
+        "item": "Kit de Arrombamento Encantado",
+        "vinculo": 2
       }
     },
     {
@@ -171,7 +180,8 @@
       "recompensas": {
         "xp": 13500,
         "won": 90000,
-        "item": "Réplica Reforçada de: Adaga Curva 'Silêncio'"
+        "item": "Réplica Reforçada de: Adaga Curva 'Silêncio'",
+        "vinculo": 2
       }
     }
   ]

@@ -104,6 +104,20 @@ async function processarConversaNPC(msg) {
     const jogadorId = msg.author || msg.from;
 
     try {
+    const pedidoMissao = mensagemJogador.trim().replace(/[*_]/g, '').match(/^(?:quero\s+)?(?:aceitar|iniciar|confirmar)(?:\s+(?:a\s+)?miss[a\u00e3]o)?(?:\s+(.+?))?[.!]?$/i);
+    if (pedidoMissao) {
+        const player = await require('../../../../packages/database').playerByPhone(jogadorId);
+        if (!player) { await MessageService.send({message:msg,text:'Jogador não encontrado.'}); return true; }
+        const target = pedidoMissao[1]?.trim();
+        const candidates = (await QuestSystem.listarMissoes(player.id)).filter(m => m.npc_id === npcId && ['disponivel','ativa'].includes(m.status));
+        const normalized = value => String(value || '').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().trim();
+        const matches = target ? candidates.filter(m => String(m.numero_missao)===target || normalized(m.nome)===normalized(target) || m.origem_missao_id===target) : candidates.filter(m=>m.status==='disponivel');
+        if(matches.length!==1) { await MessageService.send({message:msg,text:'Informe a missão pelo nome ou número deste NPC. Consulte !missoes npc '+npcId}); return true; }
+        const result = await QuestSystem.aceitarMissao(player.id,String(matches[0].id));
+        await MessageService.send({message:msg,text:result.erro || `Missão ${result.jaAtiva?'já ativa':'aceita'}: ${result.missao.nome}. A conclusão será aprovada pela ADM após a cena.`});
+        return true;
+    }
+
         const cena = await interactionManager.iniciarCena(npcId, jogadorId);
         if (!cena.permitido) {
             if (cena.motivo === "npc_em_cena") {
@@ -139,6 +153,7 @@ async function processarConversaNPC(msg) {
 
         // Enviar resposta usando o sistema de divisão automática
         // que preserva a integridade da narrativa mesmo em mensagens longas
+        const respostaInicial = resposta;
         const jogador = await new Promise((resolve) => db.get("SELECT id FROM jogadores WHERE numero = ?", [jogadorId], (err, row) => resolve(row || null)));
         let reacoesPendentes = [];
         let ofertaPendente = null;
@@ -195,6 +210,9 @@ ${reacao}`;
         if (!resultado.sucesso) {
             console.error("[NPC_CONVERSA] Falha no envio da mensagem:", resultado.validacao.detalhes);
         } else if (jogador) {
+            if (ofertaPendente || reacoesPendentes.length) {
+                await require('./conversationManager').adicionarMensagem(jogadorId, npcId, 'npc', resposta.slice(respostaInicial.length).trim());
+            }
             // Oferta e reacao so mudam de estado depois que esta cena chegou ao jogador.
             if (ofertaPendente) {
                 await QuestSystem.confirmarOfertaDeMissaoNPC(jogador.id, npcId, ofertaPendente.id);

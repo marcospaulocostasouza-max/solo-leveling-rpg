@@ -12,6 +12,8 @@
     "db:reconcile:check": "node scripts/reconcile-postgres.js",
     "db:fix-identities": "node scripts/fix-postgres-identities.js",
     "db:verify": "node scripts/db-verify.js",
+    "db:mission-rewards": "node scripts/reconcile-mission-rewards.js --apply",
+    "test:missions-postgres": "node scripts/test-mission-flow-postgres.js",
     "db:encode-url": "node scripts/encode-database-url.js",
     "db:encode-serverless-url": "node scripts/encode-database-url.js DATABASE_URL_SERVERLESS",
     "db:configure-pooler-tls": "node scripts/configure-postgres-tls.js",

@@ -158,7 +158,7 @@ async function validarBanner(id) {
         if (!banner.inicio_em || !banner.fim_em) erros.push("Banner temporário exige início e término.");
         else if (new Date(banner.inicio_em) >= new Date(banner.fim_em)) erros.push("Período temporário inválido.");
     }
-    const pool = await getPoolDoBanner(banner.id);
+    const pool = (await getPoolDoBanner(banner.id)).filter(item => Number(item.ativo ?? 1) === 1);
     if (!pool.length) erros.push("Pool vazio.");
     if (pool.filter(item => item.destaque_ordem != null).length !== 4) erros.push("O Banner deve possuir exatamente 4 Destaques.");
     if (pool.filter(item => Number(item.grande_premio) === 1).length !== 1) erros.push("O Banner deve possuir exatamente 1 Grande Prêmio.");
@@ -168,7 +168,8 @@ async function validarBanner(id) {
         const referencia = await validarReferencia(recompensa.reward_type, recompensa.referencia_id);
         if (!referencia.valida) erros.push(`Recompensa #${recompensa.id}: ${referencia.erro}`);
     }
-    return { valido: erros.length === 0, erros, banner, pool };
+    const permiteDezGiros = pool.some(item => Number(item.garantido_conjunto) === 1);
+    return { valido: erros.length === 0, erros, banner, pool, permiteDezGiros };
 }
 
 async function definirBannerAtivo(id, ativo) {

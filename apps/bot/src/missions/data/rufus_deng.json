@@ -18,7 +18,8 @@
       "recompensas": {
         "xp": 13680,
         "won": 91200,
-        "item": "Trajes Rasgados de Propósito"
+        "item": "Trajes Rasgados de Propósito",
+        "vinculo": 5
       }
     },
     {
@@ -35,7 +36,8 @@
       "recompensas": {
         "xp": 15840,
         "won": 105600,
-        "item": "Trajes Rasgados de Propósito"
+        "item": "Trajes Rasgados de Propósito",
+        "vinculo": 5
       }
     },
     {
@@ -52,7 +54,8 @@
       "recompensas": {
         "xp": 18000,
         "won": 120000,
-        "item": "Réplica Reforçada de: Punhos Reforçados com Manoplas de Metal"
+        "item": "Réplica Reforçada de: Punhos Reforçados com Manoplas de Metal",
+        "vinculo": 5
       }
     },
     {
@@ -69,7 +72,8 @@
       "recompensas": {
         "xp": 20160,
         "won": 134400,
-        "item": "Réplica Reforçada de: Punhos Reforçados com Manoplas de Metal"
+        "item": "Réplica Reforçada de: Punhos Reforçados com Manoplas de Metal",
+        "vinculo": 5
       }
     },
     {
@@ -85,7 +89,8 @@
       "objetivo": "Comprar 1 equipamento de Rank D (arma ou peça de armadura) e apresentar a compra e sua utilidade a Rufus Deng.",
       "recompensas": {
         "xp": 1000,
-        "won": 1000
+        "won": 1000,
+        "vinculo": 2
       },
       "revisaoBalanceamento": 1
     },
@@ -103,7 +108,8 @@
       "recompensas": {
         "xp": 3960,
         "won": 26400,
-        "item": "Tatuagem do Corvo"
+        "item": "Tatuagem do Corvo",
+        "vinculo": 2
       }
     },
     {
@@ -120,7 +126,8 @@
       "recompensas": {
         "xp": 4680,
         "won": 31200,
-        "item": "Fragmento de Mana (Terra)"
+        "item": "Fragmento de Mana (Terra)",
+        "vinculo": 2
       }
     },
     {
@@ -137,7 +144,8 @@
       "recompensas": {
         "xp": 5040,
         "won": 33600,
-        "item": "Fragmento de Mana (Terra)"
+        "item": "Fragmento de Mana (Terra)",
+        "vinculo": 2
       }
     },
     {
@@ -154,7 +162,8 @@
       "recompensas": {
         "xp": 5760,
         "won": 38400,
-        "item": "Trajes Rasgados de Propósito"
+        "item": "Trajes Rasgados de Propósito",
+        "vinculo": 2
       }
     },
     {
@@ -171,7 +180,8 @@
       "recompensas": {
         "xp": 7200,
         "won": 48000,
-        "item": "Réplica Reforçada de: Punhos Reforçados com Manoplas de Metal"
+        "item": "Réplica Reforçada de: Punhos Reforçados com Manoplas de Metal",
+        "vinculo": 2
       }
     }
   ]

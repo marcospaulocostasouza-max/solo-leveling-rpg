@@ -6,15 +6,18 @@ const MessageService = require("../core/messageService");
 const banners = require("../systems/gachaBannerService");
 const engine = require("../systems/gachaEngine");
 
-function normalizar(valor) { return String(valor || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim(); }
+function normalizar(valor) { return String(valor || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[*_`"“”]/g, '').replace(/[—–-]/g, ' ').replace(/\s+/g, ' ').trim(); }
 function formatarResultado(resultado, indice) {
-    const marcas = [resultado.grandePremio ? "ITEM SECRETO / GRANDE PRÊMIO" : null, resultado.pityForcado ? "PITY 100" : null, resultado.destaque ? `DESTAQUE ${resultado.destaque}` : null, resultado.garantidoRank ? `GARANTIA RANK ${resultado.rank}` : null].filter(Boolean);
+    const marcas = [resultado.grandePremio ? "ITEM SECRETO / GRANDE PRÊMIO" : null, resultado.pityForcado ? "PITY 100" : null, resultado.destaque ? `DESTAQUE ${resultado.destaque}` : null, resultado.garantidoConjunto ? 'GARANTIA DE CONJUNTO' : null, resultado.garantidoRank ? `GARANTIA RANK ${resultado.rank}` : null].filter(Boolean);
     const conversao = resultado.duplicata ? `\n_   ↳ Já possuída; +${resultado.fragmentosInvocacaoRecebidos} Fragmentos de Invocação_` : "";
     return `_${String(indice + 1).padStart(2, "0")} •_ *${resultado.nome}* _x${resultado.quantidade}${resultado.raridade ? ` — ${resultado.raridade}` : ""}${marcas.length ? ` — ${marcas.join(" / ")}` : ""}_${conversao}`;
 }
 function localizarBanner(nome, disponiveis) {
     if (!nome) return null;
     const busca = normalizar(nome);
+    const porId = disponiveis.find(item => /^#?\d+$/.test(busca) && String(item.id) === busca.replace(/^#/, ''));
+    if (porId) return porId;
+    if (!busca) return null;
     const exatos = disponiveis.filter(item => normalizar(item.nome) === busca);
     const encontrados = exatos.length ? exatos : disponiveis.filter(item => normalizar(item.nome).includes(busca));
     if (encontrados.length > 1) throw new Error("Nome ambíguo. Informe o nome completo de um dos banners: " + encontrados.map(item => item.nome).join(", "));
@@ -37,8 +40,8 @@ module.exports = async function gachaCommand(msg) {
     const texto = String(msg.body || "").trim();
     try {
         const disponiveis = await banners.getBannersDisponiveis();
-        if (/^!banners\b/i.test(texto)) {
-            const linhas = disponiveis.map(item => `_• ${item.nome}_`);
+        if (/^!banners\b/i.test(texto) || /^!gacha\s*$/i.test(texto)) {
+            const linhas = disponiveis.map(item => `_• ${item.nome} (ID ${item.id})_\n!Convergir 1 ${item.id}\n!Convergir 10 ${item.id}`);
             return MessageService.send({ message: msg, text: `_*「 BANNERS DISPONÍVEIS 」*_\n_— Convergências atualmente reconhecidas pelo Sistema._\n\n${linhas.length ? linhas.join("\n") : "_• Nenhum Banner disponível._"}\n\n_Use *!Banner nome do banner* para consultar e *!Convergir 1 nome do banner* ou *!Convergir 10 nome do banner* para girar._` });
         }
         if (/^!banner\b/i.test(texto)) {

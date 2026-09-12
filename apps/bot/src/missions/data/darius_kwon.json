@@ -18,7 +18,8 @@
       "recompensas": {
         "xp": 17100,
         "won": 114000,
-        "item": "Roupas de Infiltração Escuras"
+        "item": "Roupas de Infiltração Escuras",
+        "vinculo": 5
       }
     },
     {
@@ -35,7 +36,8 @@
       "recompensas": {
         "xp": 19800,
         "won": 132000,
-        "item": "Roupas de Infiltração Escuras"
+        "item": "Roupas de Infiltração Escuras",
+        "vinculo": 5
       }
     },
     {
@@ -52,7 +54,8 @@
       "recompensas": {
         "xp": 22500,
         "won": 150000,
-        "item": "Réplica Reforçada de: Adaga Herdada do Antigo Trabalho"
+        "item": "Réplica Reforçada de: Adaga Herdada do Antigo Trabalho",
+        "vinculo": 5
       }
     },
     {
@@ -69,7 +72,8 @@
       "recompensas": {
         "xp": 25200,
         "won": 168000,
-        "item": "Réplica Reforçada de: Adaga Herdada do Antigo Trabalho"
+        "item": "Réplica Reforçada de: Adaga Herdada do Antigo Trabalho",
+        "vinculo": 5
       }
     },
     {
@@ -85,7 +89,8 @@
       "objetivo": "Comprar 1 equipamento de Rank D (arma ou peça de armadura) e apresentar a compra e sua utilidade a Darius Kwon.",
       "recompensas": {
         "xp": 1000,
-        "won": 1000
+        "won": 1000,
+        "vinculo": 2
       },
       "revisaoBalanceamento": 1
     },
@@ -103,7 +108,8 @@
       "recompensas": {
         "xp": 4950,
         "won": 33000,
-        "item": "Mapa de Esconderijos Secretos"
+        "item": "Mapa de Esconderijos Secretos",
+        "vinculo": 2
       }
     },
     {
@@ -120,7 +126,8 @@
       "recompensas": {
         "xp": 5850,
         "won": 39000,
-        "item": "Fragmento de Mana (Sombra)"
+        "item": "Fragmento de Mana (Sombra)",
+        "vinculo": 2
       }
     },
     {
@@ -137,7 +144,8 @@
       "recompensas": {
         "xp": 6300,
         "won": 42000,
-        "item": "Fragmento de Mana (Sombra)"
+        "item": "Fragmento de Mana (Sombra)",
+        "vinculo": 2
       }
     },
     {
@@ -154,7 +162,8 @@
       "recompensas": {
         "xp": 7200,
         "won": 48000,
-        "item": "Roupas de Infiltração Escuras"
+        "item": "Roupas de Infiltração Escuras",
+        "vinculo": 2
       }
     },
     {
@@ -171,7 +180,8 @@
       "recompensas": {
         "xp": 9000,
         "won": 60000,
-        "item": "Réplica Reforçada de: Adaga Herdada do Antigo Trabalho"
+        "item": "Réplica Reforçada de: Adaga Herdada do Antigo Trabalho",
+        "vinculo": 2
       }
     }
   ]

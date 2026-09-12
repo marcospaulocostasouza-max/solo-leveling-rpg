@@ -18,7 +18,7 @@ function normalizarRank(valor) {
 }
 
 function sortearRecompensa(pool, rng = Math.random) {
-    const elegiveis = (pool || []).filter(item => Number(item.peso) > 0 && item.ativo !== 0);
+    const elegiveis = (pool || []).filter(item => Number(item.peso) > 0 && Number(item.ativo ?? 1) === 1);
     if (!elegiveis.length) throw new Error("O pool nao possui recompensas validas.");
     const total = elegiveis.reduce((soma, item) => soma + Number(item.peso), 0);
     const amostra = Number(rng());
@@ -198,6 +198,7 @@ function aplicarPity(sorteadasBase, pityInicial, grandePremio) {
 }
 
 function prepararSorteios(pool, quantidade, rank, pityInicial, rng) {
+    pool = pool.filter(item => Number(item.ativo ?? 1) === 1 && Number(item.peso) > 0);
     const grandePremio = pool.find(item => Number(item.grande_premio) === 1);
     if (!grandePremio) throw new Error("O Banner nao possui Grande Premio.");
     const base = Array.from({ length: quantidade }, () => sortearRecompensa(pool, rng));
@@ -231,8 +232,9 @@ async function realizarGiros(playerId, bannerId, quantidade, opcoes = {}) {
     await database.ensureGachaEngineSchema();
     const validacao = await bannerService.validarBanner(bannerId);
     if (!validacao.valido) throw new Error(`Banner invalido: ${validacao.erros.join(" ")}`);
+    if (giros === 10 && validacao.permiteDezGiros === false) throw new Error('Este banner ainda não tem uma peça de conjunto configurada para a garantia dos 10 giros. A ADM precisa configurar essa recompensa. Nenhum cristal foi descontado.');
     if (!bannerService.estaNoPeriodo(validacao.banner, opcoes.agora || new Date())) throw new Error("Banner indisponivel no momento.");
-    const pool = await Promise.all(validacao.pool.map(resolverRecompensa));
+    const pool = await Promise.all(validacao.pool.filter(item => Number(item.ativo ?? 1) === 1).map(resolverRecompensa));
     const jogadorAntes = await database.get("SELECT * FROM jogadores WHERE id = ?", [Number(playerId)]);
     if (!jogadorAntes) throw new Error("Jogador nao encontrado.");
     const rank = normalizarRank(jogadorAntes.rank);

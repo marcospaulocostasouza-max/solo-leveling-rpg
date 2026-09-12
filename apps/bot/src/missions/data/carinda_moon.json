@@ -18,7 +18,8 @@
       "recompensas": {
         "xp": 10260,
         "won": 68400,
-        "item": "Balança de Avaliação"
+        "item": "Balança de Avaliação",
+        "vinculo": 5
       }
     },
     {
@@ -35,7 +36,8 @@
       "recompensas": {
         "xp": 11880,
         "won": 79200,
-        "item": "Cinto de Bolsas de Moedas"
+        "item": "Cinto de Bolsas de Moedas",
+        "vinculo": 5
       }
     },
     {
@@ -52,7 +54,8 @@
       "recompensas": {
         "xp": 13500,
         "won": 90000,
-        "item": "Réplica Reforçada de: Par de Adagas Curtas"
+        "item": "Réplica Reforçada de: Par de Adagas Curtas",
+        "vinculo": 5
       }
     },
     {
@@ -69,7 +72,8 @@
       "recompensas": {
         "xp": 15120,
         "won": 100800,
-        "item": "Réplica Reforçada de: Par de Adagas Curtas"
+        "item": "Réplica Reforçada de: Par de Adagas Curtas",
+        "vinculo": 5
       }
     },
     {
@@ -85,7 +89,8 @@
       "objetivo": "Comprar 1 equipamento de Rank E (arma ou peça de armadura) e apresentar a compra e sua utilidade a Carinda Moon.",
       "recompensas": {
         "xp": 100,
-        "won": 500
+        "won": 500,
+        "vinculo": 2
       },
       "revisaoBalanceamento": 1
     },
@@ -103,7 +108,8 @@
       "recompensas": {
         "xp": 2970,
         "won": 19800,
-        "item": "Cinto de Bolsas de Moedas"
+        "item": "Cinto de Bolsas de Moedas",
+        "vinculo": 2
       }
     },
     {
@@ -120,7 +126,8 @@
       "recompensas": {
         "xp": 3510,
         "won": 23400,
-        "item": "Fragmento de Mana (Metal)"
+        "item": "Fragmento de Mana (Metal)",
+        "vinculo": 2
       }
     },
     {
@@ -137,7 +144,8 @@
       "recompensas": {
         "xp": 3780,
         "won": 25200,
-        "item": "Fragmento de Mana (Metal)"
+        "item": "Fragmento de Mana (Metal)",
+        "vinculo": 2
       }
     },
     {
@@ -154,7 +162,8 @@
       "recompensas": {
         "xp": 4320,
         "won": 28800,
-        "item": "Balança de Avaliação"
+        "item": "Balança de Avaliação",
+        "vinculo": 2
       }
     },
     {
@@ -171,7 +180,8 @@
       "recompensas": {
         "xp": 5400,
         "won": 36000,
-        "item": "Réplica Reforçada de: Par de Adagas Curtas"
+        "item": "Réplica Reforçada de: Par de Adagas Curtas",
+        "vinculo": 2
       }
     }
   ]

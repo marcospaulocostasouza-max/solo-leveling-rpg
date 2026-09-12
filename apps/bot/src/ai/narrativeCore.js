@@ -20,7 +20,7 @@ function build(context) {
     block('CONTEXT - PERSONAGEM', context.npc.core, LIMITS.core),
     block('CONTEXT - ESTADO ATUAL', `Emoção: ${context.state.emotion.emocao} (${context.state.emotion.intensidade}). Mood: ${context.state.mood.mood} (${context.state.mood.intensidade}).`, LIMITS.state),
     block('CONTEXT - RELACIONAMENTO', `Vínculo ${relationship.vinculo || 0}%; hostilidade ${relationship.hostilidade || 0}%.`, LIMITS.relationship),
-    block('MISSÕES OFICIAIS DO JOGADOR', `Somente estas missões existem para esta interação. Não crie requisitos, não aceite nem conclua tarefas pelo diálogo. Respeite objetivos, rank e estado registrados. ${JSON.stringify(context.quests || [])}`, 2600),
+    block('MISSÕES OFICIAIS DO JOGADOR', `Somente estas missões existem para esta interação. Não crie requisitos, não aceite nem conclua tarefas pelo diálogo. Respeite objetivos, rank e estado registrados. Missão completa e aprovadaPorADM significa tarefa cumprida e recompensa já entregue. Reconheça a conclusão na cena, conforme cenaAprovada, sem cobrar novamente o objetivo nem inventar outra aprovação. ${JSON.stringify(context.quests || [])}`, 2600),
     block('CONTEXT - MEMÓRIAS RELEVANTES', context.memories.map(item => `- [${item.tipo}] ${item.memoria}`).join('\n'), LIMITS.memories),
     block('CONTEXT - INFORMAÇÕES RECUPERADAS', context.retrieved.map(item => `- (${item.section}) ${item.text}`).join('\n'), LIMITS.retrieval),
     block('CONTEXT - EXEMPLOS DE ESTILO RELEVANTES', examples(context.npc, context.messageVisible || context.message), LIMITS.examples),
@@ -29,7 +29,7 @@ function build(context) {
     'OUTPUT RULES:\nContinue a cena com coerência absoluta. Use exclusivamente as memórias fornecidas como passado compartilhado. Priorize voz, personalidade, emoção atual e agência do jogador. Não controle o jogador. Escreva somente a narrativa, sem comentários ou raciocínio.'
   ].filter(Boolean);
   let prompt = parts.join('\n\n');
-  if (estimarTokens(prompt) > LIMITS.total) prompt = `${parts.slice(0, 5).join('\n\n')}\n\n${parts.at(-2)}\n\n${parts.at(-1)}`;
+  if (estimarTokens(prompt) > LIMITS.total) prompt = `${parts.slice(0, 7).join('\n\n')}\n\n${parts.at(-2)}\n\n${parts.at(-1)}`;
   const blocks = Object.fromEntries(parts.map(part => { const [name, ...body] = part.split(':\n'); return [name, estimarTokens(body.join(':\n'))]; }));
   return { prompt, tokens: estimarTokens(prompt), blocks, limit: LIMITS.total };
 }

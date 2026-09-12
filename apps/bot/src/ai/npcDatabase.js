@@ -19,10 +19,9 @@ const SECTION_FILES = {
   knowledge: '13_knowledge.md', curiosities: '14_curiosities.md', gaps: '15_narrative_gaps.md',
   rules: '16_absolute_rules.md', dialogExamples: '17_dialog_examples.md', sceneExamples: '18_scene_examples.md'
 };
-const ALIASES = { ophilia: 'ophilia_clement', ophilia_clement: 'ophilia_clement' };
+const { canonicalId } = require('../npc/npcIdentity');
 const cache = new Map();
 
-function canonicalId(id) { return ALIASES[String(id || '').toLowerCase()] || String(id || '').toLowerCase(); }
 function read(file) { return fs.existsSync(file) ? fs.readFileSync(file, 'utf8').trim() : ''; }
 function fingerprint(files) { return files.filter(fs.existsSync).map(file => { const s = fs.statSync(file); return `${file}:${s.size}:${s.mtimeMs}`; }).join('|'); }
 function splitChunks(text, section, source) {

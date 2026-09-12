@@ -26,6 +26,8 @@ for (const [file, dependency] of [
     ['cardinal/world/index.js', 'sqlite3'],
     ['apps/site/package.json', 'next']
 ]) {
-    createRequire(path.join(root, file)).resolve(dependency);
+    const importer = createRequire(path.join(root, file));
+    importer.resolve(dependency);
+    if (dependency === 'sqlite3') importer(dependency).verbose();
     console.log(`[INSTALL SITE] OK: ${dependency} from ${file}`);
 }

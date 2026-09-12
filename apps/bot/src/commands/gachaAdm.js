@@ -147,6 +147,19 @@ async function executar(msg) {
     try {
         await Admin.autorizar(actor);
         const original = String(msg.body || "").trim();
+        const desativar = original.match(/^!desativar\s*banner\s+(.+)$/i);
+        const desativarAdmin = original.match(/^!gachaadm\s+banner\s+desativar\s+(.+)$/i);
+        if (desativar || desativarAdmin) {
+            const alvo = (desativar || desativarAdmin)[1].trim();
+            const lista = await Admin.listBannersAdmin(actor);
+            const id = alvo.replace(/^#/, '');
+            const exatos = lista.filter(b => /^\d+$/.test(id) ? String(b.id) === id : normalizar(b.nome) === normalizar(alvo));
+            const encontrados = exatos.length ? exatos : lista.filter(b => normalizar(alvo) && normalizar(b.nome).includes(normalizar(alvo)));
+            if (encontrados.length > 1) throw new Error('Nome ambíguo. Use o ID: ' + encontrados.map(b => `${b.nome} (#${b.id})`).join(', '));
+            if (!encontrados.length) throw new Error('Banner não encontrado. Use !gachaadm banners para consultar os IDs.');
+            const banner = await Admin.deactivateBanner(actor, encontrados[0].id);
+            return MessageService.send({message:msg,text:`Banner *${banner.nome}* (#${banner.id}) desativado. Pity, imagem e histórico preservados.`});
+        }
         if (/^!excluir banner\b/i.test(original)) {
             const alvo = original.replace(/^!excluir banner\b/i, "").trim();
             if (!alvo) throw new Error("Informe o ID ou o nome exato do Banner a excluir.");

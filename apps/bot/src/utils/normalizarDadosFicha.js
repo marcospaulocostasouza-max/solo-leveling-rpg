@@ -15,6 +15,10 @@ function normalizarNomeJogador(valor) {
     return String(valor ?? "").replace(/\s+/g, " ").trim();
 }
 
+function limparPontuacaoFinal(valor) {
+    return String(valor ?? '').trim().replace(/[\p{P}\s]+$/gu, '').trim();
+}
+
 function normalizarDadosFicha(dados) {
     const normalizados = { ...dados };
     if (normalizados.nome !== undefined && normalizados.nome !== null) {
@@ -28,4 +32,4 @@ function normalizarDadosFicha(dados) {
     return normalizados;
 }
 
-module.exports = { CAMPOS_INTEIROS, extrairInteiro, normalizarNomeJogador, normalizarDadosFicha };
+module.exports = { CAMPOS_INTEIROS, extrairInteiro, normalizarNomeJogador, normalizarDadosFicha, limparPontuacaoFinal };

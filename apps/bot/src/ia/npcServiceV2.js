@@ -288,11 +288,12 @@ async function conversarComNPC(npcId, jogadorId, mensagem) {
         // MODEL_CONFIG.num_predict. Cai no valor fixo apenas se, por algum
         // motivo, a métrica não vier no resultado do prompt.
         const numPredictDinamico = metricasPrompt._numPredictSugerido ?? MODEL_CONFIG.num_predict;
-        const resultadoIA = await ollamaService.gerarResposta(`${prompt}\n\nIDENTIDADE OBRIGATORIA: Seu nome é ${contexto.npc.nome}. Nunca assuma outro nome, guilda ou biografia. Não copie a cena do jogador; responda apenas com novas ações e falas do NPC. Exemplos são referências de estilo, nunca respostas prontas.`, {
-            thinking: decisaoThinking.thinking,
-            num_predict: numPredictDinamico
-        });
-        
+        const resultadoIA = await require('../ai/narrativeResponseGuard').generate(
+            (text, options) => ollamaService.gerarResposta(text, options),
+            prompt, {npc:{name:contexto.npc.nome},message:mensagem},
+            {thinking:decisaoThinking.thinking,num_predict:numPredictDinamico}
+        );
+
         const metricasOllama = resultadoIA.metricas || {};
         profiler.fim('LLM', {
             'Modelo': MODEL_CONFIG.model,

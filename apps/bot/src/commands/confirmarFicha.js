@@ -17,10 +17,9 @@ const db = require("../core/database");
 const { GROUP_CONFIG } = require("../core/groupConfig");
 const templates = require("../utils/templatesMensagens");
 const { obterClasseCanonica, listarClasses } = require("../utils/normalizarClasse");
-const { normalizarDadosFicha } = require("../utils/normalizarDadosFicha");
+const { normalizarDadosFicha, limparPontuacaoFinal } = require("../utils/normalizarDadosFicha");
 const { obterEstiloCanonico } = require("../utils/normalizarEstiloLuta");
 const elementos = require("../elementos/listaElementos");
-const { resolverElementoMagicoBase } = require("../utils/elementoMagicoBase");
 const normalizarTexto = valor => String(valor || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim().toLowerCase();
 
 // =====================================
@@ -277,17 +276,13 @@ module.exports = async (msg) => {
             // ===================================================================
             // VERIFICAR CONFLITO DE AFINIDADE ELEMENTAL E CONVERTER MAGO ELEMENTAL
             // ===================================================================
-            const afinidadeFicha = dados.elemento || dados.afinidade || "";
+            const afinidadeFicha = limparPontuacaoFinal(dados.elemento_original || dados.elemento || dados.afinidade || "");
             if (afinidadeFicha) {
                 const elementoCanonico = elementos.find(elemento => normalizarTexto(elemento.nome) === normalizarTexto(afinidadeFicha));
                 if (!elementoCanonico) errosValidacao.push(`• *Elemento/Afinidade*: "${afinidadeFicha}" não existe no sistema.`);
                 else {
                     dados.elemento = elementoCanonico.nome;
-                    const base = resolverElementoMagicoBase(elementoCanonico.nome);
-                    if (base.corrigido && String(dados.classe || "").toLowerCase().includes("mago elemental")) {
-                        dados.elemento = base.base;
-                        avisos.push(`• *Elemento/Afinidade*: ${elementoCanonico.nome} não possui técnicas iniciais próprias. O Sistema registrou *${base.base}* como elemento-base deste variante.`);
-                    }
+
                 }
             }
             
@@ -309,7 +304,7 @@ module.exports = async (msg) => {
                     
                     if (jogador && jogador.afinidade_elemental && jogador.afinidade_elemental !== "Nenhuma") {
                         const afinidadeSorteada = jogador.afinidade_elemental;
-                        if (afinidadeFicha.toLowerCase() !== afinidadeSorteada.toLowerCase()) {
+                        if (normalizarTexto(afinidadeFicha) !== normalizarTexto(limparPontuacaoFinal(afinidadeSorteada))) {
                             errosValidacao.push(`• *Elemento/Afinidade*: conflito! Você colocou "${afinidadeFicha}" na ficha, mas sua afinidade sorteada é "${afinidadeSorteada}". Use a afinidade correta.`);
                         }
                     }

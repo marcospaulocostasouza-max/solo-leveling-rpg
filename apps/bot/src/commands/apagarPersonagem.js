@@ -155,6 +155,8 @@ async function executarExclusao(msg, numero) {
         
         // Buscar ID do jogador
         const jogadorId = jogador ? jogador.id : null;
+
+        await require('../systems/clearCharacterDraws')(numero, jogadorId);
         
         if (jogadorId) {
             // Excluir em ordem (respeitando foreign keys)

@@ -83,8 +83,7 @@ ${templates.divisor()}
 
         mensagem += `\n${templates.divisor()}`;
         mensagem += `\n\n*Expressão visual e narrativa*`;
-        mensagem += `\nA afinidade fortalece técnicas do mesmo elemento conforme as regras delas. Você também pode aplicar características visuais do elemento às suas técnicas, independentemente da classe inicial.`;
-        mensagem += `\n\nExemplo: um Assassino com afinidade de Fogo pode narrar sua lâmina envolta em chamas. Isso é *somente visual e narrativo*: não muda o efeito, não acrescenta dano e não concede bônus extra.`;
+        mensagem += `\n${require("../utils/afinidadeVisualTexto")}`;
         mensagem += `\n${templates.divisor()}\n_Afinidade salva permanentemente no sistema._`;
         
         await MessageService.send({ message: msg, text: mensagem });

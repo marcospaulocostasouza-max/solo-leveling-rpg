@@ -76,14 +76,10 @@ async function converse(npcId, playerId, message) {
   const prompt = NarrativeCore.build(context);
   const promptMs = Date.now() - promptStarted;
   const pipelineMs = Date.now() - started;
-  let result = await ollamaService.gerarResposta(prompt.prompt, { num_ctx: MODEL_CONFIG.num_ctx, num_predict: 900 });
-  const guard = require('./narrativeResponseGuard');
-  let problems = guard.validate(result.texto || '', context);
-  if (problems.length) {
-    result = await ollamaService.gerarResposta(`${prompt.prompt}\n\nCORREÇÃO OBRIGATÓRIA: ${problems.join(' ')} Reescreva do zero somente a continuação do NPC ${context.npc.name}, mantendo sua personalidade canônica, sem copiar a cena do jogador.`, { num_ctx: MODEL_CONFIG.num_ctx, num_predict: 900 });
-    problems = guard.validate(result.texto || '', context);
-    if (problems.length) throw Object.assign(new Error(`Resposta narrativa inválida; não foi salva: ${problems.join(' ')}`), { code: "NARRATIVE_INVALID" });
-  }
+  const result = await require('./narrativeResponseGuard').generate(
+    (text, options) => ollamaService.gerarResposta(text, options), prompt.prompt, context,
+    { num_ctx: MODEL_CONFIG.num_ctx, num_predict: 900 }
+  );
   const thinkingUsado = result.metricas?.thinking ?? false;
   const response = result.texto || 'Não consegui continuar a cena neste momento.';
   Memory.addRecent(context.npc.id, playerId, 'player', message);

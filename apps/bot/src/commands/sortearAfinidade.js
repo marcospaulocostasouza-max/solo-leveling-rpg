@@ -3,6 +3,7 @@ const db = require("../core/database");
 const templates = require("../utils/templatesMensagens");
 const elementos = require("../elementos/listaElementos");
 const AfinidadesAdicionais = require("../systems/afinidadesAdicionaisSystem");
+const afinidadeVisualTexto = require("../utils/afinidadeVisualTexto");
 
 const LIMITE_VARIANTE_ACIMA_DE_RARA = 1;
 const get = (sql, params = []) => new Promise((resolve, reject) =>
@@ -118,6 +119,9 @@ module.exports = async msg => {
             const resultados = [...sorteiosPreFicha, resultado.nome];
             await salvarSorteiosPreFicha(numero, resultados);
             await MessageService.send({ message: msg, text: `*═══ SORTEIO DE AFINIDADE — ${resultados.length}/2 ═══*\n${templates.divisor()}\n\n> *${resultado.nome}*\n> *Categoria:* ${resultado.categoria}\n> *Raridade:* ${resultado.raridade}\n> *Bônus:* +${resultado.bonusAfinidade}% Poder Mágico\n\n${resultados.length < 2 ? "_Você pode usar *!sortear afinidade* mais uma vez._" : `_Seus resultados: *${resultados.join("* e *")}*. Na ficha, escolha somente um deles em Elemento/Afinidade e confirme a ficha._`}` });
+            if (resultados.length === 2) {
+                await MessageService.send({ message: msg, text: `*ADENDO — AFINIDADES*\n\n${afinidadeVisualTexto}` });
+            }
             return resultado;
         }
 

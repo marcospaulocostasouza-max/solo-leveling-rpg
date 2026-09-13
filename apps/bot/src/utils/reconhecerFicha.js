@@ -334,12 +334,9 @@ Um ADM deve usar *!add item* para ${String(dados.pertencente).normalize("NFD").r
         }
     }
 
-    if (ficha.classe === "Mago Elemental" && ficha.elemento) {
+    if (ficha.elemento) {
         const base = resolverElementoMagicoBase(ficha.elemento);
-        if (base.corrigido) {
-            ficha.elemento_original = ficha.elemento;
-            ficha.elemento = base.base;
-        }
+        if (base.elemento) ficha.elemento = base.elemento.nome;
     }
 
     fichasTemp[numero] = ficha;

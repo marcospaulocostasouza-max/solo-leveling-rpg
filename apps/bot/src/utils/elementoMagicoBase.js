@@ -5,7 +5,7 @@ const ELEMENTOS_COM_TECNICAS = new Set([
 ]);
 
 function normalizar(valor) {
-    return String(valor || "").normalize("NFD")
+    return require("./normalizarDadosFicha").limparPontuacaoFinal(valor).normalize("NFD")
         .replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
 }
 

@@ -54,7 +54,7 @@ module.exports = {
         }
         
         // Validar elemento (se informado)
-        if (dados.elemento && !elementos.some(elemento => normalizar(elemento.nome) === normalizar(dados.elemento))) {
+        if (dados.elemento && !elementos.some(elemento => normalizar(elemento.nome) === normalizar(require('./normalizarDadosFicha').limparPontuacaoFinal(dados.elemento)))) {
             notas.push(`⚠ Elemento "${dados.elemento}" não encontrado (será sorteado)`);
         }
         if (!dados.estilo_luta || !String(dados.estilo_luta).trim()) erros.push("• Estilo de luta não informado. Escolha um estilo em !estilos de luta.");

@@ -428,6 +428,8 @@ async function executarComando(msg, comando, comandosRegistrados) {
         { prefixo: "!desequipar", arquivo: "desequipar.js" },
         { prefixo: "!equipar", arquivo: "equipar.js" },
         { prefixo: "!usar ticket", arquivo: "usarTicket.js" },
+        { prefixo: "!trocar aparencia", arquivo: "trocarAparencia.js" },
+        { prefixo: "!trocar aparência", arquivo: "trocarAparencia.js" },
         { prefixo: "!usar", arquivo: "usarItem.js" },
         { prefixo: "!comprar tecnica", arquivo: "comprarTecnica.js" },
         { prefixo: "!comprar técnica", arquivo: "comprarTecnica.js" },

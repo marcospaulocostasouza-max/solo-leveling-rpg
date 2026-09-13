@@ -34,7 +34,7 @@ _O despertar define o caminho de cada Caçador._
 
         mensagem += `
 *「 ${classe.toUpperCase()} 」*
-${String(dados.descricao || "Uma classe única.").trim()}
+_${String(dados.descricao || "Uma classe única.").trim()}_
 > *Bônus inicial:* ${bonusFormatado(dados.bonus)}
 > *Foco:* ${dados.foco}
 `;

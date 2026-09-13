@@ -75,6 +75,8 @@ _A partir de segunda-feira às 00:01 você poderá sortear novamente._
         // Realizar sorteio
         const resultado = await DungeonInstanciadaSystem.sortearChave(jogador);
 
+        if (resultado.erro || resultado.pendente) return MessageService.send({message:msg,text:resultado.erro || resultado.mensagem});
+
         if (resultado.sucesso) {
             // Escolher fala aleatória de sucesso
             const falas = DungeonInstanciadaSystem.FALAS_SUCESSO;
@@ -85,7 +87,7 @@ _A partir de segunda-feira às 00:01 você poderá sortear novamente._
 ${mensagem}
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-*Item adicionado:* Chave de Dungeon Rank ${resultado.rank}
+*Chave ativada:* Chave de Dungeon Rank ${resultado.rank}
 *Usos da chave:* 5/5
 
 _Use *!abrir dungeon* para sortear a Dungeon do Rank da chave._

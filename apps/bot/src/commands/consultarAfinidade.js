@@ -36,7 +36,8 @@ module.exports = async (msg) => {
         let opcoesIniciais = [];
         try { opcoesIniciais = JSON.parse(preFicha?.resultados || "[]"); } catch { opcoesIniciais = []; }
 
-        if (opcoesIniciais.length) {
+        opcoesIniciais = [...new Set(Array.isArray(opcoesIniciais) ? opcoesIniciais.filter(nome => typeof nome === "string") : [])];
+        if (opcoesIniciais.length && (!jogador?.afinidade_elemental || jogador.afinidade_elemental === "Nenhuma")) {
             const detalhes = opcoesIniciais.map((nome, indice) => {
                 const elemento = elementos.find(item => item.nome === nome);
                 if (!elemento) return `*Opção ${indice + 1}:* ${nome}`;
@@ -73,7 +74,10 @@ ${templates.divisor()}
         }
         
         const adicionais = await AfinidadesAdicionais.listar(jogador.id);
+        const exibidas = new Set([jogador.afinidade_elemental]);
         for (const afinidade of adicionais) {
+            if (exibidas.has(afinidade.elemento)) continue;
+            exibidas.add(afinidade.elemento);
             mensagem += `\n> *${Number(afinidade.slot) === 2 ? "Segundo Elemento" : "Terceiro Elemento"}:* ${afinidade.elemento}`;
         }
 

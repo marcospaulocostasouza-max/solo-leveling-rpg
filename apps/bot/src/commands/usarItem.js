@@ -29,6 +29,8 @@ module.exports = async (msg) => {
         const resultado = await InventorySystem.usarItem(jogador.id, item.id);
         if (resultado.erro) return MessageService.send({ message: msg, text: `[!] ${resultado.erro}` });
 
+        if (resultado.mensagem) return MessageService.send({message:msg,text:resultado.mensagem});
+
         const efeitos = resultado.efeitos.map((efeito) => `› ${efeito.tipo}: +${efeito.valor}`).join("\n");
         const texto = [
             "════════════════════════════════════",

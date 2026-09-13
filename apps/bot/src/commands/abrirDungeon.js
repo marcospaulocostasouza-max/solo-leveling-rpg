@@ -31,7 +31,22 @@ Use *!ficha* para criar seu personagem.
         }
 
         // Buscar chave de dungeon
-        const chave = await DungeonInstanciadaSystem.getChave(jogador.id);
+        let chave = await DungeonInstanciadaSystem.getChave(jogador.id);
+        const argumento = String(msg.body || '').replace(/^!abrir\s+(?:dungeon|chave)\s*/i, '').trim();
+        const abrirItem = argumento || /^!abrir\s+chave\s*$/i.test(msg.body.trim()) || !chave;
+        if (abrirItem) {
+            const rewards = require('../systems/dungeonRewardUseService');
+            const itens = (await require('../../../../packages/database').all('SELECT i.* FROM inventario_jogador inv JOIN itens i ON i.id=inv.item_id WHERE inv.jogador_id=? AND inv.quantidade>0', [jogador.id])).filter(i => rewards.kind(i)==='key');
+            const alvo = argumento.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+            const candidatas = argumento ? itens.filter(i => i.nome.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase()===alvo) : itens;
+            const unicas = [...new Map(candidatas.map(i=>[i.id,i])).values()];
+            if (unicas.length > 1) return MessageService.send({message:msg,text:'Você possui várias chaves. Use !usar seguido do nome completo da chave para escolher qual abrir.'});
+            if (unicas.length===1) {
+                const resultado = await rewards.use(jogador.id,unicas[0].id);
+                if (resultado.erro || resultado.pendente) return MessageService.send({message:msg,text:resultado.erro || resultado.mensagem});
+                chave = await DungeonInstanciadaSystem.getChave(jogador.id);
+            } else if (argumento) return MessageService.send({message:msg,text:'Chave não encontrada no inventário. Use o nome completo.'});
+        }
         if (!chave) {
             return MessageService.send({ message: msg, text: `
 *═══ ABRIR DUNGEON ═══*

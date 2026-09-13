@@ -49,8 +49,8 @@ class VendaSystem {
      */
     static async getPrecoItem(itemId) {
         return new Promise((resolve) => {
-            db.get("SELECT preco FROM itens WHERE id = ?", [itemId], (err, row) => {
-                resolve(row ? row.preco : 0);
+            db.get("SELECT preco,valor FROM itens WHERE id = ?", [itemId], (err, row) => {
+                resolve(row ? (Number(row.preco) > 0 ? Number(row.preco) : Number(row.valor) || 0) : 0);
             });
         });
     }
@@ -72,7 +72,7 @@ class VendaSystem {
         }
 
         // Item normal - 50% do preço
-        const precoOriginal = item.preco || 0;
+        const precoOriginal = Number(item.preco) > 0 ? Number(item.preco) : Math.max(0, Number(item.valor) || 0);
         return Math.floor(precoOriginal * PORCENTAGEM_VENDA) * quantidade;
     }
 
@@ -80,86 +80,7 @@ class VendaSystem {
      * Processa a venda de um item
      */
     static async venderItem(jogadorId, itemNome, quantidade = 1) {
-        // Buscar item no inventário
-        const itemInventario = await new Promise((resolve) => {
-            db.get(
-                `SELECT i.*, inv.quantidade, inv.equipado, inv.id as inventario_id
-                 FROM inventario_jogador inv
-                 JOIN itens i ON inv.item_id = i.id
-                 WHERE inv.jogador_id = ? AND i.nome LIKE ?
-                 LIMIT 1`,
-                [jogadorId, `%${itemNome}%`],
-                (err, row) => resolve(row || null)
-            );
-        });
-
-        if (!itemInventario) {
-            return { 
-                sucesso: false, 
-                erro: `Item "${itemNome}" não encontrado no inventário.` 
-            };
-        }
-
-        // Verificar se tem quantidade suficiente
-        if (itemInventario.quantidade < quantidade) {
-            return { 
-                sucesso: false, 
-                erro: `Você tem apenas ${itemInventario.quantidade}x ${itemInventario.nome}.` 
-            };
-        }
-
-        // Verificar se está equipado
-        if (itemInventario.equipado) {
-            return { 
-                sucesso: false, 
-                erro: `Não pode vender ${itemInventario.nome} enquanto estiver equipado. Desequipe primeiro.` 
-            };
-        }
-
-        // Calcular valor de venda
-        const valorVenda = this.calcularValorVenda(itemInventario, quantidade);
-
-        // Remover item do inventário
-        const remocao = await new Promise((resolve) => {
-            if (itemInventario.quantidade <= quantidade) {
-                // Remover completamente
-                db.run(
-                    "DELETE FROM inventario_jogador WHERE jogador_id = ? AND item_id = ?",
-                    [jogadorId, itemInventario.item_id],
-                    (err) => resolve(!err)
-                );
-            } else {
-                // Diminuir quantidade
-                db.run(
-                    "UPDATE inventario_jogador SET quantidade = quantidade - ? WHERE jogador_id = ? AND item_id = ?",
-                    [quantidade, jogadorId, itemInventario.item_id],
-                    (err) => resolve(!err)
-                );
-            }
-        });
-
-        if (!remocao) {
-            return { 
-                sucesso: false, 
-                erro: "Erro ao remover item do inventário." 
-            };
-        }
-
-        // Adicionar wons ao jogador
-        await EconomySystem.adicionarWon(
-            jogadorId, 
-            valorVenda, 
-            `Venda de ${quantidade}x ${itemInventario.nome}`
-        );
-
-        return {
-            sucesso: true,
-            item: itemInventario.nome,
-            quantidade: quantidade,
-            valorUnitario: Math.floor(valorVenda / quantidade),
-            valorTotal: valorVenda,
-            tipo: this.isMineroi(itemInventario.nome) ? "minério" : "item"
-        };
+        return require('./vendaTransactionService').sell(jogadorId, itemNome, quantidade, (item, total) => this.calcularValorVenda(item, total));
     }
 
     /**
@@ -220,10 +141,10 @@ _Use *!cancelar venda* para cancelar._`;
         
         return itens.filter(item => {
             // Não pode vender itens equipados
-            if (item.equipado) return false;
+            if (Number(item.equipado) === 1) return false;
             
             // Itens da loja tem preço
-            if (item.preco && item.preco > 0) return true;
+            if (this.calcularValorVenda(item) > 0) return true;
             
             // Minérios são vendáveis
             if (this.isMineroi(item.nome)) return true;
@@ -261,7 +182,7 @@ _Use *!cancelar venda* para cancelar._`;
             valorUnitario: valorVenda,
             valorTotal: valorVenda * itemInventario.quantidade,
             tipo: tipo,
-            precoOriginal: itemInventario.preco || 0
+            precoOriginal: Number(itemInventario.preco) > 0 ? Number(itemInventario.preco) : Number(itemInventario.valor) || 0
         };
     }
 }

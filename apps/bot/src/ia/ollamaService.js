@@ -189,6 +189,7 @@ class OllamaService {
         return {
             model: opcoes.model ?? CONFIG_MODELO.model,
             ...(opcoes.system ? { system: opcoes.system } : {}),
+            ...(opcoes.format ? { format: opcoes.format } : {}),
             prompt: prompt,
             stream: true,
             // Suporte ao modo thinking do Qwen3

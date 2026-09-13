@@ -101,7 +101,7 @@ REGRAS IMPORTANTES:
    exemplo, o jogador só pediu uma informação simples e foi embora, sem construir uma cena —
    marque "interacaoSignificativa": false e ambos os deltas como 0. Isso é o resultado esperado
    com mais frequência do que se imagina: nem toda interação merece mudar o relacionamento.
-6. Responda APENAS com o JSON abaixo, sem nenhum texto antes ou depois.
+6. Responda APENAS com o JSON abaixo, sem nenhum texto antes ou depois. Números positivos não levam sinal +: escreva 8, nunca +8. Use números inteiros nos deltas.
 
 Formato de resposta:
 {
@@ -143,25 +143,26 @@ ${formatarHistorico(npc, historico)}
  */
 function validarResposta(textoResposta) {
     try {
-        let dados = JSON.parse(textoResposta);
-
-        if (typeof dados !== "object" || Array.isArray(dados)) {
-            const match = textoResposta.match(/\{[\s\S]*\}/);
-            if (match) {
-                dados = JSON.parse(match[0]);
-            }
+        let text = String(textoResposta ?? "").trim();
+        let dados;
+        try { dados = JSON.parse(text); }
+        catch (error) {
+            // Extract only after parsing fails; valid arrays/primitives remain invalid results.
+            const start = text.indexOf("{"), end = text.lastIndexOf("}");
+            if (start >= 0 && end > start) text = text.slice(start, end + 1);
+            // Consume strings intact; repair only a positive number token outside strings.
+            const repaired = text.replace(/"(?:\\.|[^"\\])*"|([:\[,]\s*)\+(\d+)(?=\s*[,}\]])/g,
+                (token, prefix, number) => prefix === undefined ? token : prefix + number);
+            dados = JSON.parse(repaired);
         }
-
-        if (typeof dados !== "object" || Array.isArray(dados)) {
+        if (!dados || typeof dados !== "object" || Array.isArray(dados)) {
             return null;
         }
-
-        let deltaVinculo = parseInt(dados.deltaVinculo);
-        if (isNaN(deltaVinculo)) deltaVinculo = 0;
+        const integer = value => typeof value === "number" ? value : typeof value === "string" && /^[+-]?\d+$/.test(value.trim()) ? Number(value) : NaN;
+        let deltaVinculo = integer(dados.deltaVinculo);
+        let deltaHostilidade = integer(dados.deltaHostilidade);
+        if (!Number.isSafeInteger(deltaVinculo) || !Number.isSafeInteger(deltaHostilidade)) return null;
         deltaVinculo = Math.max(LIMITE_MIN, Math.min(LIMITE_MAX, deltaVinculo));
-
-        let deltaHostilidade = parseInt(dados.deltaHostilidade);
-        if (isNaN(deltaHostilidade)) deltaHostilidade = 0;
         deltaHostilidade = Math.max(LIMITE_MIN, Math.min(LIMITE_MAX, deltaHostilidade));
 
         let interacaoSignificativa = dados.interacaoSignificativa;
@@ -180,7 +181,7 @@ function validarResposta(textoResposta) {
             interacaoSignificativa,
             deltaVinculo,
             deltaHostilidade,
-            motivo: dados.motivo || (interacaoSignificativa ? "Alteração no relacionamento." : "Nenhuma interação significativa o suficiente.")
+            motivo: typeof dados.motivo === "string" && dados.motivo.trim() ? dados.motivo : (interacaoSignificativa ? "Alteração no relacionamento." : "Nenhuma interação significativa o suficiente.")
         };
     } catch (e) {
         console.error("[RELATIONSHIP_ENGINE] Erro ao validar resposta:", e.message);
@@ -196,7 +197,7 @@ function validarResposta(textoResposta) {
 async function analisarConversa(npc, jogador, historico, memorias, relacionamentoAtual) {
     try {
         const prompt = construirPromptRelacionamento(npc, jogador, historico, memorias, relacionamentoAtual);
-        const resposta = await perguntarIA(prompt);
+        const resposta = await perguntarIA(prompt, { format: "json", temperature: 0.1, num_predict: 300, thinking: false });
         if (!resposta) return null;
         return validarResposta(resposta);
     } catch (error) {

@@ -4,3 +4,4 @@ import "server-only";
 // eslint-disable-next-line @typescript-eslint/no-require-imports
 const database = require("../../../packages/database");
 export default database;
+export const techniqueIdentity = require("../../../packages/database/techniqueIdentity");

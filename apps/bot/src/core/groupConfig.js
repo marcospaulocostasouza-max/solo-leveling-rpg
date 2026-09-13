@@ -2,7 +2,7 @@
  * CONFIGURAÇÃO DE GRUPOS
  * 
  * IDs dos grupos oficiais do RPG.
- * Comandos só funcionam nos grupos designados.
+ * Comandos podem ser usados em qualquer conversa.
  */
 
 const GROUP_CONFIG = {
@@ -28,14 +28,8 @@ const GROUP_CONFIG = {
     minigames: "120363409545820778@g.us"
 };
 
-// Lista de números de administradores (acesso total em qualquer grupo)
-const ADMINISTRADORES = [
-    "120363427760363406@g.us" // Você pode adicionar mais números aqui
-];
-
-// Função para verificar se o comando está no grupo correto
-function verificarGrupo(comando, grupoId, numeroAutor = null) {
-    // ✅ TODOS OS COMANDOS FUNCIONAM EM QUALQUER GRUPO
+// Os IDs acima são destinos de avisos e organização, não restrições de uso.
+function verificarGrupo() {
     return true;
 }
 

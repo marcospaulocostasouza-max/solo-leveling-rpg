@@ -1,115 +1,27 @@
-const MessageService = require("../core/messageService");
-
-/*
- * COMANDO: !Escolho a opção número X
- * 
- * Permite que participantes da Dungeon Instanciada escolham seus prêmios.
- * Cada prêmio só pode ser escolhido uma vez por uso de dungeon.
- */
-
-const JogadorCore = require("../core/jogadorCore");
-const DungeonInstanciadaSystem = require("../systems/dungeonInstanciadaSystem");
-
-module.exports = async (msg) => {
+const MessageService = require('../core/messageService');
+const JogadorCore = require('../core/jogadorCore');
+const DungeonInstanciadaSystem = require('../systems/dungeonInstanciadaSystem');
+module.exports = async msg => {
+    const responder = text => MessageService.send({ message: msg, text });
     try {
-        const numero = msg.author || msg.from;
-        const texto = msg.body.toLowerCase();
-        
-        // Buscar jogador
-        const jogador = await JogadorCore.buscarPorNumero(numero);
-        if (!jogador) {
-            return MessageService.send({ message: msg, text: `
-*═══ ESCOLHER PRÊMIO ═══*
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-*Jogador não encontrado!*
-
-Você ainda não possui uma ficha criada.
-Use *!ficha* para criar seu personagem.
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━` });
+        const jogador = await JogadorCore.buscarPorNumero(msg.author || msg.from);
+        if (!jogador) return responder('Jogador não encontrado. Crie sua ficha com !ficha.');
+        const texto = String(msg.body || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+        const match = texto.match(/!escolho(?:\s+(?:a\s+)?opcao)?(?:\s+numero)?\s+(\d+)/);
+        if (!match) return responder('Use !Escolho número X, com uma opção de 1 a 5.');
+        const opcao = Number(match[1]);
+        const dungeonId = texto.match(/\bdungeon\s+#?(\d+)\b/)?.[1];
+        let fichaId = Number(dungeonId);
+        if (!dungeonId) {
+            const pendentes = await DungeonInstanciadaSystem.getFichasPendentesParaPremio(jogador.id);
+            if (pendentes.length > 1) return responder(`Você tem prêmios pendentes em mais de uma dungeon:\n${pendentes.map(f => `#${f.id} — ${f.dungeon_nome}`).join('\n')}\nUse !Escolho número ${opcao} dungeon ID.`);
+            if (!pendentes.length) return responder('Você não tem prêmio pendente. Consulte !premios dungeon.');
+            fichaId = pendentes[0].id;
         }
-
-        // Extrair número da opção
-        const match = texto.match(/!escolho(?:\s+(?:a\s+)?op[çc][ãa]o)?(?:\s+n[uú]mero)?\s+(\d+)/i);
-        if (!match) {
-            return MessageService.send({ message: msg, text: `
-*═══ ESCOLHER PRÊMIO ═══*
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-*Formato inválido!*
-
-Use: *!Escolho a opção número X*
-Exemplo: *!Escolho a opção número 1*
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━` });
-        }
-
-        const numeroOpcao = parseInt(match[1]);
-
-        // Buscar ficha de dungeon ativa do jogador
-        const ficha = await DungeonInstanciadaSystem.getFichaAtivaParaPremio(jogador.id);
-
-        if (!ficha) {
-            return MessageService.send({ message: msg, text: `
-*═══ ESCOLHER PRÊMIO ═══*
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-*Nenhuma dungeon ativa encontrada.*
-
-_Use *!ficha de Dungeon* para ver sua ficha._
-_Use *!concluir Dungeon* para finalizar._
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━` });
-        }
-
-        // Verificar se o jogador é participante da dungeon
-        const ehParticipante = await DungeonInstanciadaSystem.ehParticipanteDaFicha(ficha.id, jogador.id);
-        
-        if (!ehParticipante) {
-            return MessageService.send({ message: msg, text: `
-*═══ ESCOLHER PRÊMIO ═══*
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-*Você não é participante desta dungeon.*
-
-Apenas participantes da dungeon podem escolher prêmios.
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━` });
-        }
-
-        // Escolher prêmio
-        const resultado = await DungeonInstanciadaSystem.escolherPremio(ficha.id, jogador.id, numeroOpcao);
-
-        if (resultado.erro) {
-            return MessageService.send({ message: msg, text: `
-*═══ ESCOLHER PRÊMIO ═══*
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-*${resultado.erro}*
-
-_Use *!Escolho a opção número X* para escolher._
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━` });
-        }
-
-        // Mostrar prêmio escolhido
-        return MessageService.send({ message: msg, text: `
-*═══ PRÊMIO ESCOLHIDO! ═══*
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-*${resultado.opcao.nome}*
-
-${resultado.mensagem}
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-_Prêmio registrado com sucesso._` });
-
+        const resultado = await DungeonInstanciadaSystem.escolherPremio(fichaId, jogador.id, opcao);
+        return responder(resultado.erro || resultado.mensagem);
     } catch (error) {
-        console.error("Erro no comando !Escolho:", error);
-        return MessageService.send({ message: msg, text: `
-*═══ ERRO ═══*
-_Ocorreu um erro ao escolher o prêmio._
-_Tente novamente mais tarde._` });
+        console.error('Erro no comando !Escolho:', error);
+        return responder('Não foi possível entregar o prêmio. Tente novamente; nenhuma escolha foi confirmada.');
     }
 };

@@ -16,9 +16,10 @@ class CardinalAdminService {
     constructor(options = {}) {
         this.database = options.database || require("../../packages/database"); this.draftStore = options.draftStore;
         this.client = options.client;
+        this.provider = options.provider || process.env.DATABASE_PROVIDER || "sqlite";
         this.knowledge = options.knowledge;
         this.validator = options.validator; this.balance = options.balance || null; this.repository = options.repository || new AdminRepository(this.database); this.rbac = options.rbac || new Rbac({ database: this.database, ownerNumber: options.ownerNumber });
-        this.writesEnabled = options.writesEnabled ?? /^true$/i.test(process.env.CARDINAL_ADMIN_WRITES_ENABLED || "false");
+        this.writesEnabled = options.writesEnabled ?? /^true$/i.test(process.env.CARDINAL_ADMIN_WRITES_ENABLED || "true");
         this.confirmHigh = options.confirmHigh ?? !/^false$/i.test(process.env.CARDINAL_CONFIRM_HIGH_RISK || "true");
         this.publisher = options.publisher || (this.draftStore && this.validator ? new CardinalPublisher({ draftStore: this.draftStore, validator: this.validator, balance: this.balance, provider: options.provider || process.env.DATABASE_PROVIDER }) : null);
         this.registry = options.registry || registerCoreTools(new AdminToolRegistry(), { publisher: this.publisher, draftStore: this.draftStore });
@@ -31,7 +32,7 @@ class CardinalAdminService {
         const rawKey = plan.idempotency_key || plan.operation_id || `${tool.name}:${JSON.stringify(plan.parameters)}`;
         const normalized = { ...plan, risk, operation_id: plan.operation_id || `op_${crypto.randomUUID()}`, idempotency_key: digest(`${actor}:${rawKey}`) };
         if (!dryRun && needsConfirmation(risk, { confirmHigh: this.confirmHigh }) && !options.confirmed) { const confirmation = await this.repository.createConfirmation(actor, normalized); throw new AdminError(CODES.CONFIRMATION_REQUIRED, "A operação exige confirmação explícita.", confirmation); }
-        if (dryRun) { const output = await tool.execute({ query: this.database, database: this.database, admin, dryRun: true }, normalized.parameters); return response(normalized, output, true); }
+        if (dryRun) { const output = await tool.execute({ query: this.database, database: this.database, admin, dryRun: true }, normalized.parameters); return { ...response(normalized, output, true), _parameters: normalized.parameters }; }
         const existing = await this.repository.existing(normalized.idempotency_key); if (existing) return { ...JSON.parse(existing.result_json), idempotent_replay: true, operation_id: existing.operation_id };
         let postCommit;
         try {
@@ -45,13 +46,39 @@ class CardinalAdminService {
         } catch (error) { await this.recordFailure(actor, admin, normalized, tool, risk, error, options.confirmationId); throw error instanceof AdminError ? error : new AdminError(CODES.TRANSACTION_FAILED, "A transação administrativa falhou e foi revertida.", { cause: error.message }); }
     }
     async executeNatural(actor, message, options = {}) { let plan; try { plan = this.plan(message); } catch (error) { if (!this.client) throw error; plan = { ...await planWithModel(this.client, message, this.registry), operation_id: `op_${crypto.randomUUID()}` }; } plan.idempotency_key = options.requestId || plan.operation_id; return this.executePlan(actor, plan, options); }
-    async confirm(actor, confirmationId) { if (!this.writesEnabled) throw new AdminError(CODES.PERMISSION_DENIED, "Confirmações ficam desabilitadas enquanto as escritas estão em dry-run."); const plan = await this.repository.consumeConfirmation(confirmationId, actor); return this.executePlan(actor, plan, { confirmed: true, confirmationId }); }
+    async prepareNatural(actor, message, options = {}) { return require("./batch").prepareBatch(this, actor, message, options); }
+    async pendingBatch(actor, channelId) {
+        await this.rbac.authorize(actor, "CARDINAL_READ"); await this.repository.initialize();
+        const rows = await this.database.all("SELECT * FROM cardinal_admin_confirmations WHERE admin_number=? AND confirmed_at IS NULL AND expires_at>? ORDER BY created_at DESC", [actor, new Date().toISOString()]);
+        return rows.find(row => { const plan = JSON.parse(row.operation_json); return plan.intent === "confirmed_batch" && plan.channel_id === (channelId || null); }) || null;
+    }
+    async markBatchReady(actor, id, channelId) {
+        await this.rbac.authorize(actor, "CARDINAL_READ");
+        await this.repository.transaction(async query => {
+            const row = await query.get("SELECT * FROM cardinal_admin_confirmations WHERE confirmation_id=? AND admin_number=? AND confirmed_at IS NULL", [id, actor]);
+            if (!row || Date.parse(row.expires_at) <= Date.now()) throw new AdminError(CODES.CONFIRMATION_EXPIRED, "O plano expirou. Reenvie a ordem.");
+            const operation = JSON.parse(row.operation_json);
+            if (operation.intent !== "confirmed_batch" || operation.channel_id !== (channelId || null)) throw new AdminError(CODES.PERMISSION_DENIED, "Plano pertence a outra conversa.");
+            operation.ready = true;
+            await query.run("UPDATE cardinal_admin_confirmations SET operation_json=? WHERE confirmation_id=?", [JSON.stringify(operation), id]);
+        });
+    }
+    async cancelBatch(actor, channelId) {
+        const pending = await this.pendingBatch(actor, channelId);
+        if (pending) await this.database.run("UPDATE cardinal_admin_confirmations SET expires_at=? WHERE confirmation_id=?", [new Date().toISOString(), pending.confirmation_id]);
+        return Boolean(pending);
+    }
+    async confirm(actor, confirmationId, options = {}) {
+        await this.repository.initialize();
+        const pending = await this.database.get("SELECT operation_json FROM cardinal_admin_confirmations WHERE confirmation_id=?", [confirmationId]);
+        if (pending && JSON.parse(pending.operation_json).intent === "confirmed_batch") return require("./batch").confirmBatch(this, actor, confirmationId, options);
+        if (!this.writesEnabled) throw new AdminError(CODES.PERMISSION_DENIED, "Confirmações ficam desabilitadas enquanto as escritas estão em dry-run."); const plan = await this.repository.consumeConfirmation(confirmationId, actor); return this.executePlan(actor, plan, { confirmed: true, confirmationId }); }
     async history(actor, filters = {}) { await this.rbac.authorize(actor, "CARDINAL_READ"); if (this.writesEnabled) return this.repository.history(filters); try { const limit = Math.min(Number(filters.limit) || 20, 100); return await this.database.all("SELECT * FROM cardinal_admin_operations ORDER BY created_at DESC LIMIT ?", [limit]); } catch { return []; } }
     async rollback(actor, operationId, options = {}) {
         const admin = await this.rbac.authorize(actor, "CARDINAL_CRITICAL"); if (!this.writesEnabled || options.dryRun) return { success: true, dry_run: true, operation_id: operationId, message: "Rollback apenas simulado." };
         const original = await this.database.get("SELECT * FROM cardinal_admin_operations WHERE operation_id=?", [operationId]); if (!original) throw new AdminError(CODES.ENTITY_NOT_FOUND, `Operação não encontrada: ${operationId}.`); if (!original.rollback_json) throw new AdminError(CODES.ROLLBACK_FAILED, "A operação não possui rollback seguro."); if (original.rolled_back_at) throw new AdminError(CODES.ROLLBACK_FAILED, "A operação já foi revertida.");
         const rollback = JSON.parse(original.rollback_json), newId = `op_${crypto.randomUUID()}`;
-        await this.repository.transaction(async query => { await applyRollback(query, rollback); await query.run("UPDATE cardinal_admin_operations SET rolled_back_at=? WHERE operation_id=?", [new Date().toISOString(), operationId]); await this.repository.record(query, { operationId: newId, idempotencyKey: digest(`${actor}:${options.idempotencyKey || `rollback:${operationId}`}`), admin: { number: actor, name: admin.nome }, originalMessage: `rollback ${operationId}`, intent: "rollback_transaction", tool: "rollback_transaction", risk: RISK.HIGH, parameters: { operation_id: operationId }, entity: null, before: JSON.parse(original.after_json || "null"), after: JSON.parse(original.before_json || "null"), result: { success: true, rolled_back: operationId }, rollback: null, status: "SUCCESS" }); }); if (rollback.draft_id && this.draftStore) await this.draftStore.markStatus(rollback.draft_id, "VALID", actor);
+        await this.repository.transaction(async query => { await applyRollback(query, rollback); if (rollback.table === "jogadores" && this.database.recalculateAttributes) await this.database.recalculateAttributes(rollback.id, query); await query.run("UPDATE cardinal_admin_operations SET rolled_back_at=? WHERE operation_id=?", [new Date().toISOString(), operationId]); await this.repository.record(query, { operationId: newId, idempotencyKey: digest(`${actor}:${options.idempotencyKey || `rollback:${operationId}`}`), admin: { number: actor, name: admin.nome }, originalMessage: `rollback ${operationId}`, intent: "rollback_transaction", tool: "rollback_transaction", risk: RISK.HIGH, parameters: { operation_id: operationId }, entity: null, before: JSON.parse(original.after_json || "null"), after: JSON.parse(original.before_json || "null"), result: { success: true, rolled_back: operationId }, rollback: null, status: "SUCCESS" }); }); if (rollback.draft_id && this.draftStore) await this.draftStore.markStatus(rollback.draft_id, "VALID", actor);
         return { success: true, operation_id: newId, rolled_back: operationId };
     }
     async recordFailure(actor, admin, plan, tool, risk, error, confirmationId) { try { if (await this.repository.existing(plan.idempotency_key)) return; await this.repository.transaction(query => this.repository.record(query, { operationId: plan.operation_id, idempotencyKey: plan.idempotency_key, admin: { number: actor, name: admin.nome }, originalMessage: plan.original_message, intent: plan.intent, tool: tool.name, risk, parameters: { ...plan.parameters, _knowledge_sources: plan.knowledge_sources || [] }, status: "FAILED", error: { code: error.code, message: error.message }, confirmationId })); } catch {} }

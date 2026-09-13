@@ -288,7 +288,7 @@ async function conversarComNPC(npcId, jogadorId, mensagem) {
         // MODEL_CONFIG.num_predict. Cai no valor fixo apenas se, por algum
         // motivo, a métrica não vier no resultado do prompt.
         const numPredictDinamico = metricasPrompt._numPredictSugerido ?? MODEL_CONFIG.num_predict;
-        const resultadoIA = await ollamaService.gerarResposta(prompt, {
+        const resultadoIA = await ollamaService.gerarResposta(`${prompt}\n\nIDENTIDADE OBRIGATORIA: Seu nome é ${contexto.npc.nome}. Nunca assuma outro nome, guilda ou biografia. Não copie a cena do jogador; responda apenas com novas ações e falas do NPC. Exemplos são referências de estilo, nunca respostas prontas.`, {
             thinking: decisaoThinking.thinking,
             num_predict: numPredictDinamico
         });
@@ -316,6 +316,8 @@ async function conversarComNPC(npcId, jogadorId, mensagem) {
         // 8. SALVAR MENSAGENS NO HISTÓRICO
         // =====================================
         profiler.inicio('Conversation Manager');
+        const problemasNarrativos = require('../ai/narrativeResponseGuard').validate(resposta, { npc: { name: contexto.npc.nome }, message: mensagem });
+        if (problemasNarrativos.length) return null;
         ConversationManager.adicionarMensagem(jogadorId, npcId, "jogador", mensagem);
         ConversationManager.adicionarMensagem(jogadorId, npcId, "npc", resposta);
         profiler.fim('Conversation Manager');

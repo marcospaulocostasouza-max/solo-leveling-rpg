@@ -64,7 +64,7 @@ const classe = {
             "custo_maestria": 70,
             "custo_maestria_formatado": "70 de Maestria",
             "cooldown": 3,
-            "nivel_desbloqueio": 15,
+            "nivel_desbloqueio": 9,
             "passiva": false,
             "classe": "Assassino"
         },
@@ -80,7 +80,7 @@ const classe = {
             "custo_maestria": 110,
             "custo_maestria_formatado": "110 de Maestria",
             "cooldown": 0,
-            "nivel_desbloqueio": 20,
+            "nivel_desbloqueio": 13,
             "passiva": true,
             "classe": "Assassino"
         },

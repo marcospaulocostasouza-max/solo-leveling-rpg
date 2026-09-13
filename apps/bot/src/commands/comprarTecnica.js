@@ -32,7 +32,8 @@ module.exports = async (msg) => {
             return;
         }
 
-        const technique = await get("SELECT * FROM tecnicas WHERE LOWER(nome) LIKE LOWER(?) ORDER BY CASE WHEN LOWER(nome) = LOWER(?) THEN 0 ELSE 1 END, nome LIMIT 1", [`%${requestedName}%`, requestedName]);
+        const lookupName = require("../utils/techniqueIdentity").techniqueName({ nome: requestedName, classe: player.classe });
+        const technique = await get("SELECT * FROM tecnicas WHERE COALESCE(categoria,'') <> 'Legada' AND LOWER(nome) LIKE LOWER(?) ORDER BY CASE WHEN LOWER(nome) = LOWER(?) THEN 0 ELSE 1 END, nome LIMIT 1", [`%${lookupName}%`, lookupName]);
         if (!technique) {
             await MessageService.send({ message: msg, text: "*═══ TÉCNICA NÃO ENCONTRADA ═══*\n\nConfira o nome com *!Técnicas* ou consulte uma técnica usando *!Técnica <nome>*." });
             return;

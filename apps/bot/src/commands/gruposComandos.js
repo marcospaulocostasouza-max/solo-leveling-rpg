@@ -70,7 +70,7 @@ module.exports = async (msg) => {
     const { mapa, comandosGlobais } = gerarMapaGrupos();
     
     let mensagem = `*═══ COMANDOS POR GRUPO ═══*\n`;
-    mensagem += `Consulte aqui onde cada comando pode ser usado.\n\n`;
+    mensagem += `Todos os comandos podem ser usados em qualquer grupo ou no privado. A lista abaixo é apenas uma referência de organização; comandos administrativos exigem ADM.\n\n`;
     
     mensagem += `*─── Comandos Globais ───*\n`;
     mensagem += `_(Funcionam em qualquer grupo)_\n`;

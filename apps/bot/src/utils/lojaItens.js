@@ -81,7 +81,7 @@ const ITENS_LOJA = {
             { nome: "Bússola Encantada do Recruta", bonus: "Sinal de socorro", preco: 220000, descricao: "Item de apoio iniciante, muito usado por caçadores em expedições.", tipo: "consumivel" },
             { nome: "Vela Ritualística da Bênção Menor", bonus: "Cura sangramento/veneno", preco: 230000, descricao: "Item de apoio iniciante, muito usado por caçadores em expedições.", tipo: "consumivel" },
             { nome: "Bolsa Dimensional do Selo Instável", bonus: "Visão no escuro (5 turnos)", preco: 250000, descricao: "Item de apoio iniciante, muito usado por caçadores em expedições.", tipo: "consumivel" },
-            { nome: "Picareta do Minerador", bonus: "Permite minerar cristais em dungeons", preco: 20000, descricao: "Ferramenta essencial para mineradores. Quebra após um único uso em dungeon.", tipo: "consumivel" }
+            { nome: "Picareta do Minerador", bonus: "Permite minerar cristais em dungeons", preco: 14000, descricao: "Ferramenta essencial para mineradores. Quebra após um único uso em dungeon.", tipo: "consumivel" }
         ],
         "Arma 1": [
             { nome: "Adaga do Aspirante", bonus: "Força: +5, Agilidade: +5", preco: 100000, descricao: "Arma de uma mão [1-FP]", tipo: "arma" },
@@ -184,7 +184,7 @@ const ITENS_LOJA = {
             { nome: "Bússola Encantada da Trilha Sombria", bonus: "Sinal de socorro", preco: 410000, descricao: "Item de apoio experiente, muito usado por caçadores em expedições.", tipo: "consumivel" },
             { nome: "Vela Ritualística do Espírito Adormecido", bonus: "Cura sangramento/veneno", preco: 430000, descricao: "Item de apoio experiente, muito usado por caçadores em expedições.", tipo: "consumivel" },
             { nome: "Bolsa Dimensional da Runa Rachada", bonus: "Visão no escuro (5 turnos)", preco: 450000, descricao: "Item de apoio experiente, muito usado por caçadores em expedições.", tipo: "consumivel" },
-            { nome: "Picareta do Minerador", bonus: "Permite minerar cristais em dungeons", preco: 20000, descricao: "Ferramenta essencial para mineradores. Quebra após um único uso em dungeon.", tipo: "consumivel" }
+            { nome: "Picareta do Minerador", bonus: "Permite minerar cristais em dungeons", preco: 14000, descricao: "Ferramenta essencial para mineradores. Quebra após um único uso em dungeon.", tipo: "consumivel" }
         ],
         "Arma 1": [
             { nome: "Adaga do Caçador Errante", bonus: "Força: +10, Agilidade: +10", preco: 280000, descricao: "Arma de uma mão [1-FP]", tipo: "arma" },
@@ -287,7 +287,7 @@ const ITENS_LOJA = {
             { nome: "Bússola Encantada da Espada Partida", bonus: "Sinal de socorro", preco: 690000, descricao: "Item de apoio veterano, muito usado por caçadores em expedições.", tipo: "consumivel" },
             { nome: "Vela Ritualística do Rank Oculto", bonus: "Cura sangramento/veneno", preco: 720000, descricao: "Item de apoio veterano, muito usado por caçadores em expedições.", tipo: "consumivel" },
             { nome: "Bolsa Dimensional da Vila Amaldiçoada", bonus: "Visão no escuro (5 turnos)", preco: 750000, descricao: "Item de apoio veterano, muito usado por caçadores em expedições.", tipo: "consumivel" },
-            { nome: "Picareta do Minerador", bonus: "Permite minerar cristais em dungeons", preco: 20000, descricao: "Ferramenta essencial para mineradores. Quebra após um único uso em dungeon.", tipo: "consumivel" }
+            { nome: "Picareta do Minerador", bonus: "Permite minerar cristais em dungeons", preco: 14000, descricao: "Ferramenta essencial para mineradores. Quebra após um único uso em dungeon.", tipo: "consumivel" }
         ],
         "Arma 1": [
             { nome: "Adaga do Regressor", bonus: "Força: +20, Agilidade: +15", preco: 500000, descricao: "Arma de uma mão [1-FP]", tipo: "arma" },
@@ -390,7 +390,7 @@ const ITENS_LOJA = {
             { nome: "Bússola Encantada da Chama Ancestral", bonus: "Sinal de socorro", preco: 1110000, descricao: "Item de apoio elite, muito usado por caçadores em expedições.", tipo: "consumivel" },
             { nome: "Vela Ritualística do Abismo Selado", bonus: "Cura sangramento/veneno", preco: 1160000, descricao: "Item de apoio elite, muito usado por caçadores em expedições.", tipo: "consumivel" },
             { nome: "Bolsa Dimensional da Lâmina Celestial", bonus: "Visão no escuro (5 turnos)", preco: 1200000, descricao: "Item de apoio elite, muito usado por caçadores em expedições.", tipo: "consumivel" },
-            { nome: "Picareta do Minerador", bonus: "Permite minerar cristais em dungeons", preco: 20000, descricao: "Ferramenta essencial para mineradores. Quebra após um único uso em dungeon.", tipo: "consumivel" }
+            { nome: "Picareta do Minerador", bonus: "Permite minerar cristais em dungeons", preco: 14000, descricao: "Ferramenta essencial para mineradores. Quebra após um único uso em dungeon.", tipo: "consumivel" }
         ],
         "Arma 1": [
             { nome: "Adaga do Herói Caído", bonus: "Força: +35, Agilidade: +20", preco: 800000, descricao: "Arma de uma mão [1-FP]", tipo: "arma" },
@@ -493,7 +493,7 @@ const ITENS_LOJA = {
             { nome: "Bússola Encantada da Chama Eterna", bonus: "Sinal de socorro", preco: 1870000, descricao: "Item de apoio lendário, muito usado por caçadores em expedições.", tipo: "consumivel" },
             { nome: "Vela Ritualística do Vazio Absoluto", bonus: "Cura sangramento/veneno", preco: 1930000, descricao: "Item de apoio lendário, muito usado por caçadores em expedições.", tipo: "consumivel" },
             { nome: "Bolsa Dimensional da Espada Divina", bonus: "Visão no escuro (5 turnos)", preco: 2000000, descricao: "Item de apoio lendário, muito usado por caçadores em expedições.", tipo: "consumivel" },
-            { nome: "Picareta do Minerador", bonus: "Permite minerar cristais em dungeons", preco: 20000, descricao: "Ferramenta essencial para mineradores. Quebra após um único uso em dungeon.", tipo: "consumivel" }
+            { nome: "Picareta do Minerador", bonus: "Permite minerar cristais em dungeons", preco: 14000, descricao: "Ferramenta essencial para mineradores. Quebra após um único uso em dungeon.", tipo: "consumivel" }
         ],
         "Arma 1": [
             { nome: "Adaga do Monarca Esquecido", bonus: "Força: +50, Agilidade: +30", preco: 1400000, descricao: "Arma de uma mão [1-FP]", tipo: "arma" },
@@ -596,7 +596,7 @@ const ITENS_LOJA = {
             { nome: "Bússola Encantada da Chama Primordial", bonus: "Sinal de socorro", preco: 3210000, descricao: "Item de apoio mítico, muito usado por caçadores em expedições.", tipo: "consumivel" },
             { nome: "Vela Ritualística do Absoluto", bonus: "Cura sangramento/veneno", preco: 3360000, descricao: "Item de apoio mítico, muito usado por caçadores em expedições.", tipo: "consumivel" },
             { nome: "Bolsa Dimensional da Última Página", bonus: "Visão no escuro (5 turnos)", preco: 3500000, descricao: "Item de apoio mítico, muito usado por caçadores em expedições.", tipo: "consumivel" },
-            { nome: "Picareta do Minerador", bonus: "Permite minerar cristais em dungeons", preco: 20000, descricao: "Ferramenta essencial para mineradores. Quebra após um único uso em dungeon.", tipo: "consumivel" }
+            { nome: "Picareta do Minerador", bonus: "Permite minerar cristais em dungeons", preco: 14000, descricao: "Ferramenta essencial para mineradores. Quebra após um único uso em dungeon.", tipo: "consumivel" }
         ],
         "Arma 1": [
             { nome: "Adaga do Monarca Original", bonus: "Força: +70, Agilidade: +45", preco: 2200000, descricao: "Arma de uma mão [1-FP]", tipo: "arma" },

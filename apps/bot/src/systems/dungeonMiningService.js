@@ -10,6 +10,7 @@ function semanaAtual(date = new Date()) {
 
 async function garantirSchema() {
     if (!schema) schema = (async () => {
+        await database.ensureCrystalSchema();
         await database.run(`CREATE TABLE IF NOT EXISTS dungeon_mineracoes (
             ficha_dungeon_id BIGINT PRIMARY KEY, jogador_id BIGINT NOT NULL,
             semana TEXT NOT NULL, xp INTEGER NOT NULL, resultado_json TEXT NOT NULL, data TEXT NOT NULL
@@ -36,12 +37,13 @@ async function entregar(query, ficha, jogador, xp, sortear) {
     const semana = semanaAtual();
     const { picareta, usadas } = await validar(query, jogador.id, semana);
     const sorteio = await sortear();
-    const resultado = { ...sorteio, sucesso: true, encontrou: Boolean(sorteio.sucesso), minerador: jogador.nome, jogadorId: jogador.id, xp, usadas: usadas + 1 };
+    const resultado = { ...sorteio, sucesso: true, encontrou: Boolean(sorteio.sucesso), minerador: jogador.nome, jogadorId: jogador.id, xp, cristais: 500, usadas: usadas + 1 };
     const consumo = await query.run('UPDATE inventario_jogador SET quantidade=quantidade-1 WHERE id=? AND quantidade>0', [picareta.id]);
     if (consumo.changes !== 1) throw new Error('A picareta não está mais disponível. Envie a ficha novamente.');
     await query.run('DELETE FROM inventario_jogador WHERE id=? AND quantidade=0', [picareta.id]);
     const now = new Date().toISOString();
     const motivo = `Mineração da Dungeon #${ficha.id}: ${ficha.dungeon_nome}`;
+    await database.adicionarCristaisComQuery(query, jogador.id, resultado.cristais, motivo);
     await query.run('UPDATE jogadores SET experiencia=COALESCE(experiencia,0)+?, won=COALESCE(won,0)+? WHERE id=?', [xp, Number(sorteio.valorTotal || 0), jogador.id]);
     await query.run('INSERT INTO experiencia_historico (jogador_id,quantidade,motivo,data) VALUES (?,?,?,?)', [jogador.id, xp, motivo, now]);
     if (sorteio.valorTotal) await query.run("INSERT INTO transacoes (jogador_id,valor,tipo,motivo,data) VALUES (?,?,'ganho',?,?)", [jogador.id, sorteio.valorTotal, `${motivo}: ${sorteio.quantidade}x ${sorteio.nome}`, now]);

@@ -1,3 +1,4 @@
+const { isPassive } = require("../utils/techniqueIdentity");
 const MessageService = require("../core/messageService");
 
 /**
@@ -170,7 +171,7 @@ function formatarFicha(tecnica, jogador = null) {
     jogador = normalizarJogador(jogador);
 
     const descricaoExibir = tecnica.descricao_completa || tecnica.descricao || "Sem descrição disponível.";
-    const tipoTec = tecnica.passiva ? "Passiva" : tecnica.tipo || "Ativa";
+    const tipoTec = isPassive(tecnica.passiva) ? "Passiva" : tecnica.tipo || "Ativa";
     const classe = tecnica.classe_nome || tecnica.classe || "Geral";
     const categoria = tecnica.categoria || tecnica.fonte || "Geral";
     const custoMana = tecnica.custo_mana || 0;
@@ -216,7 +217,7 @@ _─( ◆ )───── 𝗢 𝗤𝘂𝗲 𝗟𝗶𝗯𝗲𝗿𝗮_
 `;
 
     // Cooldown se tiver
-    if (cooldown > 0 && !tecnica.passiva) {
+    if (cooldown > 0 && !isPassive(tecnica.passiva)) {
         mensagem += `> *Recarga:* ${cooldown} turno(s)\n`;
     }
 
@@ -257,7 +258,7 @@ _─( ◆ )───── 𝗥𝗲𝗾𝘂𝗶𝘀𝗶𝘁𝗼𝘀_
 _─( ◆ )───── 𝗟𝗶𝗺𝗶𝘁𝗲𝘀_
 > Dano calculado de acordo com o sistema de atributos.
 `;
-    if (tecnica.passiva) {
+    if (isPassive(tecnica.passiva)) {
         mensagem += `> Efeito passivo: sempre ativo.\n`;
     }
 
@@ -318,7 +319,7 @@ module.exports = async (msg) => {
         });
 
         // 1. Busca exata
-        let tecnica = buscarTecnica(nomeBusca);
+        let tecnica = null;
 
         // 2. Se não achou, tenta busca aproximada no banco de dados
         if (!tecnica) {
@@ -344,6 +345,7 @@ module.exports = async (msg) => {
             }
         }
 
+        if (!tecnica) tecnica = buscarTecnica(nomeBusca);
         // 3. Se ainda não achou, tenta busca aproximada nas classes
         if (!tecnica) {
             for (const [key, classe] of Object.entries(classesIniciais)) {

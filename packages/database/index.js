@@ -687,7 +687,20 @@ async function recalculateAttributes(playerId, query = { get, all, run }) {
 async function playerById(playerId) { await applyMigrations(); await ensureCrystalSchema(); return get("SELECT * FROM jogadores WHERE id = ?", [playerId]); }
 async function playerByPhone(phone) { await applyMigrations(); await ensureCrystalSchema(); return get("SELECT * FROM jogadores WHERE numero = ?", [phone]); }
 async function inventory(playerId) { await applyMigrations(); const rows = await all("SELECT i.*, inv.quantidade, inv.equipado, inv.item_inicial FROM inventario_jogador inv JOIN itens i ON i.id = inv.item_id WHERE inv.jogador_id = ? ORDER BY inv.equipado DESC, i.categoria, i.nome", [playerId]); return rows.map(item => ({ ...item, equipado: Number(item.equipado) === 1, slot: itemSlot(item), consumivel: isConsumable(item), bonus: itemBonus(item) })); }
-async function playerSkills(playerId) { await applyMigrations(); return all("SELECT t.*, jt.nivel, jt.experiencia, jt.equipada, jt.usos, jt.cooldown_atual FROM jogador_tecnicas jt JOIN tecnicas t ON t.id = jt.tecnica_id WHERE jt.jogador_id = ? ORDER BY t.classe, t.nome", [playerId]); }
+async function playerSkills(playerId) {
+  await applyMigrations();
+  const rows = await all("SELECT t.*, jt.nivel, jt.experiencia, jt.equipada, jt.usos, jt.cooldown_atual FROM jogador_tecnicas jt JOIN tecnicas t ON t.id = jt.tecnica_id WHERE jt.jogador_id = ? ORDER BY t.classe, t.nome", [playerId]);
+  const { techniqueName, classKey, isPassive } = require('./techniqueIdentity');
+  const grouped = new Map();
+  for (const row of rows) {
+    const item = { ...row, nome: techniqueName(row), passiva: isPassive(row.passiva) };
+    const key = `${classKey(item.classe)}:${item.nome}`;
+    const prior = grouped.get(key);
+    if (!prior || (prior.categoria === 'Legada' && item.categoria !== 'Legada')) grouped.set(key, item);
+  }
+  return [...grouped.values()];
+}
+
 async function playerTitles(playerId) { const player = await playerById(playerId); return player?.titulo ? [player.titulo] : []; }
 async function playerGuild(playerId) { await applyMigrations(); return get("SELECT g.*, gm.cargo FROM guilda_membros gm JOIN guildas g ON g.id = gm.guilda_id WHERE gm.jogador_id = ?", [playerId]); }
 async function playerLocation(playerId) { await applyMigrations(); return (await get("SELECT * FROM player_locations WHERE player_id = ?", [playerId])) || { player_id: playerId, country: "Coreia do Sul", city_id: "seoul", region_id: null, place_id: null }; }
@@ -871,6 +884,10 @@ async function purchaseTechnique(playerId, techniqueId) {
     const player = await query.get(provider === "postgres" ? "SELECT * FROM jogadores WHERE id = ? FOR UPDATE" : "SELECT * FROM jogadores WHERE id = ?", [playerId]);
     const technique = await query.get("SELECT * FROM tecnicas WHERE id = ?", [techniqueId]);
     if (!player || !technique) throw new Error("Jogador ou técnica não encontrada.");
+    if (technique.categoria === 'Legada') throw new Error('Técnica legada indisponível para novas compras.');
+    const { techniqueName, classKey } = require('./techniqueIdentity');
+    const owned = await query.all('SELECT t.nome,t.classe FROM jogador_tecnicas jt JOIN tecnicas t ON t.id=jt.tecnica_id WHERE jt.jogador_id=?',[playerId]);
+    if (owned.some(t => classKey(t.classe) === classKey(technique.classe) && techniqueName(t) === techniqueName(technique))) throw new Error('Você já possui esta técnica.');
     const allowed = [player.classe, player.classe_avancada].map(normalizedClass).includes(normalizedClass(technique.classe)) || normalizedClass(technique.classe) === "todas";
     if (!allowed) {
       // Se não é da classe, verificar se é técnica de estilo de luta (proficiência)

@@ -66,6 +66,10 @@ async function comprarTecnica(jogador, tecnica) {
             throw e;
         }
         if (Number(jogador.nivel||1) < Number(tecnica.nivel_desbloqueio||1)) throw new Error('Nível insuficiente');
+        if (tecnica.categoria === 'Legada') throw new Error('Técnica legada indisponível para novas compras.');
+        const { techniqueName, classKey } = require('../utils/techniqueIdentity');
+        const aprendidas = await query.all('SELECT t.nome,t.classe FROM jogador_tecnicas jt JOIN tecnicas t ON t.id=jt.tecnica_id WHERE jt.jogador_id=?',[jogador.id]);
+        if (aprendidas.some(t => classKey(t.classe) === classKey(tecnica.classe) && normalizar(techniqueName(t)) === normalizar(techniqueName(tecnica)))) throw new Error('já possui');
         const existe = await query.get('SELECT 1 FROM jogador_tecnicas WHERE jogador_id=? AND tecnica_id=?',[jogador.id,tecnica.id]);
         if (existe) throw new Error('já possui');
         const cost = obterCustoMaestria(tecnica);
@@ -78,7 +82,7 @@ async function comprarTecnica(jogador, tecnica) {
         await query.run('INSERT INTO jogador_tecnicas (jogador_id, tecnica_id, nivel, equipada) VALUES (?,?,1,1)',[jogador.id,tecnica.id]);
         // A consulta também fica antes do commit: uma falha aqui não pode
         // informar compra recusada depois de já descontar a Maestria.
-        const restantes = await query.all(`SELECT t.custo_maestria, t.custo_qi FROM tecnicas t LEFT JOIN jogador_tecnicas jt ON jt.tecnica_id=t.id AND jt.jogador_id=? WHERE LOWER(t.classe)=LOWER(?) AND jt.id IS NULL ORDER BY t.nivel_desbloqueio,t.custo_maestria,t.id`,[jogador.id,tecnica.classe]);
+        const restantes = await query.all(`SELECT t.custo_maestria, t.custo_qi FROM tecnicas t LEFT JOIN jogador_tecnicas jt ON jt.tecnica_id=t.id AND jt.jogador_id=? WHERE COALESCE(t.categoria,'') <> 'Legada' AND LOWER(t.classe)=LOWER(?) AND jt.id IS NULL ORDER BY t.nivel_desbloqueio,t.custo_maestria,t.id`,[jogador.id,tecnica.classe]);
         const nextCost = restantes.length ? obterCustoMaestria(restantes[0]) : 0;
         return {cost,maestria:Number(atual.maestria),nextCost};
     });

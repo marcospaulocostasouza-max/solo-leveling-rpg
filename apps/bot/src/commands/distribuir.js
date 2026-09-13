@@ -143,7 +143,7 @@ module.exports = async msg => {
 function exibirStatusDistribuicao(msg, numeroJogador) {
     get("SELECT * FROM jogadores WHERE numero = ?", [numeroJogador]).then(jogador => {
         if (!jogador) return MessageService.send({ message: msg, text: "*Voce precisa criar uma ficha primeiro.*\n_Use !ficha_" });
-        return MessageService.send({ message: msg, text: `*DISTRIBUICAO DE ATRIBUTOS*\n\nJogador: ${jogador.nome || "Sem nome"}\nPontos disponiveis: ${jogador.pontos_atributo || 0}\n\n*Como usar:*\n> !distribuir 3 forca 2 resistencia 1 inteligencia\n> !distribuir 5 poder magico 2 velocidade\n> !distribuir pm 5 agi 2\n\n*Atributos validos:*\nForca, Resistencia, Velocidade/Agilidade, Sentidos, Inteligencia, Poder Magico/PM` });
+        return MessageService.send({ message: msg, text: `*DISTRIBUICAO DE ATRIBUTOS*\n\nJogador: ${jogador.nome || "Sem nome"}\nPontos disponiveis: ${jogador.pontos_atributo || 0}\n\n*Como usar:*\n> !distribuir 3 forca 2 resistencia 1 inteligencia\n\n*Atributos validos:*\nForca, Resistencia, Velocidade, Sentidos, Inteligencia, Poder Magico` });
     }).catch(err => {
         console.error("[DISTRIBUIR]", err.message);
         MessageService.send({ message: msg, text: "*Erro ao buscar dados do jogador.*" });

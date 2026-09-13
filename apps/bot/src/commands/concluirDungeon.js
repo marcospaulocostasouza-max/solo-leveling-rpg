@@ -141,7 +141,7 @@ _A escolha é vinculada ao participante registrado na Dungeon._`;
 
         await MessageService.send({ message: msg, text: mensagem });
         if (resultado.mineracao) {
-            await MessageService.send({ message: msg, text: `${DungeonInstanciadaSystem.formatarMensagemMineracao(resultado.mineracao)}\n\n*XP recebido:* +${resultado.mineracao.xp}\n*Minerações na semana:* ${resultado.mineracao.usadas}/2\n_O minerador já recebeu a recompensa na ficha e não participa da escolha de prêmio extra._` });
+            await MessageService.send({ message: msg, text: `${DungeonInstanciadaSystem.formatarMensagemMineracao(resultado.mineracao)}\n\n*XP recebido:* +${resultado.mineracao.xp}\n*Cristais recebidos:* +${resultado.mineracao.cristais || 0}\n*Minerações na semana:* ${resultado.mineracao.usadas}/2\n_O minerador já recebeu a recompensa na ficha e não participa da escolha de prêmio extra._` });
         }
 
         // Se a chave esgotou, enviar mensagem do ticket
@@ -151,9 +151,9 @@ _A escolha é vinculada ao participante registrado na Dungeon._`;
             await MessageService.send({ message: msg, text: msgTicket });
         }
 
-        // Enviar lista de premiações para cada participante
-        for (const participante of resultado.participantes) {
-            const premiosMsg = await DungeonInstanciadaSystem.formatarPremiacoes(resultado.ficha.id, participante.id);
+        // Uma lista compartilhada, independente de quem já escolheu.
+        if (resultado.participantes.length) {
+            const premiosMsg = await DungeonInstanciadaSystem.formatarPremiacoes(resultado.ficha.id, null);
             await MessageService.send({ message: msg, text: premiosMsg });
         }
 

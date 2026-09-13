@@ -141,6 +141,10 @@ async function processarConversaNPC(msg) {
             // cabeçalho único de formatação (com nome completo do NPC) aqui.
             resposta = formatarMensagem(npc, resposta, await emotionManager.obterEmocao(npcId, jogadorId));
         } catch (erroPipelineNova) {
+            if (erroPipelineNova.code === "NARRATIVE_INVALID") {
+                await MessageService.send({ message: msg, text: "A resposta do NPC ficou incoerente e foi descartada. Tente novamente; a resposta inválida não foi salva." });
+                return true;
+            }
             console.error(`[NPC_CONVERSA] Pipeline narrativa nova falhou para "${npcId}" (${erroPipelineNova.message}). Usando fallback legado.`);
             resposta = await require("../ia/npcServiceV2").conversarComNPC(npcId, jogadorId, mensagemJogador);
             resposta = formatarMensagem(npc, resposta, await emotionManager.obterEmocao(npcId, jogadorId));

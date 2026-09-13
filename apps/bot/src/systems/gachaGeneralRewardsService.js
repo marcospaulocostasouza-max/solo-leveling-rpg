@@ -17,6 +17,7 @@ function nextRank(rank) {
 }
 async function ensureItem(nome, categoria, tier, extra = {}) {
     await database.run("INSERT INTO itens (nome,categoria,tier,descricao,arma,consumivel) VALUES (?,?,?,?,?,?) ON CONFLICT(nome) DO NOTHING", [nome, categoria, tier, extra.descricao || nome, extra.arma ? 1 : 0, extra.consumivel ? 1 : 0]);
+    if (/^(Material de Dungeon Rank|Chave de Dungeon Rank) /.test(nome)) await database.run('UPDATE itens SET consumivel=1 WHERE nome=?', [nome]);
     return database.get("SELECT id,nome,tier FROM itens WHERE nome=?", [nome]);
 }
 async function recompensasBase(banner) {
@@ -37,8 +38,8 @@ async function recompensasBase(banner) {
         const item = await ensureItem(weapon.nome, weapon.categoria || "Arma", "E", { arma: true, descricao: weapon.descricao || "Arma simples obtida em Banner." });
         rows.push({ reward_type: "ITEM", referencia_id: String(item.id), quantidade: 1, peso: weaponWeight, estrelas: 3 });
     }
-    const material = await ensureItem(`Material de Dungeon Rank ${rank}`, "Material", rank, { descricao: `Material de craft obtido em Banner Rank ${rank}.` });
-    const materialRaro = await ensureItem(`Material de Dungeon Rank ${nextRank(rank)}`, "Material", nextRank(rank), { descricao: `Material de craft raro obtido em Banner Rank ${rank}.` });
+    const material = await ensureItem(`Material de Dungeon Rank ${rank}`, "Material", rank, { consumivel: true, descricao: `Use !usar para sortear um material da loja deste rank. Material de craft obtido em Banner Rank ${rank}.` });
+    const materialRaro = await ensureItem(`Material de Dungeon Rank ${nextRank(rank)}`, "Material", nextRank(rank), { consumivel: true, descricao: `Use !usar para sortear um material da loja deste rank. Material de craft raro obtido em Banner Rank ${rank}.` });
     const nucleo = await ensureItem("Nucleo de Monstro Rank C", "Material", "C", { descricao: "Nucleo de monstro de Rank C." });
     const caixa = await ensureItem("Caixa de Item", "Caixa", rank, { consumivel: true, descricao: "Caixa de recompensa." });
     const chave = await ensureItem(`Chave de Dungeon Rank ${rank}`, "Chave", rank, { consumivel: true, descricao: `Chave para uma Dungeon Rank ${rank}.` });

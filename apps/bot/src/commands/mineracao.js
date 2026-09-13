@@ -20,6 +20,10 @@ _• Cristal Pequeno — 30% de chance • 20.000 Won por unidade._
 _• Nenhum cristal — 40% de chance._
 
 _A quantidade sorteada varia de 1 a 5. O resultado e a entrega ficam registrados para o Minerador._
+*Recompensa garantida*
+_+500 Cristais de invocação por Dungeon concluída como Minerador, além da XP e do sorteio acima. Mesmo sem encontrar minério, recebe os 500 Cristais automaticamente na ficha._
+_Limite: duas Dungeons por semana como Minerador._
+
 *Sistema RPG • Mineração em Dungeons*
 `;
     await MessageService.send({ message: msg, text: mensagem });

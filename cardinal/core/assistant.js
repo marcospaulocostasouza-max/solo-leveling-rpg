@@ -21,6 +21,7 @@ class CardinalAssistant {
         this.client = options.client || new CardinalClient(options);
         this.retriever = options.retriever || new KnowledgeRetriever(options);
         this.contextBuilder = options.contextBuilder || new ContextBuilder(options);
+        this.database = options.database || null;
         this.history = []; this.maxHistory = options.maxHistory || 10; this.memory = options.memory || null;
     }
     clearHistory() { this.history = []; }
@@ -28,6 +29,22 @@ class CardinalAssistant {
         const query = String(question || "").trim(); if (!query) throw new Error("A pergunta não pode estar vazia.");
         if (/^(?:oi|ola|olá|bom dia|boa tarde|boa noite|ajuda|o que você faz|o que voce faz)[!?.\s]*$/i.test(query)) {
             return { text: "Posso consultar as regras do RPG. No bot, administradores também podem criar e revisar rascunhos e executar ações disponíveis. Exemplos: !cardinal como funciona a Maestria?; !cardinal crie uma espada Rank D; !cardinal dê 100 XP para Nome Completo. Informe o que deseja fazer.", sources: [] };
+        }
+        if (options.actor) {
+            const database = this.database || require("../../packages/database");
+            let liveQuestion = query;
+            if (/^(?:e\s|isso\b|esse\b|essa\b|explique melhor|continue\b)/i.test(query)) {
+                let previous = this.history.filter(row => row.role === "user").at(-1);
+                if (!previous && this.memory) previous = (await this.memory.context(options.actor, query, options))?.messages?.filter(row => row.role === "user").at(-1);
+                if (previous) liveQuestion = `${previous.content} ${query}`;
+            }
+            const live = await require("../admin/live-rpg").readRpg(database, options.actor, liveQuestion);
+            if (live) {
+                this.history.push({ role: "user", content: query }, { role: "assistant", content: live.text });
+                this.history = this.history.slice(-this.maxHistory);
+                if (this.memory) { await this.memory.converse(options.actor, "user", query, options); await this.memory.converse(options.actor, "assistant", live.text, options); }
+                return live;
+            }
         }
         let results = await this.retriever.searchKnowledge(query, options.filters || {});
         let memoryContext = null;

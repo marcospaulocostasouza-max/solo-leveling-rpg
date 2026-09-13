@@ -274,59 +274,8 @@ class DungeonInstanciadaSystem {
      * Chance de 1 em 5 (20%)
      */
     static async sortearChave(jogador) {
-        const sorteio = Math.random() < CHANCE_CHAVE;
-        const agora = new Date().toISOString();
-        const semana = this.getSemanaAtual();
-
-        // Registrar sorteio
-        await new Promise((resolve) => {
-            db.run(
-                "INSERT INTO sorteios_dungeon (jogador_id, sucesso, rank, data, semana) VALUES (?, ?, ?, ?, ?)",
-                [jogador.id, sorteio ? 1 : 0, sorteio ? jogador.rank : null, agora, semana],
-                () => resolve()
-            );
-        });
-
-        if (sorteio) {
-            // !Desejar concede somente a chave. A dungeon real é sorteada
-            // exclusivamente quando o jogador usa !abrir dungeon.
-            const rank = jogador.rank || "E";
-
-            // Criar chave de dungeon
-            await new Promise((resolve) => {
-                db.run(
-                    `INSERT OR REPLACE INTO chaves_dungeon 
-                     (jogador_id, rank, usos_total, usos_restantes, data_obtencao, ativa) 
-                     VALUES (?, ?, 5, 5, ?, 1)`,
-                    [jogador.id, rank, agora],
-                    () => resolve()
-                );
-            });
-
-            const chaveNoInventario = await this.adicionarChaveAoInventario(jogador.id, rank);
-
-            // Atualizar jogador com resultado
-            await new Promise((resolve) => {
-                db.run(
-                    "UPDATE jogadores SET ultimo_sorteio_desejar = ?, ultimo_resultado_desejar = ? WHERE id = ?",
-                    [agora, JSON.stringify({ sucesso: true, rank }), jogador.id],
-                    () => resolve()
-                );
-            });
-
-            return { sucesso: true, rank, chaveNoInventario };
-        } else {
-            // Atualizar jogador com resultado
-            await new Promise((resolve) => {
-                db.run(
-                    "UPDATE jogadores SET ultimo_sorteio_desejar = ?, ultimo_resultado_desejar = ? WHERE id = ?",
-                    [agora, JSON.stringify({ sucesso: false }), jogador.id],
-                    () => resolve()
-                );
-            });
-
-            return { sucesso: false };
-        }
+        await this.garantirSchemaChaveDungeon();
+        return require('./dungeonRewardUseService').wish(this, jogador);
     }
 
     /**
@@ -611,7 +560,7 @@ ${participantes.map((p, i) => `${i + 1}. ${p}`).join("\n")}
 Minerador:
 _Informe o nome completo. Não ocupa as 5 vagas. Limite: 2 minerações por semana._
 _É necessária uma Picareta do Minerador, consumida na conclusão._
-_Recebe XP e o resultado automático da mineração; não escolhe prêmio extra._
+_Recebe 20% da XP e +500 Cristais de invocação garantidos e o resultado automático da mineração; não escolhe prêmio extra._
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 _Copie esta ficha, adicione os participantes e envie novamente._
@@ -891,7 +840,7 @@ _Após concluir a Dungeon, use *!concluir Dungeon* para receber as recompensas._
                 if (reserva.changes !== 1) throw new Error('Esta ficha ja esta sendo concluida.');
                 await query.run('UPDATE chaves_dungeon SET usos_restantes=?, ativa=? WHERE id=?', [usosRestantes, usosRestantes > 0 ? 1 : 0, chave.id]);
                 for (const p of participantesValidos) await query.run('INSERT INTO participacao_dungeon (jogador_id,ficha_dungeon_id,semana,data) VALUES (?,?,?,?)', [p.id, ficha.id, semana, new Date().toISOString()]);
-                const mineracao = minerador ? await DungeonMiningService.entregar(query, ficha, minerador, premios.xp, () => this.sortearCristais()) : null;
+                const mineracao = minerador ? await DungeonMiningService.entregar(query, ficha, minerador, Math.floor(premios.xp * 0.20), () => this.sortearCristais()) : null;
                 return { usosRestantes, chaveEsgotada: usosRestantes === 0, mineracao };
             });
         } catch (error) {
@@ -957,59 +906,53 @@ _Após concluir a Dungeon, use *!concluir Dungeon* para receber as recompensas._
 
         // XP extra
         if (!escolhidos.includes("xp_extra")) {
-            opcoes.push({ numero, tipo: "xp_extra", nome: "XP Extra", valor: premiosRank.xp, descricao: `${premiosRank.xp} XP` });
-            numero++;
+            opcoes.push({ numero: 1, tipo: "xp_extra", nome: "XP Extra", valor: premiosRank.xp, descricao: `${premiosRank.xp} XP` });
+
         }
 
         // Wons extra
         if (!escolhidos.includes("won_extra")) {
-            opcoes.push({ numero, tipo: "won_extra", nome: "Wons Extra", valor: premiosRank.won, descricao: `${premiosRank.won} Wons` });
-            numero++;
+            opcoes.push({ numero: 2, tipo: "won_extra", nome: "Wons Extra", valor: premiosRank.won, descricao: `${premiosRank.won} Wons` });
+
         }
 
         // Atributos (Rank E)
         if (premiosRank.atributos > 0 && !escolhidos.includes("atributos")) {
-            opcoes.push({ numero, tipo: "atributos", nome: "Pontos de Atributo", valor: premiosRank.atributos, descricao: `${premiosRank.atributos} pontos de atributo` });
-            numero++;
+            opcoes.push({ numero: 3, tipo: "atributos", nome: "Pontos de Atributo", valor: premiosRank.atributos, descricao: `${premiosRank.atributos} pontos de atributo` });
+
         }
 
         // Maestria (Ranks D-S)
         if (premiosRank.maestria > 0 && !escolhidos.includes("maestria")) {
-            opcoes.push({ numero, tipo: "maestria", nome: "Maestria", valor: premiosRank.maestria, descricao: `${premiosRank.maestria} de Maestria` });
-            numero++;
+            opcoes.push({ numero: 3, tipo: "maestria", nome: "Maestria", valor: premiosRank.maestria, descricao: `${premiosRank.maestria} de Maestria` });
+
         }
 
         // Item Misterioso 1
         if (!escolhidos.includes("item_misterioso_1")) {
-            opcoes.push({ numero, tipo: "item_misterioso_1", nome: "Item Misterioso 1", valor: 1, descricao: "Item Misterioso #1" });
-            numero++;
+            opcoes.push({ numero: 4, tipo: "item_misterioso_1", nome: "Item Misterioso 1", valor: 1, descricao: "Item Misterioso #1" });
+
         }
 
         // Item Misterioso 2
         if (!escolhidos.includes("item_misterioso_2")) {
-            opcoes.push({ numero, tipo: "item_misterioso_2", nome: "Item Misterioso 2", valor: 1, descricao: "Item Misterioso #2" });
-            numero++;
+            opcoes.push({ numero: 5, tipo: "item_misterioso_2", nome: "Item Misterioso 2", valor: 1, descricao: "Item Misterioso #2" });
+
         }
 
         return opcoes;
     }
 
     /** Localiza a ficha do dono ou de um participante que tem prêmio pendente. */
-    static async getFichaAtivaParaPremio(jogadorId) {
-        return new Promise((resolve) => {
-            db.get(
-                `SELECT f.* FROM fichas_dungeon f
-                 WHERE f.status IN ('ativa','premios_pendentes') AND (
-                    f.jogador_id = ? OR EXISTS (
-                        SELECT 1 FROM participacao_dungeon p
-                        WHERE p.ficha_dungeon_id = f.id AND p.jogador_id = ?
-                    )
-                 ) ORDER BY f.id DESC LIMIT 1`,
-                [jogadorId, jogadorId],
-                (err, ficha) => resolve(ficha || null)
-            );
-        });
+    static async getFichasPendentesParaPremio(jogadorId) {
+        await garantirSchemaPremios();
+        return new Promise((resolve, reject) => db.all(
+            `SELECT f.* FROM fichas_dungeon f WHERE f.status='premios_pendentes'
+             AND EXISTS (SELECT 1 FROM participacao_dungeon p WHERE p.ficha_dungeon_id=f.id AND p.jogador_id=?)
+             AND NOT EXISTS (SELECT 1 FROM premios_dungeon r WHERE r.ficha_dungeon_id=f.id AND r.jogador_id=?)
+             ORDER BY f.id ASC`, [jogadorId,jogadorId], (err, rows) => err ? reject(err) : resolve(rows || [])));
     }
+    static async getFichaAtivaParaPremio(jogadorId) { return (await this.getFichasPendentesParaPremio(jogadorId))[0] || null; }
 
     static async ehParticipanteDaFicha(fichaDungeonId, jogadorId) {
         return new Promise((resolve) => {
@@ -1025,90 +968,8 @@ _Após concluir a Dungeon, use *!concluir Dungeon* para receber as recompensas._
      * Escolhe um prêmio para o participante
      */
     static async escolherPremio(fichaDungeonId, jogadorId, numeroOpcao) {
-        // Serializa a seleção da ficha inteira no processo. Os índices únicos
-        // abaixo mantêm a mesma garantia se chegarem duas mensagens ao mesmo tempo.
-        const chaveProcessamento = `ficha:${fichaDungeonId}`;
-        this.premiosEmProcessamento ||= new Set();
-        if (this.premiosEmProcessamento.has(chaveProcessamento)) return { erro: "Sua escolha já está sendo processada. Aguarde a confirmação." };
-        this.premiosEmProcessamento.add(chaveProcessamento);
-        try {
-            await garantirSchemaPremios();
-            if (!await this.ehParticipanteDaFicha(fichaDungeonId, jogadorId)) return { erro: "Apenas participantes registrados podem escolher prêmio." };
-            const premioJaEscolhido = await new Promise(resolve => db.get(
-                "SELECT premio_tipo FROM premios_dungeon WHERE ficha_dungeon_id = ? AND jogador_id = ? LIMIT 1",
-                [fichaDungeonId, jogadorId], (err, premio) => resolve(premio || null)
-            ));
-            if (premioJaEscolhido) return { erro: "Você já escolheu seu prêmio extra nesta conclusão." };
-
-            const opcoes = await this.getOpcoesPremios(fichaDungeonId, jogadorId);
-            const opcao = opcoes.find(o => o.numero === numeroOpcao);
-            if (!opcao) return { erro: "Opção inválida. Use !Escolho a opção número X para escolher." };
-
-            const jogador = await JogadorCore.buscarPorId(jogadorId);
-            if (!jogador) return { erro: "Jogador não encontrado." };
-            let mensagem = "";
-            let premioValor = String(opcao.valor);
-
-            switch (opcao.tipo) {
-                case "xp_extra":
-                    await LevelSystem.adicionarXp(jogador.id, opcao.valor, "Prêmio extra de Dungeon Instanciada");
-                    mensagem = `*${opcao.valor} XP* adicionados!`;
-                    break;
-                case "won_extra":
-                    await EconomySystem.adicionarWon(jogador.id, opcao.valor, "Prêmio extra de Dungeon Instanciada");
-                    mensagem = `*${opcao.valor} Wons* adicionados!`;
-                    break;
-                case "atributos":
-                    await JogadorCore.adicionarValor(jogador.id, "pontos_atributo", opcao.valor);
-                    mensagem = `*${opcao.valor} pontos de atributo* adicionados!`;
-                    break;
-                case "maestria":
-                    await JogadorCore.adicionarValor(jogador.id, "maestria", opcao.valor);
-                    mensagem = `*${opcao.valor} de Maestria* adicionados!`;
-                    break;
-                case "item_misterioso_1":
-                case "item_misterioso_2": {
-                    const ficha = await this.buscarFicha(fichaDungeonId);
-                    let dungeonId = Number(ficha?.dungeon_id);
-                    // Compatibilidade com fichas anteriores à coluna dungeon_id.
-                    if (!dungeonId && ficha?.dungeon_nome) {
-                        const dungeon = require("./dungeonDatabaseLoader").carregarDungeons()
-                            .find(item => item.nome === ficha.dungeon_nome && item.rank === ficha.dungeon_rank);
-                        dungeonId = Number(dungeon?.id);
-                    }
-                    if (!dungeonId) return { erro: "Não foi possível identificar a Dungeon desta ficha. O prêmio não foi marcado como escolhido." };
-                    const itemSorteado = require("./dungeonDatabaseLoader").sortearItemMisterioso(dungeonId);
-                    if (!itemSorteado) return { erro: "Esta Dungeon não possui item misterioso disponível. O prêmio não foi marcado como escolhido." };
-                    const itemId = await this.criarOuBuscarItem(itemSorteado);
-                    if (!itemId) return { erro: `Não foi possível preparar ${itemSorteado.nome}. O prêmio não foi marcado como escolhido.` };
-                    if (!await InventorySystem.adicionarItem(jogador.id, itemId)) return { erro: `Não foi possível adicionar ${itemSorteado.nome} ao inventário. O prêmio não foi marcado como escolhido.` };
-                    premioValor = itemSorteado.nome;
-                    mensagem = `*${itemSorteado.nome}* [Rank ${itemSorteado.rank}] adicionado ao inventário!\n\n${itemSorteado.descricao}\n\n*Atributos:* ${Object.entries(itemSorteado.atributos || {}).map(([k, v]) => `${k}: +${v}`).join(" • ") || "Sem atributos adicionais."}`;
-                    break;
-                }
-                default:
-                    mensagem = `Prêmio *${opcao.nome}* concedido!`;
-            }
-
-            const registrado = await new Promise(resolve => db.run(
-                "INSERT INTO premios_dungeon (ficha_dungeon_id, jogador_id, premio_tipo, premio_valor, data) VALUES (?, ?, ?, ?, ?)",
-                [fichaDungeonId, jogadorId, opcao.tipo, premioValor, new Date().toISOString()], err => resolve(!err)
-            ));
-            if (!registrado) return { erro: "Esta opção acabou de ser escolhida por outro participante. Escolha uma das opções restantes." };
-            // XP e Won já são gravados pelos sistemas de progresso/economia.
-            if (!['xp_extra', 'won_extra'].includes(opcao.tipo)) {
-                await playerDatabase.registrarHistoricoFicha({
-                    jogadorId: jogador.id, tipo: "Dungeon", direcao: "entrada",
-                    recurso: opcao.tipo.startsWith("item_") ? "Item de Dungeon" : opcao.nome,
-                    quantidade: opcao.tipo.startsWith("item_") ? 1 : Number(opcao.valor),
-                    descricao: `Prêmio escolhido (${opcao.numero}) na Dungeon: ${premioValor}.`,
-                    origem: "DUNGEON_PREMIO_ESCOLHIDO", referencia: `ficha_dungeon:${fichaDungeonId}`
-                }).catch(error => console.error("[DUNGEON] Falha ao registrar prêmio:", error.message));
-            }
-            return { sucesso: true, opcao, mensagem };
-        } finally {
-            this.premiosEmProcessamento.delete(chaveProcessamento);
-        }
+        await garantirSchemaPremios();
+        return require('./dungeonPrizeService').choose(this, fichaDungeonId, jogadorId, numeroOpcao);
     }
 
     /**
@@ -1331,27 +1192,9 @@ _Após concluir a Dungeon, use *!concluir Dungeon* para receber as recompensas._
     /**
      * Formata a lista de premiações para exibição
      */
-    static formatarPremiacoes(fichaDungeonId, jogadorId) {
-        return new Promise(async (resolve) => {
-            const opcoes = await this.getOpcoesPremios(fichaDungeonId, jogadorId);
-            
-            let mensagem = `*═══ PREMIAÇÕES DA DUNGEON ═══*
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-*Escolha uma opção de prêmio extra:*
-
-`;
-            opcoes.forEach(opcao => {
-                mensagem += `*${opcao.numero}.* ${opcao.nome} - ${opcao.descricao}\n`;
-            });
-
-            mensagem += `
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-_Use *!Escolho a opção número X* para escolher._
-_Apenas participantes da dungeon podem escolher._`;
-
-            resolve(mensagem);
-        });
+    static async formatarPremiacoes(fichaDungeonId, jogadorId) {
+        const opcoes = await this.getOpcoesPremios(fichaDungeonId, jogadorId);
+        return `*Prêmios da Dungeon #${fichaDungeonId}*\n\n${opcoes.map(opcao => `*${opcao.numero}.* ${opcao.nome} — ${opcao.descricao}`).join('\n')}\n\nUse *!Escolho número X dungeon ${fichaDungeonId}*.\nCada participante escolhe uma vez. O primeiro a escolher leva; os números das outras opções permanecem iguais.`;
     }
 
     // =====================================

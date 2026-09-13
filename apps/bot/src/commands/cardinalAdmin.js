@@ -170,6 +170,24 @@ async function correctLatestDraft(actor, request) {
   return { draft: revision.draft, gate };
 }
 
+async function sendBatchText(msg, text) {
+  const chunks = []; let remaining = String(text);
+  while (remaining.length > 3500) { let cut = remaining.lastIndexOf("\n", 3500); if (cut < 100) cut = 3500; chunks.push(remaining.slice(0, cut)); remaining = remaining.slice(cut).replace(/^\n/, ""); }
+  chunks.push(remaining);
+  for (const [index, chunk] of chunks.entries()) {
+    const result = await MessageService.send({ message: msg, text: chunks.length > 1 ? `Parte ${index + 1}/${chunks.length}\n${chunk}` : chunk });
+    if (result?.sucesso === false) throw new Error("Não foi possível entregar a lista completa. Reenvie a ordem; nada foi aplicado.");
+  }
+}
+
+async function requestAdministrativeActions(msg, actor, text) {
+  await instance().ready;
+  const prepared = await instance().prepareNatural(actor, text, { channelId: msg.from, requestId: msg.id?._serialized, dryRun: /\bsimule\b|\bdry[ -]?run\b/i.test(text), requireDelivery: true });
+  if (prepared.already_applied) return MessageService.send({ message: msg, text: "Essa ordem já foi confirmada e executada. Não repeti as entregas." });
+  await sendBatchText(msg, require("../../../../cardinal/admin/batch").describeBatch(prepared));
+  if (!prepared.dry_run) await instance().markBatchReady(actor, prepared.confirmation_id, msg.from);
+}
+
 async function handler(msg) {
   const actor = msg.author || msg.from;
   const text = cardinalText(msg.body);
@@ -178,9 +196,24 @@ async function handler(msg) {
     const confirmation = text.match(/^(?:confirmar|confirme)\s+(confirm_[a-z0-9-]+)$/i);
     if (confirmation) {
       await instance().ready;
-      const result = await instance().confirm(actor, confirmation[1]);
-      return MessageService.send({ message: msg, text: renderAdmin(result) });
+      const result = await instance().confirm(actor, confirmation[1], { channelId: msg.from });
+      return result.actions ? sendBatchText(msg, require("../../../../cardinal/admin/batch").describeCompleted(result)) : MessageService.send({ message: msg, text: renderAdmin(result) });
     }
+    if (/^(?:cancelar|cancele|não|nao)[.!]*$/i.test(text)) {
+      await instance().ready;
+      const canceled = await instance().cancelBatch(actor, msg.from);
+      return MessageService.send({ message: msg, text: canceled ? "Plano cancelado. Nada foi aplicado." : "Nenhum plano está aguardando confirmação nesta conversa." });
+    }
+    if (/^(?:sim|pode|pode executar|confirmo|confirmar|aprovado|confirmado)[.!]*$/i.test(text)) {
+      await instance().ready;
+      const pending = await instance().pendingBatch(actor, msg.from);
+      if (pending) {
+        const result = await instance().confirm(actor, pending.confirmation_id, { channelId: msg.from });
+        return sendBatchText(msg, require("../../../../cardinal/admin/batch").describeCompleted(result));
+      }
+      if (!approvalRequest(text)) return MessageService.send({ message: msg, text: "Nenhum plano está aguardando confirmação nesta conversa. Envie a ordem com os objetos e destinos." });
+    }
+    if (/^(?:dê|de|dar|adicione|adicionar|conceda|entregue|retire|remova|defina|ative|desative|desativar|altere|mude|troque|ajuste)\s/i.test(text) && !/\b(?:rascunho|draft)\b/i.test(text)) return await requestAdministrativeActions(msg, actor, text);
     const approval = approvalRequest(text);
     if (approval) {
       const outcome = await approveLatestDraft(actor, approval.draftId);
@@ -197,7 +230,7 @@ async function handler(msg) {
       const outcome = await correctLatestDraft(actor);
       return send(msg, forgeDraftResponse(outcome.draft, outcome.gate));
     }
-    if (/^(?:agora\s+)?(?:altere|mude|troque|ajuste|corrija|reescreva)\s+(?:o\s+|a\s+)?(?:rascunho|draft|ficha|descricao|descrição|nome|rank|slot|efeito|atributos)\b/i.test(text)) {
+    if (!/\b(?:jogador|player)\b/i.test(text) && /^(?:agora\s+)?(?:altere|mude|troque|ajuste|corrija|reescreva)\s+(?:o\s+|a\s+)?(?:rascunho|draft|ficha|descricao|descrição|nome|rank|slot|efeito|atributos)\b/i.test(text)) {
       const outcome = await correctLatestDraft(actor, text);
       return send(msg, forgeDraftResponse(outcome.draft, outcome.gate));
     }
@@ -237,15 +270,13 @@ async function handler(msg) {
     if (/^(?:ops(?:\s|$)|status$|health$|reinicie\s+(?:bot|site|qwen)|(?:bot|site|qwen).*(?:online|caiu))/i.test(text)) return require("./cardinalOps")(msg);
     if (/^(?:workflow|orquestrar)(?:\s|$)/i.test(text)) return require("./cardinalOrchestrator")(msg);
     if (!text || /^(?:oi|olá|ola|ajuda|bom dia|boa tarde|boa noite)[!?.\s]*$/i.test(text)) return send(msg, templates.info({ module: "ADMIN", summary: "Posso consultar regras, criar e revisar conteúdo e executar ordens administrativas. Experimente: !cardinal como funciona a Maestria?; !cardinal crie uma espada Rank D; !cardinal dê 100 XP para Nome Completo." }));
-    if (/^(?:qual|quais|como|quanto|quantos|quantas|por que|porque|explique|me explique|o que|quem|onde|continue|e quanto|e como|e qual)\b/i.test(text)) {
+    if (/^(?:qual|quais|como|quanto|quantos|quantas|por que|porque|explique|me explique|o que|quem|onde|continue|e quanto|e como|e qual|tem|existem|existe|liste|mostre|consulte|procure|busque|me diga)\b/i.test(text)) {
       const { CardinalAssistant } = require("../../../../cardinal/core/assistant");
       const answer = await new CardinalAssistant({ memory: memoryInstance() }).ask(text, { actor, channel_id: msg.from });
       return MessageService.send({ message: msg, text: answer.text });
     }
     await instance().ready;
-    const result = await instance().executeNatural(actor, text, { dryRun: /\bsimule\b|\bdry[ -]?run\b/i.test(text), requestId: msg.id?._serialized });
-    if (result.dry_run) return send(msg, templates.warning({ module: "ADMIN", title: "SIMULAÇÃO — NADA FOI ALTERADO", status: "ESCRITAS DESATIVADAS", summary: "O Cardinal calculou a ordem, mas não atualizou o banco de dados.", sections: [{ title: "Para aplicar de verdade", fields: [], lines: ["No .env local, defina CARDINAL_ADMIN_WRITES_ENABLED=true e reinicie o bot.", "Depois envie a ordem novamente. Operações de maior risco continuarão exigindo confirmação."] }], meta: { code: "CARDINAL_DRY_RUN" } }));
-    return MessageService.send({ message: msg, text: renderAdmin(result) });
+    return await requestAdministrativeActions(msg, actor, text);
   } catch (error) {
     return send(msg, cardinalError(error, "ADMIN"));
   }

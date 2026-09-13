@@ -1,3 +1,4 @@
+const { isPassive } = require("../utils/techniqueIdentity");
 const MessageService = require("../core/messageService");
 
 const db = require("../core/database");
@@ -170,7 +171,7 @@ module.exports = async (msg, nomeClasse) => {
         const estiloLower = String(consulta.estilo).toLowerCase();
         db.all(
             `SELECT * FROM tecnicas 
-             WHERE LOWER(classe) = ?
+             WHERE COALESCE(categoria,'') <> 'Legada' AND LOWER(classe) = ?
                AND LOWER(categoria) IN ('proficiencia', 'proficiência')
              ORDER BY nivel_desbloqueio ASC, nome ASC`,
             [estiloLower],
@@ -195,7 +196,7 @@ module.exports = async (msg, nomeClasse) => {
 `;
 
                 tecnicas.forEach((tecnica, index) => {
-                    const tipo = tecnica.passiva ? "Passiva" : tecnica.tipo || "Ativa";
+                    const tipo = isPassive(tecnica.passiva) ? "Passiva" : tecnica.tipo || "Ativa";
                     mensagem += `*${index + 1}. ${tecnica.nome}*\n`;
                     mensagem += `> *Tipo:* ${tipo}\n`;
                     mensagem += `> *Custo:* ${tecnica.custo_mana || 0} MP\n`;
@@ -222,8 +223,8 @@ _Sistema Online_
     // =====================================
     const placeholders = consulta.nomes.map(() => "?").join(", ");
     const sql = consulta.padrao
-        ? "SELECT * FROM tecnicas WHERE LOWER(classe) LIKE ? ORDER BY nivel_desbloqueio ASC, nome ASC"
-        : `SELECT * FROM tecnicas WHERE LOWER(classe) IN (${placeholders}) ORDER BY nivel_desbloqueio ASC, nome ASC`;
+        ? "SELECT * FROM tecnicas WHERE COALESCE(categoria,'') <> 'Legada' AND LOWER(classe) LIKE ? ORDER BY nivel_desbloqueio ASC, nome ASC"
+        : `SELECT * FROM tecnicas WHERE COALESCE(categoria,'') <> 'Legada' AND LOWER(classe) IN (${placeholders}) ORDER BY nivel_desbloqueio ASC, nome ASC`;
     const parametros = consulta.padrao ? [consulta.padrao] : consulta.nomes.map(nome => nome.toLowerCase());
 
     db.all(
@@ -247,7 +248,7 @@ _Sistema Online_
 `;
 
             tecnicas.forEach((tecnica, index) => {
-                const tipo = tecnica.passiva ? "Passiva" : tecnica.tipo || "Ativa";
+                const tipo = isPassive(tecnica.passiva) ? "Passiva" : tecnica.tipo || "Ativa";
                 mensagem += `*${index + 1}. ${tecnica.nome}*\n`;
                 mensagem += `> *Tipo:* ${tipo}\n`;
                 mensagem += `> *Custo:* ${tecnica.custo_mana || 0} MP\n`;

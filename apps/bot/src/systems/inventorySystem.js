@@ -58,7 +58,7 @@ class InventorySystem {
     static isConsumivel(item) {
         const categoria = normalizarTexto(item.categoria || item.slot);
         const tipo = normalizarTexto(item.tipo || item.legacyCategory);
-        return Number(item.consumivel) === 1 || categoria.includes("consumivel") || tipo.includes("consumivel");
+        return Boolean(require("./dungeonRewardUseService").kind(item)) || Number(item.consumivel) === 1 || categoria.includes("consumivel") || tipo.includes("consumivel");
     }
 
     static isChaveDungeon(item) {
@@ -256,6 +256,9 @@ class InventorySystem {
     }
 
     static async usarItem(jogadorId, itemId) {
+        const rewards = require('./dungeonRewardUseService');
+        const rewardItem = await require('../../../../packages/database').get('SELECT * FROM itens WHERE id=?', [itemId]);
+        if (rewardItem && rewards.kind(rewardItem)) return rewards.use(jogadorId, itemId);
         return new Promise((resolve) => {
             db.get(`SELECT i.*, inv.* FROM inventario_jogador inv JOIN itens i ON inv.item_id = i.id WHERE inv.jogador_id = ? AND inv.item_id = ?`, [jogadorId, itemId], async (err, item) => {
                 if (!item) { resolve({ erro: "Item não encontrado." }); return; }

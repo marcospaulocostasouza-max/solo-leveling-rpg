@@ -9,7 +9,6 @@ const MessageService = require("./messageService");
 
 const fs = require("fs");
 const path = require("path");
-const { verificarGrupo } = require("./groupConfig");
 
 function normalizarComando(valor) {
     let texto = String(valor || "")
@@ -175,27 +174,13 @@ async function executarComando(msg, comando, comandosRegistrados) {
     try { if (await require("../systems/creationWizardService").consumeMessage(msg)) return; }
     catch (erro) { console.error("[WIZARD]", erro.message); }
     
-    // Verificar se o comando está no grupo correto
-    if (msgBody.startsWith("!")) {
-        // Pegar o comando completo (primeira linha, todas as palavras)
-        const primeiraLinha = msgBody.split("\n")[0].trim();
-        const comandoParaVerificar = normalizarComando(primeiraLinha);
-        const numeroAutor = msg.author || msg.from;
-        console.log(`[GRUPO] Verificando acesso: "${comandoParaVerificar}" em ${grupoId} por ${numeroAutor}`);
-        const grupoPermitido = verificarGrupo(comandoParaVerificar, grupoId, numeroAutor);
-        console.log(`[GRUPO] Resultado da verificação: ${grupoPermitido}`);
-        if (!grupoPermitido) {
-            console.log(`[GRUPO] ✗ Comando bloqueado para este grupo`);
-            // Comando não permitido neste grupo - ignorar silenciosamente
-            return;
-        }
-        console.log(`[GRUPO] ✓ Comando permitido`);
-    }
-    
     // =====================================
     // MAPEAMENTO DE COMANDOS
     // =====================================
     const mapaComandos = {
+        "!trocar dungeon": "confirmarTrocaDungeon.js",
+        "!manter dungeon": "confirmarTrocaDungeon.js",
+        "!premios dungeon": "consultarPremiosDungeon.js",
         "!banners": "gacha.js",
         "!banner": "gacha.js",
         "!convergir": "gacha.js",
@@ -615,6 +600,7 @@ async function executarComando(msg, comando, comandosRegistrados) {
         { prefixo: "!bilac historico", arquivo: "vysache.js" },
         { prefixo: "!bilac ficha", arquivo: "vysache.js" },
         { prefixo: "!vender", arquivo: "vender.js" },
+        { prefixo: "!premios dungeon", arquivo: "consultarPremiosDungeon.js" },
         { prefixo: "!confirmar venda", arquivo: "confirmarVenda.js" },
         { prefixo: "!cancelar venda", arquivo: "cancelarVenda.js" },
         { prefixo: "!paimon", arquivo: "sistema.js" },

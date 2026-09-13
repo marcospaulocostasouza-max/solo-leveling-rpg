@@ -12,6 +12,8 @@ test('minerador: vaga extra, entrega atomica, limite semanal separado, concorren
         run: (sql, args=[]) => new Promise((resolve,reject) => sqlite.run(sql,args,function(e){e?reject(e):resolve({changes:this.changes,lastID:this.lastID});})),
         get: (sql, args=[]) => new Promise((resolve,reject) => sqlite.get(sql,args,(e,row)=>e?reject(e):resolve(row))),
         all: (sql, args=[]) => new Promise((resolve,reject) => sqlite.all(sql,args,(e,rows)=>e?reject(e):resolve(rows))),
+        ensureCrystalSchema: async () => {},
+        adicionarCristaisComQuery: async (query,id,amount,origin) => { await query.run('UPDATE jogadores SET cristais=cristais+? WHERE id=?',[amount,id]); await query.run('INSERT INTO historico_cristais VALUES(?,?,?)',[id,amount,origin]); },
         registrarHistoricoFicha: async () => {},
         transaction: work => {
             const task = tail.then(async () => { await db.run('BEGIN IMMEDIATE'); try {const result=await work(db);await db.run('COMMIT');return result;}catch(e){await db.run('ROLLBACK');throw e;} });
@@ -44,7 +46,8 @@ test('minerador: vaga extra, entrega atomica, limite semanal separado, concorren
     mining=load('dungeonMiningService.js');
     const dungeon=load('dungeonInstanciadaSystem.js');
     for(const sql of [
-        'CREATE TABLE jogadores(id INTEGER PRIMARY KEY,nome TEXT,rank TEXT,experiencia INTEGER DEFAULT 0,won INTEGER DEFAULT 0)',
+        'CREATE TABLE jogadores(id INTEGER PRIMARY KEY,nome TEXT,rank TEXT,experiencia INTEGER DEFAULT 0,won INTEGER DEFAULT 0,cristais INTEGER DEFAULT 0)',
+        'CREATE TABLE historico_cristais(jogador_id INTEGER,quantidade INTEGER,origem TEXT)',
         'CREATE TABLE itens(id INTEGER PRIMARY KEY,nome TEXT)',
         'CREATE TABLE inventario_jogador(id INTEGER PRIMARY KEY,jogador_id INTEGER,item_id INTEGER,quantidade INTEGER)',
         'CREATE TABLE experiencia_historico(jogador_id INTEGER,quantidade INTEGER,motivo TEXT,data TEXT)',
@@ -74,11 +77,11 @@ test('minerador: vaga extra, entrega atomica, limite semanal separado, concorren
     assert.equal((await dungeon.validarParticipantesReconhecidos(owner,{...parsed,minerador:'Desconhecido'})).valido,false);
     const result=await dungeon.concluirDungeon(owner,parsed);
     assert.equal(result.sucesso,true,result.erro);assert.equal(result.participantes.length,5);assert.equal(result.usosRestantes,0);
-    assert.equal(result.mineracao.xp,4000);assert.equal(result.mineracao.usadas,1);
-    assert.deepEqual(await db.get('SELECT experiencia,won FROM jogadores WHERE id=6'),{experiencia:4000,won:40000});
+    assert.equal(result.mineracao.cristais,500);assert.equal((await db.get("SELECT cristais FROM jogadores WHERE id=6")).cristais,500);assert.equal(result.mineracao.xp,800);assert.equal(result.mineracao.usadas,1);
+    assert.deepEqual(await db.get('SELECT experiencia,won FROM jogadores WHERE id=6'),{experiencia:800,won:40000});
     assert.equal(await dungeon.ehParticipanteDaFicha(1,6),false,'no extra prize for miner');
     await dungeon.aplicarPremiacaoGeral(1);
-    assert.deepEqual(await db.get('SELECT experiencia,won FROM jogadores WHERE id=6'),{experiencia:4000,won:40000},'no normal rewards for miner');
+    assert.deepEqual(await db.get('SELECT experiencia,won FROM jogadores WHERE id=6'),{experiencia:800,won:40000},'no normal rewards for miner');
     assert.equal((await db.get('SELECT quantidade FROM inventario_jogador WHERE id=1')).quantidade,9);
     assert.ok((await dungeon.concluirDungeon(owner,parsed)).erro);
     const second=await sheet(2,7), third=await sheet(3,8);
@@ -101,8 +104,8 @@ test('minerador: vaga extra, entrega atomica, limite semanal separado, concorren
     dungeon.sortearCristais=async()=>({sucesso:false,mensagem:'Nenhum cristal foi encontrado.'});
     const emptyResult=await dungeon.concluirDungeon(empty,{participantes:[empty.nome],minerador:'Jogador 6'});
     assert.equal(emptyResult.mineracao.sucesso,true);assert.equal(emptyResult.mineracao.encontrou,false);
-    assert.equal(emptyResult.mineracao.usadas,1);
-    assert.deepEqual(await db.get('SELECT experiencia,won FROM jogadores WHERE id=6'),{experiencia:12000,won:80000});
+    assert.equal(emptyResult.mineracao.usadas,1);assert.equal((await db.get("SELECT cristais FROM jogadores WHERE id=6")).cristais,1500);
+    assert.deepEqual(await db.get('SELECT experiencia,won FROM jogadores WHERE id=6'),{experiencia:2400,won:80000});
     assert.equal(mining.semanaAtual(new Date('2026-09-14T02:59:59Z')),'2026-09-07');
     assert.equal(mining.semanaAtual(new Date('2026-09-14T03:00:00Z')),'2026-09-14');
     const failing=await sheet(7,12);
@@ -113,10 +116,10 @@ test('minerador: vaga extra, entrega atomica, limite semanal separado, concorren
     assert.match(failed.erro,/Falha simulada/);
     db.run=originalRun;
     assert.equal((await db.get('SELECT quantidade FROM inventario_jogador WHERE id=2')).quantidade,1);
-    assert.equal((await db.get('SELECT experiencia FROM jogadores WHERE id=13')).experiencia,0);
+    assert.equal((await db.get('SELECT experiencia FROM jogadores WHERE id=13')).experiencia,0);assert.equal((await db.get('SELECT cristais FROM jogadores WHERE id=13')).cristais,0);
     assert.equal((await db.get('SELECT status FROM fichas_dungeon WHERE id=7')).status,'ativa');
     const twice=await Promise.all([dungeon.concluirDungeon(failing,{participantes:[failing.nome],minerador:'Jogador 13'}),dungeon.concluirDungeon(failing,{participantes:[failing.nome],minerador:'Jogador 13'})]);
     assert.equal(twice.filter(x=>x.sucesso).length,1,'double completion delivers only once');
-    assert.equal((await db.get('SELECT experiencia FROM jogadores WHERE id=13')).experiencia,4000);
+    assert.equal((await db.get('SELECT experiencia FROM jogadores WHERE id=13')).experiencia,800);assert.equal((await db.get('SELECT cristais FROM jogadores WHERE id=13')).cristais,500);assert.equal((await db.get('SELECT COUNT(*) AS n FROM historico_cristais WHERE jogador_id=13')).n,1);
     assert.equal((await db.get('SELECT COUNT(*) AS n FROM dungeon_mineracoes WHERE jogador_id=13')).n,1);
 });

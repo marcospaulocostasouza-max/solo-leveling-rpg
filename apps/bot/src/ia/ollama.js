@@ -18,9 +18,9 @@ const { ollamaService } = require("./ollamaService");
  * @param {string} prompt - Prompt para enviar
  * @returns {Promise<string>} Resposta do modelo
  */
-async function perguntarIA(prompt) {
+async function perguntarIA(prompt, opcoes = {}) {
     try {
-        const resultado = await ollamaService.gerarResposta(prompt);
+        const resultado = await ollamaService.gerarResposta(prompt, opcoes);
         return resultado.texto;
     } catch (erro) {
         console.error('[Ollama] Erro em perguntarIA:', erro.message);

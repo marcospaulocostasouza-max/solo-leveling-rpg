@@ -338,7 +338,7 @@ function buscarOuCriarItem(compra) {
             if (err) return reject(err);
             
             if (itemExistente) {
-                return resolve(itemExistente.id);
+                return db.run('UPDATE itens SET preco=?,valor=? WHERE id=?',[Number(compra.item_preco),Number(compra.item_preco),itemExistente.id],error=>error?reject(error):resolve(itemExistente.id));
             }
             
             // O catálogo usa "Itens de Apoio" e "tipo: consumivel";
@@ -354,10 +354,10 @@ function buscarOuCriarItem(compra) {
 
             // Criar novo item no banco
             db.run(
-                `INSERT INTO itens (nome, categoria, tier, descricao, consumivel, efeito, habilidade, item_unico)
-                 VALUES (?, ?, ?, ?, ?, ?, ?, 0)
+                `INSERT INTO itens (nome, categoria, tier, descricao, consumivel, efeito, habilidade, preco, valor, item_unico)
+                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, 0)
                  RETURNING id`,
-                [compra.item_nome, compra.item_categoria, compra.item_rank, compra.item_descricao, consumivel, efeito, compra.item_bonus],
+                [compra.item_nome, compra.item_categoria, compra.item_rank, compra.item_descricao, consumivel, efeito, compra.item_bonus,Number(compra.item_preco),Number(compra.item_preco)],
                 function(err) {
                     if (err) return reject(err);
                     if (!this.lastID) return reject(new Error("O banco nao retornou o ID do item criado."));

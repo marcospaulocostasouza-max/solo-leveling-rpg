@@ -9,6 +9,8 @@
 const db = require("../core/database");
 const EconomySystem = require("./economySystem");
 const InventorySystem = require("./inventorySystem");
+const pricing=require('../../../../packages/datasets/item-pricing');
+const catalog=require('../../../../packages/datasets/catalog');
 
 // =====================================
 // CONFIGURAÇÕES
@@ -49,8 +51,8 @@ class VendaSystem {
      */
     static async getPrecoItem(itemId) {
         return new Promise((resolve) => {
-            db.get("SELECT preco,valor FROM itens WHERE id = ?", [itemId], (err, row) => {
-                resolve(row ? (Number(row.preco) > 0 ? Number(row.preco) : Number(row.valor) || 0) : 0);
+            db.get("SELECT * FROM itens WHERE id = ?", [itemId], (err, row) => {
+                resolve(row ? pricing.originalPrice(row,catalog.listShopItems()) : 0);
             });
         });
     }
@@ -72,7 +74,7 @@ class VendaSystem {
         }
 
         // Item normal - 50% do preço
-        const precoOriginal = Number(item.preco) > 0 ? Number(item.preco) : Math.max(0, Number(item.valor) || 0);
+        const precoOriginal = pricing.originalPrice(item,catalog.listShopItems());
         return Math.floor(precoOriginal * PORCENTAGEM_VENDA) * quantidade;
     }
 

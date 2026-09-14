@@ -762,6 +762,7 @@ async function purchaseItem(playerId, itemId, quantity = 1) {
     cores.assertCanBuy(player,item);
     const unitPrice = Number(cores.coreRank(item) ? cores.prices[cores.coreRank(item)] : legacy ? legacy.preco : (item.preco ?? item.valor ?? 0));
     const currentWon = Number(player.won);
+    if(legacy)await query.run('UPDATE itens SET preco=?,valor=? WHERE id=?',[unitPrice,unitPrice,item.id]);
     const price = unitPrice * quantity;
     if (!Number.isSafeInteger(price) || price < 0) throw new Error("Preco invalido.");
     if (!Number.isSafeInteger(currentWon) || currentWon < price) throw new Error("Won insuficiente.");

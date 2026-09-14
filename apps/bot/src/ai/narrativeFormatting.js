@@ -40,4 +40,28 @@ _Ela olhou pro horizonte e apertou os lábios._
 
 *"Prefiro não falar sobre isso agora."*`;
 
-module.exports = { FORMATACAO_NARRATIVA };
+function validarFormatacao(texto) {
+    const lines = String(texto || '').split(/\r?\n/).map(line => line.trim()).filter(Boolean);
+    return lines.length > 0 && lines.every(line =>
+        /^_[^_*\n]+_$/.test(line) ||
+        /^\*[^_*\n]+\*$/.test(line) ||
+        /^>\s*[^_*\s>][^_*\n]*$/.test(line)
+    );
+}
+
+// Apenas reorganiza trechos já marcados; nunca infere se texto livre é fala ou ação.
+function normalizarFormatacao(texto) {
+    const original = String(texto || '').trim();
+    const parts = [];
+    let cursor = 0;
+    const tokens = /_[^_*]+_|\*[^_*]+\*|^[\t ]*>[^\r\n]*/gm;
+    for (const match of original.matchAll(tokens)) {
+        if (original.slice(cursor, match.index).trim()) return original;
+        parts.push(match[0].trim().replace(/\s*\r?\n\s*/g, ' '));
+        cursor = match.index + match[0].length;
+    }
+    if (original.slice(cursor).trim() || !parts.length) return original;
+    return parts.join('\n\n');
+}
+
+module.exports = { FORMATACAO_NARRATIVA, validarFormatacao, normalizarFormatacao };

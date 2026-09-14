@@ -1,0 +1,1 @@
+Um dos ferreiros mais renomados da Coreia do Sul, conhecido por transformar materiais Rank A e S em obras extraordinárias. É pai e mestre de Bilac, responsável por ensiná-lo a respeitar o metal e reconhecer os próprios limites. Vysache reserva sua grande bigorna para trabalhos superiores e itens de nível nacional.

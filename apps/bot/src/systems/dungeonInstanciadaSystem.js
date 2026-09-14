@@ -231,7 +231,7 @@ class DungeonInstanciadaSystem {
 
     /**
      * Verifica se o jogador pode sortear (cooldown semanal)
-     * Reset toda segunda-feira às 00:01
+     * Reset toda segunda-feira às 00:00
      */
     static async podeSortear(jogador) {
         const ultimoSorteio = jogador.ultimo_sorteio_desejar;
@@ -240,7 +240,7 @@ class DungeonInstanciadaSystem {
         const dataUltimo = new Date(ultimoSorteio);
         const agora = new Date();
 
-        // Calcular a próxima segunda-feira 00:01 após o último sorteio
+        // Calcular a próxima segunda-feira 00:00 após o último sorteio
         const proximaSegunda = this.getProximaSegunda(dataUltimo);
         
         if (agora < proximaSegunda) {
@@ -255,18 +255,10 @@ class DungeonInstanciadaSystem {
     }
 
     /**
-     * Retorna a próxima segunda-feira 00:01 após uma data
+     * Retorna a próxima segunda-feira 00:00 após uma data
      */
     static getProximaSegunda(data) {
-        const d = new Date(data);
-        const dia = d.getDay(); // 0=domingo, 1=segunda, ...
-        let diasAteSegunda = (8 - dia) % 7; // dias até próxima segunda
-        if (diasAteSegunda === 0) diasAteSegunda = 7; // se for segunda, próxima semana
-        
-        const proxima = new Date(d);
-        proxima.setDate(d.getDate() + diasAteSegunda);
-        proxima.setHours(0, 1, 0, 0);
-        return proxima;
+        return require('../utils/dungeonWeek').next(data);
     }
 
     /**
@@ -282,12 +274,7 @@ class DungeonInstanciadaSystem {
      * Retorna a semana atual (YYYY-WW)
      */
     static getSemanaAtual() {
-        const agora = new Date();
-        const ano = agora.getFullYear();
-        const inicioAno = new Date(ano, 0, 1);
-        const dias = Math.floor((agora - inicioAno) / (24 * 60 * 60 * 1000));
-        const semana = Math.ceil((dias + inicioAno.getDay() + 1) / 7);
-        return `${ano}-W${semana}`;
+        return require('../utils/dungeonWeek').key();
     }
 
     // A tabela foi criada originalmente pelo banco SQLite. Em PostgreSQL ela
@@ -793,8 +780,8 @@ _Após concluir a Dungeon, use *!concluir Dungeon* para receber as recompensas._
             // Verificar se já participou de dungeon instanciada na semana
             const jaParticipou = await new Promise((resolve) => {
                 db.get(
-                    "SELECT * FROM participacao_dungeon WHERE jogador_id = ? AND semana = ?",
-                    [participante.id, semana],
+                    "SELECT * FROM participacao_dungeon WHERE jogador_id = ? AND data >= ?",
+                    [participante.id, require('../utils/dungeonWeek').start().toISOString()],
                     (err, row) => resolve(row || null)
                 );
             });
@@ -830,7 +817,7 @@ _Após concluir a Dungeon, use *!concluir Dungeon* para receber as recompensas._
                 const atual = await query.get('SELECT status FROM fichas_dungeon WHERE id=?', [ficha.id]);
                 if (atual?.status !== 'ativa') throw new Error('Esta ficha ja foi concluida. Nao houve nova entrega.');
                 for (const p of participantesValidos) {
-                    const anterior = await query.get('SELECT jogador_id FROM participacao_dungeon WHERE jogador_id=? AND semana=?', [p.id, semana]);
+                    const anterior = await query.get('SELECT jogador_id FROM participacao_dungeon WHERE jogador_id=? AND data>=?', [p.id, require('../utils/dungeonWeek').start().toISOString()]);
                     if (anterior) throw new Error(`${p.nome} ja participou de uma dungeon instanciada nesta semana.`);
                 }
                 const chaveAtual = await query.get('SELECT * FROM chaves_dungeon WHERE id=? AND ativa=1', [chave.id]);

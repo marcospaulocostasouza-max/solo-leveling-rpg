@@ -134,21 +134,12 @@ async function processarConversaNPC(msg) {
         // ContextManager → PromptBuilder → Ollama → ConversationManager
         // Fase 2: Ophilia usa a única pipeline narrativa nova. Outros NPCs
         // permanecem temporariamente no fluxo legado até sua migração.
-        let resposta;
-        try {
-            resposta = await conversarNarrativaNova(npcId, jogadorId, mensagemJogador);
-            // A pipeline nova retorna o texto cru sem cabeçalho — aplica o
-            // cabeçalho único de formatação (com nome completo do NPC) aqui.
-            resposta = formatarMensagem(npc, resposta, await emotionManager.obterEmocao(npcId, jogadorId));
-        } catch (erroPipelineNova) {
-            if (erroPipelineNova.code === "NARRATIVE_INVALID") {
-                await MessageService.send({ message: msg, text: "A resposta do NPC ficou incoerente e foi descartada. Tente novamente; a resposta inválida não foi salva." });
-                return true;
-            }
-            console.error(`[NPC_CONVERSA] Pipeline narrativa nova falhou para "${npcId}" (${erroPipelineNova.message}). Usando fallback legado.`);
-            resposta = await require("../ia/npcServiceV2").conversarComNPC(npcId, jogadorId, mensagemJogador);
-            resposta = formatarMensagem(npc, resposta, await emotionManager.obterEmocao(npcId, jogadorId));
-        }
+        let resposta = await require('./conversationResponse').obterResposta({
+            primary:()=>conversarNarrativaNova(npcId,jogadorId,mensagemJogador),
+            fallback:()=>require('../ia/npcServiceV2').conversarComNPC(npcId,jogadorId,mensagemJogador),
+            npc, emotion:()=>emotionManager.obterEmocao(npcId,jogadorId),
+            onFallback:error=>console.error(`[NPC_CONVERSA] Pipeline nova falhou para "${npcId}" (${error.code || 'SEM_CODIGO'}: ${error.message}). Usando fallback legado.`)
+        });
 
         if (!resposta) {
             await MessageService.send({ message: msg, text: "Não consegui responder no momento. Tente novamente." });
@@ -228,8 +219,8 @@ ${reacao}`;
 
         return true;
     } catch (error) {
-        console.error("[NPC_CONVERSA] Erro ao processar conversa:", error.message);
-        await MessageService.send({ message: msg, text: "Ocorreu um erro durante a conversa. Tente novamente." });
+        console.error("[NPC_CONVERSA] Erro ao processar conversa:", error.code || 'SEM_CODIGO', error.stack || error.message);
+        await MessageService.send({ message: msg, text: require('./conversationResponse').mensagemErro(error) });
         return true;
     }
 }

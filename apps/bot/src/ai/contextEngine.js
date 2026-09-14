@@ -30,6 +30,9 @@ async function build({ npcId, playerId, message }) {
     RelationshipManager.obterRelacionamento(npcId, playerId), Memory.retrieve(id, playerId, mensagemVisivel)
   ]);
   const retrieved = retrieveNPC(loaded.profile, mensagemVisivel, 5);
+  let mentioned=[];
+  try { mentioned=await require('./memoryContinuity').mentionedPlayers(mensagemVisivel); }
+  catch(error) { console.error('[MEMORY] Consulta de nomes indisponível:',error.message); }
   let quests = [];
   if (player) {
     try {
@@ -43,7 +46,7 @@ async function build({ npcId, playerId, message }) {
     }
   }
   return {
-    npc: loaded.profile, player, quests, message, messageVisible: mensagemVisivel, memories, retrieved, recent: historicoCanonico(id, playerId),
+    npc: loaded.profile, player, quests, mentioned, message, messageVisible: mensagemVisivel, memories, retrieved, recent: historicoCanonico(id, playerId),
     state: { emotion: emotion || { emocao: 'calma', intensidade: 50 }, mood: mood || { mood: 'sereno', intensidade: 50 } },
     relationship: relationship || { vinculo: 0, hostilidade: 0 },
     metrics: { npcCache: loaded.cacheHit ? 'hit' : 'miss', contextMs: Date.now() - started, sourceFiles: loaded.profile.files.map(file => file.replace(process.cwd() + require('path').sep, '')) }

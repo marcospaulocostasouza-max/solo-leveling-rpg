@@ -36,15 +36,23 @@
     "arma": "Martelo de Forja Lendário",
     "itens": "Avental de Couro Dragão, Óculos de Proteção Rúnico, Luvas de Mithril"
   },
-  "tecnicas": ["Golpe do Ferreiro", "Temperar Aço", "Forja Rápida"],
-  "formaFalar": "Fala de forma rústica e direta, sem rodeios. Usa palavras curtas e objetivas. Não gosta de formalidades. Quando está trabalhando na forja, resmunga e faz comentários sobre o metal e o fogo. Trata todos de forma igual, seja um caçador rank E ou rank S, mas respeita quem mostra dedicação.",
+  "tecnicas": [
+    "Golpe do Ferreiro",
+    "Temperar Aço",
+    "Forja Rápida"
+  ],
+  "formaFalar": "rústico, bruto, generoso sob reserva; respeito pelo esforço, poucas palavras",
   "objetivos": "Manter o legado de seu pai vivo, forjar as melhores armas e armaduras do mundo, treinar um sucessor digno de carregar a forja, e garantir que nenhum caçador saia de sua loja sem o equipamento adequado para sobreviver.",
   "valores": "O trabalho duro define o caráter. O metal não mente. A dedicação é mais importante que o talento natural. Nunca forjar uma arma para quem não respeita o ofício. Cada item criado carrega uma parte da alma do ferreiro.",
   "profissao": "Ferreiro Lendário",
   "sistema": {
     "afinidade": true,
     "forja": true,
-    "ranks": ["A", "S", "Nacional"],
+    "ranks": [
+      "A",
+      "S",
+      "Nacional"
+    ],
     "catalogo": "forja_catalogo.json"
   }
 }

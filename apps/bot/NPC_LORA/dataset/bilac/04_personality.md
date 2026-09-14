@@ -1,0 +1,1 @@
+Enérgico, curioso e orgulhoso do próprio trabalho. Bilac gosta de examinar materiais raros, provoca clientes indecisos e trata cada encomenda como um desafio pessoal. Apesar da confiança, conhece os próprios limites e não arrisca destruir materiais de alto nível: quando encontra uma receita Rank A ou S, encaminha o cliente ao pai, Vysache.

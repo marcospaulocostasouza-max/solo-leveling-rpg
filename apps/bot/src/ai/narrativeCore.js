@@ -1,15 +1,10 @@
 const { estimarTokens } = require('../ia/tokenBudget');
 const { FORMATACAO_NARRATIVA } = require('./narrativeFormatting');
 const { analisarCena, formatarCenaParaPrompt } = require('../npc/sceneParser');
-const LIMITS = { core: 2200, state: 450, relationship: 380, memories: 1200, retrieval: 2600, examples: 1500, recent: 2400, message: 12000, total: 7600 };
+const LIMITS = { core: 2200, state: 450, relationship: 380, memories: 2400, retrieval: 2600, examples: 1500, recent: 2400, message: 12000, total: 7600 };
 function cut(text, max) { const value = String(text || '').trim(); return value.length > max ? `${value.slice(0, max - 1).trim()}…` : value; }
 function block(name, text, max) { const value = cut(text, max); return value ? `${name}:\n${value}` : ''; }
-function examples(profile, message) {
-  const terms = new Set((String(message).toLowerCase().match(/[\p{L}\p{N}]{4,}/gu) || []));
-  const all = [profile.sections.dialogExamples, profile.sections.sceneExamples].filter(Boolean).flatMap(text => text.split(/(?=---\s+)/).filter(item => item.trim()));
-  return all.map((item, i) => ({ item, i, score: [...terms].filter(word => item.toLowerCase().includes(word)).length }))
-    .sort((a, b) => b.score - a.score || a.i - b.i).slice(0, 2).map(item => item.item).join('\n\n');
-}
+const examples = (profile, message, relationship) => require('./narrativeExamples').select(profile,message,relationship,LIMITS.examples);
 function build(context) {
   const relationship = context.relationship;
   const cenaAtual = analisarCena(context.message);
@@ -22,9 +17,10 @@ function build(context) {
     block('CONTEXT - ESTADO ATUAL', `Emoção: ${context.state.emotion.emocao} (${context.state.emotion.intensidade}). Mood: ${context.state.mood.mood} (${context.state.mood.intensidade}).`, LIMITS.state),
     block('CONTEXT - RELACIONAMENTO', `Vínculo ${relationship.vinculo || 0}%; hostilidade ${relationship.hostilidade || 0}%.`, LIMITS.relationship),
     block('MISSÕES OFICIAIS DO JOGADOR', `Somente estas missões existem para esta interação. Não crie requisitos, não aceite nem conclua tarefas pelo diálogo. Respeite objetivos, rank e estado registrados. Missão completa e aprovadaPorADM significa tarefa cumprida e recompensa já entregue. Reconheça a conclusão na cena, conforme cenaAprovada, sem cobrar novamente o objetivo nem inventar outra aprovação. ${JSON.stringify(context.quests || [])}`, 2600),
+    block('PERSONAGENS MENCIONADOS', `Seu interlocutor é ${context.player?.nome || 'o jogador atual'}. Cadastro de nomes públicos, sem conceder conhecimento de cenas alheias: ${JSON.stringify(context.mentioned || [])}. Se ambiguo for true, pergunte de quem está falando; não escolha um candidato. Reconhecer o nome não significa conhecer pessoalmente. Relatos e opiniões pertencem a quem os contou: nunca trate uma acusação como fato confirmado. Reaja conforme personalidade e confiança no interlocutor.`, 1800),
     block('CONTEXT - MEMÓRIAS RELEVANTES', context.memories.map(item => `- [${item.tipo}] ${item.memoria}`).join('\n'), LIMITS.memories),
     block('CONTEXT - INFORMAÇÕES RECUPERADAS', context.retrieved.map(item => `- (${item.section}) ${item.text}`).join('\n'), LIMITS.retrieval),
-    block('CONTEXT - EXEMPLOS DE ESTILO RELEVANTES', examples(context.npc, context.messageVisible || context.message), LIMITS.examples),
+    block('CONTEXT - EXEMPLOS DE ESTILO RELEVANTES', examples(context.npc, context.messageVisible || context.message, context.relationship), LIMITS.examples),
     block('CONTEXT - HISTÓRICO RECENTE', context.recent.map(item => item.role === 'player' ? `Jogador — cena estruturada:\n${formatarCenaParaPrompt(analisarCena(item.content))}` : `${context.npc.name}: ${item.content}`).join('\n'), LIMITS.recent),
     block('CENA ATUAL DO JOGADOR', formatarCenaParaPrompt(cenaAtual), LIMITS.message),
     'OUTPUT RULES:\nContinue a cena com coerência absoluta. Use exclusivamente as memórias fornecidas como passado compartilhado. Priorize voz, personalidade, emoção atual e agência do jogador. Não controle o jogador. Escreva somente a narrativa, sem comentários ou raciocínio.'

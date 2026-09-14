@@ -173,11 +173,14 @@ async function executarComando(msg, comando, comandosRegistrados) {
     // confundida com uma ficha ou conversa de NPC.
     try { if (await require("../systems/creationWizardService").consumeMessage(msg)) return; }
     catch (erro) { console.error("[WIZARD]", erro.message); }
+    try { if (await require('../systems/redeemWizardService').consumeMessage(msg)) return; }
+    catch (erro) { console.error('[REDEEM_WIZARD]',erro.message); }
     
     // =====================================
     // MAPEAMENTO DE COMANDOS
     // =====================================
     const mapaComandos = {
+        "!criar codigo": "redeemAdm.js",
         "!trocar dungeon": "confirmarTrocaDungeon.js",
         "!manter dungeon": "confirmarTrocaDungeon.js",
         "!premios dungeon": "consultarPremiosDungeon.js",
@@ -405,6 +408,9 @@ async function executarComando(msg, comando, comandosRegistrados) {
         { prefixo: "!conjuntos", arquivo: "conjunto.js" },
         { prefixo: "!conjunto", arquivo: "conjunto.js" },
         { prefixo: "!anexar imagem banner", arquivo: "gachaAdm.js" },
+        { prefixo: "!criar codigo", arquivo: "redeemAdm.js" },
+        { prefixo: "!codigo", arquivo: "redeemAdm.js" },
+        { prefixo: "!resgatar codigo", arquivo: "resgatarCodigo.js" },
         { prefixo: "!criar banner", arquivo: "gachaAdm.js" },
         { prefixo: "!excluir banner", arquivo: "gachaAdm.js" },
         { prefixo: "!desativar banner", arquivo: "gachaAdm.js" },

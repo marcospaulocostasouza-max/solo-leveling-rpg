@@ -85,7 +85,9 @@ Exemplo de diferença de tom (não copie o texto, é só referência de tamanho 
 
 RUIM (poético/discurso): _Ela ergueu os olhos para o horizonte cor de âmbar, e um turbilhão de emoções antigas ressurgiu em seu peito, como ondas que insistem em quebrar contra o mesmo penhasco._ *"Há tanto tempo eu carrego esse peso silencioso, uma dor que atravessa gerações e que talvez nunca encontre repouso..."*
 
-BOM (natural/curto): _Ela olhou pro horizonte e apertou os lábios._ *"Prefiro não falar sobre isso agora."*
+BOM (natural/curto):
+_Ela olhou pro horizonte e apertou os lábios._
+*"Prefiro não falar sobre isso agora."*
 
 NARRATIVA CINEMATOGRÁFICA
 
@@ -452,7 +454,7 @@ function blocoMemorias(memorias) {
 
     let texto = 'Memórias relevantes:\n';
 
-    memorias.slice(0, 5).forEach((m, index) => {
+    memorias.slice(0, 8).forEach((m, index) => {
         texto += `${index + 1}. ${m.memoria || m.resumo}\n`;
     });
 
@@ -719,7 +721,7 @@ function construirPrompt(contexto, mensagem) {
     // =====================================
     // INTERPRETAR A CONVERSA PRIMEIRO
     // =====================================
-    const interpretacao = interpretarConversa(mensagem, { historico });
+    const interpretacao = interpretarConversa(require('../npc/sceneParser').textoVisivelParaContexto(mensagem), { historico });
 
     // =====================================
     // MODO RUNTIME: USAR PROMPTBASE PRÉ-COMPILADO
@@ -789,13 +791,13 @@ function construirPrompt(contexto, mensagem) {
         }
     }
 
-    // Teste controlado: somente a Ophilia recebe o dossiê integral carregado
-    // sob demanda a partir dos JSON/MD oficiais. Ele permanece separado do
-    // histórico, das memórias e da cena atual.
+    // A Ophilia recebe o núcleo oficial e trechos relevantes à cena.
+    blocos['Personagens mencionados'] = `Interlocutor: ${jogador?.nome || 'jogador atual'}. Nomes públicos mencionados: ${JSON.stringify(contexto.mentioned || [])}. Cadastro não implica conhecimento pessoal. Se houver ambiguidade, pergunte quem é. Memórias de falas são relatos atribuídos ao interlocutor ou ao NPC, não fatos comprovados sobre terceiros. Nunca compartilhe cenas ou segredos de outros jogadores automaticamente. Preserve personalidade e confiança.`;
+    // Histórico, memórias e missão atual permanecem em blocos próprios.
     if (ophiliaContextoOficial) {
-        // O dossiê já contém os mesmos dados permanentes do JSON; removemos
-        // apenas a duplicação do prompt legado, sem remover fonte alguma.
+        // O núcleo oficial substitui as outras cópias dos dados permanentes.
         delete blocos.NPC;
+        delete blocos['Prompt Base (NPC)'];
         delete blocos['Perfil de Fala'];
         blocos['Dossiê Oficial da Ophilia'] = ophiliaContextoOficial;
     }

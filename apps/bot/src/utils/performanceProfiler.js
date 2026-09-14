@@ -67,6 +67,8 @@ class PerformanceProfiler {
      * Finaliza o tempo total do processo
      */
     fimTotal() {
+        // Inclui uma etapa interrompida por erro, como a validação após o Ollama.
+        for (const nome of Object.keys(this.marcos)) this.fim(nome, this.dados[nome] || {});
         this._fimTotal = Date.now();
     }
 
@@ -193,6 +195,7 @@ class PerformanceProfiler {
             let totalTokens = 0;
 
             Object.entries(partes).forEach(([nome, info]) => {
+                if (nome === 'TOTAL' || nome.startsWith('_')) return;
                 const chars = info.caracteres || 0;
                 const tokens = info.tokens || 0;
                 totalChars += chars;

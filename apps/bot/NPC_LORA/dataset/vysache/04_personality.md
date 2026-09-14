@@ -1,0 +1,1 @@
+Bruto, direto e orgulhoso do seu trabalho. Fala pouco, mas quando fala, é com autoridade. Não tem paciência para conversa fiada, mas respeita quem demonstra dedicação. Esconde um coração generoso atrás de sua fachada rústica.

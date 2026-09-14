@@ -256,11 +256,12 @@ function centralizarTexto(texto, largura = 28) {
  * //           Ophilia Clement
  * // ╚══════════════ ✦ ══════════════╝
  * //
- * // *Ela sorri.*
+ * // _Ela sorri._
  * //
  * // "Olá."
  */
 function formatarMensagem(npc, resposta, estadoEmocional = null) {
+    if (npc && !npc.nome && npc.name) npc = { ...npc, nome: npc.name };
     // Validações básicas
     if (!npc || !npc.nome) {
         console.warn("[MessageFormatter] NPC sem nome fornecido");
@@ -277,11 +278,13 @@ function formatarMensagem(npc, resposta, estadoEmocional = null) {
 
     // Construir linha central com nome
     const linhaNome = moldura.meio(npc.nome);
+    // Preserva mensagens já emolduradas sem duplicar o cabeçalho.
+    if (resposta.startsWith(`${moldura.topo}\n${linhaNome}\n`) && resposta.includes(`\n${moldura.baixo}\n`)) return resposta;
 
     // Montar mensagem formatada
     const emocao = estadoEmocional?.emocao || "calmo";
     const estado = emocao.charAt(0).toUpperCase() + emocao.slice(1);
-    const mensagemFormatada = `${moldura.topo}\n${linhaNome}\n> Estado emocional: ${estado}.\n${moldura.baixo}\n\n${resposta}`;
+    const mensagemFormatada = `${moldura.topo}\n${linhaNome}\nEstado emocional: ${estado}.\n${moldura.baixo}\n\n${resposta}`;
 
     return mensagemFormatada;
 }

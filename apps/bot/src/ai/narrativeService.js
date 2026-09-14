@@ -87,6 +87,8 @@ async function converse(npcId, playerId, message) {
   // Fonte canônica da cena: !fim de interação e a próxima resposta usam este histórico.
   ConversationManager.adicionarMensagem(playerId, context.npc.id, 'jogador', message);
   ConversationManager.adicionarMensagem(playerId, context.npc.id, 'npc', response);
+  await Memory.captureScene(context.npc.id,playerId,[{papel:'jogador',conteudo:message},{papel:'npc',conteudo:response}])
+    .catch(error=>console.error('[AI] Scene memory persistence:',error.message));
   Memory.captureExplicit(context.npc.id, playerId, message).catch(error => console.error('[AI] Memory persistence:', error.message));
   atualizarEstadoBackground(context, playerId, message);
   Metrics.report({ npcId: context.npc.id, context, prompt, retrievalMs, promptMs, pipelineMs, qwenMs: result.metricas?.tempo || 0, totalMs: Date.now() - started, outputTokens: result.metricas?.tokens || 0, thinking: thinkingUsado });

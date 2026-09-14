@@ -162,6 +162,7 @@ async function salvarMemoriasBackground(contexto, mensagem, resposta, npcId, jog
  * @returns {Promise<string>} Resposta do NPC
  */
 async function conversarComNPC(npcId, jogadorId, mensagem) {
+    const mensagemVisivel = require('../npc/sceneParser').textoVisivelParaContexto(mensagem);
     const profiler = new PerformanceProfiler();
     const tempoInicioTotal = Date.now();
     
@@ -173,7 +174,7 @@ async function conversarComNPC(npcId, jogadorId, mensagem) {
         // 1. ANALISAR INTENÇÃO
         // =====================================
         profiler.inicio('Intent Analyzer');
-        const analiseIntencao = intentAnalyzer.analisar(mensagem);
+        const analiseIntencao = intentAnalyzer.analisar(mensagemVisivel);
         profiler.fim('Intent Analyzer', {
             'Intenção': analiseIntencao.categoria,
             'Confiança': `${analiseIntencao.confianca}%`
@@ -183,10 +184,13 @@ async function conversarComNPC(npcId, jogadorId, mensagem) {
         // 2. BUSCAR CONTEXTO COMPLETO
         // =====================================
         profiler.inicio('Context Manager');
-        const contexto = await obterContexto(npcId, jogadorId, mensagem);
+        const contexto = await obterContexto(npcId, jogadorId, mensagemVisivel);
+        contexto.memorias=await require('../ai/memoryEngine').retrieve(npcId,jogadorId,mensagemVisivel);
+        contexto.mentioned=await require('../ai/memoryContinuity').mentionedPlayers(mensagemVisivel)
+            .catch(error=>{console.error('[MEMORY] Consulta de nomes:',error.message);return [];});
         if (npcId === 'ophilia') {
             const contextoOphilia = carregarContextoOphilia();
-            const contextoDaCena = montarContextoParaCena(contextoOphilia, mensagem);
+            const contextoDaCena = montarContextoParaCena(contextoOphilia, mensagemVisivel, contexto.relacionamento || {});
             contexto.ophiliaContextoOficial = contextoDaCena.contexto;
             profiler.dados['Ophilia Context'] = {
                 'Arquivos': contextoOphilia.arquivos.length,
@@ -218,7 +222,7 @@ async function conversarComNPC(npcId, jogadorId, mensagem) {
         // =====================================
         profiler.inicio('Thinking Decision');
         decisaoThinking = thinkingDecisionEngine.decidir({
-            mensagem: mensagem,
+            mensagem: mensagemVisivel,
             analiseIntencao: analiseIntencao,
             analiseComplexidade: analiseComplexidade,
             jogadorId: jogadorId,
@@ -249,7 +253,7 @@ async function conversarComNPC(npcId, jogadorId, mensagem) {
         // Executamos em background SEM bloquear a resposta atual.
         profiler.inicio('Engines Background (init)');
         if (npcId !== 'ophilia') {
-            executarEnginesBackground(contexto, mensagem, npcId, jogadorId);
+            executarEnginesBackground(contexto, mensagemVisivel, npcId, jogadorId);
         }
         profiler.fim('Engines Background (init)', {
             'Status': npcId === 'ophilia'
@@ -290,7 +294,9 @@ async function conversarComNPC(npcId, jogadorId, mensagem) {
         const numPredictDinamico = metricasPrompt._numPredictSugerido ?? MODEL_CONFIG.num_predict;
         const resultadoIA = await require('../ai/narrativeResponseGuard').generate(
             (text, options) => ollamaService.gerarResposta(text, options),
-            prompt, {npc:{name:contexto.npc.nome},message:mensagem},
+            `${prompt}\n\n${npcId === 'ophilia' ? '' : require('../ai/narrativeExamples').select(
+                require('../ai/npcDatabase').getNPC(npcId).profile || {}, mensagemVisivel, contexto.relacionamento || {}
+            )}`, {npc:{name:contexto.npc.nome},message:mensagem,messageVisible:mensagemVisivel},
             {thinking:decisaoThinking.thinking,num_predict:numPredictDinamico}
         );
 
@@ -321,6 +327,8 @@ async function conversarComNPC(npcId, jogadorId, mensagem) {
         if (problemasNarrativos.length) return null;
         ConversationManager.adicionarMensagem(jogadorId, npcId, "jogador", mensagem);
         ConversationManager.adicionarMensagem(jogadorId, npcId, "npc", resposta);
+        await require('../ai/memoryEngine').captureScene(npcId,jogadorId,[{papel:'jogador',conteudo:mensagem},{papel:'npc',conteudo:resposta}])
+            .catch(error=>console.error('[MEMORY] Registro de cena:',error.message));
         profiler.fim('Conversation Manager');
 
         // =====================================
@@ -363,10 +371,10 @@ async function conversarComNPC(npcId, jogadorId, mensagem) {
         return respostaFormatada;
 
     } catch (error) {
-        console.error("[NPC_SERVICE_V2] Erro ao conversar com NPC:", error.message);
+        console.error("[NPC_SERVICE_V2] Erro ao conversar com NPC:", error.code || 'SEM_CODIGO', error.stack || error.message);
         profiler.fimTotal();
         profiler.exibirRelatorio();
-        return "Ocorreu um erro durante a conversa. Tente novamente.";
+        throw error;
     }
 }
 

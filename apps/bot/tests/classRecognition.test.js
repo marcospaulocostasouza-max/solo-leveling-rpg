@@ -2,6 +2,18 @@ const test = require("node:test");
 const assert = require("node:assert/strict");
 
 const classes = require("../src/utils/classes");
+test("Curador recebe inteligencia e catalogo legado usa os bonus atuais", () => {
+    const atributos = require("../src/systems/atributoSystem");
+    const bonus = atributos.calcularBonusClasseInicial("Curador", { inteligencia: 23, poder_magico: 40 });
+    assert.equal(bonus.inteligencia, 11);
+    assert.equal(bonus.poder_magico, 0);
+    const atual = require("../src/utils/advancedClasses");
+    const legado = require("../src/utils/classesAvancadas");
+    for (const [nome, classe] of Object.entries(atual)) {
+        assert.deepEqual(legado.aplicarBuffsClasseAvancada({}, nome).bonusAtributos, classe.bonusAtributos);
+        assert.equal(legado.getClasseAvancada(nome).multiplicador, undefined);
+    }
+});
 const { obterClasseCanonica } = require("../src/utils/normalizarClasse");
 const { resolverConsultaClasse } = require("../src/commands/tecnicasClasse");
 const { normalizarDadosFicha } = require("../src/utils/normalizarDadosFicha");

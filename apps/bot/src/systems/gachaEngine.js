@@ -31,33 +31,33 @@ function sortearRecompensa(pool, rng = Math.random) {
     return elegiveis[elegiveis.length - 1];
 }
 
-async function resolverRecompensa(recompensa) {
+async function resolverRecompensa(recompensa, query = database) {
     const tipo = recompensa.reward_type;
     const referenciaId = Number(recompensa.referencia_id);
     if (TIPOS_SEM_ARMAZENAMENTO.has(tipo)) throw new Error(`${tipo} ainda nao possui armazenamento oficial para entrega.`);
     if (TIPOS_ITEM.has(tipo)) {
-        const entidade = await database.get("SELECT * FROM itens WHERE id = ?", [referenciaId]);
+        const entidade = await query.get("SELECT * FROM itens WHERE id = ?", [referenciaId]);
         if (!entidade) throw new Error(`Item da recompensa #${recompensa.id} nao existe.`);
         return { ...recompensa, entidade, nome: entidade.nome, rankRecompensa: normalizarRank(entidade.tier) };
     }
     if (tipo === "TECNICA") {
-        const entidade = await database.get("SELECT * FROM tecnicas WHERE id = ?", [referenciaId]);
+        const entidade = await query.get("SELECT * FROM tecnicas WHERE id = ?", [referenciaId]);
         if (!entidade) throw new Error(`Tecnica da recompensa #${recompensa.id} nao existe.`);
         return { ...recompensa, entidade, nome: entidade.nome, rankRecompensa: normalizarRank(entidade.rank || entidade.tier) };
     }
     if (tipo === "PASSIVA") {
-        const entidade = await database.get("SELECT i.nome,i.descricao,i.efeito AS condicao,i.tier FROM banner_rare_items bri JOIN itens i ON i.id=bri.item_id WHERE bri.item_id=? AND bri.tipo='PASSIVA'", [referenciaId]) || passivas.find(item => Number(item.id) === referenciaId);
+        const entidade = await query.get("SELECT i.nome,i.descricao,i.efeito AS condicao,i.tier FROM banner_rare_items bri JOIN itens i ON i.id=bri.item_id WHERE bri.item_id=? AND bri.tipo='PASSIVA'", [referenciaId]) || passivas.find(item => Number(item.id) === referenciaId);
         if (!entidade) throw new Error(`Passiva da recompensa #${recompensa.id} nao existe.`);
         return { ...recompensa, entidade, nome: entidade.nome, rankRecompensa: normalizarRank(entidade.rank || entidade.tier) };
     }
     if (tipo === "TITULO") {
-        const entidade = await database.get("SELECT i.nome,i.descricao,i.efeito,i.tier FROM banner_rare_items bri JOIN itens i ON i.id=bri.item_id WHERE bri.item_id=? AND bri.tipo='TITULO'", [referenciaId]) || titulos.find(item => Number(item.id) === referenciaId);
+        const entidade = await query.get("SELECT i.nome,i.descricao,i.efeito,i.tier FROM banner_rare_items bri JOIN itens i ON i.id=bri.item_id WHERE bri.item_id=? AND bri.tipo='TITULO'", [referenciaId]) || titulos.find(item => Number(item.id) === referenciaId);
         if (!entidade) throw new Error(`Titulo da recompensa #${recompensa.id} nao existe.`);
         return { ...recompensa, entidade, nome: entidade.nome, rankRecompensa: normalizarRank(entidade.rank || entidade.tier) };
     }
     if (tipo === "CONJUNTO_ITEM") {
-        const entidade = await database.get("SELECT * FROM gacha_item_sets WHERE id = ?", [referenciaId]);
-        const itens = await database.all("SELECT i.*, e.quantidade AS quantidade_conjunto FROM gacha_item_set_entries e JOIN itens i ON i.id = e.item_id WHERE e.conjunto_id = ?", [referenciaId]);
+        const entidade = await query.get("SELECT * FROM gacha_item_sets WHERE id = ?", [referenciaId]);
+        const itens = await query.all("SELECT i.*, e.quantidade AS quantidade_conjunto FROM gacha_item_set_entries e JOIN itens i ON i.id = e.item_id WHERE e.conjunto_id = ?", [referenciaId]);
         if (!entidade || !itens.length) throw new Error(`Conjunto da recompensa #${recompensa.id} esta vazio ou nao existe.`);
         const ranks = new Set(itens.map(item => normalizarRank(item.tier)).filter(Boolean));
         return { ...recompensa, entidade, itens, nome: entidade.nome, rankRecompensa: ranks.size === 1 ? [...ranks][0] : null };
@@ -143,7 +143,7 @@ async function registrarPropriedadeUnica(query, jogadorId, recompensa) {
     await query.run("INSERT INTO gacha_unique_ownership (jogador_id, reward_type, referencia_id) VALUES (?, ?, ?) ON CONFLICT(jogador_id, reward_type, referencia_id) DO NOTHING", [jogadorId, recompensa.reward_type, String(recompensa.referencia_id)]);
 }
 
-async function entregar(query, jogador, recompensa) {
+async function entregar(query, jogador, recompensa, origem = 'GACHA_RECOMPENSA') {
     const quantidade = Number(recompensa.quantidade);
     const tipo = recompensa.reward_type;
     const duplicata = await jaPossuiRecompensaUnica(query, jogador, recompensa);
@@ -161,7 +161,7 @@ async function entregar(query, jogador, recompensa) {
         const coluna = tipo === "WON" ? "won" : "maestria";
         await query.run(`UPDATE jogadores SET ${coluna} = COALESCE(${coluna}, 0) + ? WHERE id = ?`, [quantidade, jogador.id]);
     }
-    else if (tipo === "CRISTAIS") await database.adicionarCristaisComQuery(query, jogador.id, quantidade, "GACHA_RECOMPENSA");
+    else if (tipo === "CRISTAIS") await database.adicionarCristaisComQuery(query, jogador.id, quantidade, origem);
     else if (tipo === "XP") await adicionarXp(query, jogador, quantidade);
     else if (tipo === "TECNICA") {
         const possui = await query.get("SELECT id FROM jogador_tecnicas WHERE jogador_id = ? AND tecnica_id = ?", [jogador.id, Number(recompensa.referencia_id)]);
@@ -270,4 +270,4 @@ async function realizarGiros(playerId, bannerId, quantidade, opcoes = {}) {
     });
 }
 
-module.exports = { CUSTOS, normalizarRank, sortearRecompensa, resolverRecompensa, aplicarPity, prepararSorteios, realizarGiros };
+module.exports = { entregar, CUSTOS, normalizarRank, sortearRecompensa, resolverRecompensa, aplicarPity, prepararSorteios, realizarGiros };

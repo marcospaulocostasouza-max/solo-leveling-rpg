@@ -129,18 +129,20 @@ function selecionarExemplos(exemplos, cena, limite) {
         .map(item => item.exemplo);
 }
 
-function montarContextoParaCena(contextoCache, cena) {
-    // Um exemplo de diálogo e um de cena preservam a referência de estilo
-    // sem reenviar toda a biblioteca literária em cada turno.
-    const dialogos = selecionarExemplos(contextoCache.exemplosDialogo, cena, 1);
-    const cenas = selecionarExemplos(contextoCache.exemplosCena, cena, 1);
+function montarContextoParaCena(contextoCache, cena, relationship = {}) {
+    const profile = require('../ai/npcDatabase').getNPC('ophilia').profile;
+    const retrieved = require('../ai/retrievalEngine').retrieve(profile, cena, 3)
+        .filter(item => !['identity','summary','personality','interpretation','speech','values','rules'].includes(item.section));
+    const essential = profile.core;
+    const relevant = retrieved.map(item => montarBloco(item.section, item.text)).join('\n\n');
+    const examples = require('../ai/narrativeExamples');
+    const selected = examples.select({sections:{
+        dialogExamples:contextoCache.exemplosDialogo.join('\n\n'),
+        sceneExamples:contextoCache.exemplosCena.join('\n\n')
+    }},cena,relationship,1500,2);
     return {
-        contexto: [
-            contextoCache.contextoEssencial,
-            montarBloco('EXEMPLOS DE DIÁLOGO RELEVANTES', dialogos.join('\n\n')),
-            montarBloco('EXEMPLOS DE CENA RELEVANTES', cenas.join('\n\n'))
-        ].join('\n\n'),
-        exemplosSelecionados: dialogos.length + cenas.length
+        contexto:[essential,relevant,montarBloco('EXEMPLOS RELEVANTES (REFERENCIA DE VOZ)',selected)].filter(Boolean).join('\n\n'),
+        exemplosSelecionados:examples.split(selected).length
     };
 }
 

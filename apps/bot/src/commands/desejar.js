@@ -5,7 +5,7 @@ const MessageService = require("../core/messageService");
  * 
  * Sorteio semanal de Chave de Dungeon Instanciada.
  * Chance de 1 em 5 (20%) de conseguir uma chave.
- * Cooldown semanal (reset toda segunda-feira às 00:01).
+ * Cooldown semanal (reset toda segunda-feira às 00:00).
  */
 
 const JogadorCore = require("../core/jogadorCore");
@@ -67,7 +67,7 @@ Use *!ficha* para criar seu personagem.
 ${resultadoAnterior}
 
 *Próximo sorteio:* ${dataFormatada}
-_A partir de segunda-feira às 00:01 você poderá sortear novamente._
+_A partir de segunda-feira às 00:00 você poderá sortear novamente._
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━` });
         }

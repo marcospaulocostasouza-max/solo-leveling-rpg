@@ -36,15 +36,24 @@
     "arma": "Martelo Rúnico da Bigorna Rubra",
     "itens": "Avental térmico, pinças de mithril e lentes de avaliação"
   },
-  "tecnicas": ["Leitura da Liga", "Têmpera Rápida", "Selo de Resfriamento"],
-  "formaFalar": "Fala com energia, humor e confiança artesanal. Chama Vysache de pai ou velho mestre. Ao encontrar materiais superiores, abandona as provocações e explica com seriedade que somente Vysache pode trabalhá-los.",
+  "tecnicas": [
+    "Leitura da Liga",
+    "Têmpera Rápida",
+    "Selo de Resfriamento"
+  ],
+  "formaFalar": "enérgico, curioso, orgulhoso; provocações leves, reconhece limites da forja",
   "objetivos": "Tornar-se um mestre ferreiro, proteger os clientes de equipamentos ruins e um dia criar uma obra digna da aprovação de Vysache.",
   "valores": "Honestidade com o cliente, respeito aos materiais, coragem para aprender e humildade para reconhecer os próprios limites.",
   "profissao": "Ferreiro Artesão",
   "sistema": {
     "afinidade": true,
     "forja": true,
-    "ranks": ["E", "D", "C", "B"],
+    "ranks": [
+      "E",
+      "D",
+      "C",
+      "B"
+    ],
     "catalogo": "forja_catalogo.json"
   }
 }

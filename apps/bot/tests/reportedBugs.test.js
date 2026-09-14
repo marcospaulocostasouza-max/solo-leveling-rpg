@@ -24,7 +24,7 @@ test('preço de venda considera valor, mantém preço vigente e preserva valores
 test('resposta narrativa detecta nome inventado e cópia longa, permite referência curta e nome canônico', () => {
     const context = { npc: { name: 'Alexia Song' }, message: 'O jogador caminhou lentamente até a janela da sala e observou as montanhas ao longe antes de guardar sua espada na bainha.' };
     assert.ok(validate('*Meu nome é Helena.*', context).length);
-    assert.equal(validate('*Meu nome é Alexia.* _Ela sorri._', context).length, 0);
+    assert.equal(validate('*Meu nome é Alexia.*\n_Ela sorri._', context).length, 0);
     assert.ok(validate(context.message, context).length);
     assert.equal(validate('*Você guardou a espada?*', context).length, 0);
 });

@@ -1,0 +1,1 @@
+Filho e aprendiz de Vysache, Bilac cresceu entre martelos, runas e metais vindos de Portais. Abriu uma oficina ao lado da forja do pai para atender caçadores em ascensão. Especializou-se em transformar materiais Rank E a B em equipamentos confiáveis e deseja provar que pode herdar a grande bigorna sem viver apenas à sombra do sobrenome.

@@ -52,7 +52,7 @@ class VendaSystem {
     static async getPrecoItem(itemId) {
         return new Promise((resolve) => {
             db.get("SELECT * FROM itens WHERE id = ?", [itemId], (err, row) => {
-                resolve(row ? pricing.originalPrice(row,catalog.listShopItems()) : 0);
+                resolve(row ? pricing.estimatePrice(row,catalog.listShopItems()).price : 0);
             });
         });
     }
@@ -74,7 +74,7 @@ class VendaSystem {
         }
 
         // Item normal - 50% do preço
-        const precoOriginal = pricing.originalPrice(item,catalog.listShopItems());
+        const precoOriginal = pricing.estimatePrice(item,catalog.listShopItems()).price;
         return Math.floor(precoOriginal * PORCENTAGEM_VENDA) * quantidade;
     }
 

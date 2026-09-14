@@ -22,7 +22,7 @@ module.exports = async (msg) => {
         const texto = msg.body.trim().toLowerCase();
 
         // Buscar jogador
-        const jogador = await JogadorCore.buscarPorNumero(numero);
+        const jogador = await require('../../../../packages/database').playerByPhone(numero);
         if (!jogador) {
             return MessageService.send({ message: msg, text: "*✖ Você precisa ter uma ficha aprovada primeiro.*" });
         }
@@ -31,6 +31,8 @@ module.exports = async (msg) => {
         const tickets = await TicketSystem.getTicketsDisponiveis(jogador.id);
 
         if (tickets.length === 0) {
+            const fila=await TicketSystem.getPosicaoFila(jogador.id);
+            if(fila)return MessageService.send({message:msg,text:`Seu ticket já está na fila. Posição ${fila.posicao}; ${fila.posicao-1} solicitação(ões) à frente.\nUse !meus tickets para consultar.`});
             return MessageService.send({ message: msg, text: `
 *═══ USAR TICKET ═══*
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -54,7 +56,7 @@ _Use *!meus tickets* para ver todos os seus tickets._
 `;
             tickets.forEach((ticket, i) => {
                 const tipo = ticket.tipo === "item_unico" ? "Item Único" : "Técnica Única";
-                mensagem += `*${i + 1}.* ${ticket.nome} (${tipo})\n`;
+                mensagem += `*${i + 1}.* ${ticket.nome} (${tipo}) — ID ${ticket.id}\n`;
             });
 
             mensagem += `
@@ -66,40 +68,8 @@ _Para usar um ticket:_
             return MessageService.send({ message: msg, text: mensagem });
         }
 
-        // Determinar o tipo de ticket a usar
-        let tipoDesejado = null;
-        if (args.includes("item")) {
-            tipoDesejado = "item_unico";
-        } else if (args.includes("tecnic") || args.includes("técnic")) {
-            tipoDesejado = "tecnica_unica";
-        } else {
-            return MessageService.send({ message: msg, text: `
-*═══ USAR TICKET ═══*
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-*Tipo inválido!*
-
-Use:
-*!usar ticket item* - Para Item Único
-*!usar ticket tecnica* - Para Técnica Única
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━` });
-        }
-
-        // Buscar ticket do tipo desejado
-        const ticket = tickets.find(t => t.tipo === tipoDesejado);
-
-        if (!ticket) {
-            return MessageService.send({ message: msg, text: `
-*═══ USAR TICKET ═══*
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-*Você não possui um ticket de ${tipoDesejado === "item_unico" ? "Item Único" : "Técnica Única"} disponível.*
-
-_Use *!usar ticket* para ver seus tickets disponíveis._
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━` });
-        }
+        const ticket=require('../systems/ticketSelector').select(tickets,args,jogador.nome);
+        if(!ticket)return MessageService.send({message:msg,text:'Ticket nao encontrado. Use !usar ticket item, !usar ticket tecnica ou !usar ticket ID.'});
 
         // Usar o ticket
         const resultado = await TicketSystem.usarTicket(jogador.id, ticket.id);
@@ -114,6 +84,6 @@ _Use *!usar ticket* para ver seus tickets disponíveis._
 
     } catch (error) {
         console.error("Erro no comando !usar ticket:", error);
-        return MessageService.send({ message: msg, text: "*✖ Erro ao usar ticket. Tente novamente.*" });
+        return MessageService.send({ message: msg, text: error.message || "*✖ Erro ao usar ticket. Tente novamente.*" });
     }
 };

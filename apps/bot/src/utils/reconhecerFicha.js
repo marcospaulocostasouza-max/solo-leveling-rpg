@@ -320,6 +320,10 @@ Um ADM deve usar *!add item* para ${String(dados.pertencente).normalize("NFD").r
     // Salvar na memória temporária E no banco de dados
     const numero = msg.author || msg.from;
     const db = require("../core/database");
+    const submissionGuard=require('./characterSubmissionGuard');
+    if(await submissionGuard.existingCharacter(db,numero)) {
+        return MessageService.send({message:msg,text:submissionGuard.message});
+    }
 
     // A afinidade sorteada e a fonte oficial do primeiro elemento do Mago
     // Elemental. Ela e recuperada automaticamente, sem exigir outro campo.

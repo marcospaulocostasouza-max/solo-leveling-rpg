@@ -18,6 +18,8 @@ module.exports = {
         
         // Salvar no banco como pendente
         const db = require("../core/database");
+        const guard=require('./characterSubmissionGuard');
+        if(await guard.existingCharacter(db,numero))return {erro:guard.message};
         await new Promise((resolve, reject) => db.run(
             `INSERT INTO fichas_pendentes (numero, dados, status, data_envio, aprovado_por, motivo)
              VALUES (?, ?, 'aguardando', NULL, '', '')

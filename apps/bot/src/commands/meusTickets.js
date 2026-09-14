@@ -14,7 +14,7 @@ module.exports = async (msg) => {
         const numero = msg.author || msg.from;
         
         // Buscar jogador
-        const jogador = await JogadorCore.buscarPorNumero(numero);
+        const jogador = await require('../../../../packages/database').playerByPhone(numero);
         if (!jogador) {
             return MessageService.send({ message: msg, text: "*✖ Você precisa ter uma ficha aprovada primeiro.*" });
         }

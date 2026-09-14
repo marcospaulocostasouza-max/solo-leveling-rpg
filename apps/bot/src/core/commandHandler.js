@@ -169,6 +169,8 @@ async function executarComando(msg, comando, comandosRegistrados) {
     console.log(`[EXEC] Comando processado: "${comandoLower}"`);
 
     // Sessões guiadas de criação aceitam a próxima resposta em texto comum.
+    try { if (await require('../systems/contentCreationWizard').consumeMessage(msg)) return; }
+    catch (erro) { console.error('[CONTENT_WIZARD]',erro.message); }
     // Elas são verificadas antes do roteamento para que a resposta não seja
     // confundida com uma ficha ou conversa de NPC.
     try { if (await require("../systems/creationWizardService").consumeMessage(msg)) return; }
@@ -181,6 +183,14 @@ async function executarComando(msg, comando, comandosRegistrados) {
     // =====================================
     const mapaComandos = {
         "!criar codigo": "redeemAdm.js",
+        "!criar item": "criarConteudoGuiado.js",
+        "!criar item unico": "criarConteudoGuiado.js",
+        "!criar passiva": "criarConteudoGuiado.js",
+        "!criar titulo": "criarConteudoGuiado.js",
+        "!criar tecnica": "criarConteudoGuiado.js",
+        "!criar tecnica unica": "criarConteudoGuiado.js",
+        "!criar habilidade unica": "criarConteudoGuiado.js",
+        "!criar hab unica": "criarConteudoGuiado.js",
         "!trocar dungeon": "confirmarTrocaDungeon.js",
         "!manter dungeon": "confirmarTrocaDungeon.js",
         "!premios dungeon": "consultarPremiosDungeon.js",
@@ -599,6 +609,11 @@ async function executarComando(msg, comando, comandosRegistrados) {
         { prefixo: "!minha Dungeon", arquivo: "minhaDungeon.js" },
         { prefixo: "!usar ticket", arquivo: "usarTicket.js" },
         { prefixo: "!meus tickets", arquivo: "meusTickets.js" },
+        { prefixo: "!fila tickets", arquivo: "filaTickets.js" },
+        { prefixo: "!consultar item", arquivo: "consultarConteudo.js" },
+        { prefixo: "!consultar tecnica", arquivo: "consultarConteudo.js" },
+        { prefixo: "!consultar passiva", arquivo: "consultarConteudo.js" },
+        { prefixo: "!consultar titulo", arquivo: "consultarConteudo.js" },
         { prefixo: "!entregar chave", arquivo: "entregarChave.js" },
         { prefixo: "!Entregar Chave", arquivo: "entregarChave.js" },
         { prefixo: "!vysache", arquivo: "vysache.js" },

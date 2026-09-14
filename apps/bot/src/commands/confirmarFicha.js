@@ -226,6 +226,10 @@ module.exports = async (msg) => {
     try {
         console.log("[FICHA] ===== COMANDO CONFIRMAR FICHA CHAMADO =====");
         const numero = msg.author || msg.from;
+        const submissionGuard=require('../utils/characterSubmissionGuard');
+        if(await submissionGuard.existingCharacter(db,numero)) {
+            return MessageService.send({message:msg,text:submissionGuard.message});
+        }
         console.log(`[FICHA] Numero do jogador: ${numero}`);
         
         // Buscar ficha pendente salva pelo reconhecedor

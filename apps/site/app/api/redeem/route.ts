@@ -15,7 +15,7 @@ export async function POST(request:Request){
  }catch(error){
   const e=error as Error&{code?:string};
   const known=['INVALID_CODE','EXPIRED','NOT_STARTED','ALREADY_CLAIMED','LIMIT_REACHED','PLAYER_NOT_FOUND'];
-  if(!known.includes(e.code||''))console.error('[REDEEM] Falha de resgate:',e.code||'INTERNAL_ERROR');
+  if(!known.includes(e.code||''))console.error('[REDEEM] Falha de resgate:',e.code||'INTERNAL_ERROR', e.stack || e.message);
   return NextResponse.json({success:false,error:known.includes(e.code||'')?e.code:'INTERNAL_ERROR',message:known.includes(e.code||'')?e.message:'Não foi possível entregar as recompensas. Nenhum resgate foi concluído; tente novamente.'},{status:known.includes(e.code||'')?400:500});
  }
 }

@@ -259,15 +259,15 @@ _Use *!confirmar ficha* para enviar para aprovacao._`,
         msg += `\n> REGISTRO DO JOGADOR: APROVADO`;
         msg += `\n> DESPERTAR: CONFIRMADO`;
         msg += `\n${templates.divisor()}`;
-        msg += `\n\n*${nomeJogador}... sua existencia foi aceita pelo Sistema.*`;
-        msg += `\n\nEu li sua historia. Observei suas escolhas, suas cicatrizes e o potencial oculto por tras delas.`;
-        msg += `\n\nComo prova de que o Sistema reconheceu o seu caminho, uma *Habilidade Unica* condizente com sua historia foi concedida a voce.`;
-        msg += `\n\nNao a desperdice. O poder que agora carrega podera ergue-lo acima dos demais... ou revelar que voce nunca foi digno dele.`;
-        msg += `\n\nA partir deste momento, voce nao e mais um simples observador.`;
-        msg += `\n*Voce e um Jogador.*`;
-        msg += `\n\nSeu progresso pode comecar. Atravesse o portal abaixo, entre na comunidade e envie *!jogador* para contemplar sua ficha e a Habilidade Unica que lhe foi concedida:`;
+        msg += `\n*${nomeJogador}, o Sistema reconheceu seu despertar.*`;
+        msg += `\n_Sua história foi analisada e uma *Habilidade Única* foi criada para acompanhar seu caminho._`;
+        msg += `\n_A partir de agora, cada escolha faz parte da sua jornada, Jogador._`;
+        msg += `\n${templates.divisor()}`;
+        msg += `\n${templates.destaque("ENTRE NO RPG")}`;
+        msg += `\nEntre no *grupo do Arquiteto* pelo link abaixo:`;
         msg += `\nhttps://chat.whatsapp.com/IhaQVGW0beK3X4jrrfaWxo`;
-        msg += `\n\n${templates.divisor()}`;
+        msg += `\nNo grupo, envie *!jogador* para consultar sua *ficha* e a *Habilidade Única criada*.`;
+        msg += `\n${templates.divisor()}`;
         msg += `\n> O SISTEMA ESTARA OBSERVANDO.`;
         return msg;
     },

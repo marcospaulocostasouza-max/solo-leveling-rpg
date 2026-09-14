@@ -63,10 +63,10 @@ async function prepareBatch(service, actor, message, options = {}) {
         }
     }
     let plans;
-    try { plans = naturalBatch(message); }
+    try { plans = service.client ? await require("./llm-planner").planBatchWithModel(service.client, message, service.registry) : naturalBatch(message); }
     catch (error) {
-        if (!service.client) throw error;
-        plans = await require("./llm-planner").planBatchWithModel(service.client, message, service.registry);
+        // Não substitui uma dúvida da interpretação por uma execução presumida.
+        throw error;
     }
     if (!Array.isArray(plans) || !plans.length) throw new AdminError(CODES.INVALID_INPUT, "Informe pelo menos uma ação, seu objeto e seus destinos.");
     const actions = [], problems = [], cache = new Map();

@@ -17,3 +17,9 @@ test('privado, ficha ausente e sintaxe inválida',async()=>{
 test('duplicidade do serviço compartilhado mantém mensagem clara',async()=>{
  const f=fixture({id:42},Object.assign(new Error('Você já resgatou este código.'),{code:'ALREADY_CLAIMED'}));await f.command({body:'!resgatar codigo: SOLO2026',from:'PLAYER'});assert.match(f.sent[0],/já resgatou/);
 });
+test('aceita codigo criado sem dois-pontos e nao sugere codigo de exemplo',async()=>{
+ const f=fixture();await f.command({body:'!resgatar codigo VIAJANTE26',from:'PLAYER'});
+ assert.equal(f.calls[0][1],'VIAJANTE26');
+ await f.command({body:'!resgatar codigo',from:'PLAYER'});
+ assert.ok(!f.sent[1].includes('SOLO2026'));
+});

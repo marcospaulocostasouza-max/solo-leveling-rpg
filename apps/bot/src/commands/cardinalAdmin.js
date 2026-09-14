@@ -188,6 +188,16 @@ async function requestAdministrativeActions(msg, actor, text) {
   if (!prepared.dry_run) await instance().markBatchReady(actor, prepared.confirmation_id, msg.from);
 }
 
+async function confirmCreation(msg, actor, id) {
+  const operation = await require('../../../../cardinal/admin/creation-interpretation').consumeCreation(instance(), actor, id, msg.from);
+  if (externalCreationRequest(operation.original_message)) return require('./cardinalWeb')({ ...msg, body: `!cardinal ${operation.original_message}` });
+  await forgeInstance().ready;
+  const result = await forgeInstance().generate(operation.original_message, { type: operation.type, author: actor });
+  await balanceInstance().ready;
+  const gate = await qualityGate({ engine: balanceInstance(), type: operation.type, content: result.draft.content });
+  return send(msg, forgeDraftResponse(result.draft, gate));
+}
+
 async function handler(msg) {
   const actor = msg.author || msg.from;
   const text = cardinalText(msg.body);
@@ -196,6 +206,8 @@ async function handler(msg) {
     const confirmation = text.match(/^(?:confirmar|confirme)\s+(confirm_[a-z0-9-]+)$/i);
     if (confirmation) {
       await instance().ready;
+      const row = await database.get('SELECT operation_json FROM cardinal_admin_confirmations WHERE confirmation_id=? AND admin_number=?', [confirmation[1], actor]);
+      if (row && JSON.parse(row.operation_json).intent === 'interpreted_creation') return await confirmCreation(msg, actor, confirmation[1]);
       const result = await instance().confirm(actor, confirmation[1], { channelId: msg.from });
       return result.actions ? sendBatchText(msg, require("../../../../cardinal/admin/batch").describeCompleted(result)) : MessageService.send({ message: msg, text: renderAdmin(result) });
     }
@@ -208,6 +220,7 @@ async function handler(msg) {
       await instance().ready;
       const pending = await instance().pendingBatch(actor, msg.from);
       if (pending) {
+        if (pending.operation_json && JSON.parse(pending.operation_json).intent === 'interpreted_creation') return await confirmCreation(msg, actor, pending.confirmation_id);
         const result = await instance().confirm(actor, pending.confirmation_id, { channelId: msg.from });
         return sendBatchText(msg, require("../../../../cardinal/admin/batch").describeCompleted(result));
       }
@@ -252,14 +265,13 @@ async function handler(msg) {
         { title: "Técnicas", fields: [], lines: details.techniques.length ? details.techniques.map(item => `• ${item.nome} — Rank ${item.rank || "—"}, nv. ${item.nivel || 1}${Number(item.equipada) ? ", equipada" : ""}`) : ["Nenhuma técnica encontrada."] }
       ] }));
     }
-    if (externalCreationRequest(text)) return require("./cardinalWeb")(msg);
     const type = forgeType(text);
     if (type) {
-      await forgeInstance().ready;
-      const result = await forgeInstance().generate(text, { type, author: actor });
-      await balanceInstance().ready;
-      const gate = await qualityGate({ engine: balanceInstance(), type, content: result.draft.content });
-      return send(msg, forgeDraftResponse(result.draft, gate));
+      await instance().ready;
+      const prepared = await require('../../../../cardinal/admin/creation-interpretation').prepareCreation(instance(), actor, text, type, msg.from);
+      await sendBatchText(msg, `*INTERPRETAÇÃO DA ORDEM*\n${prepared.operation.summary}\nEstá correto? Responda *!cardinal sim* para gerar o rascunho ou *!cardinal cancelar*.\nNada foi criado nem publicado. A publicação continuará exigindo aprovação do rascunho.\nValidade: 15 minutos.`);
+      await instance().markBatchReady(actor, prepared.confirmation_id, msg.from);
+      return;
     }
     if (/^(?:balance|qa|simulate|exploit-scan)(?:\s|$)/i.test(text)) return require("./cardinalBalance")(msg);
     if (/^(?:world|mundo)(?:\s|$)/i.test(text)) return require("./cardinalWorld")(msg);

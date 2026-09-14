@@ -3,10 +3,10 @@ const MessageService=require('../core/messageService');
 const database=require('../../../../packages/database');
 const {getService}=require('../../../../packages/database/redeem');
 module.exports=async function(msg){
- const match=String(msg.body||'').trim().match(/^!resgatar\s+c[oó]digo\s*:\s*([A-Za-z0-9_-]{3,64})\s*$/i);
+ const match=String(msg.body||'').trim().match(/^!resgatar\s+c[oó]digo(?:\s*:\s*|\s+)([A-Za-z0-9_-]{3,64})\s*$/i);
  let text;
  try{
-  if(!match)text='Use *!resgatar codigo: SOLO2026*.';
+  if(!match)text='Use *!resgatar codigo: <seu código>*. Informe o código criado pelo ADM; os dois-pontos são opcionais.';
   else{
    const player=await database.playerByPhone(msg.author||msg.from);
    if(!player)text='Sua ficha não foi encontrada. Você precisa de um personagem para resgatar códigos.';

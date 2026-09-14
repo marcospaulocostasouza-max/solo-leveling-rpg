@@ -21,7 +21,7 @@ type LivePayload={player:any;inventory:any[];skills:any[];guild:any;location:any
 const nav:[NavId,string,LucideIcon,string][]=[
  ['inicio','Início',Home,'/'],['sistemas','Sistemas do Arquiteto',BookMarked,'/sistemas'],['personagem','Meu Personagem',UserRound,'/personagem'],['inventario','Inventário',Backpack,'/inventario'],
  ['equipamentos','Equipamentos',Shield,'/equipamentos'],['habilidades','Habilidades',Zap,'/habilidades'],['missoes','Missões',ScrollText,'/missoes'],
- ['mapa','Mapa',Map,'/mapa'],['dungeons','Dungeons',Swords,'/dungeons'],['guilda','Guilda',Crown,'/guilda'],['gacha','Gacha',Gem,'/gacha'],['resgatar','Resgatar C?digo',Sparkles,'/resgatar-codigo'],['loja','Loja',ShoppingBag,'/loja'],
+ ['mapa','Mapa',Map,'/mapa'],['dungeons','Dungeons',Swords,'/dungeons'],['guilda','Guilda',Crown,'/guilda'],['gacha','Gacha',Gem,'/gacha'],['resgatar','Resgatar Código',Sparkles,'/resgatar-codigo'],['loja','Loja',ShoppingBag,'/loja'],
  ['npcs','NPCs',Users,'/npcs'],['titulos','Títulos',Trophy,'/titulos']
 ];
 

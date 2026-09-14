@@ -25,6 +25,24 @@ async function fixture(t) {
     return { database, service, options: { channelId: "group" } };
 }
 
+test("interpretacao prioriza IA e criacao exige entrega e confirmacao na mesma conversa", async t => {
+    const { service, database, options } = await fixture(t);
+    let calls = 0;
+    service.client = { chat: async () => { calls++; return { text: JSON.stringify({ actions: [{ intent: 'give_xp', parameters: { player: 'Lucia', amount: 200 } }] }) }; } };
+    const prepared = await service.prepareNatural('adm', 'De 100 XP para Lucia; na verdade quero 200 XP para Lucia', options);
+    assert.equal(calls, 1);
+    assert.equal(prepared.operation.actions[0].parameters.amount, 200);
+    assert.equal((await database.get('SELECT experiencia FROM jogadores WHERE id=1')).experiencia, 0);
+    service.client = { chat: async () => ({ text: JSON.stringify({ summary: 'Criar uma espada Rank D.', missing: null }) }) };
+    const creation = require('../admin/creation-interpretation');
+    const plan = await creation.prepareCreation(service, 'adm', 'Crie uma espada Rank D', 'weapon', 'group');
+    await assert.rejects(creation.consumeCreation(service, 'adm', plan.confirmation_id, 'group'));
+    await service.markBatchReady('adm', plan.confirmation_id, 'group');
+    await assert.rejects(creation.consumeCreation(service, 'adm', plan.confirmation_id, 'other'));
+    assert.equal((await creation.consumeCreation(service, 'adm', plan.confirmation_id, 'group')).type, 'weapon');
+    await assert.rejects(creation.consumeCreation(service, 'adm', plan.confirmation_id, 'group'));
+});
+
 test("XP e item para múltiplos destinos: identificar, confirmar e entregar exatamente uma vez", async t => {
     const { service, database, options } = await fixture(t);
     const prepared = await service.prepareNatural("adm", "Dê 100 XP para Lucia e Sung Jin; entregue 2 itens Poção para Lucia, Sung", options);

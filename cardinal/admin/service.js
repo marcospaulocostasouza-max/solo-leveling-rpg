@@ -50,7 +50,7 @@ class CardinalAdminService {
     async pendingBatch(actor, channelId) {
         await this.rbac.authorize(actor, "CARDINAL_READ"); await this.repository.initialize();
         const rows = await this.database.all("SELECT * FROM cardinal_admin_confirmations WHERE admin_number=? AND confirmed_at IS NULL AND expires_at>? ORDER BY created_at DESC", [actor, new Date().toISOString()]);
-        return rows.find(row => { const plan = JSON.parse(row.operation_json); return plan.intent === "confirmed_batch" && plan.channel_id === (channelId || null); }) || null;
+        return rows.find(row => { const plan = JSON.parse(row.operation_json); return ["confirmed_batch", "interpreted_creation"].includes(plan.intent) && plan.channel_id === (channelId || null); }) || null;
     }
     async markBatchReady(actor, id, channelId) {
         await this.rbac.authorize(actor, "CARDINAL_READ");
@@ -58,7 +58,7 @@ class CardinalAdminService {
             const row = await query.get("SELECT * FROM cardinal_admin_confirmations WHERE confirmation_id=? AND admin_number=? AND confirmed_at IS NULL", [id, actor]);
             if (!row || Date.parse(row.expires_at) <= Date.now()) throw new AdminError(CODES.CONFIRMATION_EXPIRED, "O plano expirou. Reenvie a ordem.");
             const operation = JSON.parse(row.operation_json);
-            if (operation.intent !== "confirmed_batch" || operation.channel_id !== (channelId || null)) throw new AdminError(CODES.PERMISSION_DENIED, "Plano pertence a outra conversa.");
+            if (!["confirmed_batch", "interpreted_creation"].includes(operation.intent) || operation.channel_id !== (channelId || null)) throw new AdminError(CODES.PERMISSION_DENIED, "Plano pertence a outra conversa.");
             operation.ready = true;
             await query.run("UPDATE cardinal_admin_confirmations SET operation_json=? WHERE confirmation_id=?", [JSON.stringify(operation), id]);
         });

@@ -1,5 +1,4 @@
 'use strict';
-const fs=require('fs'),path=require('path');
 const normalizeCode=value=>String(value||'').trim().toUpperCase();
 function fail(code,message){throw Object.assign(new Error(message),{code});}
 function createService(database,provider,engine){
@@ -7,7 +6,7 @@ function createService(database,provider,engine){
  async function ensure(){
   if(!ready)ready=(async()=>{
    await database.ensureGachaEngineSchema();await database.ensurePlayerHistorySchema();
-   let sql=fs.readFileSync(path.join(__dirname,'migrations/003_redeem_codes.sql'),'utf8');
+   let sql=require('./redeem-schema');
    if(provider==='postgres')sql=sql.replaceAll('INTEGER PRIMARY KEY AUTOINCREMENT','BIGSERIAL PRIMARY KEY');
    for(const statement of sql.split(';').map(s=>s.trim()).filter(Boolean))await database.run(statement);
   })().catch(error=>{ready=null;throw error;});

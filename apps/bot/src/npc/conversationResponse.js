@@ -16,7 +16,7 @@ async function obterResposta({primary, fallback, npc, emotion, onFallback=()=>{}
     return formatarMensagem(npc,response,state);
 }
 function mensagemErro(error) {
-    if(error.code==='NARRATIVE_INVALID') return 'A resposta do NPC ficou incoerente e foi descartada. Tente novamente; a resposta inválida não foi salva.';
+    if(error.code==='NARRATIVE_INVALID') return 'A resposta do NPC não passou pela validação e foi descartada. Tente novamente; a resposta inválida não foi salva.';
     if(['ECONNREFUSED','ECONNRESET','ENOTFOUND'].includes(error.code)) return 'Não consegui conectar à IA agora. Verifique se o Ollama está disponível e tente novamente.';
     if(['ETIMEDOUT','ECONNABORTED'].includes(error.code)) return 'A IA demorou demais para responder. Tente novamente.';
     return 'Ocorreu um erro durante a conversa. Tente novamente.';

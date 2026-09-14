@@ -32,8 +32,9 @@ test('refaz resposta inválida antes de aceitar; mantém parâmetros do modelo',
     const result=await guard.generate(async(prompt,opts)=>{prompts.push(prompt);assert.equal(opts,options);return {texto:prompts.length===1?'She looked at the hunter and smiled.':'_Alexia acena._\n*Pode entrar.*'};},'Cena original',context,options);
     assert.equal(prompts.length,2);assert.match(result.texto,/Pode entrar/);assert.match(prompts[1],/CORREÇÃO OBRIGATÓRIA/);assert.match(prompts[0],/português brasileiro/);
 });
-test('duas respostas inválidas são descartadas com erro que impede fallback e histórico',async()=>{
+test('avisos de validacao nao descartam a cena',async()=>{
     let attempts=0;
-    await assert.rejects(guard.generate(async()=>{attempts++;return {texto:'She looked at the hunter and smiled.'};},'Cena',context,{}),{code:'NARRATIVE_INVALID'});
+    const result=await guard.generate(async()=>{attempts++;return {texto:'She looked at the hunter and smiled.'};},'Cena',context,{});
+    assert.equal(result.texto,'She looked at the hunter and smiled.');
     assert.equal(attempts,2);
 });

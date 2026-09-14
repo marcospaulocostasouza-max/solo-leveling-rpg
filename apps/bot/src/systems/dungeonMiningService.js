@@ -11,6 +11,7 @@ function semanaAtual(date = new Date()) {
 async function garantirSchema() {
     if (!schema) schema = (async () => {
         await database.ensureCrystalSchema();
+        await database.ensurePlayerHistorySchema();
         await database.run(`CREATE TABLE IF NOT EXISTS dungeon_mineracoes (
             ficha_dungeon_id BIGINT PRIMARY KEY, jogador_id BIGINT NOT NULL,
             semana TEXT NOT NULL, xp INTEGER NOT NULL, resultado_json TEXT NOT NULL, data TEXT NOT NULL
@@ -48,6 +49,10 @@ async function entregar(query, ficha, jogador, xp, sortear) {
     await query.run('INSERT INTO experiencia_historico (jogador_id,quantidade,motivo,data) VALUES (?,?,?,?)', [jogador.id, xp, motivo, now]);
     if (sorteio.valorTotal) await query.run("INSERT INTO transacoes (jogador_id,valor,tipo,motivo,data) VALUES (?,?,'ganho',?,?)", [jogador.id, sorteio.valorTotal, `${motivo}: ${sorteio.quantidade}x ${sorteio.nome}`, now]);
     await query.run('INSERT INTO dungeon_mineracoes (ficha_dungeon_id,jogador_id,semana,xp,resultado_json,data) VALUES (?,?,?,?,?,?)', [ficha.id, jogador.id, semana, xp, JSON.stringify(resultado), now]);
+    const rewards=[{name:'CRISTAIS',quantity:500}];
+    if(xp>0)rewards.push({name:'XP',quantity:Number(xp)});
+    if(Number(sorteio.valorTotal)>0)rewards.push({name:'WON',quantity:Number(sorteio.valorTotal)});
+    await require('../../../../packages/database/reward-receipt').record(database,query,{playerId:jogador.id,origin:'DUNGEON_MINERACAO',reference:`mineracao:${ficha.id}`,rewards});
     return resultado;
 }
 

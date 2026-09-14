@@ -33,10 +33,24 @@ async function generate(generateResponse, prompt, context, options) {
     result = { ...result, texto: normalizarFormatacao(result?.texto) };
     let problems = validate(result.texto || '', context);
     if (problems.length) {
+        const originalResult = result;
+        try {
         result = await generateResponse(`${fullPrompt}\n\nCORREÇÃO OBRIGATÓRIA: ${problems.join(' ')} Reescreva do zero somente a continuação do NPC ${context.npc.name}, mantendo sua identidade e personalidade.`, options);
+        } catch (error) {
+            console.warn('[NPC_VALIDATION] Correção indisponível; enviando a cena gerada:', error.message);
+            return result;
+        }
         result = { ...result, texto: normalizarFormatacao(result?.texto) };
+        // Uma correção vazia não pode substituir a cena que já foi gerada.
+        if (!String(result.texto || '').trim()) result = originalResult;
         problems = validate(result.texto || '', context);
-        if (problems.length) throw Object.assign(new Error(`Resposta narrativa inválida; não foi salva: ${problems.join(' ')}`), {code:'NARRATIVE_INVALID'});
+        // Prefira a tentativa com menos problemas, preservando a cena original.
+        const originalProblems = validate(originalResult.texto || '', context);
+        if (originalProblems.length < problems.length) {
+            result = originalResult;
+            problems = originalProblems;
+        }
+        if (problems.length) console.warn(`[NPC_VALIDATION] Cena será enviada e salva apesar dos avisos: ${problems.join(' ')}`);
     }
     return result;
 }

@@ -13,6 +13,8 @@ test('minerador: vaga extra, entrega atomica, limite semanal separado, concorren
         get: (sql, args=[]) => new Promise((resolve,reject) => sqlite.get(sql,args,(e,row)=>e?reject(e):resolve(row))),
         all: (sql, args=[]) => new Promise((resolve,reject) => sqlite.all(sql,args,(e,rows)=>e?reject(e):resolve(rows))),
         ensureCrystalSchema: async () => {},
+        ensurePlayerHistorySchema: async () => {},
+        registrarHistoricoFichaComQuery: async (q,e) => q.run("INSERT INTO recibos VALUES(?,?,?)",[e.jogadorId,e.recurso,e.quantidade]),
         adicionarCristaisComQuery: async (query,id,amount,origin) => { await query.run('UPDATE jogadores SET cristais=cristais+? WHERE id=?',[amount,id]); await query.run('INSERT INTO historico_cristais VALUES(?,?,?)',[id,amount,origin]); },
         registrarHistoricoFicha: async () => {},
         transaction: work => {
@@ -28,6 +30,8 @@ test('minerador: vaga extra, entrega atomica, limite semanal separado, concorren
         const filename=path.resolve(__dirname,'../src/systems',name);
         const module={exports:{}};
         vm.runInNewContext(fs.readFileSync(filename,'utf8'),{module,console,Intl,Date,require:dep=>{
+            if(dep.endsWith('/reward-receipt'))return require('../../../packages/database/reward-receipt');
+            if(dep==='../utils/dungeonWeek')return require('../src/utils/dungeonWeek');
             if(dep==='../../../../packages/database')return db;
             if(dep==='../../../../packages/database/config')return {provider:'sqlite'};
             if(dep==='../core/database')return sqlite;
@@ -50,6 +54,7 @@ test('minerador: vaga extra, entrega atomica, limite semanal separado, concorren
         'CREATE TABLE historico_cristais(jogador_id INTEGER,quantidade INTEGER,origem TEXT)',
         'CREATE TABLE itens(id INTEGER PRIMARY KEY,nome TEXT)',
         'CREATE TABLE inventario_jogador(id INTEGER PRIMARY KEY,jogador_id INTEGER,item_id INTEGER,quantidade INTEGER)',
+        'CREATE TABLE recibos(jogador INTEGER,recurso TEXT,quantidade INTEGER)',
         'CREATE TABLE experiencia_historico(jogador_id INTEGER,quantidade INTEGER,motivo TEXT,data TEXT)',
         'CREATE TABLE transacoes(jogador_id INTEGER,valor INTEGER,tipo TEXT,motivo TEXT,data TEXT)',
         'CREATE TABLE fichas_dungeon(id INTEGER PRIMARY KEY,jogador_id INTEGER,dungeon_nome TEXT,dungeon_rank TEXT,participantes TEXT,usos_consumidos INTEGER,status TEXT)',
@@ -75,8 +80,12 @@ test('minerador: vaga extra, entrega atomica, limite semanal separado, concorren
     assert.equal((await dungeon.validarParticipantesReconhecidos(owner,parsed)).valido,true);
     assert.equal((await dungeon.validarParticipantesReconhecidos(owner,{...parsed,minerador:'Jogador 1'})).valido,false);
     assert.equal((await dungeon.validarParticipantesReconhecidos(owner,{...parsed,minerador:'Desconhecido'})).valido,false);
+    // Promoção do dono não invalida a chave/ficha Rank E já existente.
+    await db.run("UPDATE jogadores SET rank='D' WHERE id=?",[owner.id]);
+    owner.rank='D';
     const result=await dungeon.concluirDungeon(owner,parsed);
     assert.equal(result.sucesso,true,result.erro);assert.equal(result.participantes.length,5);assert.equal(result.usosRestantes,0);
+    assert.equal((await db.get('SELECT dungeon_rank FROM fichas_dungeon WHERE id=1')).dungeon_rank,'E');
     assert.equal(result.mineracao.cristais,500);assert.equal((await db.get("SELECT cristais FROM jogadores WHERE id=6")).cristais,500);assert.equal(result.mineracao.xp,800);assert.equal(result.mineracao.usadas,1);
     assert.deepEqual(await db.get('SELECT experiencia,won FROM jogadores WHERE id=6'),{experiencia:800,won:40000});
     assert.equal(await dungeon.ehParticipanteDaFicha(1,6),false,'no extra prize for miner');

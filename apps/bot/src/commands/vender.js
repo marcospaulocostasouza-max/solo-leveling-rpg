@@ -8,6 +8,7 @@ const MessageService = require("../core/messageService");
  */
 
 const db = require("../core/database");
+const database = require('../../../../packages/database');
 const VendaSystem = require("../systems/vendaSystem");
 const EconomySystem = require("../systems/economySystem");
 const JogadorCore = require("../core/jogadorCore");
@@ -61,7 +62,7 @@ _Dica: Use !inventario para ver seus itens._
         }
 
         // Formatar mensagem de confirmação
-        const saldoAtual = await EconomySystem.getSaldo(jogador.id);
+        const saldoAtual = Number(await EconomySystem.getSaldo(jogador.id));
         const mensagem = VendaSystem.formatarMensagemVenda(
             {
                 sucesso: true,
@@ -75,13 +76,10 @@ _Dica: Use !inventario para ver seus itens._
         );
 
         // Armazenar dados da venda pendente no banco
-        await new Promise((resolve) => {
-            db.run(
-                `INSERT OR REPLACE INTO vendas_pendentes (jogador_id, item_nome, quantidade, valor_total, tipo, data)
-                 VALUES (?, ?, ?, ?, ?, datetime('now'))`,
-                [jogador.id, infoVenda.item, infoVenda.quantidade, infoVenda.valorTotal, infoVenda.tipo],
-                () => resolve()
-            );
+        await database.transaction(async query => {
+            await query.get(`SELECT id FROM jogadores WHERE id=?${require('../../../../packages/database/config').provider === 'postgres' ? ' FOR UPDATE' : ''}`, [jogador.id]);
+            await query.run('DELETE FROM vendas_pendentes WHERE jogador_id=?', [jogador.id]);
+            await query.run('INSERT INTO vendas_pendentes(jogador_id,item_nome,quantidade,valor_total,tipo,data) VALUES(?,?,?,?,?,?)', [jogador.id,infoVenda.item,infoVenda.quantidade,infoVenda.valorTotal,infoVenda.tipo,new Date().toISOString()]);
         });
 
         await MessageService.send({ message: msg, text: mensagem });
@@ -90,7 +88,6 @@ _Dica: Use !inventario para ver seus itens._
         console.error("Erro no comando !vender:", error);
         return MessageService.send({ message: msg, text: `
 *═══ ERRO ═══*
-_Ocorreu um erro ao processar a venda.
-_Tente novamente mais tarde._` });
+_${error.message}_` });
     }
 };

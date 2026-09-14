@@ -49,18 +49,42 @@ function validarFormatacao(texto) {
     );
 }
 
-// Apenas reorganiza trechos já marcados; nunca infere se texto livre é fala ou ação.
+// Normaliza Markdown e falas explicitamente indicadas por aspas ou travessão.
 function normalizarFormatacao(texto) {
-    const original = String(texto || '').trim();
+    let original = String(texto || '').trim();
+    // Variações comuns do Markdown não são erros de conteúdo narrativo.
+    original = original.replace(/^```(?:markdown|text|txt)?\s*\n([\s\S]*?)\n```$/i, '$1').trim()
+        .replace(/\*\*([^*]+)\*\*/g, '*$1*').replace(/__([^_]+)__/g, '_$1_');
     const parts = [];
     let cursor = 0;
     const tokens = /_[^_*]+_|\*[^_*]+\*|^[\t ]*>[^\r\n]*/gm;
     for (const match of original.matchAll(tokens)) {
-        if (original.slice(cursor, match.index).trim()) return original;
+        if (original.slice(cursor, match.index).trim()) return repararTextoLivre(original);
         parts.push(match[0].trim().replace(/\s*\r?\n\s*/g, ' '));
         cursor = match.index + match[0].length;
     }
-    if (original.slice(cursor).trim() || !parts.length) return original;
+    if (original.slice(cursor).trim() || !parts.length) return repararTextoLivre(original);
+    return parts.join('\n\n');
+}
+
+function repararTextoLivre(texto) {
+    if (!/"[^"\n]+"|“[^”\n]+”|^[—–]\s*\S/m.test(texto)) return texto;
+    const parts = [];
+    // Mantém palavras e ordem. Aspas/travessão identificam fala; prosa é narração.
+    for (const line of texto.split(/\r?\n/).map(s => s.trim()).filter(Boolean)) {
+        if (line.startsWith('>')) { parts.push(line); continue; }
+        if (/^[—–]\s*\S/.test(line)) { parts.push('*' + line.replace(/[*_]/g, '') + '*'); continue; }
+        let cursor = 0;
+        const tokens = /_[^_*]+_|\*[^_*]+\*|"[^"\n]+"|“[^”\n]+”/g;
+        for (const match of line.matchAll(tokens)) {
+            const before = line.slice(cursor, match.index).trim();
+            if (before) parts.push('_' + before.replace(/[*_]/g, '') + '_');
+            parts.push(/^["“]/.test(match[0]) ? '*' + match[0].replace(/[*_]/g, '') + '*' : match[0]);
+            cursor = match.index + match[0].length;
+        }
+        const tail = line.slice(cursor).trim();
+        if (tail) parts.push('_' + tail.replace(/[*_]/g, '') + '_');
+    }
     return parts.join('\n\n');
 }
 

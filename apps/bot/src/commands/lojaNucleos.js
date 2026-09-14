@@ -10,6 +10,8 @@ const MessageService = require("../core/messageService");
 
 module.exports = async (msg) => {
     const mensagem = `
+_Somente núcleos do seu rank ou abaixo podem ser comprados. Use !comprar Núcleo Branco (ou a cor correspondente)._
+
 *─ Loja de Núcleos 🐦‍🔥 ─*
 
 _Os núcleos de monstros, também conhecidos como Essence Stones, são pequenas pedras brilhantes encontradas dentro dos cadáveres de bestas mágicas. O valor de um núcleo é determinado por sua classificação e qualidade. Além de sua função comercial, os núcleos podem ser usados na forja para criar equipamentos com propriedades especiais._
@@ -19,22 +21,22 @@ _Além da compra e venda, os núcleos podem ser trocados com a Associação de C
 ┈┈┈┈┈┈┈┈┈┈
 *[Núcleos por Rank]*
 
-*Rank E* - Branco ⌾ [5.000₩]
+*Rank E* - Branco ⌾ [100.000₩]
 ↳ Encontrado em monstros comuns de Rank E.
 
-*Rank D* - Amarelo ⌾ [7.500₩]
+*Rank D* - Amarelo ⌾ [250.000₩]
 ↳ Encontrado em monstros de Rank D.
 
-*Rank C* - Verde ⌾ [10.000₩]
+*Rank C* - Verde ⌾ [350.000₩]
 ↳ Encontrado em monstros de Rank C.
 
-*Rank B* - Azul ⌾ [15.000₩]
+*Rank B* - Azul ⌾ [500.000₩]
 ↳ Encontrado em monstros de Rank B.
 
-*Rank A* - Vermelho ⌾ [20.000₩]
+*Rank A* - Vermelho ⌾ [1.000.000₩]
 ↳ Encontrado em monstros de Rank A.
 
-*Rank S* - Roxo ⌾ [30.000₩]
+*Rank S* - Roxo ⌾ [1.500.000₩]
 ↳ Encontrado em monstros de Rank S.
 ┈┈┈┈┈┈┈┈┈┈
 *[Mini Boss]*

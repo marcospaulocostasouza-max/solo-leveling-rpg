@@ -8,6 +8,8 @@ const MessageService = require("../core/messageService");
 
 module.exports = async (msg) => {
     const mensagem = `
+_Somente núcleos do seu rank ou abaixo podem ser comprados. Use !comprar Núcleo Branco (ou a cor correspondente)._
+
 *─ Núcleos de Monstros 🐦‍🔥 ─*
 
 Os núcleos de monstros, também conhecidos como Essence Stones, são pequenas pedras brilhantes encontradas dentro dos cadáveres de bestas mágicas. O valor de um núcleo é determinado por sua classificação e qualidade. Além de sua função comercial, os núcleos podem ser usados na forja para criar equipamentos com propriedades especiais.
@@ -17,12 +19,12 @@ Os núcleos de monstros, também conhecidos como Essence Stones, são pequenas p
 *SISTEMA DE NUCLEOS DE MONSTROS*
 
 *VALORES POR RANK*
-Rank E: 5.000 Wons
-Rank D: 7.500 Wons
-Rank C: 10.000 Wons
-Rank B: 15.000 Wons
-Rank A: 20.000 Wons
-Rank S: 30.000 Wons
+Rank E: 100.000 Wons
+Rank D: 250.000 Wons
+Rank C: 350.000 Wons
+Rank B: 500.000 Wons
+Rank A: 1.000.000 Wons
+Rank S: 1.500.000 Wons
 
 *LIMITE DE TRANSPORTE*
 20 unidades por rank por dungeon

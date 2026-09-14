@@ -89834,37 +89834,37 @@
     {
       "nome": "Branco",
       "rank": "E",
-      "preco": 5000,
+      "preco": 100000,
       "cor": "Branco"
     },
     {
       "nome": "Amarelo",
       "rank": "D",
-      "preco": 7500,
+      "preco": 250000,
       "cor": "Amarelo"
     },
     {
       "nome": "Verde",
       "rank": "C",
-      "preco": 10000,
+      "preco": 350000,
       "cor": "Verde"
     },
     {
       "nome": "Azul",
       "rank": "B",
-      "preco": 15000,
+      "preco": 500000,
       "cor": "Azul"
     },
     {
       "nome": "Vermelho",
       "rank": "A",
-      "preco": 20000,
+      "preco": 1000000,
       "cor": "Vermelho"
     },
     {
       "nome": "Roxo",
       "rank": "S",
-      "preco": 30000,
+      "preco": 1500000,
       "cor": "Roxo"
     }
   ]

@@ -6,7 +6,7 @@
     "classe": "Ferreiro",
     "classe_avancada": "Ferreiro",
     "personalidade": "????",
-    "historia": "????",
+    "historia": "Um dos ferreiros mais renomados da Coreia do Sul, conhecido por transformar materiais Rank A e S em obras extraordinárias. É pai e mestre de Bilac, responsável por ensiná-lo a respeitar o metal e reconhecer os próprios limites. Vysache reserva sua grande bigorna para trabalhos superiores e itens de nível nacional.",
     "aparencia": "Um coelho antropomórfico de pelagem prateada, com orelhas longas e olhos rubros que brilham como brasas. Veste um avental de couro negro manchado de fuligem e carrega um martelo de forja que parece pesado demais para qualquer criatura comum.",
     "altura": "1,65m",
     "peso": "70kg",
@@ -20,7 +20,7 @@
         "inteligencia": 80,
         "poder_magico": 90
     },
-    "descricao": "Um ferreiro lendário da raça Coelho Vorpal. Possui vasta capacidade de criar itens de grau inferior e superior, desde itens rank E até S. Trabalha com base na afinidade que os players possuem com ele.",
-    "especialidade": "Forja de itens rank E a S",
+    "descricao": "Um ferreiro lendário que vive em Seul. Sua bigorna ecoa pelas ruas, e seus itens são cobiçados por todos os caçadores.",
+    "especialidade": "Forja de armas e armaduras de alto nível",
     "habilidade_especial": "Forja Nacional - Ao atingir 100% de afinidade, pode produzir um item de nível nacional"
 }

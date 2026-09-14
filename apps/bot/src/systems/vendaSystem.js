@@ -79,8 +79,8 @@ class VendaSystem {
     /**
      * Processa a venda de um item
      */
-    static async venderItem(jogadorId, itemNome, quantidade = 1) {
-        return require('./vendaTransactionService').sell(jogadorId, itemNome, quantidade, (item, total) => this.calcularValorVenda(item, total));
+    static async venderItem(jogadorId, itemNome, quantidade = 1, pendingId = null) {
+        return require('./vendaTransactionService').sell(jogadorId, itemNome, quantidade, (item, total) => this.calcularValorVenda(item, total), pendingId);
     }
 
     /**
@@ -157,28 +157,33 @@ _Use *!cancelar venda* para cancelar._`;
      * Obtém informações de venda de um item
      */
     static async getInfoVenda(jogadorId, itemNome) {
-        const itemInventario = await new Promise((resolve) => {
-            db.get(
-                `SELECT i.*, inv.quantidade
+        const rows = await new Promise((resolve, reject) => {
+            db.all(
+                `SELECT i.*, inv.quantidade, inv.equipado
                  FROM inventario_jogador inv
                  JOIN itens i ON inv.item_id = i.id
-                 WHERE inv.jogador_id = ? AND i.nome LIKE ?
-                 LIMIT 1`,
+                 WHERE inv.jogador_id = ? AND LOWER(i.nome) LIKE LOWER(?)`,
                 [jogadorId, `%${itemNome}%`],
-                (err, row) => resolve(row || null)
+                (err, rows) => err ? reject(err) : resolve(rows || [])
             );
         });
+        const exact = rows.filter(item => item.nome.toLowerCase() === String(itemNome).toLowerCase());
+        const matches = exact.length ? exact : rows;
+        if (matches.length > 1) throw new Error('Informe o nome completo do item; há mais de uma correspondência.');
+        const itemInventario = matches[0];
 
         if (!itemInventario) {
             return null;
         }
+        if (Number(itemInventario.equipado) === 1) throw new Error('Desequipe o item antes de vender.');
 
         const valorVenda = this.calcularValorVenda(itemInventario, 1);
+        if (!Number.isSafeInteger(valorVenda) || valorVenda <= 0) throw new Error('Item sem valor comercial válido.');
         const tipo = this.isMineroi(itemInventario.nome) ? "minério" : "item";
 
         return {
             item: itemInventario.nome,
-            quantidade: itemInventario.quantidade,
+            quantidade: Number(itemInventario.quantidade),
             valorUnitario: valorVenda,
             valorTotal: valorVenda * itemInventario.quantidade,
             tipo: tipo,

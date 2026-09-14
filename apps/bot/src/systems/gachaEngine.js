@@ -230,6 +230,7 @@ async function realizarGiros(playerId, bannerId, quantidade, opcoes = {}) {
     const giros = Number(quantidade);
     if (![1, 10].includes(giros)) throw new Error("A quantidade deve ser exatamente 1 ou 10.");
     await database.ensureGachaEngineSchema();
+    await database.ensurePlayerHistorySchema();
     const validacao = await bannerService.validarBanner(bannerId);
     if (!validacao.valido) throw new Error(`Banner invalido: ${validacao.erros.join(" ")}`);
     if (giros === 10 && validacao.permiteDezGiros === false) throw new Error('Este banner ainda não tem uma peça de conjunto configurada para a garantia dos 10 giros. A ADM precisa configurar essa recompensa. Nenhum cristal foi descontado.');
@@ -263,6 +264,11 @@ async function realizarGiros(playerId, bannerId, quantidade, opcoes = {}) {
         for (let i = 0; i < sorteadas.length; i++) {
             const item = sorteadas[i];
             const entrega = entregas[i];
+            await require('../../../../packages/database/reward-receipt').record(database, query, {
+                playerId:jogador.id, origin:'GACHA', reference:`gacha:${operacaoId}:${i + 1}`,
+                rewards:[{name:entrega.duplicata ? 'FRAGMENTOS_INVOCACAO' : item.nome,
+                    quantity:Number(entrega.duplicata ? entrega.fragmentosInvocacaoRecebidos : item.quantidade)}]
+            });
             await query.run("INSERT INTO gacha_resultados (operacao_id, posicao, reward_id, reward_type, referencia_id, quantidade, nome, raridade, estrelas, destaque_ordem, grande_premio, garantido_rank, garantido_conjunto, rank_recompensa, pity_antes, pity_depois, pity_forcado, duplicata, recompensa_entregue, fragmentos_invocacao_recebidos, custo_associado) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", [operacaoId, i + 1, item.id, item.reward_type, item.referencia_id, item.quantidade, item.nome, item.raridade, Number(item.estrelas || 3), item.destaque_ordem, Number(item.grande_premio), item.garantidoRank ? 1 : 0, item.garantidoConjunto ? 1 : 0, item.rankRecompensa, item.pityAntes, item.pityDepois, item.pityForcado ? 1 : 0, entrega.duplicata ? 1 : 0, entrega.recompensaEntregue, entrega.fragmentosInvocacaoRecebidos, 100]);
             resultados.push({ tipo: item.reward_type, nome: item.nome, quantidade: Number(item.quantidade), raridade: item.raridade || null, estrelas: Number(item.estrelas || 3), destaque: item.destaque_ordem == null ? null : Number(item.destaque_ordem), grandePremio: Number(item.grande_premio) === 1, garantidoRank: item.garantidoRank, garantidoConjunto: Boolean(item.garantidoConjunto), rank: item.rankRecompensa, pityAntes: item.pityAntes, pityDepois: item.pityDepois, pityForcado: item.pityForcado, duplicata: entrega.duplicata, recompensaOriginal: { tipo: item.reward_type, nome: item.nome, referenciaId: item.referencia_id, quantidade: Number(item.quantidade) }, recompensaEntregue: entrega.recompensaEntregue, fragmentosInvocacaoRecebidos: entrega.fragmentosInvocacaoRecebidos });
         }

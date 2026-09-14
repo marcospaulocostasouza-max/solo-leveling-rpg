@@ -645,6 +645,17 @@ function getRanksDisponiveis() {
     return Object.keys(ITENS_LOJA).sort();
 }
 
+// Mesmos ingredientes e preços usados pelas receitas dos ferreiros.
+const catalogoForja = require('../database/forja_catalogo.json');
+for (const material of [...catalogoForja.materiais, ...catalogoForja.nucleos.map(n => ({ ...n, nome: `Núcleo ${n.cor}` }))]) {
+    const categorias = ITENS_LOJA[material.rank] ||= {};
+    const materiais = categorias['Material de Forja'] ||= [];
+    if (!materiais.some(item => item.nome === material.nome)) materiais.push({
+        nome: material.nome, preco: material.preco, tipo: 'material', bonus: '',
+        descricao: 'Ingrediente do catálogo de forja de Bilac e Vysache.'
+    });
+}
+
 module.exports = {
     ITENS_LOJA,
     getItensLoja,

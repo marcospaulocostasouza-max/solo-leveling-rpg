@@ -27,16 +27,20 @@ test('espaços antes do pensamento e CRLF não causam nova geração',async()=>{
     }
 });
 test('normalização não inventa marcadores nem aceita conteúdo livre ou formatos misturados',()=>{
-    for(const text of ['Pode falar.','_Ela sorri._ texto sem marcador','> *Fala disfarçada*','**Fala.**','_Ação sem fechamento']){
+    for(const text of ['Pode falar.','_Ela sorri._ texto sem marcador','> *Fala disfarçada*','_Ação sem fechamento']){
         assert.equal(normalizarFormatacao(text),text);assert.ok(!validarFormatacao(normalizarFormatacao(text)));
     }
     assert.equal(normalizarFormatacao('_Ela sorri._ *Olá.*'),'_Ela sorri._\n\n*Olá.*');
+    assert.equal(normalizarFormatacao('**Fala.**'),'*Fala.*');
+    assert.equal(normalizarFormatacao('Ela sorri. "Olá."'),'_Ela sorri._\n\n*"Olá."*');
+    assert.equal(normalizarFormatacao('```markdown\n_Ela sorri._\n**Olá.**\n```'),'_Ela sorri._\n\n*Olá.*');
 });
-test('corrigir quebras não libera idioma, identidade ou cópia inválidos',async()=>{
+test('avisos de idioma identidade e copia nao impedem entrega da cena',async()=>{
     const context={npc:{name:'Alexia Song'},message:'O visitante colocou uma espada muito antiga sobre a mesa.'};
     for(const text of ['_She looked at the hunter and smiled._ *Olá.*','_Ela sorri._ *Meu nome é Helena.*','_O visitante colocou uma espada muito antiga sobre a mesa._']){
         let calls=0;
-        await assert.rejects(guard.generate(async()=>{calls++;return {texto:text};},'Cena',context,{}),{code:'NARRATIVE_INVALID'});
+        const result=await guard.generate(async()=>{calls++;return {texto:text};},'Cena',context,{});
+        assert.equal(result.texto,normalizarFormatacao(text));
         assert.equal(calls,2);
     }
 });

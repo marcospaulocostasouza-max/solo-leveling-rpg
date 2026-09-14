@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
+    "economy:report": "node scripts/economy-report.js",
     "install:all": "npm --prefix apps/bot install && npm --prefix apps/site install",
     "dev": "node scripts/dev.js",
     "start:all": "node scripts/start-all.js",

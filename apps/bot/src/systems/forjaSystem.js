@@ -33,6 +33,8 @@ async function garantirEstruturasForja() {
         await sharedDatabase.run(`CREATE TABLE IF NOT EXISTS npc_afinidade (id ${id}, jogador_id ${jogadorId} NOT NULL, npc_nome TEXT NOT NULL, afinidade INTEGER DEFAULT 0, itens_forjados INTEGER DEFAULT 0, forja_nacional_disponivel INTEGER DEFAULT 0, data_ultima_forja ${data}, UNIQUE(jogador_id, npc_nome))`);
         await sharedDatabase.run(`CREATE TABLE IF NOT EXISTS forja_sessoes (id ${id}, jogador_id ${jogadorId} NOT NULL, npc_nome TEXT NOT NULL, etapa TEXT DEFAULT 'aguardando_materiais', materiais TEXT, combinacao_resultado TEXT, custo INTEGER DEFAULT 0, item_resultado_id ${jogadorId}, data_criacao ${data}, data_atualizacao ${data})`);
         await sharedDatabase.run(`CREATE TABLE IF NOT EXISTS forja_historico (id ${id}, jogador_id ${jogadorId} NOT NULL, npc_nome TEXT NOT NULL, materiais_usados TEXT, item_nome TEXT, item_categoria TEXT, item_rank TEXT, custo INTEGER DEFAULT 0, tipo_forja TEXT DEFAULT 'normal', data ${data})`);
+        if (provider === 'postgres') await sharedDatabase.run('ALTER TABLE forja_sessoes ADD COLUMN IF NOT EXISTS slot_escolhido TEXT');
+        else if (!(await sharedDatabase.all('PRAGMA table_info(forja_sessoes)')).some(c => c.name === 'slot_escolhido')) await sharedDatabase.run('ALTER TABLE forja_sessoes ADD COLUMN slot_escolhido TEXT');
     })().catch(error => {
         estruturasForjaPromise = null;
         throw error;
@@ -432,7 +434,10 @@ class ForjaSystem {
      */
     static async criarSessao(jogadorId, npcNome = "Vysache") {
         await garantirEstruturasForja();
+        if (!this.catalogoIntegrado) this.catalogoIntegrado = this.integrarCatalogo().catch(error => { this.catalogoIntegrado = null; throw error; });
+        await this.catalogoIntegrado;
         return sharedDatabase.transaction(async query => {
+            await query.get(`SELECT id FROM jogadores WHERE id=?${provider === 'postgres' ? ' FOR UPDATE' : ''}`, [jogadorId]);
             await query.run("DELETE FROM forja_sessoes WHERE jogador_id = ? AND etapa != 'concluida'", [jogadorId]);
             await query.run(`INSERT INTO forja_sessoes (jogador_id, npc_nome, etapa, data_criacao, data_atualizacao) VALUES (?, ?, 'aguardando_materiais', datetime('now'), datetime('now'))`, [jogadorId, npcNome]);
             return query.get("SELECT * FROM forja_sessoes WHERE jogador_id = ? AND etapa != 'concluida' ORDER BY id DESC LIMIT 1", [jogadorId]);
@@ -452,7 +457,7 @@ class ForjaSystem {
      */
     static async atualizarSessao(sessaoId, dados) {
         await garantirEstruturasForja();
-        const permitidos = new Set(["npc_nome", "etapa", "materiais", "combinacao_resultado", "custo", "item_resultado_id"]);
+        const permitidos = new Set(["npc_nome", "etapa", "materiais", "combinacao_resultado", "custo", "item_resultado_id", "slot_escolhido"]);
         const entradas = Object.entries(dados || {}).filter(([chave]) => permitidos.has(chave));
         if (!entradas.length) return false;
         const campos = entradas.map(([chave]) => `${chave} = ?`);
@@ -560,7 +565,7 @@ class ForjaSystem {
 
         if (combinacoesEncontradas.length === 0) {
             return {
-                erro: "Vysache analisa os materiais e balança a cabeça.\n\n\"Hmmm... Esses materiais não formam nenhuma combinação que eu conheça. Tente trazer materiais diferentes.\"",
+                erro: "Esses materiais não formam nenhuma combinação do catálogo. Tente apresentar materiais diferentes.",
                 materiais_recebidos: materiais
             };
         }
@@ -598,6 +603,9 @@ class ForjaSystem {
         for (const [chave, dados] of Object.entries(materiaisJogador)) {
             const chaveLower = chave.toLowerCase().trim();
             const chaveNorm = normalizar(chaveLower);
+            const cores = { e:'branco', d:'amarelo', c:'verde', b:'azul', a:'vermelho', s:'roxo' };
+            const rankNucleo = chaveNorm.match(/^nucleo de monstro rank ([edcbas])$/)?.[1];
+            if (rankNucleo && (nomeNorm === `nucleo ${cores[rankNucleo]}` || nomeNorm === cores[rankNucleo])) return {nome:chave,quantidade:dados};
 
             // Match exato (ignorando acentos e capitalização)
             if (chaveNorm === nomeNorm) {
@@ -792,9 +800,9 @@ class ForjaSystem {
                 if (chave === "material" || chave === "material") {
                     materialAtual = valor;
                 } else if (chave === "quantidade" || chave === "qtd") {
-                    const qtd = parseInt(valor) || 1;
+                    const qtd = Number(valor); if (!Number.isSafeInteger(qtd) || qtd <= 0) throw new Error('Quantidade de material invalida.');
                     if (materialAtual) {
-                        materiais[materialAtual] = qtd;
+                        materiais[materialAtual] = (materiais[materialAtual] || 0) + qtd;
                         materialAtual = null;
                     }
                 }
@@ -810,9 +818,9 @@ class ForjaSystem {
                 const partes = linhaLimpa.split(":");
                 if (partes.length >= 2) {
                     const nome = partes[0].trim();
-                    const qtd = parseInt(partes[1].trim()) || 1;
+                    const qtd = Number(partes[1].trim()); if (!Number.isSafeInteger(qtd) || qtd <= 0) throw new Error('Quantidade de material invalida.');
                     if (nome && !nome.toLowerCase().includes("material") && !nome.toLowerCase().includes("quantidade")) {
-                        materiais[nome] = qtd;
+                        materiais[nome] = (materiais[nome] || 0) + qtd;
                     }
                 }
             }
@@ -1192,177 +1200,23 @@ class ForjaSystem {
     /**
      * Executa a forja do item
      */
-    static async executarForja(jogadorId, combinacao, jogador, npcNome = "Vysache") {
-        if (!combinacao || !combinacao.materiais_necessarios) {
-            return { erro: "A combinação de materiais desta forja é inválida." };
-        }
-
-        const rank = String(combinacao.rank || "E").toUpperCase();
-        const ferreiro = FERREIROS[npcNome];
-        if (!ferreiro) return { erro: "Ferreiro não reconhecido pelo Sistema." };
-        if (!ferreiro.ranks.includes(rank)) {
-            return npcNome === "Bilac" && ["A", "S"].includes(rank)
-                ? { encaminhar: "Vysache", rank, erro: `Estes materiais produzirão um item Rank ${rank}. Bilac não possui autorização para concluir uma obra desse nível; leve a recomendação ao pai dele, Vysache.` }
-                : { encaminhar: "Bilac", rank, erro: `Esta é uma forja Rank ${rank}. Vysache reserva sua bigorna para obras Rank A, S e Nacionais; procure Bilac para itens Rank E a B.` };
-        }
-
-        // A ficha enviada na conversa serve para Vysache identificar a receita.
-        // A disponibilidade e o consumo sempre usam o inventário real do jogador.
-        const reservaMateriais = await this.prepararConsumoMateriais(jogadorId, combinacao.materiais_necessarios);
-        if (!reservaMateriais.sucesso) {
-            return {
-                erro: `Materiais insuficientes no inventário: ${reservaMateriais.faltantes.join(", ")}.`,
-                faltantes: reservaMateriais.faltantes
-            };
-        }
-
-        // Verificar saldo
-        const afinidadeInfo = await this.getAfinidade(jogadorId, npcNome);
-        const custoMestre = Math.floor(Number(combinacao.custo || 0) * ferreiro.multiplicadorCusto);
-        const custoFinal = this.calcularCustoFinal(custoMestre, afinidadeInfo.afinidade);
-
-        const saldo = await EconomySystem.getSaldo(jogadorId);
-        if (saldo < custoFinal) {
-            return {
-                erro: `Saldo insuficiente! Você precisa de ${custoFinal} Wons para esta forja.`,
-                custo: custoFinal,
-                saldo: saldo
-            };
-        }
-
-        // Gerar o item
-        // Se a combinação veio do catálogo de forja (com itemCatalogo), gerar item do catálogo com +30%
-        let dadosItem;
-        if (combinacao.itemCatalogo) {
-            dadosItem = this.gerarItemDoCatalogo(combinacao.itemCatalogo, npcNome);
-        } else {
-            dadosItem = this.gerarItemForja(combinacao, jogador);
-            dadosItem.efeito = `${dadosItem.efeito} Forjado por ${npcNome}.`;
-        }
-
-        // Debitar o custo
-        const debitado = await EconomySystem.removerWon(jogadorId, custoFinal, `Forja por ${npcNome}: ${dadosItem.nome}`);
-
-        if (!debitado) {
-            return { erro: "Erro ao debitar o valor da forja." };
-        }
-
-        const materiaisConsumidos = await this.consumirMateriaisReservados(reservaMateriais.consumos);
-        if (!materiaisConsumidos) {
-            await EconomySystem.adicionarWon(jogadorId, custoFinal, "Reembolso: materiais indisponíveis para forja");
-            return { erro: "Os materiais não estavam mais disponíveis no inventário. Seus Wons foram reembolsados." };
-        }
-
-        // Criar item no banco e adicionar ao inventário
-        let resultadoItem;
-        try {
-            resultadoItem = await this.criarItemNoBanco(jogadorId, dadosItem);
-        } catch (erro) {
-            resultadoItem = null;
-        }
-
-        if (!resultadoItem) {
-            // Reembolsar se falhar
-            await EconomySystem.adicionarWon(jogadorId, custoFinal, "Reembolso de forja falha");
-            await this.restaurarMateriais(jogadorId, reservaMateriais.consumos);
-            return { erro: "Erro ao criar o item. Seus Wons e materiais foram reembolsados." };
-        }
-
-        // Aumentar afinidade
-        const afinidadeResult = await this.aumentarAfinidade(jogadorId, npcNome);
-
-        // Registrar histórico
-        await this.registrarHistorico(
-            jogadorId, npcNome,
-            this.resumirMateriaisConsumidos(reservaMateriais.consumos),
-            dadosItem.nome, dadosItem.categoria, dadosItem.rank,
-            custoFinal, "normal"
-        );
-
-        return {
-            sucesso: true,
-            item: dadosItem,
-            itemId: resultadoItem.itemId,
-            custo: custoFinal,
-            afinidade: afinidadeResult,
-            materiaisConsumidos: this.resumirMateriaisConsumidos(reservaMateriais.consumos)
-        };
+    static async executarForja(jogadorId, combinacao, jogador, npcNome = "Vysache", sessaoId = null) {
+        await garantirEstruturasForja();
+        const session = sessaoId ? {id:sessaoId} : await this.getSessao(jogadorId);
+        return require('./forjaTransactionService').forge(this,jogadorId,npcNome,session?.id);
     }
-
-    /**
-     * Executa a Forja Nacional
-     */
     static async executarForjaNacional(jogadorId, jogador, npcNome = "Vysache") {
-        // Verificar se a forja nacional está disponível
-        const afinidadeInfo = await this.getAfinidade(jogadorId, npcNome);
-
-        if (afinidadeInfo.afinidade < 100 || afinidadeInfo.forja_nacional_disponivel < 1) {
-            return {
-                erro: "A Forja Nacional não está disponível. Você precisa atingir 100% de afinidade com Vysache."
-            };
-        }
-
-        // Custo da forja nacional
-        const custoNacional = 500000;
-        const saldo = await EconomySystem.getSaldo(jogadorId);
-
-        if (saldo < custoNacional) {
-            return {
-                erro: `Saldo insuficiente! A Forja Nacional custa ${custoNacional} Wons.`,
-                custo: custoNacional,
-                saldo: saldo
-            };
-        }
-
-        // Gerar item nacional
-        const dadosItem = this.gerarItemNacional(jogador);
-
-        // Debitar custo
-        const debitado = await EconomySystem.removerWon(jogadorId, custoNacional, `Forja Nacional por ${npcNome}: ${dadosItem.nome}`);
-
-        if (!debitado) {
-            return { erro: "Erro ao debitar o valor da forja nacional." };
-        }
-
-        // Criar item no banco
-        const resultadoItem = await this.criarItemNoBanco(jogadorId, dadosItem);
-
-        if (!resultadoItem) {
-            await EconomySystem.adicionarWon(jogadorId, custoNacional, "Reembolso de forja nacional falha");
-            return { erro: "Erro ao criar o item nacional. Você foi reembolsado." };
-        }
-
-        // Consumir a forja nacional disponível
-        await this.setAfinidade(
-            jogadorId, npcNome,
-            afinidadeInfo.afinidade,
-            afinidadeInfo.itens_forjados,
-            0 // forja_nacional_disponivel = 0 (consumido)
-        );
-
-        // Registrar histórico
-        await this.registrarHistorico(
-            jogadorId, npcNome,
-            { "Materiais Especiais": "N/A" },
-            dadosItem.nome, dadosItem.categoria, "S (Nacional)",
-            custoNacional, "nacional"
-        );
-
-        return {
-            sucesso: true,
-            item: dadosItem,
-            itemId: resultadoItem.itemId,
-            custo: custoNacional
-        };
+        await garantirEstruturasForja();
+        return require('./forjaTransactionService').forge(this,jogadorId,npcNome,null,true);
+    }
+    static async integrarCatalogo() {
+        await garantirEstruturasForja();
+        return require('./forjaTransactionService').syncCatalog(this);
+    }
+    static async getSlotsVazios(jogadorId) {
+        return require('./forjaTransactionService').emptySlots(sharedDatabase,jogadorId);
     }
 
-    // =====================================
-    // CONSULTAS
-    // =====================================
-
-    /**
-     * Lista o histórico de forjas do jogador
-     */
     static async getHistorico(jogadorId, limite = 10, npcNome = null) {
         await garantirEstruturasForja();
         return npcNome

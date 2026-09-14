@@ -765,14 +765,15 @@ _Após concluir a Dungeon, use *!concluir Dungeon* para receber as recompensas._
             }
             participantesIds.add(participante.id);
 
-            // Verificar rank (players de rank maior que a dungeon não podem participar)
+            // O dono pode terminar sua dungeon antiga após subir de rank.
+            // A ficha e a chave preservam dificuldade, recompensas e usos.
             const rankDungeon = ficha.dungeon_rank || "E";
             const rankParticipante = participante.rank || "E";
             const ordemRanks = ["E", "D", "C", "B", "A", "S"];
             const idxDungeon = ordemRanks.indexOf(rankDungeon);
             const idxParticipante = ordemRanks.indexOf(rankParticipante);
 
-            if (idxParticipante > idxDungeon) {
+            if (idxParticipante > idxDungeon && Number(participante.id) !== Number(jogador.id)) {
                 validacoes.push(`❌ *${participante.nome}* - Rank ${rankParticipante} é superior ao rank da dungeon (${rankDungeon}).`);
                 continue;
             }

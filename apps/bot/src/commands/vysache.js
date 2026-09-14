@@ -1,4 +1,9 @@
-const MessageService = require("../core/messageService");
+const rawMessageService = require("../core/messageService");
+const MessageService = { send: async data => {
+    const speaker = data.text?.match(/\*(Bilac|Vysache):/i)?.[1];
+    const name = speaker ? (speaker.toLowerCase() === 'bilac' ? 'Bilac' : 'Vysache') : /bilac/i.test(data.message?.body || '') ? 'Bilac' : 'Vysache';
+    return rawMessageService.send({...data, text: require('../utils/messageFormatter').formatarMensagem({nome:name},data.text)});
+}};
 
 /**
  * COMANDO: !Olá Vysache / !ola vysache
@@ -32,7 +37,6 @@ function nomeFerreiroDoTexto(texto) {
 }
 
 async function obterSessao(jogador, numero) {
-    if (sessoesVysache[numero]) return sessoesVysache[numero];
     const persistida = await ForjaSystem.getSessao(jogador.id);
     if (!persistida) return null;
     sessoesVysache[numero] = {
@@ -88,7 +92,7 @@ module.exports = async (msg) => {
             ? `*Bilac:* "Ora, uma encomenda? Mostre o que trouxe. Se o metal for grande demais para minha bigorna, eu mesmo o mando falar com meu pai."\n\n`
             : `*Vysache:* "Bilac o encaminhou ou você trouxe algo digno da minha bigorna? Fale."\n\n`;
         mensagem += `${templates.divisor()}\n`;
-        mensagem += `> *Afinidade:* ${afinidade.afinidade}%\n`;
+        mensagem += `> *Afinidade de Oficina:* ${afinidade.afinidade}%\n`;
         mensagem += `> *Itens Forjados:* ${afinidade.itens_forjados}\n`;
 
         if (npcNome === "Vysache" && afinidade.forja_nacional_disponivel) {
@@ -139,7 +143,7 @@ module.exports = async (msg) => {
         mensagem += `${templates.divisor()}\n`;
         mensagem += `_Envie a ficha preenchida e eu analisarei as combinações possíveis._\n`;
         mensagem += `_Na confirmação, os materiais serão conferidos e consumidos diretamente do seu inventário._\n`;
-        mensagem += `_Consulte *!vysache combinacoes* para ver materiais conhecidos._`;
+        mensagem += `_Consulte *!${sessao.npcNome.toLowerCase()} combinacoes* para ver materiais conhecidos._`;
 
         await MessageService.send({ message: msg, text: mensagem });
         return;
@@ -183,14 +187,13 @@ module.exports = async (msg) => {
         const combinacao = JSON.parse(sessaoBanco.combinacao_resultado);
 
         // Executar a forja
-        const resultado = await ForjaSystem.executarForja(jogador.id, combinacao, jogador, sessao.npcNome);
+        const resultado = await ForjaSystem.executarForja(jogador.id, combinacao, jogador, sessao.npcNome, sessaoBanco.id);
 
         if (resultado.erro) {
             return MessageService.send({ message: msg, text: `*${sessao.npcNome}:* "${resultado.erro}"` });
         }
 
         // Encerrar sessão
-        await ForjaSystem.encerrarSessao(sessaoBanco.id);
         delete sessoesVysache[numero];
 
         // Construir mensagem do item forjado
@@ -369,7 +372,7 @@ module.exports = async (msg) => {
         const npcNome = nomeFerreiroDoTexto(texto);
         const npc = require(`../npc/data/${npcNome.toLowerCase()}.json`);
 
-        let mensagem = `*═══ FICHA DE VYSACHE ═══*\n`;
+        let mensagem = `*═══ FICHA DE ${npcNome.toUpperCase()} ═══*\n`;
         mensagem += `${templates.linha()}\n\n`;
         mensagem += `${templates.secao("IDENTIDADE")}\n`;
         mensagem += `> *Nome:* ${npc.nome}\n`;

@@ -9,6 +9,7 @@ const MessageService = require("../core/messageService");
 
 const db = require("../core/database");
 const { ITENS_LOJA } = require("../utils/lojaItens");
+const cores = require('../../../../packages/datasets/monster-cores');
 
 // Função para normalizar texto (remover acentos)
 function normalizarTexto(texto) {
@@ -72,7 +73,8 @@ _Verifique o nome digitado ou use !abrir loja para ver os itens disponíveis._
         ` });
     }
     
-    // Verificar nivel do jogador vs requisito do item (se houver)
+    try { cores.assertCanBuy(jogador,itemEncontrado.item); }
+    catch(error) { return MessageService.send({message:msg,text:error.message}); }
     // Verificar se já existe compra pendente
     const compraPendente = await new Promise((resolve) => {
         db.get(
@@ -216,6 +218,12 @@ async function confirmarCompra(msg, numero) {
             return MessageService.send({ message: msg, text: "*✖ Jogador não encontrado.*" });
         }
         
+        cores.assertCanBuy(jogador,{nome:compra.item_nome});
+        const nucleoRank=cores.coreRank({nome:compra.item_nome});
+        if(nucleoRank && Number(compra.item_preco)!==cores.prices[nucleoRank]) {
+            await new Promise((resolve,reject)=>db.run('DELETE FROM compras_pendentes WHERE numero=?',[numero],error=>error?reject(error):resolve()));
+            return MessageService.send({message:msg,text:'O preço deste núcleo foi atualizado. Use !comprar novamente para confirmar o novo valor.'});
+        }
         // Verificar saldo
         const saldoAtual = Number(jogador.won || 0);
         const precoItem = Number(compra.item_preco);
@@ -319,7 +327,7 @@ _Use !equipar <nome do item> para equipar._
         
     } catch (error) {
         console.error("Erro ao confirmar compra:", error);
-        return MessageService.send({ message: msg, text: "*✖ Erro ao confirmar compra. Tente novamente.*" });
+        return MessageService.send({ message: msg, text: error.message || "*✖ Erro ao confirmar compra. Tente novamente.*" });
     }
 }
 

@@ -1,4 +1,9 @@
-const MessageService = require("../core/messageService");
+const rawMessageService = require("../core/messageService");
+const MessageService = { send: async data => {
+    const speaker = data.text?.match(/\*(Bilac|Vysache):/i)?.[1];
+    const name = speaker ? (speaker.toLowerCase() === 'bilac' ? 'Bilac' : 'Vysache') : /bilac/i.test(data.message?.body || '') ? 'Bilac' : 'Vysache';
+    return rawMessageService.send({...data, text: require('../utils/messageFormatter').formatarMensagem({nome:name},data.text)});
+}};
 
 /**
  * RECONHECEDOR DE FICHA DE MATERIAIS
@@ -36,7 +41,7 @@ function getSessoesVysache() {
  */
 function pareceFichaMateriais(texto) {
     const textoLower = texto.toLowerCase();
-    return textoLower.includes("material:") && textoLower.includes("quantidade:");
+    return (textoLower.includes("material:") && textoLower.includes("quantidade:")) || /^\s*[^:\n]+:\s*\d+\s*$/m.test(texto);
 }
 
 /**
@@ -48,7 +53,8 @@ async function processarFichaMateriais(msg) {
 
     // Verificar se há sessão ativa do Vysache
     const sessoes = getSessoesVysache();
-    let sessao = sessoes[numero];
+    delete sessoes[numero];
+    let sessao;
 
     if (!sessao) {
         const jogadorPersistido = await JogadorCore.buscarPorNumero(numero);
@@ -79,27 +85,50 @@ async function processarFichaMateriais(msg) {
     }
 
     // Analisar os materiais
-    const analise = ForjaSystem.analisarMateriais(texto);
+    let analise;
+    try { analise = ForjaSystem.analisarMateriais(texto); }
+    catch (error) { await MessageService.send({message:msg,text:`*${sessao.npcNome}:* ${error.message}`}); return true; }
 
     if (analise.erro) {
-        await MessageService.send({ message: msg, text: `*Vysache:* "${analise.erro}"` });
+        await MessageService.send({ message: msg, text: `*${sessao.npcNome}:* "${analise.erro}"` });
         return true;
     }
 
     // Materiais válidos mas sem combinação
     if (!analise.sucesso) {
-        await MessageService.send({ message: msg, text: `*Vysache:* "${analise.erro || "Não consegui encontrar uma combinação com esses materiais."}"` });
+        await MessageService.send({ message: msg, text: `*${sessao.npcNome}:* "${analise.erro || "Não consegui encontrar uma combinação com esses materiais."}"` });
         return true;
     }
 
     // Combinações encontradas!
-    const combinacoes = analise.combinacoes;
+    let combinacoes = analise.combinacoes;
+    if (sessao.npcNome === 'Bilac') {
+        const vazios = await ForjaSystem.getSlotsVazios(jogador.id);
+        const inventory = require('../systems/inventorySystem');
+        const locais = combinacoes.filter(c => ['E','D','C','B'].includes(c.rank));
+        const banco = await ForjaSystem.getSessao(jogador.id);
+        if (locais.length || banco.slot_escolhido) {
+            let slot = banco.slot_escolhido;
+            if (!slot) {
+                const slots = [...new Set(locais.map(c => inventory.getSlotDoItem({categoria:c.itemCatalogo?.slot || c.categoria})))].filter(s => vazios.includes(s));
+                slot = require('../systems/bilacChoice').chooseSlot(slots, jogador);
+                if (slot) await ForjaSystem.atualizarSessao(sessao.sessaoId, {slot_escolhido:slot});
+            }
+            combinacoes = locais.filter(c => inventory.getSlotDoItem({categoria:c.itemCatalogo?.slot || c.categoria}) === slot);
+            if (!combinacoes.length) {
+                await MessageService.send({message:msg,text:`*Bilac:* ${slot ? `Já decidi trabalhar no slot ${slot}. Estes materiais não servem para essa encomenda.` : 'Não há slot disponível para estes materiais.'} Apresente outros materiais com *!preciso de um item*. A decisão permanece nesta encomenda.`});
+                return true;
+            }
+        }
+    }
 
     // Se houver apenas uma combinação, usar ela
     // Se houver múltiplas, Vysache escolhe a melhor (ou a primeira)
     let combinacaoEscolhida;
 
-    if (combinacoes.length === 1) {
+    if (sessao.npcNome === 'Bilac') {
+        combinacaoEscolhida = require('../systems/bilacChoice').chooseRecipe(combinacoes, jogador);
+    } else if (combinacoes.length === 1) {
         combinacaoEscolhida = combinacoes[0];
     } else {
         // Vysache escolhe a combinação de maior rank disponível
@@ -161,17 +190,18 @@ async function processarFichaMateriais(msg) {
     // Mostrar todas as combinações possíveis
     if (combinacoes.length > 1) {
         mensagem += `> *Combinações possíveis:*\n`;
-        combinacoes.forEach((c, i) => {
+        combinacoes.slice(0, 10).forEach((c, i) => {
             const mats = Object.entries(c.materiais_necessarios)
                 .map(([m, q]) => `${m} x${q}`)
                 .join(", ");
             mensagem += `  ${i + 1}. *${c.itemCatalogo ? c.itemCatalogo.nome : c.categoria}* [${c.rank}] (${mats})\n`;
         });
+        if (combinacoes.length > 10) mensagem += `> Mais ${combinacoes.length - 10} alternativas no catálogo.\n`;
         mensagem += `\n`;
     }
 
     mensagem += `${templates.divisor()}\n`;
-    mensagem += `*COMBINAÇÃO ESCOLHIDA POR VYSACHE*\n`;
+    mensagem += `*COMBINAÇÃO ESCOLHIDA POR ${npcNome.toUpperCase()}*\n`;
 
     // Se veio do catálogo, mostrar o item específico com atributos +30%
     if (combinacaoEscolhida.itemCatalogo) {
@@ -183,7 +213,7 @@ async function processarFichaMateriais(msg) {
         mensagem += `> *Rank:* ${itemCat.rank}\n`;
         mensagem += `> *Descrição:* ${itemCat.descricao}\n`;
         mensagem += `${templates.divisor()}\n`;
-        mensagem += `*ATRIBUTOS (com +30% do Vysache):*\n`;
+        mensagem += `*ATRIBUTOS (com +${Math.round((bonusVysache - 1) * 100)}% de ${npcNome}):*\n`;
         mensagem += `> ${itemCat.atributo1}: +${Math.floor(itemCat.valor1 * bonusVysache)}`;
         if (itemCat.atributo2 && itemCat.valor2) {
             mensagem += ` | ${itemCat.atributo2}: +${Math.floor(itemCat.valor2 * bonusVysache)}`;

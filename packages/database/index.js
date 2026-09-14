@@ -753,12 +753,14 @@ async function purchaseItem(playerId, itemId, quantity = 1) {
       await query.run(`INSERT OR IGNORE INTO itens (nome, categoria, tier, descricao, arma, consumivel, efeito, forca_bonus, resistencia_bonus, velocidade_bonus, sentidos_bonus, inteligencia_bonus, poder_magico_bonus, preco, valor) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`, [legacy.nome, legacy.categoria, legacy.rank, legacy.descricao, legacy.arma, legacy.consumivel, legacy.bonus, legacy.forca_bonus, legacy.resistencia_bonus, legacy.velocidade_bonus, legacy.sentidos_bonus, legacy.inteligencia_bonus, legacy.poder_magico_bonus, legacy.preco, legacy.preco]);
       item = await query.get("SELECT * FROM itens WHERE nome = ?", [legacy.nome]);
     }
-    const player = await query.get("SELECT id, won FROM jogadores WHERE id = ?", [playerId]);
+    const player = await query.get("SELECT id, won, rank FROM jogadores WHERE id = ?" + (provider === 'postgres' ? ' FOR UPDATE' : ''), [playerId]);
     if (!item || !player) throw new Error("Item ou jogador não encontrado.");
     // Um item legacy pode ja existir no banco por ter sido comprado no bot,
     // mas sem preco/valor preenchidos. Nesse caso o catalogo continua sendo
     // a fonte autoritativa do preco; nunca transforme a compra em gratuita.
-    const unitPrice = Number(legacy ? legacy.preco : (item.preco ?? item.valor ?? 0));
+    const cores = require('../datasets/monster-cores');
+    cores.assertCanBuy(player,item);
+    const unitPrice = Number(cores.coreRank(item) ? cores.prices[cores.coreRank(item)] : legacy ? legacy.preco : (item.preco ?? item.valor ?? 0));
     const currentWon = Number(player.won);
     const price = unitPrice * quantity;
     if (!Number.isSafeInteger(price) || price < 0) throw new Error("Preco invalido.");

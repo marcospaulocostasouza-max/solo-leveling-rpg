@@ -1,0 +1,3 @@
+﻿const {test}=require('node:test'),assert=require('node:assert/strict');const {chooseSlot,chooseRecipe}=require('../src/systems/bilacChoice');
+test('Bilac sorteia com preferencia de classe sem excluir outros slots',()=>{assert.equal(chooseSlot(['Arma 1','Corpo'],{classe:'Lutador'},()=>0),'Arma 1');assert.equal(chooseSlot(['Arma 1','Corpo'],{classe:'Lutador'},()=>.99),'Corpo');assert.equal(chooseSlot([],{classe:'Lutador'}),null);});
+test('estilo favorece receita compativel sem impedir escolha aleatoria',()=>{const r=[{itemCatalogo:{nome:'Espada de Ferro'}},{itemCatalogo:{nome:'Machado de Ferro'}}];assert.equal(chooseRecipe(r,{estilo_luta:'Espadas'},()=>0),r[0]);assert.equal(chooseRecipe(r,{estilo_luta:'Espadas'},()=>.99),r[1]);});

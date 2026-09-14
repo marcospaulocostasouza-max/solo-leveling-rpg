@@ -234,7 +234,7 @@ async function realizarGiros(playerId, bannerId, quantidade, opcoes = {}) {
     if (!validacao.valido) throw new Error(`Banner invalido: ${validacao.erros.join(" ")}`);
     if (giros === 10 && validacao.permiteDezGiros === false) throw new Error('Este banner ainda não tem uma peça de conjunto configurada para a garantia dos 10 giros. A ADM precisa configurar essa recompensa. Nenhum cristal foi descontado.');
     if (!bannerService.estaNoPeriodo(validacao.banner, opcoes.agora || new Date())) throw new Error("Banner indisponivel no momento.");
-    const pool = await Promise.all(validacao.pool.filter(item => Number(item.ativo ?? 1) === 1).map(resolverRecompensa));
+    const pool = await Promise.all(validacao.pool.filter(item => Number(item.ativo ?? 1) === 1).map(item => resolverRecompensa(item)));
     const jogadorAntes = await database.get("SELECT * FROM jogadores WHERE id = ?", [Number(playerId)]);
     if (!jogadorAntes) throw new Error("Jogador nao encontrado.");
     const rank = normalizarRank(jogadorAntes.rank);

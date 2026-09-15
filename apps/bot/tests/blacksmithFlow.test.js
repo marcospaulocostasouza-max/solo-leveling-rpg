@@ -25,6 +25,19 @@ test("cada ferreiro aplica seu próprio bônus ao item", () => {
     assert.equal(ForjaSystem.gerarItemDoCatalogo({ ...item, rank: "A" }, "Vysache").bonus.forca, 130);
 });
 
+test("materiais iguais somam atributo e investimento e núcleo alteram a qualidade", () => {
+    const base = { nome: "Teste", slot: "Cabeça", rank: "C", descricao: "Teste", atributo1: "Força", valor1: 29, atributo2: "Força", valor2: 20 };
+    const baixo = ForjaSystem.gerarItemDoCatalogo({ ...base, preco: 48000, nucleoRank: "E" }, "Bilac");
+    const alto = ForjaSystem.gerarItemDoCatalogo({ ...base, preco: 160000, nucleoRank: "C" }, "Bilac");
+    assert.ok(baixo.bonus.forca > 22);
+    assert.ok(alto.bonus.forca > baixo.bonus.forca);
+});
+
+test("Bilac cobra 50% adicional antes do desconto de afinidade", () => {
+    assert.equal(ForjaSystem.calcularCustoFerreiro(1000, "Bilac", 0), 1500);
+    assert.equal(ForjaSystem.calcularCustoFerreiro(1000, "Bilac", 100), 1050);
+});
+
 test("Bilac está no catálogo narrativo e os 75 IDs são únicos", () => {
     const npcs = NPCManager.listarNPCs();
     assert.equal(npcs.length, 75);

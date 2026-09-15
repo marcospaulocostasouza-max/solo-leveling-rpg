@@ -55,6 +55,15 @@ function registrarTodosComandos() {
             categoria: "Dungeons"
         },
         {
+            nome: "!criar guilda / !criar missão / !criar dungeon instanciada",
+            funcao: "Cria Guildas, missões e Dungeons instanciadas por questionário",
+            arquivo: "criarAdministrativoGuiado.js",
+            descricao: "Identifica os destinos, apresenta a ficha final e grava somente após confirmação",
+            dependencias: ["../../systems/creationWizardService.js", "../../systems/guidedCreationPublishers.js"],
+            ativo: true,
+            categoria: "Administração"
+        },
+        {
             nome: "!Conjuntos / !Conjunto <nome> / !Conjunto Criar",
             funcao: "Lista, consulta e cria conjuntos de equipamentos",
             arquivo: "conjunto.js",
@@ -616,6 +625,15 @@ function registrarTodosComandos() {
             arquivo: "verLoja.js",
             descricao: "Mostra armas por rank. Use !arma 1 <rank> ou !arma 2 <rank> (1FP/2FP)",
             dependencias: ["../../core/database.js", "../../systems/economySystem.js"],
+            ativo: true,
+            categoria: "RPG"
+        },
+        {
+            nome: "!loja armas simples / !armas simples",
+            funcao: "Exibe todas as armas iniciais por 5.000 Won",
+            arquivo: "lojaArmasSimples.js",
+            descricao: "Lista o catálogo de armas simples e orienta a compra pelo fluxo de confirmação",
+            dependencias: ["../../database/itens.json", "../../utils/lojaItens.js"],
             ativo: true,
             categoria: "RPG"
         },

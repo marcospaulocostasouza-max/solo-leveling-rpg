@@ -16,10 +16,13 @@ const DUNGEON = [
   ["objetivo", "Qual é o *objetivo de conclusão*?"], ["boss", "Qual é o *Boss*? Escreva Nenhum se não houver."], ["participantes", "Qual é o *limite de participantes*?"], ["xp", "Qual é a recompensa de *XP*?"],
   ["won", "Qual é a recompensa em *Won*?"], ["itens", "Quais são os *itens de recompensa*? Escreva Nenhum se não houver."], ["regras", "Quais são as *regras específicas*? Escreva Regras gerais se não houver."]
 ];
+const GUILD = [["nome","Qual é o *nome da Guilda*?"],["lider","Qual é o *nome exato do jogador líder*?"],["passivas","Quais são as *passivas iniciais*? Responda Nenhuma se não houver."]];
+const MISSION = [["jogador","Quem receberá a missão? Envie o *nome exato do jogador* ou responda *Todos* para distribuir a todos com ficha aprovada."],["nome","Qual é o *nome da missão*?"],["tipo","Qual é o *tipo* da missão?"],["rank","Qual é o *Rank*? Use E, D, C, B, A ou S."],["descricao","Envie a *descrição narrativa* da missão."],["objetivo","Qual é o *objetivo* que será avaliado pela ADM?"],["quantidade","Qual é a *quantidade necessária* para concluir o objetivo?"],["xp","Qual é a recompensa de *XP*?"],["won","Qual é a recompensa em *Won*?"],["cristais","Qual é a recompensa em *Cristais*?"],["item","Qual é o *item de recompensa*? Responda Nenhum se não houver."]];
+const INSTANCE_DUNGEON = [["nome","Qual é o *nome da nova Dungeon instanciada*?"],["rank","Qual é o *Rank*? Use E, D, C, B, A ou S."],["tema","Qual é o *tema ou ambiente*?"],["elemento","Qual é o *elemento predominante*?"],["entrada","Descreva a *entrada e ambientação inicial* da Dungeon."],["monstro","Qual é o *nome do monstro comum*?"],["monstroDescricao","Descreva esse *monstro comum*."],["boss","Qual é o *nome do Boss*?"],["bossDescricao","Descreva o *Boss*."],["bossHabilidades","Liste as *habilidades do Boss*, separadas por vírgula."],["xp","Qual é a recompensa em *XP*?"],["won","Qual é a recompensa em *Won*?"]];
 
 let ready;
 async function ensure() { if (!ready) ready = database.run("CREATE TABLE IF NOT EXISTS admin_creation_sessions (administrador TEXT PRIMARY KEY,tipo TEXT NOT NULL,etapa INTEGER NOT NULL DEFAULT 0,dados TEXT NOT NULL,status TEXT NOT NULL DEFAULT 'COLETANDO',atualizado_em TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP)"); return ready; }
-const questions = type => type === "BANNER" ? BANNER : DUNGEON;
+const questions = type => ({BANNER,DUNGEON,GUILD,MISSION,INSTANCE_DUNGEON}[type] || DUNGEON);
 async function get(actor) { await ensure(); const row = await database.get("SELECT * FROM admin_creation_sessions WHERE administrador=?", [actor]); return row ? { ...row, dados: JSON.parse(row.dados || "{}") } : null; }
 async function save(actor, state) { await ensure(); await database.run("INSERT INTO admin_creation_sessions(administrador,tipo,etapa,dados,status,atualizado_em) VALUES(?,?,?,?,?,CURRENT_TIMESTAMP) ON CONFLICT(administrador) DO UPDATE SET tipo=excluded.tipo,etapa=excluded.etapa,dados=excluded.dados,status=excluded.status,atualizado_em=CURRENT_TIMESTAMP", [actor, state.tipo, state.etapa, JSON.stringify(state.dados || {}), state.status]); }
 async function clear(actor) { await ensure(); await database.run("DELETE FROM admin_creation_sessions WHERE administrador=?", [actor]); }
@@ -30,6 +33,15 @@ function validateDungeon(data) { const errors = []; for (const key of ["nome", "
 
 async function answer(actor, text) {
   const state = await get(actor); if (!state) return null;
+  if (state.status === "AGUARDANDO_CONFIRMACAO") {
+    const value=String(text||"").trim();
+    if (/^(nao|n[aã]o|n)$/i.test(value)) { await clear(actor); return {consumed:true,text:"Criação cancelada. Nada foi gravado."}; }
+    if (!/^(sim|s)$/i.test(value)) return {consumed:true,text:"Responda *sim* para criar ou *não* para cancelar."};
+    const publishers=require("./guidedCreationPublishers");
+    const method={GUILD:"guild",MISSION:"mission",INSTANCE_DUNGEON:"instanceDungeon"}[state.tipo];
+    try { const response=await publishers[method](state.dados);await clear(actor);return {consumed:true,text:`[+] ${response}`}; }
+    catch(error){return {consumed:true,text:`[!] ${error.message}\n\nOs dados foram preservados. Responda *sim* para tentar novamente ou *não* para cancelar.`};}
+  }
   if (state.status === "AGUARDANDO_ATIVACAO") {
     const value = String(text || "").trim();
     if (/^(sim|s)$/i.test(value)) {
@@ -52,6 +64,14 @@ async function answer(actor, text) {
   const value = String(text || "").trim(); if (!value) return { consumed: true, text: "Envie uma resposta para a pergunta atual ou use *!cancelar criação*." };
   const [field] = questions(state.tipo)[state.etapa]; state.dados[field] = value; state.etapa += 1;
   if (state.etapa < questions(state.tipo).length) { await save(actor, state); return { consumed: true, text: questions(state.tipo)[state.etapa][1] }; }
+  if (["GUILD","MISSION","INSTANCE_DUNGEON"].includes(state.tipo)) {
+    let preview;
+    try { preview=await require("./guidedCreationPublishers").preview(state.tipo,state.dados); }
+    catch(error){await clear(actor);return {consumed:true,text:`[!] ${error.message}\n\nA criação foi encerrada sem gravar dados. Corrija a informação e inicie novamente.`};}
+    state.status="AGUARDANDO_CONFIRMACAO";await save(actor,state);
+    const labels={GUILD:"Guilda",MISSION:"Missão",INSTANCE_DUNGEON:"Dungeon instanciada"};
+    return {consumed:true,text:`*${labels[state.tipo]} pronta para criação*\n\n${preview}\n\nDeseja criar agora? Responda *sim* ou *não*.`};
+  }
   if (state.tipo === "BANNER") {
     try {
       const inicio = new Date(); const fim = new Date(inicio.getTime() + 30 * 24 * 60 * 60 * 1000);
@@ -120,4 +140,4 @@ async function consumeMessage(msg) {
   }
   return false;
 }
-module.exports = { ensure, get, start, answer, attachImage, publishWithoutImage, consumeMessage, clear, normalizeList };
+module.exports = { ensure, get, start, answer, attachImage, publishWithoutImage, consumeMessage, clear, normalizeList, questions };

@@ -77,6 +77,35 @@ class AtributoSystem {
     }
 
     /**
+     * Explica o bônus inicial da classe para apresentação na ficha.
+     * O valor é sempre derivado do atributo-base atual, pela mesma fórmula
+     * usada no recálculo dos totais.
+     */
+    static detalharBonusClasseInicial(classe, atributos = {}) {
+        const config = this.getBonusClasseInicial(classe);
+        if (!config) return null;
+
+        const campoParaChave = {
+            forca_base: "forca",
+            resistencia_base: "resistencia",
+            velocidade_base: "velocidade",
+            sentidos_base: "sentidos",
+            inteligencia_base: "inteligencia",
+            poder_magico_base: "poder_magico"
+        };
+        const chave = campoParaChave[config.atributo];
+        if (!chave) return null;
+
+        const bonusCalculado = this.calcularBonusClasseInicial(classe, atributos);
+        return {
+            atributo: chave,
+            nomeAtributo: NOME_ATRIBUTO[config.atributo],
+            percentual: Math.round(config.bonus * 100),
+            valor: Number(bonusCalculado[chave] || 0)
+        };
+    }
+
+    /**
      * Recalcula TODOS os atributos do jogador:
      * - Base + bônus de classe (50%)
      * - +Equipamentos +Buffs de classe avançada

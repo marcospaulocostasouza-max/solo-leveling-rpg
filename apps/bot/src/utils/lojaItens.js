@@ -656,6 +656,20 @@ for (const material of [...catalogoForja.materiais, ...catalogoForja.nucleos.map
     });
 }
 
+// As armas disponíveis na criação de ficha também podem ser recompradas.
+// A fonte continua sendo o catálogo oficial de armas iniciais.
+const armasIniciais = require('../database/itens.json').armas || [];
+ITENS_LOJA.Inicial ||= {};
+ITENS_LOJA.Inicial['Armas Simples'] = armasIniciais.map(arma => ({
+    nome: arma.nome,
+    bonus: 'Sem bônus',
+    preco: 5000,
+    descricao: arma.descricao || 'Arma simples sem efeito especial.',
+    tipo: 'arma',
+    categoria: arma.categoria || 'Arma 1',
+    tier: 'Inicial'
+}));
+
 module.exports = {
     ITENS_LOJA,
     getItensLoja,

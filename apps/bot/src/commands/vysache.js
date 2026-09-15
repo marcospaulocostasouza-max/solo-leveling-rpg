@@ -163,8 +163,7 @@ module.exports = async (msg) => {
         const combinacao = sessaoBanco?.combinacao_resultado ? JSON.parse(sessaoBanco.combinacao_resultado) : null;
         if (!combinacao) return MessageService.send({ message: msg, text: "*A receita encaminhada não pôde ser recuperada.*" });
         const afinidade = await ForjaSystem.getAfinidade(jogador.id, destino);
-        const multiplicador = destino === "Vysache" ? 1.5 : 1;
-        const custo = ForjaSystem.calcularCustoFinal(Math.floor(Number(combinacao.custo || 0) * multiplicador), afinidade.afinidade);
+        const custo = ForjaSystem.calcularCustoFerreiro(combinacao.custo, destino, afinidade.afinidade);
         await ForjaSystem.atualizarSessao(sessao.sessaoId, { etapa: "aguardando_confirmacao", custo });
         sessao.etapa = "aguardando_confirmacao";
         return MessageService.send({ message: msg, text: `*${destino}:* "Aceito a encomenda. Uma obra Rank ${combinacao.rank} custará *${custo.toLocaleString("pt-BR")} Wons*. Os materiais serão conferidos novamente."\n\nSe concordar, use *!pode sim*.` });

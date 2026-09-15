@@ -106,6 +106,7 @@ module.exports = async (msg) => {
     });
 
     mensagem += `\n*─── Lojas Especiais ───*\n`;
+    mensagem += `!Loja Armas Simples\n`;
     mensagem += `!Loja Materiais\n`;
     mensagem += `!Loja Nucleos\n`;
     

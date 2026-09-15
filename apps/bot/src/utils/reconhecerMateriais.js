@@ -151,8 +151,7 @@ async function processarFichaMateriais(msg) {
     const rank = String(combinacaoEscolhida.rank || "E").toUpperCase();
     const encaminharVysache = npcNome === "Bilac" && ["A", "S"].includes(rank);
     const encaminharBilac = npcNome === "Vysache" && ["E", "D", "C", "B"].includes(rank);
-    const multiplicadorMestre = npcNome === "Vysache" ? 1.5 : 1;
-    const custoFinal = ForjaSystem.calcularCustoFinal(Math.floor(combinacaoEscolhida.custo * multiplicadorMestre), afinidadeInfo.afinidade);
+    const custoFinal = ForjaSystem.calcularCustoFerreiro(combinacaoEscolhida.custo, npcNome, afinidadeInfo.afinidade);
 
     // Salvar combinação na sessão
     await ForjaSystem.atualizarSessao(sessao.sessaoId, {
@@ -206,20 +205,23 @@ async function processarFichaMateriais(msg) {
     // Se veio do catálogo, mostrar o item específico com atributos +30%
     if (combinacaoEscolhida.itemCatalogo) {
         const itemCat = combinacaoEscolhida.itemCatalogo;
-        const bonusVysache = npcNome === "Vysache" ? 1.3 : 1.1;
+        const previaItem = ForjaSystem.gerarItemDoCatalogo(itemCat, npcNome);
+        const nomesAtributos = { forca: "Força", resistencia: "Resistência", velocidade: "Agilidade", sentidos: "Sentidos", inteligencia: "Inteligência", poder_magico: "Poder Mágico" };
+        const bonusFormatado = Object.entries(previaItem.bonus)
+            .filter(([, valor]) => Number(valor) > 0)
+            .map(([atributo, valor]) => `${nomesAtributos[atributo]}: +${valor}`)
+            .join(" | ");
 
         mensagem += `> *Item:* ${itemCat.nome}\n`;
         mensagem += `> *Slot:* ${itemCat.slot}\n`;
         mensagem += `> *Rank:* ${itemCat.rank}\n`;
         mensagem += `> *Descrição:* ${itemCat.descricao}\n`;
         mensagem += `${templates.divisor()}\n`;
-        mensagem += `*ATRIBUTOS (com +${Math.round((bonusVysache - 1) * 100)}% de ${npcNome}):*\n`;
-        mensagem += `> ${itemCat.atributo1}: +${Math.floor(itemCat.valor1 * bonusVysache)}`;
-        if (itemCat.atributo2 && itemCat.valor2) {
-            mensagem += ` | ${itemCat.atributo2}: +${Math.floor(itemCat.valor2 * bonusVysache)}`;
-        }
-        mensagem += `\n`;
-        mensagem += `> _Bônus de +${Math.round((bonusVysache - 1) * 100)}% aplicado por ${npcNome}_\n`;
+        mensagem += `*ATRIBUTOS FINAIS:*\n`;
+        mensagem += `> ${bonusFormatado}\n`;
+        mensagem += `> _Qualidade: investimento ${Math.round(previaItem.fatoresForja.investimento * 100)}%`;
+        if (itemCat.nucleoRank) mensagem += ` • núcleo ${Math.round(previaItem.fatoresForja.nucleo * 100)}%`;
+        mensagem += ` • ${npcNome} +${Math.round(((ForjaSystem.FERREIROS[npcNome]?.bonus || 1) - 1) * 100)}%_\n`;
     } else {
         mensagem += `> *Rank:* ${combinacaoEscolhida.rank}\n`;
         mensagem += `> *Categoria:* ${combinacaoEscolhida.categoria}\n`;

@@ -10,6 +10,7 @@ const path = require("path");
 
 // Database de dungeons (700 masmorras)
 const caminhoDatabase = path.join(__dirname, "..", "database", "dungeons.json");
+const caminhoCustom = path.join(__dirname, "..", "database", "dungeons_custom.json");
 const caminhoDrops = path.join(__dirname, "..", "database", "dungeon_drops.json");
 
 // Cache em memória após primeira leitura
@@ -36,7 +37,10 @@ class DungeonDatabaseLoader {
         
         try {
             const dados = fs.readFileSync(caminhoDatabase, "utf8");
-            dungeonsCache = JSON.parse(dados);
+            const base = JSON.parse(dados);
+            let custom = [];
+            try { custom = JSON.parse(fs.readFileSync(caminhoCustom, "utf8")); } catch (error) { if (error.code !== "ENOENT") throw error; }
+            dungeonsCache = [...base, ...(Array.isArray(custom) ? custom : [])];
             return dungeonsCache;
         } catch (e) {
             console.error("Erro ao carregar database de dungeons:", e.message);
@@ -73,6 +77,20 @@ class DungeonDatabaseLoader {
         const idNumerico = Number(id);
         if (!Number.isSafeInteger(idNumerico)) return null;
         return dungeons.find(d => Number(d.id) === idNumerico) || null;
+    }
+
+    static adicionarDungeon(dados) {
+        const atuais = this.carregarDungeons();
+        if (atuais.some(item => String(item.nome).trim().toLowerCase() === String(dados.nome).trim().toLowerCase())) throw new Error("Já existe uma dungeon com esse nome.");
+        let custom = [];
+        try { custom = JSON.parse(fs.readFileSync(caminhoCustom, "utf8")); } catch (error) { if (error.code !== "ENOENT") throw error; }
+        const id = Math.max(0, ...atuais.map(item => Number(item.id) || 0)) + 1;
+        const dungeon = { ...dados, id };
+        const temp = `${caminhoCustom}.tmp`;
+        fs.writeFileSync(temp, JSON.stringify([...custom, dungeon], null, 2), "utf8");
+        fs.renameSync(temp, caminhoCustom);
+        dungeonsCache = null;
+        return dungeon;
     }
 
     /**

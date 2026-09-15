@@ -65,6 +65,20 @@ _Use *!ficha* para criar seu personagem._
         // Buscar bônus de equipamentos para exibir separadamente
         const bonusEquip = await InventorySystem.calcularBonusEquipados(jogador.id);
         const afinidadesAdicionais = await AfinidadesAdicionais.listar(jogador.id);
+        const bonusClasseInicial = AtributoSystem.detalharBonusClasseInicial(jogador.classe, {
+            forca: jogador.forca_base,
+            resistencia: jogador.resistencia_base,
+            velocidade: jogador.velocidade_base,
+            sentidos: jogador.sentidos_base,
+            inteligencia: jogador.inteligencia_base,
+            poder_magico: jogador.poder_magico_base
+        });
+        const exibirAtributoBase = (nome, chave, valor) => {
+            const detalhe = bonusClasseInicial?.atributo === chave
+                ? ` _(+${bonusClasseInicial.valor} da classe • ${bonusClasseInicial.percentual}%)_`
+                : "";
+            return `> *${nome}:* ${Number(valor || 0)}${detalhe}\n`;
+        };
         
         // Atributos totais (agora atualizados pelo recalcularAtributos)
         // O bonus de conjunto e efetivo nos campos *_total*, mas por regra de
@@ -141,12 +155,13 @@ _Use *!ficha* para criar seu personagem._
         
         // Atributos Base
         mensagem += `*─── Atributos Base ───*\n`;
-        mensagem += `> *Força:* ${jogador.forca_base || 0}\n`;
-        mensagem += `> *Resistência:* ${jogador.resistencia_base || 0}\n`;
-        mensagem += `> *Velocidade:* ${jogador.velocidade_base || 0}\n`;
-        mensagem += `> *Sentidos:* ${jogador.sentidos_base || 0}\n`;
-        mensagem += `> *Inteligência:* ${jogador.inteligencia_base || 0}\n`;
-        mensagem += `> *Poder Mágico:* ${jogador.poder_magico_base || 0}\n\n`;
+        mensagem += exibirAtributoBase("Força", "forca", jogador.forca_base);
+        mensagem += exibirAtributoBase("Resistência", "resistencia", jogador.resistencia_base);
+        mensagem += exibirAtributoBase("Velocidade", "velocidade", jogador.velocidade_base);
+        mensagem += exibirAtributoBase("Sentidos", "sentidos", jogador.sentidos_base);
+        mensagem += exibirAtributoBase("Inteligência", "inteligencia", jogador.inteligencia_base);
+        mensagem += exibirAtributoBase("Poder Mágico", "poder_magico", jogador.poder_magico_base);
+        mensagem += `\n`;
         
         // Bônus de Classe Avançada
         mensagem += `*─── Bônus de Classe ───*\n`;

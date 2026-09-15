@@ -167,7 +167,7 @@ function buscarItemNaLoja(nomeItem) {
         for (const [categoria, itens] of Object.entries(categorias)) {
             for (const item of itens) {
                 if (normalizarTexto(item.nome) === nomeNormalizado) {
-                    return { item, categoria, rank };
+                    return { item, categoria: item.categoria || categoria, rank };
                 }
             }
         }
@@ -178,7 +178,7 @@ function buscarItemNaLoja(nomeItem) {
         for (const [categoria, itens] of Object.entries(categorias)) {
             for (const item of itens) {
                 if (normalizarTexto(item.nome).includes(nomeNormalizado)) {
-                    return { item, categoria, rank };
+                    return { item, categoria: item.categoria || categoria, rank };
                 }
             }
         }

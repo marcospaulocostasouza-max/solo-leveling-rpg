@@ -12,3 +12,7 @@ test('guard permite novo jogador e propaga erro de consulta sem assumir ausênci
  assert.equal(await guard.existingCharacter({get:(sql,args,cb)=>cb(null,null)},'novo'),null);
  await assert.rejects(guard.existingCharacter({get:(sql,args,cb)=>cb(new Error('offline'))},'novo'),/offline/);
 });
+test('registro preliminar dos sorteios não conta como personagem criado',async()=>{
+ const database={get(sql,args,callback){assert.match(sql,/ficha_aprovada/);callback(null,null);}};
+ assert.equal(await guard.existingCharacter(database,'pre-ficha'),null);
+});

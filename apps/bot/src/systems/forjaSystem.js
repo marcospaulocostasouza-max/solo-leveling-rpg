@@ -18,9 +18,11 @@ const sharedDatabase = require("../../../../packages/database");
 const { provider } = require("../../../../packages/database/config");
 
 const FERREIROS = Object.freeze({
-    Bilac: { ranks: ["E", "D", "C", "B"], bonus: 1.1, multiplicadorCusto: 1 },
+    Bilac: { ranks: ["E", "D", "C", "B"], bonus: 1.1, multiplicadorCusto: 1.5 },
     Vysache: { ranks: ["A", "S"], bonus: 1.3, multiplicadorCusto: 1.5 }
 });
+const ORDEM_RANKS = Object.freeze(["E", "D", "C", "B", "A", "S"]);
+let faixasInvestimentoCatalogo;
 
 let estruturasForjaPromise;
 
@@ -926,6 +928,8 @@ class ForjaSystem {
      */
     static gerarItemDoCatalogo(itemCatalogo, npcNome = "Vysache") {
         const multiplicador = FERREIROS[npcNome]?.bonus || BONUS_VYSACHE;
+        const fatores = this.calcularFatoresItemCatalogo(itemCatalogo);
+        const multiplicadorFinal = multiplicador * fatores.investimento * fatores.nucleo;
         const bonus = {
             forca: 0,
             resistencia: 0,
@@ -947,7 +951,7 @@ class ForjaSystem {
             };
             const chave = chaveMap[nomeAtributo];
             if (chave && valor) {
-                bonus[chave] = Math.floor(valor * multiplicador);
+                bonus[chave] += Math.floor(Number(valor) * multiplicadorFinal);
             }
         };
 
@@ -983,9 +987,41 @@ class ForjaSystem {
             isAcessorio,
             isConsumivel,
             bonus,
-            efeito: `Item forjado por ${npcNome}: bônus de ${Math.round((multiplicador - 1) * 100)}% nos atributos sobre o catálogo de forja.`,
+            efeito: `Item forjado por ${npcNome}. Qualidade do ferreiro: +${Math.round((multiplicador - 1) * 100)}%. Investimento da receita: ${Math.round(fatores.investimento * 100)}%. Eficiência do núcleo: ${Math.round(fatores.nucleo * 100)}%.`,
+            fatoresForja: fatores,
             itemCatalogo: itemCatalogo
         };
+    }
+
+    static calcularFatoresItemCatalogo(itemCatalogo) {
+        const rank = String(itemCatalogo?.rank || "E").toUpperCase();
+        if (!faixasInvestimentoCatalogo) {
+            const catalogo = this.carregarCatalogo() || {};
+            faixasInvestimentoCatalogo = {};
+            for (const item of [...(catalogo.ligas || []), ...(catalogo.forjados || [])]) {
+                const chave = String(item.rank || "E").toUpperCase();
+                const preco = Number(item.preco || 0);
+                if (preco <= 0) continue;
+                const faixa = faixasInvestimentoCatalogo[chave] ||= { min: preco, max: preco };
+                faixa.min = Math.min(faixa.min, preco);
+                faixa.max = Math.max(faixa.max, preco);
+            }
+        }
+        const faixa = faixasInvestimentoCatalogo[rank];
+        const preco = Number(itemCatalogo?.preco || 0);
+        let investimento = 1;
+        if (faixa && preco > 0 && faixa.max > faixa.min) {
+            const posicao = (preco - faixa.min) / (faixa.max - faixa.min);
+            investimento = 0.9 + Math.max(0, Math.min(1, posicao)) * 0.2;
+        }
+        let nucleo = 1;
+        if (itemCatalogo?.nucleoRank) {
+            const rankItem = ORDEM_RANKS.indexOf(rank);
+            const rankNucleo = ORDEM_RANKS.indexOf(String(itemCatalogo.nucleoRank).toUpperCase());
+            const diferenca = rankItem >= 0 && rankNucleo >= 0 ? Math.max(0, rankItem - rankNucleo) : 0;
+            nucleo = Math.max(0.85, 1.05 - diferenca * 0.05);
+        }
+        return { investimento, nucleo };
     }
 
     /**
@@ -1191,6 +1227,12 @@ class ForjaSystem {
     static calcularCustoFinal(custoBase, afinidade) {
         const desconto = Math.floor((afinidade / 100) * 30); // Até 30% de desconto
         return Math.floor(custoBase * (1 - desconto / 100));
+    }
+
+    /** Calcula a cobrança do ferreiro, incluindo multiplicador e afinidade. */
+    static calcularCustoFerreiro(custoBase, npcNome, afinidade) {
+        const multiplicador = FERREIROS[npcNome]?.multiplicadorCusto || 1;
+        return this.calcularCustoFinal(Math.floor(Number(custoBase || 0) * multiplicador), afinidade);
     }
 
     // =====================================

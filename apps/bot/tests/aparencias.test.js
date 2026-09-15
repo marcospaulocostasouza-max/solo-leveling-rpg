@@ -2,6 +2,12 @@ const test = require("node:test");
 const assert = require("node:assert/strict");
 const extrair = require("../src/utils/extrairAparencia");
 const { formatarLista } = require("../src/commands/aparencias");
+const { extractAppearance } = require("../src/commands/trocarAparencia");
+
+test("troca de aparência aceita comando com e sem acento", () => {
+    assert.equal(extractAppearance("!trocar aparencia Gojo Satoru"), "Gojo Satoru");
+    assert.equal(extractAppearance("!trocar aparência Sung Jin-Woo"), "Sung Jin-Woo");
+});
 
 test("aparência ao lado do campo", () => {
     assert.equal(extrair("Nome: Hana\n*Aparência:* Frieren - Sousou no Frieren\nClasse: Curador"), "Frieren - Sousou no Frieren");

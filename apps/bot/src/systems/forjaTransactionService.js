@@ -11,6 +11,10 @@ function materialMatches(item,name){
  if(b.startsWith('nucleo '))return a===b.replace('nucleo ','nucleo de monstro ')||a===`nucleo de monstro rank ${Object.keys(colors).find(r=>colors[r]===b.slice(7))?.toLowerCase()}`;
  return false;
 }
+function forgeItemName(baseName,npcName,session,playerId,forgeCount,national=false){
+ const identity=national?`Nacional ${playerId}-${Number(forgeCount||0)+1}`:`Obra ${session.id}`;
+ return `[${npcName}] ${baseName} • ${identity}`;
+}
 async function emptySlots(query,playerId){
  const items=await query.all('SELECT i.* FROM inventario_jogador inv JOIN itens i ON i.id=inv.item_id WHERE inv.jogador_id=? AND inv.equipado=1',[playerId]);
  const counts={};for(const item of items){const slot=Inventory.getSlotDoItem(item);counts[slot]=(counts[slot]||0)+1;}
@@ -33,7 +37,7 @@ async function forge(F,playerId,npcName,sessionId,national=false){
   if(national&&(npcName!=='Vysache'||Number(affinity.afinidade)<100||Number(affinity.forja_nacional_disponivel)!==1))throw Error('Forja Nacional indisponivel.');
   const ranks=npcName==='Bilac'?['E','D','C','B']:npcName==='Vysache'?['A','S']:[];
   if(!national&&!ranks.includes(recipe.rank))throw Error('Receita fora da especialidade deste ferreiro.');
-  const cost=national?500000:F.calcularCustoFinal(Math.floor(Number(recipe.custo)*(npcName==='Vysache'?1.5:1)),Number(affinity.afinidade||0));
+  const cost=national?500000:F.calcularCustoFerreiro(recipe.custo,npcName,Number(affinity.afinidade||0));
   if(!Number.isSafeInteger(cost)||cost<=0)throw Error('Custo invalido.');
   if(!national&&cost!==Number(session.custo))throw Error('O orcamento mudou. Apresente novamente os materiais.');
   if(Number(player.won||0)<cost)throw Error('Saldo insuficiente: '+cost+' Won.');
@@ -49,7 +53,7 @@ async function forge(F,playerId,npcName,sessionId,national=false){
   const data=national?F.gerarItemNacional(player):recipe.itemCatalogo?F.gerarItemDoCatalogo(recipe.itemCatalogo,npcName):F.gerarItemForja(recipe,player);
   if(!national&&!recipe.itemCatalogo){for(const k of Object.keys(data.bonus))data.bonus[k]=Math.floor(data.bonus[k]*(npcName==='Bilac'?1.1:1.3));}
   if(npcName==='Bilac'){const vacant=await emptySlots(q,playerId);if(!vacant.includes(Inventory.getSlotDoItem({categoria:data.categoria})))throw Error('O slot desta encomenda foi ocupado. Apresente os materiais novamente.');}
-  data.nome=`[${npcName}] ${data.nome}`;
+  data.nome=forgeItemName(data.nome,npcName,session,playerId,affinity.itens_forjados,national);
   if(national)data.efeito='Obra Nacional: atributos fixos descritos na ficha. Efeitos adicionais dependem de validacao narrativa do ADM.';
   const keys=['forca','resistencia','velocidade','sentidos','inteligencia','poder_magico'];
   const sql='INSERT INTO itens(nome,categoria,tier,descricao,arma,armadura,escudo,acessorio,consumivel,forca_bonus,resistencia_bonus,velocidade_bonus,sentidos_bonus,inteligencia_bonus,poder_magico_bonus,efeito,preco,valor) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
@@ -66,4 +70,4 @@ async function forge(F,playerId,npcName,sessionId,national=false){
   return {sucesso:true,item:data,itemId,custo:cost,materiaisConsumidos:consumed,afinidade:{afinidade:next,itens_forjados:count,forja_nacional_disponivel:available,atingiu_100:old<100&&next===100}};
  });}catch(error){console.error('[FORJA]',error.message);return {erro:error.message};}
 }
-module.exports={forge,emptySlots,materialMatches,syncCatalog};
+module.exports={forge,emptySlots,materialMatches,syncCatalog,forgeItemName};

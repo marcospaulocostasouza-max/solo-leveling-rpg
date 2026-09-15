@@ -83,6 +83,14 @@ test("diferencia Ranger Fisico de Ranger Magico", () => {
     assert.equal(AtributoSystem.calcularBonusClasseInicial("Ranger Mágico", { poder_magico: 6 }).poder_magico, 3);
 });
 
+test("detalha na ficha o bônus dinâmico da classe sobre o atributo atual", () => {
+    const AtributoSystem = require("../src/systems/atributoSystem");
+    assert.deepEqual(
+        AtributoSystem.detalharBonusClasseInicial("Assassino", { velocidade: 22 }),
+        { atributo: "velocidade", nomeAtributo: "Velocidade", percentual: 50, valor: 11 }
+    );
+});
+
 test("integra Mago Elemental e Mago de Maldicao como classes iniciais", () => {
     const AtributoSystem = require("../src/systems/atributoSystem");
     assert.equal(obterClasseCanonica("Mago Elemental"), "Mago Elemental");

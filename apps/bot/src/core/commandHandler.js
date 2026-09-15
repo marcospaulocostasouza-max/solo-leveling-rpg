@@ -779,8 +779,11 @@ async function executarComando(msg, comando, comandosRegistrados) {
     // Verificar comandos com prefixo
     const prefixosAceitos = comandosPrefixo.flatMap(cmd => {
         const prefixo = normalizarComando(cmd.prefixo);
-        return [prefixo, ...aliasesDePlural(prefixo)].map(alias => ({ ...cmd, prefixoCanonico: alias }));
-    }).sort((a, b) => b.prefixoCanonico.length - a.prefixoCanonico.length);
+        return [
+            { ...cmd, prefixoCanonico: prefixo, aliasGerado: false },
+            ...aliasesDePlural(prefixo).map(alias => ({ ...cmd, prefixoCanonico: alias, aliasGerado: true }))
+        ];
+    }).sort((a, b) => b.prefixoCanonico.length - a.prefixoCanonico.length || Number(a.aliasGerado) - Number(b.aliasGerado));
     console.log(`[CMD] Verificando ${prefixosAceitos.length} comandos com prefixo...`);
     for (const cmd of prefixosAceitos) {
         // Os comandos administrativos usam o sinal junto ao recurso
@@ -811,6 +814,22 @@ async function executarComando(msg, comando, comandosRegistrados) {
             } else {
                 console.log(`[CMD] Módulo não encontrado: ${cmd.arquivo}`);
             }
+        }
+    }
+
+    // Itens e técnicas também funcionam como comandos próprios. A consulta
+    // usa o banco atual, então conteúdo novo fica disponível imediatamente.
+    if (String(msg.body || "").trim().startsWith("!")) {
+        try {
+            const nomeDireto = String(msg.body).trim().replace(/^!+\s*/, "");
+            const respostaDireta = await require("../systems/catalogConsultationService").direct(nomeDireto);
+            if (respostaDireta) {
+                await MessageService.send({ message: msg, text: respostaDireta });
+                console.log(`[CMD] Consulta dinâmica do catálogo: ${nomeDireto}`);
+                return;
+            }
+        } catch (erro) {
+            console.error("[CATALOGO_DINAMICO]", erro.message);
         }
     }
 

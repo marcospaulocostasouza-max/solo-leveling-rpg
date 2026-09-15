@@ -61,5 +61,7 @@ async function setup(f) {
   assert.ok(await rollback.get("SELECT id FROM inventario_jogador WHERE jogador_id=1"));
   assert.ok(await rollback.get("SELECT numero FROM processos_exclusao WHERE numero='333'"));
   rollback.raw.close();
+
+  assert.equal(require("../src/systems/characterDeletionService").isExpired("data inválida"), false);
   console.log("characterDeletion.test.js: OK");
 })().catch(error => { console.error(error); process.exitCode = 1; });

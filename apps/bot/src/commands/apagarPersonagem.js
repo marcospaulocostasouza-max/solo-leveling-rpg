@@ -18,13 +18,19 @@ module.exports = async function apagarPersonagem(msg) {
     let dados = {};
     try { dados = JSON.parse(fichaPendente?.dados || "{}"); } catch {}
     const nome = jogador?.nome || dados.nome || "dados de cadastro";
-    let processo = await database.get("SELECT * FROM processos_exclusao WHERE numero=? AND status='aguardando'", [numero]);
+    // Versões antigas marcavam o pedido como "confirmado" antes de apagar os
+    // dados. Se a exclusão falhasse, esse registro único ficava preso e todo
+    // novo !apagar personagem terminava em conflito de chave.
+    let processo = await database.get("SELECT * FROM processos_exclusao WHERE numero=?", [numero]);
     if (processo && isExpired(processo.data_expiracao)) {
       await database.run("DELETE FROM processos_exclusao WHERE numero=?", [numero]);
       processo = null;
     }
-    if (processo) return send(msg, "*⚠ PROCESSO DE EXCLUSÃO PENDENTE ⚠*\n\nDigite *!tenho certeza* para apagar o personagem e todos os dados ligados a ele.\n_O pedido expira em 5 minutos._");
-    await database.run("INSERT INTO processos_exclusao (numero,jogador_nome,status,data_criacao,data_expiracao) VALUES (?,?,'aguardando',CURRENT_TIMESTAMP,?)", [numero, nome, new Date(Date.now() + 300000).toISOString()]);
+    if (processo?.status === "aguardando") return send(msg, "*⚠ PROCESSO DE EXCLUSÃO PENDENTE ⚠*\n\nDigite *!tenho certeza* para apagar o personagem e todos os dados ligados a ele.\n_O pedido expira em 5 minutos._");
+    const expiration = new Date(Date.now() + 300000).toISOString();
+    await database.run(`INSERT INTO processos_exclusao (numero,jogador_nome,status,data_criacao,data_expiracao)
+      VALUES (?,?,'aguardando',CURRENT_TIMESTAMP,?)
+      ON CONFLICT(numero) DO UPDATE SET jogador_nome=excluded.jogador_nome,status='aguardando',data_criacao=CURRENT_TIMESTAMP,data_expiracao=excluded.data_expiracao`, [numero, nome, expiration]);
     return send(msg, `*⚠ EXCLUSÃO DE PERSONAGEM ⚠*\n\nVocê está prestes a apagar permanentemente:\n> *Nome:* ${nome}\n> *Classe:* ${jogador?.classe || dados.classe || "Não definida"}\n> *Status:* ${jogador ? `Nível ${jogador.nivel || 1}` : fichaPendente ? "Ficha aguardando aprovação" : "Dados residuais de cadastro"}\n\nSerão apagados ficha, atributos, inventário, equipamentos, técnicas, afinidades, missões, dungeons, sorteios e históricos.\n\nDigite *!tenho certeza* em até 5 minutos para confirmar.`);
   } catch (error) {
     console.error("[EXCLUSÃO] Erro ao iniciar:", error);
